@@ -111,7 +111,9 @@ incongruent name \texttt{two} has true value 5 and lure value 2.}
 \citet{kudo2026faithful}: problems are lists of assignments over single digits with $+$ and $-$,
 all values stay in $0..9$, and three fixed same-level demonstrations precede each problem. Our
 main level is their Level~3 (two steps, one forward reference; \texttt{v1=d $\pm$ v2, v2=d $\pm$ d; v1=?}),
-with Levels 2 and 5 as robustness checks and Level~4 for a control described below.
+with Levels 2 and 5 as robustness checks and Level~4 for a control described below. Probes are
+trained on 10,000 neutral problems and everything is evaluated on 2,000 matched sets per
+level; the digit expressions used for probe training are held out from the test sets.
 
 \paragraph{Conditions.} Each arithmetic problem yields a matched set. The \emph{letter}
 condition is Kudo et al.'s format and anchors our replication. \emph{Neutral} names are common
@@ -123,8 +125,10 @@ separating the lexical presence of a number from a binding conflict.
 
 \paragraph{Generation rules.} Exactly one variable per instance carries a number word. The
 lure differs from every variable value and from every operand digit in the problem, so it is
-never correct for another reason. Neutral words are matched to number words in token count
-under each model's tokenizer, checked per model, so positions align across twins and length is
+never correct for another reason. Neutral words are drawn from a pool of common concrete nouns
+that are a single token in every context of the template under each model's tokenizer (95 of
+112 candidates for the Llama~3 tokenizer; binary operators are spaced because \texttt{-}
+otherwise merges with the following word), so twins tokenize to identical layouts and length is
 not a confound. Every incongruent instance has a neutral and a congruent twin with identical
 arithmetic, and all comparisons are within these sets.
 

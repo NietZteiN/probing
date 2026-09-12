@@ -1,0 +1,64 @@
+# Experiment registry
+
+*Written 2026-09-12. One row per experiment the paper needs; each has a claim it serves
+(paper/ARGUMENT.md §1), a command, a partition, a cost, and a status. Update the status column
+as jobs land; never add a result to the paper that has no row here.*
+
+Cost basis: 3B on A30 ≈ 1 GPU-h per (model, level) `run` stage; 8B on H100 ≈ 2 GPU-h.
+Probes ≈ 1 GPU-h per (model, level, regime, train split). Patching ≈ 1.5 GPU-h per (model,
+level, regime). Storage ≈ 6–8 GB per (model, level) on scratch.
+
+## A. Gates (must pass before anything is claimed)
+
+| id | experiment | serves | command | where | cost | status |
+|---|---|---|---|---|---|---|
+| E0 | Tokenizer rule-4 check per model: number words and neutral words single tokens in five contexts; template layout dump | Appendix A; every twin comparison | `make tokcheck` | dev (CPU) | 5 min | **done** for llama32-3b, llama32-3b-it, llama31-8b, llama31-8b-it (95/112 words); pending for gemma3-4b, olmo2-7b-it, olmo3-7b-think |
+| E1 | Smoke run: 64 instances × 4 groups × 2 regimes on Llama-3.2-3B; layout guard, parse rate, accuracy sanity | nothing in the paper; catches format bugs | `20_run_model.py --model llama32-3b --level 3 --groups neutral incongruent@v2 congruent@v2 letter --limit 64` | a30 | 10 min | **queued** (job 391274) |
+| E2 | Kudo replication: probes trained and tested on letters, L3, CoT, Llama-3.2-3B; report Acc≺CoT, Acc≻CoT and first-above-τ per variable against their Table 3 (v1 at equation 5, v2 at 2; τ=0.9) and Table 7 accuracy (93.15%) | Results ¶1 "Replication" | `30_train_probes.py --model llama32-3b --level 3 --regime cot --train train_letter --test-groups letter` then `50_analysis.py` → `replication.json` | a30 | 1 GPU-h | not started |
+
+## B. Core (level 3, two core models, both regimes; the go/no-go on Oct 1 is decided on these)
+
+| id | experiment | serves | command | where | cost | status |
+|---|---|---|---|---|---|---|
+| E3 | Behaviour: free greedy generation, all 10 groups (letter, neutral, congruent/incongruent/incongruent_alt/neutral_alt × {v1, v2}), both regimes; accuracy, lure rate, interference, facilitation, CoT-protection contrast; cluster-bootstrap CIs; clustered logit `correct ~ condition × regime` | C1, C2 → Table 1 | `pipeline.py --stage run --models llama32-3b llama31-8b` (also caches hidden states for E4) | a30 / h100 | 1 + 2 GPU-h | not started |
+| E4 | Hidden-state cache at 13 labelled positions, all layers, for 10k neutral-train + 10k letter-train + 20k test instances, both regimes | E2, E5, E6, E7 | same job as E3 | same | included | not started |
+| E5 | Neutral-trained probes: per (role, position, layer, seed ∈ {0,1,2}); evaluated on every group; accuracy, lure rate, lure mass, margin; crossover step (first position where layer-max margin > 0 and stays > 0); FDR over layer × position | C3 → Figure 2, crossover | `pipeline.py --stage probes` (train_neutral) | a30 / h100 | 2 × 1 GPU-h per model | not started |
+| E6 | Selectivity: Hewitt–Liang control probe (label = hash of the target's name) at every cell; report accuracy − control; cells below 0.3 are not interpreted | gate for E5 cells; Appendix B | included in E5 (`control=True`) | same | included | not started |
+| E7 | Instance-level link: `lure_error ~ margin(end@r) + margin(query) + margin(cotpre@r)` at the best neutral-accuracy layer, clustered on set | C3 → RQ2 last sentence | `50_analysis.py` → `link.json` | login | minutes | not started |
+| E8 | Patching `main`: neutral → incongruent at every token carrying the target name; single layers, 4-layer windows, all layers; read next token at `cotpre@r` and `anspre`; recovery = P(correct after \| lure error before) | C4 → Figure 3 | `pipeline.py --stage patch` | a30 / h100 | 1.5 GPU-h per (model, regime) | not started |
+| E9 | Patching control `ctl_word`: neutral_alt → neutral; damage = P(wrong after \| correct before); must be < 5% at the reported layer set | C4 validity | same job as E8 | same | included | not started |
+| E10 | Patching control `ctl_lure`: incongruent_alt → incongruent; follows-new-lure rate | C4 positive control | same job as E8 | same | included | not started |
+| E11 | Target position: every behavioural and probe quantity split by target = intermediate (v2) vs queried (v1) | Table 1 rows; PLAN rule 5 | by construction of the groups; `51_tables.py` | login | — | not started |
+
+## C. Controls and robustness (after the gate; appendix unless the effect is large)
+
+| id | experiment | serves | command | where | cost | status |
+|---|---|---|---|---|---|---|
+| E12 | Irrelevant-lure control at level 4: number word on the distractor; lure rate and probe lure mass vs incongruent@v2 | "binding vs presence" sentence in RQ1 | `pipeline.py --stage all --levels 4` | a30 / h100 | 3 GPU-h per model | not started |
+| E13 | Levels 2 (in order) and 5 (three steps): behaviour + probes | robustness of C1–C3 across dependency structure and depth | `pipeline.py --stage run,probes --levels 2 5` | a30 / h100 | 4 GPU-h per model | not started |
+| E14 | Base vs instruct pair: llama32-3b-it and llama31-8b-it, level 3, full stack | "tuning" row of Table 1; Limitations | `pipeline.py --stage all --models llama32-3b-it llama31-8b-it` | a30 / h100 | 5 + 8 GPU-h | not started |
+| E15 | Second family: Gemma-3-4B (pt), level 3; requires download, E0, and a loading check for the multimodal checkpoint (`runner.load_model`) | family robustness | E0 then `pipeline.py --stage all --models gemma3-4b` | a30 | 5 GPU-h | blocked on download + E0 |
+| E16 | Reasoning-tuned model: OLMo-3-7B-Think (availability and chat-template behaviour to verify); if unavailable, OLMo-2-7B-Instruct as the AI2 family row | "base vs reasoning-tuned" pair in PLAN §4.5 | E0 then `pipeline.py --stage all --models olmo3-7b-think` | h100 | 8 GPU-h | blocked on availability |
+| E17 | Probe recipe robustness: lbfgs (scikit-learn) and standardized inputs vs Kudo's SGD; same picture required | Appendix B | `30_train_probes.py --optimizer lbfgs [--standardize]` on llama32-3b | a30 | 1 GPU-h | not started |
+| E18 | Patching scope: prompt-only name positions vs all occurrences | Appendix C | `40_patch.py --scope prompt` on llama32-3b | a30 | 1.5 GPU-h | not started |
+| E19 | Lure-distance covariate: interference and margin as a function of \|lure − true\| | Appendix; one sentence in RQ1 if monotone | `50_analysis.py` (add-on; data already in `behavior.csv`) | login | minutes | not started |
+| E20 | Teacher-forced lure rate (does the model write the lure at `cotpre@r` when the chain so far is correct?) vs free-generation lure rate | RQ1 footnote; separates "the chain derails early" from "the readout follows the name" | from `forced_logits.jsonl` (E4); analysis add-on | login | minutes | not started |
+| E21 | Mixed-effects logistic regression (random intercept per matched set) beside the clustered logit | Appendix D; reviewer question | `stats.mixed_logit` on `behavior.csv` | login | minutes | not started |
+
+## D. Not run, stated in Limitations
+
+Optimised or searched lures; digit-bearing names (`x2`); non-English number words; real code;
+models above 8B; nonlinear or sparse probes; free-generation patching (the protocol reads the
+next token under teacher forcing, as Kudo et al. do).
+
+## E. Order of execution
+
+1. E1 (queued) → fix anything it shows.
+2. E3+E4 for llama32-3b (one job), then E2 and E5+E6 (three jobs), E8–E10 (two jobs). Same for
+   llama31-8b on h100. This is the Oct 1 gate: E3 interference CI excludes 0 in at least one
+   regime, E5 places the lure somewhere with selectivity ≥ 0.3, E9 damage < 5%.
+3. E7, E11, E19, E20, E21 are analysis-only and run as soon as E3–E6 exist.
+4. E12, E13 on both core models; E14 on the pair; E17, E18 on llama32-3b.
+5. E15, E16 only if the gate passed with time to spare (Oct 2–8).
+
+Total for the gate: ≈ 12 GPU-h. Everything in C: ≈ 50 GPU-h more.
