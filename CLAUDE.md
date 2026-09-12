@@ -19,6 +19,11 @@ but the cluster facts below are the same ones those files learned the hard way.
   share. Do not submit to h200 without a reason written in the job manifest.
 - Exclude `g-06-01` on h100 (MIG slices, 2.8× slower). `configs/compute.yaml` does this.
 - Jobs skip groups whose `summary.json` exists, so a killed job resumes by resubmission.
+- **`salloc --no-shell` + `srun --jobid` from the login node does not work here** (2026-09-12,
+  job 391543: every step launch failed with "Zero Bytes were transmitted or received", while
+  `srun` inside a batch job on the same node worked). Use `sbatch`; when `a30`/`h100` are full,
+  `pipeline.py --partition h200 --time 04:00:00 --after <smoke job>` schedules within seconds
+  and the dependency chain keeps the account inside the 4-job `juno` pool.
 
 ## 2. Environment
 
