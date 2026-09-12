@@ -44,6 +44,9 @@ level, regime). Storage ≈ 6–8 GB per (model, level) on scratch.
 | E19 | Lure-distance covariate: interference and margin as a function of \|lure − true\| | Appendix; one sentence in RQ1 if monotone | `50_analysis.py` (add-on; data already in `behavior.csv`) | login | minutes | not started |
 | E20 | Teacher-forced lure rate (does the model write the lure at `cotpre@r` when the chain so far is correct?) vs free-generation lure rate | RQ1 footnote; separates "the chain derails early" from "the readout follows the name" | from `forced_logits.jsonl` (E4); analysis add-on | login | minutes | not started |
 | E21 | Mixed-effects logistic regression (random intercept per matched set) beside the clustered logit | Appendix D; reviewer question | `stats.mixed_logit` on `behavior.csv` | login | minutes | not started |
+| E22 | Positional-copy control (Liu 2026): among lure errors at P5 in the CoT regime, the share whose trailing chain number was the TRUE value (copying cannot explain the error) vs the lure (it can); also the P5 lure rate conditioned on a correct chain up to P4 | validity of the "late readout" cell; RQ3 paragraph | from `behavior.jsonl` generations + `forced_logits.jsonl`; analysis add-on | login | minutes | not started |
+| E23 | Geirhos-style lure index = lure answers / (lure + true answers), congruent trials excluded, reported beside accuracy | Table 1 column | `50_analysis.py` add-on | login | minutes | not started |
+| E24 | Zhang–Nanda normalised logit difference for patching, (LD_patched − LD_inc)/(LD_neu − LD_inc) with LD = logit(true) − logit(lure), beside recovery rate | Figure 3 second panel / appendix | `40_patch.py` (record logits) + analysis | in E8 | included | not started |
 
 ## D. Not run, stated in Limitations
 
@@ -57,7 +60,7 @@ next token under teacher forcing, as Kudo et al. do).
 2. E3+E4 for llama32-3b (one job), then E2 and E5+E6 (three jobs), E8–E10 (two jobs). Same for
    llama31-8b on h100. This is the Oct 1 gate: E3 interference CI excludes 0 in at least one
    regime, E5 places the lure somewhere with selectivity ≥ 0.3, E9 damage < 5%.
-3. E7, E11, E19, E20, E21 are analysis-only and run as soon as E3–E6 exist.
+3. E7, E11, E19–E23 are analysis-only and run as soon as E3–E6 exist; E24 needs the logits recorded in E8.
 4. E12, E13 on both core models; E14 on the pair; E17, E18 on llama32-3b.
 5. E15, E16 only if the gate passed with time to spare (Oct 2–8).
 

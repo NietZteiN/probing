@@ -78,3 +78,11 @@ corrupted value.
 
 ---
 *Amendments below this line, dated.*
+
+**Amendment 1 (2026-09-12, after the literature read, before any model run).** (a) Add E22, a
+positional-copy control after Liu (2026): the "late readout" cell is claimed only if lure errors
+at P5 occur when the trailing chain number is the true value. (b) Add the Geirhos-style lure
+index (lure / (lure + true), congruent trials excluded) as a reported column beside accuracy.
+(c) Patching is additionally scored with Zhang and Nanda's normalised logit difference between
+true value and lure, beside the recovery rate; both must agree for a layer set to be reported.
+None of these change a primary contrast.

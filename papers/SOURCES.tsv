@@ -33,3 +33,7 @@ yang2022naturalattack	2201.08698	Natural attack for pre-trained models of code (
 gao2023cream	2207.11104	Two sides of the same coin: identifiers in neural code comprehension (ICSE 2023)
 tutek2025unlearning	2502.14829	Measuring CoT faithfulness by unlearning reasoning steps (EMNLP 2025)
 wang2025chainofprobe	acl:2025.findings-naacl.140	Chain-of-Probe (Findings of NAACL 2025)
+nikankin2025heuristics	2410.21272	Arithmetic without algorithms: bag of heuristics (ICLR 2025)
+arcuschin2025wild	2503.08679	CoT reasoning in the wild is not always faithful
+rai2024neurons	2406.12288	Neuron activation lens on CoT arithmetic (ACL 2024)
+yang2025shortcuts	2411.16679	Latent multi-hop reasoning without exploiting shortcuts (Findings of ACL 2025)

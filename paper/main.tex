@@ -111,8 +111,8 @@ incongruent name \texttt{two} has true value 5 and lure value 2.}
 all values stay in $0..9$, and three fixed same-level demonstrations precede each problem. Our
 main level is their Level~3 (two steps, one forward reference; \texttt{v1=d $\pm$ v2, v2=d $\pm$ d; v1=?}),
 with Levels 2 and 5 as robustness checks and Level~4 for a control described below. Probes are
-trained on 10,000 neutral problems and everything is evaluated on 2,000 matched sets per
-level; the digit expressions used for probe training are held out from the test sets.
+trained on 10,000 neutral problems; evaluation uses 2,000 matched sets per level with the
+probe-training digit expressions held out.
 
 \paragraph{Conditions.} Each arithmetic problem yields a matched set. The \emph{letter}
 condition is Kudo et al.'s format and anchors our replication. \emph{Neutral} names are common
@@ -124,11 +124,9 @@ separating the lexical presence of a number from a binding conflict.
 
 \paragraph{Generation rules.} Exactly one variable per instance carries a number word. The
 lure differs from every variable value and from every operand digit in the problem, so it is
-never correct for another reason. Neutral words are drawn from a pool of common concrete nouns
-that are a single token in every context of the template under each model's tokenizer (95 of
-112 candidates for the Llama~3 tokenizer; binary operators are spaced because \texttt{-}
-otherwise merges with the following word), so twins tokenize to identical layouts and length is
-not a confound. Every incongruent instance has a neutral and a congruent twin with identical
+never correct for another reason. Neutral words are common concrete nouns that are a single token in
+every context of the template under each model's tokenizer (Appendix~A), so twins tokenize to
+identical layouts and length is not a confound. Every incongruent instance has a neutral and a congruent twin with identical
 arithmetic, and all comparisons are within these sets.
 
 \paragraph{Regimes.} In the \emph{chain-of-thought} regime the model writes each step in Kudo
@@ -152,9 +150,8 @@ is the first step at which the margin becomes and stays positive. Selectivity ag
 task \cite{hewitt2019control} accompanies every probe, over three seeds. For causation we patch
 residual-stream activations at the misleading name's token positions from the matched neutral
 twin into the incongruent run \cite{zhang2024patching}, sweep layers, and measure the
-\emph{recovery rate}, the share of lure errors that become correct. A patch from a different
-neutral word into the neutral run measures patching damage; a patch from a different lure
-tests whether the answer follows the new name.
+\emph{recovery rate}, the share of lure errors that become correct. A patch from a different neutral word
+measures patching damage; a patch from a different lure tests whether the answer follows it.
 
 \paragraph{Models.} \NUM{model-list}, base models of 3B and 8B parameters from
 \citeauthor{kudo2026faithful}'s panel, plus \NUM{extra-models}. Behavioural metrics are
@@ -215,22 +212,28 @@ the alternative-lure patch.}
 \section{Related Work}
 
 \citet{kudo2026faithful} established when sub-answers are computed during chain of thought on
-clean arithmetic; we add cue conflict to ask what that computation is sensitive to, and reuse
-their code and format. Faithfulness of chain of thought has been measured from the outside by
-perturbing prompts or chains \cite{turpin2023unfaithful,lanham2023measuring,chen2025reasoning};
-we measure it inside the model under a controlled conflicting cue. Behavioural work on code
-shows that misleading identifiers and comments hurt \cite{le2025names,lam2025codecrash,le2026obfuscated};
-we trade realism for localisation. Work on binding asks how a value attaches to a name
-\cite{feng2024binding,wu2025binding}; we ask whether the attachment survives a name that
-carries a competing value. \citet{shi2023distracted} add irrelevant context to arithmetic; here
-the distractor is the variable's own name. The design itself is the Stroop task
-\cite{stroop1935} and the shape--texture conflict of \citet{geirhos2019texture}.
+clean arithmetic; we add cue conflict to ask what that computation is sensitive to. Two recent
+studies bring the Stroop design to language models: \citet{wang2026stroop} pits a local
+redefinition of a word against its familiar associate and restores the lost margin by patching
+from a matched neutral prompt; \citet{hu2026conflict} read a congruency effect off next-token
+probabilities in a colour-rule task every model solves. Both measure one next token; neither has
+errors, a chain of thought, or probes over reasoning steps. Faithfulness has been measured from
+the outside by perturbing prompts, chains or parameters
+\cite{turpin2023unfaithful,lanham2023measuring,chen2025reasoning,tutek2025unlearning}; we
+measure it inside the model under a cue whose true and lure values are both known. On
+arithmetic, \citet{liu2026readout} show that small models copy the trailing chain number and
+\citet{prabhakar2024deciphering} that an output prior can override a correct chain; our
+late-readout outcome is stated against a positional-copy control. Misleading identifiers and
+comments hurt on real code \cite{le2026obfuscated,le2025names,lam2025codecrash}; we trade
+realism for localisation. Binding work asks how a value attaches to a name
+\cite{feng2024binding,wu2025binding,gurarieh2026mixing}; we ask whether the attachment survives
+a name carrying a competing value. \citet{shi2023distracted} add irrelevant context; here the
+distractor is the name itself. The design is \citet{stroop1935} and \citet{geirhos2019texture}.
 
 \section{Conclusion}
 
-\NUM{conclusion-finding}. For faithfulness this means \NUM{conclusion-implication}: a written
-chain of thought \NUM{conclusion-verb} the model's internal reliance on a misleading name, and
-the place where the lure survives, or fails to, is where a fix would have to act.
+\NUM{conclusion-finding}. For faithfulness this means \NUM{conclusion-implication}: where the
+lure survives, or fails to, is where a fix would have to act.
 
 \section*{Limitations}
 
