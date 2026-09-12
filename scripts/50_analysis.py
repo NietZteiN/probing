@@ -91,6 +91,22 @@ def crossover(grid: dict, role: str, cond: str) -> dict:
     return {"order": order, "max_margin": best, "crossover": crossover_step(best, order)}
 
 
+def replication(grid: dict, role: str, cond: str = "letter", tau: float = 0.9) -> dict:
+    """Kudo et al. Table 3 quantities over our labelled positions: Acc<CoT = max accuracy over
+    input positions (def/use/end/query) and layers, Acc>CoT = max over chain positions, and
+    the first position in reading order whose layer-max accuracy exceeds tau."""
+    order = [f"def@{role}", f"use@{role}", f"end@{role}", "query", f"cotpre@{role}", f"cot@{role}", "anspre", "ans"]
+    best = {}
+    for key, conds in grid.items():
+        pos, _ = key.split("|")
+        if cond in conds and conds[cond].get("accuracy"):
+            best[pos] = max(best.get(pos, 0.0), conds[cond]["accuracy"][0])
+    inp = [best[p] for p in order[:4] if p in best]; out = [best[p] for p in order[4:] if p in best]
+    first = next((p for p in order if p in best and best[p] > tau), None)
+    return {"acc_pre_cot": max(inp) if inp else None, "acc_post_cot": max(out) if out else None,
+            "first_above_tau": first, "layer_max_acc": best, "tau": tau}
+
+
 def link_regression(model: str, level: int, regime: str, role: str, beh: pd.DataFrame, probe_json: Path, layer_pick: str = "best") -> dict:
     """Does the margin at end@r / query / cotpre@r (best layer, seed-mean) predict a lure error?"""
     d = json.loads(probe_json.read_text())
@@ -139,7 +155,7 @@ def main() -> int:
             if len(beh):
                 beh.drop(columns=["generation"]).to_csv(out / "behavior.csv", index=False)
                 (out / "behavior_table.json").write_text(json.dumps(behavior_table(beh), indent=1))
-            grids, xover, links = {}, {}, {}
+            grids, xover, links, repl = {}, {}, {}, {}
             for pj in sorted((OUT_DIR / "probes" / k / f"L{a.level}" / regime).glob("*/*.json")):
                 g = probe_grid(pj); role = g["role"]; tr = pj.parent.name
                 grids[f"{tr}/{role}"] = g["grid"]
@@ -148,10 +164,13 @@ def main() -> int:
                         xover[f"{tr}/{role}/{cond}"] = crossover(g["grid"], role, cond)
                 if len(beh) and tr == "train_neutral":
                     links[role] = link_regression(k, a.level, regime, role, beh, pj)
+                if tr == "train_letter":
+                    repl[role] = replication(g["grid"], role)
             if grids:
                 (out / "probes_grid.json").write_text(json.dumps(grids))
                 (out / "crossover.json").write_text(json.dumps(xover, indent=1))
                 (out / "link.json").write_text(json.dumps(links, indent=1))
+                (out / "replication.json").write_text(json.dumps(repl, indent=1))
             pt = {}
             for pj in sorted((OUT_DIR / "patching" / k / f"L{a.level}" / regime).glob("*.json")):
                 pt[pj.stem] = json.loads(pj.read_text())["summary"]
