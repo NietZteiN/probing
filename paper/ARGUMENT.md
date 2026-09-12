@@ -63,6 +63,15 @@ Figure 1 must carry the idea alone: a reader who sees only it should understand 
 Figure 2 is the ceiling claim; it must show CoT and direct side by side on the same colour
 scale. Figure 3 must show all three curves; recovery without the controls is not a result.
 
+### Appendix figures that mirror Kudo et al.
+
+Reviewers who know Kudo et al. will look for their figures. The appendix carries their Fig. 2
+(per-token accuracy heatmap + max-over-layers curve) for neutral, congruent and incongruent
+side by side, with lure-rate and margin heatmaps under the incongruent column; their Tables 2–3
+per condition with t_lure added; their Figs. 5–6 patching grid with matched-twin sources; and
+their Fig. 3 trajectories on lure-error instances (docs/EXPERIMENTS.md §F). Figure 2 of the
+main text is the incongruent column of that figure, chain beside direct.
+
 ## 4. What breaks each claim, and the fallback
 
 | claim | breaks if | fallback |

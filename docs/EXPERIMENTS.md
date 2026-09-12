@@ -60,6 +60,24 @@ their "general prompting" variant) via a `--n-demos` option, keeping the CoT reg
 Option (b) changes the token layout of the direct regime only and does not touch any twin
 comparison.
 
+## F. Kudo et al.'s figures and tables, reproduced in the cue-conflict setting
+
+*Added 2026-09-12 at the lead's request. Kudo et al. report four things we can produce for every
+condition: a per-token probing heatmap with a max-over-layers curve (their Fig. 2), the
+t*/t*_eq and Acc≺CoT/Acc≻CoT table (their Tables 2–3), an equation × 4-layer-window patching
+grid (their Figs. 5–6), and probe-prediction trajectories on wrong instances (their Fig. 3).
+Our versions put neutral, congruent and incongruent side by side and add the lure: a lure-rate
+heatmap, a margin heatmap, t_lure (last position where the probe still reads the lure), and
+patching sources that are the matched twins rather than a different problem.*
+
+| id | experiment | serves | command | where | cost | status |
+|---|---|---|---|---|---|---|
+| E27 | All-token hidden-state cache: every token of the instance region (input + output; ~50 tokens at level 3), layer stride 2, for neutral/letter probe-train (4,000 each) and the test groups letter, neutral, congruent@{v1,v2}, incongruent@{v1,v2} (2,000 each), both regimes, core models. ~55 GB per (model, regime) on scratch | E28–E30 | `20_run_model.py --all-positions --layer-stride 2 --train-limit 4000 --groups ...` → `<group>__alltok/` | h200 | 1 GPU-h per model | not started |
+| E28 | Kudo Fig. 2 analogue: heatmap of probe accuracy over token position × layer for each variable, with the max-over-layers curve above it, one column per condition (neutral, congruent, incongruent); below it, for incongruent, the lure-rate heatmap and the margin heatmap on the same axes; x-axis labelled with the actual tokens of the running example. Kudo Tables 2–3 analogue per condition: t*, t*_eq, Acc≺CoT, Acc≻CoT for the true value, plus t_lure and max lure rate pre/post CoT | Figure 2 (main) and Appendix B (full) | `30_train_probes.py --suffix __alltok` then `53_kudo_figs.py --model M --level 3` | h200 (probes, batched) + login (figures) | 1 GPU-h per (model, regime) | not started |
+| E29 | Kudo Figs. 5–6 analogue: patch whole equation spans (each input equation, the query, each chain step) × 4-layer windows; three sources: (i) a different neutral problem with a different answer (their design; replication of the recency-bias grid in our format), (ii) the matched neutral twin (lure removal / normalised LD), (iii) the matched alternative-lure twin (follows the new lure); read tokens: the target's value step and the final answer. Rendered as their grid with the max-over-window curve under the token axis | Figure 3 alternative; Appendix C | `40_patch.py --grid --sources other neutral incongruent_alt` | h200 | 2 GPU-h per (model, regime) | not started |
+| E30 | Kudo Fig. 3 analogue: per-token top-1 probe predictions (best layer per position) on (a) the lure-error instances, (b) a random sample of incongruent instances, colour-coded true / lure / other, to show where the lure enters and leaves the readout | Appendix; one panel may replace Figure 1's sketch | `53_kudo_figs.py --trajectories` | login | minutes | not started |
+| E31 | Kudo Table 6 analogue: the "Simple CoT" format (only sub-results, `cup=5, pen=6`) as a third regime between direct and full chain, behaviour + labelled-position probes | Appendix; tests whether restating the name beside the value is what removes the lure | `20_run_model.py --regimes simple` (new format in generator) | h200 | 1 GPU-h per model | not started |
+
 ## D. Not run, stated in Limitations
 
 Optimised or searched lures; digit-bearing names (`x2`); non-English number words; real code;

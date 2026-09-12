@@ -40,6 +40,9 @@ def main() -> int:
     ap.add_argument("--layers", type=int, nargs="*", default=None)
     ap.add_argument("--batch-size", type=int, default=None)
     ap.add_argument("--limit", type=int, default=None, help="cap instances per group (smoke tests)")
+    ap.add_argument("--all-positions", action="store_true", help="E27: cache every token of the instance region; groups get the suffix __alltok")
+    ap.add_argument("--layer-stride", type=int, default=1, help="keep every k-th layer (index 0 = embeddings); 2 halves the cache")
+    ap.add_argument("--train-limit", type=int, default=None, help="cap probe-train instances (E27 uses 4000)")
     a = ap.parse_args()
     m = model_entry(a.model)
     d = DATA_DIR / f"L{a.level}"
@@ -59,16 +62,25 @@ def main() -> int:
         groups = {g: groups[g] for g in a.groups}
     tok, model = load_model(m["hf_id"])
     bs = a.batch_size or m.get("batch_size", 16)
+    if a.layer_stride > 1 and a.layers is None:
+        nl = model.config.num_hidden_layers if hasattr(model.config, "num_hidden_layers") else model.config.text_config.num_hidden_layers
+        a.layers = list(range(0, nl + 1, a.layer_stride))
+        if nl not in a.layers:
+            a.layers.append(nl)
+    suffix = "__alltok" if a.all_positions else ""
     for regime in a.regimes:
         for g, rows in groups.items():
-            out = OUT_DIR / "runs" / a.model / f"L{a.level}" / regime / g
+            out = OUT_DIR / "runs" / a.model / f"L{a.level}" / regime / (g + suffix)
             if (out / "summary.json").exists():
                 print(f"skip {out} (done)")
                 continue
             rows_ = rows[:a.limit] if a.limit else rows
+            if g.startswith("train_") and a.train_limit:
+                rows_ = rows_[:a.train_limit]
             cond = rows_[0].condition
             s = run_condition(tok, model, a.model, a.level, regime, cond, rows_, out, bs, MAX_NEW[parse_regime(regime)[0]],
-                              layers=a.layers, do_free=not g.startswith("train_"))
+                              layers=a.layers, do_free=(not g.startswith("train_")) and not a.all_positions,
+                              all_positions=a.all_positions)
             print(f"{a.model} L{a.level} {regime} {g}: n={s['n']} acc={s.get('free_accuracy')} lure={s.get('free_lure_rate')} "
                   f"excluded={len(s['excluded'])} {s['seconds']}s", flush=True)
     return 0

@@ -36,18 +36,21 @@ def main() -> int:
     ap.add_argument("--standardize", action="store_true")
     ap.add_argument("--no-control", action="store_true")
     ap.add_argument("--test-groups", nargs="*", default=None)
+    ap.add_argument("--suffix", default="", help="'__alltok' to probe the E27 all-token caches; output goes to <train><suffix>/")
     a = ap.parse_args()
     base = OUT_DIR / "runs" / a.model / f"L{a.level}" / a.regime
-    train_dir = base / a.train
+    train_dir = base / (a.train + a.suffix)
     if not (train_dir / "meta.json").exists():
         print(f"FATAL: no cache at {train_dir}; run 20_run_model.py first", file=sys.stderr)
         return 2
-    test_dirs = {p.name: p for p in sorted(base.iterdir()) if (p / "meta.json").exists() and not p.name.startswith("train_")}
+    test_dirs = {p.name.removesuffix(a.suffix): p for p in sorted(base.iterdir())
+                 if (p / "meta.json").exists() and not p.name.startswith("train_") and p.name.endswith(a.suffix)
+                 and (a.suffix or "__" not in p.name)}
     if a.test_groups:
         test_dirs = {g: test_dirs[g] for g in a.test_groups}
     roles = a.roles or [lhs for lhs, _ in LEVELS[a.level]["eqs"]]
     for role in roles:
-        out = OUT_DIR / "probes" / a.model / f"L{a.level}" / a.regime / a.train / f"{role}.json"
+        out = OUT_DIR / "probes" / a.model / f"L{a.level}" / a.regime / (a.train + a.suffix) / f"{role}.json"
         train_and_eval(train_dir, test_dirs, role, out, seeds=tuple(a.seeds), optimizer=a.optimizer, epochs=a.epochs,
                        lr=a.lr, layers=a.layers, positions=a.positions, control=not a.no_control, standardize=a.standardize)
         print(f"wrote {out}")

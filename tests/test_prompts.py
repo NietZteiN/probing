@@ -86,3 +86,23 @@ def test_regime_labels_with_demo_counts():
     x = s[1]
     lay = layout(x, demos, "direct_k16")
     assert lay.text.endswith(x.direct) and lay.text[lay.positions["ans"]] == str(x.answer)
+
+
+def test_segments_tile_the_instance_region():
+    demos = make_demos(3, "word")
+    for s in sample_sets(3, 5, seed=21):
+        for x in s:
+            for regime in ("cot", "direct"):
+                lay = layout(x, demos, regime)
+                segs = lay.segments
+                labels = [l for l, _, _ in segs]
+                assert labels[:3] == ["in:v1", "in:v2", "query"]
+                # every segment reads back as its equation text; segments are ordered and non-overlapping
+                for (l, a, b), (l2, a2, b2) in zip(segs, segs[1:]):
+                    assert b <= a2
+                assert lay.text[segs[0][1]:segs[0][2]] == x.input.split(", ")[0]
+                assert lay.text[segs[2][1]:segs[2][2]] == x.input.split("; ")[1]
+                if regime == "cot":
+                    assert lay.text[segs[3][1]:segs[3][2]] == x.cot.split(", ")[0]
+                    assert lay.text[segs[-1][1]:segs[-1][2]] == x.cot.split(", ")[-1]
+                    assert segs[-1][0].endswith(f":value:{x.query}")

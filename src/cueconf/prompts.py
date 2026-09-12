@@ -93,6 +93,7 @@ class Layout:
     positions: dict[str, int | None]        # label -> char index into prompt+output
     name_spans: dict[str, list[tuple[int, int]]]   # role -> [(start, end)] of every name occurrence
     instance_start: int                     # char offset where the test instance begins
+    segments: list[tuple[str, int, int]] = None  # (label, start, end) char spans: in:v1, in:v2, query, cot:0:restate:v1, ...
 
     @property
     def text(self) -> str:
@@ -119,7 +120,9 @@ def layout(inst: Instance, demos: Sequence[Instance], regime: str) -> Layout:
         return at
 
     first_use: dict[str, int] = {}
+    segments: list[tuple[str, int, int]] = []
     for i, e in enumerate(ar.eqs):
+        seg_start = cur
         at = emit(names[e.lhs]); spans[e.lhs].append((at, at + len(names[e.lhs])))
         pos[f"def@{e.lhs}"] = at
         emit("=")
@@ -134,10 +137,13 @@ def layout(inst: Instance, demos: Sequence[Instance], regime: str) -> Layout:
                 first_use.setdefault(a, at)
                 last_operand_at = at + len(names[a]) - 1   # last char of the word
         pos[f"end@{e.lhs}"] = last_operand_at
+        segments.append((f"in:{e.lhs}", seg_start, cur))
         emit(", " if i < len(ar.eqs) - 1 else "; ")
+    seg_start = cur
     at = emit(names[ar.query]); spans[ar.query].append((at, at + len(names[ar.query])))
     emit("=")
     pos["query"] = emit("?")
+    segments.append(("query", seg_start, cur))
     emit("\n")
     assert "".join(buf) == inst.input + "\n", ("input re-render mismatch", "".join(buf), inst.input)
     assert cur == len(prompt)
@@ -155,6 +161,7 @@ def layout(inst: Instance, demos: Sequence[Instance], regime: str) -> Layout:
             if k:
                 emit(", ")
             at = emit(text)
+            segments.append((f"cot:{k}:{kind}:{role}", at, at + len(text)))
             obuf.append(text)
             # every name occurrence inside this step (lhs and operand names)
             # scan tokens of the step: names are alphabetic runs
@@ -179,6 +186,7 @@ def layout(inst: Instance, demos: Sequence[Instance], regime: str) -> Layout:
         assert ", ".join(obuf) == inst.cot
     else:
         at = emit(inst.direct)
+        segments.append(("cot:0:value:" + ar.query, at, at + len(inst.direct)))
         spans[ar.query].append((at, at + len(names[ar.query])))
         eq_at = at + len(names[ar.query])
     pos["anspre"] = pos[f"cotpre@{ar.query}"] if parse_regime(regime)[0] == "cot" else eq_at
@@ -186,7 +194,7 @@ def layout(inst: Instance, demos: Sequence[Instance], regime: str) -> Layout:
     text = prompt[:start] + "".join(buf)
     assert text == prompt + output_of(inst, regime)
     assert text[pos["ans"]] == str(inst.answer)
-    return Layout(prompt=prompt, output=output_of(inst, regime), positions=pos, name_spans=spans, instance_start=start)
+    return Layout(prompt=prompt, output=output_of(inst, regime), positions=pos, name_spans=spans, instance_start=start, segments=segments)
 
 
 def token_index_map(offsets: Sequence[tuple[int, int]]) -> list[int]:
@@ -210,7 +218,12 @@ def tokenize_layout(tokenizer, lay: Layout) -> dict:
     name_ntok = {r: (len({cmap[c] for c in range(s, e)}) for s, e in sp) for r, sp in lay.name_spans.items()}
     name_ntok = {r: sorted(set(v)) for r, v in name_ntok.items()}
     n_prompt = len(tokenizer(lay.prompt, add_special_tokens=True)["input_ids"])
+    seg_tokens = {lab: sorted({cmap[c] for c in range(a, b) if cmap[c] >= 0}) for lab, a, b in (lay.segments or [])}
+    inst_tok0 = cmap[lay.instance_start]
     return {
+        "segment_tokens": seg_tokens,         # label -> token indices covered by that equation / step
+        "instance_start_token": inst_tok0,
+        "token_strings": [tokenizer.decode([t]) for t in enc["input_ids"][inst_tok0:]],
         "input_ids": enc["input_ids"],
         "n_prompt_tokens": n_prompt,
         "positions": tpos,

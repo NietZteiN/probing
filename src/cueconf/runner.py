@@ -107,7 +107,11 @@ def forced_pass(tok, model, input_ids_list: Sequence[list[int]], positions_list:
 
 def run_condition(tok, model, model_key: str, level: int, regime: str, condition: str,
                   instances: list[Instance], out_dir: Path, batch_size: int, max_new_tokens: int,
-                  layers: Sequence[int] | None = None, do_free: bool = True, do_forced: bool = True) -> dict:
+                  layers: Sequence[int] | None = None, do_free: bool = True, do_forced: bool = True,
+                  all_positions: bool = False) -> dict:
+    """all_positions: cache EVERY token of the instance region (Kudo et al. style, E27) instead of
+    the labelled positions; position labels become t<i> with i counted from the instance start,
+    and meta records the token strings of the first instance for axis labels."""
     out_dir.mkdir(parents=True, exist_ok=True)
     demos = make_demos(level, scheme_of(condition), n=parse_regime(regime)[1])
     t0 = time.time()
@@ -129,10 +133,13 @@ def run_condition(tok, model, model_key: str, level: int, regime: str, condition
         raise RuntimeError(f"{model_key} {condition} {regime}: {len(excluded)}/{len(instances)} instances break the "
                            f"token layout; run 11_tokenizer_check.py for this model. First: {excluded[:3]}")
 
+    t0i = toks[keep_idx[0]]["instance_start_token"]
     summary = {"model": model_key, "level": level, "regime": regime, "condition": condition,
                "n": len(keep_idx), "excluded": excluded, "labels": labels,
                "positions": {k: toks[keep_idx[0]]["positions"][k] for k in labels},
-               "n_tokens": ref[0], "n_prompt_tokens": toks[keep_idx[0]]["n_prompt_tokens"]}
+               "n_tokens": ref[0], "n_prompt_tokens": toks[keep_idx[0]]["n_prompt_tokens"],
+               "instance_start_token": t0i, "token_strings": toks[keep_idx[0]]["token_strings"],
+               "segment_tokens": toks[keep_idx[0]]["segment_tokens"], "all_positions": all_positions}
 
     # ---- free generation (behaviour)
     if do_free:
@@ -155,8 +162,12 @@ def run_condition(tok, model, model_key: str, level: int, regime: str, condition
     # ---- forced pass (hidden states + next-token log-probs at *pre positions)
     if do_forced:
         pre_labels = [l for l in labels if (l.startswith("cotpre@") or l == "anspre" or l == "query") and summary["positions"][l] is not None]
-        pos_labels = [l for l in labels if summary["positions"][l] is not None]
-        pos_list = [[toks[k]["positions"][l] for l in pos_labels] for k in keep_idx]
+        if all_positions:
+            pos_labels = [f"t{i}" for i in range(ref[0] - t0i)]
+            pos_list = [list(range(t0i, ref[0])) for _ in keep_idx]
+        else:
+            pos_labels = [l for l in labels if summary["positions"][l] is not None]
+            pos_list = [[toks[k]["positions"][l] for l in pos_labels] for k in keep_idx]
         pre_list = [[toks[k]["positions"][l] for l in pre_labels] for k in keep_idx]
         ids_list = [toks[k]["input_ids"] for k in keep_idx]
         dtoks = digit_token_ids(tok)
