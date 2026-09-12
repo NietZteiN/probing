@@ -60,8 +60,8 @@ computation reduce accuracy: on real programs, removing or corrupting identifier
 execution prediction \cite{le2025names}, misleading comments and hints cut output prediction by
 a fifth \cite{lam2025codecrash}, and adversarial identifier renaming impairs comprehension through semantic displacement and interference in a prior human--model study \cite{le2026obfuscated}. An accuracy drop, however, is compatible with three
 different failures: a corrupted input representation, a corrupted computation, or a correct
-computation misread at output. These have different implications for whether a written chain of
-thought can be trusted, and for how the failure might be fixed.
+computation misread at output, and these differ in whether a written chain of thought can be
+trusted and in how the failure might be fixed.
 
 Interpretability work on clean tasks cannot separate them either. \citet{kudo2026faithful} show,
 with linear probes and activation patching on controlled multi-step arithmetic, that the values
@@ -134,12 +134,11 @@ et al.'s format (\texttt{cup=5, pen=1 + 5, pen=6}); note that the chain writes t
 the computed value, which may help the model recover. In the \emph{direct} regime it writes only
 \texttt{pen=6}. The contrast between regimes is the center of the paper.
 
-\paragraph{Probe positions.} Using the incongruent example: P1, the name token \texttt{two} at
-its definition, is expected to decode the lure trivially and is reported only as a reference,
-never as evidence. P2 is the last operand of the definition, the first position where the true
-value can be computed. P3 is the query position before any chain of thought. P4 is the chain
-position where the target's value is about to be written. P5 is the final answer position. All
-claims about lure interference are made at P2--P5.
+\paragraph{Probe positions.} P1, the name token \texttt{two} at its definition, decodes the
+lure trivially and is a reference only. P2 is the last operand of the definition, the first
+position where the true value can be computed; P3 the query position before any chain; P4 the
+chain position where the target's value is about to be written; P5 the final answer position.
+All claims about lure interference are made at P2--P5.
 
 \paragraph{Probes and patching.} Probes are single linear layers trained with
 \citeauthor{kudo2026faithful}'s recipe on the neutral condition only, then evaluated on

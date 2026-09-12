@@ -18,8 +18,10 @@ def main() -> int:
     from pypdf import PdfReader
     pages = [p.extract_text() or "" for p in PdfReader(str(pdf)).pages]
     body_end = len(pages)
+    # review mode appends line numbers, so the heading is not alone on its line: match the
+    # heading word followed by whitespace, on any page after the first.
     for i, t in enumerate(pages):
-        if re.search(r"^\s*Limitations\s*$", t, re.M) or re.search(r"^\s*References\s*$", t, re.M):
+        if i and (re.search(r"(?m)^\s*Limitations\s", t) or re.search(r"(?m)^\s*References\s", t)):
             body_end = i + 1; break
     tex = (ROOT / "paper" / "main.tex").read_text()
     tex = re.sub(r"(?m)%.*$", "", tex)
