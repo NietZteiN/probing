@@ -133,7 +133,8 @@ def run_contrast(tok, model, level: int, regime: str, pairs: list[tuple[Instance
         s_dig, s_sc = next_digit(model, dtoks, ts["input_ids"], read_pos, return_scores=True)
         rec = {"src": src.id, "dst": dst.id, "set_id": dst.set_id, "target": target, "lure": dst.lure,
                "src_lure": src.lure, "n_patched_tokens": len(name_pos), "gold": {k: gold[k] for k in read_labels},
-               "base": base, "base_ld": ld(b_sc), "src_ld": ld(s_sc), "patched": {}, "patched_ld": {}}
+               "base": base, "src_pred": dict(zip(read_labels, s_dig)), "base_ld": ld(b_sc), "src_ld": ld(s_sc),
+               "patched": {}, "patched_ld": {}}
         for sname, lids in sets:
             with patch_hooks(model, lids, name_pos, {l: src_hidden[l] for l in lids}):
                 p_dig, p_sc = next_digit(model, dtoks, td["input_ids"], read_pos, return_scores=True)
@@ -164,8 +165,16 @@ def summarize(rows: list[dict], sets) -> dict:
                 b, sref, pv = r.get("base_ld", {}).get(lab), r.get("src_ld", {}).get(lab), r.get("patched_ld", {}).get(sname, {}).get(lab)
                 if b is not None and sref is not None and pv is not None and abs(sref - b) > 1e-6:
                     nld.append((pv - b) / (sref - b))
+            # lure removed: among base lure errors, the patched answer is no longer the lure (does not
+            # require it to be CORRECT, which the source twin itself may not be)
+            lure_removed = (np.mean([r["patched"][sname][lab] != str(r["lure"]) for r in lure_err]) if lure_err else None)
+            # matches the source twin's own answer (available for runs after 2026-09-12)
+            with_src = [r for r in rs if "src_pred" in r]
+            matches_src = (np.mean([r["patched"][sname][lab] == r["src_pred"][lab] for r in with_src]) if with_src else None)
             agg[lab] = {
                 "n": len(rs),
+                "lure_removed": lure_removed,
+                "matches_source": matches_src,
                 "normalized_ld_mean": (float(np.mean(nld)) if nld else None),
                 "normalized_ld_median": (float(np.median(nld)) if nld else None),
                 "base_acc": np.mean([r["base"][lab] == r["gold"][lab] for r in rs]),

@@ -39,6 +39,7 @@ def main() -> int:
     import matplotlib.pyplot as plt
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True); ap.add_argument("--level", type=int, default=3); ap.add_argument("--role", default="v2")
+    ap.add_argument("--patch-regime", default="direct", help="regime for Figure 3 (lure errors exist mainly without a chain)")
     a = ap.parse_args()
     FIG.mkdir(parents=True, exist_ok=True)
     r = a.role
@@ -53,27 +54,31 @@ def main() -> int:
         pos = positions if regime == "cot" else [p for p in positions if not p.startswith("cotpre")]
         im = heatmap(ax, grid, f"incongruent@{r}", "margin_mean", pos, f"{a.model} {regime}: log p(true) - log p(lure)")
         fig.colorbar(im, ax=ax, fraction=0.04)
-    fig.tight_layout(); fig.savefig(FIG / f"fig2_margin_{a.model}_L{a.level}_{r}.pdf"); plt.close(fig)
+    fig.tight_layout(); fig.savefig(FIG / f"fig2_margin_{a.model}_L{a.level}_{r}.pdf"); fig.savefig(FIG / f"fig2_margin_{a.model}_L{a.level}_{r}.png", dpi=160); plt.close(fig)
     # ---- Fig 3
     fig, ax = plt.subplots(figsize=(3.2, 2.4))
-    f = RESULTS_DIR / "summary" / a.model / f"L{a.level}" / "cot" / "patching.json"
+    f = RESULTS_DIR / "summary" / a.model / f"L{a.level}" / a.patch_regime / "patching.json"
     if f.exists():
         pt = json.loads(f.read_text())
-        for name, style in ((f"main@{r}", "-"), (f"ctl_word@{r}", "--"), (f"ctl_lure@{r}", ":")):
+        # main: lure removed among lure errors (and normalised LD); ctl_word: damage; ctl_lure: follows the new lure
+        for name, key, style, lab in ((f"main@{r}", "lure_removed", "-", "lure removed (neutral patch)"),
+                                      (f"main@{r}", "normalized_ld_mean", "-.", "normalised logit diff."),
+                                      (f"ctl_word@{r}", "damage", "--", "damage (word control)"),
+                                      (f"ctl_lure@{r}", "follows_src_lure", ":", "follows new lure (lure control)")):
             if name not in pt:
                 continue
             xs, ys = [], []
             for lset, agg in pt[name].items():
-                if lset.startswith("L") and "anspre" in agg:
-                    v = agg["anspre"]["recovery"] if name.startswith("main") else (agg["anspre"]["damage"] if "word" in name else agg["anspre"]["follows_src_lure"])
-                    if v is not None:
-                        xs.append(int(lset[1:])); ys.append(v)
+                if lset.startswith("L") and "anspre" in agg and agg["anspre"].get(key) is not None:
+                    xs.append(int(lset[1:])); ys.append(agg["anspre"][key])
             if xs:
-                ax.plot(xs, ys, style, label=name)
-        ax.set_xlabel("patched layer"); ax.set_ylabel("rate"); ax.legend(fontsize=6); ax.set_ylim(0, 1)
+                ax.plot(xs, ys, style, label=lab)
+        ax.set_xlabel("patched layer"); ax.set_ylabel("rate"); ax.set_ylim(-0.1, 1.1)
+        if ax.get_legend_handles_labels()[0]:
+            ax.legend(fontsize=6)
     else:
         ax.set_title("no patching yet")
-    fig.tight_layout(); fig.savefig(FIG / f"fig3_patching_{a.model}_L{a.level}_{r}.pdf"); plt.close(fig)
+    fig.tight_layout(); fig.savefig(FIG / f"fig3_patching_{a.model}_L{a.level}_{r}.pdf"); fig.savefig(FIG / f"fig3_patching_{a.model}_L{a.level}_{r}.png", dpi=160); plt.close(fig)
     print(f"figures -> {FIG}")
     return 0
 
