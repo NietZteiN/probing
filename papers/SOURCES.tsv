@@ -1,0 +1,35 @@
+key	arxiv	note
+le2025names	2510.03178	When Names Disappear
+lam2025codecrash	2504.14119	CodeCrash (NeurIPS 2025)
+turpin2023unfaithful	2305.04388	Language models don't always say what they think (NeurIPS 2023)
+lanham2023measuring	2307.13702	Measuring faithfulness in CoT
+chen2025reasoning	2505.05410	Reasoning models don't always say what they think
+feng2024binding	2310.17191	How do LMs bind entities in context (ICLR 2024)
+wu2025binding	2505.20896	How do transformers learn variable binding (ICML 2025)
+mixing2026mechanisms	2510.06182	Mixing mechanisms: retrieving bound entities (ICLR 2026)
+shi2023distracted	2302.00093	Easily distracted by irrelevant context (ICML 2023)
+mirzadeh2025gsmsymbolic	2410.05229	GSM-Symbolic (ICLR 2025)
+geirhos2019texture	1811.12231	ImageNet-trained CNNs biased towards texture (ICLR 2019)
+hewitt2019control	1909.03368	Designing and interpreting probes with control tasks (EMNLP 2019)
+zhang2024patching	2309.16042	Best practices of activation patching (ICLR 2024)
+yu2025implicit	2411.15862	Do LLMs really think step-by-step in implicit reasoning
+ye2025physics21	2407.20311	Physics of LMs 2.1 hidden reasoning process (ICLR 2025)
+stolfo2023mechanistic	2305.15054	Mechanistic interpretation of arithmetic reasoning (EMNLP 2023)
+zhu2025numbers	2401.03735	LMs encode the value of numbers linearly (COLING 2025)
+heinzerling2024monotonic	2403.10381	Monotonic representation of numeric attributes (ACL 2024)
+kudo2024arxiv	2412.01113	Kudo et al. arXiv version (Think-to-talk or talk-to-think)
+stroop2026priors	2606.07555	Priors persist through suppression: a Stroop paradigm for lexical override
+stroop2026conflict	2608.11510	Conflict and congruency effects in LLMs (verbal conflict task)
+obf2026humans	2606.31725	Do machines struggle where humans do? (obfuscated code, humans vs LLMs)
+mutations2025robust	2505.10443	Are LLMs robust in understanding code against semantics-preserving mutations
+readout2026shortcut	2605.22870	The readout shortcut: positional number copying in arithmetic CoT readout
+hidden2026states	2604.23351	When CoT fails, the solution hides in the hidden states
+breaking2026chain	2603.16475	Breaking the chain: causal analysis of faithfulness to intermediate structures
+shortcuts2025implicit	2503.07604	Implicit reasoning in transformers is reasoning through shortcuts
+lewislim2025dynamics	2508.19827	Analysing CoT dynamics: active guidance or post-hoc rationalisation
+prabhakar2024deciphering	2407.01687	Deciphering the factors influencing the efficacy of CoT
+survey2026mechanisms	2601.14270	Opening the black box: survey on mechanisms of multi-step reasoning
+yang2022naturalattack	2201.08698	Natural attack for pre-trained models of code (ICSE 2022)
+gao2023cream	2207.11104	Two sides of the same coin: identifiers in neural code comprehension (ICSE 2023)
+tutek2025unlearning	2502.14829	Measuring CoT faithfulness by unlearning reasoning steps (EMNLP 2025)
+wang2025chainofprobe	acl:2025.findings-naacl.140	Chain-of-Probe (Findings of NAACL 2025)

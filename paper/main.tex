@@ -58,8 +58,7 @@ chain-of-thought computation is faithful.
 Models read code and mathematics in which names carry meaning, and names that contradict the
 computation reduce accuracy: on real programs, removing or corrupting identifiers degrades
 execution prediction \cite{le2025names}, misleading comments and hints cut output prediction by
-a fifth \cite{lam2025codecrash}, and adversarial renaming has collapsed comprehension accuracy
-to 21\% in a prior study \cite{renaming2025}. An accuracy drop, however, is compatible with three
+a fifth \cite{lam2025codecrash}, and adversarial identifier renaming impairs comprehension through semantic displacement and interference in a prior human--model study \cite{le2026obfuscated}. An accuracy drop, however, is compatible with three
 different failures: a corrupted input representation, a corrupted computation, or a correct
 computation misread at output. These have different implications for whether a written chain of
 thought can be trusted, and for how the failure might be fixed.
@@ -220,7 +219,7 @@ clean arithmetic; we add cue conflict to ask what that computation is sensitive 
 their code and format. Faithfulness of chain of thought has been measured from the outside by
 perturbing prompts or chains \cite{turpin2023unfaithful,lanham2023measuring,chen2025reasoning};
 we measure it inside the model under a controlled conflicting cue. Behavioural work on code
-shows that misleading identifiers and comments hurt \cite{le2025names,lam2025codecrash,renaming2025};
+shows that misleading identifiers and comments hurt \cite{le2025names,lam2025codecrash,le2026obfuscated};
 we trade realism for localisation. Work on binding asks how a value attaches to a name
 \cite{feng2024binding,wu2025binding}; we ask whether the attachment survives a name that
 carries a competing value. \citet{shi2023distracted} add irrelevant context to arithmetic; here
