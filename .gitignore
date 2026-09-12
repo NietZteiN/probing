@@ -1,5 +1,5 @@
 # generated data and outputs stay out of git; provenance lives in each run's manifest.json
-data/
+data/*
 results/raw/
 runs/
 log/slurm/
