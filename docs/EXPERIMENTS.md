@@ -13,7 +13,7 @@ level, regime). Storage ≈ 6–8 GB per (model, level) on scratch.
 | id | experiment | serves | command | where | cost | status |
 |---|---|---|---|---|---|---|
 | E0 | Tokenizer rule-4 check per model: number words and neutral words single tokens in five contexts; template layout dump | Appendix A; every twin comparison | `make tokcheck` | dev (CPU) | 5 min | **done** for llama32-3b, llama32-3b-it, llama31-8b, llama31-8b-it (95/112 words); pending for gemma3-4b, olmo2-7b-it, olmo3-7b-think |
-| E1 | Smoke run: 64 instances × 4 groups × 2 regimes on Llama-3.2-3B; layout guard, parse rate, accuracy sanity | nothing in the paper; catches format bugs | `20_run_model.py --model llama32-3b --level 3 --groups neutral incongruent@v2 congruent@v2 letter --limit 64` | a30 | 10 min | **queued** (job 391274) |
+| E1 | Smoke run: 64 instances × 4 groups × 2 regimes on Llama-3.2-3B; layout guard, parse rate, accuracy sanity | nothing in the paper; catches format bugs | `20_run_model.py --model llama32-3b --level 3 --groups neutral incongruent@v2 congruent@v2 letter --limit 64` | h200 | 1 min | **done** 2026-09-12 (job 391545): 0 excluded; CoT acc 94–98% (n=64/group); direct acc 14–27%, i.e. near floor for the 3B base model (it answers `name=0` most of the time). Outputs moved to `runs/llama32-3b/L3_smoke/` so the full run does not skip them |
 | E2 | Kudo replication: probes trained and tested on letters, L3, CoT, Llama-3.2-3B; report Acc≺CoT, Acc≻CoT and first-above-τ per variable against their Table 3 (v1 at equation 5, v2 at 2; τ=0.9) and Table 7 accuracy (93.15%) | Results ¶1 "Replication" | `30_train_probes.py --model llama32-3b --level 3 --regime cot --train train_letter --test-groups letter` then `50_analysis.py` → `replication.json` | a30 | 1 GPU-h | not started |
 
 ## B. Core (level 3, two core models, both regimes; the go/no-go on Oct 1 is decided on these)
@@ -47,6 +47,17 @@ level, regime). Storage ≈ 6–8 GB per (model, level) on scratch.
 | E22 | Positional-copy control (Liu 2026): among lure errors at P5 in the CoT regime, the share whose trailing chain number was the TRUE value (copying cannot explain the error) vs the lure (it can); also the P5 lure rate conditioned on a correct chain up to P4 | validity of the "late readout" cell; RQ3 paragraph | from `behavior.jsonl` generations + `forced_logits.jsonl`; analysis add-on | login | minutes | not started |
 | E23 | Geirhos-style lure index = lure answers / (lure + true answers), congruent trials excluded, reported beside accuracy | Table 1 column | `50_analysis.py` add-on | login | minutes | not started |
 | E24 | Zhang–Nanda normalised logit difference for patching, (LD_patched − LD_inc)/(LD_neu − LD_inc) with LD = logit(true) − logit(lure), beside recovery rate | Figure 3 second panel / appendix | `40_patch.py` (record logits) + analysis | in E8 | included | not started |
+
+### Risk found by E1: the direct regime is at floor for Llama-3.2-3B
+
+With three demonstrations the 3B base model answers 14–27% of level-3 problems correctly
+without a chain, mostly by writing `name=0`. Interference cannot be measured on a floor. Two
+options, to be decided after the full run (E3) confirms it on n=2000: (a) report the direct
+regime for this model as a floor and rely on Llama-3.1-8B for the regime contrast; (b) add a
+pre-registered amendment giving the direct regime more demonstrations (Kudo et al. used 50 for
+their "general prompting" variant) via a `--n-demos` option, keeping the CoT regime at three.
+Option (b) changes the token layout of the direct regime only and does not touch any twin
+comparison.
 
 ## D. Not run, stated in Limitations
 
