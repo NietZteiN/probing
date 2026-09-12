@@ -66,7 +66,9 @@ def digit_token_ids(tok) -> dict[str, list[int]]:
 @torch.no_grad()
 def generate_free(tok, model, prompts: Sequence[str], max_new_tokens: int, batch_size: int) -> list[str]:
     outs: list[str] = []
-    nl_ids = [i for i in set(tok("\n", add_special_tokens=False)["input_ids"] + tok("a\n", add_special_tokens=False)["input_ids"][1:])]
+    # stop at the end of the output line: "\n", "\n\n" and the newline token after a letter/digit
+    nl_ids = sorted({i for s in ("\n", "\n\n", "a\n", "6\n", "6\n\n") for i in tok(s, add_special_tokens=False)["input_ids"]
+                     if "\n" in tok.decode([i])})
     for i in range(0, len(prompts), batch_size):
         batch = prompts[i:i + batch_size]
         enc = tok(batch, return_tensors="pt", padding=True).to(model.device)
