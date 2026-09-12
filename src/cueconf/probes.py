@@ -88,6 +88,45 @@ class LinearProbe:
         return torch.log_softmax(X @ self.W.T + self.b, dim=-1)
 
 
+class BatchedProbes:
+    """K independent linear probes trained simultaneously with the same recipe (full-batch SGD,
+    cross-entropy, lr 1e-3, 10k epochs). Probe k sees X[k] : [n, d]. Numerically the same as K
+    separate LinearProbe.fit_sgd runs (independent parameters, independent gradients); only the
+    matmuls are batched, which makes a (position) sweep over 29 layers x 3 seeds one job of
+    minutes instead of hours."""
+
+    def __init__(self, K: int, d: int, seeds: list[int], device: str = "cuda"):
+        Ws = []
+        for sd in seeds:
+            g = torch.Generator(device="cpu").manual_seed(sd)
+            Ws.append(torch.randn(N_CLASSES, d, generator=g) * (1.0 / np.sqrt(d)))
+        # layout: K = n_layers * n_seeds, seed-major within each layer
+        n_layers = K // len(seeds)
+        self.W = torch.stack([Ws[j] for _ in range(n_layers) for j in range(len(seeds))]).to(device)  # [K, 10, d]
+        self.b = torch.zeros(K, N_CLASSES, device=device)
+        self.device = device
+
+    def fit_sgd(self, X: torch.Tensor, y: torch.Tensor, lr: float = 1e-3, epochs: int = 10_000) -> None:
+        """X: [K, n, d] (fp16 or fp32 on device), y: [n]."""
+        W = self.W.clone().requires_grad_(True); b = self.b.clone().requires_grad_(True)
+        opt = torch.optim.SGD([W, b], lr=lr)
+        Xf = X.float()
+        yk = y.unsqueeze(0).expand(X.shape[0], -1).reshape(-1)
+        K, n, _ = X.shape
+        for _ in range(epochs):
+            opt.zero_grad(set_to_none=True)
+            logits = torch.baddbmm(b.unsqueeze(1), Xf, W.transpose(1, 2))       # [K, n, 10]
+            # mean over n per probe, summed over probes: each probe's gradient is its own mean loss
+            loss = torch.nn.functional.cross_entropy(logits.reshape(K * n, N_CLASSES), yk, reduction="none").view(K, n).mean(1).sum()
+            loss.backward(); opt.step()
+        self.W, self.b = W.detach(), b.detach()
+
+    def probe(self, k: int, d: int) -> "LinearProbe":
+        lp = LinearProbe.__new__(LinearProbe)
+        lp.W, lp.b, lp.device = self.W[k], self.b[k], self.device
+        return lp
+
+
 def evaluate(probe: LinearProbe, X: torch.Tensor, y: np.ndarray, lure: np.ndarray) -> dict:
     lp = probe.logprobs(X).cpu().numpy()
     pred = lp.argmax(-1)
@@ -134,25 +173,44 @@ def train_and_eval(train_dir: Path, test_dirs: dict[str, Path], role: str, out_p
     per_inst: dict[str, np.ndarray] = {}
     for pl in pos_labels:
         pi = mtr["pos_labels"].index(pl)
-        for li in layer_idx:
-            Xtr_np = np.asarray(Htr[:, pi, li, :], dtype=np.float32)
-            std = (Xtr_np.mean(0), Xtr_np.std(0) + 1e-6) if standardize else None
-            Xtr = to_device(Xtr_np, device, std)
-            ytr_t = torch.tensor(ytr, device=device)
-            for seed in seeds:
-                torch.manual_seed(seed)
-                probe = LinearProbe(Xtr.shape[1], seed, device)
+        ytr_t = torch.tensor(ytr, device=device); ctr_t = torch.tensor(ctr, device=device)
+        # ---- all layers x seeds of this position at once
+        Xall = torch.tensor(np.asarray(Htr[:, pi, :, :]), device=device)          # [n, L, d] fp16
+        Xall = Xall.permute(1, 0, 2).contiguous()                                   # [L, n, d]
+        L, n, d = Xall.shape
+        stds = None
+        if standardize:
+            mu = Xall.float().mean(1, keepdim=True); sd = Xall.float().std(1, keepdim=True) + 1e-6
+            Xall = ((Xall.float() - mu) / sd).half(); stds = (mu, sd)
+        sel = [li for li in layer_idx]
+        Xsel = Xall[sel]                                                            # [Ls, n, d]
+        K = len(sel) * len(seeds)
+        Xk = Xsel.repeat_interleave(len(seeds), dim=0)                              # [K, n, d]
+        if optimizer == "sgd":
+            bp = BatchedProbes(K, d, list(seeds), device); bp.fit_sgd(Xk, ytr_t, lr=lr, epochs=epochs)
+            cp = None
+            if control:
+                cp = BatchedProbes(K, d, list(seeds), device); cp.fit_sgd(Xk, ctr_t, lr=lr, epochs=epochs)
+        for a_, li in enumerate(sel):
+            for b_, seed in enumerate(seeds):
+                k = a_ * len(seeds) + b_
+                Xtr = Xsel[a_]
                 if optimizer == "sgd":
-                    losses = probe.fit_sgd(Xtr, ytr_t, lr=lr, epochs=epochs)
+                    probe = bp.probe(k, d)
                 else:
-                    probe.fit_lbfgs(Xtr_np if std is None else (Xtr_np - std[0]) / std[1], ytr, seed); losses = []
+                    Xtr_np = np.asarray(Htr[:, pi, li, :], dtype=np.float32)
+                    if stds is not None:
+                        Xtr_np = (Xtr_np - stds[0][a_].cpu().numpy()) / stds[1][a_].cpu().numpy()
+                    probe = LinearProbe(d, seed, device); probe.fit_lbfgs(Xtr_np, ytr, seed)
                 rec = {"role": role, "position": pl, "layer": int(mtr["layers"][li]), "seed": seed,
-                       "train_loss": losses, "train_acc": float((probe.logprobs(Xtr).argmax(-1).cpu().numpy() == ytr).mean()), "eval": {}}
+                       "train_acc": float((probe.logprobs(Xtr.float()).argmax(-1).cpu().numpy() == ytr).mean()), "eval": {}}
                 for cond, (Hte, mte) in tests.items():
                     if pl not in mte["pos_labels"]:
                         continue
                     pj = mte["pos_labels"].index(pl)
-                    Xte = to_device(Hte[:, pj, li, :], device, std)
+                    Xte = torch.tensor(np.asarray(Hte[:, pj, li, :]), device=device).float()
+                    if stds is not None:
+                        Xte = (Xte - stds[0][a_]) / stds[1][a_]
                     ev = evaluate(probe, Xte, labels_for(mte, role), lures_for(mte, role))
                     pi_ = ev.pop("per_instance")
                     for field, arr in pi_.items():
@@ -160,22 +218,25 @@ def train_and_eval(train_dir: Path, test_dirs: dict[str, Path], role: str, out_p
                             [np.nan if v is None else v for v in arr], dtype=np.float32)
                     rec["eval"][cond] = ev
                 if control:
-                    cprobe = LinearProbe(Xtr.shape[1], seed, device)
                     if optimizer == "sgd":
-                        cprobe.fit_sgd(Xtr, torch.tensor(ctr, device=device), lr=lr, epochs=epochs)
+                        cprobe = cp.probe(k, d)
                     else:
-                        cprobe.fit_lbfgs(Xtr_np, ctr, seed)
+                        cprobe = LinearProbe(d, seed, device); cprobe.fit_lbfgs(np.asarray(Htr[:, pi, li, :], dtype=np.float32), ctr, seed)
                     ctl = {}
                     for cond, (Hte, mte) in tests.items():
                         if pl not in mte["pos_labels"]:
                             continue
                         pj = mte["pos_labels"].index(pl)
-                        Xte = to_device(Hte[:, pj, li, :], device, std)
+                        Xte = torch.tensor(np.asarray(Hte[:, pj, li, :]), device=device).float()
+                        if stds is not None:
+                            Xte = (Xte - stds[0][a_]) / stds[1][a_]
                         ctl[cond] = float((cprobe.logprobs(Xte).argmax(-1).cpu().numpy() == control_labels(mte, role)).mean())
                     rec["control_acc"] = ctl
                 results.append(rec)
                 print(f"{role} {pl} L{mtr['layers'][li]} s{seed} train={rec['train_acc']:.3f} "
                       + " ".join(f"{c}={v['accuracy']:.3f}" for c, v in rec["eval"].items()), flush=True)
+        del Xall, Xsel, Xk
+        torch.cuda.empty_cache() if device == "cuda" else None
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps({"train_dir": str(train_dir), "role": role, "optimizer": optimizer,
                                     "epochs": epochs, "lr": lr, "standardize": standardize,
