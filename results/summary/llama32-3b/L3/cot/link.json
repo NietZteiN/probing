@@ -1,0 +1,42 @@
+{
+ "v1": {
+  "end@v1": {
+   "layer": 24,
+   "n": 2000,
+   "coef_margin": 0.02051587543783156,
+   "se": 0.5211796942683077,
+   "p": 0.9685999398635742
+  },
+  "query": {
+   "layer": 28,
+   "n": 2000,
+   "coef_margin": -0.28038519770670334,
+   "se": 0.18391720634687883,
+   "p": 0.12737921985195175
+  },
+  "cotpre@v1": {
+   "layer": 22,
+   "n": 2000,
+   "coef_margin": -0.6193938612348584,
+   "se": 0.2617591865914686,
+   "p": 0.017968158663954414
+  }
+ },
+ "v2": {
+  "end@v2": {
+   "layer": 7,
+   "note": "no variation in lure errors",
+   "n": 2000
+  },
+  "query": {
+   "layer": 28,
+   "note": "no variation in lure errors",
+   "n": 2000
+  },
+  "cotpre@v2": {
+   "layer": 24,
+   "note": "no variation in lure errors",
+   "n": 2000
+  }
+ }
+}

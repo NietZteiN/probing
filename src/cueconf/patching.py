@@ -111,7 +111,9 @@ def run_contrast(tok, model, level: int, regime: str, pairs: list[tuple[Instance
         ls, ld = layout(src, demos, regime), layout(dst, demos, regime)
         ts, td = tokenize_layout(tok, ls), tokenize_layout(tok, ld)
         assert ts["n_tokens"] == td["n_tokens"] and ts["positions"] == td["positions"], (src.id, dst.id)
-        target = dst.target
+        # the renamed slot: the destination's target, or the source's when the destination is the
+        # neutral twin (ctl_word: neutral_alt -> neutral)
+        target = dst.target or src.target
         name_pos = td["name_tokens"][target]
         if scope == "prompt":
             name_pos = [p for p in name_pos if p < td["n_prompt_tokens"]]

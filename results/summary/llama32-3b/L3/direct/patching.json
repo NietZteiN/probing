@@ -1,0 +1,942 @@
+{
+ "main@v1": {
+  "L0": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.9889293862653111,
+    "normalized_ld_median": 1.0,
+    "base_acc": 0.142,
+    "patched_acc": 0.1355,
+    "n_lure_err": 172,
+    "recovery": 0.023255813953488372,
+    "damage": 0.2605633802816901,
+    "follows_src_lure": null
+   }
+  },
+  "L1": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.8247251683347858,
+    "normalized_ld_median": 0.8750002384185791,
+    "base_acc": 0.142,
+    "patched_acc": 0.1325,
+    "n_lure_err": 172,
+    "recovery": 0.023255813953488372,
+    "damage": 0.4859154929577465,
+    "follows_src_lure": null
+   }
+  },
+  "L2": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.9525610786137455,
+    "normalized_ld_median": 1.0,
+    "base_acc": 0.142,
+    "patched_acc": 0.127,
+    "n_lure_err": 172,
+    "recovery": 0.023255813953488372,
+    "damage": 0.2711267605633803,
+    "follows_src_lure": null
+   }
+  },
+  "L3": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.9474985369276421,
+    "normalized_ld_median": 1.0,
+    "base_acc": 0.142,
+    "patched_acc": 0.1265,
+    "n_lure_err": 172,
+    "recovery": 0.023255813953488372,
+    "damage": 0.2605633802816901,
+    "follows_src_lure": null
+   }
+  },
+  "L4": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.8791187222610782,
+    "normalized_ld_median": 0.9999994436897548,
+    "base_acc": 0.142,
+    "patched_acc": 0.115,
+    "n_lure_err": 172,
+    "recovery": 0.029069767441860465,
+    "damage": 0.28169014084507044,
+    "follows_src_lure": null
+   }
+  },
+  "L5": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.9239359165118483,
+    "normalized_ld_median": 1.0,
+    "base_acc": 0.142,
+    "patched_acc": 0.1385,
+    "n_lure_err": 172,
+    "recovery": 0.01744186046511628,
+    "damage": 0.18661971830985916,
+    "follows_src_lure": null
+   }
+  },
+  "L6": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.9231200501617642,
+    "normalized_ld_median": 1.0,
+    "base_acc": 0.142,
+    "patched_acc": 0.1395,
+    "n_lure_err": 172,
+    "recovery": 0.01744186046511628,
+    "damage": 0.1795774647887324,
+    "follows_src_lure": null
+   }
+  },
+  "L7": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.8832272514347188,
+    "normalized_ld_median": 0.9999997615814777,
+    "base_acc": 0.142,
+    "patched_acc": 0.1365,
+    "n_lure_err": 172,
+    "recovery": 0.01744186046511628,
+    "damage": 0.1795774647887324,
+    "follows_src_lure": null
+   }
+  },
+  "L8": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.8616576155846352,
+    "normalized_ld_median": 0.9090909090909091,
+    "base_acc": 0.142,
+    "patched_acc": 0.133,
+    "n_lure_err": 172,
+    "recovery": 0.01744186046511628,
+    "damage": 0.1795774647887324,
+    "follows_src_lure": null
+   }
+  },
+  "L9": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.8572267101328682,
+    "normalized_ld_median": 0.904545459097108,
+    "base_acc": 0.142,
+    "patched_acc": 0.1335,
+    "n_lure_err": 172,
+    "recovery": 0.01744186046511628,
+    "damage": 0.17253521126760563,
+    "follows_src_lure": null
+   }
+  },
+  "L10": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.8467707155649262,
+    "normalized_ld_median": 0.9,
+    "base_acc": 0.142,
+    "patched_acc": 0.1385,
+    "n_lure_err": 172,
+    "recovery": 0.01744186046511628,
+    "damage": 0.17253521126760563,
+    "follows_src_lure": null
+   }
+  },
+  "L11": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.8359172783573793,
+    "normalized_ld_median": 0.9090908226395462,
+    "base_acc": 0.142,
+    "patched_acc": 0.1355,
+    "n_lure_err": 172,
+    "recovery": 0.01744186046511628,
+    "damage": 0.17253521126760563,
+    "follows_src_lure": null
+   }
+  },
+  "L12": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.8230684793813499,
+    "normalized_ld_median": 0.8888890872031199,
+    "base_acc": 0.142,
+    "patched_acc": 0.1455,
+    "n_lure_err": 172,
+    "recovery": 0.023255813953488372,
+    "damage": 0.10211267605633803,
+    "follows_src_lure": null
+   }
+  },
+  "L13": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.8452248786535457,
+    "normalized_ld_median": 0.8999999761581421,
+    "base_acc": 0.142,
+    "patched_acc": 0.1435,
+    "n_lure_err": 172,
+    "recovery": 0.023255813953488372,
+    "damage": 0.13028169014084506,
+    "follows_src_lure": null
+   }
+  },
+  "L14": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.7826498655922539,
+    "normalized_ld_median": 0.8,
+    "base_acc": 0.142,
+    "patched_acc": 0.143,
+    "n_lure_err": 172,
+    "recovery": 0.023255813953488372,
+    "damage": 0.1056338028169014,
+    "follows_src_lure": null
+   }
+  },
+  "L15": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.8016141193304177,
+    "normalized_ld_median": 0.8333333333333334,
+    "base_acc": 0.142,
+    "patched_acc": 0.1385,
+    "n_lure_err": 172,
+    "recovery": 0.023255813953488372,
+    "damage": 0.12323943661971831,
+    "follows_src_lure": null
+   }
+  },
+  "L16": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.7909747399099176,
+    "normalized_ld_median": 0.8,
+    "base_acc": 0.142,
+    "patched_acc": 0.135,
+    "n_lure_err": 172,
+    "recovery": 0.023255813953488372,
+    "damage": 0.13028169014084506,
+    "follows_src_lure": null
+   }
+  },
+  "L17": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.7812937057254489,
+    "normalized_ld_median": 0.7999999682108508,
+    "base_acc": 0.142,
+    "patched_acc": 0.1365,
+    "n_lure_err": 172,
+    "recovery": 0.023255813953488372,
+    "damage": 0.11971830985915492,
+    "follows_src_lure": null
+   }
+  },
+  "L18": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.6045610669611616,
+    "normalized_ld_median": 0.6000001907348633,
+    "base_acc": 0.142,
+    "patched_acc": 0.135,
+    "n_lure_err": 172,
+    "recovery": 0.005813953488372093,
+    "damage": 0.09859154929577464,
+    "follows_src_lure": null
+   }
+  },
+  "L19": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.5889508775500948,
+    "normalized_ld_median": 0.5811403082433181,
+    "base_acc": 0.142,
+    "patched_acc": 0.137,
+    "n_lure_err": 172,
+    "recovery": 0.005813953488372093,
+    "damage": 0.10211267605633803,
+    "follows_src_lure": null
+   }
+  },
+  "L20": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.12170212438096281,
+    "normalized_ld_median": 0.15384617641833032,
+    "base_acc": 0.142,
+    "patched_acc": 0.137,
+    "n_lure_err": 172,
+    "recovery": 0.005813953488372093,
+    "damage": 0.10915492957746478,
+    "follows_src_lure": null
+   }
+  },
+  "L21": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.11420580261152279,
+    "normalized_ld_median": 0.14285714285714285,
+    "base_acc": 0.142,
+    "patched_acc": 0.1365,
+    "n_lure_err": 172,
+    "recovery": 0.005813953488372093,
+    "damage": 0.09507042253521127,
+    "follows_src_lure": null
+   }
+  },
+  "L22": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.03726176736262366,
+    "normalized_ld_median": 1.5894571308510674e-07,
+    "base_acc": 0.142,
+    "patched_acc": 0.1345,
+    "n_lure_err": 172,
+    "recovery": 0.0,
+    "damage": 0.09859154929577464,
+    "follows_src_lure": null
+   }
+  },
+  "L23": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.08370461366142173,
+    "normalized_ld_median": 0.11111113465863008,
+    "base_acc": 0.142,
+    "patched_acc": 0.1365,
+    "n_lure_err": 172,
+    "recovery": 0.0,
+    "damage": 0.08450704225352113,
+    "follows_src_lure": null
+   }
+  },
+  "L24": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.09774769659412087,
+    "normalized_ld_median": 0.125,
+    "base_acc": 0.142,
+    "patched_acc": 0.135,
+    "n_lure_err": 172,
+    "recovery": 0.0,
+    "damage": 0.07746478873239436,
+    "follows_src_lure": null
+   }
+  },
+  "L25": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.1304272460972305,
+    "normalized_ld_median": 0.14642870766775948,
+    "base_acc": 0.142,
+    "patched_acc": 0.139,
+    "n_lure_err": 172,
+    "recovery": 0.0,
+    "damage": 0.07042253521126761,
+    "follows_src_lure": null
+   }
+  },
+  "L26": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.05935169881807771,
+    "normalized_ld_median": 0.0,
+    "base_acc": 0.142,
+    "patched_acc": 0.139,
+    "n_lure_err": 172,
+    "recovery": 0.0,
+    "damage": 0.056338028169014086,
+    "follows_src_lure": null
+   }
+  },
+  "L27": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.0,
+    "normalized_ld_median": 0.0,
+    "base_acc": 0.142,
+    "patched_acc": 0.142,
+    "n_lure_err": 172,
+    "recovery": 0.0,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W0-3": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 1.00057875517304,
+    "normalized_ld_median": 1.0,
+    "base_acc": 0.142,
+    "patched_acc": 0.139,
+    "n_lure_err": 172,
+    "recovery": 0.023255813953488372,
+    "damage": 0.25,
+    "follows_src_lure": null
+   }
+  },
+  "W4-7": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.9304368265698963,
+    "normalized_ld_median": 1.0,
+    "base_acc": 0.142,
+    "patched_acc": 0.1285,
+    "n_lure_err": 172,
+    "recovery": 0.011627906976744186,
+    "damage": 0.23943661971830985,
+    "follows_src_lure": null
+   }
+  },
+  "W8-11": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.8862399033388879,
+    "normalized_ld_median": 0.9999995231631829,
+    "base_acc": 0.142,
+    "patched_acc": 0.1315,
+    "n_lure_err": 172,
+    "recovery": 0.01744186046511628,
+    "damage": 0.19718309859154928,
+    "follows_src_lure": null
+   }
+  },
+  "W12-15": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.8539054518665078,
+    "normalized_ld_median": 0.9230768595926859,
+    "base_acc": 0.142,
+    "patched_acc": 0.145,
+    "n_lure_err": 172,
+    "recovery": 0.023255813953488372,
+    "damage": 0.11619718309859155,
+    "follows_src_lure": null
+   }
+  },
+  "W16-19": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.7738164418400312,
+    "normalized_ld_median": 0.8,
+    "base_acc": 0.142,
+    "patched_acc": 0.1355,
+    "n_lure_err": 172,
+    "recovery": 0.01744186046511628,
+    "damage": 0.13380281690140844,
+    "follows_src_lure": null
+   }
+  },
+  "W20-23": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.12287463826731476,
+    "normalized_ld_median": 0.15384616513224209,
+    "base_acc": 0.142,
+    "patched_acc": 0.136,
+    "n_lure_err": 172,
+    "recovery": 0.005813953488372093,
+    "damage": 0.10915492957746478,
+    "follows_src_lure": null
+   }
+  },
+  "W24-27": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.13988888261683186,
+    "normalized_ld_median": 0.16666666666666666,
+    "base_acc": 0.142,
+    "patched_acc": 0.141,
+    "n_lure_err": 172,
+    "recovery": 0.0,
+    "damage": 0.07394366197183098,
+    "follows_src_lure": null
+   }
+  },
+  "ALL": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 1.0009054723449584,
+    "normalized_ld_median": 1.0,
+    "base_acc": 0.142,
+    "patched_acc": 0.1405,
+    "n_lure_err": 172,
+    "recovery": 0.023255813953488372,
+    "damage": 0.24647887323943662,
+    "follows_src_lure": null
+   }
+  }
+ },
+ "main@v2": {
+  "L0": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.9946414982761246,
+    "normalized_ld_median": 1.0,
+    "base_acc": 0.139,
+    "patched_acc": 0.1425,
+    "n_lure_err": 152,
+    "recovery": 0.013157894736842105,
+    "damage": 0.25539568345323743,
+    "follows_src_lure": null
+   }
+  },
+  "L1": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.8221837490120435,
+    "normalized_ld_median": 0.875,
+    "base_acc": 0.139,
+    "patched_acc": 0.148,
+    "n_lure_err": 152,
+    "recovery": 0.039473684210526314,
+    "damage": 0.23741007194244604,
+    "follows_src_lure": null
+   }
+  },
+  "L2": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.8732965388180485,
+    "normalized_ld_median": 0.9999990463256836,
+    "base_acc": 0.139,
+    "patched_acc": 0.1395,
+    "n_lure_err": 152,
+    "recovery": 0.019736842105263157,
+    "damage": 0.20863309352517986,
+    "follows_src_lure": null
+   }
+  },
+  "L3": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.8240442306726086,
+    "normalized_ld_median": 0.9,
+    "base_acc": 0.139,
+    "patched_acc": 0.139,
+    "n_lure_err": 152,
+    "recovery": 0.013157894736842105,
+    "damage": 0.21223021582733814,
+    "follows_src_lure": null
+   }
+  },
+  "L4": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.7565185206923788,
+    "normalized_ld_median": 0.8062501223385448,
+    "base_acc": 0.139,
+    "patched_acc": 0.138,
+    "n_lure_err": 152,
+    "recovery": 0.03289473684210526,
+    "damage": 0.2014388489208633,
+    "follows_src_lure": null
+   }
+  },
+  "L5": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.7273058779935774,
+    "normalized_ld_median": 0.7735042438434654,
+    "base_acc": 0.139,
+    "patched_acc": 0.133,
+    "n_lure_err": 152,
+    "recovery": 0.019736842105263157,
+    "damage": 0.18705035971223022,
+    "follows_src_lure": null
+   }
+  },
+  "L6": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.6844746251333782,
+    "normalized_ld_median": 0.7499999294678363,
+    "base_acc": 0.139,
+    "patched_acc": 0.133,
+    "n_lure_err": 152,
+    "recovery": 0.019736842105263157,
+    "damage": 0.1906474820143885,
+    "follows_src_lure": null
+   }
+  },
+  "L7": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.6259183788849427,
+    "normalized_ld_median": 0.6666668719715065,
+    "base_acc": 0.139,
+    "patched_acc": 0.128,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.17985611510791366,
+    "follows_src_lure": null
+   }
+  },
+  "L8": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.5772230842821716,
+    "normalized_ld_median": 0.6666666666666666,
+    "base_acc": 0.139,
+    "patched_acc": 0.1265,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.17625899280575538,
+    "follows_src_lure": null
+   }
+  },
+  "L9": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.5314800045896502,
+    "normalized_ld_median": 0.6,
+    "base_acc": 0.139,
+    "patched_acc": 0.126,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.15827338129496402,
+    "follows_src_lure": null
+   }
+  },
+  "L10": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.49422702811405633,
+    "normalized_ld_median": 0.5454546085073969,
+    "base_acc": 0.139,
+    "patched_acc": 0.1325,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.11151079136690648,
+    "follows_src_lure": null
+   }
+  },
+  "L11": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.4426282600174191,
+    "normalized_ld_median": 0.5,
+    "base_acc": 0.139,
+    "patched_acc": 0.129,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.1223021582733813,
+    "follows_src_lure": null
+   }
+  },
+  "L12": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.44005322728141455,
+    "normalized_ld_median": 0.5,
+    "base_acc": 0.139,
+    "patched_acc": 0.1345,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.08633093525179857,
+    "follows_src_lure": null
+   }
+  },
+  "L13": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.4342002758054522,
+    "normalized_ld_median": 0.5,
+    "base_acc": 0.139,
+    "patched_acc": 0.137,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.06115107913669065,
+    "follows_src_lure": null
+   }
+  },
+  "L14": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.4366252885923219,
+    "normalized_ld_median": 0.5,
+    "base_acc": 0.139,
+    "patched_acc": 0.1355,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.06115107913669065,
+    "follows_src_lure": null
+   }
+  },
+  "L15": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.38608355664447647,
+    "normalized_ld_median": 0.45454561710360086,
+    "base_acc": 0.139,
+    "patched_acc": 0.1385,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.05755395683453238,
+    "follows_src_lure": null
+   }
+  },
+  "L16": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.37094871072812424,
+    "normalized_ld_median": 0.4,
+    "base_acc": 0.139,
+    "patched_acc": 0.142,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.02877697841726619,
+    "follows_src_lure": null
+   }
+  },
+  "L17": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.3768808249736248,
+    "normalized_ld_median": 0.4058824023078724,
+    "base_acc": 0.139,
+    "patched_acc": 0.142,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.02877697841726619,
+    "follows_src_lure": null
+   }
+  },
+  "L18": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.34260501515590497,
+    "normalized_ld_median": 0.3333334128062052,
+    "base_acc": 0.139,
+    "patched_acc": 0.141,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.03237410071942446,
+    "follows_src_lure": null
+   }
+  },
+  "L19": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.3456636257767369,
+    "normalized_ld_median": 0.33333342163650986,
+    "base_acc": 0.139,
+    "patched_acc": 0.142,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.03597122302158273,
+    "follows_src_lure": null
+   }
+  },
+  "L20": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.15933551558404274,
+    "normalized_ld_median": 0.125,
+    "base_acc": 0.139,
+    "patched_acc": 0.1425,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.03597122302158273,
+    "follows_src_lure": null
+   }
+  },
+  "L21": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.1810813533954939,
+    "normalized_ld_median": 0.14285714285714285,
+    "base_acc": 0.139,
+    "patched_acc": 0.1395,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.03597122302158273,
+    "follows_src_lure": null
+   }
+  },
+  "L22": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.1478383553426876,
+    "normalized_ld_median": 0.11111126122649577,
+    "base_acc": 0.139,
+    "patched_acc": 0.139,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.04316546762589928,
+    "follows_src_lure": null
+   }
+  },
+  "L23": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.15392365716402293,
+    "normalized_ld_median": 0.125,
+    "base_acc": 0.139,
+    "patched_acc": 0.1385,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.050359712230215826,
+    "follows_src_lure": null
+   }
+  },
+  "L24": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.13407497956601344,
+    "normalized_ld_median": 0.08333340038854872,
+    "base_acc": 0.139,
+    "patched_acc": 0.138,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.04316546762589928,
+    "follows_src_lure": null
+   }
+  },
+  "L25": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.13646006988936338,
+    "normalized_ld_median": 0.08333326048320668,
+    "base_acc": 0.139,
+    "patched_acc": 0.14,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.02877697841726619,
+    "follows_src_lure": null
+   }
+  },
+  "L26": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.01316121351922721,
+    "normalized_ld_median": 0.0,
+    "base_acc": 0.139,
+    "patched_acc": 0.141,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.025179856115107913,
+    "follows_src_lure": null
+   }
+  },
+  "L27": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.0,
+    "normalized_ld_median": 0.0,
+    "base_acc": 0.139,
+    "patched_acc": 0.139,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W0-3": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 1.0012476308387608,
+    "normalized_ld_median": 1.0,
+    "base_acc": 0.139,
+    "patched_acc": 0.138,
+    "n_lure_err": 152,
+    "recovery": 0.013157894736842105,
+    "damage": 0.26618705035971224,
+    "follows_src_lure": null
+   }
+  },
+  "W4-7": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.7423506699229963,
+    "normalized_ld_median": 0.8000002670288814,
+    "base_acc": 0.139,
+    "patched_acc": 0.1345,
+    "n_lure_err": 152,
+    "recovery": 0.019736842105263157,
+    "damage": 0.21223021582733814,
+    "follows_src_lure": null
+   }
+  },
+  "W8-11": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.5780426852522944,
+    "normalized_ld_median": 0.6666666048544504,
+    "base_acc": 0.139,
+    "patched_acc": 0.1265,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.1618705035971223,
+    "follows_src_lure": null
+   }
+  },
+  "W12-15": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.4339447317946433,
+    "normalized_ld_median": 0.5,
+    "base_acc": 0.139,
+    "patched_acc": 0.1325,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.08992805755395683,
+    "follows_src_lure": null
+   }
+  },
+  "W16-19": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.37607364583550557,
+    "normalized_ld_median": 0.41176463823417697,
+    "base_acc": 0.139,
+    "patched_acc": 0.1415,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.03597122302158273,
+    "follows_src_lure": null
+   }
+  },
+  "W20-23": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.16278386546207746,
+    "normalized_ld_median": 0.12500000310440884,
+    "base_acc": 0.139,
+    "patched_acc": 0.1405,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.039568345323741004,
+    "follows_src_lure": null
+   }
+  },
+  "W24-27": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.13258110799969974,
+    "normalized_ld_median": 0.09090909090909091,
+    "base_acc": 0.139,
+    "patched_acc": 0.141,
+    "n_lure_err": 152,
+    "recovery": 0.0,
+    "damage": 0.039568345323741004,
+    "follows_src_lure": null
+   }
+  },
+  "ALL": {
+   "anspre": {
+    "n": 2000,
+    "normalized_ld_mean": 0.992160317992777,
+    "normalized_ld_median": 1.0,
+    "base_acc": 0.139,
+    "patched_acc": 0.14,
+    "n_lure_err": 152,
+    "recovery": 0.013157894736842105,
+    "damage": 0.25539568345323743,
+    "follows_src_lure": null
+   }
+  }
+ }
+}
