@@ -187,3 +187,73 @@ def summarize(rows: list[dict], sets) -> dict:
             }
         out[sname] = agg
     return out
+
+
+# --------------------------------------------------------------------------- E29: Kudo grid
+def run_grid_contrast(tok, model, level: int, regime: str, pairs: list[tuple[Instance, Instance]], name: str,
+                      out_path: Path, window: int = 4, limit: int | None = None) -> dict:
+    """Kudo et al. Figs. 5-6 in our setting: patch each equation / chain-step SPAN (all its tokens)
+    at each `window`-layer block from the source into the destination, and read the greedy digit
+    at the destination's target value step and final answer. Sources: a different neutral
+    problem (their design), the neutral twin, or the alternative-lure twin; the caller builds the
+    pairs. Metrics per cell: for twins, lure removal / follows-new-lure / normalised LD; for a
+    different problem, Kudo's success rate = the answer becomes the SOURCE's answer."""
+    n_layers = len(decoder_layers(model))
+    windows = [(f"W{a}-{min(a + window, n_layers) - 1}", list(range(a, min(a + window, n_layers)))) for a in range(0, n_layers, window)]
+    dtoks = digit_token_ids(tok)
+    demos = make_demos(level, scheme_of(pairs[0][1].condition), n=parse_regime(regime)[1])
+    rows = []
+    for src, dst in (pairs[:limit] if limit else pairs):
+        ls, ld_ = layout(src, demos, regime), layout(dst, demos, regime)
+        ts, td = tokenize_layout(tok, ls), tokenize_layout(tok, ld_)
+        assert ts["n_tokens"] == td["n_tokens"] and ts["segment_tokens"].keys() == td["segment_tokens"].keys(), (src.id, dst.id)
+        target = dst.target or src.target
+        read_labels = [l for l in (f"cotpre@{target}", "anspre") if target and td["positions"].get(l) is not None] or ["anspre"]
+        read_pos = [td["positions"][l] for l in read_labels]
+        gold = {f"cotpre@{target}": str(dst.values[target]) if target else None, "anspre": str(dst.answer)}
+        src_gold = {f"cotpre@{target}": str(src.values[target]) if target else None, "anspre": str(src.answer)}
+        b_dig, b_sc = next_digit(model, dtoks, td["input_ids"], read_pos, return_scores=True)
+        def ld(scores):
+            return {lab: (sc[gold[lab]] - sc[str(dst.lure)]) if dst.lure is not None else None for lab, sc in zip(read_labels, scores)}
+        rec = {"src": src.id, "dst": dst.id, "set_id": dst.set_id, "target": target, "lure": dst.lure, "src_lure": src.lure,
+               "gold": {k: gold[k] for k in read_labels}, "src_gold": {k: src_gold[k] for k in read_labels},
+               "base": dict(zip(read_labels, b_dig)), "base_ld": ld(b_sc), "cells": {}}
+        segs = td["segment_tokens"]
+        src_hidden_all = hidden_at(model, ts["input_ids"], range(n_layers), sorted({t for v in segs.values() for t in v}))
+        all_pos = sorted({t for v in segs.values() for t in v})
+        idx = {t: i for i, t in enumerate(all_pos)}
+        for seg_lab, seg_toks in segs.items():
+            sel = [idx[t] for t in seg_toks]
+            for wname, lids in windows:
+                with patch_hooks(model, lids, seg_toks, {l: src_hidden_all[l][sel] for l in lids}):
+                    p_dig, p_sc = next_digit(model, dtoks, td["input_ids"], read_pos, return_scores=True)
+                rec["cells"][f"{seg_lab}|{wname}"] = {"pred": dict(zip(read_labels, p_dig)), "ld": ld(p_sc)}
+        rows.append(rec)
+        print(f"{name} {dst.id} base={rec['base']}", flush=True)
+    summary = summarize_grid(rows)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps({"contrast": name, "level": level, "regime": regime, "window": window,
+                                    "summary": summary, "rows": rows}))
+    return summary
+
+
+def summarize_grid(rows: list[dict]) -> dict:
+    out = {}
+    cells = sorted({c for r in rows for c in r["cells"]})
+    for c in cells:
+        agg = {}
+        for lab in ("anspre", "cotpre@v1", "cotpre@v2", "cotpre@v3"):
+            rs = [r for r in rows if lab in r["base"] and c in r["cells"]]
+            if not rs:
+                continue
+            lure_err = [r for r in rs if r["lure"] is not None and r["base"][lab] == str(r["lure"])]
+            agg[lab] = {
+                "n": len(rs),
+                "success_to_source": float(np.mean([r["cells"][c]["pred"][lab] == r["src_gold"][lab] for r in rs])),
+                "changed": float(np.mean([r["cells"][c]["pred"][lab] != r["base"][lab] for r in rs])),
+                "lure_removed": (float(np.mean([r["cells"][c]["pred"][lab] != str(r["lure"]) for r in lure_err])) if lure_err else None),
+                "follows_src_lure": (float(np.mean([r["cells"][c]["pred"][lab] == str(r["src_lure"]) for r in rs if r["src_lure"] is not None]))
+                                     if any(r["src_lure"] is not None for r in rs) else None),
+            }
+        out[c] = agg
+    return out

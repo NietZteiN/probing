@@ -18,7 +18,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from cueconf.config import DATA_DIR, OUT_DIR, model_entry  # noqa: E402
 from cueconf.generator import LEVELS, read_jsonl  # noqa: E402
-from cueconf.patching import run_contrast  # noqa: E402
+from cueconf.patching import run_contrast, run_grid_contrast  # noqa: E402
 from cueconf.runner import load_model  # noqa: E402
 
 CONTRASTS = {  # name: (source condition, destination condition)
@@ -26,6 +26,11 @@ CONTRASTS = {  # name: (source condition, destination condition)
     "ctl_word": ("neutral_alt", "neutral"),
     "ctl_lure": ("incongruent_alt", "incongruent"),
 }
+
+
+def _with_target(x, t):
+    import dataclasses
+    return dataclasses.replace(x, target=t)
 
 
 def main() -> int:
@@ -39,6 +44,9 @@ def main() -> int:
     ap.add_argument("--window", type=int, default=4)
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--only-lure-errors", action="store_true")
+    ap.add_argument("--grid", action="store_true", help="E29: Kudo-style equation-span x layer-window grid instead of name-position sweeps")
+    ap.add_argument("--sources", nargs="+", default=["other", "neutral", "incongruent_alt"],
+                    help="grid sources: other = a different neutral problem into neutral (Kudo's design); neutral / incongruent_alt = twins into incongruent")
     a = ap.parse_args()
     m = model_entry(a.model)
     rows = read_jsonl(DATA_DIR / f"L{a.level}" / "test_sets.jsonl")
@@ -48,6 +56,37 @@ def main() -> int:
     spec = LEVELS[a.level]
     targets = a.targets or [r for r, _ in spec["eqs"] if r != spec["distractor"]]
     tok, model = load_model(m["hf_id"])
+    if a.grid:
+        sets = list(by_set.values())
+        for srcname in a.sources:
+            for t in targets:
+                pairs = []
+                if srcname == "other":
+                    # a different neutral problem with a different answer, cyclically paired
+                    neutrals = [d[("neutral", None)] for d in sets if ("neutral", None) in d]
+                    for i, x in enumerate(neutrals):
+                        y = neutrals[(i + 1) % len(neutrals)]
+                        if y.answer != x.answer:
+                            pairs.append((y, x))
+                    # the "target" for reads is t (which value step to read)
+                    pairs = [(s_, d_) for s_, d_ in pairs]
+                else:
+                    for d in sets:
+                        s_ = d.get((srcname, t)); d_ = d.get(("incongruent", t))
+                        if s_ and d_:
+                            pairs.append((s_, d_))
+                if a.limit:
+                    pairs = pairs[:a.limit]
+                out = OUT_DIR / "patching" / a.model / f"L{a.level}" / a.regime / f"grid_{srcname}@{t}.json"
+                if out.exists():
+                    print(f"skip {out}"); continue
+                if srcname == "other":
+                    # read positions need a target: set it on copies of the neutral instances
+                    import copy
+                    pairs = [(copy.replace(s_, target=t) if hasattr(copy, "replace") else _with_target(s_, t), _with_target(d_, t)) for s_, d_ in pairs]
+                s = run_grid_contrast(tok, model, a.level, a.regime, pairs, f"grid_{srcname}@{t}", out, window=a.window)
+                print(f"grid_{srcname}@{t}: {len(s)} cells", flush=True)
+        return 0
     for cname in a.contrasts:
         src_c, dst_c = CONTRASTS[cname]
         for t in targets:
