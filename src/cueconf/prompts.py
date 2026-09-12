@@ -50,11 +50,22 @@ def split_pool(pool: Sequence[str] = NEUTRAL_CANDIDATES, seed: int = DEMO_SEED) 
     return words[:N_DEMO_WORDS], words[N_DEMO_WORDS:]
 
 
-def make_demos(level: int, scheme: str, pool: Sequence[str] = NEUTRAL_CANDIDATES, seed: int = DEMO_SEED) -> list[Instance]:
-    """scheme: 'letter' or 'word'."""
+def parse_regime(regime: str) -> tuple[str, int]:
+    """'cot' -> ('cot', 3); 'direct_k16' -> ('direct', 16). The suffix names a demo count other
+    than the default, so runs with different prompts never share an output directory."""
+    base, _, k = regime.partition("_k")
+    if base not in REGIMES:
+        raise ValueError(f"unknown regime {regime!r}")
+    return base, (int(k) if k else N_DEMOS)
+
+
+def make_demos(level: int, scheme: str, pool: Sequence[str] = NEUTRAL_CANDIDATES, seed: int = DEMO_SEED,
+               n: int = N_DEMOS) -> list[Instance]:
+    """scheme: 'letter' or 'word'. Demo words come from the reserved pool; with n > its size the
+    words repeat across demos, which is fine because demos are fixed and shared by every instance."""
     demo_words, _ = split_pool(pool, seed)
     cond = "letter" if scheme == "letter" else "neutral"
-    return list(sample_single(level, N_DEMOS, seed, cond, pool=demo_words))
+    return list(sample_single(level, n, seed, cond, pool=demo_words))
 
 
 def scheme_of(condition: str) -> str:
@@ -62,7 +73,7 @@ def scheme_of(condition: str) -> str:
 
 
 def output_of(inst: Instance, regime: str) -> str:
-    return inst.cot if regime == "cot" else inst.direct
+    return inst.cot if parse_regime(regime)[0] == "cot" else inst.direct
 
 
 def build_prompt(inst: Instance, demos: Sequence[Instance], regime: str) -> str:
@@ -137,7 +148,7 @@ def layout(inst: Instance, demos: Sequence[Instance], regime: str) -> Layout:
     for r in names:
         pos[f"cotpre@{r}"] = None
         pos[f"cot@{r}"] = None
-    if regime == "cot":
+    if parse_regime(regime)[0] == "cot":
         steps = cot_steps(ar, names)
         obuf = []
         for k, (kind, role, text) in enumerate(steps):
@@ -170,7 +181,7 @@ def layout(inst: Instance, demos: Sequence[Instance], regime: str) -> Layout:
         at = emit(inst.direct)
         spans[ar.query].append((at, at + len(names[ar.query])))
         eq_at = at + len(names[ar.query])
-    pos["anspre"] = pos[f"cotpre@{ar.query}"] if regime == "cot" else eq_at
+    pos["anspre"] = pos[f"cotpre@{ar.query}"] if parse_regime(regime)[0] == "cot" else eq_at
     pos["ans"] = pos["anspre"] + 1
     text = prompt[:start] + "".join(buf)
     assert text == prompt + output_of(inst, regime)

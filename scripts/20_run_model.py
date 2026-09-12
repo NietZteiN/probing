@@ -19,6 +19,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from cueconf.config import DATA_DIR, OUT_DIR, model_entry  # noqa: E402
 from cueconf.generator import read_jsonl  # noqa: E402
+from cueconf.prompts import parse_regime  # noqa: E402
 from cueconf.runner import load_model, run_condition  # noqa: E402
 
 MAX_NEW = {"cot": 96, "direct": 12}
@@ -32,7 +33,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True)
     ap.add_argument("--level", type=int, default=3)
-    ap.add_argument("--regimes", nargs="+", default=["cot", "direct"])
+    ap.add_argument("--regimes", nargs="+", default=["cot", "direct"],
+                    help="cot | direct | <regime>_k<N> for N demonstrations instead of 3 (e.g. direct_k16)")
     ap.add_argument("--groups", nargs="*", default=None, help="subset of groups; default all")
     ap.add_argument("--no-train", action="store_true")
     ap.add_argument("--layers", type=int, nargs="*", default=None)
@@ -65,7 +67,7 @@ def main() -> int:
                 continue
             rows_ = rows[:a.limit] if a.limit else rows
             cond = rows_[0].condition
-            s = run_condition(tok, model, a.model, a.level, regime, cond, rows_, out, bs, MAX_NEW[regime],
+            s = run_condition(tok, model, a.model, a.level, regime, cond, rows_, out, bs, MAX_NEW[parse_regime(regime)[0]],
                               layers=a.layers, do_free=not g.startswith("train_"))
             print(f"{a.model} L{a.level} {regime} {g}: n={s['n']} acc={s.get('free_accuracy')} lure={s.get('free_lure_rate')} "
                   f"excluded={len(s['excluded'])} {s['seconds']}s", flush=True)

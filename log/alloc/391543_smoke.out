@@ -1,0 +1,4 @@
+srun: error: slurm_receive_msgs: [g-08-13.localdomain:6818] failed: Zero Bytes were transmitted or received
+srun: error: Task launch for StepId=391543.0 failed on node g-08-13: Zero Bytes were transmitted or received
+srun: error: Application launch failed: Zero Bytes were transmitted or received
+srun: Job step aborted

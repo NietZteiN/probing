@@ -32,7 +32,7 @@ import numpy as np
 import torch
 
 from .generator import Instance, read_jsonl
-from .prompts import layout, make_demos, parse_answer, scheme_of, tokenize_layout
+from .prompts import layout, make_demos, parse_answer, parse_regime, scheme_of, tokenize_layout
 
 DIGIT_STRS = [str(d) for d in range(10)]
 
@@ -109,7 +109,7 @@ def run_condition(tok, model, model_key: str, level: int, regime: str, condition
                   instances: list[Instance], out_dir: Path, batch_size: int, max_new_tokens: int,
                   layers: Sequence[int] | None = None, do_free: bool = True, do_forced: bool = True) -> dict:
     out_dir.mkdir(parents=True, exist_ok=True)
-    demos = make_demos(level, scheme_of(condition))
+    demos = make_demos(level, scheme_of(condition), n=parse_regime(regime)[1])
     t0 = time.time()
     lays = [layout(x, demos, regime) for x in instances]
     toks = [tokenize_layout(tok, lay) for lay in lays]
@@ -148,7 +148,7 @@ def run_condition(tok, model, model_key: str, level: int, regime: str, condition
                 n_correct += correct; n_lure += is_lure
                 f.write(json.dumps({"id": x.id, "set_id": x.set_id, "condition": condition, "target": x.target,
                                     "lure": x.lure, "answer": x.answer, "pred": pred, "correct": correct,
-                                    "pred_is_lure": is_lure, "generation": g, "values": x.values}) + "\n")
+                                    "pred_is_lure": is_lure, "generation": g, "values": x.values, "names": x.names}) + "\n")
         summary["free_accuracy"] = n_correct / max(1, len(keep_idx))
         summary["free_lure_rate"] = n_lure / max(1, len(keep_idx))
 

@@ -30,7 +30,7 @@ import numpy as np
 import torch
 
 from .generator import Instance
-from .prompts import layout, make_demos, scheme_of, tokenize_layout
+from .prompts import layout, make_demos, parse_regime, scheme_of, tokenize_layout
 from .runner import digit_token_ids
 
 
@@ -77,14 +77,17 @@ def hidden_at(model, input_ids: list[int], layer_ids: Sequence[int], positions: 
 
 
 @torch.no_grad()
-def next_digit(model, tok_digits: dict[str, list[int]], input_ids: list[int], read_positions: Sequence[int]) -> list[str]:
+def next_digit(model, tok_digits: dict[str, list[int]], input_ids: list[int], read_positions: Sequence[int],
+               return_scores: bool = False):
+    """Greedy digit at each read position; with return_scores also the per-digit log-probs, from
+    which the Zhang & Nanda (2024) logit difference logit(true) - logit(lure) is computed (E24)."""
     out = model(input_ids=torch.tensor([input_ids], device=model.device))
-    res = []
+    res, allscores = [], []
     for p in read_positions:
         lp = torch.log_softmax(out.logits[0, p].float(), -1)
         scores = {d: float(torch.logsumexp(lp[ids], 0)) if ids else -1e9 for d, ids in tok_digits.items()}
-        res.append(max(scores, key=scores.get))
-    return res
+        res.append(max(scores, key=scores.get)); allscores.append(scores)
+    return (res, allscores) if return_scores else res
 
 
 def layer_sets(n_layers: int, window: int = 4) -> list[tuple[str, list[int]]]:
@@ -100,7 +103,7 @@ def run_contrast(tok, model, level: int, regime: str, pairs: list[tuple[Instance
     n_layers = len(decoder_layers(model))
     sets = layer_sets(n_layers, window)
     dtoks = digit_token_ids(tok)
-    demos = make_demos(level, scheme_of(pairs[0][1].condition))
+    demos = make_demos(level, scheme_of(pairs[0][1].condition), n=parse_regime(regime)[1])
     rows = []
     for src, dst in pairs:
         if only_ids is not None and dst.id not in only_ids:
@@ -119,13 +122,21 @@ def run_contrast(tok, model, level: int, regime: str, pairs: list[tuple[Instance
         # what the chain SHOULD say at each read position
         gold = {f"cotpre@{target}": str(dst.values[target]), "anspre": str(dst.answer)}
         src_hidden = hidden_at(model, ts["input_ids"], range(n_layers), name_pos)
-        base = dict(zip(read_labels, next_digit(model, dtoks, td["input_ids"], read_pos)))
+        b_dig, b_sc = next_digit(model, dtoks, td["input_ids"], read_pos, return_scores=True)
+        base = dict(zip(read_labels, b_dig))
+        # logit difference true - lure at each read position (lure defined only for incongruent destinations)
+        def ld(scores):
+            return {lab: (sc[gold[lab]] - sc[str(dst.lure)]) if dst.lure is not None else None for lab, sc in zip(read_labels, scores)}
+        # the SOURCE run's own LD serves as the "clean" reference for normalisation
+        s_dig, s_sc = next_digit(model, dtoks, ts["input_ids"], read_pos, return_scores=True)
         rec = {"src": src.id, "dst": dst.id, "set_id": dst.set_id, "target": target, "lure": dst.lure,
                "src_lure": src.lure, "n_patched_tokens": len(name_pos), "gold": {k: gold[k] for k in read_labels},
-               "base": base, "patched": {}}
+               "base": base, "base_ld": ld(b_sc), "src_ld": ld(s_sc), "patched": {}, "patched_ld": {}}
         for sname, lids in sets:
             with patch_hooks(model, lids, name_pos, {l: src_hidden[l] for l in lids}):
-                rec["patched"][sname] = dict(zip(read_labels, next_digit(model, dtoks, td["input_ids"], read_pos)))
+                p_dig, p_sc = next_digit(model, dtoks, td["input_ids"], read_pos, return_scores=True)
+                rec["patched"][sname] = dict(zip(read_labels, p_dig))
+                rec["patched_ld"][sname] = ld(p_sc)
         rows.append(rec)
         print(f"{name} {dst.id} base={base} patched[ALL]={rec['patched']['ALL']}", flush=True)
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -145,8 +156,16 @@ def summarize(rows: list[dict], sets) -> dict:
                 continue
             lure_err = [r for r in rs if r["lure"] is not None and r["base"][lab] == str(r["lure"])]
             correct = [r for r in rs if r["base"][lab] == r["gold"][lab]]
+            # E24: normalised logit difference, (LD_patched - LD_base) / (LD_src - LD_base); 1 = fully restored
+            nld = []
+            for r in rs:
+                b, sref, pv = r.get("base_ld", {}).get(lab), r.get("src_ld", {}).get(lab), r.get("patched_ld", {}).get(sname, {}).get(lab)
+                if b is not None and sref is not None and pv is not None and abs(sref - b) > 1e-6:
+                    nld.append((pv - b) / (sref - b))
             agg[lab] = {
                 "n": len(rs),
+                "normalized_ld_mean": (float(np.mean(nld)) if nld else None),
+                "normalized_ld_median": (float(np.median(nld)) if nld else None),
                 "base_acc": np.mean([r["base"][lab] == r["gold"][lab] for r in rs]),
                 "patched_acc": np.mean([r["patched"][sname][lab] == r["gold"][lab] for r in rs]),
                 "n_lure_err": len(lure_err),

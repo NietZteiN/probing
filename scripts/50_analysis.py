@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from collections import defaultdict
 from pathlib import Path
@@ -36,7 +37,9 @@ def behavior_frame(run_dir: Path) -> pd.DataFrame:
         f = g / "behavior.jsonl"
         if f.exists():
             for line in f.open():
-                d = json.loads(line); d["group"] = g.name; rows.append(d)
+                d = json.loads(line); d["group"] = g.name
+                d["names_target"] = d.get("names", {}).get(d["target"]) if d.get("target") else None
+                rows.append(d)
     return pd.DataFrame(rows)
 
 
@@ -45,12 +48,59 @@ def behavior_table(df: pd.DataFrame) -> dict:
     for grp, sub in df.groupby("group"):
         acc = bootstrap_ci(sub["correct"].values.astype(float), sub["set_id"].values)
         lure = bootstrap_ci(sub["pred_is_lure"].values.astype(float), sub["set_id"].values) if sub["lure"].notna().any() else None
-        out[grp] = {"n": int(len(sub)), "accuracy": acc, "lure_rate": lure}
+        # E23: Geirhos-style lure index over trials whose answer is one of the two cues
+        idx = None
+        if sub["lure"].notna().any():
+            two = sub[sub["correct"] | sub["pred_is_lure"]]
+            if len(two):
+                idx = bootstrap_ci(two["pred_is_lure"].values.astype(float), two["set_id"].values)
+        out[grp] = {"n": int(len(sub)), "accuracy": acc, "lure_rate": lure, "lure_index": idx,
+                    "n_two_cue_trials": int(((sub["correct"]) | (sub["pred_is_lure"])).sum())}
     for t in sorted({g.split("@")[1] for g in df["group"].unique() if "@" in g}):
         for name, a, b in (("interference", "neutral", f"incongruent@{t}"), ("facilitation", f"congruent@{t}", "neutral")):
             if a in df["group"].values and b in df["group"].values:
                 d2 = df.rename(columns={"group": "condition"})
                 out[f"{name}@{t}"] = paired_difference_ci(d2, a, b)
+    return out
+
+
+_NUM = re.compile(r"-?\d+")
+
+
+def copy_control(df_full: pd.DataFrame) -> dict:
+    """E22 (Liu 2026): among lure errors at the final answer in the CoT regime, what number sat in
+    the trailing position before the final `name=`? If it was the true intermediate value (or the
+    true answer), positional copying cannot explain the error; if it was the lure, it can. Also
+    the P5 lure rate conditioned on the chain having written the target's TRUE value at its own
+    value step (the chain was right up to P4)."""
+    out = {}
+    for grp, sub in df_full.groupby("group"):
+        if "incongruent" not in grp:
+            continue
+        rows = []
+        for r in sub.itertuples():
+            if r.lure is None or not r.pred_is_lure:
+                continue
+            gen = str(r.generation).split("\n", 1)[0]
+            qname = list(r.values.keys())  # noqa: F841 (values is a dict role->value)
+            # final answer segment = last piece; trailing number = last number in the piece before it
+            pieces = [x.strip() for x in gen.split(",")]
+            trailing = None
+            if len(pieces) >= 2:
+                nums = _NUM.findall(pieces[-2])
+                trailing = int(nums[-1]) if nums else None
+            target_true = r.values[r.target] if r.target else None
+            wrote_true_at_p4 = any(p.startswith(f"{r.names_target}=") and _NUM.findall(p) and int(_NUM.findall(p)[-1]) == target_true
+                                   and "+" not in p and "-" not in p for p in pieces) if r.target else None
+            rows.append({"id": r.id, "trailing": trailing, "trailing_is_true_intermediate": trailing == target_true,
+                         "trailing_is_lure": trailing == r.lure, "trailing_is_answer": trailing == r.answer,
+                         "chain_wrote_true_at_p4": wrote_true_at_p4})
+        n = len(rows)
+        out[grp] = {"n_lure_errors_at_p5": n,
+                    "trailing_is_true_intermediate": (sum(x["trailing_is_true_intermediate"] for x in rows) / n) if n else None,
+                    "trailing_is_lure": (sum(x["trailing_is_lure"] for x in rows) / n) if n else None,
+                    "chain_wrote_true_at_p4": (sum(bool(x["chain_wrote_true_at_p4"]) for x in rows) / n) if n else None,
+                    "rows": rows[:50]}
     return out
 
 
@@ -145,16 +195,17 @@ def main() -> int:
     a = ap.parse_args()
     models = a.models or list(load_config("models.yaml")["models"])
     for k in models:
-        for regime in ("cot", "direct"):
-            run_dir = OUT_DIR / "runs" / k / f"L{a.level}" / regime
-            if not run_dir.exists():
-                continue
+        level_dir = OUT_DIR / "runs" / k / f"L{a.level}"
+        for regime in (sorted(p.name for p in level_dir.iterdir() if p.is_dir()) if level_dir.exists() else []):
+            run_dir = level_dir / regime
             out = RESULTS_DIR / "summary" / k / f"L{a.level}" / regime
             out.mkdir(parents=True, exist_ok=True)
             beh = behavior_frame(run_dir)
             if len(beh):
                 beh.drop(columns=["generation"]).to_csv(out / "behavior.csv", index=False)
                 (out / "behavior_table.json").write_text(json.dumps(behavior_table(beh), indent=1))
+                if regime.startswith("cot"):
+                    (out / "copy_control.json").write_text(json.dumps(copy_control(beh), indent=1, default=str))
             grids, xover, links, repl = {}, {}, {}, {}
             for pj in sorted((OUT_DIR / "probes" / k / f"L{a.level}" / regime).glob("*/*.json")):
                 g = probe_grid(pj); role = g["role"]; tr = pj.parent.name
