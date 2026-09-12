@@ -76,10 +76,10 @@ in blue ink reveals whether reading overrides colour naming; in vision, shape--t
 images showed that apparent shape recognition in CNNs was partly texture matching
 \cite{geirhos2019texture}. We bring the design to arithmetic reasoning. Every problem appears
 in three matched versions with identical arithmetic (Figure~\ref{fig:one}):
-\textcolor{neu}{neutral} names (\texttt{pen=1+cup, cup=2+3; pen=?}),
+\textcolor{neu}{neutral} names (\texttt{pen=1 + cup, cup=2 + 3; pen=?}),
 \textcolor{con}{congruent} names, where a number word equals the variable's true value
-(\texttt{five=2+3}), and \textcolor{inc}{incongruent} names, where it does not
-(\texttt{two=2+3}, true value 5, lure 2). Each version is solved with and without a written
+(\texttt{five=2 + 3}), and \textcolor{inc}{incongruent} names, where it does not
+(\texttt{two=2 + 3}, true value 5, lure 2). Each version is solved with and without a written
 chain of thought, and linear probes trained on neutral problems only read out, at every layer
 and reasoning step, whether the representation holds the true value or the lure.
 
@@ -93,10 +93,10 @@ influence explains the errors.
 \begin{figure}[t]
 \centering
 \fbox{\parbox{0.95\columnwidth}{\small
-\textcolor{neu}{\texttt{pen=1+cup, cup=2+3; pen=?}}\\
-\textcolor{con}{\texttt{pen=1+five, five=2+3; pen=?}}\\
-\textcolor{inc}{\texttt{pen=1+two, two=2+3; pen=?}}\\[2pt]
-\texttt{\ \ \ \ pen=1+two, two=2+3, two=5, pen=1+two, pen=1+5, pen=6}\\[2pt]
+\textcolor{neu}{\texttt{pen=1 + cup, cup=2 + 3; pen=?}}\\
+\textcolor{con}{\texttt{pen=1 + five, five=2 + 3; pen=?}}\\
+\textcolor{inc}{\texttt{pen=1 + two, two=2 + 3; pen=?}}\\[2pt]
+\texttt{\ \ \ \ pen=1 + two, two=2 + 3, two=5, pen=1 + two, pen=1 + 5, pen=6}\\[2pt]
 \textit{[margin sketch: $\log p(\text{true})-\log p(\text{lure})$ across P2--P5, to be drawn
 from a real instance once probes exist]}}}
 \caption{One problem in its three matched versions (top), the chain of thought with probe
@@ -110,7 +110,7 @@ incongruent name \texttt{two} has true value 5 and lure value 2.}
 \paragraph{Task.} We reuse the generator, difficulty levels and prompt format of
 \citet{kudo2026faithful}: problems are lists of assignments over single digits with $+$ and $-$,
 all values stay in $0..9$, and three fixed same-level demonstrations precede each problem. Our
-main level is their Level~3 (two steps, one forward reference; \texttt{v1=d$\pm$v2, v2=d$\pm$d; v1=?}),
+main level is their Level~3 (two steps, one forward reference; \texttt{v1=d $\pm$ v2, v2=d $\pm$ d; v1=?}),
 with Levels 2 and 5 as robustness checks and Level~4 for a control described below.
 
 \paragraph{Conditions.} Each arithmetic problem yields a matched set. The \emph{letter}
@@ -129,7 +129,7 @@ not a confound. Every incongruent instance has a neutral and a congruent twin wi
 arithmetic, and all comparisons are within these sets.
 
 \paragraph{Regimes.} In the \emph{chain-of-thought} regime the model writes each step in Kudo
-et al.'s format (\texttt{cup=5, pen=1+5, pen=6}); note that the chain writes the name next to
+et al.'s format (\texttt{cup=5, pen=1 + 5, pen=6}); note that the chain writes the name next to
 the computed value, which may help the model recover. In the \emph{direct} regime it writes only
 \texttt{pen=6}. The contrast between regimes is the center of the paper.
 

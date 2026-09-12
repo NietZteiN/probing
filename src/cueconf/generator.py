@@ -93,7 +93,7 @@ class Arithmetic:
         return json.dumps([[e.lhs, e.op, list(e.args)] for e in self.eqs])
 
     def expressions(self) -> set[str]:
-        """The arithmetic expressions (digit op digit) in this problem, e.g. {'2+3'}."""
+        """The digit expressions (digit op digit) in this problem, e.g. {'2+3'} (no spaces)."""
         out = set()
         for e in self.eqs:
             if e.op and all(a.isdigit() for a in e.args):
@@ -199,7 +199,16 @@ def _resolve(eqs: list[Equation]) -> dict[str, int] | None:
 # ----------------------------------------------------------------------------- rendering
 
 def render_eq(e: Equation, names: dict[str, str], subst: dict[str, int] | None = None) -> str:
-    """`pen=1+cup`; with subst, roles in subst are replaced by their values (`pen=1+5`)."""
+    """`pen=1 + cup`; with subst, roles in subst are replaced by their values (`pen=1 + 5`).
+
+    SPACING (decided 2026-09-12 from the Llama-3 tokenizer): binary operators carry a space on
+    each side and `=` carries none. Without the space, `-` merges with the following word
+    (`1-two` -> `1`, `-two`; `1-pen` -> `1`, `-p`, `en`), which breaks rule 4 for every name.
+    With it, every name is `two` at line start and ` two` elsewhere, both single tokens. Kudo
+    et al.'s paper renders equations with spaces as well (their Table 1); the exact byte format
+    of their preprocessor was not reproduced, so absolute positions are not comparable to their
+    figures, only the equation-level ones (t*_eq).
+    """
     parts = []
     for a in e.args:
         if a.isdigit():
@@ -208,7 +217,7 @@ def render_eq(e: Equation, names: dict[str, str], subst: dict[str, int] | None =
             parts.append(str(subst[a]))
         else:
             parts.append(names[a])
-    rhs = parts[0] if e.op is None else f"{parts[0]}{e.op}{parts[1]}"
+    rhs = parts[0] if e.op is None else f"{parts[0]} {e.op} {parts[1]}"
     return f"{names[e.lhs]}={rhs}"
 
 
@@ -219,8 +228,8 @@ def render_input(ar: Arithmetic, names: dict[str, str]) -> str:
 def cot_steps(ar: Arithmetic, names: dict[str, str]) -> list[tuple[str, str, str]]:
     """Kudo et al. Table 1 chain as (kind, role, text) steps; kinds: restate | substitute | value.
 
-    L3: pen=1+cup, cup=2+3, cup=5, pen=1+cup, pen=1+5, pen=6
-    L1: pen=1+cup, cup=2, pen=1+cup, pen=1+2, pen=3
+    L3: pen=1 + cup, cup=2 + 3, cup=5, pen=1 + cup, pen=1 + 5, pen=6
+    L1: pen=1 + cup, cup=2, pen=1 + cup, pen=1 + 2, pen=3
     Distractors (L4) never appear in the chain, as in the paper. A bare assignment `cup=2` is
     restated once and that restatement IS its value step (kind "value").
     """

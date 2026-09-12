@@ -69,8 +69,8 @@ def test_layout_is_identical_across_twins_up_to_names():
 
 
 def test_parse_answer():
-    assert parse_answer("pen=1+two, two=2+3, two=5, pen=1+two, pen=1+5, pen=6\n\nfoo", "pen") == 6
+    assert parse_answer("pen=1 + two, two=2 + 3, two=5, pen=1 + two, pen=1 + 5, pen=6\n\nfoo", "pen") == 6
     assert parse_answer("pen=6", "pen") == 6
-    assert parse_answer("pen=1+two, two=2", "pen") is None
+    assert parse_answer("pen=1 + two, two=2", "pen") is None
     assert parse_answer("pen=-1", "pen") == -1
     assert parse_answer("cup=5, pen=7, pen=8", "pen") == 8

@@ -115,7 +115,7 @@ def layout(inst: Instance, demos: Sequence[Instance], regime: str) -> Layout:
         last_operand_at = None
         for j, a in enumerate(e.args):
             if j == 1:
-                emit(e.op)
+                emit(f" {e.op} ")
             if a.isdigit():
                 last_operand_at = emit(a)
             else:

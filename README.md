@@ -48,7 +48,7 @@ python scripts/50_analysis.py && python scripts/51_tables.py && python scripts/5
 make paper                                 # tectonic; prints body page count vs the 4-page limit
 ```
 
-The running example: `pen=1+two, two=2+3; pen=?` — `two` has true value 5 and lure value 2.
+The running example: `pen=1 + two, two=2 + 3; pen=?` — `two` has true value 5 and lure value 2.
 
 ## Task format
 
@@ -56,8 +56,8 @@ Kudo et al.'s levels (1–5), digits 0–9, `+`/`−`, all values single digits,
 same-level demonstrations, one problem per line:
 
 ```
-pen=1+cup, cup=2+3; pen=?
-pen=1+cup, cup=2+3, cup=5, pen=1+cup, pen=1+5, pen=6        (chain of thought)
+pen=1 + cup, cup=2 + 3; pen=?
+pen=1 + cup, cup=2 + 3, cup=5, pen=1 + cup, pen=1 + 5, pen=6        (chain of thought)
 pen=6                                                        (direct answer)
 ```
 

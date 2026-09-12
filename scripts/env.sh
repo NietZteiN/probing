@@ -23,6 +23,7 @@ export TORCHINDUCTOR_CACHE_DIR="${TORCHINDUCTOR_CACHE_DIR:-$PROBE_SCRATCH/cache/
 export TRITON_CACHE_DIR="${TRITON_CACHE_DIR:-$PROBE_SCRATCH/cache/triton}"
 export TOKENIZERS_PARALLELISM=false
 export PYTHONHASHSEED=0
+export PYTHONUNBUFFERED=1   # job logs show progress as it happens, not at exit
 
 # Fail loudly rather than three frames into a download.
 for _d in "$HF_HOME" "$TMPDIR" "$PROBE_OUT"; do

@@ -1,9 +1,11 @@
 """Rule 4: every variable name must be ONE token in every context it appears in, per tokenizer.
 
-Contexts in our layout: line start ("pen=..."), after ", " (", pen=..."), after "+"/"-" as an
-operand ("1+pen,"), before ";" and before "=?". BPE pre-tokenisers split letters from
-punctuation, so the atoms are "pen" and " pen"; both are checked, and the rendered template of
-one instance is tokenised end to end so a merged "=?" or ", " shows up in the report rather
+Contexts in our layout: line start ("pen=..."), after ", " (", pen=..."), after " - " and
+" + " as an operand, before "," and ";". Each context is tokenised with the word in place and
+must have exactly the token count it would have if the word were one token and nothing merged:
+the Llama-3 tokenizer merges "-" with a following word ("1-two" -> "1", "-two"), which is why
+operators carry spaces in our format (generator.render_eq). The rendered template of one
+instance is also tokenised end to end so a merged "=?" or ", " shows up in the report rather
 than in a misaligned probe.
 
 Run inside a SLURM job (the login node cannot load a tokenizer under its 8 GB cap):
@@ -23,17 +25,27 @@ def ntok(tokenizer, s: str) -> int:
     return len(tokenizer(s, add_special_tokens=False)["input_ids"])
 
 
+# (context template, expected token count when w is ONE token and merges with nothing)
+CONTEXTS = ((("{w}="), 2), ((", {w}="), 3), (("1 - {w},"), 4), (("1 + {w},"), 4), (("1 - {w};"), 4))
+
+
 def word_ok(tokenizer, w: str) -> bool:
-    return ntok(tokenizer, w) == 1 and ntok(tokenizer, " " + w) == 1
+    """One token in every context, and the neighbours keep their own tokens (no merge)."""
+    for tpl, n in CONTEXTS:
+        ids = tokenizer(tpl.format(w=w), add_special_tokens=False)["input_ids"]
+        pieces = [tokenizer.decode([i]) for i in ids]
+        if len(ids) != n or sum(1 for p_ in pieces if p_.strip() == w) != 1:
+            return False
+    return True
 
 
 def check_words(tokenizer, candidates: Sequence[str] = NEUTRAL_CANDIDATES) -> dict:
-    number_ntok = {w: (ntok(tokenizer, w), ntok(tokenizer, " " + w)) for w in NUMBER_WORDS}
+    number_ntok = {w: (ntok(tokenizer, w), ntok(tokenizer, " " + w), word_ok(tokenizer, w)) for w in NUMBER_WORDS}
     neutral = [w for w in candidates if word_ok(tokenizer, w)]
     rejected = [w for w in candidates if w not in neutral]
     return {
         "number_ntok": number_ntok,
-        "number_ok": all(v == (1, 1) for v in number_ntok.values()),
+        "number_ok": all(v[2] for v in number_ntok.values()),
         "neutral": neutral,
         "rejected": rejected,
     }

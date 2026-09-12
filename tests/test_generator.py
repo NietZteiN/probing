@@ -20,22 +20,22 @@ def test_kudo_table1_chains():
     # Level 3 running example from the paper: A=1+B, B=2+3; A=?
     ar = Arithmetic(3, [Equation("v1", "+", ("1", "v2")), Equation("v2", "+", ("2", "3"))], "v1", {"v1": 6, "v2": 5})
     names = {"v1": "A", "v2": "B"}
-    assert render_input(ar, names) == "A=1+B, B=2+3; A=?"
-    assert render_cot(ar, names) == "A=1+B, B=2+3, B=5, A=1+B, A=1+5, A=6"
+    assert render_input(ar, names) == "A=1 + B, B=2 + 3; A=?"
+    assert render_cot(ar, names) == "A=1 + B, B=2 + 3, B=5, A=1 + B, A=1 + 5, A=6"
     # Level 1: A=1+B, B=2
     ar1 = Arithmetic(1, [Equation("v1", "+", ("1", "v2")), Equation("v2", None, ("2",))], "v1", {"v1": 3, "v2": 2})
-    assert render_cot(ar1, names) == "A=1+B, B=2, A=1+B, A=1+2, A=3"
+    assert render_cot(ar1, names) == "A=1 + B, B=2, A=1 + B, A=1 + 2, A=3"
     # Level 2: A=2+3, B=1+A; B=?
     ar2 = Arithmetic(2, [Equation("v1", "+", ("2", "3")), Equation("v2", "+", ("1", "v1"))], "v2", {"v1": 5, "v2": 6})
-    assert render_cot(ar2, names) == "B=1+A, A=2+3, A=5, B=1+A, B=1+5, B=6"
+    assert render_cot(ar2, names) == "B=1 + A, A=2 + 3, A=5, B=1 + A, B=1 + 5, B=6"
     # Level 5: A=1+B, B=2+C, C=1+2
     n3 = {"v1": "A", "v2": "B", "v3": "C"}
     ar5 = Arithmetic(5, [Equation("v1", "+", ("1", "v2")), Equation("v2", "+", ("2", "v3")), Equation("v3", "+", ("1", "2"))], "v1", {"v1": 6, "v2": 5, "v3": 3})
-    assert render_cot(ar5, n3) == "A=1+B, B=2+C, C=1+2, C=3, B=2+C, B=2+3, B=5, A=1+B, A=1+5, A=6"
+    assert render_cot(ar5, n3) == "A=1 + B, B=2 + C, C=1 + 2, C=3, B=2 + C, B=2 + 3, B=5, A=1 + B, A=1 + 5, A=6"
     # Level 4: distractor C is omitted from the chain
     ar4 = Arithmetic(4, [Equation("v1", "+", ("1", "v2")), Equation("v2", "+", ("2", "3")), Equation("v3", "+", ("4", "5"))], "v1", {"v1": 6, "v2": 5, "v3": 9})
-    assert render_input(ar4, n3) == "A=1+B, B=2+3, C=4+5; A=?"
-    assert render_cot(ar4, n3) == "A=1+B, B=2+3, B=5, A=1+B, A=1+5, A=6"
+    assert render_input(ar4, n3) == "A=1 + B, B=2 + 3, C=4 + 5; A=?"
+    assert render_cot(ar4, n3) == "A=1 + B, B=2 + 3, B=5, A=1 + B, A=1 + 5, A=6"
 
 
 @pytest.mark.parametrize("level", LEVELS_ALL)
