@@ -1,0 +1,159 @@
+"""GPU stage 3: activation patching at the misleading name's token positions (plan §4.9).
+
+Protocol (Kudo et al. §4.1, Zhang & Nanda 2024): force-decode prompt + gold chain for the
+DESTINATION instance, replace the residual-stream activations at the patched layer(s) and
+token positions with those cached from the SOURCE twin, and read the greedy next token at each
+target position (`cotpre@target` = the step where the chain writes the target's value, and
+`anspre` = the final answer). Twins have identical token layouts (rule 4 + fixed demos), so a
+position in the source is the same position in the destination; this is asserted.
+
+Contrasts (all pre-registered in PREREGISTRATION.md):
+    main       source neutral         -> dest incongruent    recovery of lure errors
+    ctl_word   source neutral_alt     -> dest neutral        patching damage (should stay correct)
+    ctl_lure   source incongruent_alt -> dest incongruent    does the answer follow the NEW lure?
+
+Sweep: every single layer, plus windows of 4 (Kudo's grid) and "all layers" as the ceiling.
+Patch positions: every token carrying the target's name in the forced text (definition, uses,
+chain restatements), or the prompt-only subset (`--scope prompt`).
+
+Metrics per (layer set): recovery = P(correct after | lure error before); flip-to-new-lure for
+ctl_lure; damage = P(wrong after | correct before) for ctl_word.
+"""
+from __future__ import annotations
+
+import json
+from contextlib import contextmanager
+from pathlib import Path
+from typing import Sequence
+
+import numpy as np
+import torch
+
+from .generator import Instance
+from .prompts import layout, make_demos, scheme_of, tokenize_layout
+from .runner import digit_token_ids
+
+
+def decoder_layers(model):
+    for attr in ("model.layers", "model.language_model.layers", "language_model.model.layers", "transformer.h"):
+        obj = model
+        try:
+            for a in attr.split("."):
+                obj = getattr(obj, a)
+            return list(obj)
+        except AttributeError:
+            continue
+    raise AttributeError("cannot find decoder layers on this model")
+
+
+@contextmanager
+def patch_hooks(model, layer_ids: Sequence[int], positions: Sequence[int], source: dict[int, torch.Tensor]):
+    """source[layer] : [n_pos, d] activations to write at `positions` in that layer's output."""
+    layers = decoder_layers(model)
+    handles = []
+    pos_t = torch.tensor(list(positions))
+
+    def make_hook(l):
+        def hook(module, args, output):
+            hs = output[0] if isinstance(output, tuple) else output
+            hs[:, pos_t, :] = source[l].to(hs.dtype).to(hs.device)
+            return output
+        return hook
+
+    for l in layer_ids:
+        handles.append(layers[l].register_forward_hook(make_hook(l)))
+    try:
+        yield
+    finally:
+        for h in handles:
+            h.remove()
+
+
+@torch.no_grad()
+def hidden_at(model, input_ids: list[int], layer_ids: Sequence[int], positions: Sequence[int]) -> dict[int, torch.Tensor]:
+    """Residual stream AFTER decoder layer l (== HF hidden_states[l+1]) at positions."""
+    out = model(input_ids=torch.tensor([input_ids], device=model.device), output_hidden_states=True)
+    return {l: out.hidden_states[l + 1][0, list(positions), :].clone() for l in layer_ids}
+
+
+@torch.no_grad()
+def next_digit(model, tok_digits: dict[str, list[int]], input_ids: list[int], read_positions: Sequence[int]) -> list[str]:
+    out = model(input_ids=torch.tensor([input_ids], device=model.device))
+    res = []
+    for p in read_positions:
+        lp = torch.log_softmax(out.logits[0, p].float(), -1)
+        scores = {d: float(torch.logsumexp(lp[ids], 0)) if ids else -1e9 for d, ids in tok_digits.items()}
+        res.append(max(scores, key=scores.get))
+    return res
+
+
+def layer_sets(n_layers: int, window: int = 4) -> list[tuple[str, list[int]]]:
+    sets = [(f"L{l}", [l]) for l in range(n_layers)]
+    sets += [(f"W{a}-{min(a + window, n_layers) - 1}", list(range(a, min(a + window, n_layers)))) for a in range(0, n_layers, window)]
+    sets.append(("ALL", list(range(n_layers))))
+    return sets
+
+
+def run_contrast(tok, model, level: int, regime: str, pairs: list[tuple[Instance, Instance]], name: str,
+                 out_path: Path, scope: str = "all", window: int = 4, only_ids: set[str] | None = None) -> dict:
+    """pairs: (source, dest) twins. Writes per-pair, per-layer-set predictions."""
+    n_layers = len(decoder_layers(model))
+    sets = layer_sets(n_layers, window)
+    dtoks = digit_token_ids(tok)
+    demos = make_demos(level, scheme_of(pairs[0][1].condition))
+    rows = []
+    for src, dst in pairs:
+        if only_ids is not None and dst.id not in only_ids:
+            continue
+        ls, ld = layout(src, demos, regime), layout(dst, demos, regime)
+        ts, td = tokenize_layout(tok, ls), tokenize_layout(tok, ld)
+        assert ts["n_tokens"] == td["n_tokens"] and ts["positions"] == td["positions"], (src.id, dst.id)
+        target = dst.target
+        name_pos = td["name_tokens"][target]
+        if scope == "prompt":
+            name_pos = [p for p in name_pos if p < td["n_prompt_tokens"]]
+        assert ts["name_tokens"][target] == td["name_tokens"][target]
+        read_labels = [l for l in (f"cotpre@{target}", "anspre") if td["positions"].get(l) is not None]
+        read_pos = [td["positions"][l] for l in read_labels]
+        read_pos_dedup = sorted(set(read_pos))
+        # what the chain SHOULD say at each read position
+        gold = {f"cotpre@{target}": str(dst.values[target]), "anspre": str(dst.answer)}
+        src_hidden = hidden_at(model, ts["input_ids"], range(n_layers), name_pos)
+        base = dict(zip(read_labels, next_digit(model, dtoks, td["input_ids"], read_pos)))
+        rec = {"src": src.id, "dst": dst.id, "set_id": dst.set_id, "target": target, "lure": dst.lure,
+               "src_lure": src.lure, "n_patched_tokens": len(name_pos), "gold": {k: gold[k] for k in read_labels},
+               "base": base, "patched": {}}
+        for sname, lids in sets:
+            with patch_hooks(model, lids, name_pos, {l: src_hidden[l] for l in lids}):
+                rec["patched"][sname] = dict(zip(read_labels, next_digit(model, dtoks, td["input_ids"], read_pos)))
+        rows.append(rec)
+        print(f"{name} {dst.id} base={base} patched[ALL]={rec['patched']['ALL']}", flush=True)
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    summary = summarize(rows, sets)
+    out_path.write_text(json.dumps({"contrast": name, "level": level, "regime": regime, "scope": scope,
+                                    "layer_sets": [s for s, _ in sets], "summary": summary, "rows": rows}))
+    return summary
+
+
+def summarize(rows: list[dict], sets) -> dict:
+    out = {}
+    for sname, _ in sets:
+        agg = {}
+        for lab in ("anspre", "cotpre@v1", "cotpre@v2", "cotpre@v3"):
+            rs = [r for r in rows if lab in r["base"]]
+            if not rs:
+                continue
+            lure_err = [r for r in rs if r["lure"] is not None and r["base"][lab] == str(r["lure"])]
+            correct = [r for r in rs if r["base"][lab] == r["gold"][lab]]
+            agg[lab] = {
+                "n": len(rs),
+                "base_acc": np.mean([r["base"][lab] == r["gold"][lab] for r in rs]),
+                "patched_acc": np.mean([r["patched"][sname][lab] == r["gold"][lab] for r in rs]),
+                "n_lure_err": len(lure_err),
+                "recovery": (np.mean([r["patched"][sname][lab] == r["gold"][lab] for r in lure_err]) if lure_err else None),
+                "damage": (np.mean([r["patched"][sname][lab] != r["gold"][lab] for r in correct]) if correct else None),
+                "follows_src_lure": (np.mean([r["patched"][sname][lab] == str(r["src_lure"]) for r in rs if r["src_lure"] is not None])
+                                     if any(r["src_lure"] is not None for r in rs) else None),
+            }
+        out[sname] = agg
+    return out

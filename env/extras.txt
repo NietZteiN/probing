@@ -1,0 +1,8 @@
+# Extras for the probing env, installed under obtune's lock as constraints (-c). A package
+# pinned in the lock cannot move; if an extra conflicts, it goes in a separate env, never here.
+matplotlib
+seaborn
+statsmodels
+pypdf        # read papers/ without a poppler install
+tqdm
+scikit-learn

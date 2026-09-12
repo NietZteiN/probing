@@ -1,0 +1,19 @@
+# generated data and outputs stay out of git; provenance lives in each run's manifest.json
+data/
+results/raw/
+runs/
+log/slurm/
+third_party/faithful-cot-multistep-arithmetic/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.log
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.out
+paper/*.synctex.gz
+# small committed exceptions
+!data/words/
+!results/summary/
+!paper/main.pdf

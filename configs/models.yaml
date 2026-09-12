@@ -1,0 +1,69 @@
+# Model panel. Scope rule inherited from obtune/docs/MODEL_AND_DATA_SELECTION.md (2026-09-09):
+# no Chinese-origin model, which removes Kudo et al.'s main model (Qwen2.5-7B) and Yi. Their
+# panel also had Llama-3.2-3B and Llama-3.1-8B, which are the two "already supported" starting
+# models the plan asks for (PLAN.md §4.5), and which anchor the replication of their Table 3.
+#
+# n_layers / hidden_size are READ FROM config.json by scripts/00_status.py, not typed here.
+# `kind` says what the model is for: core (every experiment), pair (base vs tuned contrast),
+# family (robustness), reasoning (base vs reasoning-tuned contrast).
+# `partition` is the SLURM partition sized for bf16 inference + hidden-state caching.
+# `verified` is flipped by scripts/11_tokenizer_check.py after the model loads in a job.
+
+default_model: llama32-3b
+
+models:
+  llama32-3b:
+    hf_id: meta-llama/Llama-3.2-3B
+    origin: Meta
+    kind: core
+    tuned: false
+    partition: a30
+    batch_size: 32
+    note: Kudo et al. Table 3 row; the replication anchor. Cached 2026-09-12.
+  llama32-3b-it:
+    hf_id: meta-llama/Llama-3.2-3B-Instruct
+    origin: Meta
+    kind: pair
+    tuned: true
+    partition: a30
+    batch_size: 32
+    note: base-vs-instruct pair with llama32-3b. Cached 2026-09-12.
+  llama31-8b:
+    hf_id: meta-llama/Llama-3.1-8B
+    origin: Meta
+    kind: core
+    tuned: false
+    partition: h100
+    batch_size: 16
+    note: Kudo et al. Table 3 row. Cached.
+  llama31-8b-it:
+    hf_id: meta-llama/Llama-3.1-8B-Instruct
+    origin: Meta
+    kind: pair
+    tuned: true
+    partition: h100
+    batch_size: 16
+  gemma3-4b:
+    hf_id: google/gemma-3-4b-pt
+    origin: Google
+    kind: family
+    tuned: false
+    partition: a30
+    batch_size: 16
+    note: multimodal checkpoint (Gemma3ForConditionalGeneration); runner loads the text tower. NOT yet downloaded.
+  olmo2-7b-it:
+    hf_id: allenai/OLMo-2-1124-7B-Instruct
+    origin: AI2
+    kind: family
+    tuned: true
+    partition: h100
+    batch_size: 16
+    note: fully open pretraining data. Cached on /work hf_home; copy to scratch before use.
+  olmo3-7b-think:
+    hf_id: allenai/Olmo-3-7B-Think
+    origin: AI2
+    kind: reasoning
+    tuned: true
+    partition: h100
+    batch_size: 16
+    note: reasoning-tuned candidate for the base-vs-reasoning pair; availability and chat-template behaviour to verify before relying on it.

@@ -1,0 +1,256 @@
+% Cue conflict in chain-of-thought arithmetic -- ARR short-paper draft (4 pages of body).
+%
+% NO EXPERIMENT HAS BEEN RUN. Every quantity is a \NUM{} placeholder that renders in red as
+% <<name>>; scripts/51_tables.py writes numbers.tex as results land. The prose here is the part
+% that does not depend on results: framing, setup, the outcome table, related work, limitations.
+% Section 4 (Results) is written as the SHAPE of each paragraph with placeholders, per the
+% outcome table in PLAN.md §5, so any of the four outcomes can be filled in without restructuring.
+%
+% Build: make paper   (tectonic at envs/tex/bin/tectonic; prints body page count vs limit 4)
+
+\documentclass[11pt]{article}
+\usepackage[review]{acl}      % anonymous + line numbers for ARR; final / preprint later
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{url}
+
+% An unfilled number must be impossible to miss.  % grep-skip
+\providecommand{\NUM}[1]{\textcolor{red}{$\langle\langle$\texttt{#1}$\rangle\rangle$}}
+\providecommand{\tabinput}[1]{\IfFileExists{tables/#1.tex}{\input{tables/#1.tex}}{\textcolor{red}{[table \texttt{#1} not generated yet]}}}
+\IfFileExists{numbers.tex}{\input{numbers.tex}}{}
+
+\definecolor{neu}{RGB}{60,60,60}
+\definecolor{con}{RGB}{0,110,60}
+\definecolor{inc}{RGB}{180,30,30}
+
+\title{Name or Value? Cue Conflict Reveals When Chain of Thought Overrides Lexical Priors}
+
+\author{Anonymous ACL submission}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Language models are misled by variable names that contradict a program's behavior, but an
+accuracy drop cannot show where inside the model the name interferes. Interpretability studies
+find that intermediate values are computed during chain of thought, yet in their clean tasks the
+variable name and the computed value never disagree. We introduce a cue-conflict test for
+multi-step arithmetic in which each problem appears with congruent, neutral, and incongruent
+variable names under identical arithmetic. Across \NUM{n-models} models, incongruent names
+reduce accuracy by \NUM{interference-direct} points without chain of thought and by
+\NUM{interference-cot} points with it. Linear probes trained on neutral problems only show that
+the lure value remains decodable \NUM{lure-persistence}, and activation patching from matched
+neutral problems recovers \NUM{recovery}\% of lure errors. These results indicate that chain of
+thought \NUM{headline-verb} lexical interference, and they \NUM{headline-stance} the view that
+chain-of-thought computation is faithful.
+\end{abstract}
+
+\section{Introduction}
+
+Models read code and mathematics in which names carry meaning, and names that contradict the
+computation reduce accuracy: on real programs, removing or corrupting identifiers degrades
+execution prediction \cite{le2025names}, misleading comments and hints cut output prediction by
+a fifth \cite{lam2025codecrash}, and adversarial renaming has collapsed comprehension accuracy
+to 21\% in a prior study \cite{renaming2025}. An accuracy drop, however, is compatible with three
+different failures: a corrupted input representation, a corrupted computation, or a correct
+computation misread at output. These have different implications for whether a written chain of
+thought can be trusted, and for how the failure might be fixed.
+
+Interpretability work on clean tasks cannot separate them either. \citet{kudo2026faithful} show,
+with linear probes and activation patching on controlled multi-step arithmetic, that the values
+of intermediate variables become linearly decodable only as the chain of thought is written, and
+that the final answer depends causally on the chain. But in their tasks the variable names are
+letters. The decoded value has exactly one possible source, so nothing in the design can tell
+``the model computed 5'' from ``the model read 5 off a cue,'' because no cue ever disagrees.
+
+Cue conflict resolves this. In the Stroop task \cite{stroop1935}, the word \textsc{red} printed
+in blue ink reveals whether reading overrides colour naming; in vision, shape--texture conflict
+images showed that apparent shape recognition in CNNs was partly texture matching
+\cite{geirhos2019texture}. We bring the design to arithmetic reasoning. Every problem appears
+in three matched versions with identical arithmetic (Figure~\ref{fig:one}):
+\textcolor{neu}{neutral} names (\texttt{pen=1+cup, cup=2+3; pen=?}),
+\textcolor{con}{congruent} names, where a number word equals the variable's true value
+(\texttt{five=2+3}), and \textcolor{inc}{incongruent} names, where it does not
+(\texttt{two=2+3}, true value 5, lure 2). Each version is solved with and without a written
+chain of thought, and linear probes trained on neutral problems only read out, at every layer
+and reasoning step, whether the representation holds the true value or the lure.
+
+Our main finding is that \NUM{headline-sentence}. Concretely, we contribute (i) a cue-conflict
+extension of a controlled arithmetic benchmark with matched twins and generation rules that
+make the lure never correct for another reason; (ii) a layer, position and reasoning-step map of
+lure versus true value, with and without chain of thought, across \NUM{n-models} models; and
+(iii) causal evidence from activation patching, with two control patches, on whether the name's
+influence explains the errors.
+
+\begin{figure}[t]
+\centering
+\fbox{\parbox{0.95\columnwidth}{\small
+\textcolor{neu}{\texttt{pen=1+cup, cup=2+3; pen=?}}\\
+\textcolor{con}{\texttt{pen=1+five, five=2+3; pen=?}}\\
+\textcolor{inc}{\texttt{pen=1+two, two=2+3; pen=?}}\\[2pt]
+\texttt{\ \ \ \ pen=1+two, two=2+3, two=5, pen=1+two, pen=1+5, pen=6}\\[2pt]
+\textit{[margin sketch: $\log p(\text{true})-\log p(\text{lure})$ across P2--P5, to be drawn
+from a real instance once probes exist]}}}
+\caption{One problem in its three matched versions (top), the chain of thought with probe
+positions P2--P5 (middle), and the probe margin across reasoning steps (bottom). The
+incongruent name \texttt{two} has true value 5 and lure value 2.}
+\label{fig:one}
+\end{figure}
+
+\section{Setup}
+
+\paragraph{Task.} We reuse the generator, difficulty levels and prompt format of
+\citet{kudo2026faithful}: problems are lists of assignments over single digits with $+$ and $-$,
+all values stay in $0..9$, and three fixed same-level demonstrations precede each problem. Our
+main level is their Level~3 (two steps, one forward reference; \texttt{v1=d$\pm$v2, v2=d$\pm$d; v1=?}),
+with Levels 2 and 5 as robustness checks and Level~4 for a control described below.
+
+\paragraph{Conditions.} Each arithmetic problem yields a matched set. The \emph{letter}
+condition is Kudo et al.'s format and anchors our replication. \emph{Neutral} names are common
+single-token words. In the \emph{congruent} and \emph{incongruent} conditions exactly one
+variable, the target, is renamed to a number word that equals or does not equal its true value.
+The target is either the intermediate variable or the queried one. An \emph{irrelevant-lure}
+control at Level~4 gives the number-word name to a distractor outside the queried chain,
+separating the lexical presence of a number from a binding conflict.
+
+\paragraph{Generation rules.} Exactly one variable per instance carries a number word. The
+lure differs from every variable value and from every operand digit in the problem, so it is
+never correct for another reason. Neutral words are matched to number words in token count
+under each model's tokenizer, checked per model, so positions align across twins and length is
+not a confound. Every incongruent instance has a neutral and a congruent twin with identical
+arithmetic, and all comparisons are within these sets.
+
+\paragraph{Regimes.} In the \emph{chain-of-thought} regime the model writes each step in Kudo
+et al.'s format (\texttt{cup=5, pen=1+5, pen=6}); note that the chain writes the name next to
+the computed value, which may help the model recover. In the \emph{direct} regime it writes only
+\texttt{pen=6}. The contrast between regimes is the center of the paper.
+
+\paragraph{Probe positions.} Using the incongruent example: P1, the name token \texttt{two} at
+its definition, is expected to decode the lure trivially and is reported only as a reference,
+never as evidence. P2 is the last operand of the definition, the first position where the true
+value can be computed. P3 is the query position before any chain of thought. P4 is the chain
+position where the target's value is about to be written. P5 is the final answer position. All
+claims about lure interference are made at P2--P5.
+
+\paragraph{Probes and patching.} Probes are single linear layers trained with
+\citeauthor{kudo2026faithful}'s recipe on the neutral condition only, then evaluated on
+congruent and incongruent instances; training on incongruent data would let the probe learn the
+lure. We report accuracy for the true value, the \emph{lure mass} (probability on the lure
+class), and the \emph{margin} $\log p(\text{true})-\log p(\text{lure})$; the \emph{crossover}
+is the first step at which the margin becomes and stays positive. Selectivity against a control
+task \cite{hewitt2019control} accompanies every probe, over three seeds. For causation we patch
+residual-stream activations at the misleading name's token positions from the matched neutral
+twin into the incongruent run \cite{zhang2024patching}, sweep layers, and measure the
+\emph{recovery rate}, the share of lure errors that become correct. A patch from a different
+neutral word into the neutral run measures patching damage; a patch from a different lure
+tests whether the answer follows the new name.
+
+\paragraph{Models.} \NUM{model-list}, base models of 3B and 8B parameters from
+\citeauthor{kudo2026faithful}'s panel, plus \NUM{extra-models}. Behavioural metrics are
+accuracy, lure rate (answers equal to the lure), \emph{interference} (neutral minus incongruent
+accuracy) and \emph{facilitation} (congruent minus neutral), with cluster-bootstrap confidence
+intervals over matched sets.
+
+\section{Results}
+
+\paragraph{Replication.} On the letter condition our probes reproduce \citeauthor{kudo2026faithful}'s
+result for \NUM{replication-model}: the queried variable becomes decodable at equation
+\NUM{replication-tstar} of the chain and not before (their Table~3: 5).
+
+\paragraph{RQ1: behaviour.} Table~\ref{tab:behavior} gives accuracy, lure rate, interference
+and facilitation per model and regime. Incongruent names reduce accuracy by
+\NUM{interference-direct} points in the direct regime and \NUM{interference-cot} points with
+chain of thought; \NUM{lure-share} of the incongruent errors are the lure itself. The
+irrelevant-lure control shows \NUM{irrelevant-effect}, so \NUM{binding-reading}.
+
+\begin{table}[t]
+\centering\small
+\resizebox{\columnwidth}{!}{\tabinput{behavior}}
+\caption{Accuracy (\%), lure rate, interference and facilitation per model, regime and target
+position, Level~3, 95\% cluster-bootstrap intervals over matched sets.}
+\label{tab:behavior}
+\end{table}
+
+\paragraph{RQ2: representation.} Figure~\ref{fig:heat} maps the probe margin over layers and
+positions P2--P5 in the incongruent condition, chain of thought beside direct answer. At P2 the
+lure \NUM{p2-reading}; at P3 \NUM{p3-reading}. With chain of thought the margin crosses over at
+\NUM{crossover-step} and \NUM{crossover-persistence}; without it \NUM{direct-reading}. At the
+instance level, the margin at \NUM{link-position} predicts lure errors
+(\NUM{link-coefficient}), placing the outcome in the \NUM{outcome-cell} cell of the outcome
+table.
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/fig2_margin_llama32-3b_L3_v2.pdf}{\includegraphics[width=\columnwidth]{figures/fig2_margin_llama32-3b_L3_v2.pdf}}{\fbox{\parbox{0.95\columnwidth}{\centering\small\textcolor{red}{[Figure 2: margin heatmap, generated by scripts/52\_figs.py]}}}}
+\caption{Probe margin $\log p(\text{true})-\log p(\text{lure})$ by layer and position, incongruent
+condition, chain of thought (left) and direct answer (right). Positive means the true value dominates.}
+\label{fig:heat}
+\end{figure}
+
+\paragraph{RQ3: causation.} Figure~\ref{fig:patch} plots recovery by patched layer. Patching
+the name positions from the neutral twin recovers \NUM{recovery}\% of lure errors at
+\NUM{recovery-layers}, while the control patch changes \NUM{control-damage}\% of correct
+neutral answers and the alternative-lure patch moves the answer to the new lure in
+\NUM{follow-new-lure}\% of cases. \NUM{patching-reading}.
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/fig3_patching_llama32-3b_L3_v2.pdf}{\includegraphics[width=0.8\columnwidth]{figures/fig3_patching_llama32-3b_L3_v2.pdf}}{\fbox{\parbox{0.95\columnwidth}{\centering\small\textcolor{red}{[Figure 3: patching recovery by layer with controls, generated by scripts/52\_figs.py]}}}}
+\caption{Recovery rate of lure errors by patched layer, with the neutral-word control patch and
+the alternative-lure patch.}
+\label{fig:patch}
+\end{figure}
+
+\section{Related Work}
+
+\citet{kudo2026faithful} established when sub-answers are computed during chain of thought on
+clean arithmetic; we add cue conflict to ask what that computation is sensitive to, and reuse
+their code and format. Faithfulness of chain of thought has been measured from the outside by
+perturbing prompts or chains \cite{turpin2023unfaithful,lanham2023measuring,chen2025reasoning};
+we measure it inside the model under a controlled conflicting cue. Behavioural work on code
+shows that misleading identifiers and comments hurt \cite{le2025names,lam2025codecrash,renaming2025};
+we trade realism for localisation. Work on binding asks how a value attaches to a name
+\cite{feng2024binding,wu2025binding}; we ask whether the attachment survives a name that
+carries a competing value. \citet{shi2023distracted} add irrelevant context to arithmetic; here
+the distractor is the variable's own name. The design itself is the Stroop task
+\cite{stroop1935} and the shape--texture conflict of \citet{geirhos2019texture}.
+
+\section{Conclusion}
+
+\NUM{conclusion-finding}. For faithfulness this means \NUM{conclusion-implication}: a written
+chain of thought \NUM{conclusion-verb} the model's internal reliance on a misleading name, and
+the place where the lure survives, or fails to, is where a fix would have to act.
+
+\section*{Limitations}
+
+The task is synthetic arithmetic with short chains, so the results need not transfer directly to
+real code, which is the motivation and not the finding. Models are at most 8B parameters;
+within-family comparisons give the direction of the trend only. Lures are hand-picked English
+number words; digit-bearing names such as \texttt{x2}, other languages and optimised lures are
+future work. Linear probes can miss nonlinearly encoded information; the patching experiment
+partly addresses this, but hidden states carry mixed information and patching cannot rule out
+side effects entirely, which is why two control patches are reported. The chain-of-thought
+format writes the name beside the computed value at every step, which may itself aid recovery;
+the direct regime bounds that effect from the other side.
+
+\bibliography{refs}
+\bibliographystyle{acl_natbib}
+
+\appendix
+\section{Tokenizer checks}
+Per-model lists of neutral words that are one token in every context (line start, after a
+comma, as an operand), and the token layout of the template: \NUM{appendix-tokenizer}.
+\section{Full layer sweeps and selectivity}
+\NUM{appendix-sweeps}
+\section{Additional models and levels}
+\NUM{appendix-models}
+
+\end{document}

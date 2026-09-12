@@ -1,0 +1,11 @@
+# Dataset build parameters (scripts/10_build_dataset.py). Seeds follow Kudo et al.'s
+# convention (train 42 / valid 43 / test 44 / probing 45) so the replication split is theirs.
+levels: [3, 2, 5, 4]        # 3 is the main level; 2 and 5 are robustness; 4 carries the irrelevant-lure control
+main_level: 3
+n_probe_train: 10000        # Kudo et al.: 10,000 to train probes
+n_test_sets: 2000           # Kudo et al.: 2,000 to test; here 2,000 MATCHED SETS (x conditions)
+seeds:
+  probe_train: 45
+  test: 44
+  demos: 7
+probe_train_conditions: [neutral, letter]   # letter = Kudo replication; neutral = this paper

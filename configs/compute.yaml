@@ -1,0 +1,14 @@
+# juno (SLURM 24.11.5). h200 and normal share QoS `juno` (MaxJobsPU=4) with the account's other
+# projects; a30 and h100 carry no QoS, and everything here fits on them: bf16 inference of an 8B
+# model is 16 GB, and no experiment trains a model. Default to a30 for <=4B and h100 for 8B.
+# Exclude g-06-01 on h100 (MIG 3g.47gb slices, measured 2.8x slower by obtune).
+slurm:
+  partitions:
+    a30:  {gres: "gpu:1", cpus: 8, mem: "48G", time: "08:00:00"}
+    h100: {gres: "gpu:1", cpus: 8, mem: "64G", time: "08:00:00", exclude: "g-06-01"}
+    h200: {gres: "gpu:1", cpus: 8, mem: "64G", time: "08:00:00", qos_shared: true}
+    dev:  {gres: null, cpus: 4, mem: "32G", time: "00:30:00"}   # CPU only; tokenizer checks, tests
+  log_dir_rel: log/slurm
+# Storage: hidden states at all layers, bf16, at ~11 labelled positions per instance.
+# 3B (29 x 3072): 0.2 MB/instance; 8B (33 x 4096): 0.27 MB/instance.
+# Per model and regime: 10k train + 2k sets x ~8 conditions = ~26k instances -> 5-7 GB. Fine on scratch.
