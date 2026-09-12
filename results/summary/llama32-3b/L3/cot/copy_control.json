@@ -1,0 +1,217 @@
+{
+ "incongruent@v1": {
+  "n_lure_errors_at_p5": 9,
+  "trailing_is_true_intermediate": 0.0,
+  "trailing_is_lure": 0.2222222222222222,
+  "chain_wrote_true_at_p4": 0.0,
+  "rows": [
+   {
+    "id": "L3-44-00223-inc@v1",
+    "trailing": 3,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-00266-inc@v1",
+    "trailing": 1,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-00636-inc@v1",
+    "trailing": 4,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": true,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-00848-inc@v1",
+    "trailing": 2,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-00853-inc@v1",
+    "trailing": 4,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": true,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-01217-inc@v1",
+    "trailing": 4,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-01285-inc@v1",
+    "trailing": 3,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-01431-inc@v1",
+    "trailing": 2,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-01919-inc@v1",
+    "trailing": 5,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   }
+  ]
+ },
+ "incongruent@v2": {
+  "n_lure_errors_at_p5": 0,
+  "trailing_is_true_intermediate": null,
+  "trailing_is_lure": null,
+  "chain_wrote_true_at_p4": null,
+  "rows": []
+ },
+ "incongruent_alt@v1": {
+  "n_lure_errors_at_p5": 13,
+  "trailing_is_true_intermediate": 0.0,
+  "trailing_is_lure": 0.0,
+  "chain_wrote_true_at_p4": 0.0,
+  "rows": [
+   {
+    "id": "L3-44-00078-incalt@v1",
+    "trailing": 6,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-00164-incalt@v1",
+    "trailing": 4,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-00519-incalt@v1",
+    "trailing": 1,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-00547-incalt@v1",
+    "trailing": 2,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-00596-incalt@v1",
+    "trailing": 2,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-00833-incalt@v1",
+    "trailing": 1,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-01040-incalt@v1",
+    "trailing": 2,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-01072-incalt@v1",
+    "trailing": 3,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-01096-incalt@v1",
+    "trailing": 2,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-01110-incalt@v1",
+    "trailing": 4,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-01153-incalt@v1",
+    "trailing": 3,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-01537-incalt@v1",
+    "trailing": 5,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-01949-incalt@v1",
+    "trailing": 3,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   }
+  ]
+ },
+ "incongruent_alt@v2": {
+  "n_lure_errors_at_p5": 1,
+  "trailing_is_true_intermediate": 0.0,
+  "trailing_is_lure": 1.0,
+  "chain_wrote_true_at_p4": 0.0,
+  "rows": [
+   {
+    "id": "L3-44-01608-incalt@v2",
+    "trailing": 1,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": true,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   }
+  ]
+ }
+}

@@ -59,8 +59,17 @@ def behavior_table(df: pd.DataFrame) -> dict:
     for t in sorted({g.split("@")[1] for g in df["group"].unique() if "@" in g}):
         for name, a, b in (("interference", "neutral", f"incongruent@{t}"), ("facilitation", f"congruent@{t}", "neutral")):
             if a in df["group"].values and b in df["group"].values:
-                d2 = df.rename(columns={"group": "condition"})
+                d2 = df.drop(columns=["condition"]).rename(columns={"group": "condition"})
                 out[f"{name}@{t}"] = paired_difference_ci(d2, a, b)
+    # CoT protection: interference(direct) - interference(cot) is computed across regimes in main()
+    # pseudo-lure baseline: how often the NEUTRAL twin answers the lure its incongruent twin carries
+    neu = df[df["group"] == "neutral"].set_index("set_id")
+    for t in sorted({g.split("@")[1] for g in df["group"].unique() if "@" in g}):
+        inc = df[df["group"] == f"incongruent@{t}"].set_index("set_id")
+        common = inc.index.intersection(neu.index)
+        if len(common):
+            hit = (neu.loc[common, "pred"].values == inc.loc[common, "lure"].values).astype(float)
+            out[f"pseudo_lure_rate@{t}"] = bootstrap_ci(hit, np.asarray(common))
     return out
 
 
