@@ -124,3 +124,14 @@ The large, robust effect is **facilitation**: a congruent name is used when it a
 computation (+3 to +12 points), and a number-word name changes accuracy even when its value is
 irrelevant (E26). The paper's outcome cell is "lure fades, answer correct", with the twist that
 the name's value is *recruited* rather than *overridden* when it helps.
+
+## 2026-09-12 (later) — Llama-3.1-8B probes complete
+
+Same picture as the 3B, chain regime, neutral-trained probes, incongruent, best-neutral-accuracy
+layer: end of definition acc .45 / lure .06 / margin +1.6 (v2); query lure .40 (v2) and .55 (v1)
+with control accuracy 1.00 (name identity, not claimed); value step and answer acc .99–1.00,
+lure .000, margin +4.4 to +6.3. Replication: first position above τ is the value step for both
+variables; pre-chain maxima .23 (v1) / .53 (v2) vs Kudo's 26.0 / 29.6 for Llama-3.1-8B.
+Kudo Fig. 5 reproduced in our format (different-problem source): the final answer flips only
+when the substitution step (layers 0–15) or the value step (layers 16–27) is patched; no input
+equation or earlier step has any effect (paper/figures/kudo_fig5_llama32-3b_L3_cot_v2.png).
