@@ -616,6 +616,623 @@
    }
   }
  },
+ "ctl_lure@v2": {
+  "L0": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.2777777777777778,
+    "matches_source": 0.972,
+    "normalized_ld_mean": 0.9861782261096358,
+    "normalized_ld_median": 1.0,
+    "base_acc": 0.462,
+    "patched_acc": 0.4595,
+    "n_lure_err": 72,
+    "recovery": 0.08333333333333333,
+    "damage": 0.09415584415584416,
+    "follows_src_lure": 0.0375
+   }
+  },
+  "L1": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.3333333333333333,
+    "matches_source": 0.893,
+    "normalized_ld_mean": 0.8889745143379237,
+    "normalized_ld_median": 0.9166669257813622,
+    "base_acc": 0.462,
+    "patched_acc": 0.4695,
+    "n_lure_err": 72,
+    "recovery": 0.08333333333333333,
+    "damage": 0.09199134199134198,
+    "follows_src_lure": 0.0345
+   }
+  },
+  "L2": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.2222222222222222,
+    "matches_source": 0.9485,
+    "normalized_ld_mean": 0.9553094891092156,
+    "normalized_ld_median": 0.9999999761581381,
+    "base_acc": 0.462,
+    "patched_acc": 0.4625,
+    "n_lure_err": 72,
+    "recovery": 0.06944444444444445,
+    "damage": 0.08766233766233766,
+    "follows_src_lure": 0.0365
+   }
+  },
+  "L3": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.2638888888888889,
+    "matches_source": 0.9385,
+    "normalized_ld_mean": 0.9470646001693557,
+    "normalized_ld_median": 0.9999999449803365,
+    "base_acc": 0.462,
+    "patched_acc": 0.462,
+    "n_lure_err": 72,
+    "recovery": 0.06944444444444445,
+    "damage": 0.08874458874458875,
+    "follows_src_lure": 0.036
+   }
+  },
+  "L4": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.25,
+    "matches_source": 0.9185,
+    "normalized_ld_mean": 0.8769830583361237,
+    "normalized_ld_median": 0.944444459529571,
+    "base_acc": 0.462,
+    "patched_acc": 0.4635,
+    "n_lure_err": 72,
+    "recovery": 0.06944444444444445,
+    "damage": 0.08333333333333333,
+    "follows_src_lure": 0.0365
+   }
+  },
+  "L5": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.2361111111111111,
+    "matches_source": 0.918,
+    "normalized_ld_mean": 0.8709544416528184,
+    "normalized_ld_median": 0.9615384611857714,
+    "base_acc": 0.462,
+    "patched_acc": 0.4635,
+    "n_lure_err": 72,
+    "recovery": 0.05555555555555555,
+    "damage": 0.07683982683982683,
+    "follows_src_lure": 0.0375
+   }
+  },
+  "L6": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.2222222222222222,
+    "matches_source": 0.911,
+    "normalized_ld_mean": 0.8281129156285096,
+    "normalized_ld_median": 0.933333214653878,
+    "base_acc": 0.462,
+    "patched_acc": 0.4665,
+    "n_lure_err": 72,
+    "recovery": 0.05555555555555555,
+    "damage": 0.06818181818181818,
+    "follows_src_lure": 0.034
+   }
+  },
+  "L7": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.2222222222222222,
+    "matches_source": 0.9075,
+    "normalized_ld_mean": 0.8128102815380603,
+    "normalized_ld_median": 0.8888889771920804,
+    "base_acc": 0.462,
+    "patched_acc": 0.4595,
+    "n_lure_err": 72,
+    "recovery": 0.05555555555555555,
+    "damage": 0.0735930735930736,
+    "follows_src_lure": 0.0355
+   }
+  },
+  "L8": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.20833333333333334,
+    "matches_source": 0.906,
+    "normalized_ld_mean": 0.802402819932734,
+    "normalized_ld_median": 0.8888887976422734,
+    "base_acc": 0.462,
+    "patched_acc": 0.4645,
+    "n_lure_err": 72,
+    "recovery": 0.05555555555555555,
+    "damage": 0.0670995670995671,
+    "follows_src_lure": 0.0355
+   }
+  },
+  "L9": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.19444444444444445,
+    "matches_source": 0.893,
+    "normalized_ld_mean": 0.8020418807827373,
+    "normalized_ld_median": 0.8666666836208746,
+    "base_acc": 0.462,
+    "patched_acc": 0.4625,
+    "n_lure_err": 72,
+    "recovery": 0.06944444444444445,
+    "damage": 0.07575757575757576,
+    "follows_src_lure": 0.036
+   }
+  },
+  "L10": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.19444444444444445,
+    "matches_source": 0.89,
+    "normalized_ld_mean": 0.7679325828826985,
+    "normalized_ld_median": 0.8333333333333334,
+    "base_acc": 0.462,
+    "patched_acc": 0.465,
+    "n_lure_err": 72,
+    "recovery": 0.041666666666666664,
+    "damage": 0.07034632034632035,
+    "follows_src_lure": 0.0375
+   }
+  },
+  "L11": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.1527777777777778,
+    "matches_source": 0.883,
+    "normalized_ld_mean": 0.7611461679112377,
+    "normalized_ld_median": 0.8333336512247721,
+    "base_acc": 0.462,
+    "patched_acc": 0.472,
+    "n_lure_err": 72,
+    "recovery": 0.05555555555555555,
+    "damage": 0.06277056277056277,
+    "follows_src_lure": 0.0365
+   }
+  },
+  "L12": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.16666666666666666,
+    "matches_source": 0.8675,
+    "normalized_ld_mean": 0.7626158458157942,
+    "normalized_ld_median": 0.8333335883088545,
+    "base_acc": 0.462,
+    "patched_acc": 0.4755,
+    "n_lure_err": 72,
+    "recovery": 0.06944444444444445,
+    "damage": 0.05194805194805195,
+    "follows_src_lure": 0.0335
+   }
+  },
+  "L13": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.1388888888888889,
+    "matches_source": 0.87,
+    "normalized_ld_mean": 0.7342408986076979,
+    "normalized_ld_median": 0.8,
+    "base_acc": 0.462,
+    "patched_acc": 0.4695,
+    "n_lure_err": 72,
+    "recovery": 0.05555555555555555,
+    "damage": 0.05194805194805195,
+    "follows_src_lure": 0.033
+   }
+  },
+  "L14": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.16666666666666666,
+    "matches_source": 0.8615,
+    "normalized_ld_mean": 0.7554192536419525,
+    "normalized_ld_median": 0.8108108522597683,
+    "base_acc": 0.462,
+    "patched_acc": 0.4685,
+    "n_lure_err": 72,
+    "recovery": 0.05555555555555555,
+    "damage": 0.05411255411255411,
+    "follows_src_lure": 0.032
+   }
+  },
+  "L15": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.1111111111111111,
+    "matches_source": 0.851,
+    "normalized_ld_mean": 0.6524219688583783,
+    "normalized_ld_median": 0.6666670905221879,
+    "base_acc": 0.462,
+    "patched_acc": 0.466,
+    "n_lure_err": 72,
+    "recovery": 0.041666666666666664,
+    "damage": 0.03896103896103896,
+    "follows_src_lure": 0.034
+   }
+  },
+  "L16": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.08333333333333333,
+    "matches_source": 0.8405,
+    "normalized_ld_mean": 0.5442805969297659,
+    "normalized_ld_median": 0.571428778220117,
+    "base_acc": 0.462,
+    "patched_acc": 0.4635,
+    "n_lure_err": 72,
+    "recovery": 0.027777777777777776,
+    "damage": 0.01948051948051948,
+    "follows_src_lure": 0.036
+   }
+  },
+  "L17": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.1111111111111111,
+    "matches_source": 0.833,
+    "normalized_ld_mean": 0.5635416614016718,
+    "normalized_ld_median": 0.6000001025199475,
+    "base_acc": 0.462,
+    "patched_acc": 0.463,
+    "n_lure_err": 72,
+    "recovery": 0.041666666666666664,
+    "damage": 0.016233766233766232,
+    "follows_src_lure": 0.0375
+   }
+  },
+  "L18": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.1111111111111111,
+    "matches_source": 0.8305,
+    "normalized_ld_mean": 0.4841475577799568,
+    "normalized_ld_median": 0.5000002384186928,
+    "base_acc": 0.462,
+    "patched_acc": 0.4635,
+    "n_lure_err": 72,
+    "recovery": 0.027777777777777776,
+    "damage": 0.011904761904761904,
+    "follows_src_lure": 0.0345
+   }
+  },
+  "L19": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.09722222222222222,
+    "matches_source": 0.8305,
+    "normalized_ld_mean": 0.49282550481391885,
+    "normalized_ld_median": 0.5454545099873254,
+    "base_acc": 0.462,
+    "patched_acc": 0.4665,
+    "n_lure_err": 72,
+    "recovery": 0.027777777777777776,
+    "damage": 0.00974025974025974,
+    "follows_src_lure": 0.037
+   }
+  },
+  "L20": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.09722222222222222,
+    "matches_source": 0.8275,
+    "normalized_ld_mean": 0.468690894022453,
+    "normalized_ld_median": 0.5,
+    "base_acc": 0.462,
+    "patched_acc": 0.4635,
+    "n_lure_err": 72,
+    "recovery": 0.041666666666666664,
+    "damage": 0.012987012987012988,
+    "follows_src_lure": 0.0365
+   }
+  },
+  "L21": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.08333333333333333,
+    "matches_source": 0.8295,
+    "normalized_ld_mean": 0.4747608089616628,
+    "normalized_ld_median": 0.5,
+    "base_acc": 0.462,
+    "patched_acc": 0.467,
+    "n_lure_err": 72,
+    "recovery": 0.041666666666666664,
+    "damage": 0.007575757575757576,
+    "follows_src_lure": 0.0345
+   }
+  },
+  "L22": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.06944444444444445,
+    "matches_source": 0.825,
+    "normalized_ld_mean": 0.351172365931748,
+    "normalized_ld_median": 0.375,
+    "base_acc": 0.462,
+    "patched_acc": 0.461,
+    "n_lure_err": 72,
+    "recovery": 0.013888888888888888,
+    "damage": 0.011904761904761904,
+    "follows_src_lure": 0.0365
+   }
+  },
+  "L23": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.041666666666666664,
+    "matches_source": 0.8285,
+    "normalized_ld_mean": 0.2354561253208337,
+    "normalized_ld_median": 0.24999950453636816,
+    "base_acc": 0.462,
+    "patched_acc": 0.4605,
+    "n_lure_err": 72,
+    "recovery": 0.013888888888888888,
+    "damage": 0.007575757575757576,
+    "follows_src_lure": 0.034
+   }
+  },
+  "L24": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.027777777777777776,
+    "matches_source": 0.8255,
+    "normalized_ld_mean": 0.1976001862343681,
+    "normalized_ld_median": 0.18181822122621996,
+    "base_acc": 0.462,
+    "patched_acc": 0.4595,
+    "n_lure_err": 72,
+    "recovery": 0.013888888888888888,
+    "damage": 0.010822510822510822,
+    "follows_src_lure": 0.034
+   }
+  },
+  "L25": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.013888888888888888,
+    "matches_source": 0.825,
+    "normalized_ld_mean": 0.14176977455905806,
+    "normalized_ld_median": 0.11764704562388638,
+    "base_acc": 0.462,
+    "patched_acc": 0.4605,
+    "n_lure_err": 72,
+    "recovery": 0.0,
+    "damage": 0.007575757575757576,
+    "follows_src_lure": 0.0325
+   }
+  },
+  "L26": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.013888888888888888,
+    "matches_source": 0.8265,
+    "normalized_ld_mean": 0.14856580380566317,
+    "normalized_ld_median": 0.12499989569185921,
+    "base_acc": 0.462,
+    "patched_acc": 0.461,
+    "n_lure_err": 72,
+    "recovery": 0.0,
+    "damage": 0.006493506493506494,
+    "follows_src_lure": 0.034
+   }
+  },
+  "L27": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.027777777777777776,
+    "matches_source": 0.8265,
+    "normalized_ld_mean": 0.12497347464842715,
+    "normalized_ld_median": 0.09090897613317857,
+    "base_acc": 0.462,
+    "patched_acc": 0.46,
+    "n_lure_err": 72,
+    "recovery": 0.0,
+    "damage": 0.00974025974025974,
+    "follows_src_lure": 0.0325
+   }
+  },
+  "L28": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.013888888888888888,
+    "matches_source": 0.8265,
+    "normalized_ld_mean": 0.06625550054344574,
+    "normalized_ld_median": 1.1920924691823235e-07,
+    "base_acc": 0.462,
+    "patched_acc": 0.4605,
+    "n_lure_err": 72,
+    "recovery": 0.0,
+    "damage": 0.008658008658008658,
+    "follows_src_lure": 0.034
+   }
+  },
+  "L29": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.0,
+    "matches_source": 0.8265,
+    "normalized_ld_mean": 0.10130146869196366,
+    "normalized_ld_median": 1.9073486328125e-06,
+    "base_acc": 0.462,
+    "patched_acc": 0.461,
+    "n_lure_err": 72,
+    "recovery": 0.0,
+    "damage": 0.004329004329004329,
+    "follows_src_lure": 0.033
+   }
+  },
+  "L30": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.013888888888888888,
+    "matches_source": 0.826,
+    "normalized_ld_mean": 0.002539166097817135,
+    "normalized_ld_median": 0.0,
+    "base_acc": 0.462,
+    "patched_acc": 0.461,
+    "n_lure_err": 72,
+    "recovery": 0.0,
+    "damage": 0.004329004329004329,
+    "follows_src_lure": 0.0335
+   }
+  },
+  "L31": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.0,
+    "matches_source": 0.8275,
+    "normalized_ld_mean": 0.0,
+    "normalized_ld_median": 0.0,
+    "base_acc": 0.462,
+    "patched_acc": 0.462,
+    "n_lure_err": 72,
+    "recovery": 0.0,
+    "damage": 0.0,
+    "follows_src_lure": 0.033
+   }
+  },
+  "W0-3": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.2638888888888889,
+    "matches_source": 0.9765,
+    "normalized_ld_mean": 0.9790418351298016,
+    "normalized_ld_median": 1.0,
+    "base_acc": 0.462,
+    "patched_acc": 0.46,
+    "n_lure_err": 72,
+    "recovery": 0.08333333333333333,
+    "damage": 0.09415584415584416,
+    "follows_src_lure": 0.038
+   }
+  },
+  "W4-7": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.25,
+    "matches_source": 0.9225,
+    "normalized_ld_mean": 0.9074724592356093,
+    "normalized_ld_median": 0.9999997275216981,
+    "base_acc": 0.462,
+    "patched_acc": 0.4605,
+    "n_lure_err": 72,
+    "recovery": 0.06944444444444445,
+    "damage": 0.08441558441558442,
+    "follows_src_lure": 0.036
+   }
+  },
+  "W8-11": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.20833333333333334,
+    "matches_source": 0.902,
+    "normalized_ld_mean": 0.8093613480257457,
+    "normalized_ld_median": 0.8888889830789548,
+    "base_acc": 0.462,
+    "patched_acc": 0.465,
+    "n_lure_err": 72,
+    "recovery": 0.05555555555555555,
+    "damage": 0.06926406926406926,
+    "follows_src_lure": 0.035
+   }
+  },
+  "W12-15": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.18055555555555555,
+    "matches_source": 0.866,
+    "normalized_ld_mean": 0.7627342571931633,
+    "normalized_ld_median": 0.8333333796925217,
+    "base_acc": 0.462,
+    "patched_acc": 0.476,
+    "n_lure_err": 72,
+    "recovery": 0.06944444444444445,
+    "damage": 0.05303030303030303,
+    "follows_src_lure": 0.033
+   }
+  },
+  "W16-19": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.08333333333333333,
+    "matches_source": 0.839,
+    "normalized_ld_mean": 0.5460231448346399,
+    "normalized_ld_median": 0.5777778179262893,
+    "base_acc": 0.462,
+    "patched_acc": 0.4625,
+    "n_lure_err": 72,
+    "recovery": 0.027777777777777776,
+    "damage": 0.01948051948051948,
+    "follows_src_lure": 0.0365
+   }
+  },
+  "W20-23": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.06944444444444445,
+    "matches_source": 0.8285,
+    "normalized_ld_mean": 0.48444522534152007,
+    "normalized_ld_median": 0.5,
+    "base_acc": 0.462,
+    "patched_acc": 0.463,
+    "n_lure_err": 72,
+    "recovery": 0.013888888888888888,
+    "damage": 0.00974025974025974,
+    "follows_src_lure": 0.0345
+   }
+  },
+  "W24-27": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.027777777777777776,
+    "matches_source": 0.8265,
+    "normalized_ld_mean": 0.20864197077411106,
+    "normalized_ld_median": 0.19999999364217091,
+    "base_acc": 0.462,
+    "patched_acc": 0.4625,
+    "n_lure_err": 72,
+    "recovery": 0.0,
+    "damage": 0.004329004329004329,
+    "follows_src_lure": 0.0345
+   }
+  },
+  "W28-31": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.0,
+    "matches_source": 0.825,
+    "normalized_ld_mean": 0.09558344229411019,
+    "normalized_ld_median": 1.4305094282492234e-06,
+    "base_acc": 0.462,
+    "patched_acc": 0.4625,
+    "n_lure_err": 72,
+    "recovery": 0.0,
+    "damage": 0.0021645021645021645,
+    "follows_src_lure": 0.0325
+   }
+  },
+  "ALL": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": 0.3055555555555556,
+    "matches_source": 0.9735,
+    "normalized_ld_mean": 0.9815247929903071,
+    "normalized_ld_median": 1.0,
+    "base_acc": 0.462,
+    "patched_acc": 0.4575,
+    "n_lure_err": 72,
+    "recovery": 0.08333333333333333,
+    "damage": 0.09848484848484848,
+    "follows_src_lure": 0.0395
+   }
+  }
+ },
  "ctl_word@v1": {
   "L0": {
    "anspre": {

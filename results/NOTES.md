@@ -93,3 +93,34 @@ errors to look at; E26 error analysis.
 - Job hygiene: the two 8B chain-regime probe jobs hit their 2 h limit before the second variable
   and the manifests recorded exit 0 (SLURM's SIGTERM bypassed the EXIT trap). Fixed in
   `submit.py` (TERM now records 143); the missing probes are resubmitted with 3 h.
+
+## 2026-09-12 (later) — patching with controls, Llama-3.1-8B
+
+Direct regime (41–49% accuracy; behavioural lure rate 3.5% vs pseudo-lure 3.1–3.5%, i.e. no
+lure effect above chance):
+
+| target | layer set | lure errors | neutral patch: lure removed | matches neutral twin's answer | normalised LD | word control: damage | lure control: follows new lure | lure control: lure removed |
+|---|---|---|---|---|---|---|---|---|
+| v1 | ALL | 80 | .43 | .97 | 1.00 | .10 | .04 | .39 |
+| v1 | L1 | 80 | .48 | .80 | .46 | .21 | .03 | .43 |
+| v2 | ALL | 72 | .31 | .95 | 1.01 | .09 | .04 | .31 |
+
+- The word control is at 9–10% damage (all layers), still above the 5% threshold but far below
+  the 3B's 17–22%. Patching the name positions from the neutral twin makes the incongruent run
+  produce the neutral twin's answer 95–97% of the time.
+- **The alternative-lure patch removes the "lure" answer exactly as often as the neutral patch
+  (39–43% vs 43%, 31% vs 31%) and the answer follows the new lure only 4% of the time, at the
+  base rate.** Together with the behavioural lure rate being at chance, this says the 8B
+  direct-regime "lure errors" are coincidences (a wrong answer that happens to equal the lure),
+  not name-driven, and the patching outcome is the disruption rate of any name swap. There is
+  no name-caused lure effect to localise in the 8B model.
+- Chain regime: zero lure errors; both controls at 0.
+
+**Emerging headline across both core models.** Number-word names barely mislead these base
+models: with a chain of thought the lure is absent from behaviour (≤ 1%) and from the
+representation by the value step; without a chain only the 3B model shows a lure effect above
+chance (8.6% vs 4.7%), and its patching evidence is confounded by disruption at floor accuracy.
+The large, robust effect is **facilitation**: a congruent name is used when it agrees with the
+computation (+3 to +12 points), and a number-word name changes accuracy even when its value is
+irrelevant (E26). The paper's outcome cell is "lure fades, answer correct", with the twist that
+the name's value is *recruited* rather than *overridden* when it helps.
