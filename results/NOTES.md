@@ -307,3 +307,33 @@ Level 3, same 2,000 matched sets, demonstration seed 7 (used everywhere so far) 
   do not depend on error rates, but will be reproduced under one more seed.
 - The level-4 and level-5 word-class effects (3B: 81.5 → 63 with a number-word queried name)
   must be re-tested under other demonstration sets before being believed.
+
+## 2026-09-13 — E33 sweep: three demonstration sets (7, 11, 13), all levels, both models
+
+Claim rule (amendment 2): sign holds in every seed AND pooled cluster-bootstrap CI excludes 0.
+Full table: results/summary/seed_sweep_L{2,3,4,5}.json. What is claimable:
+
+**Chain regime — the name's VALUE never matters.** Lure excess (lure rate minus pseudo-lure)
+is within ±0.5 points in every cell of every level and model; congruent and incongruent move
+together. What does move is the word CLASS by role: a number-word name on the queried
+variable at level 4 costs the 3B model 10.5 points (interference +10.5 [9.4, 11.6]; facilitation
+−10.9 [−12.0, −9.8]; both claimable, i.e. the same drop whether the value agrees or not); on the
+intermediate at level 4, +3.5 / −2.7; on the deepest variable at level 5 a number word HELPS
+(+7.3 facilitation, −3.5 interference, both claimable). The 8B model shows nothing under a chain
+except seed-13 noise at level 4. Neutral accuracy itself varies 26–85 (3B, L4) and 43–100
+(8B, L5) across demonstration sets.
+
+**Direct regime — the name's value is used as a shortcut, in both directions.** Facilitation
+on the queried variable is claimable almost everywhere: 3B +10.8 (L2), +5.4 (L3), +4.7 (L5);
+8B +11.8 (L2), +4.8 (L3), +13.7 (L4), +20.2 (L5). Lure excess on the queried variable is
+claimable at 3B L2/L3/L5 (+2.5 / +2.8 / +3.5) and 8B L3/L5 (+1.2 / **+20.5**); at 8B level 5
+under seed-11 demonstrations the model answers the lure in 50.8% of incongruent cases above
+baseline and gains 36 points from a congruent name: a full Stroop effect, induced by the
+demonstrations, absent under a chain (8B L5 chain lure excess −0.3 / −0.1 / +0.1).
+
+**Headline that survives:** without a chain, these models read a variable's value off its
+name when they can (facilitation up to +20, lure answers up to +51 under some demonstrations);
+with a chain, the name's value has no effect on the answer at any level, and the probes show
+the lure is read only where the name sits and is erased at the value step. What a chain does
+not remove is a word-class effect on equation selection (3B, level 4). The demonstrations
+modulate everything and must be reported as a factor.
