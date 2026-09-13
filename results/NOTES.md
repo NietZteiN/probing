@@ -226,3 +226,27 @@ training instances).**
 - **E32(a) answered**: the 8B operand-copy error disappears at level 2 (intermediate defined
   first) and at level 4, so it is tied to the level-3 layout (intermediate's equation second,
   two equations only). Check the level-3 demonstrations for a coincidence that could teach it.
+
+## 2026-09-13 — a demonstration artefact behind the 8B level-3 copy error; E26 at levels 4 and 5
+
+- **Level-3 demonstrations.** The three fixed word demos at level 3 include
+  `fish=1 - bell, bell=8 - 7; fish=?` where the intermediate's value (1) equals the first
+  equation's operand (1). One demo in three exhibits the very coincidence the 8B model then
+  reproduces as its dominant error ("write the first operand as the intermediate's value").
+  At level 2 and level 4 the 8B model makes essentially no errors (1–6 in 2,000), and their
+  demos carry no such coincidence. Conclusion: the 8B level-3 error rate (14% neutral) is
+  largely a few-shot artefact, not a property of the model; the within-condition comparisons
+  stay valid because every condition shares the demos, but the absolute level-3 accuracy and
+  the size of the "congruent name fixes it" effect must be re-measured with different demos.
+  **E33** (registered): rerun level-3 behaviour with demonstration seed 11 (`cot_s11`,
+  `direct_s11`) for both models; submitted.
+- **Level 4, Llama-3.2-3B.** The dominant error (223/371 neutral; 609/732 with a number-word
+  queried name) is `wrong_lhs_name` at step 2: after restating the queried equation the model
+  restates the wrong equation next (it picks the distractor or the query instead of the
+  intermediate's definition). A number-word name on the queried variable doubles this error
+  regardless of congruence (63% vs 81.5%): equation selection, not arithmetic, is what the
+  name disrupts. The 8B model makes 1–6 errors in 2,000 at level 4.
+- **Level 5.** 3B: 632/720 errors are a wrong substitution at step 5 (`bell=3 + frog` →
+  `bell=3 + 2` with the wrong operand). 8B: 689/1007 errors write an unrelated value at step 3,
+  the deepest variable's first computation (neutral 53% vs letters 82%). Word names are
+  harder than letters at depth for both models.
