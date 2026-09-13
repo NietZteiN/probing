@@ -71,10 +71,14 @@ def main() -> int:
                     # the "target" for reads is t (which value step to read)
                     pairs = [(s_, d_) for s_, d_ in pairs]
                 else:
+                    # the neutral twin carries no target; every other twin is keyed by the renamed slot
                     for d in sets:
-                        s_ = d.get((srcname, t)); d_ = d.get(("incongruent", t))
+                        s_ = d.get(("neutral", None)) if srcname == "neutral" else d.get((srcname, t))
+                        d_ = d.get(("incongruent", t))
                         if s_ and d_:
                             pairs.append((s_, d_))
+                if not pairs:
+                    print(f"grid_{srcname}@{t}: no pairs, skipping"); continue
                 if a.limit:
                     pairs = pairs[:a.limit]
                 out = OUT_DIR / "patching" / a.model / f"L{a.level}" / a.regime / f"grid_{srcname}@{t}.json"
