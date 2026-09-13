@@ -65,3 +65,31 @@ the time; the metric for this regime is lure removal (and matches-source, record
 
 **Open.** 8B probes and patching (queued); ctl_word / ctl_lure for 3B (queued); E22 has 9 lure
 errors to look at; E26 error analysis.
+
+## 2026-09-12 (later) — control patches, Llama-3.2-3B, direct regime
+
+| target | layer set | neutral patch: lure removed | normalised LD | word control: damage | lure control: follows new lure | lure control: lure removed |
+|---|---|---|---|---|---|---|
+| v1 | L1 | .75 | .83 | **.43** | .09 | .37 |
+| v1 | W0-3 | .53 | 1.00 | .21 | .09 | .36 |
+| v1 | ALL | .52 | 1.00 | .22 | .09 | .35 |
+| v2 | L1 | .46 | .82 | .21 | .07 | .22 |
+| v2 | ALL | .40 | .99 | .17 | .07 | .18 |
+
+- **The word control fails the pre-registered 5% damage threshold** (17–43%): at 13% baseline
+  accuracy, replacing the name token's activations with another neutral word's changes a fifth
+  of the few correct answers. Patching in this regime is disruptive, so "lure removed" is not by
+  itself evidence that the name causes the lure answer.
+- What survives: the neutral patch removes the lure answer more often than the alternative-lure
+  patch does (52% vs 35% for v1, 40% vs 18% for v2, all layers) and fully restores the
+  true-minus-lure margin (normalised LD ≈ 1.0), and swapping one lure for another makes the
+  answer follow the new lure only 7–9% of the time, near the 4.7% base rate. Reading: the
+  lure answer is tied to the name token's representation, but the effect is not cleanly
+  separable from disruption at floor accuracy. Per PREREGISTRATION §5 the causal claim for
+  3B-direct is downgraded; the 8B model (41–49% direct accuracy) decides whether a clean version
+  exists.
+- In the chain regime both controls are clean (damage 0.1%, follows-new-lure 0%), but there are
+  no lure errors to recover; the chain's value step is where the name stops mattering.
+- Job hygiene: the two 8B chain-regime probe jobs hit their 2 h limit before the second variable
+  and the manifests recorded exit 0 (SLURM's SIGTERM bypassed the EXIT trap). Fixed in
+  `submit.py` (TERM now records 143); the missing probes are resubmitted with 3 h.
