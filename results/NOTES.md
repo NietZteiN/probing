@@ -345,3 +345,21 @@ with the lure at **65%**: `eight=8`. When the model cannot compute the answer it
 queried name's value. Nothing in the seed-11 demonstrations (answers 0, 4, 9) suggests this;
 it is the fallback that a floor exposes. The same fallback is what the chain removes: 8B level
 5 chain, seed 11, lure excess −1.1 / −0.4 / +0.4 (v1 / v2 / v3) at 43–100% accuracy.
+
+## 2026-09-13 — representational replication under the second demonstration set (3B, level 3)
+
+The probe map is unchanged by the demonstrations, unlike behaviour:
+
+| regime | demos | end of definition (v2) | query (v2) | value step (v2) | answer (v2) |
+|---|---|---|---|---|---|
+| chain | s7 | acc .49 / ctl .17, lure .06 | acc .27 / **ctl .97**, lure .32 | acc .98, lure .00 | acc 1.00, lure .00 |
+| chain | s11 | acc .36 / ctl .17, lure .06 | acc .23 / **ctl .97**, lure .40 | acc 1.00, lure .00 | acc 1.00, lure .00 |
+| direct | s7 | acc .47, lure .06 | acc .32 / ctl .96, lure .43 | — | acc .80, lure .02 |
+| direct | s11 | acc .35, lure .07 | acc .30 / ctl .96, lure .33 | — | acc .37, lure .04 |
+
+Same for the queried variable (lure .11 at its definition, .51–.66 at the query with control
+1.00, .00 at the value step and answer). **Conclusion: the three findings that carry the paper
+— the lure is read only at name tokens, the query-position readout is name identity, and the
+value step erases the lure — hold under both demonstration sets and in both regimes.** Only the
+absolute accuracies move (3B direct answer-position probe .80 → .37 with the demos, tracking
+task accuracy 13% → 31%).
