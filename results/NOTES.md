@@ -182,3 +182,12 @@ at most tokens, which is exactly where the query-position "lure" reads come from
 (Fig. 3 analogue): on random incongruent instances the top-1 probe prediction is the lure at
 name tokens and the true value from the value step onward; in 2 of 12 sampled instances the
 probe reads the lure across the whole input, worth a look (E30 follow-up).
+
+## 2026-09-13 — E2 per-token replication, Llama-3.2-3B (letter-trained, letter test, chain)
+
+Kudo et al. Table 3, Llama-3.2-3B row: t*_eq(A) = 5, t*_eq(B) = 2; Acc≺CoT 17.8 / 33.2.
+Ours, per-token probes on the same format: first token above τ = 0.9 is the final value step
+for the queried variable (segment `cot:5:value:v1`, i.e. equation 5) and the intermediate's value
+step (`cot:2:value:v2`, equation 2); pre-chain maxima .30 / .48. **t*_eq reproduced exactly;
+pre-chain accuracies are of the same order (ours a little higher, layer stride 2 and 4,000
+training instances).**
