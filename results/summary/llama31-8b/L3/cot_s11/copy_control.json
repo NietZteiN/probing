@@ -1,1 +1,30 @@
-{}
+{
+ "incongruent@v1": {
+  "n_lure_errors_at_p5": 0,
+  "trailing_is_true_intermediate": null,
+  "trailing_is_lure": null,
+  "chain_wrote_true_at_p4": null,
+  "rows": []
+ },
+ "incongruent@v2": {
+  "n_lure_errors_at_p5": 0,
+  "trailing_is_true_intermediate": null,
+  "trailing_is_lure": null,
+  "chain_wrote_true_at_p4": null,
+  "rows": []
+ },
+ "incongruent_alt@v1": {
+  "n_lure_errors_at_p5": 0,
+  "trailing_is_true_intermediate": null,
+  "trailing_is_lure": null,
+  "chain_wrote_true_at_p4": null,
+  "rows": []
+ },
+ "incongruent_alt@v2": {
+  "n_lure_errors_at_p5": 0,
+  "trailing_is_true_intermediate": null,
+  "trailing_is_lure": null,
+  "chain_wrote_true_at_p4": null,
+  "rows": []
+ }
+}

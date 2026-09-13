@@ -43,6 +43,7 @@ def main() -> int:
     ap.add_argument("--all-positions", action="store_true", help="E27: cache every token of the instance region; groups get the suffix __alltok")
     ap.add_argument("--layer-stride", type=int, default=1, help="keep every k-th layer (index 0 = embeddings); 2 halves the cache")
     ap.add_argument("--train-limit", type=int, default=None, help="cap probe-train instances (E27 uses 4000)")
+    ap.add_argument("--no-forced", action="store_true", help="behaviour only: no hidden states, no forced logits (demo-seed sweeps)")
     ap.add_argument("--forced-all", action="store_true",
                     help="also cache hidden states for the *_alt control groups (default: behaviour only for them; "
                          "probes never read them and patching recomputes activations). A labelled cache is 2.3 MB per "
@@ -84,7 +85,7 @@ def main() -> int:
             cond = rows_[0].condition
             s = run_condition(tok, model, a.model, a.level, regime, cond, rows_, out, bs, MAX_NEW[parse_regime(regime)[0]],
                               layers=a.layers, do_free=(not g.startswith("train_")) and not a.all_positions,
-                              do_forced=(a.forced_all or "_alt@" not in g), all_positions=a.all_positions)
+                              do_forced=(not a.no_forced) and (a.forced_all or "_alt@" not in g), all_positions=a.all_positions)
             print(f"{a.model} L{a.level} {regime} {g}: n={s['n']} acc={s.get('free_accuracy')} lure={s.get('free_lure_rate')} "
                   f"excluded={len(s['excluded'])} {s['seconds']}s", flush=True)
     return 0

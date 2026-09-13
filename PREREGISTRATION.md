@@ -86,3 +86,13 @@ index (lure / (lure + true), congruent trials excluded) as a reported column bes
 (c) Patching is additionally scored with Zhang and Nanda's normalised logit difference between
 true value and lure, beside the recovery rate; both must agree for a layer set to be reported.
 None of these change a primary contrast.
+
+**Amendment 2 (2026-09-13, after E33).** The fixed three-shot demonstration set proved to be a
+large source of variance: at level 3 the 8B model's chain accuracy moved from 85.7% to 100%
+and every name effect vanished when the demonstrations changed. From now on: (a) every
+behavioural quantity is computed for at least three demonstration seeds (7, 11, 13) and
+reported as the mean with the across-seed range; (b) a name effect (interference, facilitation,
+lure rate above baseline) is claimed only if its sign holds in every seed and the pooled
+cluster-bootstrap CI (clustering on matched set, seeds as replicates) excludes zero; (c) the
+seed-7 results obtained before this amendment are kept and reported as one of the three seeds.
+The representational and causal analyses stay on seed 7 plus one replication seed.

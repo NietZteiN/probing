@@ -276,3 +276,34 @@ With the lead's approval, deleted the `hidden.npy` files of every `*_alt@*` grou
 `probing/` on scratch went from 1.8 TB to 1.4 TB; the account's scratch total from 2.9 to 2.5 TB.
 The per-user scratch limit behaves like ~3 TB. `20_run_model.py` no longer caches the control
 groups' hidden states unless `--forced-all` is given. E33 resubmitted (393084 / 393085).
+
+## 2026-09-13 — E33: the level-3 name effects were a demonstration artefact
+
+Level 3, same 2,000 matched sets, demonstration seed 7 (used everywhere so far) vs seed 11:
+
+| model | regime | demos | neutral | letters | queried: cong / inc / lure (base) | intermediate: cong / inc / lure (base) |
+|---|---|---|---|---|---|---|
+| 3B | chain | s7 | 96.6 | 98.7 | 95.1 / 94.6 / 0.4 (0.1) | 99.5 / 99.4 / 0.0 (0.1) |
+| 3B | chain | s11 | **99.9** | 98.5 | 100 / 100 / 0.0 | 99.6 / 99.9 / 0.0 |
+| 8B | chain | s7 | 85.7 | 96.6 | 82.5 / 83.6 / 0.7 (1.1) | 97.5 / 84.0 / 0.9 (0.9) |
+| 8B | chain | s11 | **100** | 100 | 100 / 100 / 0.0 | 99.5 / 100 / 0.0 |
+| 3B | direct | s7 | 13.4 | 25.8 | 18.9 / 13.9 / 8.6 (4.7) | 17.9 / 13.8 / 8.1 (4.7) |
+| 3B | direct | s11 | 31.4 | 33.9 | 33.1 / 28.8 / 5.9 (5.5) | 31.9 / 29.3 / 7.0 (4.7) |
+| 8B | direct | s7 | 41.3 | 37.9 | 48.8 / 44.4 / 3.5 (3.1) | 47.9 / 45.8 / 3.5 (3.5) |
+| 8B | direct | s11 | 62.1 | 56.4 | 63.3 / 61.3 / 4.2 (3.0) | 63.7 / 61.8 / 3.6 (3.1) |
+
+- With seed-11 demonstrations every level-3 chain condition is at 99.5–100% for both models.
+  The 2-point interference, the +3 / +12 facilitation, the 8B operand-copy error (E26) and the
+  "number word on the intermediate helps" effect (E26 question) all vanish. They were induced
+  by the seed-7 demonstrations (one of which contains the operand coincidence).
+- What is robust to the demonstration set: (i) under a chain the lure is never the answer;
+  (ii) without a chain there is a small lure effect above baseline (3B: 5.9 / 7.0 vs 5.5 / 4.7;
+  8B: 4.2 / 3.6 vs 3.0 / 3.1), 1–3 points; (iii) direct-answer accuracy itself swings by
+  18–21 points with the demonstrations, dwarfing any name effect.
+- Consequence for the paper: the demonstration set becomes a factor. Every behavioural number
+  is reported as the mean (and range) over ≥ 3 demonstration sets, and no name effect is claimed
+  unless it holds in every set (PREREGISTRATION amendment 2). The representational results
+  (lure read only at name tokens; true value at the value step) were obtained under seed 7 and
+  do not depend on error rates, but will be reproduced under one more seed.
+- The level-4 and level-5 word-class effects (3B: 81.5 → 63 with a number-word queried name)
+  must be re-tested under other demonstration sets before being believed.
