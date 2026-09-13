@@ -1,0 +1,994 @@
+{
+ "llama32-3b/cot": {
+  "seeds": [
+   7,
+   11
+  ],
+  "groups": {
+   "congruent@v1": {
+    "acc_by_seed": {
+     "7": 0.951,
+     "11": 0.9995
+    },
+    "acc_mean": 0.97525,
+    "acc_range": [
+     0.951,
+     0.9995
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "congruent@v2": {
+    "acc_by_seed": {
+     "7": 0.9945,
+     "11": 0.996
+    },
+    "acc_mean": 0.99525,
+    "acc_range": [
+     0.9945,
+     0.996
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "incongruent@v1": {
+    "acc_by_seed": {
+     "7": 0.946,
+     "11": 0.9995
+    },
+    "acc_mean": 0.97275,
+    "acc_range": [
+     0.946,
+     0.9995
+    ],
+    "lure_by_seed": {
+     "7": 0.0045,
+     "11": 0.0
+    },
+    "lure_mean": 0.00225
+   },
+   "incongruent@v2": {
+    "acc_by_seed": {
+     "7": 0.9935,
+     "11": 0.999
+    },
+    "acc_mean": 0.9962500000000001,
+    "acc_range": [
+     0.9935,
+     0.999
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "incongruent_alt@v1": {
+    "acc_by_seed": {
+     "7": 0.9445,
+     "11": 1.0
+    },
+    "acc_mean": 0.9722500000000001,
+    "acc_range": [
+     0.9445,
+     1.0
+    ],
+    "lure_by_seed": {
+     "7": 0.0065,
+     "11": 0.0
+    },
+    "lure_mean": 0.00325
+   },
+   "incongruent_alt@v2": {
+    "acc_by_seed": {
+     "7": 0.992,
+     "11": 0.9985
+    },
+    "acc_mean": 0.99525,
+    "acc_range": [
+     0.992,
+     0.9985
+    ],
+    "lure_by_seed": {
+     "7": 0.0005,
+     "11": 0.0005
+    },
+    "lure_mean": 0.0005
+   },
+   "letter": {
+    "acc_by_seed": {
+     "7": 0.9865,
+     "11": 0.985
+    },
+    "acc_mean": 0.98575,
+    "acc_range": [
+     0.985,
+     0.9865
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "neutral": {
+    "acc_by_seed": {
+     "7": 0.966,
+     "11": 0.9985
+    },
+    "acc_mean": 0.9822500000000001,
+    "acc_range": [
+     0.966,
+     0.9985
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "neutral_alt@v1": {
+    "acc_by_seed": {
+     "7": 0.9655,
+     "11": 0.999
+    },
+    "acc_mean": 0.9822500000000001,
+    "acc_range": [
+     0.9655,
+     0.999
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "neutral_alt@v2": {
+    "acc_by_seed": {
+     "7": 0.9635,
+     "11": 1.0
+    },
+    "acc_mean": 0.98175,
+    "acc_range": [
+     0.9635,
+     1.0
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   }
+  },
+  "contrasts": {
+   "facilitation@v1": {
+    "by_seed": {
+     "7": -0.015,
+     "11": 0.001
+    },
+    "pooled_mean": -0.007,
+    "ci95": [
+     -0.01200625,
+     -0.002
+    ],
+    "same_sign_all_seeds": false,
+    "claimable": false
+   },
+   "facilitation@v2": {
+    "by_seed": {
+     "7": 0.0285,
+     "11": -0.0025
+    },
+    "pooled_mean": 0.013,
+    "ci95": [
+     0.0085,
+     0.01775
+    ],
+    "same_sign_all_seeds": false,
+    "claimable": false
+   },
+   "interference@v1": {
+    "by_seed": {
+     "7": 0.02,
+     "11": -0.001
+    },
+    "pooled_mean": 0.0095,
+    "ci95": [
+     0.004743750000000001,
+     0.0145
+    ],
+    "same_sign_all_seeds": false,
+    "claimable": false
+   },
+   "interference@v2": {
+    "by_seed": {
+     "7": -0.0275,
+     "11": -0.0005
+    },
+    "pooled_mean": -0.014,
+    "ci95": [
+     -0.0185,
+     -0.00975
+    ],
+    "same_sign_all_seeds": true,
+    "claimable": true
+   },
+   "lure_excess@v1": {
+    "by_seed": {
+     "7": 0.0035,
+     "11": 0.0
+    },
+    "pooled_mean": 0.00175,
+    "ci95": [
+     0.0007437500000000004,
+     0.00325
+    ],
+    "same_sign_all_seeds": true,
+    "claimable": true
+   },
+   "lure_excess@v2": {
+    "by_seed": {
+     "7": -0.0015,
+     "11": -0.0005
+    },
+    "pooled_mean": -0.001,
+    "ci95": [
+     -0.00225,
+     0.0
+    ],
+    "same_sign_all_seeds": true,
+    "claimable": false
+   }
+  }
+ },
+ "llama32-3b/direct": {
+  "seeds": [
+   7,
+   11
+  ],
+  "groups": {
+   "congruent@v1": {
+    "acc_by_seed": {
+     "7": 0.189,
+     "11": 0.3305
+    },
+    "acc_mean": 0.25975000000000004,
+    "acc_range": [
+     0.189,
+     0.3305
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "congruent@v2": {
+    "acc_by_seed": {
+     "7": 0.1795,
+     "11": 0.319
+    },
+    "acc_mean": 0.24925,
+    "acc_range": [
+     0.1795,
+     0.319
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "incongruent@v1": {
+    "acc_by_seed": {
+     "7": 0.139,
+     "11": 0.288
+    },
+    "acc_mean": 0.2135,
+    "acc_range": [
+     0.139,
+     0.288
+    ],
+    "lure_by_seed": {
+     "7": 0.0865,
+     "11": 0.059
+    },
+    "lure_mean": 0.07275
+   },
+   "incongruent@v2": {
+    "acc_by_seed": {
+     "7": 0.1375,
+     "11": 0.2935
+    },
+    "acc_mean": 0.2155,
+    "acc_range": [
+     0.1375,
+     0.2935
+    ],
+    "lure_by_seed": {
+     "7": 0.0805,
+     "11": 0.0705
+    },
+    "lure_mean": 0.0755
+   },
+   "incongruent_alt@v1": {
+    "acc_by_seed": {
+     "7": 0.134,
+     "11": 0.281
+    },
+    "acc_mean": 0.20750000000000002,
+    "acc_range": [
+     0.134,
+     0.281
+    ],
+    "lure_by_seed": {
+     "7": 0.0905,
+     "11": 0.07
+    },
+    "lure_mean": 0.08025
+   },
+   "incongruent_alt@v2": {
+    "acc_by_seed": {
+     "7": 0.1375,
+     "11": 0.302
+    },
+    "acc_mean": 0.21975,
+    "acc_range": [
+     0.1375,
+     0.302
+    ],
+    "lure_by_seed": {
+     "7": 0.0705,
+     "11": 0.0615
+    },
+    "lure_mean": 0.066
+   },
+   "letter": {
+    "acc_by_seed": {
+     "7": 0.2575,
+     "11": 0.339
+    },
+    "acc_mean": 0.29825,
+    "acc_range": [
+     0.2575,
+     0.339
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "neutral": {
+    "acc_by_seed": {
+     "7": 0.1335,
+     "11": 0.314
+    },
+    "acc_mean": 0.22375,
+    "acc_range": [
+     0.1335,
+     0.314
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "neutral_alt@v1": {
+    "acc_by_seed": {
+     "7": 0.129,
+     "11": 0.3185
+    },
+    "acc_mean": 0.22375,
+    "acc_range": [
+     0.129,
+     0.3185
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "neutral_alt@v2": {
+    "acc_by_seed": {
+     "7": 0.136,
+     "11": 0.3175
+    },
+    "acc_mean": 0.22675,
+    "acc_range": [
+     0.136,
+     0.3175
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   }
+  },
+  "contrasts": {
+   "facilitation@v1": {
+    "by_seed": {
+     "7": 0.0555,
+     "11": 0.0165
+    },
+    "pooled_mean": 0.036,
+    "ci95": [
+     0.026,
+     0.046
+    ],
+    "same_sign_all_seeds": true,
+    "claimable": true
+   },
+   "facilitation@v2": {
+    "by_seed": {
+     "7": 0.046,
+     "11": 0.005
+    },
+    "pooled_mean": 0.0255,
+    "ci95": [
+     0.0165,
+     0.034256249999999995
+    ],
+    "same_sign_all_seeds": true,
+    "claimable": true
+   },
+   "interference@v1": {
+    "by_seed": {
+     "7": -0.0055,
+     "11": 0.026
+    },
+    "pooled_mean": 0.01025,
+    "ci95": [
+     0.00125,
+     0.01925
+    ],
+    "same_sign_all_seeds": false,
+    "claimable": false
+   },
+   "interference@v2": {
+    "by_seed": {
+     "7": -0.004,
+     "11": 0.0205
+    },
+    "pooled_mean": 0.00825,
+    "ci95": [
+     -0.00025624999999999964,
+     0.01725
+    ],
+    "same_sign_all_seeds": false,
+    "claimable": false
+   },
+   "lure_excess@v1": {
+    "by_seed": {
+     "7": 0.0395,
+     "11": 0.004
+    },
+    "pooled_mean": 0.02175,
+    "ci95": [
+     0.0145,
+     0.028006249999999996
+    ],
+    "same_sign_all_seeds": true,
+    "claimable": true
+   },
+   "lure_excess@v2": {
+    "by_seed": {
+     "7": 0.0335,
+     "11": 0.0235
+    },
+    "pooled_mean": 0.0285,
+    "ci95": [
+     0.02275,
+     0.034506249999999995
+    ],
+    "same_sign_all_seeds": true,
+    "claimable": true
+   }
+  }
+ },
+ "llama31-8b/cot": {
+  "seeds": [
+   7,
+   11
+  ],
+  "groups": {
+   "congruent@v1": {
+    "acc_by_seed": {
+     "7": 0.8245,
+     "11": 1.0
+    },
+    "acc_mean": 0.91225,
+    "acc_range": [
+     0.8245,
+     1.0
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "congruent@v2": {
+    "acc_by_seed": {
+     "7": 0.975,
+     "11": 0.995
+    },
+    "acc_mean": 0.985,
+    "acc_range": [
+     0.975,
+     0.995
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "incongruent@v1": {
+    "acc_by_seed": {
+     "7": 0.836,
+     "11": 0.9995
+    },
+    "acc_mean": 0.9177500000000001,
+    "acc_range": [
+     0.836,
+     0.9995
+    ],
+    "lure_by_seed": {
+     "7": 0.0065,
+     "11": 0.0
+    },
+    "lure_mean": 0.00325
+   },
+   "incongruent@v2": {
+    "acc_by_seed": {
+     "7": 0.8395,
+     "11": 1.0
+    },
+    "acc_mean": 0.9197500000000001,
+    "acc_range": [
+     0.8395,
+     1.0
+    ],
+    "lure_by_seed": {
+     "7": 0.009,
+     "11": 0.0
+    },
+    "lure_mean": 0.0045
+   },
+   "incongruent_alt@v1": {
+    "acc_by_seed": {
+     "7": 0.836,
+     "11": 1.0
+    },
+    "acc_mean": 0.9179999999999999,
+    "acc_range": [
+     0.836,
+     1.0
+    ],
+    "lure_by_seed": {
+     "7": 0.006,
+     "11": 0.0
+    },
+    "lure_mean": 0.003
+   },
+   "incongruent_alt@v2": {
+    "acc_by_seed": {
+     "7": 0.835,
+     "11": 1.0
+    },
+    "acc_mean": 0.9175,
+    "acc_range": [
+     0.835,
+     1.0
+    ],
+    "lure_by_seed": {
+     "7": 0.014,
+     "11": 0.0
+    },
+    "lure_mean": 0.007
+   },
+   "letter": {
+    "acc_by_seed": {
+     "7": 0.966,
+     "11": 0.9995
+    },
+    "acc_mean": 0.98275,
+    "acc_range": [
+     0.966,
+     0.9995
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "neutral": {
+    "acc_by_seed": {
+     "7": 0.8565,
+     "11": 1.0
+    },
+    "acc_mean": 0.92825,
+    "acc_range": [
+     0.8565,
+     1.0
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "neutral_alt@v1": {
+    "acc_by_seed": {
+     "7": 0.8655,
+     "11": 0.999
+    },
+    "acc_mean": 0.93225,
+    "acc_range": [
+     0.8655,
+     0.999
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "neutral_alt@v2": {
+    "acc_by_seed": {
+     "7": 0.852,
+     "11": 0.9995
+    },
+    "acc_mean": 0.9257500000000001,
+    "acc_range": [
+     0.852,
+     0.9995
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   }
+  },
+  "contrasts": {
+   "facilitation@v1": {
+    "by_seed": {
+     "7": -0.032,
+     "11": 0.0
+    },
+    "pooled_mean": -0.016,
+    "ci95": [
+     -0.022,
+     -0.0095
+    ],
+    "same_sign_all_seeds": true,
+    "claimable": true
+   },
+   "facilitation@v2": {
+    "by_seed": {
+     "7": 0.1185,
+     "11": -0.005
+    },
+    "pooled_mean": 0.05675,
+    "ci95": [
+     0.04875,
+     0.06475625
+    ],
+    "same_sign_all_seeds": false,
+    "claimable": false
+   },
+   "interference@v1": {
+    "by_seed": {
+     "7": 0.0205,
+     "11": 0.0005
+    },
+    "pooled_mean": 0.0105,
+    "ci95": [
+     0.00425,
+     0.0165
+    ],
+    "same_sign_all_seeds": true,
+    "claimable": true
+   },
+   "interference@v2": {
+    "by_seed": {
+     "7": 0.017,
+     "11": 0.0
+    },
+    "pooled_mean": 0.0085,
+    "ci95": [
+     0.001,
+     0.016006249999999996
+    ],
+    "same_sign_all_seeds": true,
+    "claimable": true
+   },
+   "lure_excess@v1": {
+    "by_seed": {
+     "7": -0.004,
+     "11": 0.0
+    },
+    "pooled_mean": -0.002,
+    "ci95": [
+     -0.004,
+     -0.00025
+    ],
+    "same_sign_all_seeds": true,
+    "claimable": true
+   },
+   "lure_excess@v2": {
+    "by_seed": {
+     "7": -0.0005,
+     "11": 0.0
+    },
+    "pooled_mean": -0.00025,
+    "ci95": [
+     -0.00225,
+     0.00175
+    ],
+    "same_sign_all_seeds": true,
+    "claimable": false
+   }
+  }
+ },
+ "llama31-8b/direct": {
+  "seeds": [
+   7,
+   11
+  ],
+  "groups": {
+   "congruent@v1": {
+    "acc_by_seed": {
+     "7": 0.488,
+     "11": 0.6335
+    },
+    "acc_mean": 0.56075,
+    "acc_range": [
+     0.488,
+     0.6335
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "congruent@v2": {
+    "acc_by_seed": {
+     "7": 0.479,
+     "11": 0.6375
+    },
+    "acc_mean": 0.5582499999999999,
+    "acc_range": [
+     0.479,
+     0.6375
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "incongruent@v1": {
+    "acc_by_seed": {
+     "7": 0.444,
+     "11": 0.613
+    },
+    "acc_mean": 0.5285,
+    "acc_range": [
+     0.444,
+     0.613
+    ],
+    "lure_by_seed": {
+     "7": 0.0345,
+     "11": 0.0415
+    },
+    "lure_mean": 0.038000000000000006
+   },
+   "incongruent@v2": {
+    "acc_by_seed": {
+     "7": 0.458,
+     "11": 0.6175
+    },
+    "acc_mean": 0.5377500000000001,
+    "acc_range": [
+     0.458,
+     0.6175
+    ],
+    "lure_by_seed": {
+     "7": 0.0345,
+     "11": 0.0365
+    },
+    "lure_mean": 0.035500000000000004
+   },
+   "incongruent_alt@v1": {
+    "acc_by_seed": {
+     "7": 0.4405,
+     "11": 0.626
+    },
+    "acc_mean": 0.53325,
+    "acc_range": [
+     0.4405,
+     0.626
+    ],
+    "lure_by_seed": {
+     "7": 0.037,
+     "11": 0.045
+    },
+    "lure_mean": 0.040999999999999995
+   },
+   "incongruent_alt@v2": {
+    "acc_by_seed": {
+     "7": 0.458,
+     "11": 0.622
+    },
+    "acc_mean": 0.54,
+    "acc_range": [
+     0.458,
+     0.622
+    ],
+    "lure_by_seed": {
+     "7": 0.037,
+     "11": 0.0365
+    },
+    "lure_mean": 0.03675
+   },
+   "letter": {
+    "acc_by_seed": {
+     "7": 0.3785,
+     "11": 0.5635
+    },
+    "acc_mean": 0.471,
+    "acc_range": [
+     0.3785,
+     0.5635
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "neutral": {
+    "acc_by_seed": {
+     "7": 0.413,
+     "11": 0.6205
+    },
+    "acc_mean": 0.51675,
+    "acc_range": [
+     0.413,
+     0.6205
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "neutral_alt@v1": {
+    "acc_by_seed": {
+     "7": 0.4175,
+     "11": 0.613
+    },
+    "acc_mean": 0.51525,
+    "acc_range": [
+     0.4175,
+     0.613
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   },
+   "neutral_alt@v2": {
+    "acc_by_seed": {
+     "7": 0.4135,
+     "11": 0.63
+    },
+    "acc_mean": 0.5217499999999999,
+    "acc_range": [
+     0.4135,
+     0.63
+    ],
+    "lure_by_seed": {
+     "7": 0.0,
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   }
+  },
+  "contrasts": {
+   "facilitation@v1": {
+    "by_seed": {
+     "7": 0.075,
+     "11": 0.013
+    },
+    "pooled_mean": 0.044,
+    "ci95": [
+     0.0335,
+     0.055
+    ],
+    "same_sign_all_seeds": true,
+    "claimable": true
+   },
+   "facilitation@v2": {
+    "by_seed": {
+     "7": 0.066,
+     "11": 0.017
+    },
+    "pooled_mean": 0.0415,
+    "ci95": [
+     0.0315,
+     0.05125
+    ],
+    "same_sign_all_seeds": true,
+    "claimable": true
+   },
+   "interference@v1": {
+    "by_seed": {
+     "7": -0.031,
+     "11": 0.0075
+    },
+    "pooled_mean": -0.01175,
+    "ci95": [
+     -0.02225,
+     -0.00075
+    ],
+    "same_sign_all_seeds": false,
+    "claimable": false
+   },
+   "interference@v2": {
+    "by_seed": {
+     "7": -0.045,
+     "11": 0.003
+    },
+    "pooled_mean": -0.021,
+    "ci95": [
+     -0.031,
+     -0.010493750000000007
+    ],
+    "same_sign_all_seeds": false,
+    "claimable": false
+   },
+   "lure_excess@v1": {
+    "by_seed": {
+     "7": 0.0035,
+     "11": 0.011
+    },
+    "pooled_mean": 0.00725,
+    "ci95": [
+     0.0025,
+     0.012
+    ],
+    "same_sign_all_seeds": true,
+    "claimable": true
+   },
+   "lure_excess@v2": {
+    "by_seed": {
+     "7": -0.0005,
+     "11": 0.005
+    },
+    "pooled_mean": 0.00225,
+    "ci95": [
+     -0.00275,
+     0.00725
+    ],
+    "same_sign_all_seeds": false,
+    "claimable": false
+   }
+  }
+ }
+}
