@@ -96,3 +96,18 @@ lure rate above baseline) is claimed only if its sign holds in every seed and th
 cluster-bootstrap CI (clustering on matched set, seeds as replicates) excludes zero; (c) the
 seed-7 results obtained before this amendment are kept and reported as one of the three seeds.
 The representational and causal analyses stay on seed 7 plus one replication seed.
+
+**Amendment 3 (2026-09-13, before the tier-A runs).** The headline claim is now a null under
+chain of thought, so it is tested as an equivalence rather than asserted from a non-significant
+difference. The smallest effect of interest is δ = 2 percentage points of lure excess, fixed
+here before the level-1 and free-form runs. A chain cell counts as equivalent when its 90%
+cluster-bootstrap interval lies entirely inside [−δ, +δ]. The direct regime serves as the
+positive control: the design must detect an effect there on the same instances. Additional
+pre-registered experiments: **E34** no-computation control (level 1: the intermediate's value is
+stated, not computed; if the lure intrudes only there, computation is what erases it), **E35**
+lure injection (patch the incongruent name's activations into a neutral run and read the chain's
+value step; a positive causal test in place of the removal test, which has no errors to remove),
+**E36** free-form chain (no worked examples, an instruction only, free-text answer parsing).
+Predictions recorded before seeing the results: E34 lure excess above δ at the stated variable
+and within δ at the computed one; E35 injection rate near zero at the value step; E36 lure
+excess within δ, i.e. the format is not what removes the lure.

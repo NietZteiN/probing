@@ -80,6 +80,15 @@ patching sources that are the matched twins rather than a different problem.*
 | E30 | **done 3B** (paper/figures/kudo_fig3_*). Kudo Fig. 3 analogue: per-token top-1 probe predictions (best layer per position) on (a) the lure-error instances, (b) a random sample of incongruent instances, colour-coded true / lure / other, to show where the lure enters and leaves the readout | Appendix; one panel may replace Figure 1's sketch | `53_kudo_figs.py --trajectories` | login | minutes | not started |
 | E31 | Kudo Table 6 analogue: the "Simple CoT" format (only sub-results, `cup=5, pen=6`) as a third regime between direct and full chain, behaviour + labelled-position probes | Appendix; tests whether restating the name beside the value is what removes the lure | `20_run_model.py --regimes simple` (new format in generator) | h200 | 1 GPU-h per model | not started |
 
+## G. Defending the null (added 2026-09-13 after the three-seed sweep; pre-registration amendment 3)
+
+| id | experiment | serves | command | where | cost | status |
+|---|---|---|---|---|---|---|
+| E34 | No-computation control: level 1, where the intermediate's value is STATED (`fish=5`) rather than computed. A number-word name on it needs no arithmetic to resolve. Prediction: lure excess above δ there and within δ on the computed variable, which would make "computation erases the prior" a demonstration rather than an inference | C3 mechanism; RQ2 | `20_run_model.py --level 1 --regimes cot direct --no-train --no-forced`, three demo seeds | h200 | 0.2 GPU-h per (model, seed) | **running** (394212–394218) |
+| E35 | Lure injection: patch the incongruent name's activations INTO a neutral run and read the chain's value step and answer. The removal test has no errors to remove under a chain, so the causal test runs in the positive direction | C4 under a chain | `40_patch.py --contrasts inject` | h200 | 1.5 GPU-h per (model, regime) | to submit after E34 |
+| E36 | Free-form chain: no worked examples, only an instruction to reason step by step, free-text answer parsing. Tests whether the forced format is what removes the lure | reviewer question; C2 | `20_run_model.py --regimes free` | h200 | 0.5 GPU-h per (model, level) | **running** (394219–394224) |
+| E37 | Equivalence bounds (TOST, δ = 2 points) on every chain cell, with the direct regime as the positive control | C2 as an equivalence | `57_equivalence.py` | login | minutes | **done**: 18/18 chain cells equivalent, largest |mean| 0.65 points; 6/18 direct cells show an effect |
+
 ## D. Not run, stated in Limitations
 
 Optimised or searched lures; digit-bearing names (`x2`); non-English number words; real code;

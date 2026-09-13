@@ -363,3 +363,18 @@ Same for the queried variable (lure .11 at its definition, .51–.66 at the quer
 value step erases the lure — hold under both demonstration sets and in both regimes.** Only the
 absolute accuracies move (3B direct answer-position probe .80 → .37 with the demos, tracking
 task accuracy 13% → 31%).
+
+## 2026-09-13 — E37: the chain null is an equivalence, not an absence of power
+
+Two one-sided tests on the cluster bootstrap, smallest effect of interest δ = 2 points (the
+size of the interference originally reported from a single demonstration set):
+
+| | cells | equivalent to zero | claimable effect |
+|---|---|---|---|
+| chain of thought | 18 | **18** | 0 |
+| direct answer | 18 | 10 | **6** |
+
+Largest absolute lure excess in any chain cell, over four levels, two models and three
+demonstration sets: **0.65 points**. The same design, on the same instances, detects effects up
+to +20.5 points in the direct regime, so the null is not a power failure. This is the positive
+control the null needed.
