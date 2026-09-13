@@ -191,3 +191,38 @@ for the queried variable (segment `cot:5:value:v1`, i.e. equation 5) and the int
 step (`cot:2:value:v2`, equation 2); pre-chain maxima .30 / .48. **t*_eq reproduced exactly;
 pre-chain accuracies are of the same order (ours a little higher, layer stride 2 and 4,000
 training instances).**
+
+## 2026-09-13 — Levels 2, 4, 5 behaviour, both core models (2,000 matched sets each)
+
+| model | level | regime | neutral | letter | queried: cong / inc / lure (pseudo) | intermediate: cong / inc / lure (pseudo) | other |
+|---|---|---|---|---|---|---|---|
+| 3B | 2 | CoT | 94.0 | 100 | v2: 94.3 / 93.9 / 0.1 (0.1) | v1: 98.4 / 93.5 / 0.4 (0.2) | |
+| 3B | 2 | direct | 29.4 | 32.0 | v2: 31.4 / 27.9 / 10.2 (6.5) | v1: 41.3 / 24.4 / 9.3 (7.5) | |
+| 3B | 4 | CoT | 81.5 | 99.5 | v1: 63.4 / 62.8 / 2.4 (1.1) | v2: 80.0 / 76.5 / 1.1 (1.2) | irrelevant@v3 76.4, lure 1.8 |
+| 3B | 4 | direct | 22.6 | 25.2 | v1: 22.7 / 22.6 / 0.5 (0.4) | v2: 23.1 / 23.0 / 1.1 (0.5) | irrelevant@v3 22.9, lure 0.9 |
+| 3B | 5 | CoT | 63.1 | 90.5 | v1: 64.0 / 64.1 / 2.2 (2.4) | v2: 67.2 / 69.2 / 2.1 (2.5); v3: 74.2 / 72.2 / 2.2 (2.5) | |
+| 3B | 5 | direct | 11.9 | 12.8 | v1: 15.8 / 11.3 / 6.8 (5.1) | v2: 12.7 / 12.0 / 6.8 (5.1); v3: 12.8 / 12.0 / 5.4 (5.2) | |
+| 8B | 2 | CoT | 100 | 100 | 100 / 100 / 0 | 100 / 100 / 0 | **no operand-copy errors when the intermediate comes first** |
+| 8B | 2 | direct | 37.4 | 32.0 | v2: 46.2 / 34.4 / **13.3 (6.0)** | v1: 47.4 / 36.7 / 8.5 (5.9) | |
+| 8B | 4 | CoT | 100 | 100 | v1: 99.9 / 99.7 / 0 | v2: 100 / 99.9 / 0 | irrelevant@v3 100 |
+| 8B | 4 | direct | 30.6 | 38.8 | v1: 46.3 / 28.6 / **7.8 (3.1)** | v2: 37.9 / 32.4 / 3.2 (3.0) | irrelevant@v3 31.6, lure 4.9 |
+| 8B | 5 | CoT | 53.0 | 82.3 | v1: 49.6 / 50.2 / 4.0 (3.9) | v2: 53.1 / 56.5 / 4.0 (4.0); v3: 63.0 / 54.5 / 3.8 (3.9) | |
+| 8B | 5 | direct | 21.1 | 28.7 | v1: 32.6 / 22.3 / 9.7 (4.7) | v2: 20.9 / 22.2 / 7.2 (5.3); v3: 20.2 / 21.8 / 6.2 (5.9) | |
+
+- **The lure never wins under a chain, at any level or model** (lure rate at or below the
+  pseudo-lure baseline everywhere in the CoT rows).
+- **Without a chain the lure effect is real but modest and appears where accuracy is off the
+  floor**: 8B level 2 queried 13.3% vs 6.0% baseline; 8B level 4 queried 7.8% vs 3.1%;
+  8B level 5 queried 9.7% vs 4.7%; 3B level 2 ~9–10% vs 6.5–7.5%. Still a minority of answers.
+- **Facilitation stays the large effect** (+12 to +16 points for a congruent name on the
+  queried variable in direct mode; +12 for 3B at level 2 in the chain).
+- **Word names are much harder than letters at depth**: 3B level 4 neutral 81.5 vs letters
+  99.5, level 5 63.1 vs 90.5; 8B level 5 53.0 vs 82.3. Kudo et al.'s letter format is the easy
+  case; the neutral-noun condition is a harder binding task in its own right.
+- **Number-word names as a class**: at level 4 a number-word name on the QUERIED variable
+  drops the 3B model from 81.5 to 63 regardless of congruence, and on the distractor
+  (irrelevant control) to 76.4 with a lure rate of 1.8% (baseline ~1.1%): presence without
+  binding costs accuracy but does not produce lure answers.
+- **E32(a) answered**: the 8B operand-copy error disappears at level 2 (intermediate defined
+  first) and at level 4, so it is tied to the level-3 layout (intermediate's equation second,
+  two equations only). Check the level-3 demonstrations for a coincidence that could teach it.

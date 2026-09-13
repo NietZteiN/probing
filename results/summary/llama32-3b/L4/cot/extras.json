@@ -1,0 +1,285 @@
+{
+ "E19_lure_distance": {
+  "incongruent@v1": {
+   "by_distance": {
+    "1": {
+     "n": 383,
+     "acc": 0.6449086161879896,
+     "lure_rate": 0.0391644908616188
+    },
+    "2": {
+     "n": 323,
+     "acc": 0.5851393188854489,
+     "lure_rate": 0.03715170278637771
+    },
+    "3": {
+     "n": 317,
+     "acc": 0.6719242902208202,
+     "lure_rate": 0.028391167192429023
+    },
+    "4": {
+     "n": 306,
+     "acc": 0.6274509803921569,
+     "lure_rate": 0.02287581699346405
+    },
+    "5": {
+     "n": 205,
+     "acc": 0.624390243902439,
+     "lure_rate": 0.014634146341463415
+    },
+    "6": {
+     "n": 151,
+     "acc": 0.6887417218543046,
+     "lure_rate": 0.006622516556291391
+    },
+    "7": {
+     "n": 151,
+     "acc": 0.6026490066225165,
+     "lure_rate": 0.0
+    },
+    "8": {
+     "n": 104,
+     "acc": 0.5480769230769231,
+     "lure_rate": 0.0
+    },
+    "9": {
+     "n": 60,
+     "acc": 0.5833333333333334,
+     "lure_rate": 0.0
+    }
+   },
+   "logit_correct_on_distance": {
+    "coef": -0.019156726481063598,
+    "se": 0.020482817399114995,
+    "p": 0.3496551621508297
+   }
+  },
+  "incongruent@v2": {
+   "by_distance": {
+    "1": {
+     "n": 394,
+     "acc": 0.8350253807106599,
+     "lure_rate": 0.017766497461928935
+    },
+    "2": {
+     "n": 295,
+     "acc": 0.7830508474576271,
+     "lure_rate": 0.003389830508474576
+    },
+    "3": {
+     "n": 257,
+     "acc": 0.7704280155642024,
+     "lure_rate": 0.023346303501945526
+    },
+    "4": {
+     "n": 264,
+     "acc": 0.7159090909090909,
+     "lure_rate": 0.007575757575757576
+    },
+    "5": {
+     "n": 196,
+     "acc": 0.7040816326530612,
+     "lure_rate": 0.015306122448979591
+    },
+    "6": {
+     "n": 185,
+     "acc": 0.654054054054054,
+     "lure_rate": 0.010810810810810811
+    },
+    "7": {
+     "n": 167,
+     "acc": 0.7425149700598802,
+     "lure_rate": 0.0
+    },
+    "8": {
+     "n": 173,
+     "acc": 0.8092485549132948,
+     "lure_rate": 0.011560693641618497
+    },
+    "9": {
+     "n": 69,
+     "acc": 0.8695652173913043,
+     "lure_rate": 0.0
+    }
+   },
+   "logit_correct_on_distance": {
+    "coef": -0.04275541231108814,
+    "se": 0.020079286745934035,
+    "p": 0.033227030567216286
+   }
+  }
+ },
+ "E20_teacher_forced": {
+  "incongruent@v1": {
+   "value_step": {
+    "n": 2000,
+    "forced_lure_rate": 0.0005,
+    "forced_true_rate": 0.994
+   },
+   "answer": {
+    "n": 2000,
+    "forced_lure_rate": 0.0005
+   },
+   "free_lure_rate": 0.0235
+  },
+  "incongruent@v2": {
+   "value_step": {
+    "n": 2000,
+    "forced_lure_rate": 0.004,
+    "forced_true_rate": 0.956
+   },
+   "answer": {
+    "n": 2000,
+    "forced_lure_rate": 0.0
+   },
+   "free_lure_rate": 0.0115
+  }
+ },
+ "E26_error_analysis": {
+  "congruent@v1": {
+   "n_wrong": 732,
+   "first_error_step": {
+    "step2": 726,
+    "step5": 6
+   },
+   "categories": {
+    "wrong_lhs_name": 609,
+    "other_variables_value": 28,
+    "other_value": 93,
+    "wrong_expression": 1,
+    "first_equation_operand": 1
+   }
+  },
+  "congruent@v2": {
+   "n_wrong": 401,
+   "first_error_step": {
+    "step2": 398,
+    "step5": 3
+   },
+   "categories": {
+    "wrong_lhs_name": 332,
+    "other_value": 52,
+    "other_variables_value": 15,
+    "wrong_expression": 2
+   }
+  },
+  "incongruent@v1": {
+   "n_wrong": 744,
+   "first_error_step": {
+    "step2": 734,
+    "step5": 9,
+    "step1": 1
+   },
+   "categories": {
+    "wrong_lhs_name": 626,
+    "other_value": 78,
+    "wrote_lure": 10,
+    "other_variables_value": 23,
+    "wrong_expression": 5,
+    "first_equation_operand": 2
+   }
+  },
+  "incongruent@v2": {
+   "n_wrong": 470,
+   "first_error_step": {
+    "step2": 460,
+    "step5": 9,
+    "step3": 1
+   },
+   "categories": {
+    "wrong_lhs_name": 390,
+    "other_variables_value": 13,
+    "other_value": 56,
+    "wrote_lure": 7,
+    "first_equation_operand": 1,
+    "wrong_expression": 3
+   }
+  },
+  "incongruent_alt@v1": {
+   "n_wrong": 741,
+   "first_error_step": {
+    "step2": 728,
+    "step5": 13
+   },
+   "categories": {
+    "wrong_lhs_name": 607,
+    "other_variables_value": 30,
+    "wrote_lure": 8,
+    "other_value": 92,
+    "wrong_expression": 4
+   }
+  },
+  "incongruent_alt@v2": {
+   "n_wrong": 441,
+   "first_error_step": {
+    "step2": 434,
+    "step5": 4,
+    "step3": 3
+   },
+   "categories": {
+    "wrong_lhs_name": 372,
+    "other_value": 46,
+    "other_variables_value": 11,
+    "wrote_lure": 5,
+    "wrong_expression": 6,
+    "first_equation_operand": 1
+   }
+  },
+  "irrelevant@v3": {
+   "n_wrong": 472,
+   "first_error_step": {
+    "step2": 459,
+    "step5": 13
+   },
+   "categories": {
+    "wrong_lhs_name": 363,
+    "other_variables_value": 23,
+    "other_value": 72,
+    "wrote_lure": 13,
+    "wrong_expression": 1
+   }
+  },
+  "neutral": {
+   "n_wrong": 371,
+   "first_error_step": {
+    "step2": 360,
+    "step5": 10,
+    "step1": 1
+   },
+   "categories": {
+    "wrong_lhs_name": 223,
+    "other_value": 119,
+    "other_variables_value": 26,
+    "wrong_expression": 2,
+    "first_equation_operand": 1
+   }
+  },
+  "neutral_alt@v1": {
+   "n_wrong": 381,
+   "first_error_step": {
+    "step2": 364,
+    "step5": 17
+   },
+   "categories": {
+    "wrong_lhs_name": 235,
+    "other_value": 125,
+    "other_variables_value": 21
+   }
+  },
+  "neutral_alt@v2": {
+   "n_wrong": 401,
+   "first_error_step": {
+    "step2": 388,
+    "step5": 12,
+    "step1": 1
+   },
+   "categories": {
+    "wrong_lhs_name": 252,
+    "other_variables_value": 26,
+    "other_value": 120,
+    "first_equation_operand": 1,
+    "wrong_expression": 2
+   }
+  }
+ }
+}
