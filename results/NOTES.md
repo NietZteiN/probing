@@ -268,3 +268,11 @@ training instances).**
   sign the other way round from the plan's expectation.
 - Level 4 bound target (incongruent@v2): value at its chain step .95, lure .013; at the end of
   its definition .46, lure .06; margin positive throughout.
+
+## 2026-09-13 — storage
+
+With the lead's approval, deleted the `hidden.npy` files of every `*_alt@*` group (72 files,
+380 GB; never read by probes, patching recomputes activations) and the 0.9 GB smoke directory.
+`probing/` on scratch went from 1.8 TB to 1.4 TB; the account's scratch total from 2.9 to 2.5 TB.
+The per-user scratch limit behaves like ~3 TB. `20_run_model.py` no longer caches the control
+groups' hidden states unless `--forced-all` is given. E33 resubmitted (393084 / 393085).
