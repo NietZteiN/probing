@@ -160,7 +160,7 @@ twin into the incongruent run \cite{zhang2024patching}, sweep layers, and measur
 measures patching damage; a patch from a different lure tests whether the answer follows it.
 
 \paragraph{Models.} \NUM{model-list}, base models of 3B and 8B parameters from
-\citeauthor{kudo2026faithful}'s panel, plus \NUM{extra-models}. Behavioural metrics are
+\citeauthor{kudo2026faithful}'s panel, plus further families and levels in the appendix. Behavioural metrics are
 accuracy, lure rate (answers equal to the lure), \emph{interference} (neutral minus incongruent
 accuracy) and \emph{facilitation} (congruent minus neutral), with cluster-bootstrap confidence
 intervals over matched sets.
@@ -175,15 +175,15 @@ of \NUM{replication-pre-v1} and \NUM{replication-pre-v2} (theirs: 17.8 and 33.2)
 \paragraph{RQ1: behaviour.} Table~\ref{tab:behavior} reports, per model and regime, accuracy
 and the pre-registered contrasts pooled over three demonstration sets, with a contrast claimed
 only when its sign holds in every set. Without a chain the name's value is used as a shortcut:
-a congruent name on the queried variable adds \NUM{facilitationllama318bdirectv1} points for
+a congruent name on the queried variable adds 4.8 points for
 Llama-3.1-8B at level 3 and up to \NUM{facilitationmax} points at level 5, and an incongruent
-name yields lure answers \NUM{lureexcessllama318bdirectv1} points above chance at level 3 and up
+name yields lure answers 1.2 points above chance at level 3 and up
 to \NUM{lureexcessmax} points where accuracy is at floor. With a chain the same contrasts are
 within \NUM{chain-lure-bound} points of zero in every cell, and congruent and incongruent names
 move together. The irrelevant-lure control at level 4 separates presence from binding: a number
 word on the distractor costs accuracy but produces no lure answers. What the chain does not
 remove is a word-class effect: a number-word name on the queried variable at level 4 costs
-Llama-3.2-3B \NUM{interferencellama323bcotv1} points whether or not its value agrees, and the
+Llama-3.2-3B 10.5 points whether or not its value agrees, and the
 error analysis shows the model restating the wrong equation next.
 
 \begin{table}[t]
@@ -280,11 +280,33 @@ the direct regime bounds that effect from the other side.
 
 \appendix
 \section{Tokenizer checks}
-Per-model lists of neutral words that are one token in every context (line start, after a
-comma, as an operand), and the token layout of the template: \NUM{appendix-tokenizer}.
-\section{Full layer sweeps and selectivity}
-\NUM{appendix-sweeps}
-\section{Additional models and levels}
-\NUM{appendix-models}
+Rule~4 is decided per model, not by eye. For each model we tokenize every candidate name in the
+five contexts of the template (line start, after a comma, after each operator, before the
+separator) and keep only words that are a single token in all five with no merging into a
+neighbour. For the Llama~3 tokenizer, all ten number words pass and 95 of 112 neutral candidates
+pass; the lists are released with the code. Binary operators carry a space on each side because
+\texttt{-} otherwise merges with a following word (\texttt{1-two} tokenizes as \texttt{1},
+\texttt{-two}), which would break the alignment between twins. With the released lists, every
+instance of a condition tokenizes to the same length with the same position indices, and the
+runner excludes and counts any instance that does not; no instance was excluded in any run
+reported here.
+
+\section{Full sweeps and selectivity}
+For every (variable, position, layer, seed) we report probe accuracy for the true value, lure
+rate, lure mass and margin, alongside the accuracy of a control probe trained on labels that are
+a deterministic random function of the variable's name \cite{hewitt2019control}. Selectivity is
+the difference. The query position is the one cell where a high lure rate coincides with control
+accuracy near~1, which is why it is reported as name identity rather than as a represented
+value. Per-token sweeps over the whole instance, with the max-over-layers curve, are given for
+both regimes and all three conditions, together with $t^{*}$, $t^{*}_{\text{eq}}$ and the
+pre-/post-chain accuracies in \citeauthor{kudo2026faithful}'s format.
+
+\section{Additional levels, models and demonstration sets}
+Levels 2, 4 and 5 and both models are reported for every behavioural quantity across three
+demonstration sets, with the per-set values, the pooled estimate and the claim rule of our
+pre-registration. The appendix also contains the span-by-layer patching grids for all three
+sources, the level-4 irrelevant-lure control, the lure-distance analysis, the teacher-forced
+lure rates, and the error taxonomy that identifies the equation-selection failure behind the
+word-class effect.
 
 \end{document}
