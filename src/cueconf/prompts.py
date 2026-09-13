@@ -51,12 +51,25 @@ def split_pool(pool: Sequence[str] = NEUTRAL_CANDIDATES, seed: int = DEMO_SEED) 
 
 
 def parse_regime(regime: str) -> tuple[str, int]:
-    """'cot' -> ('cot', 3); 'direct_k16' -> ('direct', 16). The suffix names a demo count other
-    than the default, so runs with different prompts never share an output directory."""
-    base, _, k = regime.partition("_k")
+    """'cot' -> ('cot', 3); 'direct_k16' -> ('direct', 16); 'cot_s11' -> ('cot', 3) with demo seed 11
+    (see demo_seed_of). Suffixes name a different prompt, so runs never share an output directory."""
+    base = regime.split("_")[0]
     if base not in REGIMES:
         raise ValueError(f"unknown regime {regime!r}")
-    return base, (int(k) if k else N_DEMOS)
+    k = N_DEMOS
+    for part in regime.split("_")[1:]:
+        if part.startswith("k"):
+            k = int(part[1:])
+    return base, k
+
+
+def demo_seed_of(regime: str) -> int:
+    """'cot_s11' -> 11; otherwise DEMO_SEED. A different seed draws different fixed demonstrations
+    (E33: is a result an artefact of the three demos?)."""
+    for part in regime.split("_")[1:]:
+        if part.startswith("s"):
+            return int(part[1:])
+    return DEMO_SEED
 
 
 def make_demos(level: int, scheme: str, pool: Sequence[str] = NEUTRAL_CANDIDATES, seed: int = DEMO_SEED,

@@ -106,3 +106,12 @@ def test_segments_tile_the_instance_region():
                     assert lay.text[segs[3][1]:segs[3][2]] == x.cot.split(", ")[0]
                     assert lay.text[segs[-1][1]:segs[-1][2]] == x.cot.split(", ")[-1]
                     assert segs[-1][0].endswith(f":value:{x.query}")
+
+
+def test_demo_seed_suffix():
+    from cueconf.prompts import demo_seed_of, parse_regime
+    assert parse_regime("cot_s11") == ("cot", 3) and demo_seed_of("cot_s11") == 11
+    assert parse_regime("direct_k16_s11") == ("direct", 16) and demo_seed_of("direct_k16_s11") == 11
+    assert demo_seed_of("cot") == 7
+    a = [d.input for d in make_demos(3, "word", seed=7)]; b = [d.input for d in make_demos(3, "word", seed=11)]
+    assert a != b and len(b) == 3

@@ -30,7 +30,7 @@ import numpy as np
 import torch
 
 from .generator import Instance
-from .prompts import layout, make_demos, parse_regime, scheme_of, tokenize_layout
+from .prompts import demo_seed_of, layout, make_demos, parse_regime, scheme_of, tokenize_layout
 from .patch_summary import summarize, summarize_grid  # noqa: F401  (torch-free; importable on the login node)
 from .runner import digit_token_ids
 
@@ -104,7 +104,7 @@ def run_contrast(tok, model, level: int, regime: str, pairs: list[tuple[Instance
     n_layers = len(decoder_layers(model))
     sets = layer_sets(n_layers, window)
     dtoks = digit_token_ids(tok)
-    demos = make_demos(level, scheme_of(pairs[0][1].condition), n=parse_regime(regime)[1])
+    demos = make_demos(level, scheme_of(pairs[0][1].condition), n=parse_regime(regime)[1], seed=demo_seed_of(regime))
     rows = []
     for src, dst in pairs:
         if only_ids is not None and dst.id not in only_ids:
@@ -162,7 +162,7 @@ def run_grid_contrast(tok, model, level: int, regime: str, pairs: list[tuple[Ins
     n_layers = len(decoder_layers(model))
     windows = [(f"W{a}-{min(a + window, n_layers) - 1}", list(range(a, min(a + window, n_layers)))) for a in range(0, n_layers, window)]
     dtoks = digit_token_ids(tok)
-    demos = make_demos(level, scheme_of(pairs[0][1].condition), n=parse_regime(regime)[1])
+    demos = make_demos(level, scheme_of(pairs[0][1].condition), n=parse_regime(regime)[1], seed=demo_seed_of(regime))
     rows = []
     for src, dst in (pairs[:limit] if limit else pairs):
         ls, ld_ = layout(src, demos, regime), layout(dst, demos, regime)

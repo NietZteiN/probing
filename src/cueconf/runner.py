@@ -32,7 +32,7 @@ import numpy as np
 import torch
 
 from .generator import Instance, read_jsonl
-from .prompts import layout, make_demos, parse_answer, parse_regime, scheme_of, tokenize_layout
+from .prompts import demo_seed_of, layout, make_demos, parse_answer, parse_regime, scheme_of, tokenize_layout
 
 DIGIT_STRS = [str(d) for d in range(10)]
 
@@ -113,7 +113,7 @@ def run_condition(tok, model, model_key: str, level: int, regime: str, condition
     the labelled positions; position labels become t<i> with i counted from the instance start,
     and meta records the token strings of the first instance for axis labels."""
     out_dir.mkdir(parents=True, exist_ok=True)
-    demos = make_demos(level, scheme_of(condition), n=parse_regime(regime)[1])
+    demos = make_demos(level, scheme_of(condition), n=parse_regime(regime)[1], seed=demo_seed_of(regime))
     t0 = time.time()
     lays = [layout(x, demos, regime) for x in instances]
     toks = [tokenize_layout(tok, lay) for lay in lays]
