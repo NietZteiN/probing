@@ -56,5 +56,63 @@
    "acc_post_cot": 1.0,
    "t_star_segment": "cot:5:value:v1"
   }
+ },
+ "train_letter/v1": {
+  "neutral": {
+   "t_star": 30,
+   "acc_pre_cot": 0.23816666666666664,
+   "acc_post_cot": 1.0,
+   "t_star_segment": "cot:5:value:v1"
+  },
+  "congruent@v1": {
+   "t_star": 31,
+   "acc_pre_cot": 0.3541666666666667,
+   "acc_post_cot": 1.0,
+   "t_star_segment": "cot:5:value:v1"
+  },
+  "incongruent@v1": {
+   "t_star": 31,
+   "acc_pre_cot": 0.21933333333333335,
+   "acc_post_cot": 1.0,
+   "t_star_segment": "cot:5:value:v1",
+   "t_lure_last_above_half": 29,
+   "lure_rate_max_pre_cot": 0.3495,
+   "lure_rate_max_post_cot": 0.642
+  },
+  "letter": {
+   "t_star": 30,
+   "acc_pre_cot": 0.30416666666666664,
+   "acc_post_cot": 1.0,
+   "t_star_segment": "cot:5:value:v1"
+  }
+ },
+ "train_letter/v2": {
+  "neutral": {
+   "t_star": 14,
+   "acc_pre_cot": 0.465,
+   "acc_post_cot": 1.0,
+   "t_star_segment": "cot:2:value:v2"
+  },
+  "congruent@v2": {
+   "t_star": 14,
+   "acc_pre_cot": 0.4728333333333334,
+   "acc_post_cot": 1.0,
+   "t_star_segment": "cot:2:value:v2"
+  },
+  "incongruent@v2": {
+   "t_star": 14,
+   "acc_pre_cot": 0.43650000000000005,
+   "acc_post_cot": 1.0,
+   "t_star_segment": "cot:2:value:v2",
+   "t_lure_last_above_half": 21,
+   "lure_rate_max_pre_cot": 0.24300000000000002,
+   "lure_rate_max_post_cot": 0.8095
+  },
+  "letter": {
+   "t_star": 14,
+   "acc_pre_cot": 0.4785,
+   "acc_post_cot": 1.0,
+   "t_star_segment": "cot:2:value:v2"
+  }
  }
 }
