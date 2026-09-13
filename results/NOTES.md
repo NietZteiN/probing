@@ -169,3 +169,16 @@ monotone effect of |lure − true| on lure rate; accuracy slopes are small and o
   span where the misleading name is defined, not to the name token alone.
 - **Chain regime:** 0–1 lure errors in 500, so lure-removal cells are undefined (masked in the
   figure when the denominator is below 20).
+
+## 2026-09-13 — E28/E30 per-token probes, Llama-3.2-3B, chain regime, intermediate variable
+
+Kudo Fig. 2 analogue (paper/figures/kudo_fig2_llama32-3b_L3_cot_v2.png): the value becomes
+decodable (τ = 0.9) at token 14 after the chain starts, the `=` of the intermediate's value
+step, identically in neutral, congruent and incongruent; pre-chain maxima .46 / .47 / .43 (letters
+.50). The lure rate (max over layers) peaks only at the tokens where the number-word name itself
+occurs (up to .79 on a name token in the chain, .31 in the input) and is near zero at every value
+position. The control-task heatmap shows name identity linearly recoverable in the last ~4 layers
+at most tokens, which is exactly where the query-position "lure" reads come from. Trajectories
+(Fig. 3 analogue): on random incongruent instances the top-1 probe prediction is the lure at
+name tokens and the true value from the value step onward; in 2 of 12 sampled instances the
+probe reads the lure across the whole input, worth a look (E30 follow-up).
