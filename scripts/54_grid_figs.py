@@ -66,9 +66,15 @@ def main() -> int:
         segs = sorted({c.split("|")[0] for c in summ}, key=seg_order)
         wins = sorted({c.split("|")[1] for c in summ}, key=lambda w: int(w[1:].split("-")[0]))
         M = np.full((len(wins), len(segs)), np.nan)
+        MIN_N = 20   # a rate over fewer than 20 lure errors is not drawn (1/1 = 1.0 misleads)
+        n_den = None
         for c, agg in summ.items():
             s_, w_ = c.split("|")
             v = agg.get(a.read, {}).get(METRIC[src])
+            if METRIC[src] == "lure_removed":
+                n_den = agg.get(a.read, {}).get("n_lure_err", 0)
+                if n_den < MIN_N:
+                    v = None
             if v is not None:
                 M[wins.index(w_), segs.index(s_)] = v
         ax = axes[0, j]
@@ -76,7 +82,8 @@ def main() -> int:
         ax.set_yticks(range(len(wins))); ax.set_yticklabels(wins, fontsize=7)
         ax.set_xticks(range(len(segs))); ax.set_xticklabels([short(s) for s in segs], rotation=90, fontsize=7)
         n = next(iter(summ.values()))[a.read]["n"] if summ else 0
-        ax.set_title(f"source: {src}\n{METRIC[src]} at {a.read} (n={n})", fontsize=8)
+        extra = f", lure errors={n_den}" if n_den is not None else ""
+        ax.set_title(f"source: {src}\n{METRIC[src]} at {a.read} (n={n}{extra})" + (" — too few to draw" if n_den is not None and n_den < MIN_N else ""), fontsize=8)
         fig.colorbar(im, ax=ax, fraction=0.04)
         ax2 = axes[1, j]
         ax2.plot(range(len(segs)), np.nanmax(M, axis=0), "k.-", lw=1)

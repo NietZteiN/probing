@@ -59,6 +59,7 @@ def summarize_grid(rows: list[dict]) -> dict:
             lure_err = [r for r in rs if r["lure"] is not None and r["base"][lab] == str(r["lure"])]
             agg[lab] = {
                 "n": len(rs),
+                "n_lure_err": len(lure_err),
                 "success_to_source": float(np.mean([r["cells"][c]["pred"][lab] == r["src_gold"][lab] for r in rs])),
                 "changed": float(np.mean([r["cells"][c]["pred"][lab] != r["base"][lab] for r in rs])),
                 "lure_removed": (float(np.mean([r["cells"][c]["pred"][lab] != str(r["lure"]) for r in lure_err])) if lure_err else None),

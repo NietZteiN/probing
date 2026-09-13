@@ -153,3 +153,19 @@ disagrees is simply not used. The lure never wins.
 **E20.** With the gold chain forced up to the value step, the model writes the lure there
 0.0–0.15% of the time (both models); free-generation lure rates are 0.4–0.9%. **E19.** No
 monotone effect of |lure − true| on lure rate; accuracy slopes are small and of inconsistent sign.
+
+## 2026-09-13 — E29 grids, Llama-3.2-3B (500 pairs per cell, 4-layer windows)
+
+- **Different-problem source (Kudo's design), chain regime:** the final answer follows the
+  source only when the substitution step (layers 0–15, up to 77%) or the final value step
+  (layers 16–27, 100%) is patched; input equations, the query and earlier steps do nothing.
+  Kudo et al.'s recency-bias grid reproduced in our format. In the direct regime no single span
+  moves the answer above 18% (the model is at 13% accuracy; the answer is not localised).
+- **Neutral-twin source, direct regime, lure on the queried variable:** the lure answer is
+  removed most by patching the queried variable's own equation span at layers 4–7 (68%), then
+  the query span at layers 0–3 (46%) and the answer step (40%); patching the other equation
+  does nothing. The alternative-lure source moves the answer to the new lure in ≤ 10% of cases
+  anywhere. So the direct-mode lure answer is tied to the early-layer representation of the
+  span where the misleading name is defined, not to the name token alone.
+- **Chain regime:** 0–1 lure errors in 500, so lure-removal cells are undefined (masked in the
+  figure when the denominator is below 20).
