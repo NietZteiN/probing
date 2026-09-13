@@ -1,0 +1,4602 @@
+{
+ "ctl_word@v1": {
+  "L0": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L1": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L2": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L3": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L4": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L5": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L6": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L7": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L8": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L9": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L10": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L11": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L12": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L13": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L14": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L15": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L16": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L17": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L18": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L19": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L20": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L21": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L22": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L23": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L24": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L25": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L26": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L27": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L28": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L29": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L30": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L31": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W0-3": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W4-7": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W8-11": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W12-15": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W16-19": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W20-23": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W24-27": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W28-31": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "ALL": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  }
+ },
+ "ctl_word@v2": {
+  "L0": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.9755,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.854,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.058755090168702735,
+    "follows_src_lure": null
+   }
+  },
+  "L1": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.8545,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.966,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.015125072716695753,
+    "follows_src_lure": null
+   }
+  },
+  "L2": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.9315,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8295,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.07155322862129145,
+    "follows_src_lure": null
+   }
+  },
+  "L3": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.9325,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8315,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.06922629435718441,
+    "follows_src_lure": null
+   }
+  },
+  "L4": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.911,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.806,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.09016870273414776,
+    "follows_src_lure": null
+   }
+  },
+  "L5": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.94,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.855,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.051774287376381616,
+    "follows_src_lure": null
+   }
+  },
+  "L6": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.939,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.854,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.05293775450843514,
+    "follows_src_lure": null
+   }
+  },
+  "L7": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.9285,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.836,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.05991855730075625,
+    "follows_src_lure": null
+   }
+  },
+  "L8": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.9295,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8455,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0535194880744619,
+    "follows_src_lure": null
+   }
+  },
+  "L9": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.9205,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8375,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0535194880744619,
+    "follows_src_lure": null
+   }
+  },
+  "L10": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.9235,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8365,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.05002908667830134,
+    "follows_src_lure": null
+   }
+  },
+  "L11": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.923,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8465,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.04130308318789994,
+    "follows_src_lure": null
+   }
+  },
+  "L12": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.9085,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8565,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.02443280977312391,
+    "follows_src_lure": null
+   }
+  },
+  "L13": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.9135,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8585,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.02152414194299011,
+    "follows_src_lure": null
+   }
+  },
+  "L14": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.911,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.854,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.02326934264107039,
+    "follows_src_lure": null
+   }
+  },
+  "L15": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.907,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.856,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.01861547411285631,
+    "follows_src_lure": null
+   }
+  },
+  "L16": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.9045,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8585,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.015125072716695753,
+    "follows_src_lure": null
+   }
+  },
+  "L17": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.9075,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8555,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.015125072716695753,
+    "follows_src_lure": null
+   }
+  },
+  "L18": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.905,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8575,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.015706806282722512,
+    "follows_src_lure": null
+   }
+  },
+  "L19": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.904,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8585,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.013961605584642234,
+    "follows_src_lure": null
+   }
+  },
+  "L20": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.9035,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8585,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.012798138452588714,
+    "follows_src_lure": null
+   }
+  },
+  "L21": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.901,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.858,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.009889470622454915,
+    "follows_src_lure": null
+   }
+  },
+  "L22": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.8975,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8585,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.008726003490401396,
+    "follows_src_lure": null
+   }
+  },
+  "L23": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.8975,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.859,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.008144269924374637,
+    "follows_src_lure": null
+   }
+  },
+  "L24": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.897,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.864,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.004653868528214078,
+    "follows_src_lure": null
+   }
+  },
+  "L25": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.8955,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8575,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.008144269924374637,
+    "follows_src_lure": null
+   }
+  },
+  "L26": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.895,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.864,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.004072134962187318,
+    "follows_src_lure": null
+   }
+  },
+  "L27": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.893,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.862,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.004653868528214078,
+    "follows_src_lure": null
+   }
+  },
+  "L28": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.8895,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.864,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0029086678301337987,
+    "follows_src_lure": null
+   }
+  },
+  "L29": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.89,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.859,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0034904013961605585,
+    "follows_src_lure": null
+   }
+  },
+  "L30": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.892,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8595,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.004653868528214078,
+    "follows_src_lure": null
+   }
+  },
+  "L31": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.8885,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8595,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W0-3": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.981,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8535,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.06108202443280977,
+    "follows_src_lure": null
+   }
+  },
+  "W4-7": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.9365,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8525,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0564281559045957,
+    "follows_src_lure": null
+   }
+  },
+  "W8-11": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.937,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.856,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.048283885980221056,
+    "follows_src_lure": null
+   }
+  },
+  "W12-15": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.9125,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.875,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.01687027341477603,
+    "follows_src_lure": null
+   }
+  },
+  "W16-19": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.906,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.858,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.013961605584642234,
+    "follows_src_lure": null
+   }
+  },
+  "W20-23": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.9015,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.858,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.012216404886561954,
+    "follows_src_lure": null
+   }
+  },
+  "W24-27": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.897,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.86,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0075625363583478765,
+    "follows_src_lure": null
+   }
+  },
+  "W28-31": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.891,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8575,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.006399069226294357,
+    "follows_src_lure": null
+   }
+  },
+  "ALL": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 0.982,
+    "normalized_ld_mean": null,
+    "normalized_ld_median": null,
+    "base_acc": 0.8595,
+    "patched_acc": 0.8525,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.06399069226294357,
+    "follows_src_lure": null
+   }
+  }
+ },
+ "main@v1": {
+  "L0": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.0162945549635396,
+    "normalized_ld_median": 1.000000033320649,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.0162945549635396,
+    "normalized_ld_median": 1.000000033320649,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L1": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.4010073297363281,
+    "normalized_ld_median": 1.2857144633118278,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.4010073297363281,
+    "normalized_ld_median": 1.2857144633118278,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L2": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.0753151599154365,
+    "normalized_ld_median": 1.0294117025683003,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.0753151599154365,
+    "normalized_ld_median": 1.0294117025683003,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L3": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.090395971088588,
+    "normalized_ld_median": 1.0400000948309962,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.090395971088588,
+    "normalized_ld_median": 1.0400000948309962,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L4": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1033627172686344,
+    "normalized_ld_median": 1.0612243048835854,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1033627172686344,
+    "normalized_ld_median": 1.0612243048835854,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L5": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.129326843104807,
+    "normalized_ld_median": 1.0714279902642807,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.129326843104807,
+    "normalized_ld_median": 1.0714279902642807,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L6": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1488939743721056,
+    "normalized_ld_median": 1.0800001260518868,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1488939743721056,
+    "normalized_ld_median": 1.0800001260518868,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L7": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1924408961773652,
+    "normalized_ld_median": 1.1111107042036739,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1924408961773652,
+    "normalized_ld_median": 1.1111107042036739,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L8": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.204601257409322,
+    "normalized_ld_median": 1.1153841727419227,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.204601257409322,
+    "normalized_ld_median": 1.1153841727419227,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L9": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.2130749681871404,
+    "normalized_ld_median": 1.1249994514511894,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.2130749681871404,
+    "normalized_ld_median": 1.1249994514511894,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L10": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.233307983845682,
+    "normalized_ld_median": 1.1304349463383798,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.233307983845682,
+    "normalized_ld_median": 1.1304349463383798,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L11": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.197738062078296,
+    "normalized_ld_median": 1.0999998481323383,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.197738062078296,
+    "normalized_ld_median": 1.0999998481323383,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L12": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1623895188666098,
+    "normalized_ld_median": 1.083332992702123,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1623895188666098,
+    "normalized_ld_median": 1.083332992702123,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L13": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1488818166250137,
+    "normalized_ld_median": 1.0638294901291392,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1488818166250137,
+    "normalized_ld_median": 1.0638294901291392,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L14": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.159338239182223,
+    "normalized_ld_median": 1.0769219276830666,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.159338239182223,
+    "normalized_ld_median": 1.0769219276830666,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L15": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1430971818804305,
+    "normalized_ld_median": 1.0555552316047991,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1430971818804305,
+    "normalized_ld_median": 1.0555552316047991,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L16": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.9961619915746995,
+    "normalized_ld_median": 0.9600001997828601,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.9961619915746995,
+    "normalized_ld_median": 0.9600001997828601,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L17": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.9858487268229917,
+    "normalized_ld_median": 0.9444446772290901,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.9858487268229917,
+    "normalized_ld_median": 0.9444446772290901,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L18": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.8697372565284893,
+    "normalized_ld_median": 0.8461539955291315,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.8697372565284893,
+    "normalized_ld_median": 0.8461539955291315,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L19": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.7963713292292186,
+    "normalized_ld_median": 0.7999991892277591,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.7963713292292186,
+    "normalized_ld_median": 0.7999991892277591,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L20": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.6952712414528655,
+    "normalized_ld_median": 0.7142856920099888,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.6952712414528655,
+    "normalized_ld_median": 0.7142856920099888,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L21": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.8763134894078871,
+    "normalized_ld_median": 0.8387098169258584,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.8763134894078871,
+    "normalized_ld_median": 0.8387098169258584,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L22": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.445575919838612,
+    "normalized_ld_median": 0.4545455026355593,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.445575919838612,
+    "normalized_ld_median": 0.4545455026355593,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L23": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.32339647252569154,
+    "normalized_ld_median": 0.3333332743495512,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.32339647252569154,
+    "normalized_ld_median": 0.3333332743495512,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L24": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.016022879864604767,
+    "normalized_ld_median": 0.08163261457017824,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.016022879864604767,
+    "normalized_ld_median": 0.08163261457017824,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L25": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": -0.04852356171271122,
+    "normalized_ld_median": 1.965090573874397e-07,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": -0.04852356171271122,
+    "normalized_ld_median": 1.965090573874397e-07,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L26": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": -0.001661094250679671,
+    "normalized_ld_median": 0.0555559964042941,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": -0.001661094250679671,
+    "normalized_ld_median": 0.0555559964042941,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L27": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": -0.013784938243930695,
+    "normalized_ld_median": 9.971360198391772e-07,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": -0.013784938243930695,
+    "normalized_ld_median": 9.971360198391772e-07,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L28": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.02472473384045643,
+    "normalized_ld_median": 0.06250026692572976,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.02472473384045643,
+    "normalized_ld_median": 0.06250026692572976,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L29": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.3084617099482167,
+    "normalized_ld_median": 0.2941177852555024,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.3084617099482167,
+    "normalized_ld_median": 0.2941177852555024,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L30": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.0389775500627239,
+    "normalized_ld_median": 6.484661054219932e-07,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.0389775500627239,
+    "normalized_ld_median": 6.484661054219932e-07,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "L31": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.0,
+    "normalized_ld_median": 0.0,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.0,
+    "normalized_ld_median": 0.0,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W0-3": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.019514419648546,
+    "normalized_ld_median": 1.000000088009979,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.019514419648546,
+    "normalized_ld_median": 1.000000088009979,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W4-7": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1230201818533192,
+    "normalized_ld_median": 1.0666669022457507,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1230201818533192,
+    "normalized_ld_median": 1.0666669022457507,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W8-11": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1751012956024267,
+    "normalized_ld_median": 1.093750047191881,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1751012956024267,
+    "normalized_ld_median": 1.093750047191881,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W12-15": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1896023022524884,
+    "normalized_ld_median": 1.1000003878773,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1896023022524884,
+    "normalized_ld_median": 1.1000003878773,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W16-19": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.9993931457923813,
+    "normalized_ld_median": 0.9615383727156356,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.9993931457923813,
+    "normalized_ld_median": 0.9615383727156356,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W20-23": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.9072800202531391,
+    "normalized_ld_median": 0.8749994842803107,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.9072800202531391,
+    "normalized_ld_median": 0.8749994842803107,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W24-27": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.05442842912655067,
+    "normalized_ld_median": 0.12499974749527913,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.05442842912655067,
+    "normalized_ld_median": 0.12499974749527913,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W28-31": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.2851747385597532,
+    "normalized_ld_median": 0.27586220619882473,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.2851747385597532,
+    "normalized_ld_median": 0.27586220619882473,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "ALL": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.0197897826328945,
+    "normalized_ld_median": 1.0000000869234478,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.0197897826328945,
+    "normalized_ld_median": 1.0000000869234478,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  }
+ },
+ "main@v2": {
+  "L0": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.9621436926305724,
+    "normalized_ld_median": 0.9999996426830622,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.6666666666666666,
+    "matches_source": 0.959,
+    "normalized_ld_mean": 1.0840491046193859,
+    "normalized_ld_median": 1.0476190022059848,
+    "base_acc": 0.839,
+    "patched_acc": 0.8875,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.03933253873659118,
+    "follows_src_lure": null
+   }
+  },
+  "L1": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1089699560824493,
+    "normalized_ld_median": 1.0000007502744075,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.858,
+    "normalized_ld_mean": 2.0990213785538008,
+    "normalized_ld_median": 1.7499999273568423,
+    "base_acc": 0.839,
+    "patched_acc": 0.979,
+    "n_lure_err": 3,
+    "recovery": 0.3333333333333333,
+    "damage": 0.004767580452920143,
+    "follows_src_lure": null
+   }
+  },
+  "L2": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.0809119487529888,
+    "normalized_ld_median": 1.000000620726277,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.6666666666666666,
+    "matches_source": 0.9395,
+    "normalized_ld_mean": 1.1358327693863552,
+    "normalized_ld_median": 1.0714284012056314,
+    "base_acc": 0.839,
+    "patched_acc": 0.88,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.03456495828367104,
+    "follows_src_lure": null
+   }
+  },
+  "L3": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.0906690738416984,
+    "normalized_ld_median": 1.0000008151408082,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.9285,
+    "normalized_ld_mean": 1.1535257170175588,
+    "normalized_ld_median": 1.0624999543651994,
+    "base_acc": 0.839,
+    "patched_acc": 0.8805,
+    "n_lure_err": 3,
+    "recovery": 0.3333333333333333,
+    "damage": 0.03218116805721097,
+    "follows_src_lure": null
+   }
+  },
+  "L4": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1642001717275785,
+    "normalized_ld_median": 1.0833326387613988,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.924,
+    "normalized_ld_mean": 1.0930207964318785,
+    "normalized_ld_median": 1.0000000306006016,
+    "base_acc": 0.839,
+    "patched_acc": 0.8615,
+    "n_lure_err": 3,
+    "recovery": 0.3333333333333333,
+    "damage": 0.04767580452920143,
+    "follows_src_lure": null
+   }
+  },
+  "L5": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1164767374435167,
+    "normalized_ld_median": 1.0000013434347954,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.9265,
+    "normalized_ld_mean": 1.1320105820750601,
+    "normalized_ld_median": 1.0327956343033486,
+    "base_acc": 0.839,
+    "patched_acc": 0.8865,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.030393325387365912,
+    "follows_src_lure": null
+   }
+  },
+  "L6": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1459357813801063,
+    "normalized_ld_median": 1.0833333196739368,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.926,
+    "normalized_ld_mean": 1.11298870053167,
+    "normalized_ld_median": 1.0000001072883729,
+    "base_acc": 0.839,
+    "patched_acc": 0.8735,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.033373063170441,
+    "follows_src_lure": null
+   }
+  },
+  "L7": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.122616745576969,
+    "normalized_ld_median": 1.0000012061881147,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.9125,
+    "normalized_ld_mean": 1.0472333560845473,
+    "normalized_ld_median": 0.9999998188936092,
+    "base_acc": 0.839,
+    "patched_acc": 0.824,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.05899880810488677,
+    "follows_src_lure": null
+   }
+  },
+  "L8": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1153291783954993,
+    "normalized_ld_median": 1.0000015418749064,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.921,
+    "normalized_ld_mean": 1.1870193871526964,
+    "normalized_ld_median": 1.0701969234044708,
+    "base_acc": 0.839,
+    "patched_acc": 0.8685,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.030393325387365912,
+    "follows_src_lure": null
+   }
+  },
+  "L9": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1118298938795035,
+    "normalized_ld_median": 1.000001509907596,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.914,
+    "normalized_ld_mean": 1.2145276938927252,
+    "normalized_ld_median": 1.083333301461404,
+    "base_acc": 0.839,
+    "patched_acc": 0.877,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.026817640047675805,
+    "follows_src_lure": null
+   }
+  },
+  "L10": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1187488798150886,
+    "normalized_ld_median": 1.0000034556761617,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.9165,
+    "normalized_ld_mean": 1.171814051753732,
+    "normalized_ld_median": 1.0540935879992461,
+    "base_acc": 0.839,
+    "patched_acc": 0.857,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.03575685339690107,
+    "follows_src_lure": null
+   }
+  },
+  "L11": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1322801262921813,
+    "normalized_ld_median": 1.0606613888904504,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.909,
+    "normalized_ld_mean": 1.0732313818727846,
+    "normalized_ld_median": 0.9999999087372177,
+    "base_acc": 0.839,
+    "patched_acc": 0.845,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.041120381406436236,
+    "follows_src_lure": null
+   }
+  },
+  "L12": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1640358288038999,
+    "normalized_ld_median": 1.099999484922463,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.889,
+    "normalized_ld_mean": 0.9698580441697727,
+    "normalized_ld_median": 0.8750002691522221,
+    "base_acc": 0.839,
+    "patched_acc": 0.81,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.056615017878426696,
+    "follows_src_lure": null
+   }
+  },
+  "L13": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1069525586354065,
+    "normalized_ld_median": 1.0000015369939481,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.884,
+    "normalized_ld_mean": 0.9642817141286351,
+    "normalized_ld_median": 0.892857122938244,
+    "base_acc": 0.839,
+    "patched_acc": 0.807,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.054231227651966626,
+    "follows_src_lure": null
+   }
+  },
+  "L14": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1306920001902632,
+    "normalized_ld_median": 1.0000020344763354,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.893,
+    "normalized_ld_mean": 1.0353851880322653,
+    "normalized_ld_median": 0.9682459422775074,
+    "base_acc": 0.839,
+    "patched_acc": 0.8195,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.04052443384982122,
+    "follows_src_lure": null
+   }
+  },
+  "L15": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.0882396825911123,
+    "normalized_ld_median": 1.0000011306254744,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.89,
+    "normalized_ld_mean": 0.9907575433832645,
+    "normalized_ld_median": 0.9130434518340793,
+    "base_acc": 0.839,
+    "patched_acc": 0.825,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.032777115613825986,
+    "follows_src_lure": null
+   }
+  },
+  "L16": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.8600343844394682,
+    "normalized_ld_median": 0.9230776017630316,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.6666666666666666,
+    "matches_source": 0.8865,
+    "normalized_ld_mean": 0.8097631249885454,
+    "normalized_ld_median": 0.7499999925494186,
+    "base_acc": 0.839,
+    "patched_acc": 0.8275,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.026817640047675805,
+    "follows_src_lure": null
+   }
+  },
+  "L17": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.8344588796197927,
+    "normalized_ld_median": 0.8571417715251687,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.6666666666666666,
+    "matches_source": 0.8885,
+    "normalized_ld_mean": 0.743127202627183,
+    "normalized_ld_median": 0.6999999815225577,
+    "base_acc": 0.839,
+    "patched_acc": 0.8285,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.02443384982121573,
+    "follows_src_lure": null
+   }
+  },
+  "L18": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.529553641655268,
+    "normalized_ld_median": 0.5000014385817579,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.6666666666666666,
+    "matches_source": 0.891,
+    "normalized_ld_mean": 0.5433330442529135,
+    "normalized_ld_median": 0.5000001192092733,
+    "base_acc": 0.839,
+    "patched_acc": 0.8295,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.02264600715137068,
+    "follows_src_lure": null
+   }
+  },
+  "L19": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.5875583437823501,
+    "normalized_ld_median": 0.6055561997423362,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.6666666666666666,
+    "matches_source": 0.8865,
+    "normalized_ld_mean": 0.5925743258557145,
+    "normalized_ld_median": 0.5599999641418445,
+    "base_acc": 0.839,
+    "patched_acc": 0.831,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.02026221692491061,
+    "follows_src_lure": null
+   }
+  },
+  "L20": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.26932171502389407,
+    "normalized_ld_median": 0.3333337012063968,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.6666666666666666,
+    "matches_source": 0.891,
+    "normalized_ld_mean": 0.44026011979955826,
+    "normalized_ld_median": 0.45000000923871986,
+    "base_acc": 0.839,
+    "patched_acc": 0.8375,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.015494636471990465,
+    "follows_src_lure": null
+   }
+  },
+  "L21": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.7260504203020143,
+    "normalized_ld_median": 0.7499994743854344,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.6666666666666666,
+    "matches_source": 0.8825,
+    "normalized_ld_mean": 0.724800858473251,
+    "normalized_ld_median": 0.6666665342118953,
+    "base_acc": 0.839,
+    "patched_acc": 0.829,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.020858164481525627,
+    "follows_src_lure": null
+   }
+  },
+  "L22": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.32005044897516866,
+    "normalized_ld_median": 0.33333383355689156,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.0,
+    "matches_source": 0.8815,
+    "normalized_ld_mean": 0.4311121773128647,
+    "normalized_ld_median": 0.40000007311503327,
+    "base_acc": 0.839,
+    "patched_acc": 0.8385,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.010727056019070322,
+    "follows_src_lure": null
+   }
+  },
+  "L23": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.15880557515927848,
+    "normalized_ld_median": 0.16666673811974067,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.0,
+    "matches_source": 0.883,
+    "normalized_ld_mean": 0.3264554127111357,
+    "normalized_ld_median": 0.3124999981373545,
+    "base_acc": 0.839,
+    "patched_acc": 0.843,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.006555423122765197,
+    "follows_src_lure": null
+   }
+  },
+  "L24": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": -0.2633105224757325,
+    "normalized_ld_median": -0.12500085611852513,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.0,
+    "matches_source": 0.883,
+    "normalized_ld_mean": 0.054185156101858825,
+    "normalized_ld_median": 0.12499995972030084,
+    "base_acc": 0.839,
+    "patched_acc": 0.843,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.009535160905840286,
+    "follows_src_lure": null
+   }
+  },
+  "L25": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": -0.306858526397447,
+    "normalized_ld_median": -0.24999967211601848,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.0,
+    "matches_source": 0.8835,
+    "normalized_ld_mean": -0.02771603223171176,
+    "normalized_ld_median": 0.06249994947574883,
+    "base_acc": 0.839,
+    "patched_acc": 0.8425,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.008939213349225268,
+    "follows_src_lure": null
+   }
+  },
+  "L26": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": -0.265894977250044,
+    "normalized_ld_median": -0.17156948214380943,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.0,
+    "matches_source": 0.8835,
+    "normalized_ld_mean": 0.005195377927969667,
+    "normalized_ld_median": 0.0909090611067673,
+    "base_acc": 0.839,
+    "patched_acc": 0.842,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.008939213349225268,
+    "follows_src_lure": null
+   }
+  },
+  "L27": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": -0.319943267189295,
+    "normalized_ld_median": -0.24999996757834655,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.0,
+    "matches_source": 0.883,
+    "normalized_ld_mean": -0.032475023620153705,
+    "normalized_ld_median": 0.06666652891369904,
+    "base_acc": 0.839,
+    "patched_acc": 0.8445,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.008939213349225268,
+    "follows_src_lure": null
+   }
+  },
+  "L28": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": -0.3299752405876715,
+    "normalized_ld_median": -0.25000079474834846,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.0,
+    "matches_source": 0.878,
+    "normalized_ld_mean": -0.09508091659945467,
+    "normalized_ld_median": -2.8049245780324064e-08,
+    "base_acc": 0.839,
+    "patched_acc": 0.838,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.010131108462455305,
+    "follows_src_lure": null
+   }
+  },
+  "L29": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.25668502363766926,
+    "normalized_ld_median": 0.23669492298480066,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.0,
+    "matches_source": 0.878,
+    "normalized_ld_mean": 0.284801082430273,
+    "normalized_ld_median": 0.2499998793936995,
+    "base_acc": 0.839,
+    "patched_acc": 0.837,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.010131108462455305,
+    "follows_src_lure": null
+   }
+  },
+  "L30": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": -0.015281845143355854,
+    "normalized_ld_median": -1.5522040377603196e-07,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.0,
+    "matches_source": 0.878,
+    "normalized_ld_mean": 0.04660237882110567,
+    "normalized_ld_median": 0.043478324417808537,
+    "base_acc": 0.839,
+    "patched_acc": 0.843,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.0023837902264600714,
+    "follows_src_lure": null
+   }
+  },
+  "L31": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.0,
+    "normalized_ld_median": 0.0,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.0,
+    "matches_source": 0.8765,
+    "normalized_ld_mean": 0.0,
+    "normalized_ld_median": 0.0,
+    "base_acc": 0.839,
+    "patched_acc": 0.839,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "W0-3": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.9782331774807969,
+    "normalized_ld_median": 0.99999989659651,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.6666666666666666,
+    "matches_source": 0.962,
+    "normalized_ld_mean": 1.0775589906690959,
+    "normalized_ld_median": 1.0434781769977193,
+    "base_acc": 0.839,
+    "patched_acc": 0.8875,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.03814064362336114,
+    "follows_src_lure": null
+   }
+  },
+  "W4-7": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1521129676008643,
+    "normalized_ld_median": 1.0714280094610604,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.9305,
+    "normalized_ld_mean": 1.1782028278558907,
+    "normalized_ld_median": 1.0833331828730144,
+    "base_acc": 0.839,
+    "patched_acc": 0.891,
+    "n_lure_err": 3,
+    "recovery": 0.3333333333333333,
+    "damage": 0.03218116805721097,
+    "follows_src_lure": null
+   }
+  },
+  "W8-11": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1406899172829565,
+    "normalized_ld_median": 1.0427272406382437,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.9285,
+    "normalized_ld_mean": 1.2360842580066216,
+    "normalized_ld_median": 1.1000000309944198,
+    "base_acc": 0.839,
+    "patched_acc": 0.8905,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.023241954707985697,
+    "follows_src_lure": null
+   }
+  },
+  "W12-15": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 1.1606228321090406,
+    "normalized_ld_median": 1.1111102171105531,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 1.0,
+    "matches_source": 0.9035,
+    "normalized_ld_mean": 1.011127790135407,
+    "normalized_ld_median": 0.9333333799574172,
+    "base_acc": 0.839,
+    "patched_acc": 0.8355,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.041120381406436236,
+    "follows_src_lure": null
+   }
+  },
+  "W16-19": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.8792956384364956,
+    "normalized_ld_median": 0.9166668213439033,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.6666666666666666,
+    "matches_source": 0.8915,
+    "normalized_ld_mean": 0.8237293393935265,
+    "normalized_ld_median": 0.756146400634518,
+    "base_acc": 0.839,
+    "patched_acc": 0.831,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.02443384982121573,
+    "follows_src_lure": null
+   }
+  },
+  "W20-23": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.7719151741916357,
+    "normalized_ld_median": 0.7857144391497188,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.6666666666666666,
+    "matches_source": 0.8875,
+    "normalized_ld_mean": 0.7620507690033289,
+    "normalized_ld_median": 0.6988371241176541,
+    "base_acc": 0.839,
+    "patched_acc": 0.8305,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.02205005959475566,
+    "follows_src_lure": null
+   }
+  },
+  "W24-27": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": -0.175447511056232,
+    "normalized_ld_median": -7.163739068185354e-07,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.0,
+    "matches_source": 0.884,
+    "normalized_ld_mean": 0.07752143983456941,
+    "normalized_ld_median": 0.14495817721553989,
+    "base_acc": 0.839,
+    "patched_acc": 0.841,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.010727056019070322,
+    "follows_src_lure": null
+   }
+  },
+  "W28-31": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.24247998087560546,
+    "normalized_ld_median": 0.20000110946580182,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.0,
+    "matches_source": 0.877,
+    "normalized_ld_mean": 0.261665617421321,
+    "normalized_ld_median": 0.22222235688456937,
+    "base_acc": 0.839,
+    "patched_acc": 0.8365,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.008939213349225268,
+    "follows_src_lure": null
+   }
+  },
+  "ALL": {
+   "anspre": {
+    "n": 2000,
+    "lure_removed": null,
+    "matches_source": 1.0,
+    "normalized_ld_mean": 0.9813904154473924,
+    "normalized_ld_median": 0.9999998208758168,
+    "base_acc": 1.0,
+    "patched_acc": 1.0,
+    "n_lure_err": 0,
+    "recovery": null,
+    "damage": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 2000,
+    "lure_removed": 0.6666666666666666,
+    "matches_source": 0.9755,
+    "normalized_ld_mean": 1.020553944767946,
+    "normalized_ld_median": 1.0000000358504395,
+    "base_acc": 0.839,
+    "patched_acc": 0.8695,
+    "n_lure_err": 3,
+    "recovery": 0.0,
+    "damage": 0.048271752085816445,
+    "follows_src_lure": null
+   }
+  }
+ }
+}

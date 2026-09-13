@@ -35,6 +35,8 @@ cd {root}
 MANIFEST="{log_dir}/${{SLURM_JOB_ID}}_{name}.json"
 python {root}/scripts/slurm/stamp.py start "{manifest_src}" "$MANIFEST"
 finish() {{ rc=$?; python {root}/scripts/slurm/stamp.py finish "$MANIFEST" "$rc"; exit $rc; }}
+# a walltime kill arrives as SIGTERM; record it as 143 (the EXIT trap alone logged 0 for job 391916)
+trap 'python {root}/scripts/slurm/stamp.py finish "$MANIFEST" 143; exit 143' TERM
 trap finish EXIT
 echo "# probing job $SLURM_JOB_ID on $SLURMD_NODENAME ($SLURM_JOB_PARTITION) $(date -u +%FT%TZ)"
 nvidia-smi --query-gpu=index,name,memory.total --format=csv,noheader 2>/dev/null || echo "# no GPU"

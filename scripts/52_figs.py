@@ -26,6 +26,8 @@ def heatmap(ax, grid: dict, cond: str, metric: str, positions: list[str], title:
         pos, l = key.split("|L")
         if pos in positions and cond in conds and conds[cond].get(metric):
             M[layers.index(int(l)), positions.index(pos)] = conds[cond][metric][0]
+    if M.size == 0 or np.all(np.isnan(M)):
+        ax.set_title(title + " (no data)", fontsize=8); return None
     im = ax.imshow(M, aspect="auto", origin="lower", cmap="RdBu" if metric.startswith("margin") else "viridis",
                    vmin=(-np.nanmax(np.abs(M)) if metric.startswith("margin") else 0), vmax=(np.nanmax(np.abs(M)) if metric.startswith("margin") else 1))
     ax.set_xticks(range(len(positions))); ax.set_xticklabels(positions, rotation=45, ha="right", fontsize=7)
@@ -53,7 +55,8 @@ def main() -> int:
         grid = json.loads(f.read_text()).get(f"train_neutral/{r}", {})
         pos = positions if regime == "cot" else [p for p in positions if not p.startswith("cotpre")]
         im = heatmap(ax, grid, f"incongruent@{r}", "margin_mean", pos, f"{a.model} {regime}: log p(true) - log p(lure)")
-        fig.colorbar(im, ax=ax, fraction=0.04)
+        if im is not None:
+            fig.colorbar(im, ax=ax, fraction=0.04)
     fig.tight_layout(); fig.savefig(FIG / f"fig2_margin_{a.model}_L{a.level}_{r}.pdf"); fig.savefig(FIG / f"fig2_margin_{a.model}_L{a.level}_{r}.png", dpi=160); plt.close(fig)
     # ---- Fig 3
     fig, ax = plt.subplots(figsize=(3.2, 2.4))

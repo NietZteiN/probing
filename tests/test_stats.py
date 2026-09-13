@@ -1,6 +1,7 @@
 import numpy as np
 
-from cueconf.patching import layer_sets, summarize
+from cueconf.patch_summary import summarize
+from cueconf.patching import layer_sets
 from cueconf.stats import bootstrap_ci, crossover_step, fdr, t_star
 
 

@@ -232,8 +232,14 @@ def main() -> int:
                 (out / "link.json").write_text(json.dumps(links, indent=1))
                 (out / "replication.json").write_text(json.dumps(repl, indent=1))
             pt = {}
+            from cueconf.patch_summary import summarize, summarize_grid
             for pj in sorted((OUT_DIR / "patching" / k / f"L{a.level}" / regime).glob("*.json")):
-                pt[pj.stem] = json.loads(pj.read_text())["summary"]
+                d = json.loads(pj.read_text())
+                # recompute from rows so metrics added later (lure_removed, normalised LD) exist for every run
+                if pj.stem.startswith("grid_"):
+                    pt[pj.stem] = summarize_grid(d["rows"])
+                else:
+                    pt[pj.stem] = summarize(d["rows"], [(n, []) for n in d["layer_sets"]])
             if pt:
                 (out / "patching.json").write_text(json.dumps(pt, indent=1, default=float))
             print(f"{k} L{a.level} {regime}: behavior={len(beh)} probes={len(grids)} patching={len(pt)} -> {out}")
