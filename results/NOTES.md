@@ -135,3 +135,21 @@ variables; pre-chain maxima .23 (v1) / .53 (v2) vs Kudo's 26.0 / 29.6 for Llama-
 Kudo Fig. 5 reproduced in our format (different-problem source): the final answer flips only
 when the substitution step (layers 0–15) or the value step (layers 16–27) is patched; no input
 equation or earlier step has any effect (paper/figures/kudo_fig5_llama32-3b_L3_cot_v2.png).
+
+## 2026-09-12 (later) — E19, E20, E26 on both core models, level 3
+
+**E26, what the chain errors are.** Llama-3.1-8B: 85–95% of all wrong chains in every
+condition are a single error at the intermediate's value step: it writes the FIRST equation's
+digit operand as the intermediate's value (`truck=2 + ant, ant=7 - 6, ant=2`; `cloud=9 + pear,
+pear=0 - 0, pear=9`), then carries it through. Counts: neutral 245/287, incongruent@v2 291/321,
+congruent@v2 47/50, incongruent@v1 300/328. A congruent number-word name on the intermediate
+removes most of these errors (287 → 50 wrong); an incongruent one neither adds lure errors
+(3 and 9 "wrote the lure" out of 2,000) nor removes the copy errors. Llama-3.2-3B's errors are
+mixed (wrong expression, substitution of a wrong operand at step 4, other values) and fewer.
+**Reading:** the dominant failure inside the chain is a positional copy of a salient earlier
+number (the in-chain analogue of Liu 2026's readout shortcut), not the name's value. A number
+word that agrees with the value acts as a correct cue against that copy; a number word that
+disagrees is simply not used. The lure never wins.
+**E20.** With the gold chain forced up to the value step, the model writes the lure there
+0.0–0.15% of the time (both models); free-generation lure rates are 0.4–0.9%. **E19.** No
+monotone effect of |lure − true| on lure rate; accuracy slopes are small and of inconsistent sign.
