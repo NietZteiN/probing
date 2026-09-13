@@ -250,3 +250,21 @@ training instances).**
   `bell=3 + 2` with the wrong operand). 8B: 689/1007 errors write an unrelated value at step 3,
   the deepest variable's first computation (neutral 53% vs letters 82%). Word names are
   harder than letters at depth for both models.
+
+## 2026-09-13 — Llama-3.2-3B probes at levels 2 and 4 (neutral-trained)
+
+- **Level 2 (intermediate defined first)** looks like level 3: value decodable at its chain
+  step (acc .97–1.00, lure .000), weakly at the end of its definition (.43, lure .06), name
+  identity at the query. The layout change does not change where the value appears.
+- **Level 4, irrelevant-lure control (number word on the distractor v3).** The distractor's
+  own value is not represented anywhere (neutral accuracy .04–.25, as Kudo et al. found for
+  distractors), but the number word's digit IS readable at the query (.28, control .70) and,
+  more interestingly, at the answer position in the chain regime: lure rate .15, lure mass
+  .118 (control .30). Compare the bound incongruent@v2 at the same position: lure mass .004.
+  **Reading: computing a variable's value erases its name's lexical prior from the state
+  (bound number word → lure mass .004 at the answer); an unbound number word's value lingers
+  as a weak signal (.118) and still never becomes the answer (behavioural lure 1.8%).**
+  That is the "binding versus presence" contrast the level-4 control was designed for, with the
+  sign the other way round from the plan's expectation.
+- Level 4 bound target (incongruent@v2): value at its chain step .95, lure .013; at the end of
+  its definition .46, lure .06; margin positive throughout.

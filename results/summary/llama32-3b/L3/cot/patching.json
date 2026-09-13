@@ -4039,6 +4039,6822 @@
    }
   }
  },
+ "grid_incongruent_alt@v1": {
+  "cot:0:restate:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:0:restate:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:0:restate:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:0:restate:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:0:restate:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:0:restate:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:0:restate:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:1:restate:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:1:restate:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:1:restate:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:1:restate:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:1:restate:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:1:restate:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:1:restate:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:2:value:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:2:value:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:2:value:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:2:value:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:2:value:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:2:value:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:2:value:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:3:restate:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:3:restate:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:3:restate:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:3:restate:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:3:restate:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:3:restate:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:3:restate:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:4:substitute:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.978,
+    "changed": 0.028,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.018
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.978,
+    "changed": 0.028,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.018
+   }
+  },
+  "cot:4:substitute:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.002
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.002
+   }
+  },
+  "cot:4:substitute:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:4:substitute:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:4:substitute:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:4:substitute:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.006,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.002
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.006,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.002
+   }
+  },
+  "cot:4:substitute:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.002
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.002
+   }
+  },
+  "cot:5:value:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:5:value:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.002
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.002
+   }
+  },
+  "cot:5:value:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.002
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.002
+   }
+  },
+  "cot:5:value:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:5:value:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.002
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.002
+   }
+  },
+  "cot:5:value:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:5:value:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.01,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.002
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.01,
+    "lure_removed": 1.0,
+    "follows_src_lure": 0.002
+   }
+  },
+  "in:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.002
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.002
+   }
+  },
+  "in:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "query|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.982,
+    "changed": 0.012,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.002
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.982,
+    "changed": 0.012,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.002
+   }
+  },
+  "query|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "query|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "query|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "query|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  },
+  "query|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.99,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.002
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.99,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.002
+   }
+  },
+  "query|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": 0.0
+   }
+  }
+ },
+ "grid_incongruent_alt@v2": {
+  "cot:0:restate:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.994,
+    "changed": 0.008,
+    "lure_removed": null,
+    "follows_src_lure": 0.002
+   }
+  },
+  "cot:0:restate:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:0:restate:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:0:restate:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:0:restate:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:0:restate:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.992,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:0:restate:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:1:restate:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.856,
+    "changed": 0.144,
+    "lure_removed": null,
+    "follows_src_lure": 0.042
+   }
+  },
+  "cot:1:restate:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.99,
+    "changed": 0.008,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:1:restate:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:1:restate:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:1:restate:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:1:restate:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.992,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:1:restate:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:2:value:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.994,
+    "changed": 0.004,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.624,
+    "changed": 0.376,
+    "lure_removed": null,
+    "follows_src_lure": 0.006
+   }
+  },
+  "cot:2:value:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.996,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:2:value:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.996,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:2:value:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.996,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:2:value:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.996,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:2:value:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.962,
+    "changed": 0.036,
+    "lure_removed": null,
+    "follows_src_lure": 0.006
+   }
+  },
+  "cot:2:value:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.996,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:3:restate:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:3:restate:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:3:restate:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:3:restate:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:3:restate:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:3:restate:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:3:restate:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:4:substitute:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:4:substitute:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:4:substitute:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:4:substitute:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:4:substitute:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:4:substitute:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:4:substitute:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:5:value:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:5:value:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:5:value:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:5:value:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:5:value:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:5:value:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "cot:5:value:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.994,
+    "changed": 0.008,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.996,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.992,
+    "changed": 0.01,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.992,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "in:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.968,
+    "changed": 0.03,
+    "lure_removed": null,
+    "follows_src_lure": 0.006
+   }
+  },
+  "in:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.988,
+    "changed": 0.01,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "query|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "query|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "query|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "query|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "query|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "query|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  },
+  "query|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": 0.0
+   }
+  }
+ },
+ "grid_neutral@v1": {
+  "cot:0:restate:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.012,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.012,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.004,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.004,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.008,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 1.0,
+    "changed": 0.006,
+    "lure_removed": 1.0,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.006,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.006,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "query|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.984,
+    "changed": 0.01,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.984,
+    "changed": 0.01,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "query|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "query|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "query|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "query|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.994,
+    "changed": 0.0,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "query|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.99,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.99,
+    "changed": 0.004,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  },
+  "query|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 1,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": 0.0,
+    "follows_src_lure": null
+   }
+  }
+ },
+ "grid_neutral@v2": {
+  "cot:0:restate:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.004,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.994,
+    "changed": 0.004,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.91,
+    "changed": 0.09,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.99,
+    "changed": 0.008,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.984,
+    "changed": 0.014,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.988,
+    "changed": 0.01,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.994,
+    "changed": 0.004,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.558,
+    "changed": 0.442,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.972,
+    "changed": 0.03,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.992,
+    "changed": 0.01,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.992,
+    "changed": 0.01,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.988,
+    "changed": 0.014,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.928,
+    "changed": 0.07,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.964,
+    "changed": 0.034,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.992,
+    "changed": 0.01,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.99,
+    "changed": 0.008,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.996,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.992,
+    "changed": 0.01,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.99,
+    "changed": 0.008,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.966,
+    "changed": 0.032,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.978,
+    "changed": 0.02,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.998,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  }
+ },
+ "grid_other@v1": {
+  "cot:0:restate:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.002,
+    "changed": 0.008,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.002,
+    "changed": 0.008,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.01,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.01,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.002,
+    "changed": 0.022,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.002,
+    "changed": 0.022,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.002,
+    "changed": 0.024,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.002,
+    "changed": 0.024,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.008,
+    "changed": 0.052,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.008,
+    "changed": 0.052,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.764,
+    "changed": 0.974,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.764,
+    "changed": 0.974,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.426,
+    "changed": 0.824,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.426,
+    "changed": 0.824,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.724,
+    "changed": 0.96,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.724,
+    "changed": 0.96,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.692,
+    "changed": 0.938,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.692,
+    "changed": 0.938,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.004,
+    "changed": 0.008,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.004,
+    "changed": 0.008,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.196,
+    "changed": 0.806,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.196,
+    "changed": 0.806,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.994,
+    "changed": 1.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.994,
+    "changed": 1.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 1.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 1.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 1.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 1.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.002,
+    "changed": 0.008,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.002,
+    "changed": 0.008,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.002,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.002,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v1": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  }
+ },
+ "grid_other@v2": {
+  "cot:0:restate:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.16,
+    "changed": 0.032,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.016,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.004,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.168,
+    "changed": 0.036,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:0:restate:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.012,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.398,
+    "changed": 0.614,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.184,
+    "changed": 0.56,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.338,
+    "changed": 0.698,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:1:restate:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.266,
+    "changed": 0.656,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.002,
+    "changed": 0.008,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.134,
+    "changed": 0.374,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.206,
+    "changed": 0.798,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.988,
+    "changed": 0.84,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.992,
+    "changed": 0.838,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.992,
+    "changed": 0.84,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.01,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.138,
+    "changed": 0.136,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:2:value:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.154,
+    "changed": 0.136,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.002,
+    "changed": 0.022,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.002,
+    "changed": 0.024,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:3:restate:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.008,
+    "changed": 0.052,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.764,
+    "changed": 0.974,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.426,
+    "changed": 0.824,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.724,
+    "changed": 0.96,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:4:substitute:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.692,
+    "changed": 0.938,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.004,
+    "changed": 0.008,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.196,
+    "changed": 0.806,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.994,
+    "changed": 1.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 1.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 1.0,
+    "changed": 1.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "cot:5:value:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.148,
+    "changed": 0.048,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.01,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.146,
+    "changed": 0.054,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v1|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.01,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.012,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.164,
+    "changed": 0.364,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.16,
+    "changed": 0.004,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.16,
+    "changed": 0.004,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.17,
+    "changed": 0.08,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "in:v2|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.194,
+    "changed": 0.548,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W0-3": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.002,
+    "changed": 0.008,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.16,
+    "changed": 0.012,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W12-15": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W16-19": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W20-23": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W24-27": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W4-7": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.002,
+    "changed": 0.002,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.162,
+    "changed": 0.004,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  },
+  "query|W8-11": {
+   "anspre": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.0,
+    "changed": 0.0,
+    "lure_removed": null,
+    "follows_src_lure": null
+   },
+   "cotpre@v2": {
+    "n": 500,
+    "n_lure_err": 0,
+    "success_to_source": 0.158,
+    "changed": 0.006,
+    "lure_removed": null,
+    "follows_src_lure": null
+   }
+  }
+ },
  "main@v1": {
   "L0": {
    "anspre": {

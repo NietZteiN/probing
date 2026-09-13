@@ -9,6 +9,9 @@ slurm:
     h200: {gres: "gpu:1", cpus: 8, mem: "64G", time: "08:00:00", qos_shared: true}
     dev:  {gres: null, cpus: 4, mem: "32G", time: "00:30:00"}   # CPU only; tokenizer checks, tests
   log_dir_rel: log/slurm
-# Storage: hidden states at all layers, bf16, at ~11 labelled positions per instance.
-# 3B (29 x 3072): 0.2 MB/instance; 8B (33 x 4096): 0.27 MB/instance.
-# Per model and regime: 10k train + 2k sets x ~8 conditions = ~26k instances -> 5-7 GB. Fine on scratch.
+# Storage (corrected 2026-09-13 after measuring): hidden states at all layers, fp16, at 13 labelled
+# positions per instance = 13 x 29 x 3072 x 2 B = 2.3 MB/instance for a 3B model (3.5 MB for 8B).
+# Per (model, level): 2 regimes x (2 x 10k train + 10 x 2k test) = 254 GB with the *_alt groups,
+# ~150 GB without (20_run_model.py now skips their forced pass by default). The four levels of
+# two models used 1.8 TB and hit ENOSPC on 2026-09-13; the scratch quota behaves like ~3 TB per
+# user despite df reporting 27 TB free. Delete caches of finished levels or use --layers.

@@ -1,0 +1,13 @@
+{
+ "letter": {
+  "n": 2000,
+  "accuracy": [
+   0.999,
+   0.9975,
+   1.0
+  ],
+  "lure_rate": null,
+  "lure_index": null,
+  "n_two_cue_trials": 1998
+ }
+}
