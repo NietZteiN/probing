@@ -22,11 +22,12 @@ something complete.
 
 | # | claim | evidence | figure/table | script |
 |---|---|---|---|---|
-| C1 | Misleading names interfere with arithmetic that the model otherwise solves; the errors are the lure itself | interference and lure rate, incongruent vs neutral, within matched sets | Table 1 | `50_analysis`, `51_tables` |
-| C2 | Writing the chain changes the size of the interference (direction to be found) | interference(direct) − interference(CoT) | Table 1 | same |
-| C3 | The lure is present in the representation at P2/P3 and the true value overtakes it at a specific step K, or never | probe margin over layers × positions, neutral-trained | Figure 2 | `30_train_probes`, `52_figs` |
-| C4 | The name's influence is causal: patching the name positions from the neutral twin recovers lure errors, controls do not | recovery vs damage vs follows-new-lure, by layer | Figure 3 | `40_patch`, `52_figs` |
-| C5 | Therefore chain of thought [overrides / reduces / does not remove] lexical interference, and the faithfulness reading is [cell] | the outcome table | prose | — |
+| C1 | Without a chain, models read a variable's value off its name: a congruent name raises accuracy (up to +20 points) and an incongruent one produces lure answers (up to +51 points above baseline where accuracy is at floor) | facilitation and lure excess, direct regime, three demonstration sets, claim rule of amendment 2 | Table 1 | `56_seed_sweep`, `51_tables` |
+| C2 | With a chain, the name's value has no effect on the answer at any level or model: lure excess within ±0.5 points, congruent and incongruent move together | same quantities, chain regime | Table 1 | same |
+| C3 | Inside the model the lure is read only where the name token sits (and at the query, where the readout is name identity); the true value appears at the value step in every condition and the lure is erased there (lure mass .004); an unbound number word's value lingers (.118) | per-token and labelled-position probes with selectivity | Figure 2 | `30_train_probes`, `53_kudo_figs` |
+| C4 | Without a chain the lure answer is tied to the early-layer representation of the span where the name is defined (neutral-twin patch removes it, alternative lure is not followed); the word control's damage bounds how much of that is disruption | Figure 3 with both controls | Figure 3 | `40_patch`, `54_grid_figs` |
+| C5 | What a chain does not remove is a word-class effect on equation selection: a number-word name on the queried variable at level 4 costs the 3B model 10 points whether or not its value agrees | interference = −facilitation, both claimable | Table 1 / text | `56_seed_sweep`, E26 |
+| C6 | Every one of these is smaller than the effect of which three demonstrations are shown; the demonstration set is a reported factor | across-seed ranges | Appendix | `56_seed_sweep` |
 
 C1 is the paper's floor: if there is no interference on either core model, there is no paper
 in this cycle (PREREGISTRATION §6 and EXPERIMENT_PLAN §3). C3 is the ceiling: it is the part
@@ -43,9 +44,12 @@ The sentence to paste is written here so the fill-in on result day is mechanical
 | **persists** (margin never crosses) | "Hidden interference: the output is correct but the internal state carries the lure to the end. Correct behaviour is not evidence of a clean representation." | "Faithful computation from a corrupted value: the chain writes the lure and the answer follows it. The chain of thought is faithful and wrong." |
 
 The regime contrast then says which cell the model moves *between* when it writes the chain.
-The likeliest headline, and the one the draft's placeholders are shaped for: *chain of thought
-reduces but does not remove lexical interference, and the true value overtakes the lure at
-step K.*
+**Headline after the runs (2026-09-13):** *without a chain, models read a variable's value off
+its name; with a chain, the name's value is irrelevant to the answer, and the probes show the
+lure is read only where the name sits and is erased at the step that computes the value.* The
+outcome cell is "lure fades, answer correct", reached not because the chain suppresses the
+lure but because writing the value replaces it. The residue is a word-class effect on
+equation selection, and the largest effect of all is the demonstration set.
 
 ## 3. Section by section (4 pages of body)
 

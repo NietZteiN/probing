@@ -46,6 +46,23 @@ def main() -> int:
                 tag = f"{k.replace('-', '')}{regime}{target}"
                 numbers[f"interference{tag}"] = f"{100*t[f'interference@{target}'][0]:.1f}"
                 numbers[f"lurerate{tag}"] = f"{100*inc['lure_rate'][0]:.1f}"
+    # amendment 2: pooled contrasts across demonstration seeds, when the sweep exists
+    sweep = RESULTS_DIR / "summary" / f"seed_sweep_L{a.level}.json"
+    if sweep.exists():
+        sw = json.loads(sweep.read_text())
+        for key, rec in sw.items():
+            k, regime = key.split("/")
+            tag = f"{k.replace('-', '')}{regime}"
+            for name, c in rec["contrasts"].items():
+                cname, target = name.split("@")
+                numbers[f"{cname}{tag}{target}"] = f"{100*c['pooled_mean']:+.1f}"
+                numbers[f"{cname}{tag}{target}lo"] = f"{100*c['ci95'][0]:+.1f}"
+                numbers[f"{cname}{tag}{target}hi"] = f"{100*c['ci95'][1]:+.1f}"
+            for g, v in rec["groups"].items():
+                numbers[f"acc{tag}{g.replace('@', '')}"] = f"{100*v['acc_mean']:.1f}"
+                numbers[f"acc{tag}{g.replace('@', '')}lo"] = f"{100*v['acc_range'][0]:.1f}"
+                numbers[f"acc{tag}{g.replace('@', '')}hi"] = f"{100*v['acc_range'][1]:.1f}"
+            numbers[f"nseeds{tag}"] = str(len(rec["seeds"]))
     (PAPER / "tables").mkdir(exist_ok=True)
     with (PAPER / "tables" / "behavior.tex").open("w") as f:
         f.write("\\begin{tabular}{llcrrrrrr}\n\\toprule\nModel & Regime & Target & Neutral & Congr. & Incongr. & Lure rate & Interf. & Facil. \\\\\n\\midrule\n")

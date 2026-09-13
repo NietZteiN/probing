@@ -44,13 +44,17 @@ accuracy drop cannot show where inside the model the name interferes. Interpreta
 find that intermediate values are computed during chain of thought, yet in their clean tasks the
 variable name and the computed value never disagree. We introduce a cue-conflict test for
 multi-step arithmetic in which each problem appears with congruent, neutral, and incongruent
-variable names under identical arithmetic. Across \NUM{n-models} models, incongruent names
-reduce accuracy by \NUM{interference-direct} points without chain of thought and by
-\NUM{interference-cot} points with it. Linear probes trained on neutral problems only show that
-the lure value remains decodable \NUM{lure-persistence}, and activation patching from matched
-neutral problems recovers \NUM{recovery}\% of lure errors. These results indicate that chain of
-thought \NUM{headline-verb} lexical interference, and they \NUM{headline-stance} the view that
-chain-of-thought computation is faithful.
+variable names under identical arithmetic, and evaluate two Llama models across four difficulty
+levels and three demonstration sets. Without a chain of thought the models read a variable's
+value off its name: a congruent name raises accuracy by up to \NUM{facilitationmax} points and an
+incongruent one yields the name's value as the answer up to \NUM{lureexcessmax} points above
+chance. With a chain of thought the name's value has no measurable effect on the answer at any
+level. Linear probes trained on neutral problems show that the lure is decodable only at the
+name's own tokens and is erased at the step that writes the value; activation patching localises
+the no-chain lure to the early-layer representation of the equation that defines the name.
+Chain of thought thus overrides the lexical prior by replacing it, not by suppressing it. What a
+chain does not remove is a word-class effect on equation selection, and every effect we measure
+is smaller than the effect of which three demonstrations are shown.
 \end{abstract}
 
 \section{Introduction}
@@ -82,12 +86,15 @@ in three matched versions with identical arithmetic (Figure~\ref{fig:one}):
 chain of thought, and linear probes trained on neutral problems only read out, at every layer
 and reasoning step, whether the representation holds the true value or the lure.
 
-Our main finding is that \NUM{headline-sentence}. Concretely, we contribute (i) a cue-conflict
-extension of a controlled arithmetic benchmark with matched twins and generation rules that
-make the lure never correct for another reason; (ii) a layer, position and reasoning-step map of
-lure versus true value, with and without chain of thought, across \NUM{n-models} models; and
-(iii) causal evidence from activation patching, with two control patches, on whether the name's
-influence explains the errors.
+Our main finding is that the chain overrides the name by replacement: without a chain of
+thought the models use the name's value as a shortcut in both directions, with a chain the value
+of the name is irrelevant to the answer, and inside the model the lure is present only where the
+name sits and disappears at the step that computes the value. Concretely, we contribute (i) a
+cue-conflict extension of a controlled arithmetic benchmark with matched twins, generation rules
+that make the lure never correct for another reason, and the demonstration set as a reported
+factor; (ii) a layer, position and reasoning-step map of lure versus true value, with and without
+chain of thought, on two models and four levels; and (iii) causal evidence from activation
+patching with two control patches on where the no-chain lure lives.
 
 \begin{figure}[t]
 \centering
@@ -160,51 +167,71 @@ intervals over matched sets.
 
 \section{Results}
 
-\paragraph{Replication.} On the letter condition our probes reproduce \citeauthor{kudo2026faithful}'s
-result for \NUM{replication-model}: the queried variable becomes decodable at equation
-\NUM{replication-tstar} of the chain and not before (their Table~3: 5).
+\paragraph{Replication.} On the letter condition our per-token probes reproduce
+\citeauthor{kudo2026faithful}'s Table~3 for Llama-3.2-3B exactly: the queried variable becomes
+decodable at equation 5 of the chain and the intermediate at equation 2, with pre-chain maxima
+of \NUM{replication-pre-v1} and \NUM{replication-pre-v2} (theirs: 17.8 and 33.2).
 
-\paragraph{RQ1: behaviour.} Table~\ref{tab:behavior} gives accuracy, lure rate, interference
-and facilitation per model and regime. Incongruent names reduce accuracy by
-\NUM{interference-direct} points in the direct regime and \NUM{interference-cot} points with
-chain of thought; \NUM{lure-share} of the incongruent errors are the lure itself. The
-irrelevant-lure control shows \NUM{irrelevant-effect}, so \NUM{binding-reading}.
+\paragraph{RQ1: behaviour.} Table~\ref{tab:behavior} reports, per model and regime, accuracy
+and the pre-registered contrasts pooled over three demonstration sets, with a contrast claimed
+only when its sign holds in every set. Without a chain the name's value is used as a shortcut:
+a congruent name on the queried variable adds \NUM{facilitationllama318bdirectv1} points for
+Llama-3.1-8B at level 3 and up to \NUM{facilitationmax} points at level 5, and an incongruent
+name yields lure answers \NUM{lureexcessllama318bdirectv1} points above chance at level 3 and up
+to \NUM{lureexcessmax} points where accuracy is at floor. With a chain the same contrasts are
+within \NUM{chain-lure-bound} points of zero in every cell, and congruent and incongruent names
+move together. The irrelevant-lure control at level 4 separates presence from binding: a number
+word on the distractor costs accuracy but produces no lure answers. What the chain does not
+remove is a word-class effect: a number-word name on the queried variable at level 4 costs
+Llama-3.2-3B \NUM{interferencellama323bcotv1} points whether or not its value agrees, and the
+error analysis shows the model restating the wrong equation next.
 
 \begin{table}[t]
 \centering\small
 \resizebox{\columnwidth}{!}{\tabinput{behavior}}
 \caption{Accuracy (\%), lure rate, interference and facilitation per model, regime and target
-position, Level~3, 95\% cluster-bootstrap intervals over matched sets.}
+position, Level~3, pooled over three demonstration sets with 95\% cluster-bootstrap intervals
+over matched sets.}
 \label{tab:behavior}
 \end{table}
 
 \paragraph{RQ2: representation.} Figure~\ref{fig:heat} maps the probe margin over layers and
-positions P2--P5 in the incongruent condition, chain of thought beside direct answer. At P2 the
-lure \NUM{p2-reading}; at P3 \NUM{p3-reading}. With chain of thought the margin crosses over at
-\NUM{crossover-step} and \NUM{crossover-persistence}; without it \NUM{direct-reading}. At the
-instance level, the margin at \NUM{link-position} predicts lure errors
-(\NUM{link-coefficient}), placing the outcome in the \NUM{outcome-cell} cell of the outcome
-table.
+positions P2--P5 in the incongruent condition, chain of thought beside direct answer. At P2, the
+end of the defining equation, the true value is already partly computed (accuracy
+\NUM{p2-acc}, selectivity \NUM{p2-sel}) and the lure is weak (lure rate \NUM{p2-lure}). At P3,
+the query, a neutral-trained probe reads the lure in \NUM{p3-lure} of instances, but the control
+task scores \NUM{p3-ctl} there: the readout is the name's identity, not a value, and we do not
+claim it. At P4 and P5 the true value is decodable at \NUM{p4-acc} with the lure at zero in
+every condition and level; per-token probes show the lure decodable only at the name's own
+tokens, and a number word bound to a computed variable has lure mass \NUM{bound-mass} at the
+answer against \NUM{unbound-mass} for an unbound one on the distractor. The outcome cell is
+``lure fades, answer correct'', reached by replacement at the value step rather than suppression.
 
 \begin{figure}[t]
 \centering
 \IfFileExists{figures/fig2_margin_llama32-3b_L3_v2.pdf}{\includegraphics[width=\columnwidth]{figures/fig2_margin_llama32-3b_L3_v2.pdf}}{\fbox{\parbox{0.95\columnwidth}{\centering\small\textcolor{red}{[Figure 2: margin heatmap, generated by scripts/52\_figs.py]}}}}
 \caption{Probe margin $\log p(\text{true})-\log p(\text{lure})$ by layer and position, incongruent
-condition, chain of thought (left) and direct answer (right). Positive means the true value dominates.}
+condition, chain of thought (left) and direct answer (right), Llama-3.2-3B. Positive means the
+true value dominates.}
 \label{fig:heat}
 \end{figure}
 
-\paragraph{RQ3: causation.} Figure~\ref{fig:patch} plots recovery by patched layer. Patching
-the name positions from the neutral twin recovers \NUM{recovery}\% of lure errors at
-\NUM{recovery-layers}, while the control patch changes \NUM{control-damage}\% of correct
-neutral answers and the alternative-lure patch moves the answer to the new lure in
-\NUM{follow-new-lure}\% of cases. \NUM{patching-reading}.
+\paragraph{RQ3: causation.} Figure~\ref{fig:patch} plots, for the direct regime, the share of
+lure errors removed by patching the name's tokens from the matched neutral twin, by layer, with
+the two controls. For Llama-3.2-3B the neutral patch removes \NUM{lure-removed-3b} of lure
+errors and restores the true-minus-lure margin fully (normalised logit difference
+\NUM{nld-3b}), the alternative-lure patch is followed in \NUM{follow-new-lure} of cases, and the
+span grid places the effect in the defining equation at layers \NUM{grid-layers}. The word
+control changes \NUM{control-damage} of correct answers at this floor accuracy, so we report the
+localisation and not a recovery rate. For Llama-3.1-8B the no-chain lure rate at level 3 is at
+chance and both patches behave alike; the effect exists only where the lure does. With a chain
+there are no lure errors to patch and both controls are clean.
 
 \begin{figure}[t]
 \centering
-\IfFileExists{figures/fig3_patching_llama32-3b_L3_v2.pdf}{\includegraphics[width=0.8\columnwidth]{figures/fig3_patching_llama32-3b_L3_v2.pdf}}{\fbox{\parbox{0.95\columnwidth}{\centering\small\textcolor{red}{[Figure 3: patching recovery by layer with controls, generated by scripts/52\_figs.py]}}}}
-\caption{Recovery rate of lure errors by patched layer, with the neutral-word control patch and
-the alternative-lure patch.}
+\IfFileExists{figures/fig3_patching_llama32-3b_L3_v2.pdf}{\includegraphics[width=0.8\columnwidth]{figures/fig3_patching_llama32-3b_L3_v2.pdf}}{\fbox{\parbox{0.95\columnwidth}{\centering\small\textcolor{red}{[Figure 3: patching by layer with controls, generated by scripts/52\_figs.py]}}}}
+\caption{Lure errors removed by patching the name's tokens from the neutral twin, by layer,
+direct regime, with the neutral-word control patch (damage) and the alternative-lure patch.}
 \label{fig:patch}
 \end{figure}
 
@@ -231,8 +258,11 @@ distractor is the name itself. The design is \citet{stroop1935} and \citet{geirh
 
 \section{Conclusion}
 
-\NUM{conclusion-finding}. For faithfulness this means \NUM{conclusion-implication}: where the
-lure survives, or fails to, is where a fix would have to act.
+A misleading variable name is used when the model has nothing better: without a chain of
+thought the name's value becomes the answer, with a chain it is replaced at the step that
+computes the value and never reaches the output. For faithfulness this is the reassuring cell of
+the outcome table, and it comes with two cautions: the chain leaves a word-class effect on which
+equation the model attends to next, and the demonstration set moves accuracy more than any name.
 
 \section*{Limitations}
 

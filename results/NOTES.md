@@ -337,3 +337,11 @@ with a chain, the name's value has no effect on the answer at any level, and the
 the lure is read only where the name sits and is erased at the value step. What a chain does
 not remove is a word-class effect on equation selection (3B, level 4). The demonstrations
 modulate everything and must be reported as a factor.
+
+## 2026-09-13 — the direct-regime fallback, Llama-3.1-8B, level 5, seed-11 demonstrations
+
+Neutral 12.8% (floor; answers "1" 34% of the time), congruent@v1 48.8%, incongruent@v1 5.7%
+with the lure at **65%**: `eight=8`. When the model cannot compute the answer it echoes the
+queried name's value. Nothing in the seed-11 demonstrations (answers 0, 4, 9) suggests this;
+it is the fallback that a floor exposes. The same fallback is what the chain removes: 8B level
+5 chain, seed 11, lure excess −1.1 / −0.4 / +0.4 (v1 / v2 / v3) at 43–100% accuracy.
