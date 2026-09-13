@@ -27,8 +27,12 @@ def summarize(rows: list[dict], sets) -> dict:
             # matches the source twin's own answer (available for runs after 2026-09-12)
             with_src = [r for r in rs if "src_pred" in r]
             matches_src = (np.mean([r["patched"][sname][lab] == r["src_pred"][lab] for r in with_src]) if with_src else None)
+            correct_before = [r for r in rs if r["base"][lab] == r["gold"][lab]]
+            injected = (np.mean([r["patched"][sname][lab] == str(r["src_lure"]) for r in correct_before
+                                 if r["src_lure"] is not None]) if any(r["src_lure"] is not None for r in correct_before) else None)
             agg[lab] = {
                 "n": len(rs),
+                "lure_injected": injected,
                 "lure_removed": lure_removed,
                 "matches_source": matches_src,
                 "normalized_ld_mean": (float(np.mean(nld)) if nld else None),

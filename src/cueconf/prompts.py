@@ -36,7 +36,7 @@ from typing import Sequence
 from .generator import (Instance, cot_steps, instance_arithmetic, sample_single)
 from .words import NEUTRAL_CANDIDATES
 
-REGIMES = ("cot", "direct")
+REGIMES = ("cot", "direct", "free")
 N_DEMOS = 3
 DEMO_SEED = 7
 N_DEMO_WORDS = 12          # reserved for demos, never used in probe-train or test instances
@@ -86,10 +86,20 @@ def scheme_of(condition: str) -> str:
 
 
 def output_of(inst: Instance, regime: str) -> str:
-    return inst.cot if parse_regime(regime)[0] == "cot" else inst.direct
+    base = parse_regime(regime)[0]
+    return inst.cot if base in ("cot", "free") else inst.direct
+
+
+FREE_INSTRUCTION = ("Solve for the queried variable. Think step by step, then write the final line "
+                    "as the variable name, an equals sign and the value.\n\n")
 
 
 def build_prompt(inst: Instance, demos: Sequence[Instance], regime: str) -> str:
+    """The free regime shows NO worked examples: only the instruction and the problem, so the
+    model chooses its own reasoning format (E36). Its labelled positions therefore exist only in
+    the prompt; the answer is parsed from free text."""
+    if parse_regime(regime)[0] == "free":
+        return FREE_INSTRUCTION + inst.input + "\n"
     head = "".join(f"{d.input}\n{output_of(d, regime)}\n\n" for d in demos)
     return head + inst.input + "\n"
 
@@ -167,7 +177,7 @@ def layout(inst: Instance, demos: Sequence[Instance], regime: str) -> Layout:
     for r in names:
         pos[f"cotpre@{r}"] = None
         pos[f"cot@{r}"] = None
-    if parse_regime(regime)[0] == "cot":
+    if parse_regime(regime)[0] in ("cot", "free"):
         steps = cot_steps(ar, names)
         obuf = []
         for k, (kind, role, text) in enumerate(steps):
@@ -202,7 +212,7 @@ def layout(inst: Instance, demos: Sequence[Instance], regime: str) -> Layout:
         segments.append(("cot:0:value:" + ar.query, at, at + len(inst.direct)))
         spans[ar.query].append((at, at + len(names[ar.query])))
         eq_at = at + len(names[ar.query])
-    pos["anspre"] = pos[f"cotpre@{ar.query}"] if parse_regime(regime)[0] == "cot" else eq_at
+    pos["anspre"] = pos[f"cotpre@{ar.query}"] if parse_regime(regime)[0] in ("cot", "free") else eq_at
     pos["ans"] = pos["anspre"] + 1
     text = prompt[:start] + "".join(buf)
     assert text == prompt + output_of(inst, regime)
@@ -244,6 +254,19 @@ def tokenize_layout(tokenizer, lay: Layout) -> dict:
         "name_ntok": name_ntok,           # distinct per-occurrence token counts (want [1])
         "n_tokens": len(enc["input_ids"]),
     }
+
+
+def parse_answer_free(text: str, name: str) -> int | None:
+    """Free-form generations: the LAST `name = <int>` anywhere in the text, allowing spaces,
+    `**bold**`, a trailing period, and the model naming the variable in words ("pen is 6")."""
+    import re
+    pats = [rf"{re.escape(name)}\s*=\s*(-?\d+)", rf"{re.escape(name)}\s+is\s+(-?\d+)",
+            rf"\*\*\s*{re.escape(name)}\s*=\s*(-?\d+)"]
+    vals = [m.group(1) for p_ in pats for m in re.finditer(p_, text)]
+    if not vals:
+        m = list(re.finditer(r"(-?\d+)\s*$", text.strip()))
+        return int(m[-1].group(1)) if m else None
+    return int(vals[-1])
 
 
 def parse_answer(text: str, name: str) -> int | None:

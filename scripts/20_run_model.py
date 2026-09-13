@@ -22,7 +22,7 @@ from cueconf.generator import read_jsonl  # noqa: E402
 from cueconf.prompts import parse_regime  # noqa: E402
 from cueconf.runner import load_model, run_condition  # noqa: E402
 
-MAX_NEW = {"cot": 96, "direct": 12}
+MAX_NEW = {"cot": 96, "direct": 12, "free": 320}
 
 
 def group_key(x) -> str:

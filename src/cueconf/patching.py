@@ -132,7 +132,8 @@ def run_contrast(tok, model, level: int, regime: str, pairs: list[tuple[Instance
             return {lab: (sc[gold[lab]] - sc[str(dst.lure)]) if dst.lure is not None else None for lab, sc in zip(read_labels, scores)}
         # the SOURCE run's own LD serves as the "clean" reference for normalisation
         s_dig, s_sc = next_digit(model, dtoks, ts["input_ids"], read_pos, return_scores=True)
-        rec = {"src": src.id, "dst": dst.id, "set_id": dst.set_id, "target": target, "lure": dst.lure,
+        rec = {"src": src.id, "dst": dst.id, "set_id": dst.set_id, "target": target,
+               "lure": dst.lure if dst.lure is not None else src.lure,   # inject: the lure comes from the source
                "src_lure": src.lure, "n_patched_tokens": len(name_pos), "gold": {k: gold[k] for k in read_labels},
                "base": base, "src_pred": dict(zip(read_labels, s_dig)), "base_ld": ld(b_sc), "src_ld": ld(s_sc),
                "patched": {}, "patched_ld": {}}

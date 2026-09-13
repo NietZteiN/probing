@@ -25,6 +25,10 @@ CONTRASTS = {  # name: (source condition, destination condition)
     "main": ("neutral", "incongruent"),
     "ctl_word": ("neutral_alt", "neutral"),
     "ctl_lure": ("incongruent_alt", "incongruent"),
+    # E35, injection: put the misleading name's activations INTO a clean run. Under a chain there
+    # are no lure errors to remove, so the causal test runs in the positive direction: does the
+    # lure appear in the chain's value step / answer when its representation is transplanted?
+    "inject": ("incongruent", "neutral"),
 }
 
 
@@ -103,6 +107,9 @@ def main() -> int:
             if a.limit:
                 pairs = pairs[:a.limit]
             only = None
+            if cname == "inject":
+                # the renamed slot lives on the SOURCE; reads and gold come from the destination
+                pairs = [(s_, d_) for s_, d_ in pairs if s_.target == t]
             if a.only_lure_errors and cname == "main":
                 beh = OUT_DIR / "runs" / a.model / f"L{a.level}" / a.regime / f"{dst_c}@{t}" / "behavior.jsonl"
                 only = {json.loads(l)["id"] for l in beh.open() if json.loads(l)["pred_is_lure"]}

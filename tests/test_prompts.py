@@ -115,3 +115,29 @@ def test_demo_seed_suffix():
     assert demo_seed_of("cot") == 7
     a = [d.input for d in make_demos(3, "word", seed=7)]; b = [d.input for d in make_demos(3, "word", seed=11)]
     assert a != b and len(b) == 3
+
+
+def test_free_regime_prompt_and_positions():
+    from cueconf.prompts import FREE_INSTRUCTION, build_prompt, parse_answer_free
+    s = next(sample_sets(3, 1, seed=4))
+    x = next(i for i in s if i.condition == "incongruent")
+    p = build_prompt(x, make_demos(3, "word"), "free")
+    assert p.startswith(FREE_INSTRUCTION) and p.endswith(x.input + "\n")
+    assert x.input.count("=") == 3 and "\n\n" not in p[len(FREE_INSTRUCTION):]   # no worked examples
+    lay = layout(x, make_demos(3, "word"), "free")                               # gold chain still labelled
+    assert lay.text[lay.positions["ans"]] == str(x.answer)
+    assert parse_answer_free("pen = 1 + 5 = 6\nSo **pen = 6**.", "pen") == 6
+    assert parse_answer_free("cup is 5, therefore pen is 6", "pen") == 6
+    assert parse_answer_free("no answer here", "pen") is None
+
+
+def test_level1_no_computation_control():
+    """Level 1's v2 is STATED (`fish=5`), so a number-word name there needs no computation."""
+    from cueconf.generator import LEVELS
+    assert LEVELS[1]["eqs"][1][1] == ("d",)
+    s = next(sample_sets(1, 1, seed=3, targets=["v1", "v2"]))
+    inc = [x for x in s if x.condition == "incongruent"]
+    assert {x.target for x in inc} == {"v1", "v2"}
+    x = next(x for x in inc if x.target == "v2")
+    assert f"{x.names['v2']}={x.values['v2']}" in x.input          # its value is given outright
+    assert x.lure != x.values["v2"]

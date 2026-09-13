@@ -32,7 +32,8 @@ import numpy as np
 import torch
 
 from .generator import Instance, read_jsonl
-from .prompts import demo_seed_of, layout, make_demos, parse_answer, parse_regime, scheme_of, tokenize_layout
+from .prompts import (demo_seed_of, layout, make_demos, parse_answer, parse_answer_free, parse_regime,
+                      scheme_of, tokenize_layout)
 
 DIGIT_STRS = [str(d) for d in range(10)]
 
@@ -64,11 +65,14 @@ def digit_token_ids(tok) -> dict[str, list[int]]:
 
 
 @torch.no_grad()
-def generate_free(tok, model, prompts: Sequence[str], max_new_tokens: int, batch_size: int) -> list[str]:
+def generate_free(tok, model, prompts: Sequence[str], max_new_tokens: int, batch_size: int,
+                  stop_at_newline: bool = True) -> list[str]:
     outs: list[str] = []
     # stop at the end of the output line: "\n", "\n\n" and the newline token after a letter/digit
     nl_ids = sorted({i for s in ("\n", "\n\n", "a\n", "6\n", "6\n\n") for i in tok(s, add_special_tokens=False)["input_ids"]
                      if "\n" in tok.decode([i])})
+    if stop_at_newline is False:
+        nl_ids = []
     for i in range(0, len(prompts), batch_size):
         batch = prompts[i:i + batch_size]
         enc = tok(batch, return_tensors="pt", padding=True).to(model.device)
@@ -144,12 +148,13 @@ def run_condition(tok, model, model_key: str, level: int, regime: str, condition
     # ---- free generation (behaviour)
     if do_free:
         prompts = [lays[k].prompt for k in keep_idx]
-        gens = generate_free(tok, model, prompts, max_new_tokens, batch_size)
+        gens = generate_free(tok, model, prompts, max_new_tokens, batch_size,
+                             stop_at_newline=parse_regime(regime)[0] != "free")
         with (out_dir / "behavior.jsonl").open("w") as f:
             n_correct = n_lure = 0
             for k, g in zip(keep_idx, gens):
                 x = instances[k]
-                pred = parse_answer(g, x.names[x.query])
+                pred = (parse_answer_free if parse_regime(regime)[0] == "free" else parse_answer)(g, x.names[x.query])
                 correct = pred == x.answer
                 is_lure = (x.lure is not None and pred == x.lure)
                 n_correct += correct; n_lure += is_lure
