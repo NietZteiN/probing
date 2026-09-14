@@ -50,7 +50,7 @@ of them on all five difficulty levels.
 Without CoT, the models use the value denoted by the name: a congruent name raises accuracy by
 up to \NUM{facilitationmax} points, and an incongruent name is produced as the answer up to
 \NUM{lureexcessmax} points above chance. With CoT, we observe no effect of the name's value at
-any level, with one exception among the models we test. Linear probes indicate that the lure
+any level, with one exception. Linear probes indicate that the lure
 value is decodable at the name's own tokens and is absent at the step where the chain writes the
 variable's value, and activation patching localizes the no-CoT effect to the early layers at the
 equation that defines the name. Whether the chain states the value does not predict the size of
@@ -157,8 +157,8 @@ is reading the identity of the name rather than a value.
 \paragraph{Patching.} To test whether the name causes a behavior, we replace the activations
 at its tokens with those of the matched twin and read the output again \cite{zhang2024patching}.
 Two controls accompany every intervention: replacing one neutral word with another bounds the
-damage caused by any replacement, and replacing one lure with a different lure indicates whether
-the answer follows the name.
+damage of any replacement, and replacing one lure with another indicates whether the answer
+follows the name.
 
 \paragraph{Models.} \NUM{model-list}.
 
@@ -292,9 +292,8 @@ matched neutral twin, by layer, with both controls. For Llama-3.2-3B, patching a
 restores the margin between the true and lure values (normalized logit difference
 \NUM{nld-3b}), the alternative-lure patch is followed in \NUM{follow-new-lure} of cases, and the
 span grid places the effect at the equation that defines the name, where patching layers
-\NUM{grid-layers} alone removes up to \NUM{grid-top-removed} of the errors. Because the word control changes \NUM{control-damage} of
-the correct answers at this floor accuracy, we report the localization rather than a recovery
-rate. For Llama-3.1-8B, whose no-CoT lure excess at level 3 is small, the neutral and
+\NUM{grid-layers} alone removes up to \NUM{grid-top-removed} of the errors. Because the word control changes \NUM{control-damage} of correct answers at this floor
+accuracy, we report localization rather than recovery. For Llama-3.1-8B, whose no-CoT lure excess at level 3 is small, the neutral and
 alternative-lure patches remove lure errors equally, so the patching gives no evidence of a
 name-specific cause. With CoT, there are at most \NUM{cot-lure-err-max} lure errors in 2{,}000 instances to remove,
 and injecting the activations of the name into a neutral run changes the answer in at most
@@ -307,10 +306,9 @@ and injecting the activations of the name into a neutral run changes the answer 
 arithmetic, and we add a cue conflict to that setting. Two studies apply the Stroop design to
 language models: \citet{wang2026stroop} place a local redefinition of a word in conflict with
 its familiar associate, and \citet{hu2026conflict} measure a congruency effect in next-token
-probabilities on a color-rule task. Both measure a single next token, without a chain of thought. Faithfulness has also been measured externally, by perturbing prompts,
-chains, or parameters
-\cite{turpin2023unfaithful,lanham2023measuring,chen2025reasoning,tutek2025unlearning}, whereas
-we measure it internally under a cue for which both values are known. Since small models can
+probabilities on a color-rule task. Both measure a single next token, without a chain of thought. Faithfulness has been measured externally by perturbing prompts, chains, or
+parameters \cite{turpin2023unfaithful,lanham2023measuring,chen2025reasoning,tutek2025unlearning};
+we measure it internally under a cue whose two values are known. Since small models can
 copy the trailing number of the chain \cite{liu2026readout} and an output prior can override a
 correct chain \cite{prabhakar2024deciphering}, we report a positional-copy control. Misleading identifiers degrade performance on real
 code \cite{le2026obfuscated,le2025names,lam2025codecrash}, whereas our task is synthetic, which
