@@ -3,6 +3,7 @@
   "L0": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.004514672686230248,
     "lure_removed": 0.4125,
     "matches_source": 0.965,
     "normalized_ld_mean": 1.0042947700591895,
@@ -18,6 +19,7 @@
   "L1": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.006772009029345372,
     "lure_removed": 0.425,
     "matches_source": 0.878,
     "normalized_ld_mean": 0.7986269750479684,
@@ -33,6 +35,7 @@
   "L2": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.007900677200902935,
     "lure_removed": 0.4,
     "matches_source": 0.937,
     "normalized_ld_mean": 1.014892736556964,
@@ -48,6 +51,7 @@
   "L3": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.006772009029345372,
     "lure_removed": 0.3875,
     "matches_source": 0.9415,
     "normalized_ld_mean": 0.9990118760814799,
@@ -63,6 +67,7 @@
   "L4": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.006772009029345372,
     "lure_removed": 0.3875,
     "matches_source": 0.911,
     "normalized_ld_mean": 0.8482129855829904,
@@ -78,6 +83,7 @@
   "L5": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.004514672686230248,
     "lure_removed": 0.4375,
     "matches_source": 0.9265,
     "normalized_ld_mean": 0.9827997554031205,
@@ -93,6 +99,7 @@
   "L6": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.004514672686230248,
     "lure_removed": 0.3625,
     "matches_source": 0.9265,
     "normalized_ld_mean": 0.9763195600283794,
@@ -108,6 +115,7 @@
   "L7": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.002257336343115124,
     "lure_removed": 0.3125,
     "matches_source": 0.9095,
     "normalized_ld_mean": 0.8960568789792337,
@@ -123,6 +131,7 @@
   "L8": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.002257336343115124,
     "lure_removed": 0.4125,
     "matches_source": 0.9225,
     "normalized_ld_mean": 0.9414668810583305,
@@ -138,6 +147,7 @@
   "L9": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.001128668171557562,
     "lure_removed": 0.35,
     "matches_source": 0.9085,
     "normalized_ld_mean": 0.9226369417479763,
@@ -153,6 +163,7 @@
   "L10": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.002257336343115124,
     "lure_removed": 0.35,
     "matches_source": 0.911,
     "normalized_ld_mean": 0.9132718293774167,
@@ -168,6 +179,7 @@
   "L11": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.003386004514672686,
     "lure_removed": 0.3375,
     "matches_source": 0.9085,
     "normalized_ld_mean": 0.900950466510846,
@@ -183,6 +195,7 @@
   "L12": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.001128668171557562,
     "lure_removed": 0.35,
     "matches_source": 0.8905,
     "normalized_ld_mean": 0.8505453598891723,
@@ -198,6 +211,7 @@
   "L13": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.003386004514672686,
     "lure_removed": 0.325,
     "matches_source": 0.8805,
     "normalized_ld_mean": 0.8326667126687298,
@@ -213,6 +227,7 @@
   "L14": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.003386004514672686,
     "lure_removed": 0.2875,
     "matches_source": 0.882,
     "normalized_ld_mean": 0.8251221210945333,
@@ -228,6 +243,7 @@
   "L15": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.002257336343115124,
     "lure_removed": 0.2625,
     "matches_source": 0.877,
     "normalized_ld_mean": 0.7715698161914506,
@@ -243,6 +259,7 @@
   "L16": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.002257336343115124,
     "lure_removed": 0.2375,
     "matches_source": 0.872,
     "normalized_ld_mean": 0.6823152021211644,
@@ -258,6 +275,7 @@
   "L17": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.002257336343115124,
     "lure_removed": 0.275,
     "matches_source": 0.87,
     "normalized_ld_mean": 0.6575262906623334,
@@ -273,6 +291,7 @@
   "L18": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.003386004514672686,
     "lure_removed": 0.2125,
     "matches_source": 0.864,
     "normalized_ld_mean": 0.61971113841016,
@@ -288,6 +307,7 @@
   "L19": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.003386004514672686,
     "lure_removed": 0.225,
     "matches_source": 0.8655,
     "normalized_ld_mean": 0.6217029412500145,
@@ -303,6 +323,7 @@
   "L20": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.004514672686230248,
     "lure_removed": 0.2125,
     "matches_source": 0.863,
     "normalized_ld_mean": 0.5866975249075916,
@@ -318,6 +339,7 @@
   "L21": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.002257336343115124,
     "lure_removed": 0.1875,
     "matches_source": 0.868,
     "normalized_ld_mean": 0.5936385862137357,
@@ -333,6 +355,7 @@
   "L22": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.002257336343115124,
     "lure_removed": 0.1375,
     "matches_source": 0.858,
     "normalized_ld_mean": 0.3392031442227392,
@@ -348,6 +371,7 @@
   "L23": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.001128668171557562,
     "lure_removed": 0.125,
     "matches_source": 0.8545,
     "normalized_ld_mean": 0.22415066811169387,
@@ -363,6 +387,7 @@
   "L24": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.001128668171557562,
     "lure_removed": 0.1125,
     "matches_source": 0.8555,
     "normalized_ld_mean": 0.13230564847377713,
@@ -378,6 +403,7 @@
   "L25": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0,
     "lure_removed": 0.075,
     "matches_source": 0.853,
     "normalized_ld_mean": 0.0338888765667709,
@@ -393,6 +419,7 @@
   "L26": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0,
     "lure_removed": 0.075,
     "matches_source": 0.8535,
     "normalized_ld_mean": 0.044963733529239644,
@@ -408,6 +435,7 @@
   "L27": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0,
     "lure_removed": 0.075,
     "matches_source": 0.8525,
     "normalized_ld_mean": 0.02074448518377186,
@@ -423,6 +451,7 @@
   "L28": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0,
     "lure_removed": 0.025,
     "matches_source": 0.853,
     "normalized_ld_mean": -0.03452489125584289,
@@ -438,6 +467,7 @@
   "L29": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0,
     "lure_removed": 0.075,
     "matches_source": 0.8525,
     "normalized_ld_mean": 0.08309896234564727,
@@ -453,6 +483,7 @@
   "L30": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0,
     "lure_removed": 0.05,
     "matches_source": 0.853,
     "normalized_ld_mean": 0.011135645561805466,
@@ -468,6 +499,7 @@
   "L31": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0,
     "lure_removed": 0.0,
     "matches_source": 0.8515,
     "normalized_ld_mean": 0.0,
@@ -483,6 +515,7 @@
   "W0-3": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0056433408577878106,
     "lure_removed": 0.3875,
     "matches_source": 0.966,
     "normalized_ld_mean": 0.9975310823057953,
@@ -498,6 +531,7 @@
   "W4-7": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0056433408577878106,
     "lure_removed": 0.3875,
     "matches_source": 0.9335,
     "normalized_ld_mean": 0.991830720639626,
@@ -513,6 +547,7 @@
   "W8-11": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.002257336343115124,
     "lure_removed": 0.35,
     "matches_source": 0.923,
     "normalized_ld_mean": 0.9543730834429406,
@@ -528,6 +563,7 @@
   "W12-15": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.002257336343115124,
     "lure_removed": 0.375,
     "matches_source": 0.8935,
     "normalized_ld_mean": 0.8694040618702457,
@@ -543,6 +579,7 @@
   "W16-19": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.002257336343115124,
     "lure_removed": 0.2625,
     "matches_source": 0.875,
     "normalized_ld_mean": 0.6850864408366204,
@@ -558,6 +595,7 @@
   "W20-23": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.002257336343115124,
     "lure_removed": 0.1875,
     "matches_source": 0.8665,
     "normalized_ld_mean": 0.6150472471183986,
@@ -573,6 +611,7 @@
   "W24-27": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.001128668171557562,
     "lure_removed": 0.1,
     "matches_source": 0.8575,
     "normalized_ld_mean": 0.12809752462977717,
@@ -588,6 +627,7 @@
   "W28-31": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0,
     "lure_removed": 0.05,
     "matches_source": 0.8535,
     "normalized_ld_mean": 0.059285805403155666,
@@ -603,6 +643,7 @@
   "ALL": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.007900677200902935,
     "lure_removed": 0.3875,
     "matches_source": 0.9695,
     "normalized_ld_mean": 1.0004376418473873,
@@ -620,6 +661,7 @@
   "L0": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.016233766233766232,
     "lure_removed": 0.2777777777777778,
     "matches_source": 0.972,
     "normalized_ld_mean": 0.9861782261096358,
@@ -635,6 +677,7 @@
   "L1": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.007575757575757576,
     "lure_removed": 0.3333333333333333,
     "matches_source": 0.893,
     "normalized_ld_mean": 0.8889745143379237,
@@ -650,6 +693,7 @@
   "L2": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.011904761904761904,
     "lure_removed": 0.2222222222222222,
     "matches_source": 0.9485,
     "normalized_ld_mean": 0.9553094891092156,
@@ -665,6 +709,7 @@
   "L3": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.012987012987012988,
     "lure_removed": 0.2638888888888889,
     "matches_source": 0.9385,
     "normalized_ld_mean": 0.9470646001693557,
@@ -680,6 +725,7 @@
   "L4": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.012987012987012988,
     "lure_removed": 0.25,
     "matches_source": 0.9185,
     "normalized_ld_mean": 0.8769830583361237,
@@ -695,6 +741,7 @@
   "L5": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.010822510822510822,
     "lure_removed": 0.2361111111111111,
     "matches_source": 0.918,
     "normalized_ld_mean": 0.8709544416528184,
@@ -710,6 +757,7 @@
   "L6": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.008658008658008658,
     "lure_removed": 0.2222222222222222,
     "matches_source": 0.911,
     "normalized_ld_mean": 0.8281129156285096,
@@ -725,6 +773,7 @@
   "L7": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.011904761904761904,
     "lure_removed": 0.2222222222222222,
     "matches_source": 0.9075,
     "normalized_ld_mean": 0.8128102815380603,
@@ -740,6 +789,7 @@
   "L8": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.00974025974025974,
     "lure_removed": 0.20833333333333334,
     "matches_source": 0.906,
     "normalized_ld_mean": 0.802402819932734,
@@ -755,6 +805,7 @@
   "L9": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.00974025974025974,
     "lure_removed": 0.19444444444444445,
     "matches_source": 0.893,
     "normalized_ld_mean": 0.8020418807827373,
@@ -770,6 +821,7 @@
   "L10": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.010822510822510822,
     "lure_removed": 0.19444444444444445,
     "matches_source": 0.89,
     "normalized_ld_mean": 0.7679325828826985,
@@ -785,6 +837,7 @@
   "L11": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.008658008658008658,
     "lure_removed": 0.1527777777777778,
     "matches_source": 0.883,
     "normalized_ld_mean": 0.7611461679112377,
@@ -800,6 +853,7 @@
   "L12": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.008658008658008658,
     "lure_removed": 0.16666666666666666,
     "matches_source": 0.8675,
     "normalized_ld_mean": 0.7626158458157942,
@@ -815,6 +869,7 @@
   "L13": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.006493506493506494,
     "lure_removed": 0.1388888888888889,
     "matches_source": 0.87,
     "normalized_ld_mean": 0.7342408986076979,
@@ -830,6 +885,7 @@
   "L14": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.007575757575757576,
     "lure_removed": 0.16666666666666666,
     "matches_source": 0.8615,
     "normalized_ld_mean": 0.7554192536419525,
@@ -845,6 +901,7 @@
   "L15": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.004329004329004329,
     "lure_removed": 0.1111111111111111,
     "matches_source": 0.851,
     "normalized_ld_mean": 0.6524219688583783,
@@ -860,6 +917,7 @@
   "L16": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.003246753246753247,
     "lure_removed": 0.08333333333333333,
     "matches_source": 0.8405,
     "normalized_ld_mean": 0.5442805969297659,
@@ -875,6 +933,7 @@
   "L17": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.004329004329004329,
     "lure_removed": 0.1111111111111111,
     "matches_source": 0.833,
     "normalized_ld_mean": 0.5635416614016718,
@@ -890,6 +949,7 @@
   "L18": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0010822510822510823,
     "lure_removed": 0.1111111111111111,
     "matches_source": 0.8305,
     "normalized_ld_mean": 0.4841475577799568,
@@ -905,6 +965,7 @@
   "L19": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.003246753246753247,
     "lure_removed": 0.09722222222222222,
     "matches_source": 0.8305,
     "normalized_ld_mean": 0.49282550481391885,
@@ -920,6 +981,7 @@
   "L20": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.003246753246753247,
     "lure_removed": 0.09722222222222222,
     "matches_source": 0.8275,
     "normalized_ld_mean": 0.468690894022453,
@@ -935,6 +997,7 @@
   "L21": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0021645021645021645,
     "lure_removed": 0.08333333333333333,
     "matches_source": 0.8295,
     "normalized_ld_mean": 0.4747608089616628,
@@ -950,6 +1013,7 @@
   "L22": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.004329004329004329,
     "lure_removed": 0.06944444444444445,
     "matches_source": 0.825,
     "normalized_ld_mean": 0.351172365931748,
@@ -965,6 +1029,7 @@
   "L23": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0010822510822510823,
     "lure_removed": 0.041666666666666664,
     "matches_source": 0.8285,
     "normalized_ld_mean": 0.2354561253208337,
@@ -980,6 +1045,7 @@
   "L24": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0021645021645021645,
     "lure_removed": 0.027777777777777776,
     "matches_source": 0.8255,
     "normalized_ld_mean": 0.1976001862343681,
@@ -995,6 +1061,7 @@
   "L25": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0,
     "lure_removed": 0.013888888888888888,
     "matches_source": 0.825,
     "normalized_ld_mean": 0.14176977455905806,
@@ -1010,6 +1077,7 @@
   "L26": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0010822510822510823,
     "lure_removed": 0.013888888888888888,
     "matches_source": 0.8265,
     "normalized_ld_mean": 0.14856580380566317,
@@ -1025,6 +1093,7 @@
   "L27": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0,
     "lure_removed": 0.027777777777777776,
     "matches_source": 0.8265,
     "normalized_ld_mean": 0.12497347464842715,
@@ -1040,6 +1109,7 @@
   "L28": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0,
     "lure_removed": 0.013888888888888888,
     "matches_source": 0.8265,
     "normalized_ld_mean": 0.06625550054344574,
@@ -1055,6 +1125,7 @@
   "L29": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0,
     "lure_removed": 0.0,
     "matches_source": 0.8265,
     "normalized_ld_mean": 0.10130146869196366,
@@ -1070,6 +1141,7 @@
   "L30": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0,
     "lure_removed": 0.013888888888888888,
     "matches_source": 0.826,
     "normalized_ld_mean": 0.002539166097817135,
@@ -1085,6 +1157,7 @@
   "L31": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0,
     "lure_removed": 0.0,
     "matches_source": 0.8275,
     "normalized_ld_mean": 0.0,
@@ -1100,6 +1173,7 @@
   "W0-3": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.015151515151515152,
     "lure_removed": 0.2638888888888889,
     "matches_source": 0.9765,
     "normalized_ld_mean": 0.9790418351298016,
@@ -1115,6 +1189,7 @@
   "W4-7": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.010822510822510822,
     "lure_removed": 0.25,
     "matches_source": 0.9225,
     "normalized_ld_mean": 0.9074724592356093,
@@ -1130,6 +1205,7 @@
   "W8-11": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.00974025974025974,
     "lure_removed": 0.20833333333333334,
     "matches_source": 0.902,
     "normalized_ld_mean": 0.8093613480257457,
@@ -1145,6 +1221,7 @@
   "W12-15": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.007575757575757576,
     "lure_removed": 0.18055555555555555,
     "matches_source": 0.866,
     "normalized_ld_mean": 0.7627342571931633,
@@ -1160,6 +1237,7 @@
   "W16-19": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0021645021645021645,
     "lure_removed": 0.08333333333333333,
     "matches_source": 0.839,
     "normalized_ld_mean": 0.5460231448346399,
@@ -1175,6 +1253,7 @@
   "W20-23": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0010822510822510823,
     "lure_removed": 0.06944444444444445,
     "matches_source": 0.8285,
     "normalized_ld_mean": 0.48444522534152007,
@@ -1190,6 +1269,7 @@
   "W24-27": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0010822510822510823,
     "lure_removed": 0.027777777777777776,
     "matches_source": 0.8265,
     "normalized_ld_mean": 0.20864197077411106,
@@ -1205,6 +1285,7 @@
   "W28-31": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.0,
     "lure_removed": 0.0,
     "matches_source": 0.825,
     "normalized_ld_mean": 0.09558344229411019,
@@ -1220,6 +1301,7 @@
   "ALL": {
    "anspre": {
     "n": 2000,
+    "lure_injected": 0.017316017316017316,
     "lure_removed": 0.3055555555555556,
     "matches_source": 0.9735,
     "normalized_ld_mean": 0.9815247929903071,
@@ -1237,6 +1319,7 @@
   "L0": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.962,
     "normalized_ld_mean": null,
@@ -1252,6 +1335,7 @@
   "L1": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.7655,
     "normalized_ld_mean": null,
@@ -1267,6 +1351,7 @@
   "L2": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.9345,
     "normalized_ld_mean": null,
@@ -1282,6 +1367,7 @@
   "L3": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.9285,
     "normalized_ld_mean": null,
@@ -1297,6 +1383,7 @@
   "L4": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8935,
     "normalized_ld_mean": null,
@@ -1312,6 +1399,7 @@
   "L5": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.908,
     "normalized_ld_mean": null,
@@ -1327,6 +1415,7 @@
   "L6": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.897,
     "normalized_ld_mean": null,
@@ -1342,6 +1431,7 @@
   "L7": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8815,
     "normalized_ld_mean": null,
@@ -1357,6 +1447,7 @@
   "L8": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.881,
     "normalized_ld_mean": null,
@@ -1372,6 +1463,7 @@
   "L9": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.871,
     "normalized_ld_mean": null,
@@ -1387,6 +1479,7 @@
   "L10": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.866,
     "normalized_ld_mean": null,
@@ -1402,6 +1495,7 @@
   "L11": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.862,
     "normalized_ld_mean": null,
@@ -1417,6 +1511,7 @@
   "L12": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.855,
     "normalized_ld_mean": null,
@@ -1432,6 +1527,7 @@
   "L13": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8515,
     "normalized_ld_mean": null,
@@ -1447,6 +1543,7 @@
   "L14": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.855,
     "normalized_ld_mean": null,
@@ -1462,6 +1559,7 @@
   "L15": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8575,
     "normalized_ld_mean": null,
@@ -1477,6 +1575,7 @@
   "L16": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.851,
     "normalized_ld_mean": null,
@@ -1492,6 +1591,7 @@
   "L17": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.851,
     "normalized_ld_mean": null,
@@ -1507,6 +1607,7 @@
   "L18": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8495,
     "normalized_ld_mean": null,
@@ -1522,6 +1623,7 @@
   "L19": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.853,
     "normalized_ld_mean": null,
@@ -1537,6 +1639,7 @@
   "L20": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.849,
     "normalized_ld_mean": null,
@@ -1552,6 +1655,7 @@
   "L21": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8475,
     "normalized_ld_mean": null,
@@ -1567,6 +1671,7 @@
   "L22": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8505,
     "normalized_ld_mean": null,
@@ -1582,6 +1687,7 @@
   "L23": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.849,
     "normalized_ld_mean": null,
@@ -1597,6 +1703,7 @@
   "L24": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8495,
     "normalized_ld_mean": null,
@@ -1612,6 +1719,7 @@
   "L25": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8455,
     "normalized_ld_mean": null,
@@ -1627,6 +1735,7 @@
   "L26": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8475,
     "normalized_ld_mean": null,
@@ -1642,6 +1751,7 @@
   "L27": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.845,
     "normalized_ld_mean": null,
@@ -1657,6 +1767,7 @@
   "L28": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8415,
     "normalized_ld_mean": null,
@@ -1672,6 +1783,7 @@
   "L29": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.839,
     "normalized_ld_mean": null,
@@ -1687,6 +1799,7 @@
   "L30": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8415,
     "normalized_ld_mean": null,
@@ -1702,6 +1815,7 @@
   "L31": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8365,
     "normalized_ld_mean": null,
@@ -1717,6 +1831,7 @@
   "W0-3": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.9615,
     "normalized_ld_mean": null,
@@ -1732,6 +1847,7 @@
   "W4-7": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.914,
     "normalized_ld_mean": null,
@@ -1747,6 +1863,7 @@
   "W8-11": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8815,
     "normalized_ld_mean": null,
@@ -1762,6 +1879,7 @@
   "W12-15": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8605,
     "normalized_ld_mean": null,
@@ -1777,6 +1895,7 @@
   "W16-19": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.853,
     "normalized_ld_mean": null,
@@ -1792,6 +1911,7 @@
   "W20-23": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.852,
     "normalized_ld_mean": null,
@@ -1807,6 +1927,7 @@
   "W24-27": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.848,
     "normalized_ld_mean": null,
@@ -1822,6 +1943,7 @@
   "W28-31": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.841,
     "normalized_ld_mean": null,
@@ -1837,6 +1959,7 @@
   "ALL": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.966,
     "normalized_ld_mean": null,
@@ -1854,6 +1977,7 @@
   "L0": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.9675,
     "normalized_ld_mean": null,
@@ -1869,6 +1993,7 @@
   "L1": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.861,
     "normalized_ld_mean": null,
@@ -1884,6 +2009,7 @@
   "L2": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.9305,
     "normalized_ld_mean": null,
@@ -1899,6 +2025,7 @@
   "L3": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.9205,
     "normalized_ld_mean": null,
@@ -1914,6 +2041,7 @@
   "L4": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.905,
     "normalized_ld_mean": null,
@@ -1929,6 +2057,7 @@
   "L5": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.9055,
     "normalized_ld_mean": null,
@@ -1944,6 +2073,7 @@
   "L6": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.9025,
     "normalized_ld_mean": null,
@@ -1959,6 +2089,7 @@
   "L7": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8945,
     "normalized_ld_mean": null,
@@ -1974,6 +2105,7 @@
   "L8": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.894,
     "normalized_ld_mean": null,
@@ -1989,6 +2121,7 @@
   "L9": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8825,
     "normalized_ld_mean": null,
@@ -2004,6 +2137,7 @@
   "L10": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.881,
     "normalized_ld_mean": null,
@@ -2019,6 +2153,7 @@
   "L11": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8745,
     "normalized_ld_mean": null,
@@ -2034,6 +2169,7 @@
   "L12": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.865,
     "normalized_ld_mean": null,
@@ -2049,6 +2185,7 @@
   "L13": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8645,
     "normalized_ld_mean": null,
@@ -2064,6 +2201,7 @@
   "L14": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.863,
     "normalized_ld_mean": null,
@@ -2079,6 +2217,7 @@
   "L15": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.862,
     "normalized_ld_mean": null,
@@ -2094,6 +2233,7 @@
   "L16": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.862,
     "normalized_ld_mean": null,
@@ -2109,6 +2249,7 @@
   "L17": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.862,
     "normalized_ld_mean": null,
@@ -2124,6 +2265,7 @@
   "L18": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.859,
     "normalized_ld_mean": null,
@@ -2139,6 +2281,7 @@
   "L19": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.86,
     "normalized_ld_mean": null,
@@ -2154,6 +2297,7 @@
   "L20": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8625,
     "normalized_ld_mean": null,
@@ -2169,6 +2313,7 @@
   "L21": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8595,
     "normalized_ld_mean": null,
@@ -2184,6 +2329,7 @@
   "L22": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.86,
     "normalized_ld_mean": null,
@@ -2199,6 +2345,7 @@
   "L23": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.86,
     "normalized_ld_mean": null,
@@ -2214,6 +2361,7 @@
   "L24": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8635,
     "normalized_ld_mean": null,
@@ -2229,6 +2377,7 @@
   "L25": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8585,
     "normalized_ld_mean": null,
@@ -2244,6 +2393,7 @@
   "L26": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.863,
     "normalized_ld_mean": null,
@@ -2259,6 +2409,7 @@
   "L27": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.862,
     "normalized_ld_mean": null,
@@ -2274,6 +2425,7 @@
   "L28": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.862,
     "normalized_ld_mean": null,
@@ -2289,6 +2441,7 @@
   "L29": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.861,
     "normalized_ld_mean": null,
@@ -2304,6 +2457,7 @@
   "L30": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8595,
     "normalized_ld_mean": null,
@@ -2319,6 +2473,7 @@
   "L31": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8605,
     "normalized_ld_mean": null,
@@ -2334,6 +2489,7 @@
   "W0-3": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.9695,
     "normalized_ld_mean": null,
@@ -2349,6 +2505,7 @@
   "W4-7": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.9115,
     "normalized_ld_mean": null,
@@ -2364,6 +2521,7 @@
   "W8-11": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.896,
     "normalized_ld_mean": null,
@@ -2379,6 +2537,7 @@
   "W12-15": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.865,
     "normalized_ld_mean": null,
@@ -2394,6 +2553,7 @@
   "W16-19": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8625,
     "normalized_ld_mean": null,
@@ -2409,6 +2569,7 @@
   "W20-23": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.859,
     "normalized_ld_mean": null,
@@ -2424,6 +2585,7 @@
   "W24-27": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8635,
     "normalized_ld_mean": null,
@@ -2439,6 +2601,7 @@
   "W28-31": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.8615,
     "normalized_ld_mean": null,
@@ -2454,6 +2617,7 @@
   "ALL": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": null,
     "matches_source": 0.9685,
     "normalized_ld_mean": null,
@@ -2471,6 +2635,7 @@
   "L0": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.425,
     "matches_source": 0.967,
     "normalized_ld_mean": 0.986037554863678,
@@ -2486,6 +2651,7 @@
   "L1": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.475,
     "matches_source": 0.801,
     "normalized_ld_mean": 0.4617727865502189,
@@ -2501,6 +2667,7 @@
   "L2": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.375,
     "matches_source": 0.933,
     "normalized_ld_mean": 0.9810572360925784,
@@ -2516,6 +2683,7 @@
   "L3": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.425,
     "matches_source": 0.912,
     "normalized_ld_mean": 0.9695584107390367,
@@ -2531,6 +2699,7 @@
   "L4": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.425,
     "matches_source": 0.8875,
     "normalized_ld_mean": 0.8995241953420555,
@@ -2546,6 +2715,7 @@
   "L5": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.3875,
     "matches_source": 0.882,
     "normalized_ld_mean": 0.987450218629908,
@@ -2561,6 +2731,7 @@
   "L6": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.4125,
     "matches_source": 0.869,
     "normalized_ld_mean": 0.974211582598524,
@@ -2576,6 +2747,7 @@
   "L7": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.3875,
     "matches_source": 0.866,
     "normalized_ld_mean": 0.9354240923028326,
@@ -2591,6 +2763,7 @@
   "L8": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.3625,
     "matches_source": 0.8555,
     "normalized_ld_mean": 0.9233300455754971,
@@ -2606,6 +2779,7 @@
   "L9": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.375,
     "matches_source": 0.854,
     "normalized_ld_mean": 0.894058744404249,
@@ -2621,6 +2795,7 @@
   "L10": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.3375,
     "matches_source": 0.858,
     "normalized_ld_mean": 0.8702157015281197,
@@ -2636,6 +2811,7 @@
   "L11": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.3375,
     "matches_source": 0.847,
     "normalized_ld_mean": 0.8436968666334617,
@@ -2651,6 +2827,7 @@
   "L12": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.3875,
     "matches_source": 0.834,
     "normalized_ld_mean": 0.8432003052578826,
@@ -2666,6 +2843,7 @@
   "L13": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.3375,
     "matches_source": 0.816,
     "normalized_ld_mean": 0.8096730704424812,
@@ -2681,6 +2859,7 @@
   "L14": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2875,
     "matches_source": 0.806,
     "normalized_ld_mean": 0.7594225218014483,
@@ -2696,6 +2875,7 @@
   "L15": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2875,
     "matches_source": 0.8085,
     "normalized_ld_mean": 0.6863062806754573,
@@ -2711,6 +2891,7 @@
   "L16": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2625,
     "matches_source": 0.8085,
     "normalized_ld_mean": 0.5877287899511752,
@@ -2726,6 +2907,7 @@
   "L17": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.25,
     "matches_source": 0.807,
     "normalized_ld_mean": 0.5755967446347857,
@@ -2741,6 +2923,7 @@
   "L18": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2125,
     "matches_source": 0.811,
     "normalized_ld_mean": 0.5126301143560564,
@@ -2756,6 +2939,7 @@
   "L19": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.25,
     "matches_source": 0.803,
     "normalized_ld_mean": 0.5150164778568347,
@@ -2771,6 +2955,7 @@
   "L20": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2125,
     "matches_source": 0.808,
     "normalized_ld_mean": 0.46074546802521915,
@@ -2786,6 +2971,7 @@
   "L21": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2,
     "matches_source": 0.801,
     "normalized_ld_mean": 0.5078256171010362,
@@ -2801,6 +2987,7 @@
   "L22": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.125,
     "matches_source": 0.797,
     "normalized_ld_mean": 0.2729060520542782,
@@ -2816,6 +3003,7 @@
   "L23": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.1125,
     "matches_source": 0.794,
     "normalized_ld_mean": 0.19917638737170754,
@@ -2831,6 +3019,7 @@
   "L24": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.0875,
     "matches_source": 0.7955,
     "normalized_ld_mean": 0.12359198244364217,
@@ -2846,6 +3035,7 @@
   "L25": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.05,
     "matches_source": 0.7925,
     "normalized_ld_mean": 0.057321713687862125,
@@ -2861,6 +3051,7 @@
   "L26": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.05,
     "matches_source": 0.792,
     "normalized_ld_mean": 0.06298813048276622,
@@ -2876,6 +3067,7 @@
   "L27": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.0625,
     "matches_source": 0.7925,
     "normalized_ld_mean": 0.06638452921012042,
@@ -2891,6 +3083,7 @@
   "L28": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.05,
     "matches_source": 0.7925,
     "normalized_ld_mean": 0.007572134814882011,
@@ -2906,6 +3099,7 @@
   "L29": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.05,
     "matches_source": 0.7915,
     "normalized_ld_mean": 0.07831857169207929,
@@ -2921,6 +3115,7 @@
   "L30": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.05,
     "matches_source": 0.7925,
     "normalized_ld_mean": 0.024823805379118602,
@@ -2936,6 +3131,7 @@
   "L31": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.0,
     "matches_source": 0.7875,
     "normalized_ld_mean": 0.0,
@@ -2951,6 +3147,7 @@
   "W0-3": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.425,
     "matches_source": 0.968,
     "normalized_ld_mean": 0.9936954804628245,
@@ -2966,6 +3163,7 @@
   "W4-7": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.4125,
     "matches_source": 0.8965,
     "normalized_ld_mean": 0.988338398389708,
@@ -2981,6 +3179,7 @@
   "W8-11": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.3375,
     "matches_source": 0.861,
     "normalized_ld_mean": 0.9408687463075126,
@@ -2996,6 +3195,7 @@
   "W12-15": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.375,
     "matches_source": 0.835,
     "normalized_ld_mean": 0.8260818073695978,
@@ -3011,6 +3211,7 @@
   "W16-19": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2625,
     "matches_source": 0.811,
     "normalized_ld_mean": 0.6106217725727775,
@@ -3026,6 +3227,7 @@
   "W20-23": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2125,
     "matches_source": 0.805,
     "normalized_ld_mean": 0.5296698863001376,
@@ -3041,6 +3243,7 @@
   "W24-27": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.075,
     "matches_source": 0.796,
     "normalized_ld_mean": 0.12972707479209034,
@@ -3056,6 +3259,7 @@
   "W28-31": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.05,
     "matches_source": 0.792,
     "normalized_ld_mean": 0.07017422681481793,
@@ -3071,6 +3275,7 @@
   "ALL": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.425,
     "matches_source": 0.968,
     "normalized_ld_mean": 0.9984498366638608,
@@ -3088,6 +3293,7 @@
   "L0": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2916666666666667,
     "matches_source": 0.9545,
     "normalized_ld_mean": 1.0031829254074878,
@@ -3103,6 +3309,7 @@
   "L1": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.4305555555555556,
     "matches_source": 0.871,
     "normalized_ld_mean": 0.8100651669140636,
@@ -3118,6 +3325,7 @@
   "L2": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2638888888888889,
     "matches_source": 0.9205,
     "normalized_ld_mean": 0.9298144197977122,
@@ -3133,6 +3341,7 @@
   "L3": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2777777777777778,
     "matches_source": 0.899,
     "normalized_ld_mean": 0.8919745967314457,
@@ -3148,6 +3357,7 @@
   "L4": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.25,
     "matches_source": 0.881,
     "normalized_ld_mean": 0.8233109658366876,
@@ -3163,6 +3373,7 @@
   "L5": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.25,
     "matches_source": 0.868,
     "normalized_ld_mean": 0.788676513714611,
@@ -3178,6 +3389,7 @@
   "L6": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2361111111111111,
     "matches_source": 0.8545,
     "normalized_ld_mean": 0.7676774192288887,
@@ -3193,6 +3405,7 @@
   "L7": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2361111111111111,
     "matches_source": 0.857,
     "normalized_ld_mean": 0.7549675426771884,
@@ -3208,6 +3421,7 @@
   "L8": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2361111111111111,
     "matches_source": 0.8375,
     "normalized_ld_mean": 0.7112360583536849,
@@ -3223,6 +3437,7 @@
   "L9": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.19444444444444445,
     "matches_source": 0.829,
     "normalized_ld_mean": 0.7004609169423477,
@@ -3238,6 +3453,7 @@
   "L10": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.18055555555555555,
     "matches_source": 0.8245,
     "normalized_ld_mean": 0.6476150869721996,
@@ -3253,6 +3469,7 @@
   "L11": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.20833333333333334,
     "matches_source": 0.8145,
     "normalized_ld_mean": 0.6273029426388068,
@@ -3268,6 +3485,7 @@
   "L12": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.19444444444444445,
     "matches_source": 0.8015,
     "normalized_ld_mean": 0.5850905733762324,
@@ -3283,6 +3501,7 @@
   "L13": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.1388888888888889,
     "matches_source": 0.799,
     "normalized_ld_mean": 0.5780288899887982,
@@ -3298,6 +3517,7 @@
   "L14": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.18055555555555555,
     "matches_source": 0.808,
     "normalized_ld_mean": 0.5686244512235117,
@@ -3313,6 +3533,7 @@
   "L15": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.125,
     "matches_source": 0.804,
     "normalized_ld_mean": 0.471165357345925,
@@ -3328,6 +3549,7 @@
   "L16": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.06944444444444445,
     "matches_source": 0.7995,
     "normalized_ld_mean": 0.4212407036638264,
@@ -3343,6 +3565,7 @@
   "L17": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.041666666666666664,
     "matches_source": 0.8,
     "normalized_ld_mean": 0.4277394953441712,
@@ -3358,6 +3581,7 @@
   "L18": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.08333333333333333,
     "matches_source": 0.7955,
     "normalized_ld_mean": 0.3510909038461799,
@@ -3373,6 +3597,7 @@
   "L19": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.1111111111111111,
     "matches_source": 0.8035,
     "normalized_ld_mean": 0.3529450758057572,
@@ -3388,6 +3613,7 @@
   "L20": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.06944444444444445,
     "matches_source": 0.7985,
     "normalized_ld_mean": 0.3224054885949612,
@@ -3403,6 +3629,7 @@
   "L21": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.06944444444444445,
     "matches_source": 0.7975,
     "normalized_ld_mean": 0.3389858651208334,
@@ -3418,6 +3645,7 @@
   "L22": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.041666666666666664,
     "matches_source": 0.7985,
     "normalized_ld_mean": 0.2562228896079301,
@@ -3433,6 +3661,7 @@
   "L23": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.05555555555555555,
     "matches_source": 0.7995,
     "normalized_ld_mean": 0.18549962343184076,
@@ -3448,6 +3677,7 @@
   "L24": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.013888888888888888,
     "matches_source": 0.8015,
     "normalized_ld_mean": 0.13852364704346448,
@@ -3463,6 +3693,7 @@
   "L25": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.013888888888888888,
     "matches_source": 0.799,
     "normalized_ld_mean": 0.08817159886547031,
@@ -3478,6 +3709,7 @@
   "L26": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.027777777777777776,
     "matches_source": 0.798,
     "normalized_ld_mean": 0.10220442786451221,
@@ -3493,6 +3725,7 @@
   "L27": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.013888888888888888,
     "matches_source": 0.8015,
     "normalized_ld_mean": 0.08480392592886316,
@@ -3508,6 +3741,7 @@
   "L28": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.0,
     "matches_source": 0.8005,
     "normalized_ld_mean": 0.04349601988232672,
@@ -3523,6 +3757,7 @@
   "L29": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.013888888888888888,
     "matches_source": 0.7995,
     "normalized_ld_mean": 0.06877344257956719,
@@ -3538,6 +3773,7 @@
   "L30": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.013888888888888888,
     "matches_source": 0.802,
     "normalized_ld_mean": -0.0012112211563249484,
@@ -3553,6 +3789,7 @@
   "L31": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.0,
     "matches_source": 0.799,
     "normalized_ld_mean": 0.0,
@@ -3568,6 +3805,7 @@
   "W0-3": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2777777777777778,
     "matches_source": 0.953,
     "normalized_ld_mean": 1.0063550667421286,
@@ -3583,6 +3821,7 @@
   "W4-7": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2638888888888889,
     "matches_source": 0.8695,
     "normalized_ld_mean": 0.8256195865931492,
@@ -3598,6 +3837,7 @@
   "W8-11": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.2361111111111111,
     "matches_source": 0.843,
     "normalized_ld_mean": 0.7229223824124923,
@@ -3613,6 +3853,7 @@
   "W12-15": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.19444444444444445,
     "matches_source": 0.803,
     "normalized_ld_mean": 0.5914279451679723,
@@ -3628,6 +3869,7 @@
   "W16-19": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.05555555555555555,
     "matches_source": 0.799,
     "normalized_ld_mean": 0.4196961148976531,
@@ -3643,6 +3885,7 @@
   "W20-23": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.06944444444444445,
     "matches_source": 0.8,
     "normalized_ld_mean": 0.3471237835018449,
@@ -3658,6 +3901,7 @@
   "W24-27": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.013888888888888888,
     "matches_source": 0.8005,
     "normalized_ld_mean": 0.1462016132598978,
@@ -3673,6 +3917,7 @@
   "W28-31": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.013888888888888888,
     "matches_source": 0.8005,
     "normalized_ld_mean": 0.06061410748459024,
@@ -3688,6 +3933,7 @@
   "ALL": {
    "anspre": {
     "n": 2000,
+    "lure_injected": null,
     "lure_removed": 0.3055555555555556,
     "matches_source": 0.9525,
     "normalized_ld_mean": 1.0139564124058489,

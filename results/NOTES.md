@@ -402,3 +402,21 @@ queried variable (the answer slot) as on the stated one.
 
 Revised mechanism sentence for the paper: *the chain removes the lexical prior by writing the
 value, not by computing it; the prior survives exactly where no value is written.*
+
+## 2026-09-14 — E36 free-form chain: not answerable on base models
+
+Given the instruction "Solve for the queried variable. Think step by step..." and no worked
+examples, both base models degenerate into copying the problem line:
+
+```
+truck=2 + nine, nine=7 - 6; truck=?
+truck=2 + nine, nine=7 - 6; truck=?   (x20)
+```
+
+Accuracy 16–22% in every condition at levels 3 and 5, with lure rates at zero because the
+parsed "answer" is an echoed operand. Base models do not follow a zero-shot instruction; this
+says nothing about the lure. **E36 is inconclusive for base models and is requeued for the
+instruct models** (llama32-3b-it, llama31-8b-it, gemma3-4b-it, olmo2-7b-it), where the
+instruction is in-distribution. If the instruct models also fail, the fallback is a
+*prose-chain* regime: worked examples that reason in prose rather than in the equation format,
+which tests format-dependence without requiring instruction-following.

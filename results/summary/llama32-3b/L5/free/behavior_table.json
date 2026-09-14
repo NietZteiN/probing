@@ -1,0 +1,114 @@
+{
+ "congruent@v1": {
+  "n": 2000,
+  "accuracy": [
+   0.166,
+   0.1495,
+   0.1825
+  ],
+  "lure_rate": null,
+  "lure_index": null,
+  "n_two_cue_trials": 332
+ },
+ "congruent@v2": {
+  "n": 2000,
+  "accuracy": [
+   0.1725,
+   0.156,
+   0.1895
+  ],
+  "lure_rate": null,
+  "lure_index": null,
+  "n_two_cue_trials": 345
+ },
+ "incongruent@v1": {
+  "n": 2000,
+  "accuracy": [
+   0.157,
+   0.1409875,
+   0.173
+  ],
+  "lure_rate": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "lure_index": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "n_two_cue_trials": 314
+ },
+ "incongruent@v2": {
+  "n": 2000,
+  "accuracy": [
+   0.1615,
+   0.145,
+   0.17751249999999993
+  ],
+  "lure_rate": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "lure_index": [
+   0.0,
+   0.0,
+   0.0
+  ],
+  "n_two_cue_trials": 323
+ },
+ "letter": {
+  "n": 2000,
+  "accuracy": [
+   0.207,
+   0.1889875,
+   0.2255
+  ],
+  "lure_rate": null,
+  "lure_index": null,
+  "n_two_cue_trials": 414
+ },
+ "neutral": {
+  "n": 2000,
+  "accuracy": [
+   0.1605,
+   0.144,
+   0.17701249999999993
+  ],
+  "lure_rate": null,
+  "lure_index": null,
+  "n_two_cue_trials": 321
+ },
+ "interference@v1": [
+  0.0035,
+  -0.0045,
+  0.01151249999999993
+ ],
+ "facilitation@v1": [
+  0.0055,
+  -0.0015,
+  0.013
+ ],
+ "interference@v2": [
+  -0.001,
+  -0.0065,
+  0.005
+ ],
+ "facilitation@v2": [
+  0.012,
+  0.005,
+  0.019
+ ],
+ "pseudo_lure_rate@v1": [
+  0.0005,
+  0.0,
+  0.0015
+ ],
+ "pseudo_lure_rate@v2": [
+  0.0,
+  0.0,
+  0.0
+ ]
+}
