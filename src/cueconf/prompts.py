@@ -270,10 +270,17 @@ def parse_answer_free(text: str, name: str) -> int | None:
 
 
 def parse_answer(text: str, name: str) -> int | None:
-    """The value of `name=<digit>` LAST written on the first generated line, else None."""
-    line = text.split("\n", 1)[0]
+    """The model's answer to THIS problem: the last `name=<int>` written before the blank line
+    that separates few-shot problems.
+
+    Reading only the first line (the original rule) throws away correct answers whenever the
+    model restates the problem before solving it, which it does for 5-13% of instances at some
+    levels and at different rates per condition, so it biased the contrasts. Cutting at the
+    blank line keeps the answer without picking up a fresh problem the model invents afterwards.
+    """
+    block = text.split("\n\n", 1)[0]
     val = None
-    for piece in line.split(","):
+    for piece in block.replace("\n", ",").split(","):
         piece = piece.strip()
         if piece.startswith(name + "="):
             rhs = piece[len(name) + 1:].strip()

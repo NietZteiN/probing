@@ -1,9 +1,9 @@
 {
  "incongruent@v1": {
-  "n_lure_errors_at_p5": 106,
-  "trailing_is_true_intermediate": 0.1792452830188679,
-  "trailing_is_lure": 0.2169811320754717,
-  "chain_wrote_true_at_p4": 0.0660377358490566,
+  "n_lure_errors_at_p5": 107,
+  "trailing_is_true_intermediate": 0.17757009345794392,
+  "trailing_is_lure": 0.21495327102803738,
+  "chain_wrote_true_at_p4": 0.06542056074766354,
   "rows": [
    {
     "id": "L3-44-00016-inc@v1",

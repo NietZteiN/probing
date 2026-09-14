@@ -13,13 +13,13 @@
  "congruent@v2": {
   "n": 2000,
   "accuracy": [
-   0.988,
-   0.983,
-   0.9925
+   0.986,
+   0.9805,
+   0.991
   ],
   "lure_rate": null,
   "lure_index": null,
-  "n_two_cue_trials": 1976
+  "n_two_cue_trials": 1972
  },
  "incongruent@v1": {
   "n": 2000,
@@ -157,9 +157,9 @@
   0.006
  ],
  "facilitation@v2": [
-  0.0105,
-  0.0035,
-  0.0175
+  0.0085,
+  0.0015,
+  0.016
  ],
  "pseudo_lure_rate@v1": [
   0.0,

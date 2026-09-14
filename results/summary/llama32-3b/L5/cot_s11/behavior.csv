@@ -10902,7 +10902,7 @@ L5-44-00899-inc@v3,L5-44-00899,incongruent,v3,4.0,0,0.0,True,False,"{'v3': 0, 'v
 L5-44-00900-inc@v3,L5-44-00900,incongruent,v3,0.0,8,8.0,True,False,"{'v3': 1, 'v2': 4, 'v1': 8}","{'v1': 'fish', 'v2': 'star', 'v3': 'zero'}",incongruent@v3,zero
 L5-44-00901-inc@v3,L5-44-00901,incongruent,v3,6.0,1,1.0,True,False,"{'v3': 0, 'v2': 8, 'v1': 1}","{'v1': 'truck', 'v2': 'van', 'v3': 'six'}",incongruent@v3,six
 L5-44-00902-inc@v3,L5-44-00902,incongruent,v3,4.0,7,13.0,False,False,"{'v3': 0, 'v2': 2, 'v1': 7}","{'v1': 'desk', 'v2': 'fox', 'v3': 'four'}",incongruent@v3,four
-L5-44-00903-inc@v3,L5-44-00903,incongruent,v3,0.0,5,,False,False,"{'v3': 7, 'v2': 1, 'v1': 5}","{'v1': 'chair', 'v2': 'fish', 'v3': 'zero'}",incongruent@v3,zero
+L5-44-00903-inc@v3,L5-44-00903,incongruent,v3,0.0,5,1.0,False,False,"{'v3': 7, 'v2': 1, 'v1': 5}","{'v1': 'chair', 'v2': 'fish', 'v3': 'zero'}",incongruent@v3,zero
 L5-44-00904-inc@v3,L5-44-00904,incongruent,v3,3.0,8,2.0,False,False,"{'v3': 1, 'v2': 1, 'v1': 8}","{'v1': 'cap', 'v2': 'map', 'v3': 'three'}",incongruent@v3,three
 L5-44-00905-inc@v3,L5-44-00905,incongruent,v3,5.0,3,5.0,False,True,"{'v3': 1, 'v2': 1, 'v1': 3}","{'v1': 'bus', 'v2': 'pig', 'v3': 'five'}",incongruent@v3,five
 L5-44-00906-inc@v3,L5-44-00906,incongruent,v3,3.0,7,4.0,False,False,"{'v3': 1, 'v2': 2, 'v1': 7}","{'v1': 'frog', 'v2': 'box', 'v3': 'three'}",incongruent@v3,three
@@ -16902,7 +16902,7 @@ L5-44-00899-incalt@v3,L5-44-00899,incongruent_alt,v3,8.0,0,0.0,True,False,"{'v3'
 L5-44-00900-incalt@v3,L5-44-00900,incongruent_alt,v3,9.0,8,14.0,False,False,"{'v3': 1, 'v2': 4, 'v1': 8}","{'v1': 'fish', 'v2': 'star', 'v3': 'nine'}",incongruent_alt@v3,nine
 L5-44-00901-incalt@v3,L5-44-00901,incongruent_alt,v3,4.0,1,1.0,True,False,"{'v3': 0, 'v2': 8, 'v1': 1}","{'v1': 'truck', 'v2': 'van', 'v3': 'four'}",incongruent_alt@v3,four
 L5-44-00902-incalt@v3,L5-44-00902,incongruent_alt,v3,9.0,7,13.0,False,False,"{'v3': 0, 'v2': 2, 'v1': 7}","{'v1': 'desk', 'v2': 'fox', 'v3': 'nine'}",incongruent_alt@v3,nine
-L5-44-00903-incalt@v3,L5-44-00903,incongruent_alt,v3,4.0,5,,False,False,"{'v3': 7, 'v2': 1, 'v1': 5}","{'v1': 'chair', 'v2': 'fish', 'v3': 'four'}",incongruent_alt@v3,four
+L5-44-00903-incalt@v3,L5-44-00903,incongruent_alt,v3,4.0,5,2.0,False,False,"{'v3': 7, 'v2': 1, 'v1': 5}","{'v1': 'chair', 'v2': 'fish', 'v3': 'four'}",incongruent_alt@v3,four
 L5-44-00904-incalt@v3,L5-44-00904,incongruent_alt,v3,4.0,8,2.0,False,False,"{'v3': 1, 'v2': 1, 'v1': 8}","{'v1': 'cap', 'v2': 'map', 'v3': 'four'}",incongruent_alt@v3,four
 L5-44-00905-incalt@v3,L5-44-00905,incongruent_alt,v3,9.0,3,4.0,False,False,"{'v3': 1, 'v2': 1, 'v1': 3}","{'v1': 'bus', 'v2': 'pig', 'v3': 'nine'}",incongruent_alt@v3,nine
 L5-44-00906-incalt@v3,L5-44-00906,incongruent_alt,v3,8.0,7,4.0,False,False,"{'v3': 1, 'v2': 2, 'v1': 7}","{'v1': 'frog', 'v2': 'box', 'v3': 'eight'}",incongruent_alt@v3,eight

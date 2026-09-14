@@ -141,3 +141,17 @@ def test_level1_no_computation_control():
     x = next(x for x in inc if x.target == "v2")
     assert f"{x.names['v2']}={x.values['v2']}" in x.input          # its value is given outright
     assert x.lure != x.values["v2"]
+
+
+def test_parse_answer_survives_a_restated_problem():
+    from cueconf.prompts import parse_answer
+    # the model restates the problem, then solves it: the answer is on the second line
+    g = ("seven=6 - lake, lake=0 - 0, sky=3 + 2, seven=?\n"
+         "seven=6 - lake, lake=0 - 0, lake=0, seven=6 - 0, seven=6\n\n")
+    assert parse_answer(g, "seven") == 6
+    # a fresh problem after the blank line must not be read as this problem's answer
+    assert parse_answer("one=?\n\ntwo=9 - wheel, one=5", "one") is None
+    assert parse_answer("pen=1 + 5, pen=6\n\npen=9", "pen") == 6
+    # the ordinary case is unchanged
+    assert parse_answer("cup=5, pen=1 + 5, pen=6\n", "pen") == 6
+    assert parse_answer("pen=-2\n", "pen") == -2

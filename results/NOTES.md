@@ -453,3 +453,38 @@ variable \"ant\"...") and parse cleanly:
 themselves, at 61–85% accuracy (well off ceiling, unlike the forced format), the name's value
 still never becomes the answer: at most 1.6%. Interference is within 1.5 points everywhere.
 A congruent name still helps the 3B model (+9.1), which is the facilitation asymmetry again.
+
+## 2026-09-14 — debug pass: two real bugs, and the one chain cell that is not equivalent
+
+**Bug 1, the answer parser.** It read only the first line of a generation, so when a model
+restated the problem before solving it the answer (on line 2) was scored as no answer. This hit
+5–13% of instances in some groups and at *different rates per condition*, so it biased contrasts
+rather than adding noise. Fixed to take the last `name=value` before the blank line that
+separates few-shot problems. Generations are stored verbatim, so `scripts/61_reparse.py` re-scores
+without a GPU: **36 of 1,068 groups changed, 485 of 2.1M rows.** Largest correction, Llama-3.2-3B
+level 4 with a chain: incongruent@v1 62.8 → 65.8, congruent@v1 63.4 → 65.8, neutral 81.5 → 81.8.
+The level-4 word-class effect therefore shrinks from ~19 to ~16 points but survives.
+
+**Bug 2, colliding instance ids.** `data/L3_ident` reused `data/L3`'s instance ids, so any join
+by id could cross datasets — which the re-parse tool itself did, briefly scoring every level-3
+group at 0%. Ids now carry the naming scheme and the re-parse resolves names from the dataset the
+run actually used.
+
+**Bug 3, a silent default.** `56_seed_sweep.py` defaulted to two models, so regenerating after
+the re-parse quietly shrank Table 1 and Figure 1 from eight models to two. The default is now the
+whole panel, and `99_selfcheck.py` fails if a model has runs but is missing from the sweep.
+
+**With the whole panel in the sweep, one chain cell is no longer equivalent to zero:**
+
+| | cells | equivalent | with an effect |
+|---|---|---|---|
+| chain of thought | 30 | 29 | **1** |
+| direct answer | 30 | 22 | 8 |
+
+The exception is **OLMo-2-1B-Instruct**, level 3, number word on the intermediate variable:
+lure excess +3.3 points [2.5, 4.1]. It is the weakest model in the panel and the only one that
+cannot do the task with a chain: 47% neutral accuracy with word names against 77% with letters.
+This is the prediction the "writing the value" account makes. The chain protects by writing each
+value; a model that fails to compute the value never writes it, and the name survives. The paper
+should say this rather than claim a universal null: **the protection is a consequence of solving
+the problem, not of the format.**

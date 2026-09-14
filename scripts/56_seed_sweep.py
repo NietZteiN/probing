@@ -53,13 +53,16 @@ def contrasts(df: pd.DataFrame) -> dict:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--models", nargs="+", default=["llama32-3b", "llama31-8b"])
+    # default to every model in the panel: a short default silently shrank the sweep, and with it
+    # Table 1 and Figure 1, from eight models to two on 2026-09-14
+    ap.add_argument("--models", nargs="+", default=None)
     ap.add_argument("--levels", type=int, nargs="+", default=[2, 3, 4, 5])
     ap.add_argument("--seeds", type=int, nargs="+", default=[7, 11, 13])
     a = ap.parse_args()
+    models = a.models or list(load_config("models.yaml")["models"])
     for L in a.levels:
         report = {}
-        for m in a.models:
+        for m in models:
             for base in ("cot", "direct"):
                 per_seed = {}
                 for sd in a.seeds:

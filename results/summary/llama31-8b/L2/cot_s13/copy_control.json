@@ -1,0 +1,39 @@
+{
+ "incongruent@v1": {
+  "n_lure_errors_at_p5": 1,
+  "trailing_is_true_intermediate": 1.0,
+  "trailing_is_lure": 0.0,
+  "chain_wrote_true_at_p4": 1.0,
+  "rows": [
+   {
+    "id": "L2-44-00807-inc@v1",
+    "trailing": 1,
+    "trailing_is_true_intermediate": true,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": true
+   }
+  ]
+ },
+ "incongruent@v2": {
+  "n_lure_errors_at_p5": 0,
+  "trailing_is_true_intermediate": null,
+  "trailing_is_lure": null,
+  "chain_wrote_true_at_p4": null,
+  "rows": []
+ },
+ "incongruent_alt@v1": {
+  "n_lure_errors_at_p5": 0,
+  "trailing_is_true_intermediate": null,
+  "trailing_is_lure": null,
+  "chain_wrote_true_at_p4": null,
+  "rows": []
+ },
+ "incongruent_alt@v2": {
+  "n_lure_errors_at_p5": 0,
+  "trailing_is_true_intermediate": null,
+  "trailing_is_lure": null,
+  "chain_wrote_true_at_p4": null,
+  "rows": []
+ }
+}

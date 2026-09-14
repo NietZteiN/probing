@@ -109,6 +109,42 @@
    "equivalent": false,
    "claimable": false
   },
+  "L3/llama32-3b-it/cot/lure_excess@v1": {
+   "mean": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/llama32-3b-it/cot/lure_excess@v2": {
+   "mean": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/llama32-3b-it/direct/lure_excess@v1": {
+   "mean": 0.0016666666666666668,
+   "ci95": [
+    -0.0025041666666666667,
+    0.006333333333333333
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/llama32-3b-it/direct/lure_excess@v2": {
+   "mean": 0.004666666666666667,
+   "ci95": [
+    -0.0013333333333333333,
+    0.011004166666666662
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
   "L3/llama31-8b/cot/lure_excess@v1": {
    "mean": -0.0013333333333333333,
    "ci95": [
@@ -145,20 +181,200 @@
    "equivalent": true,
    "claimable": false
   },
-  "L4/llama32-3b/cot/lure_excess@v1": {
-   "mean": 0.0065,
+  "L3/llama31-8b-it/cot/lure_excess@v1": {
+   "mean": 0.0,
    "ci95": [
-    0.0023333333333333335,
-    0.010333333333333333
+    -0.0005,
+    0.0005
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/llama31-8b-it/cot/lure_excess@v2": {
+   "mean": 0.00016666666666666666,
+   "ci95": [
+    0.0,
+    0.0005
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/llama31-8b-it/direct/lure_excess@v1": {
+   "mean": 0.0015,
+   "ci95": [
+    -0.0026708333333333332,
+    0.006166666666666667
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/llama31-8b-it/direct/lure_excess@v2": {
+   "mean": 0.0021666666666666666,
+   "ci95": [
+    -0.003,
+    0.007004166666666663
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/gemma3-4b-it/cot/lure_excess@v1": {
+   "mean": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/gemma3-4b-it/cot/lure_excess@v2": {
+   "mean": 0.00016666666666666666,
+   "ci95": [
+    0.0,
+    0.0005
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/gemma3-4b-it/direct/lure_excess@v1": {
+   "mean": 0.008833333333333334,
+   "ci95": [
+    0.004,
+    0.0135
+   ],
+   "equivalent": true,
+   "claimable": true
+  },
+  "L3/gemma3-4b-it/direct/lure_excess@v2": {
+   "mean": 0.0033333333333333335,
+   "ci95": [
+    -0.0015,
+    0.008
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/gemma3-12b-it/cot/lure_excess@v1": {
+   "mean": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/gemma3-12b-it/cot/lure_excess@v2": {
+   "mean": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/gemma3-12b-it/direct/lure_excess@v1": {
+   "mean": -0.0023333333333333335,
+   "ci95": [
+    -0.0055,
+    0.001
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/gemma3-12b-it/direct/lure_excess@v2": {
+   "mean": 0.004,
+   "ci95": [
+    -0.0005,
+    0.008
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/olmo2-1b-it/cot/lure_excess@v1": {
+   "mean": 0.004666666666666667,
+   "ci95": [
+    -0.0013333333333333333,
+    0.010337499999999996
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/olmo2-1b-it/cot/lure_excess@v2": {
+   "mean": 0.03266666666666666,
+   "ci95": [
+    0.0246625,
+    0.04050416666666667
+   ],
+   "equivalent": false,
+   "claimable": true
+  },
+  "L3/olmo2-1b-it/direct/lure_excess@v1": {
+   "mean": 0.027333333333333334,
+   "ci95": [
+    0.0191625,
+    0.035666666666666666
+   ],
+   "equivalent": false,
+   "claimable": true
+  },
+  "L3/olmo2-1b-it/direct/lure_excess@v2": {
+   "mean": -0.002,
+   "ci95": [
+    -0.0093375,
+    0.005333333333333333
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/olmo2-7b-it/cot/lure_excess@v1": {
+   "mean": -0.0008333333333333334,
+   "ci95": [
+    -0.002,
+    0.0003333333333333333
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/olmo2-7b-it/cot/lure_excess@v2": {
+   "mean": -0.00016666666666666666,
+   "ci95": [
+    -0.0016666666666666668,
+    0.0015
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/olmo2-7b-it/direct/lure_excess@v1": {
+   "mean": -0.0023333333333333335,
+   "ci95": [
+    -0.007004166666666666,
+    0.002
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L3/olmo2-7b-it/direct/lure_excess@v2": {
+   "mean": -0.004166666666666667,
+   "ci95": [
+    -0.009004166666666666,
+    0.0005041666666666629
+   ],
+   "equivalent": true,
+   "claimable": false
+  },
+  "L4/llama32-3b/cot/lure_excess@v1": {
+   "mean": 0.006833333333333334,
+   "ci95": [
+    0.002829166666666667,
+    0.010666666666666666
    ],
    "equivalent": true,
    "claimable": false
   },
   "L4/llama32-3b/cot/lure_excess@v2": {
-   "mean": 0.0035,
+   "mean": 0.0036666666666666666,
    "ci95": [
-    -0.0005041666666666664,
-    0.007833333333333333
+    -0.0005,
+    0.008166666666666666
    ],
    "equivalent": true,
    "claimable": false
@@ -327,11 +543,11 @@
   }
  },
  "summary": {
-  "cot_cells": 18,
-  "cot_equivalent": 18,
-  "cot_with_effect": 0,
-  "direct_cells": 18,
-  "direct_with_effect": 6,
-  "max_abs_cot_mean": 0.0065
+  "cot_cells": 30,
+  "cot_equivalent": 29,
+  "cot_with_effect": 1,
+  "direct_cells": 30,
+  "direct_with_effect": 8,
+  "max_abs_cot_mean": 0.03266666666666666
  }
 }

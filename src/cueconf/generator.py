@@ -353,8 +353,9 @@ def sample_sets(level: int, n: int, seed: int, pool: Sequence[str] = NEUTRAL_CAN
         if tries > 100 * n:
             raise RuntimeError("generator stalled: constraints too tight for this level")
         ar = sample_arithmetic(level, rng, allowed_exprs=allowed_exprs)
+        tag = f"L{level}-{seed}" if scheme.key == "word" else f"L{level}{scheme.key}-{seed}"
         try:
-            s = make_set(ar, f"L{level}-{seed}-{made:05d}", rng, pool, targets, scheme=scheme)
+            s = make_set(ar, f"{tag}-{made:05d}", rng, pool, targets, scheme=scheme)
         except ValueError:
             continue
         neutral = next(x for x in s if x.condition == "neutral")

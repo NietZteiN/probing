@@ -173,7 +173,8 @@ def run_condition(tok, model, model_key: str, level: int, regime: str, condition
                 n_correct += correct; n_lure += is_lure
                 f.write(json.dumps({"id": x.id, "set_id": x.set_id, "condition": condition, "target": x.target,
                                     "lure": x.lure, "answer": x.answer, "pred": pred, "correct": correct,
-                                    "pred_is_lure": is_lure, "generation": g, "values": x.values, "names": x.names}) + "\n")
+                                    "pred_is_lure": is_lure, "generation": g, "values": x.values, "names": x.names,
+                                    "query": x.query, "level": x.level}) + "\n")
         summary["free_accuracy"] = n_correct / max(1, len(keep_idx))
         summary["free_lure_rate"] = n_lure / max(1, len(keep_idx))
 

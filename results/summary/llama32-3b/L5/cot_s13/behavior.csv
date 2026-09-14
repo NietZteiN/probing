@@ -3765,7 +3765,7 @@ L5-44-01762-cong@v2,L5-44-01762,congruent,v2,,4,4.0,True,False,"{'v3': 7, 'v2': 
 L5-44-01763-cong@v2,L5-44-01763,congruent,v2,,5,5.0,True,False,"{'v3': 0, 'v2': 5, 'v1': 5}","{'v1': 'frog', 'v2': 'five', 'v3': 'river'}",congruent@v2,five
 L5-44-01764-cong@v2,L5-44-01764,congruent,v2,,0,0.0,True,False,"{'v3': 5, 'v2': 6, 'v1': 0}","{'v1': 'fish', 'v2': 'six', 'v3': 'coat'}",congruent@v2,six
 L5-44-01765-cong@v2,L5-44-01765,congruent,v2,,6,6.0,True,False,"{'v3': 0, 'v2': 3, 'v1': 6}","{'v1': 'boat', 'v2': 'three', 'v3': 'cow'}",congruent@v2,three
-L5-44-01766-cong@v2,L5-44-01766,congruent,v2,,7,,False,False,"{'v3': 8, 'v2': 0, 'v1': 7}","{'v1': 'rag', 'v2': 'zero', 'v3': 'seed'}",congruent@v2,zero
+L5-44-01766-cong@v2,L5-44-01766,congruent,v2,,7,7.0,True,False,"{'v3': 8, 'v2': 0, 'v1': 7}","{'v1': 'rag', 'v2': 'zero', 'v3': 'seed'}",congruent@v2,zero
 L5-44-01767-cong@v2,L5-44-01767,congruent,v2,,0,0.0,True,False,"{'v3': 5, 'v2': 3, 'v1': 0}","{'v1': 'car', 'v2': 'three', 'v3': 'fig'}",congruent@v2,three
 L5-44-01768-cong@v2,L5-44-01768,congruent,v2,,4,4.0,True,False,"{'v3': 0, 'v2': 4, 'v1': 4}","{'v1': 'toy', 'v2': 'four', 'v3': 'river'}",congruent@v2,four
 L5-44-01769-cong@v2,L5-44-01769,congruent,v2,,3,3.0,True,False,"{'v3': 0, 'v2': 1, 'v1': 3}","{'v1': 'dog', 'v2': 'one', 'v3': 'ink'}",congruent@v2,one
