@@ -21,7 +21,7 @@ def main() -> int:
     # review mode appends line numbers, so the heading is not alone on its line: match the
     # heading word followed by whitespace, on any page after the first.
     for i, t in enumerate(pages):
-        if i and (re.search(r"(?m)^\s*Limitations\s", t) or re.search(r"(?m)^\s*References\s", t)):
+        if i and (re.search(r"(?m)^\s*Limitations\b", t) or re.search(r"(?m)^\s*References\b", t)):
             body_end = i + 1; break
     tex = re.sub(r"(?m)%.*$", "", (ROOT / "paper" / "main.tex").read_text())
     keys = set(re.findall(r"\\NUM\{([^}]*)\}", tex))
