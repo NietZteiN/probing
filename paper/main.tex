@@ -59,111 +59,167 @@ is smaller than the effect of which three demonstrations are shown.
 
 \section{Introduction}
 
-Models read code and mathematics in which names carry meaning, and names that contradict the
-computation reduce accuracy: on real programs, removing or corrupting identifiers degrades
-execution prediction \cite{le2025names}, misleading comments and hints cut output prediction by
-a fifth \cite{lam2025codecrash}, and adversarial identifier renaming impairs comprehension through semantic displacement and interference in a prior human--model study \cite{le2026obfuscated}. An accuracy drop, however, is compatible with three
-different failures: a corrupted input representation, a corrupted computation, or a correct
-computation misread at output, and these differ in whether a written chain of thought can be
-trusted and in how the failure might be fixed.
+Consider a short arithmetic problem written with named variables:
+\begin{center}
+\texttt{pen=1 + cup, \quad cup=2 + 3; \quad pen=?}
+\end{center}
+The answer is 6. Now rename the second variable to the word \texttt{two}:
+\begin{center}
+\texttt{pen=1 + \textcolor{inc}{two}, \quad \textcolor{inc}{two}=2 + 3; \quad pen=?}
+\end{center}
+The arithmetic has not changed, and the answer is still 6. But the name now says something
+false. The word \texttt{two} denotes the number 2, while the variable it names holds the value
+5. We call 2 the \emph{lure value} of that name and 5 its \emph{true value}. If a model
+answers with the lure, or uses it in a later step, we know the name's meaning reached the
+computation.
 
-Interpretability work on clean tasks cannot separate them either. \citet{kudo2026faithful} show,
-with linear probes and activation patching on controlled multi-step arithmetic, that the values
-of intermediate variables become linearly decodable only as the chain of thought is written, and
-that the final answer depends causally on the chain. But in their tasks the variable names are
-letters. The decoded value has exactly one possible source, so nothing in the design can tell
-``the model computed 5'' from ``the model read 5 off a cue,'' because no cue ever disagrees.
+This is the design used to separate reading from naming in the Stroop task
+\cite{stroop1935}, where the word \textsc{red} is printed in blue ink, and to separate shape
+from texture in vision models \cite{geirhos2019texture}. We bring it to arithmetic.
 
-Cue conflict resolves this. In the Stroop task \cite{stroop1935}, the word \textsc{red} printed
-in blue ink reveals whether reading overrides colour naming; in vision, shape--texture conflict
-images showed that apparent shape recognition in CNNs was partly texture matching
-\cite{geirhos2019texture}. We bring the design to arithmetic reasoning. Every problem appears
-in three matched versions with identical arithmetic (Figure~\ref{fig:one}):
-\textcolor{neu}{neutral} names (\texttt{pen=1 + cup, cup=2 + 3; pen=?}),
-\textcolor{con}{congruent} names, where a number word equals the variable's true value
-(\texttt{five=2 + 3}), and \textcolor{inc}{incongruent} names, where it does not
-(\texttt{two=2 + 3}, true value 5, lure 2). Each version is solved with and without a written
-chain of thought, and linear probes trained on neutral problems only read out, at every layer
-and reasoning step, whether the representation holds the true value or the lure.
+Why it is needed here. Models read code and mathematics in which names carry meaning, and
+names that contradict the code hurt them: removing or corrupting identifiers degrades execution
+prediction \cite{le2025names}, misleading comments cut output prediction by about a fifth
+\cite{lam2025codecrash}, and misleading renaming impairs comprehension in a study of humans and
+models alike \cite{le2026obfuscated}. None of that says \emph{where} the name interferes. An
+accuracy drop is equally consistent with a corrupted input, a corrupted computation, and a
+correct computation misread at the output.
 
-Our main finding is that the chain overrides the name by replacement: without a chain of
-thought the models use the name's value as a shortcut in both directions, with a chain the value
-of the name is irrelevant to the answer, and inside the model the lure is present only where the
-name sits and disappears at the step that computes the value. Concretely, we contribute (i) a
-cue-conflict extension of a controlled arithmetic benchmark with matched twins, generation rules
-that make the lure never correct for another reason, and the demonstration set as a reported
-factor; (ii) a layer, position and reasoning-step map of lure versus true value, with and without
-chain of thought, on two models and four levels; and (iii) causal evidence from activation
-patching with two control patches on where the no-chain lure lives.
+Interpretability on clean tasks cannot separate them either. \citet{kudo2026faithful} show,
+with linear probes and activation patching on exactly this kind of arithmetic, that the value of
+each variable becomes linearly decodable only as the chain of thought writes it. But their
+variable names are single letters. A decoded 5 can only have come from the computation, because
+no name ever says otherwise. Our incongruent names supply the disagreement, so a probe's output
+tells us which source the representation holds.
+
+We build matched sets: the same arithmetic in four naming conditions (Table~\ref{tab:conditions})
+at five difficulty levels (Table~\ref{tab:levels}), solved with and without a written chain of
+thought, on \NUM{n-models} models. Our finding is that the chain of thought removes the name's
+influence by \emph{writing over} it. Without a chain, models read a variable's value off its
+name: a congruent name adds up to \NUM{facilitationmax} points of accuracy, and an incongruent
+one supplies the answer up to \NUM{lureexcessmax} points above chance. With a chain, the name's
+value has no measurable effect at any level or model. Probes show why: the lure is decodable
+only at the name's own tokens, and it is gone at the step that writes the variable's value.
+
+Our contributions are:
+\begin{itemize}\setlength{\itemsep}{1pt}
+\item a cue-conflict version of a controlled arithmetic benchmark, with matched twins and
+generation rules that keep the lure from being correct for any other reason;
+\item a map of where the lure and the true value are decodable, by layer and by token, with and
+without a chain of thought;
+\item causal evidence, from patching activations between matched twins, for where the name's
+influence lives when a chain is absent.
+\end{itemize}
 
 \begin{figure}[t]
 \centering
-\fbox{\parbox{0.95\columnwidth}{\small
-\textcolor{neu}{\texttt{pen=1 + cup, cup=2 + 3; pen=?}}\\
-\textcolor{con}{\texttt{pen=1 + five, five=2 + 3; pen=?}}\\
-\textcolor{inc}{\texttt{pen=1 + two, two=2 + 3; pen=?}}\\[2pt]
-\texttt{\ \ \ \ pen=1 + two, two=2 + 3, two=5, pen=1 + two, pen=1 + 5, pen=6}\\[2pt]
-\textit{[margin sketch: $\log p(\text{true})-\log p(\text{lure})$ across P2--P5, to be drawn
-from a real instance once probes exist]}}}
-\caption{One problem in its three matched versions (top), the chain of thought with probe
-positions P2--P5 (middle), and the probe margin across reasoning steps (bottom). The
-incongruent name \texttt{two} has true value 5 and lure value 2.}
+\fbox{\parbox{0.93\columnwidth}{\small\ttfamily
+\textcolor{neu}{pen=1 + cup,\ cup=2 + 3;\ pen=?}\hfill\rmfamily\footnotesize neutral\\[1pt]
+\textcolor{con}{pen=1 + five,\ five=2 + 3;\ pen=?}\hfill\rmfamily\footnotesize congruent\\[1pt]
+\textcolor{inc}{pen=1 + two,\ two=2 + 3;\ pen=?}\hfill\rmfamily\footnotesize incongruent\\[4pt]
+\rmfamily\footnotesize The chain of thought the model is asked to write:\\[1pt]
+\ttfamily\scriptsize pen=1 + two, two=2 + 3, \textbf{two=5}, pen=1 + two, pen=1 + 5, \textbf{pen=6}
+}}
+\caption{One problem in three naming conditions. The arithmetic, the operators and the digits
+are identical; only one name changes. In the incongruent version the name \texttt{two} has
+\emph{lure value} 2 and \emph{true value} 5. The chain of thought writes each variable's value
+in turn (bold).}
 \label{fig:one}
 \end{figure}
 
 \section{Setup}
 
-\paragraph{Task.} We reuse the generator, difficulty levels and prompt format of
-\citet{kudo2026faithful}: problems are lists of assignments over single digits with $+$ and $-$,
-all values stay in $0..9$, and three fixed same-level demonstrations precede each problem. Our
-main level is their Level~3 (two steps, one forward reference; \texttt{v1=d $\pm$ v2, v2=d $\pm$ d; v1=?}),
-with Levels 2 and 5 as robustness checks and Level~4 for a control described below. Probes are
-trained on 10,000 neutral problems; evaluation uses 2,000 matched sets per level with the
-probe-training digit expressions held out.
+\paragraph{Task.} We reuse the problems, difficulty levels and prompt format of
+\citet{kudo2026faithful}. A problem is a list of equations over the digits $0$--$9$ with $+$ and
+$-$, ending in a query. Every variable's value is itself a single digit. Three worked examples of
+the same level precede each problem. Table~\ref{tab:levels} gives one problem per level. Level~3 is our main
+level: two steps, one forward reference, and the level they analyse across models.
 
-\paragraph{Conditions.} Each arithmetic problem yields a matched set. The \emph{letter}
-condition is Kudo et al.'s format and anchors our replication. \emph{Neutral} names are common
-single-token words. In the \emph{congruent} and \emph{incongruent} conditions exactly one
-variable, the target, is renamed to a number word that equals or does not equal its true value.
-The target is either the intermediate variable or the queried one. An \emph{irrelevant-lure}
-control at Level~4 gives the number-word name to a distractor outside the queried chain,
-separating the lexical presence of a number from a binding conflict.
+\paragraph{Naming conditions.} Each problem is generated once and then rendered in the
+conditions of Table~\ref{tab:conditions}. Arithmetic, operators and digits are identical across
+a set; only names differ. In the \emph{congruent} and \emph{incongruent} conditions exactly one
+variable, the \emph{target}, is named by a number word. Its value is the target's true value in
+the congruent condition and something else, the \emph{lure value}, in the incongruent one. The
+target is either the queried variable or the intermediate one, and we report the two separately,
+because a name on the variable you are asked about is not the same manipulation as a name on one
+you must compute on the way.
 
-\paragraph{Generation rules.} Exactly one variable per instance carries a number word. The
-lure differs from every variable value and from every operand digit in the problem, so it is
-never correct for another reason. Neutral words are common concrete nouns that are a single token in
-every context of the template under each model's tokenizer (Appendix~A), so twins tokenize to
-identical layouts and length is not a confound. Every incongruent instance has a neutral and a congruent twin with identical
-arithmetic, and all comparisons are within these sets.
+\paragraph{Generation rules.} Only one variable per problem carries a number word. The lure
+differs from every variable's value and from every digit in the problem, so a lure answer cannot
+be right for another reason. Names are single tokens in every context of the template under each
+model's tokenizer, so twins have the same length and the same token positions (Appendix~A). The
+\emph{irrelevant lure} condition puts the number word on a distractor the answer does not depend
+on, separating the presence of a number word from a conflict at a variable the model must use.
 
-\paragraph{Regimes.} In the \emph{chain-of-thought} regime the model writes each step in Kudo
-et al.'s format (\texttt{cup=5, pen=1 + 5, pen=6}); note that the chain writes the name next to
-the computed value, which may help the model recover. In the \emph{direct} regime it writes only
-\texttt{pen=6}. The contrast between regimes is the center of the paper.
+\paragraph{Regimes.} In the \emph{chain-of-thought} regime the model writes the worked steps
+shown in Table~\ref{tab:levels} and then the answer. In the \emph{direct} regime it writes only
+\texttt{pen=6}. The comparison between the two is the centre of the paper.
 
-\paragraph{Probe positions.} P1, the name token \texttt{two} at its definition, decodes the
-lure trivially and is a reference only. P2 is the last operand of the definition, the first
-position where the true value can be computed; P3 the query position before any chain; P4 the
-chain position where the target's value is about to be written; P5 the final answer position.
-All claims about lure interference are made at P2--P5.
+\paragraph{Demonstration sets.} Which three worked examples are shown turns out to matter more
+than any name, so every behavioural number below is computed for three fixed demonstration sets
+and reported as their mean. We call an effect reliable only when its sign is the same in all
+three sets and a cluster bootstrap over matched problems excludes zero.
 
-\paragraph{Probes and patching.} Probes are single linear layers trained with
-\citeauthor{kudo2026faithful}'s recipe on the neutral condition only, then evaluated on
-congruent and incongruent instances; training on incongruent data would let the probe learn the
-lure. We report accuracy for the true value, the \emph{lure mass} (probability on the lure
-class), and the \emph{margin} $\log p(\text{true})-\log p(\text{lure})$; the \emph{crossover}
-is the first step at which the margin becomes and stays positive. Selectivity against a control
-task \cite{hewitt2019control} accompanies every probe, over three seeds. For causation we patch
-residual-stream activations at the misleading name's token positions from the matched neutral
-twin into the incongruent run \cite{zhang2024patching}, sweep layers, and measure the
-\emph{recovery rate}, the share of lure errors that become correct. A patch from a different neutral word
-measures patching damage; a patch from a different lure tests whether the answer follows it.
+\paragraph{Probes.} A linear probe reads a chosen variable's value from the residual stream, one
+probe per position, layer and seed, with \citeauthor{kudo2026faithful}'s recipe. Probes are
+trained on neutral problems only, so they never see a number word as a name; what they report on
+an incongruent problem is a property of the representation, not of the probe. Each is paired
+with a control probe trained on labels that are a fixed random function of the variable's
+\emph{name} \cite{hewitt2019control}. Where the control also scores highly, the probe is reading
+name identity rather than a value, and we report it as such.
 
-\paragraph{Models.} \NUM{model-list}, base models of 3B and 8B parameters from
-\citeauthor{kudo2026faithful}'s panel, plus further families and levels in the appendix. Behavioural metrics are
-accuracy, lure rate (answers equal to the lure), \emph{interference} (neutral minus incongruent
-accuracy) and \emph{facilitation} (congruent minus neutral), with cluster-bootstrap confidence
-intervals over matched sets.
+\paragraph{Patching.} To test whether a name causes a behaviour we replace the activations at
+its tokens with the matched twin's and re-read the output \cite{zhang2024patching}. Two controls
+accompany every test: swapping one neutral word for another bounds the damage any swap does, and
+swapping one lure for a different lure shows whether the answer follows the name.
+
+\paragraph{Models.} \NUM{model-list}.
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}llcc@{}}
+\toprule
+Condition & Problem & True & Lure \\
+\midrule
+Letter & \texttt{A=1 + B, B=2 + 3; A=?} & -- & -- \\
+Neutral & \texttt{pen=1 + cup, cup=2 + 3; pen=?} & -- & -- \\
+Congruent & \texttt{pen=1 + \textcolor{con}{five}, five=2 + 3; pen=?} & 5 & -- \\
+Incongruent & \texttt{pen=1 + \textcolor{inc}{two}, two=2 + 3; pen=?} & 5 & \textcolor{inc}{2} \\
+\addlinespace
+Irrelevant & \texttt{pen=1 + cup, cup=2 + 3,} & & \\
+(level 4) & \texttt{\ \ \textcolor{inc}{two}=4 + 5; pen=?} & 9 & \textcolor{inc}{2} \\
+\bottomrule
+\end{tabular}
+\caption{The naming conditions, shown on one problem. The answer is 6 in every row of the top
+block. \emph{True} is the value of the variable that carries the number word; \emph{Lure} is the
+value that word denotes. Each problem also has a twin with a different neutral word and a twin
+with a different lure, used as controls when patching.}
+\label{tab:conditions}
+\end{table}
+
+\begin{table}[t]
+\centering\small
+\begin{tabular}{@{}clccc@{}}
+\toprule
+Level & Problem (neutral names) & Steps & Held & Distr. \\
+\midrule
+1 & \texttt{pen=1 + cup, cup=2; pen=?} & 1 & 1 & 0 \\
+2 & \texttt{pen=2 + 3, cup=1 + pen; cup=?} & 2 & 0 & 0 \\
+3 & \texttt{pen=1 + cup, cup=2 + 3; pen=?} & 2 & 1 & 0 \\
+4 & \texttt{pen=1 + cup, cup=2 + 3,} & 2 & 1 & 1 \\
+  & \texttt{\ \ box=4 + 5; pen=?} & & & \\
+5 & \texttt{pen=1 + cup, cup=2 + box,} & 3 & 2 & 0 \\
+  & \texttt{\ \ box=1 + 2; pen=?} & & & \\
+\bottomrule
+\end{tabular}
+\caption{The five levels of \citet{kudo2026faithful}. \emph{Steps} is how many additions or
+subtractions the answer needs. \emph{Held} is how many variables cannot be resolved when first
+read. \emph{Distr.} is how many equations the answer does not depend on. The chain of thought
+the model writes is the one in Figure~\ref{fig:one}, extended step by step. Level~1 is our
+no-computation control: the intermediate's value is stated, not computed.}
+\label{tab:levels}
+\end{table}
+
 
 \section{Results}
 
@@ -189,12 +245,14 @@ error analysis shows the model restating the wrong equation next.
 \begin{table}[t]
 \centering\small
 \resizebox{\columnwidth}{!}{\tabinput{behavior}}\vspace{-2pt}
-\caption{Behaviour by model, level and regime. $S$ is the number of demonstration sets;
-Neutral and Letter are mean accuracy (\%) with the across-set range. Facilitation is congruent
-minus neutral, interference is neutral minus incongruent, and Lure$-$base is the rate of
-answers equal to the lure minus the rate at which the neutral twin gives that same digit.
-$^{*}$ marks a contrast whose sign holds in every demonstration set and whose pooled
-cluster-bootstrap interval excludes zero. Deeper variables at Level~5 are in the appendix.}
+\caption{Does the name's value change what the model answers? Level~3, averaged over three
+demonstration sets, with the range across those sets in brackets. \emph{Helps} is the accuracy
+gained when the number word matches the variable's value (congruent minus neutral, in points).
+\emph{Lures} is how much more often the model answers the number word's own value than it would
+by chance (incongruent minus the rate at which the neutral twin gives that same digit).
+$^{*}$ marks an effect whose sign is the same in all three demonstration sets and whose
+bootstrap interval excludes zero. Every starred effect is in the direct rows. Other levels are
+in Table~\ref{tab:levels-appendix}.}
 \label{tab:behavior}
 \end{table}
 
@@ -305,9 +363,17 @@ both regimes and all three conditions, together with $t^{*}$, $t^{*}_{\text{eq}}
 pre-/post-chain accuracies in \citeauthor{kudo2026faithful}'s format.
 
 \section{Additional levels, models and demonstration sets}
-Levels 2, 4 and 5 and both models are reported for every behavioural quantity across three
-demonstration sets, with the per-set values, the pooled estimate and the claim rule of our
-pre-registration. The appendix also contains the span-by-layer patching grids for all three
+Table~\ref{tab:levels-appendix} repeats Table~\ref{tab:behavior} for the other four levels.
+
+\begin{table}[h]
+\centering\small
+\resizebox{\columnwidth}{!}{\tabinput{behavior_levels}}
+\caption{As Table~\ref{tab:behavior}, for levels 1, 2, 4 and 5. Level~1 is the no-computation
+control: the intermediate variable's value is stated rather than computed.}
+\label{tab:levels-appendix}
+\end{table}
+
+Per-set values, the pooled estimate and the claim rule are released with the code. The appendix also contains the span-by-layer patching grids for all three
 sources, the level-4 irrelevant-lure control, the lure-distance analysis, the teacher-forced
 lure rates, and the error taxonomy that identifies the equation-selection failure behind the
 word-class effect.

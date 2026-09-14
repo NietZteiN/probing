@@ -15,6 +15,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from cueconf.config import PROJECT_ROOT, RESULTS_DIR  # noqa: E402
+from cueconf.display import MODEL, REGIME, position, rcparams  # noqa: E402
 
 FIG = PROJECT_ROOT / "paper" / "figures"
 
@@ -30,8 +31,9 @@ def heatmap(ax, grid: dict, cond: str, metric: str, positions: list[str], title:
         ax.set_title(title + " (no data)", fontsize=8); return None
     im = ax.imshow(M, aspect="auto", origin="lower", cmap="RdBu" if metric.startswith("margin") else "viridis",
                    vmin=(-np.nanmax(np.abs(M)) if metric.startswith("margin") else 0), vmax=(np.nanmax(np.abs(M)) if metric.startswith("margin") else 1))
-    ax.set_xticks(range(len(positions))); ax.set_xticklabels(positions, rotation=45, ha="right", fontsize=7)
-    ax.set_ylabel("layer"); ax.set_title(title, fontsize=9)
+    ax.set_xticks(range(len(positions)))
+    ax.set_xticklabels([position(p_) for p_ in positions], rotation=30, ha="right")
+    ax.set_ylabel("layer"); ax.set_title(title)
     return im
 
 
@@ -39,6 +41,7 @@ def main() -> int:
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
+    plt.rcParams.update(rcparams())
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True); ap.add_argument("--level", type=int, default=3); ap.add_argument("--role", default="v2")
     ap.add_argument("--patch-regime", default="direct", help="regime for Figure 3 (lure errors exist mainly without a chain)")
@@ -47,19 +50,23 @@ def main() -> int:
     r = a.role
     positions = [f"def@{r}", f"end@{r}", "query", f"cotpre@{r}", "anspre"]
     # ---- Fig 2
-    fig, axes = plt.subplots(1, 2, figsize=(6.5, 2.8), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(7.6, 3.4), sharey=True)
     for ax, regime in zip(axes, ("cot", "direct")):
         f = RESULTS_DIR / "summary" / a.model / f"L{a.level}" / regime / "probes_grid.json"
         if not f.exists():
             ax.set_title(f"{regime}: no probes yet"); continue
         grid = json.loads(f.read_text()).get(f"train_neutral/{r}", {})
         pos = positions if regime == "cot" else [p for p in positions if not p.startswith("cotpre")]
-        im = heatmap(ax, grid, f"incongruent@{r}", "margin_mean", pos, f"{a.model} {regime}: log p(true) - log p(lure)")
+        im = heatmap(ax, grid, f"incongruent@{r}", "margin_mean", pos, REGIME.get(regime, regime))
         if im is not None:
-            fig.colorbar(im, ax=ax, fraction=0.04)
-    fig.tight_layout(); fig.savefig(FIG / f"fig2_margin_{a.model}_L{a.level}_{r}.pdf"); fig.savefig(FIG / f"fig2_margin_{a.model}_L{a.level}_{r}.png", dpi=160); plt.close(fig)
+            cb = fig.colorbar(im, ax=ax, fraction=0.045)
+        cb.set_label("log p(true value) - log p(lure value)")
+    fig.suptitle(f"{MODEL.get(a.model, a.model)}: does the state hold the true value or the lure?", y=1.02)
+    for ax in axes:
+        ax.set_xlabel("position in the problem and its solution")
+    fig.tight_layout(); fig.savefig(FIG / f"fig2_margin_{a.model}_L{a.level}_{r}.pdf", bbox_inches="tight"); fig.savefig(FIG / f"fig2_margin_{a.model}_L{a.level}_{r}.png", dpi=160, bbox_inches="tight"); plt.close(fig)
     # ---- Fig 3
-    fig, ax = plt.subplots(figsize=(3.2, 2.4))
+    fig, ax = plt.subplots(figsize=(4.6, 3.0))
     f = RESULTS_DIR / "summary" / a.model / f"L{a.level}" / a.patch_regime / "patching.json"
     if f.exists():
         pt = json.loads(f.read_text())
@@ -76,7 +83,9 @@ def main() -> int:
                     xs.append(int(lset[1:])); ys.append(agg["anspre"][key])
             if xs:
                 ax.plot(xs, ys, style, label=lab)
-        ax.set_xlabel("patched layer"); ax.set_ylabel("rate"); ax.set_ylim(-0.1, 1.1)
+        ax.set_xlabel("layer whose activations were replaced")
+        ax.set_ylabel("share of cases"); ax.set_ylim(-0.05, 1.05)
+        ax.set_title(f"{MODEL.get(a.model, a.model)}, {REGIME.get(a.patch_regime, a.patch_regime)}")
         if ax.get_legend_handles_labels()[0]:
             ax.legend(fontsize=6)
     else:

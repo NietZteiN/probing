@@ -1,0 +1,32 @@
+\begin{tabular}{lclcrrrr}
+\toprule
+Model & Level & Regime & Neutral & \multicolumn{2}{c}{number word on the} & \multicolumn{2}{c}{number word on the} \\
+& & & accuracy & \multicolumn{2}{c}{\emph{queried} variable} & \multicolumn{2}{c}{\emph{intermediate} variable} \\
+\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+& & & (\%) & helps & lures & helps & lures \\
+\midrule
+Llama-3.1-8B & 1 & CoT & 99\,{\scriptsize[98,100]} & +0.0 & +0.0 & +0.3 & +0.0 \\
+Llama-3.1-8B & 1 & direct & 74\,{\scriptsize[38,99]} & +16.1$^{*}$ & +11.2$^{*}$ & +8.8$^{*}$ & +1.3 \\
+\addlinespace
+Llama-3.2-3B & 1 & CoT & 97\,{\scriptsize[95,100]} & +1.1 & +0.1 & -2.4 & +0.3 \\
+Llama-3.2-3B & 1 & direct & 46\,{\scriptsize[21,93]} & +0.6 & +5.9$^{*}$ & -3.9$^{*}$ & +2.6$^{*}$ \\
+\addlinespace
+Llama-3.1-8B & 2 & CoT & 100\,{\scriptsize[100,100]} & -0.1 & +0.0 & -0.0 & +0.0 \\
+Llama-3.1-8B & 2 & direct & 36\,{\scriptsize[33,37]} & +11.8$^{*}$ & +0.7 & +2.6 & +2.2 \\
+\addlinespace
+Llama-3.2-3B & 2 & CoT & 94\,{\scriptsize[90,98]} & +3.7 & +0.5$^{*}$ & +1.0$^{*}$ & -0.1 \\
+Llama-3.2-3B & 2 & direct & 29\,{\scriptsize[27,30]} & +10.8$^{*}$ & +2.5$^{*}$ & +2.6$^{*}$ & +2.2 \\
+\addlinespace
+Llama-3.1-8B & 4 & CoT & 88\,{\scriptsize[63,100]} & +1.0 & -0.0 & -2.3 & +0.2 \\
+Llama-3.1-8B & 4 & direct & 28\,{\scriptsize[26,31]} & +13.7$^{*}$ & +5.8 & +6.0$^{*}$ & +0.2 \\
+\addlinespace
+Llama-3.2-3B & 4 & CoT & 64\,{\scriptsize[26,85]} & -10.9$^{*}$ & +0.7 & -2.7$^{*}$ & +0.4 \\
+Llama-3.2-3B & 4 & direct & 20\,{\scriptsize[16,23]} & -1.6 & +1.9 & -0.2 & +1.2$^{*}$ \\
+\addlinespace
+Llama-3.1-8B & 5 & CoT & 65\,{\scriptsize[43,100]} & +1.2 & -0.3 & +0.1 & -0.1 \\
+Llama-3.1-8B & 5 & direct & 20\,{\scriptsize[13,26]} & +20.2$^{*}$ & +20.5$^{*}$ & +0.9 & +0.4 \\
+\addlinespace
+Llama-3.2-3B & 5 & CoT & 69\,{\scriptsize[48,97]} & -1.4 & +0.1 & -2.6 & -0.1 \\
+Llama-3.2-3B & 5 & direct & 12\,{\scriptsize[11,12]} & +4.7$^{*}$ & +3.5$^{*}$ & +1.1$^{*}$ & +0.5 \\
+\bottomrule
+\end{tabular}
