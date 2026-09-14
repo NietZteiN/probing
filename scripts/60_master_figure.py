@@ -97,7 +97,7 @@ def main() -> int:
     from matplotlib.gridspec import GridSpec
     ap = argparse.ArgumentParser()
     ap.add_argument("--level", type=int, default=3); ap.add_argument("--delta", type=float, default=0.02)
-    ap.add_argument("--probe-model", default="llama32-3b"); ap.add_argument("--role", default="v2")
+    ap.add_argument("--probe-model", default="llama32-3b"); ap.add_argument("--role", default="v1")
     a = ap.parse_args()
     plt.rcParams.update(rcparams())
     sw = json.loads((RESULTS_DIR / "summary" / f"seed_sweep_L{a.level}.json").read_text())
@@ -111,31 +111,33 @@ def main() -> int:
     axc = fig.add_subplot(gs[:, 3])
 
     # ---- (a) the manipulation
-    axa.set_title("(a)  the same arithmetic, three names", loc="left", fontsize=11)
-    rows = [("neutral", "pen=1 + cup, cup=2 + 3; pen=?", GREY, None),
-            ("the name agrees", "pen=1 + five, five=2 + 3; pen=?", GREEN, "five really is 5"),
-            ("the name lies", "pen=1 + two, two=2 + 3; pen=?", RED, "two is really 5")]
+    axa.set_title("(a)  the manipulation", loc="left", fontsize=11)
+    rows_a = [("neutral", "truck=2 + ant, ant=7 - 6; truck=?", GREY,
+               "the answer is 3"),
+              ("the name agrees", "three=2 + ant, ant=7 - 6; three=?", GREEN,
+               "the answer is 3, and the name says 3"),
+              ("the name lies", "four=2 + ant, ant=7 - 6; four=?", RED,
+               "the answer is 3, but the name says 4")]
     y = 0.92
-    for lab, prob, col, note in rows:
+    for lab, prob, col, note in rows_a:
         axa.text(0, y, lab, fontsize=10, color=col, weight="bold", transform=axa.transAxes)
-        axa.text(0, y - 0.085, prob, fontsize=9, family="monospace", color=col, transform=axa.transAxes)
-        if note:
-            axa.text(0, y - 0.155, note, fontsize=8.5, color="0.4", style="italic", transform=axa.transAxes)
-            y -= 0.27
-        else:
-            y -= 0.20
-    axa.text(0, 0.21, "The answer is 6 in all three.", fontsize=9, color="0.2",
-             va="top", transform=axa.transAxes)
-    axa.text(0, 0.14, "The model either writes\nthe steps in full, ending\n\u201cpen=1 + 5, pen=6\u201d,\n"
-                      "or answers \u201cpen=6\u201d\ndirectly.",
+        axa.text(0, y - 0.085, prob, fontsize=8.8, family="monospace", color=col, transform=axa.transAxes)
+        axa.text(0, y - 0.155, note, fontsize=8.5, color="0.4", style="italic", transform=axa.transAxes)
+        y -= 0.27
+    axa.text(0, 0.14, "Same arithmetic every time.\nOnly the name of the variable\n"
+                      "being asked about changes.\n\n"
+                      "The model either writes out\nthe steps, ending\n"
+                      "\u201cfour=2 + 1, four=3\u201d,\nor answers \u201cfour=3\u201d directly.",
              fontsize=8.6, color="0.4", linespacing=1.6, va="top", transform=axa.transAxes)
 
     # ---- (b) headline
     rows = layout_models(sw)
-    paired(axb1, sw, rows, "facilitation@v1", "(b)  a name that agrees:\n      is the answer more often right?",
+    paired(axb1, sw, rows, "facilitation@v1",
+           "(b)  when the name says the right answer,\n      is the model more often right?",
            "accuracy gained (points)", a.delta, band=True, ylabels=True)
-    paired(axb2, sw, rows, "lure_excess@v1", "a name that lies:\n is it given as the answer?",
-           "extra answers equal to the name (points)", a.delta, band=True, ylabels=False)
+    paired(axb2, sw, rows, "lure_excess@v1",
+           "when the name says a wrong number,\ndoes the model answer that instead?",
+           "how much more often the answer is\nthe name's own number (points)", a.delta, band=True, ylabels=False)
     for ax in (axb1, axb2):
         ax.text(0, -0.5, "no effect", fontsize=8, color="0.45", ha="center", va="bottom")
     h = [plt.Line2D([], [], color=RED, marker="o", ls="", ms=6, label="no chain of thought"),
