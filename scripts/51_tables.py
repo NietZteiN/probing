@@ -175,11 +175,91 @@ def main() -> int:
                 numbers["vw-olmo-lo"] = f"{100*ci[0]:+.1f}"
                 numbers["vw-olmo-hi"] = f"{100*ci[1]:+.1f}"
                 numbers["vw-olmo-n"] = str(r["n_wrote"])
+        kt = RESULTS_DIR / "summary" / "llama32-3b" / "L3" / "cot" / "kudo_table.json"
+        if kt.exists():
+            k = json.loads(kt.read_text())
+            for v in ("v1", "v2"):
+                c = k.get(f"train_letter/{v}", {}).get("letter")
+                if c:
+                    numbers[f"replication-pre-{v}"] = f"{100*c['acc_pre_cot']:.1f}"
+                    numbers[f"replication-eq-{v}"] = c["t_star_segment"].split(":")[1]
+        # level-4 lure mass at the ANSWER position for both the bound (incongruent@v2) and the
+        # unbound (irrelevant@v3) number word, best-accuracy layer, so the two are comparable
+        g4f = RESULTS_DIR / "summary" / "llama32-3b" / "L4" / "cot" / "probes_grid.json"
+        if g4f.exists():
+            g4 = json.loads(g4f.read_text())
+            for role, cond, key in (("v2", "incongruent@v2", "bound-mass"), ("v3", "irrelevant@v3", "unbound-mass")):
+                cells = [v for kk, v in g4.get(f"train_neutral/{role}", {}).items() if kk.startswith("anspre|") and cond in v]
+                if cells:
+                    best = max(cells, key=lambda v: v["neutral"]["accuracy"][0])
+                    numbers[key] = f"{best[cond]['lure_mass'][0]:.3f}"
+                    if role == "v3":
+                        numbers["distractor-acc"] = f"{best['neutral']['accuracy'][0]:.2f}"
+        # where the removal grid puts the effect: segment and layer windows with the highest removal
+        ptg = RESULTS_DIR / "summary" / "llama32-3b" / "L3" / "direct" / "patching.json"
+        if ptg.exists():
+            grid = json.loads(ptg.read_text()).get("grid_neutral@v1", {})
+            rows = [(kk.split("|")[0], kk.split("|")[1], v["anspre"]["lure_removed"]) for kk, v in grid.items() if "anspre" in v]
+            if rows:
+                seg, win, top = max(rows, key=lambda r: r[2])
+                good = sorted({int(w[1:].split("-")[0]) for sg, w, r in rows if sg == seg and r >= 0.5} | {int(w[1:].split("-")[1]) for sg, w, r in rows if sg == seg and r >= 0.5})
+                numbers["grid-layers"] = f"{good[0]}--{good[-1]}" if good else win[1:]
+                numbers["grid-top-removed"] = f"{100*top:.0f}\\%"
+        # per-demonstration-set ranges behind two pooled numbers the text quotes
+        def by_seed_range(L, key, contrast):
+            c = sweeps.get(L, {}).get(key, {}).get("contrasts", {}).get(contrast)
+            if c and c.get("by_seed"):
+                vals = [100*x for x in c["by_seed"].values()]
+                return f"{min(vals):.0f}", f"{max(vals):.0f}"
+            return None
+        r = by_seed_range(5, "llama31-8b/direct", "lure_excess@v1")
+        if r:
+            numbers["lureexcessmax-lo"], numbers["lureexcessmax-hi"] = r
+        sw4 = sweeps.get(4, {}).get("llama32-3b/cot")
+        if sw4 and "acc_by_seed" in sw4["groups"]["neutral"]:
+            g = sw4["groups"]; costs = []
+            for sd in g["neutral"]["acc_by_seed"]:
+                costs.append(100*(g["neutral"]["acc_by_seed"][sd] - 0.5*(g["congruent@v1"]["acc_by_seed"][sd] + g["incongruent@v1"]["acc_by_seed"][sd])))
+            numbers["wordclass-cost-L4-lo"], numbers["wordclass-cost-L4-hi"] = f"{min(costs):.0f}", f"{max(costs):.0f}"
+        # how many models have every level
+        if sweeps:
+            per = {}
+            for L, sw in sweeps.items():
+                for kk in sw: per.setdefault(kk.split("/")[0], set()).add(L)
+            numbers["n-models-all-levels"] = {1: "one", 2: "two", 3: "three"}.get(sum(1 for v in per.values() if len(v) == 5), str(sum(1 for v in per.values() if len(v) == 5)))
+        # chain regime: how often injecting the name's activations changes the answer (max over
+        # layers and models with patching), and the most lure errors any model made in 2,000
+        inj, err = [], []
+        for pf in (RESULTS_DIR / "summary").glob("*/L3/cot/patching.json"):
+            d = json.loads(pf.read_text())
+            for kk in ("inject@v1", "inject@v2"):
+                for L, v in d.get(kk, {}).items():
+                    if "anspre" in v and v["anspre"].get("lure_injected") is not None:
+                        inj.append(v["anspre"]["lure_injected"])
+            for kk in ("main@v1", "main@v2"):
+                a_ = d.get(kk, {}).get("ALL", {}).get("anspre")
+                if a_: err.append(a_["n_lure_err"])
+        if inj:
+            numbers["inject-cot-max"] = f"{100*max(inj):.1f}\\%"
+        if err:
+            numbers["cot-lure-err-max"] = str(max(err))
+        irf = RESULTS_DIR / "summary" / "irrelevant_L4.json"
+        if irf.exists():
+            ir = json.loads(irf.read_text())
+            for base in ("cot", "direct"):
+                cells = {k: v for k, v in ir.items() if k.endswith("/" + base)}
+                if cells:
+                    lo_k = min(cells, key=lambda k: cells[k]["lure_excess"]); hi_k = max(cells, key=lambda k: cells[k]["lure_excess"])
+                    numbers[f"irr-{base}-lo"] = f"{100*cells[lo_k]['lure_excess']:+.1f}"
+                    numbers[f"irr-{base}-hi"] = f"{100*cells[hi_k]['lure_excess']:+.1f}"
+                    numbers[f"irr-{base}-claimable"] = str(sum(v["claimable"] for v in cells.values()))
+                    numbers[f"irr-{base}-cells"] = str(len(cells))
+            numbers["irr-acc-delta-max"] = f"{100*max(abs(v['acc_delta']) for v in ir.values()):.1f}"
         rep = RESULTS_DIR / "summary" / "llama32-3b" / "L3" / "cot" / "replication.json"
         if rep.exists():
             r = json.loads(rep.read_text())
             for v in ("v1", "v2"):
-                numbers[f"replication-pre-{v}"] = f"{100*r[v]['acc_pre_cot']:.1f}"
+                numbers.setdefault(f"replication-pre-{v}", f"{100*r[v]['acc_pre_cot']:.1f}")
         pg = RESULTS_DIR / "summary" / "llama32-3b" / "L3" / "cot" / "probes_grid.json"
         if pg.exists():
             grid = json.loads(pg.read_text())["train_neutral/v2"]
@@ -196,7 +276,7 @@ def main() -> int:
                 numbers["p3-ctl"] = f"{b3['neutral']['control_acc']:.2f}"
             if b4:
                 numbers["p4-acc"] = f"{b4['neutral']['accuracy'][0]:.2f}"
-                numbers["bound-mass"] = f"{b4['incongruent@v2']['lure_mass'][0]:.3f}"
+                numbers.setdefault("bound-mass", f"{b4['incongruent@v2']['lure_mass'][0]:.3f}")  # L4 anspre value set above wins
         g4 = RESULTS_DIR / "summary" / "llama32-3b" / "L4" / "cot" / "probes_grid.json"
         if g4.exists():
             gg = json.loads(g4.read_text()).get("train_neutral/v3", {})
@@ -211,7 +291,7 @@ def main() -> int:
             numbers["nld-3b"] = f"{m['normalized_ld_mean']:.2f}"
             numbers["control-damage"] = f"{100*w['damage']:.0f}\\%"
             numbers["follow-new-lure"] = f"{100*l['follows_src_lure']:.0f}\\%"
-        numbers.setdefault("grid-layers", "0--7")
+        numbers.setdefault("grid-layers", "?")
 
     narrative(numbers)
     n_main = build([3], PAPER / "tables" / "behavior.tex", "3")

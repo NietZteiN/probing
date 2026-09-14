@@ -41,7 +41,7 @@ def ci90(vals: np.ndarray, clusters: np.ndarray, n_boot: int = 4000, seed: int =
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--delta", type=float, default=0.02)
-    ap.add_argument("--levels", type=int, nargs="+", default=[2, 3, 4, 5])
+    ap.add_argument("--levels", type=int, nargs="+", default=[1, 2, 3, 4, 5])
     a = ap.parse_args()
     out = {"delta": a.delta, "cells": {}}
     print(f"equivalence bound delta = {100*a.delta:.0f} points; 90% CI must lie inside it\n")

@@ -45,7 +45,8 @@ Interpretability studies of multi-step arithmetic find that intermediate values 
 during chain-of-thought (CoT) generation; in those tasks, however, the name of a variable and
 its computed value never disagree. We introduce a cue-conflict version of such a task, in which
 the same problem is presented with congruent, neutral, and incongruent variable names, and
-evaluate \NUM{n-models} models on five difficulty levels with three sets of few-shot examples.
+evaluate \NUM{n-models} models with three sets of few-shot examples, \NUM{n-models-all-levels}
+of them on all five difficulty levels.
 Without CoT, the models use the value denoted by the name: a congruent name raises accuracy by
 up to \NUM{facilitationmax} points, and an incongruent name is produced as the answer up to
 \NUM{lureexcessmax} points above chance. With CoT, we observe no effect of the name's value at
@@ -81,42 +82,37 @@ answer at level~3, one row per model, averaged over three sets of worked example
 bootstrap intervals over problems, and the grey line joins the two regimes of one model. Left:
 accuracy gained when the name denotes the answer. Right: how much more often the model answers
 the number denoted by the name than the neutral twin produces that same digit. Without CoT (red)
-both effects are large; with CoT (blue) every model falls inside the two-point equivalence
-margin fixed in advance. \textbf{(c)} Probe predictions at each token of one problem. A probe
+both effects are large. With CoT (blue), every model's lure effect (right) falls inside the
+two-point equivalence margin fixed in advance; on the left, one model, OLMo-2-1B, loses accuracy
+when the queried variable carries a number word, whether or not it denotes the answer. \textbf{(c)} Probe predictions at each token of one problem. A probe
 trained only on neutral problems reads 4, the value denoted by the name \texttt{four}, through
 the problem and most of the chain, and the true value 3 appears only where the chain writes it
 (dotted line).}
 \label{fig:master}
 \end{figure*}
 
-Placing two cues in conflict in this way is the design of the Stroop task
-\cite{stroop1935}, in which the word \textsc{red} is printed in blue ink, and of the
-shape--texture experiments on vision models \cite{geirhos2019texture}. We apply this design to
-multi-step arithmetic with variable assignments.
+Placing two cues in conflict in this way is the design of the Stroop task \cite{stroop1935}
+and of the shape--texture experiments on vision models \cite{geirhos2019texture}. We apply this
+design to multi-step arithmetic with variable assignments.
 
 \paragraph{Motivation.} Names that contradict the surrounding code degrade model performance
 \cite{le2025names,lam2025codecrash,le2026obfuscated}, but these results do not indicate
-\emph{where} the name interferes, since a drop in accuracy is consistent with a corrupted input
-representation, with a corrupted computation, and with a correct computation that is misread at
-the output. Interpretability studies on clean tasks do not distinguish these cases either.
-\citet{kudo2026faithful} show, using linear probes and activation patching on arithmetic of this
+\emph{where} the name interferes, since a drop in accuracy is consistent with a corrupted input, a corrupted
+computation, or a correct computation misread at the output. \citet{kudo2026faithful} show, using linear probes and activation patching on arithmetic of this
 kind, that the value of each variable becomes linearly decodable only as the CoT writes it, but
 their variable names are single letters, so a decoded value of 5 can only originate from the
-computation. Our incongruent names supply a competing value, so that the output of a probe
-indicates which of the two sources the representation holds.
+computation. Our incongruent names supply a competing value, so that a probe's output indicates which
+source the representation holds.
 
 We construct matched sets of problems: the same arithmetic rendered in the naming conditions of
 Table~\ref{tab:conditions} at the five difficulty levels of Table~\ref{tab:levels}, solved with
-and without a written chain of thought, on \NUM{n-models} models. Without CoT, the models use
+and without a written chain of thought, on \NUM{n-models} models at level~3 and on
+\NUM{n-models-all-levels} of them at every level. Without CoT, the models use
 the value denoted by the name: a congruent name adds up to \NUM{facilitationmax} points of
 accuracy, and an incongruent name is produced as the answer up to \NUM{lureexcessmax} points
 above chance. With CoT, we observe no effect of the name's value at any level, with one
 exception among the models we test. Probes indicate that the lure value is decodable at the
 name's own tokens and is absent at the step that writes the variable's value.
-
-Our contributions are the cue-conflict task, a map of where the two competing values are
-decodable, a causal localization of the effect of the name without CoT, and a control indicating
-that the effect of CoT is not explained by the chain stating the value.
 
 
 \section{Setup}
@@ -125,7 +121,7 @@ that the effect of CoT is not explained by the chain stating the value.
 \citet{kudo2026faithful}. A problem is a list of equations over the digits $0$--$9$ with $+$ and
 $-$, ending in a query, and every variable's value is itself a single digit. Three worked
 examples of the same level precede each problem, and Table~\ref{tab:levels} gives one problem
-per level. Level~3 is our main level, as in their cross-model analysis.
+per level. Level~3 is our main level.
 
 \paragraph{Naming conditions.} Each problem is generated once and rendered in the conditions of
 Table~\ref{tab:conditions}, where arithmetic, operators and digits are identical across a set
@@ -139,15 +135,14 @@ different manipulations.
 value differs from every variable's value and from every digit in the problem, so that a lure
 answer cannot be correct for another reason. Names are single tokens in every context of the
 template under each model's tokenizer, so twins have the same length and the same token
-positions (Appendix~A). The \emph{irrelevant lure} condition places the number word on a
-distractor, separating the presence of a number word from a conflict at a variable that is used.
+positions (Appendix~A). The \emph{irrelevant lure} condition places the number word on a distractor.
 
 \paragraph{Regimes.} In the \emph{chain-of-thought} regime, the model writes the worked steps
 shown in Table~\ref{tab:levels} and then the answer. In the \emph{direct} regime, it writes only
 \texttt{pen=6}. Our main comparison is between these two regimes.
 
-\paragraph{Demonstration sets.} In preliminary experiments, the choice of the three worked
-examples affected accuracy more than any naming condition. Every behavioral result is therefore
+\paragraph{Demonstration sets.} The choice of the three worked examples affected accuracy
+more than any naming condition. Every behavioral result is therefore
 computed for three fixed demonstration sets and reported as their mean, and we count an effect
 as reliable only when its sign is the same in all three sets and a cluster bootstrap over
 matched problems excludes zero.
@@ -185,9 +180,7 @@ Irrelevant & \texttt{pen=1 + cup, cup=2 + 3,} & & \\
 \caption{The naming conditions on one problem, whose answer is 6 in every row of the top block.
 The model writes either the chain \texttt{pen=1 + two, two=2 + 3, two=5, pen=1 + two,
 pen=1 + 5, pen=6} or the answer \texttt{pen=6} alone. \emph{True} is the value of the variable
-carrying the number word, and \emph{Lure} is the value that word denotes. Each problem also has
-a twin with a different neutral word and a twin with a different lure, used as patching
-controls.}
+carrying the number word, and \emph{Lure} is the value that word denotes.}
 \label{tab:conditions}
 \end{table}
 
@@ -218,18 +211,20 @@ computed, which serves as a no-computation control.}
 
 \section{Results}
 
-\paragraph{Replication.} On the letter condition, our per-token probes reproduce the results of
-\citeauthor{kudo2026faithful} for Llama-3.2-3B: the queried variable becomes decodable at
-equation 5 of the chain and the intermediate variable at equation 2, with pre-CoT maxima of
-\NUM{replication-pre-v1} and \NUM{replication-pre-v2} against their 17.8 and 33.2.
+\paragraph{Replication.} On the letter condition, per-token probes trained on letters reproduce
+the positions reported by \citeauthor{kudo2026faithful} for Llama-3.2-3B: the queried variable
+becomes decodable at equation \NUM{replication-eq-v1} of the chain and the intermediate variable
+at equation \NUM{replication-eq-v2}, as in their Table~3. Our pre-CoT maxima,
+\NUM{replication-pre-v1} and \NUM{replication-pre-v2}, are higher than their 17.8 and 33.2.
 
 \paragraph{Behavior.} Table~\ref{tab:behavior} reports accuracy and the pre-registered
 contrasts for each model and regime, averaged over three demonstration sets. Without CoT, the
 models use the value denoted by the name. A congruent name on the queried variable raises the
 accuracy of Llama-3.1-8B by \NUM{facilitationllama318bdirectv1} points at level 3 and by up to
 \NUM{facilitationmax} points at level 5, and an incongruent name is answered
-\NUM{lure_excessllama318bdirectv1} points above chance at level 3 and up to
-\NUM{lureexcessmax} points where accuracy is near the floor. With CoT, these contrasts are
+\NUM{lure_excessllama318bdirectv1} points above chance at level 3 and \NUM{lureexcessmax}
+points at level 5, where accuracy is near the floor (\NUM{lureexcessmax-lo} to
+\NUM{lureexcessmax-hi} points across the three demonstration sets). With CoT, these contrasts are
 absent. An equivalence test with a margin of \NUM{eq-delta} points finds
 \NUM{eq-cot-equivalent} of \NUM{eq-cot-cells} CoT cells equivalent to zero, against
 \NUM{eq-direct-effect} of \NUM{eq-direct-cells} direct cells in which an effect is present. The
@@ -246,56 +241,64 @@ same split. The raw lure rate differs considerably between the halves, but so do
 which the twin produces the same digit, because a model whose chain has broken down produces an
 arbitrary digit. After subtracting this baseline, the excess is \NUM{vw-excess-wrote} points
 over \NUM{vw-cells-wrote} cells in which the value was written and \NUM{vw-excess-not} over
-\NUM{vw-cells-not} cells in which it was not. The exception survives the control as well:
+\NUM{vw-cells-not} cells in which it was not. The exception survives the control:
 \NUM{eq-exc-model} is lured \NUM{vw-olmo-excess} points [\NUM{vw-olmo-lo}, \NUM{vw-olmo-hi}] on
 the \NUM{vw-olmo-n} instances in which its chain wrote the correct value.
 
-\paragraph{Irrelevant lures.} The irrelevant-lure condition at level 4 separates the presence
-of a number word from a conflict at a variable that is used. A number word on the distractor
-reduces accuracy but does not produce lure answers.
+\paragraph{Irrelevant lures.} At level 4, a number word on the distractor changes accuracy by at
+most \NUM{irr-acc-delta-max} points. Without CoT it is nevertheless answered
+\NUM{irr-direct-lo} to \NUM{irr-direct-hi} points above the neutral baseline
+(\NUM{irr-direct-claimable} of \NUM{irr-direct-cells} cells reliable), so a number word that
+names an unused variable is also read as a value; with CoT the excess is \NUM{irr-cot-lo} to
+\NUM{irr-cot-hi} points (\NUM{irr-cot-claimable} of \NUM{irr-cot-cells} reliable).
 
 \paragraph{Word class.} One effect is not removed by CoT. At level 4, a number word on the
-queried variable reduces the accuracy of Llama-3.2-3B by \NUM{wordclass-cost-L4} points whether
-or not the denoted value agrees with the true value; in these instances the model restates the
+queried variable reduces the accuracy of Llama-3.2-3B by \NUM{wordclass-cost-L4} points
+(\NUM{wordclass-cost-L4-lo} to \NUM{wordclass-cost-L4-hi} across demonstration sets) whether or
+not the denoted value agrees with the true value; in these instances the model restates the
 wrong equation in the following step.
 
 \begin{table}[t]
 \centering\small
 \resizebox{\columnwidth}{!}{\tabinput{behavior}}\vspace{-2pt}
-\caption{Does the name's value change what the model answers? Level~3, averaged over three
+\caption{Effect of the name's value on the answer at level~3, averaged over three
 demonstration sets, with the range across those sets in brackets. \emph{Helps} is the accuracy
 gained when the number word matches the variable's value (congruent minus neutral, in points).
 \emph{Lures} is how much more often the model answers the number word's own value than it would
 by chance (incongruent minus the rate at which the neutral twin gives that same digit).
 $^{*}$ marks an effect whose sign is the same in all three demonstration sets and whose
-bootstrap interval excludes zero. Every starred effect is in the direct rows. Other levels are
-in Table~\ref{tab:levels-appendix}.}
+bootstrap interval excludes zero. Starred effects in the CoT rows are within two points, except
+for OLMo-2-1B-Instruct. Other levels are in Table~\ref{tab:levels-appendix}.}
 \label{tab:behavior}
 \end{table}
 
 \paragraph{Probing results.} Figure~\ref{fig:master}(c) shows the probe predictions at each
-token, and Figure~\ref{fig:heat} in the appendix the corresponding layer sweep. At P2, the end
+token for Llama-3.2-3B at level~3 with CoT, and Figure~\ref{fig:heat} in the appendix the
+corresponding layer sweep. At P2, the end
 of the defining equation, the true value is partly computed (accuracy \NUM{p2-acc}, selectivity
 \NUM{p2-sel}) and the lure value is weakly decodable (\NUM{p2-lure}). At P3, the query, a probe
 reads the lure value in \NUM{p3-lure} of instances, but the control task also scores
 \NUM{p3-ctl} there, so the probe is reading the identity of the name. At P4 and P5, the true
 value is decodable at \NUM{p4-acc} and the lure value is at zero in every condition and level.
-A number word on a computed variable has a lure mass of \NUM{bound-mass} at the answer position,
-against \NUM{unbound-mass} for one on the distractor, which is never computed.
+At level~4, a number word on a computed variable has a lure mass of \NUM{bound-mass} at the
+answer position, against \NUM{unbound-mass} for one on the distractor, whose value is itself
+not decodable (accuracy \NUM{distractor-acc}).
 
 
 
 \paragraph{Causal intervention.} Figure~\ref{fig:patch} in the appendix shows, for the direct
 regime, the proportion of lure errors removed by patching the tokens of the name from the
-matched neutral twin, by layer, with both controls. For Llama-3.2-3B, the neutral patch removes
-\NUM{lure-removed-3b} of the lure errors and restores the margin between the true and lure
-values (normalized logit difference \NUM{nld-3b}), the alternative-lure patch is followed in
-\NUM{follow-new-lure} of cases, and the span grid places the effect at the equation that defines
-the name, at layers \NUM{grid-layers}. Because the word control changes \NUM{control-damage} of
+matched neutral twin, by layer, with both controls. For Llama-3.2-3B, patching all layers removes \NUM{lure-removed-3b} of the lure errors and
+restores the margin between the true and lure values (normalized logit difference
+\NUM{nld-3b}), the alternative-lure patch is followed in \NUM{follow-new-lure} of cases, and the
+span grid places the effect at the equation that defines the name, where patching layers
+\NUM{grid-layers} alone removes up to \NUM{grid-top-removed} of the errors. Because the word control changes \NUM{control-damage} of
 the correct answers at this floor accuracy, we report the localization rather than a recovery
-rate. For Llama-3.1-8B, the no-CoT lure rate at level 3 is at chance and the two patches behave
-alike. With CoT, there are no lure errors to remove, and injecting the activations of the name
-into a neutral run does not change the answer in any instance.
+rate. For Llama-3.1-8B, whose no-CoT lure excess at level 3 is small, the neutral and
+alternative-lure patches remove lure errors equally, so the patching gives no evidence of a
+name-specific cause. With CoT, there are at most \NUM{cot-lure-err-max} lure errors in 2{,}000 instances to remove,
+and injecting the activations of the name into a neutral run changes the answer in at most
+\NUM{inject-cot-max} of 500 pairs.
 
 
 \section{Related Work}
@@ -304,22 +307,20 @@ into a neutral run does not change the answer in any instance.
 arithmetic, and we add a cue conflict to that setting. Two studies apply the Stroop design to
 language models: \citet{wang2026stroop} place a local redefinition of a word in conflict with
 its familiar associate, and \citet{hu2026conflict} measure a congruency effect in next-token
-probabilities on a color-rule task. Both measure a single next token, and neither involves
-errors, a chain of thought, or probes over reasoning steps. Faithfulness has also been measured externally, by perturbing prompts,
+probabilities on a color-rule task. Both measure a single next token, without a chain of thought. Faithfulness has also been measured externally, by perturbing prompts,
 chains, or parameters
 \cite{turpin2023unfaithful,lanham2023measuring,chen2025reasoning,tutek2025unlearning}, whereas
 we measure it internally under a cue for which both values are known. Since small models can
 copy the trailing number of the chain \cite{liu2026readout} and an output prior can override a
 correct chain \cite{prabhakar2024deciphering}, we report a positional-copy control. Misleading identifiers degrade performance on real
 code \cite{le2026obfuscated,le2025names,lam2025codecrash}, whereas our task is synthetic, which
-allows the effect to be localized. Work on binding asks how a value is attached to a name
-\cite{feng2024binding,wu2025binding,gurarieh2026mixing}, and we ask whether that attachment
-survives a competing value.
+allows the effect to be localized. Work on binding \cite{feng2024binding,wu2025binding,gurarieh2026mixing} asks how a value is
+attached to a name; we ask whether that attachment survives a competing value.
 
 \section{Conclusion}
 
-We introduced a cue-conflict version of a controlled arithmetic task in order to ask where a
-misleading variable name interferes. Without CoT, the value denoted by the name is used as the
+We introduced a cue-conflict version of a controlled arithmetic task to ask where a misleading
+variable name interferes. Without CoT, the value denoted by the name is used as the
 answer, and patching localizes this effect to the early layers at the equation that defines the
 name. With CoT, we observe no effect at any level, with one exception among \NUM{n-models}
 models, and whether the chain states the value does not predict the size of the effect.
@@ -327,7 +328,7 @@ models, and whether the chain states the value does not predict the size of the 
 \section*{Limitations}
 
 The task is synthetic arithmetic with short chains, so the results need not transfer to real
-code, which is the motivation for the task rather than a finding. The models are at most 8B
+code, which is the motivation for the task rather than a finding. The models are at most 12B
 parameters, and within-family comparisons indicate the direction of a trend only. The lures are
 English number words; digit-bearing names such as \texttt{x2}, other languages, and optimized
 lures remain future work. Linear probes can miss information that is encoded nonlinearly; the
@@ -344,7 +345,8 @@ Rule~4 is decided per model, not by eye. For each model we tokenize every candid
 five contexts of the template (line start, after a comma, after each operator, before the
 separator) and keep only words that are a single token in all five with no merging into a
 neighbour. For the Llama~3 tokenizer, all ten number words pass and 95 of 112 neutral candidates
-pass; the lists are released with the code. Binary operators carry a space on each side because
+pass; the lists are released with the code. The Gemma and OLMo models were run on the same
+lists, and the run-time guard confirmed single-token names and identical positions for them. Binary operators carry a space on each side because
 \texttt{-} otherwise merges with a following word (\texttt{1-two} tokenizes as \texttt{1},
 \texttt{-two}), which would break the alignment between twins. With the released lists, every
 instance of a condition tokenizes to the same length with the same position indices, and the
@@ -373,9 +375,10 @@ rate, lure mass and margin, alongside the accuracy of a control probe trained on
 a deterministic random function of the variable's name \cite{hewitt2019control}. Selectivity is
 the difference. The query position is the one cell where a high lure rate coincides with control
 accuracy near~1, which is why it is reported as name identity rather than as a represented
-value. Per-token sweeps over the whole instance, with the max-over-layers curve, are given for
-both regimes and all three conditions, together with $t^{*}$, $t^{*}_{\text{eq}}$ and the
-pre-/post-chain accuracies in \citeauthor{kudo2026faithful}'s format.
+value. Figure~\ref{fig:heat} gives the per-token sweep for the incongruent condition with CoT;
+the sweeps for the other conditions and the direct regime, with $t^{*}$, $t^{*}_{\text{eq}}$
+and the pre-/post-chain accuracies in \citeauthor{kudo2026faithful}'s format, are released with
+the code.
 
 \begin{figure}[h]
 \centering
@@ -396,9 +399,9 @@ control: the intermediate variable's value is stated rather than computed.}
 \label{tab:levels-appendix}
 \end{table}
 
-Per-set values, the pooled estimate and the claim rule are released with the code. The appendix also contains the span-by-layer patching grids for all three
-sources, the level-4 irrelevant-lure control, the lure-distance analysis, the teacher-forced
-lure rates, and the error taxonomy that identifies the equation-selection failure behind the
-word-class effect.
+Per-set values, the pooled estimate and the claim rule are released with the code, together
+with the span-by-layer patching grids for all three sources, the level-4 irrelevant-lure
+control, the lure-distance analysis, the teacher-forced lure rates, and the error taxonomy
+behind the word-class effect.
 
 \end{document}

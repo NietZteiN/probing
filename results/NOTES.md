@@ -526,3 +526,38 @@ the name's activations changes 0.0% of answers in Gemma (0.2% Llama) and there a
 errors to remove; without a chain the neutral patch removes 62% of Gemma's lure errors
 (Llama 75%) with word-control damage 14% (Llama 22%, at floor accuracy), and injection lures
 2.4% (Llama 2.6%). C3 and C4 therefore hold across families. OLMo-2-7B probes pending.
+
+## 2026-09-14 (late) — accuracy pass on the paper: what was wrong
+
+Every claim checked against its source. Corrected in the text (all numbers now `\NUM` keys):
+1. "eight models on five levels" → eight at level 3, two at all five.
+2. Fig. 1(b) caption: "every model inside the margin" was false on the left panel (OLMo-2-1B
+   CoT loses 5.8 points to a congruent name on the queried variable); now says so.
+3. Table 1 caption: "every starred effect is in the direct rows" was false (three starred CoT
+   rows); now "starred CoT effects are within two points except OLMo-2-1B".
+4. Limitations: "at most 8B" → 12B (Gemma-3-12B is in the panel).
+5. Replication: the pre-CoT maxima quoted came from neutral-trained labelled probes; now from
+   the letter-trained per-token cells (30.4 / 47.9 vs Kudo 17.8 / 33.2): positions match
+   (equations 5 and 2), accuracies are higher than theirs, and the text says so.
+6. Bound vs unbound lure mass compared different positions (L3 value step vs L4 answer); now
+   both at the L4 answer position, best-accuracy layer: .004 vs .118, with the distractor's own
+   accuracy (.04) stated.
+7. `grid-layers` was a hard-coded default; now computed from the removal grid (in:v1 span,
+   windows 0–7, up to 69% removed).
+8. Llama-3.1-8B "lure rate at chance" contradicted its own starred +1.2; reworded.
+9. "no lure errors / no answer changed" under CoT → at most 1 in 2,000 and 0.2% of 500.
+10. **Irrelevant lure**: "does not produce lure answers" was false. Against the matched neutral
+    baseline (`63_irrelevant.py`) a number word on the distractor is answered +2.1/+2.3 points
+    above chance without CoT (both reliable), +1.0/+0.0 with CoT (neither reliable); accuracy
+    moves ≤1.2 points. Presence alone is read as a value without a chain.
+11. Equivalence test now over all five levels: 33 of 34 CoT cells equivalent (was 29/30 over
+    levels 2–5); 11 of 34 direct cells with an effect.
+12. Per-demonstration-set ranges added where a pooled number hid heterogeneity: level-5 lure
+    excess 5–51 points; level-4 word-class cost 2–16 points.
+13. Appendix promised content it does not contain (grids, lure-distance, teacher-forced rates,
+    taxonomy) → "released with the code"; Appendix A now states that the Gemma/OLMo models ran
+    on the Llama-verified word lists with the run-time guard confirming layout (0 exclusions in
+    1,135 runs).
+Verified unchanged: Table 1 (64 cells + stars vs sweep), Kudo's 17.8/33.2 (their Table 3),
+figure instances (truck/four/3 in Fig. 1c; truck/nine/1 in Fig. 2), E26 wording, all refs,
+labels and bib keys. Body: 4 pages. Self-check: 0 failures.
