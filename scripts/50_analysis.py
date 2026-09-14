@@ -201,13 +201,14 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--models", nargs="+", default=None)
     ap.add_argument("--level", type=int, default=3)
+    ap.add_argument("--data-suffix", default="", help="'_ident' for the identifier-name runs (E38)")
     a = ap.parse_args()
     models = a.models or list(load_config("models.yaml")["models"])
     for k in models:
-        level_dir = OUT_DIR / "runs" / k / f"L{a.level}"
+        level_dir = OUT_DIR / "runs" / k / f"L{a.level}{a.data_suffix}"
         for regime in (sorted(p.name for p in level_dir.iterdir() if p.is_dir()) if level_dir.exists() else []):
             run_dir = level_dir / regime
-            out = RESULTS_DIR / "summary" / k / f"L{a.level}" / regime
+            out = RESULTS_DIR / "summary" / k / f"L{a.level}{a.data_suffix}" / regime
             out.mkdir(parents=True, exist_ok=True)
             beh = behavior_frame(run_dir)
             if len(beh):

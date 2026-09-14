@@ -58,6 +58,7 @@ def main() -> int:
     ap.add_argument("--models", nargs="+", default=None)
     ap.add_argument("--levels", type=int, nargs="+", default=[2, 3, 4, 5])
     ap.add_argument("--seeds", type=int, nargs="+", default=[7, 11, 13])
+    ap.add_argument("--data-suffix", default="", help="'_ident' for the identifier-name runs (E38)")
     a = ap.parse_args()
     models = a.models or list(load_config("models.yaml")["models"])
     for L in a.levels:
@@ -66,7 +67,7 @@ def main() -> int:
             for base in ("cot", "direct"):
                 per_seed = {}
                 for sd in a.seeds:
-                    d = OUT_DIR / "runs" / m / f"L{L}" / (base if sd == 7 else f"{base}_s{sd}")
+                    d = OUT_DIR / "runs" / m / f"L{L}{a.data_suffix}" / (base if sd == 7 else f"{base}_s{sd}")
                     if d.exists():
                         df = load(d)
                         if len(df):
@@ -102,7 +103,7 @@ def main() -> int:
                 for name, c in rec["contrasts"].items():
                     print(f"  {name:18s} pooled {100*c['pooled_mean']:+5.1f} [{100*c['ci95'][0]:+.1f}, {100*c['ci95'][1]:+.1f}] by seed " +
                           " ".join(f"{sd}:{100*v:+.1f}" for sd, v in c["by_seed"].items()) + ("  CLAIMABLE" if c["claimable"] else ""))
-        (RESULTS_DIR / "summary" / f"seed_sweep_L{L}.json").write_text(json.dumps(report, indent=1, default=float))
+        (RESULTS_DIR / "summary" / f"seed_sweep_L{L}{a.data_suffix}.json").write_text(json.dumps(report, indent=1, default=float))
     return 0
 
 
