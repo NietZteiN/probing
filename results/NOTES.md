@@ -488,3 +488,24 @@ This is the prediction the "writing the value" account makes. The chain protects
 value; a model that fails to compute the value never writes it, and the name survives. The paper
 should say this rather than claim a universal null: **the protection is a consequence of solving
 the problem, not of the format.**
+
+## 2026-09-14 (evening) — paper, and E38 had never run
+
+- **Paper.** The RQ1 paragraph now reports the equivalence test over the whole panel (29 of
+  30 chain cells equivalent to zero at δ = 2; 8 of 30 direct cells with an effect) and names
+  the exception (OLMo-2-1B-Instruct, level 3, intermediate variable, +3.3 [2.5, 4.1]) as the
+  mechanism's prediction: its chain solves 47% with word names against 77% with letters, and a
+  model that fails to compute a value never writes it. The conclusion says the protection
+  comes from solving the problem, not from the format. Every number in that paragraph is a
+  `\NUM` key from `51_tables.py` (the three that were hand-typed, 4.8 / 1.2 / 10.5, are gone;
+  the level-4 word-class cost is now pooled over seeds: `wordclass-cost-L4`). Body back to
+  4 pages after tightening related work and RQ2/RQ3.
+- **E38 (identifier names) had never produced a result.** Every ident job failed at the
+  layout guard: (a) the guard required single-token names, which the ident scheme violates by
+  design (`q4` is two tokens); (b) demonstrations were drawn from the word pool, not from the
+  dataset's `demo_words`. Fixed in `runner.py` (names must tokenize like the group's reference
+  instance) and `20_run_model.py` (passes the manifest's demo pool). Verified with real
+  tokenizers in a dev job (`scripts/12_ident_layout_check.py`) before the 11 held jobs go back
+  into the queue.
+- Worker queue: probe jobs ran before their cache jobs (no ordering) and failed; tasks can
+  now declare `# needs: <path>` and are deferred until it exists.
