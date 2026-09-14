@@ -22,6 +22,15 @@ while true; do
     sleep 20; continue
   fi
   idle=0
+  # a task may declare `# needs: <path>` lines; defer it (to the back of the queue) until every
+  # path exists, so probes never start before the cache job that feeds them
+  missing=""
+  while read -r need; do [[ -n "$need" && ! -e "$need" ]] && missing="$need"; done < <(sed -n 's/^# needs: *//p' "$Q/pending/$task" 2>/dev/null)
+  if [[ -n "$missing" ]]; then
+    later="$(date -u +%Y%m%dT%H%M%S)_${task#*_}"
+    mv "$Q/pending/$task" "$Q/pending/$later" 2>/dev/null && echo "# deferred $task (needs $missing)"
+    sleep 60; continue
+  fi
   # claim atomically: mv fails if another worker got there first
   if ! mv "$Q/pending/$task" "$Q/running/$task" 2>/dev/null; then continue; fi
   echo "=== [$ME] $(date -u +%FT%TZ) START $task"; cat "$Q/running/$task"
