@@ -68,7 +68,8 @@ def main() -> int:
     tok, model = load_model(m["hf_id"])
     bs = a.batch_size or m.get("batch_size", 16)
     if a.layer_stride > 1 and a.layers is None:
-        nl = model.config.num_hidden_layers if hasattr(model.config, "num_hidden_layers") else model.config.text_config.num_hidden_layers
+        from cueconf.runner import text_config
+        nl = text_config(model).num_hidden_layers
         a.layers = list(range(0, nl + 1, a.layer_stride))
         if nl not in a.layers:
             a.layers.append(nl)

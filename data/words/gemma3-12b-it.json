@@ -1,0 +1,551 @@
+{
+  "number_ntok": {
+    "zero": [
+      1,
+      1,
+      true
+    ],
+    "one": [
+      1,
+      1,
+      true
+    ],
+    "two": [
+      1,
+      1,
+      true
+    ],
+    "three": [
+      1,
+      1,
+      true
+    ],
+    "four": [
+      1,
+      1,
+      true
+    ],
+    "five": [
+      1,
+      1,
+      true
+    ],
+    "six": [
+      1,
+      1,
+      true
+    ],
+    "seven": [
+      1,
+      1,
+      true
+    ],
+    "eight": [
+      1,
+      1,
+      true
+    ],
+    "nine": [
+      1,
+      1,
+      true
+    ]
+  },
+  "number_ok": true,
+  "neutral": [
+    "pen",
+    "cup",
+    "box",
+    "dog",
+    "cat",
+    "hat",
+    "map",
+    "key",
+    "jar",
+    "bag",
+    "car",
+    "bus",
+    "fox",
+    "owl",
+    "pig",
+    "cow",
+    "ant",
+    "bee",
+    "egg",
+    "ink",
+    "jam",
+    "log",
+    "net",
+    "oak",
+    "pan",
+    "rug",
+    "sun",
+    "tea",
+    "van",
+    "web",
+    "hut",
+    "fig",
+    "gem",
+    "ham",
+    "kit",
+    "lid",
+    "mud",
+    "nut",
+    "pot",
+    "rod",
+    "sky",
+    "toy",
+    "wax",
+    "yak",
+    "fan",
+    "cap",
+    "bed",
+    "bin",
+    "rag",
+    "saw",
+    "tub",
+    "bell",
+    "boat",
+    "book",
+    "cake",
+    "coat",
+    "desk",
+    "door",
+    "duck",
+    "farm",
+    "fish",
+    "fork",
+    "frog",
+    "goat",
+    "hill",
+    "lamp",
+    "leaf",
+    "lake",
+    "milk",
+    "moon",
+    "nest",
+    "park",
+    "pear",
+    "ring",
+    "road",
+    "rock",
+    "roof",
+    "rope",
+    "salt",
+    "seed",
+    "ship",
+    "shoe",
+    "soap",
+    "sock",
+    "song",
+    "soup",
+    "star",
+    "tent",
+    "tree",
+    "wall",
+    "wolf",
+    "wool",
+    "yard",
+    "apple",
+    "bread",
+    "chair",
+    "cloud",
+    "horse",
+    "house",
+    "lemon",
+    "mouse",
+    "piano",
+    "river",
+    "shirt",
+    "table",
+    "tiger",
+    "train",
+    "truck",
+    "water",
+    "wheel",
+    "zebra"
+  ],
+  "rejected": [
+    "grape"
+  ],
+  "model": "gemma3-12b-it",
+  "hf_id": "google/gemma-3-12b-it",
+  "template": {
+    "cot": {
+      "positions": {
+        "def@v1": 151,
+        "end@v1": 155,
+        "def@v2": 157,
+        "end@v2": 162,
+        "query": 165,
+        "use@v1": null,
+        "use@v2": 155,
+        "cotpre@v1": 198,
+        "cot@v1": 199,
+        "cotpre@v2": 181,
+        "cot@v2": 182,
+        "anspre": 198,
+        "ans": 199
+      },
+      "name_ntok": {
+        "v1": [
+          1
+        ],
+        "v2": [
+          1
+        ]
+      },
+      "tokens_after_instance_start": [
+        [
+          160,
+          " +"
+        ],
+        [
+          161,
+          " "
+        ],
+        [
+          162,
+          "0"
+        ],
+        [
+          163,
+          ";"
+        ],
+        [
+          164,
+          " one"
+        ],
+        [
+          165,
+          "=?"
+        ],
+        [
+          166,
+          "\n"
+        ],
+        [
+          167,
+          "one"
+        ],
+        [
+          168,
+          "="
+        ],
+        [
+          169,
+          "5"
+        ],
+        [
+          170,
+          " +"
+        ],
+        [
+          171,
+          " tent"
+        ],
+        [
+          172,
+          ","
+        ],
+        [
+          173,
+          " tent"
+        ],
+        [
+          174,
+          "="
+        ],
+        [
+          175,
+          "0"
+        ],
+        [
+          176,
+          " +"
+        ],
+        [
+          177,
+          " "
+        ],
+        [
+          178,
+          "0"
+        ],
+        [
+          179,
+          ","
+        ],
+        [
+          180,
+          " tent"
+        ],
+        [
+          181,
+          "="
+        ],
+        [
+          182,
+          "0"
+        ],
+        [
+          183,
+          ","
+        ],
+        [
+          184,
+          " one"
+        ],
+        [
+          185,
+          "="
+        ],
+        [
+          186,
+          "5"
+        ],
+        [
+          187,
+          " +"
+        ],
+        [
+          188,
+          " tent"
+        ],
+        [
+          189,
+          ","
+        ],
+        [
+          190,
+          " one"
+        ],
+        [
+          191,
+          "="
+        ],
+        [
+          192,
+          "5"
+        ],
+        [
+          193,
+          " +"
+        ],
+        [
+          194,
+          " "
+        ],
+        [
+          195,
+          "0"
+        ],
+        [
+          196,
+          ","
+        ],
+        [
+          197,
+          " one"
+        ],
+        [
+          198,
+          "="
+        ],
+        [
+          199,
+          "5"
+        ]
+      ],
+      "misaligned_labels": []
+    },
+    "direct": {
+      "positions": {
+        "def@v1": 61,
+        "end@v1": 65,
+        "def@v2": 67,
+        "end@v2": 72,
+        "query": 75,
+        "use@v1": null,
+        "use@v2": 65,
+        "cotpre@v1": null,
+        "cot@v1": null,
+        "cotpre@v2": null,
+        "cot@v2": null,
+        "anspre": 78,
+        "ans": 79
+      },
+      "name_ntok": {
+        "v1": [
+          1
+        ],
+        "v2": [
+          1
+        ]
+      },
+      "tokens_after_instance_start": [
+        [
+          40,
+          "\n\n"
+        ],
+        [
+          41,
+          "fish"
+        ],
+        [
+          42,
+          "="
+        ],
+        [
+          43,
+          "1"
+        ],
+        [
+          44,
+          " -"
+        ],
+        [
+          45,
+          " bell"
+        ],
+        [
+          46,
+          ","
+        ],
+        [
+          47,
+          " bell"
+        ],
+        [
+          48,
+          "="
+        ],
+        [
+          49,
+          "8"
+        ],
+        [
+          50,
+          " -"
+        ],
+        [
+          51,
+          " "
+        ],
+        [
+          52,
+          "7"
+        ],
+        [
+          53,
+          ";"
+        ],
+        [
+          54,
+          " fish"
+        ],
+        [
+          55,
+          "=?"
+        ],
+        [
+          56,
+          "\n"
+        ],
+        [
+          57,
+          "fish"
+        ],
+        [
+          58,
+          "="
+        ],
+        [
+          59,
+          "0"
+        ],
+        [
+          60,
+          "\n\n"
+        ],
+        [
+          61,
+          "one"
+        ],
+        [
+          62,
+          "="
+        ],
+        [
+          63,
+          "5"
+        ],
+        [
+          64,
+          " +"
+        ],
+        [
+          65,
+          " tent"
+        ],
+        [
+          66,
+          ","
+        ],
+        [
+          67,
+          " tent"
+        ],
+        [
+          68,
+          "="
+        ],
+        [
+          69,
+          "0"
+        ],
+        [
+          70,
+          " +"
+        ],
+        [
+          71,
+          " "
+        ],
+        [
+          72,
+          "0"
+        ],
+        [
+          73,
+          ";"
+        ],
+        [
+          74,
+          " one"
+        ],
+        [
+          75,
+          "=?"
+        ],
+        [
+          76,
+          "\n"
+        ],
+        [
+          77,
+          "one"
+        ],
+        [
+          78,
+          "="
+        ],
+        [
+          79,
+          "5"
+        ]
+      ],
+      "misaligned_labels": []
+    }
+  }
+}

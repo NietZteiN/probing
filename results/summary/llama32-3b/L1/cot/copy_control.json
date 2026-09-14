@@ -1,0 +1,234 @@
+{
+ "incongruent@v1": {
+  "n_lure_errors_at_p5": 3,
+  "trailing_is_true_intermediate": 0.0,
+  "trailing_is_lure": 0.0,
+  "chain_wrote_true_at_p4": 0.0,
+  "rows": [
+   {
+    "id": "L1-44-00215-inc@v1",
+    "trailing": 3,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L1-44-00618-inc@v1",
+    "trailing": 0,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L1-44-01021-inc@v1",
+    "trailing": 0,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   }
+  ]
+ },
+ "incongruent@v2": {
+  "n_lure_errors_at_p5": 11,
+  "trailing_is_true_intermediate": 0.18181818181818182,
+  "trailing_is_lure": 0.45454545454545453,
+  "chain_wrote_true_at_p4": 1.0,
+  "rows": [
+   {
+    "id": "L1-44-00029-inc@v2",
+    "trailing": 4,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": true,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-00167-inc@v2",
+    "trailing": 8,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": true,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-00504-inc@v2",
+    "trailing": 3,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-00743-inc@v2",
+    "trailing": 4,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-01085-inc@v2",
+    "trailing": 2,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": true,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-01117-inc@v2",
+    "trailing": 7,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": true,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-01287-inc@v2",
+    "trailing": 1,
+    "trailing_is_true_intermediate": true,
+    "trailing_is_lure": false,
+    "trailing_is_answer": true,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-01509-inc@v2",
+    "trailing": 1,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": true,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-01673-inc@v2",
+    "trailing": 4,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": true,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-01769-inc@v2",
+    "trailing": 1,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": true,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-01948-inc@v2",
+    "trailing": 3,
+    "trailing_is_true_intermediate": true,
+    "trailing_is_lure": false,
+    "trailing_is_answer": true,
+    "chain_wrote_true_at_p4": true
+   }
+  ]
+ },
+ "incongruent_alt@v1": {
+  "n_lure_errors_at_p5": 4,
+  "trailing_is_true_intermediate": 0.0,
+  "trailing_is_lure": 0.0,
+  "chain_wrote_true_at_p4": 0.0,
+  "rows": [
+   {
+    "id": "L1-44-00022-incalt@v1",
+    "trailing": 0,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L1-44-00072-incalt@v1",
+    "trailing": 0,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L1-44-00303-incalt@v1",
+    "trailing": 0,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L1-44-01553-incalt@v1",
+    "trailing": 3,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   }
+  ]
+ },
+ "incongruent_alt@v2": {
+  "n_lure_errors_at_p5": 7,
+  "trailing_is_true_intermediate": 0.2857142857142857,
+  "trailing_is_lure": 0.42857142857142855,
+  "chain_wrote_true_at_p4": 1.0,
+  "rows": [
+   {
+    "id": "L1-44-00971-incalt@v2",
+    "trailing": 1,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-01069-incalt@v2",
+    "trailing": 8,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": true,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-01117-incalt@v2",
+    "trailing": 8,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": true,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-01251-incalt@v2",
+    "trailing": 0,
+    "trailing_is_true_intermediate": true,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-01304-incalt@v2",
+    "trailing": 1,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-01727-incalt@v2",
+    "trailing": 1,
+    "trailing_is_true_intermediate": true,
+    "trailing_is_lure": false,
+    "trailing_is_answer": true,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L1-44-01970-incalt@v2",
+    "trailing": 8,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": true,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": true
+   }
+  ]
+ }
+}

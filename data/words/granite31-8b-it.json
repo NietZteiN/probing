@@ -1,0 +1,551 @@
+{
+  "number_ntok": {
+    "zero": [
+      1,
+      1,
+      true
+    ],
+    "one": [
+      1,
+      1,
+      true
+    ],
+    "two": [
+      1,
+      1,
+      true
+    ],
+    "three": [
+      1,
+      1,
+      true
+    ],
+    "four": [
+      1,
+      1,
+      true
+    ],
+    "five": [
+      1,
+      1,
+      true
+    ],
+    "six": [
+      1,
+      1,
+      true
+    ],
+    "seven": [
+      2,
+      1,
+      false
+    ],
+    "eight": [
+      1,
+      1,
+      true
+    ],
+    "nine": [
+      2,
+      2,
+      false
+    ]
+  },
+  "number_ok": false,
+  "neutral": [
+    "pen",
+    "cup",
+    "box",
+    "dog",
+    "cat",
+    "hat",
+    "map",
+    "key",
+    "jar",
+    "bag",
+    "car",
+    "bus",
+    "owl",
+    "ant",
+    "egg",
+    "ink",
+    "log",
+    "net",
+    "pan",
+    "sun",
+    "tea",
+    "van",
+    "web",
+    "fig",
+    "gem",
+    "kit",
+    "lid",
+    "mud",
+    "nut",
+    "pot",
+    "sky",
+    "fan",
+    "cap",
+    "bed",
+    "bin",
+    "book",
+    "door",
+    "farm",
+    "fish",
+    "fork",
+    "leaf",
+    "moon",
+    "nest",
+    "ring",
+    "road",
+    "rock",
+    "salt",
+    "seed",
+    "ship",
+    "sock",
+    "song",
+    "soup",
+    "star",
+    "tree",
+    "wall",
+    "apple",
+    "cloud",
+    "house",
+    "mouse",
+    "river",
+    "table",
+    "train",
+    "water",
+    "wheel"
+  ],
+  "rejected": [
+    "fox",
+    "pig",
+    "cow",
+    "bee",
+    "jam",
+    "oak",
+    "rug",
+    "hut",
+    "ham",
+    "rod",
+    "toy",
+    "wax",
+    "yak",
+    "rag",
+    "saw",
+    "tub",
+    "bell",
+    "boat",
+    "cake",
+    "coat",
+    "desk",
+    "duck",
+    "frog",
+    "goat",
+    "hill",
+    "lamp",
+    "lake",
+    "milk",
+    "park",
+    "pear",
+    "roof",
+    "rope",
+    "shoe",
+    "soap",
+    "tent",
+    "wolf",
+    "wool",
+    "yard",
+    "bread",
+    "chair",
+    "grape",
+    "horse",
+    "lemon",
+    "piano",
+    "shirt",
+    "tiger",
+    "truck",
+    "zebra"
+  ],
+  "model": "granite31-8b-it",
+  "hf_id": "ibm-granite/granite-3.1-8b-instruct",
+  "template": {
+    "cot": {
+      "positions": {
+        "def@v1": 171,
+        "end@v1": 175,
+        "def@v2": 177,
+        "end@v2": 182,
+        "query": 185,
+        "use@v1": null,
+        "use@v2": 175,
+        "cotpre@v1": 218,
+        "cot@v1": 219,
+        "cotpre@v2": 201,
+        "cot@v2": 202,
+        "anspre": 218,
+        "ans": 219
+      },
+      "name_ntok": {
+        "v1": [
+          1
+        ],
+        "v2": [
+          1
+        ]
+      },
+      "tokens_after_instance_start": [
+        [
+          180,
+          " +"
+        ],
+        [
+          181,
+          " "
+        ],
+        [
+          182,
+          "0"
+        ],
+        [
+          183,
+          ";"
+        ],
+        [
+          184,
+          " four"
+        ],
+        [
+          185,
+          "=?"
+        ],
+        [
+          186,
+          "\n"
+        ],
+        [
+          187,
+          "four"
+        ],
+        [
+          188,
+          "="
+        ],
+        [
+          189,
+          "5"
+        ],
+        [
+          190,
+          " +"
+        ],
+        [
+          191,
+          " mud"
+        ],
+        [
+          192,
+          ","
+        ],
+        [
+          193,
+          " mud"
+        ],
+        [
+          194,
+          "="
+        ],
+        [
+          195,
+          "0"
+        ],
+        [
+          196,
+          " +"
+        ],
+        [
+          197,
+          " "
+        ],
+        [
+          198,
+          "0"
+        ],
+        [
+          199,
+          ","
+        ],
+        [
+          200,
+          " mud"
+        ],
+        [
+          201,
+          "="
+        ],
+        [
+          202,
+          "0"
+        ],
+        [
+          203,
+          ","
+        ],
+        [
+          204,
+          " four"
+        ],
+        [
+          205,
+          "="
+        ],
+        [
+          206,
+          "5"
+        ],
+        [
+          207,
+          " +"
+        ],
+        [
+          208,
+          " mud"
+        ],
+        [
+          209,
+          ","
+        ],
+        [
+          210,
+          " four"
+        ],
+        [
+          211,
+          "="
+        ],
+        [
+          212,
+          "5"
+        ],
+        [
+          213,
+          " +"
+        ],
+        [
+          214,
+          " "
+        ],
+        [
+          215,
+          "0"
+        ],
+        [
+          216,
+          ","
+        ],
+        [
+          217,
+          " four"
+        ],
+        [
+          218,
+          "="
+        ],
+        [
+          219,
+          "5"
+        ]
+      ],
+      "misaligned_labels": []
+    },
+    "direct": {
+      "positions": {
+        "def@v1": 69,
+        "end@v1": 73,
+        "def@v2": 75,
+        "end@v2": 80,
+        "query": 83,
+        "use@v1": null,
+        "use@v2": 73,
+        "cotpre@v1": null,
+        "cot@v1": null,
+        "cotpre@v2": null,
+        "cot@v2": null,
+        "anspre": 86,
+        "ans": 87
+      },
+      "name_ntok": {
+        "v1": [
+          1
+        ],
+        "v2": [
+          1
+        ]
+      },
+      "tokens_after_instance_start": [
+        [
+          48,
+          "1"
+        ],
+        [
+          49,
+          " -"
+        ],
+        [
+          50,
+          " b"
+        ],
+        [
+          51,
+          "ell"
+        ],
+        [
+          52,
+          ","
+        ],
+        [
+          53,
+          " b"
+        ],
+        [
+          54,
+          "ell"
+        ],
+        [
+          55,
+          "="
+        ],
+        [
+          56,
+          "8"
+        ],
+        [
+          57,
+          " -"
+        ],
+        [
+          58,
+          " "
+        ],
+        [
+          59,
+          "7"
+        ],
+        [
+          60,
+          ";"
+        ],
+        [
+          61,
+          " fish"
+        ],
+        [
+          62,
+          "=?"
+        ],
+        [
+          63,
+          "\n"
+        ],
+        [
+          64,
+          "fish"
+        ],
+        [
+          65,
+          "="
+        ],
+        [
+          66,
+          "0"
+        ],
+        [
+          67,
+          "\n"
+        ],
+        [
+          68,
+          "\n"
+        ],
+        [
+          69,
+          "four"
+        ],
+        [
+          70,
+          "="
+        ],
+        [
+          71,
+          "5"
+        ],
+        [
+          72,
+          " +"
+        ],
+        [
+          73,
+          " mud"
+        ],
+        [
+          74,
+          ","
+        ],
+        [
+          75,
+          " mud"
+        ],
+        [
+          76,
+          "="
+        ],
+        [
+          77,
+          "0"
+        ],
+        [
+          78,
+          " +"
+        ],
+        [
+          79,
+          " "
+        ],
+        [
+          80,
+          "0"
+        ],
+        [
+          81,
+          ";"
+        ],
+        [
+          82,
+          " four"
+        ],
+        [
+          83,
+          "=?"
+        ],
+        [
+          84,
+          "\n"
+        ],
+        [
+          85,
+          "four"
+        ],
+        [
+          86,
+          "="
+        ],
+        [
+          87,
+          "5"
+        ]
+      ],
+      "misaligned_labels": []
+    }
+  }
+}

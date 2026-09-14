@@ -43,27 +43,52 @@ models:
     tuned: true
     partition: h100
     batch_size: 16
-  gemma3-4b:
-    hf_id: google/gemma-3-4b-pt
+  # ---- second family: Google. Multimodal checkpoints used text-only.
+  gemma3-4b-it:
+    hf_id: google/gemma-3-4b-it
     origin: Google
     kind: family
-    tuned: false
-    partition: a30
+    tuned: true
+    partition: h200
     batch_size: 16
-    note: multimodal checkpoint (Gemma3ForConditionalGeneration); runner loads the text tower. NOT yet downloaded.
+    note: Gemma3ForConditionalGeneration; the runner takes the text tower. Cached on scratch.
+  gemma3-12b-it:
+    hf_id: google/gemma-3-12b-it
+    origin: Google
+    kind: family
+    tuned: true
+    partition: h200
+    batch_size: 8
+    note: scale partner for gemma3-4b-it. Cached on scratch.
+
+  # ---- third family: AI2 (fully open pretraining data, so contamination is auditable)
+  olmo2-1b-it:
+    hf_id: allenai/OLMo-2-0425-1B-Instruct
+    origin: AI2
+    kind: family
+    tuned: true
+    partition: h200
+    batch_size: 32
   olmo2-7b-it:
     hf_id: allenai/OLMo-2-1124-7B-Instruct
     origin: AI2
     kind: family
     tuned: true
-    partition: h100
+    partition: h200
     batch_size: 16
-    note: fully open pretraining data. Cached on /work hf_home; copy to scratch before use.
-  olmo3-7b-think:
-    hf_id: allenai/Olmo-3-7B-Think
-    origin: AI2
-    kind: reasoning
+
+  # ---- fourth and fifth families
+  phi35-mini-it:
+    hf_id: microsoft/Phi-3.5-mini-instruct
+    origin: Microsoft
+    kind: family
     tuned: true
-    partition: h100
+    partition: h200
     batch_size: 16
-    note: reasoning-tuned candidate for the base-vs-reasoning pair; availability and chat-template behaviour to verify before relying on it.
+  granite31-8b-it:
+    hf_id: ibm-granite/granite-3.1-8b-instruct
+    origin: IBM
+    kind: family
+    tuned: true
+    partition: h200
+    batch_size: 16

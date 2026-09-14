@@ -378,3 +378,27 @@ Largest absolute lure excess in any chain cell, over four levels, two models and
 demonstration sets: **0.65 points**. The same design, on the same instances, detects effects up
 to +20.5 points in the direct regime, so the null is not a power failure. This is the positive
 control the null needed.
+
+## 2026-09-14 — E34: the no-computation control refutes the pre-registered prediction
+
+Level 1 puts a number-word name on a variable whose value is STATED (`six=3 + fish, fish=5`),
+so resolving it needs no arithmetic. Amendment 3 predicted lure excess above δ there.
+
+| model | regime | lure excess, stated variable | lure excess, queried variable | neutral acc (range over seeds) |
+|---|---|---|---|---|
+| 3B | chain | +0.3 | +0.1 | 97.0 [95, 100] |
+| 8B | chain | +0.0 | +0.0 | 99.2 [98, 100] |
+| 3B | direct | **+2.6*** | **+5.9*** | 46.3 [21, 93] |
+| 8B | direct | +1.3 | **+11.2*** | 73.7 [38, 99] |
+
+*claimable under amendment 2.
+
+**The prediction failed, and the failure sharpens the claim.** Under a chain the lure is absent
+even for a variable that requires no computation at all. So it is not computation that erases
+the lexical prior: it is WRITING THE VALUE. The chain restates a stated variable
+(`fish=5`) exactly as it writes a computed one, and both leave no lure. Without a chain,
+where nothing is written, the lure appears for both roles and is roughly twice as strong on the
+queried variable (the answer slot) as on the stated one.
+
+Revised mechanism sentence for the paper: *the chain removes the lexical prior by writing the
+value, not by computing it; the prior survives exactly where no value is written.*

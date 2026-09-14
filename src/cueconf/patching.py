@@ -36,7 +36,8 @@ from .runner import digit_token_ids
 
 
 def decoder_layers(model):
-    for attr in ("model.layers", "model.language_model.layers", "language_model.model.layers", "transformer.h"):
+    for attr in ("model.layers", "model.language_model.layers", "language_model.model.layers",
+                 "model.text_model.layers", "transformer.h"):
         obj = model
         try:
             for a in attr.split("."):

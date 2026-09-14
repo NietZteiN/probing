@@ -39,15 +39,28 @@ DIGIT_STRS = [str(d) for d in range(10)]
 
 
 def load_model(hf_id: str, dtype=torch.bfloat16, device: str = "cuda"):
+    """Loads any causal LM in the panel. Gemma-3 checkpoints are multimodal
+    (Gemma3ForConditionalGeneration): AutoModelForCausalLM returns the wrapper, whose
+    `config.text_config` holds the layer count and width and whose `.model.language_model` is the
+    text tower. We keep the wrapper (its forward accepts input_ids alone and returns logits) and
+    read the text config where shapes are needed."""
     from transformers import AutoModelForCausalLM, AutoTokenizer
     tok = AutoTokenizer.from_pretrained(hf_id)
     if tok.pad_token is None:
         tok.pad_token = tok.eos_token
     tok.padding_side = "left"
-    model = AutoModelForCausalLM.from_pretrained(hf_id, dtype=dtype, device_map=device)
+    try:
+        model = AutoModelForCausalLM.from_pretrained(hf_id, dtype=dtype, device_map=device)
+    except ValueError:
+        from transformers import AutoModel
+        model = AutoModel.from_pretrained(hf_id, dtype=dtype, device_map=device)
     model.eval()
-    # gemma-3 multimodal checkpoints: the text tower is model.language_model
     return tok, model
+
+
+def text_config(model):
+    """Shape-carrying config: the text tower's for multimodal checkpoints, the model's otherwise."""
+    return getattr(model.config, "text_config", model.config)
 
 
 def digit_token_ids(tok) -> dict[str, list[int]]:
@@ -176,9 +189,9 @@ def run_condition(tok, model, model_key: str, level: int, regime: str, condition
         pre_list = [[toks[k]["positions"][l] for l in pre_labels] for k in keep_idx]
         ids_list = [toks[k]["input_ids"] for k in keep_idx]
         dtoks = digit_token_ids(tok)
-        n_layers_total = model.config.num_hidden_layers + 1 if not hasattr(model.config, "text_config") else model.config.text_config.num_hidden_layers + 1
+        n_layers_total = text_config(model).num_hidden_layers + 1
         keep_layers = list(range(n_layers_total)) if layers is None else list(layers)
-        d = model.config.hidden_size if hasattr(model.config, "hidden_size") else model.config.text_config.hidden_size
+        d = text_config(model).hidden_size
         hidden = np.lib.format.open_memmap(out_dir / "hidden.npy", mode="w+", dtype=np.float16,
                                            shape=(len(keep_idx), len(pos_labels), len(keep_layers), d))
         fl = (out_dir / "forced_logits.jsonl").open("w")

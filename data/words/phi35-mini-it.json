@@ -1,0 +1,550 @@
+{
+  "number_ntok": {
+    "zero": [
+      1,
+      2,
+      false
+    ],
+    "one": [
+      1,
+      2,
+      false
+    ],
+    "two": [
+      1,
+      2,
+      false
+    ],
+    "three": [
+      1,
+      2,
+      false
+    ],
+    "four": [
+      1,
+      2,
+      false
+    ],
+    "five": [
+      1,
+      2,
+      false
+    ],
+    "six": [
+      1,
+      2,
+      false
+    ],
+    "seven": [
+      1,
+      2,
+      false
+    ],
+    "eight": [
+      1,
+      2,
+      false
+    ],
+    "nine": [
+      1,
+      2,
+      false
+    ]
+  },
+  "number_ok": false,
+  "neutral": [],
+  "rejected": [
+    "pen",
+    "cup",
+    "box",
+    "dog",
+    "cat",
+    "hat",
+    "map",
+    "key",
+    "jar",
+    "bag",
+    "car",
+    "bus",
+    "fox",
+    "owl",
+    "pig",
+    "cow",
+    "ant",
+    "bee",
+    "egg",
+    "ink",
+    "jam",
+    "log",
+    "net",
+    "oak",
+    "pan",
+    "rug",
+    "sun",
+    "tea",
+    "van",
+    "web",
+    "hut",
+    "fig",
+    "gem",
+    "ham",
+    "kit",
+    "lid",
+    "mud",
+    "nut",
+    "pot",
+    "rod",
+    "sky",
+    "toy",
+    "wax",
+    "yak",
+    "fan",
+    "cap",
+    "bed",
+    "bin",
+    "rag",
+    "saw",
+    "tub",
+    "bell",
+    "boat",
+    "book",
+    "cake",
+    "coat",
+    "desk",
+    "door",
+    "duck",
+    "farm",
+    "fish",
+    "fork",
+    "frog",
+    "goat",
+    "hill",
+    "lamp",
+    "leaf",
+    "lake",
+    "milk",
+    "moon",
+    "nest",
+    "park",
+    "pear",
+    "ring",
+    "road",
+    "rock",
+    "roof",
+    "rope",
+    "salt",
+    "seed",
+    "ship",
+    "shoe",
+    "soap",
+    "sock",
+    "song",
+    "soup",
+    "star",
+    "tent",
+    "tree",
+    "wall",
+    "wolf",
+    "wool",
+    "yard",
+    "apple",
+    "bread",
+    "chair",
+    "cloud",
+    "grape",
+    "horse",
+    "house",
+    "lemon",
+    "mouse",
+    "piano",
+    "river",
+    "shirt",
+    "table",
+    "tiger",
+    "train",
+    "truck",
+    "water",
+    "wheel",
+    "zebra"
+  ],
+  "model": "phi35-mini-it",
+  "hf_id": "microsoft/Phi-3.5-mini-instruct",
+  "template": {
+    "cot": {
+      "positions": {
+        "def@v1": 156,
+        "end@v1": 160,
+        "def@v2": 162,
+        "end@v2": 167,
+        "query": 171,
+        "use@v1": null,
+        "use@v2": 160,
+        "cotpre@v1": 204,
+        "cot@v1": 205,
+        "cotpre@v2": 187,
+        "cot@v2": 188,
+        "anspre": 204,
+        "ans": 205
+      },
+      "name_ntok": {
+        "v1": [
+          1
+        ],
+        "v2": [
+          1
+        ]
+      },
+      "tokens_after_instance_start": [
+        [
+          166,
+          ""
+        ],
+        [
+          167,
+          "0"
+        ],
+        [
+          168,
+          ";"
+        ],
+        [
+          169,
+          "four"
+        ],
+        [
+          170,
+          "="
+        ],
+        [
+          171,
+          "?"
+        ],
+        [
+          172,
+          "\n"
+        ],
+        [
+          173,
+          "four"
+        ],
+        [
+          174,
+          "="
+        ],
+        [
+          175,
+          "5"
+        ],
+        [
+          176,
+          "+"
+        ],
+        [
+          177,
+          "cup"
+        ],
+        [
+          178,
+          ","
+        ],
+        [
+          179,
+          "cup"
+        ],
+        [
+          180,
+          "="
+        ],
+        [
+          181,
+          "0"
+        ],
+        [
+          182,
+          "+"
+        ],
+        [
+          183,
+          ""
+        ],
+        [
+          184,
+          "0"
+        ],
+        [
+          185,
+          ","
+        ],
+        [
+          186,
+          "cup"
+        ],
+        [
+          187,
+          "="
+        ],
+        [
+          188,
+          "0"
+        ],
+        [
+          189,
+          ","
+        ],
+        [
+          190,
+          "four"
+        ],
+        [
+          191,
+          "="
+        ],
+        [
+          192,
+          "5"
+        ],
+        [
+          193,
+          "+"
+        ],
+        [
+          194,
+          "cup"
+        ],
+        [
+          195,
+          ","
+        ],
+        [
+          196,
+          "four"
+        ],
+        [
+          197,
+          "="
+        ],
+        [
+          198,
+          "5"
+        ],
+        [
+          199,
+          "+"
+        ],
+        [
+          200,
+          ""
+        ],
+        [
+          201,
+          "0"
+        ],
+        [
+          202,
+          ","
+        ],
+        [
+          203,
+          "four"
+        ],
+        [
+          204,
+          "="
+        ],
+        [
+          205,
+          "5"
+        ]
+      ],
+      "misaligned_labels": []
+    },
+    "direct": {
+      "positions": {
+        "def@v1": 66,
+        "end@v1": 70,
+        "def@v2": 72,
+        "end@v2": 77,
+        "query": 81,
+        "use@v1": null,
+        "use@v2": 70,
+        "cotpre@v1": null,
+        "cot@v1": null,
+        "cotpre@v2": null,
+        "cot@v2": null,
+        "anspre": 84,
+        "ans": 85
+      },
+      "name_ntok": {
+        "v1": [
+          1
+        ],
+        "v2": [
+          1
+        ]
+      },
+      "tokens_after_instance_start": [
+        [
+          46,
+          "1"
+        ],
+        [
+          47,
+          "-"
+        ],
+        [
+          48,
+          "bell"
+        ],
+        [
+          49,
+          ","
+        ],
+        [
+          50,
+          "bell"
+        ],
+        [
+          51,
+          "="
+        ],
+        [
+          52,
+          "8"
+        ],
+        [
+          53,
+          "-"
+        ],
+        [
+          54,
+          ""
+        ],
+        [
+          55,
+          "7"
+        ],
+        [
+          56,
+          ";"
+        ],
+        [
+          57,
+          "fish"
+        ],
+        [
+          58,
+          "="
+        ],
+        [
+          59,
+          "?"
+        ],
+        [
+          60,
+          "\n"
+        ],
+        [
+          61,
+          "fish"
+        ],
+        [
+          62,
+          "="
+        ],
+        [
+          63,
+          "0"
+        ],
+        [
+          64,
+          "\n"
+        ],
+        [
+          65,
+          "\n"
+        ],
+        [
+          66,
+          "four"
+        ],
+        [
+          67,
+          "="
+        ],
+        [
+          68,
+          "5"
+        ],
+        [
+          69,
+          "+"
+        ],
+        [
+          70,
+          "cup"
+        ],
+        [
+          71,
+          ","
+        ],
+        [
+          72,
+          "cup"
+        ],
+        [
+          73,
+          "="
+        ],
+        [
+          74,
+          "0"
+        ],
+        [
+          75,
+          "+"
+        ],
+        [
+          76,
+          ""
+        ],
+        [
+          77,
+          "0"
+        ],
+        [
+          78,
+          ";"
+        ],
+        [
+          79,
+          "four"
+        ],
+        [
+          80,
+          "="
+        ],
+        [
+          81,
+          "?"
+        ],
+        [
+          82,
+          "\n"
+        ],
+        [
+          83,
+          "four"
+        ],
+        [
+          84,
+          "="
+        ],
+        [
+          85,
+          "5"
+        ]
+      ],
+      "misaligned_labels": []
+    }
+  }
+}
