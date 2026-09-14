@@ -155,6 +155,26 @@ def main() -> int:
             g = sw4["groups"]
             cost = g["neutral"]["acc_mean"] - 0.5 * (g["congruent@v1"]["acc_mean"] + g["incongruent@v1"]["acc_mean"])
             numbers["wordclass-cost-L4"] = f"{100*cost:.1f}"
+        # value-written control (62_value_written.py): does the chain protect BECAUSE it writes
+        # the value? Pooled excess over the matched neutral twin put through the same split.
+        vwf = RESULTS_DIR / "summary" / "value_written.json"
+        if vwf.exists():
+            import numpy as np
+            vw = json.loads(vwf.read_text())
+            for tag in ("wrote", "not"):
+                sel = [r for r in vw if r[f"n_{tag}"] >= 50 and r[f"excess_{tag}"] is not None]
+                if sel:
+                    w = [r[f"n_{tag}"] for r in sel]
+                    numbers[f"vw-excess-{tag}"] = f"{100*np.average([r[f'excess_{tag}'] for r in sel], weights=w):+.1f}"
+                    numbers[f"vw-cells-{tag}"] = str(len(sel))
+            olmo = [r for r in vw if r["model"] == "olmo2-1b-it" and r["target"] == "v2"
+                    and r["regime"] == "cot" and r.get("excess_wrote_ci")]
+            if olmo:
+                r = olmo[0]; ci = r["excess_wrote_ci"]
+                numbers["vw-olmo-excess"] = f"{100*r['excess_wrote']:+.1f}"
+                numbers["vw-olmo-lo"] = f"{100*ci[0]:+.1f}"
+                numbers["vw-olmo-hi"] = f"{100*ci[1]:+.1f}"
+                numbers["vw-olmo-n"] = str(r["n_wrote"])
         rep = RESULTS_DIR / "summary" / "llama32-3b" / "L3" / "cot" / "replication.json"
         if rep.exists():
             r = json.loads(rep.read_text())

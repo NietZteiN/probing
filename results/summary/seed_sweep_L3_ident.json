@@ -1,0 +1,96 @@
+{
+ "llama32-3b/cot": {
+  "seeds": [
+   11,
+   13
+  ],
+  "groups": {
+   "letter": {
+    "acc_by_seed": {
+     "11": 0.985,
+     "13": 0.993
+    },
+    "acc_mean": 0.989,
+    "acc_range": [
+     0.985,
+     0.993
+    ],
+    "lure_by_seed": {
+     "11": 0.0,
+     "13": 0.0
+    },
+    "lure_mean": 0.0
+   }
+  },
+  "contrasts": {}
+ },
+ "llama31-8b/cot": {
+  "seeds": [
+   11
+  ],
+  "groups": {
+   "letter": {
+    "acc_by_seed": {
+     "11": 0.997
+    },
+    "acc_mean": 0.997,
+    "acc_range": [
+     0.997,
+     0.997
+    ],
+    "lure_by_seed": {
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   }
+  },
+  "contrasts": {}
+ },
+ "gemma3-4b-it/cot": {
+  "seeds": [
+   11
+  ],
+  "groups": {
+   "letter": {
+    "acc_by_seed": {
+     "11": 1.0
+    },
+    "acc_mean": 1.0,
+    "acc_range": [
+     1.0,
+     1.0
+    ],
+    "lure_by_seed": {
+     "11": 0.0
+    },
+    "lure_mean": 0.0
+   }
+  },
+  "contrasts": {}
+ },
+ "olmo2-7b-it/cot": {
+  "seeds": [
+   11,
+   13
+  ],
+  "groups": {
+   "letter": {
+    "acc_by_seed": {
+     "11": 0.9955,
+     "13": 0.9875
+    },
+    "acc_mean": 0.9915,
+    "acc_range": [
+     0.9875,
+     0.9955
+    ],
+    "lure_by_seed": {
+     "11": 0.0,
+     "13": 0.0
+    },
+    "lure_mean": 0.0
+   }
+  },
+  "contrasts": {}
+ }
+}

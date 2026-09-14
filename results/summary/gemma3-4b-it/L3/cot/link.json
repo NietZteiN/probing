@@ -1,0 +1,36 @@
+{
+ "v1": {
+  "end@v1": {
+   "layer": 34,
+   "note": "no variation in lure errors",
+   "n": 2000
+  },
+  "query": {
+   "layer": 34,
+   "note": "no variation in lure errors",
+   "n": 2000
+  },
+  "cotpre@v1": {
+   "layer": 24,
+   "note": "no variation in lure errors",
+   "n": 2000
+  }
+ },
+ "v2": {
+  "end@v2": {
+   "layer": 19,
+   "note": "no variation in lure errors",
+   "n": 2000
+  },
+  "query": {
+   "layer": 34,
+   "note": "no variation in lure errors",
+   "n": 2000
+  },
+  "cotpre@v2": {
+   "layer": 34,
+   "note": "no variation in lure errors",
+   "n": 2000
+  }
+ }
+}

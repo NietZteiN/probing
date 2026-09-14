@@ -16,10 +16,10 @@
   ]
  },
  "incongruent@v2": {
-  "n_lure_errors_at_p5": 7,
+  "n_lure_errors_at_p5": 6,
   "trailing_is_true_intermediate": 0.0,
   "trailing_is_lure": 0.0,
-  "chain_wrote_true_at_p4": 0.2857142857142857,
+  "chain_wrote_true_at_p4": 0.16666666666666666,
   "rows": [
    {
     "id": "L3-44-00054-inc@v2",
@@ -52,14 +52,6 @@
     "trailing_is_lure": false,
     "trailing_is_answer": false,
     "chain_wrote_true_at_p4": false
-   },
-   {
-    "id": "L3-44-00876-inc@v2",
-    "trailing": 0,
-    "trailing_is_true_intermediate": false,
-    "trailing_is_lure": false,
-    "trailing_is_answer": false,
-    "chain_wrote_true_at_p4": true
    },
    {
     "id": "L3-44-01349-inc@v2",

@@ -1,0 +1,2123 @@
+[
+ {
+  "model": "llama31-8b",
+  "level": 1,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 1,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 1,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 1,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 1,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 0.999,
+  "n_wrote": 1998,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 2,
+  "lure_not": 0.0,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 1,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0005,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0005,
+  "excess_wrote_ci": [
+   0.0,
+   0.0015
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 1,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 0.9975,
+  "n_wrote": 1995,
+  "lure_wrote": 0.0010025062656641604,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0010025062656641604,
+  "excess_wrote_ci": [
+   0.0,
+   0.002506265664160401
+  ],
+  "n_not": 5,
+  "lure_not": 0.2,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 1,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0055,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0055,
+  "excess_wrote_ci": [
+   0.0025,
+   0.009
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 1,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 1,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 1,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 0.969,
+  "n_wrote": 1938,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 62,
+  "lure_not": 0.11290322580645161,
+  "pseudo_not": 0.058823529411764705,
+  "excess_not": 0.054079696394686905,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 1,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.008,
+  "pseudo_wrote": 0.0045,
+  "excess_wrote": 0.0035000000000000005,
+  "excess_wrote_ci": [
+   -0.0015,
+   0.0085
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 2,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 2,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 0.9995,
+  "n_wrote": 1999,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 1,
+  "lure_not": 0.0,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 2,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 0.999,
+  "n_wrote": 1998,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 2,
+  "lure_not": 0.0,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 2,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 2,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0005,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0005,
+  "excess_wrote_ci": [
+   0.0,
+   0.0015
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 2,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 2,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 0.9915,
+  "n_wrote": 1983,
+  "lure_wrote": 0.004034291477559254,
+  "pseudo_wrote": 0.002031488065007618,
+  "excess_wrote": 0.002002803412551636,
+  "excess_wrote_ci": [
+   0.0005078720162519045,
+   0.004062976130015236
+  ],
+  "n_not": 17,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 2,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 0.9915,
+  "n_wrote": 1983,
+  "lure_wrote": 0.0005042864346949068,
+  "pseudo_wrote": 0.0010121457489878543,
+  "excess_wrote": -0.0005078593142929475,
+  "excess_wrote_ci": [
+   -0.0015182186234817814,
+   0.0
+  ],
+  "n_not": 17,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 2,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 0.9365,
+  "n_wrote": 1873,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 127,
+  "lure_not": 0.023622047244094488,
+  "pseudo_not": 0.0,
+  "excess_not": 0.023622047244094488,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 2,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 0.9945,
+  "n_wrote": 1989,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 11,
+  "lure_not": 0.0,
+  "pseudo_not": 0.5,
+  "excess_not": -0.5,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 2,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 0.994,
+  "n_wrote": 1988,
+  "lure_wrote": 0.01659959758551308,
+  "pseudo_wrote": 0.00456158134820071,
+  "excess_wrote": 0.01203801623731237,
+  "excess_wrote_ci": [
+   0.007095793208312215,
+   0.017739483020780537
+  ],
+  "n_not": 12,
+  "lure_not": 0.16666666666666666,
+  "pseudo_not": 0.0,
+  "excess_not": 0.16666666666666666,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 2,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 0.9915,
+  "n_wrote": 1983,
+  "lure_wrote": 0.0025214321734745334,
+  "pseudo_wrote": 0.001524390243902439,
+  "excess_wrote": 0.0009970419295720944,
+  "excess_wrote_ci": [
+   0.0,
+   0.002540650406504065
+  ],
+  "n_not": 17,
+  "lure_not": 0.058823529411764705,
+  "pseudo_not": 0.0,
+  "excess_not": 0.058823529411764705,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-12b-it",
+  "level": 3,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-12b-it",
+  "level": 3,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-12b-it",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-12b-it",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-12b-it",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-12b-it",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-4b-it",
+  "level": 3,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 0.99,
+  "n_wrote": 1980,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 20,
+  "lure_not": 0.0,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-4b-it",
+  "level": 3,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 0.9975,
+  "n_wrote": 1995,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 5,
+  "lure_not": 0.0,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-4b-it",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 0.996,
+  "n_wrote": 1992,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 8,
+  "lure_not": 0.0,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-4b-it",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 0.9975,
+  "n_wrote": 1995,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 5,
+  "lure_not": 0.0,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-4b-it",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-4b-it",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0005,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0005,
+  "excess_wrote_ci": [
+   0.0,
+   0.0015
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 3,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 0.958,
+  "n_wrote": 1916,
+  "lure_wrote": 0.0015657620041753654,
+  "pseudo_wrote": 0.00215633423180593,
+  "excess_wrote": -0.0005905722276305647,
+  "excess_wrote_ci": [
+   -0.0026954177897574125,
+   0.001078167115902965
+  ],
+  "n_not": 84,
+  "lure_not": 0.11904761904761904,
+  "pseudo_not": 0.1568627450980392,
+  "excess_not": -0.03781512605042017,
+  "excess_not_ci": [
+   0.0,
+   0.058823529411764705
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 3,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 0.8955,
+  "n_wrote": 1791,
+  "lure_wrote": 0.0011166945840312675,
+  "pseudo_wrote": 0.0005865102639296188,
+  "excess_wrote": 0.0005301843201016487,
+  "excess_wrote_ci": [
+   0.0,
+   0.0017595307917888563
+  ],
+  "n_not": 209,
+  "lure_not": 0.07655502392344497,
+  "pseudo_not": 0.06870229007633588,
+  "excess_not": 0.007852733847109092,
+  "excess_not_ci": [
+   -0.022900763358778626,
+   0.022900763358778626
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it",
+  "level": 3,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it",
+  "level": 3,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 0.9995,
+  "n_wrote": 1999,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 1,
+  "lure_not": 0.0,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0005,
+  "pseudo_wrote": 0.0005002501250625312,
+  "excess_wrote": -2.5012506253121927e-07,
+  "excess_wrote_ci": [
+   -0.0015007503751875938,
+   0.0015007503751875938
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 0.993,
+  "n_wrote": 1986,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 14,
+  "lure_not": 0.07142857142857142,
+  "pseudo_not": 0.0,
+  "excess_not": 0.07142857142857142,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 0.9975,
+  "n_wrote": 1995,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 5,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 3,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 0.959,
+  "n_wrote": 1918,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 82,
+  "lure_not": 0.10975609756097561,
+  "pseudo_not": 0.08695652173913043,
+  "excess_not": 0.022799575821845178,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 3,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 0.9975,
+  "n_wrote": 1995,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0005078720162519045,
+  "excess_wrote": -0.0005078720162519045,
+  "excess_wrote_ci": [
+   -0.0015236160487557136,
+   0.0
+  ],
+  "n_not": 5,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 0.9995,
+  "n_wrote": 1999,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 1,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 0.9995,
+  "n_wrote": 1999,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0005002501250625312,
+  "excess_wrote": -0.0005002501250625312,
+  "excess_wrote_ci": [
+   -0.0015007503751875938,
+   0.0
+  ],
+  "n_not": 1,
+  "lure_not": 0.0,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 0.975,
+  "n_wrote": 1950,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 50,
+  "lure_not": 0.1,
+  "pseudo_not": 0.15384615384615385,
+  "excess_not": -0.05384615384615385,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 0.9995,
+  "n_wrote": 1999,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0010085728693898135,
+  "excess_wrote": -0.0010085728693898135,
+  "excess_wrote_ci": [
+   -0.0025214321734745334,
+   0.0
+  ],
+  "n_not": 1,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b-it",
+  "level": 3,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 0.9995,
+  "n_wrote": 1999,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 1,
+  "lure_not": 0.0,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b-it",
+  "level": 3,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b-it",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b-it",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 0.9995,
+  "n_wrote": 1999,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 1,
+  "lure_not": 0.0,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b-it",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b-it",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "olmo2-1b-it",
+  "level": 3,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 0.674,
+  "n_wrote": 1348,
+  "lure_wrote": 0.008160237388724036,
+  "pseudo_wrote": 0.010666666666666666,
+  "excess_wrote": -0.00250642927794263,
+  "excess_wrote_ci": [
+   -0.008888888888888889,
+   0.005333333333333333
+  ],
+  "n_not": 652,
+  "lure_not": 0.05214723926380368,
+  "pseudo_not": 0.054502369668246446,
+  "excess_not": -0.002355130404442768,
+  "excess_not_ci": [
+   -0.023696682464454975,
+   0.023696682464454975
+  ]
+ },
+ {
+  "model": "olmo2-1b-it",
+  "level": 3,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 0.6035,
+  "n_wrote": 1207,
+  "lure_wrote": 0.05716652858326429,
+  "pseudo_wrote": 0.019981834695731154,
+  "excess_wrote": 0.037184693887533135,
+  "excess_wrote_ci": [
+   0.021798365122615803,
+   0.051771117166212535
+  ],
+  "n_not": 793,
+  "lure_not": 0.08575031525851198,
+  "pseudo_not": 0.05128205128205128,
+  "excess_not": 0.0344682639764607,
+  "excess_not_ci": [
+   -0.04487179487179487,
+   0.03205128205128205
+  ]
+ },
+ {
+  "model": "olmo2-1b-it",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 0.6435,
+  "n_wrote": 1287,
+  "lure_wrote": 0.016317016317016316,
+  "pseudo_wrote": 0.011904761904761904,
+  "excess_wrote": 0.004412254412254412,
+  "excess_wrote_ci": [
+   -0.003968253968253968,
+   0.013888888888888888
+  ],
+  "n_not": 713,
+  "lure_not": 0.043478260869565216,
+  "pseudo_not": 0.056818181818181816,
+  "excess_not": -0.0133399209486166,
+  "excess_not_ci": [
+   -0.031818181818181815,
+   0.01818181818181818
+  ]
+ },
+ {
+  "model": "olmo2-1b-it",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 0.458,
+  "n_wrote": 916,
+  "lure_wrote": 0.05131004366812227,
+  "pseudo_wrote": 0.011673151750972763,
+  "excess_wrote": 0.03963689191714951,
+  "excess_wrote_ci": [
+   0.023346303501945526,
+   0.058365758754863814
+  ],
+  "n_not": 1084,
+  "lure_not": 0.07380073800738007,
+  "pseudo_not": 0.05752212389380531,
+  "excess_not": 0.016278614113574764,
+  "excess_not_ci": [
+   -0.022123893805309734,
+   0.030973451327433628
+  ]
+ },
+ {
+  "model": "olmo2-1b-it",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 0.575,
+  "n_wrote": 1150,
+  "lure_wrote": 0.02608695652173913,
+  "pseudo_wrote": 0.015418502202643172,
+  "excess_wrote": 0.010668454319095957,
+  "excess_wrote_ci": [
+   0.003303964757709251,
+   0.02756057268722452
+  ],
+  "n_not": 850,
+  "lure_not": 0.09058823529411765,
+  "pseudo_not": 0.07330827067669173,
+  "excess_not": 0.017279964617425925,
+  "excess_not_ci": [
+   -0.01320488721804511,
+   0.045112781954887216
+  ]
+ },
+ {
+  "model": "olmo2-1b-it",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 0.5195,
+  "n_wrote": 1039,
+  "lure_wrote": 0.04523580365736285,
+  "pseudo_wrote": 0.012716763005780347,
+  "excess_wrote": 0.0325190406515825,
+  "excess_wrote_ci": [
+   0.019653179190751446,
+   0.04971098265895954
+  ],
+  "n_not": 961,
+  "lure_not": 0.06555671175858481,
+  "pseudo_not": 0.057692307692307696,
+  "excess_not": 0.007864404066277114,
+  "excess_not_ci": [
+   -0.019230769230769232,
+   0.042735042735042736
+  ]
+ },
+ {
+  "model": "olmo2-7b-it",
+  "level": 3,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 0.9915,
+  "n_wrote": 1983,
+  "lure_wrote": 0.0005042864346949068,
+  "pseudo_wrote": 0.0010126582278481013,
+  "excess_wrote": -0.0005083717931531946,
+  "excess_wrote_ci": [
+   -0.0015189873417721519,
+   0.0
+  ],
+  "n_not": 17,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
+  "model": "olmo2-7b-it",
+  "level": 3,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 0.9875,
+  "n_wrote": 1975,
+  "lure_wrote": 0.0010126582278481013,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0010126582278481013,
+  "excess_wrote_ci": [
+   0.0,
+   0.002540650406504065
+  ],
+  "n_not": 25,
+  "lure_not": 0.16,
+  "pseudo_not": 0.2727272727272727,
+  "excess_not": -0.1127272727272727,
+  "excess_not_ci": null
+ },
+ {
+  "model": "olmo2-7b-it",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 0.988,
+  "n_wrote": 1976,
+  "lure_wrote": 0.003036437246963563,
+  "pseudo_wrote": 0.003553299492385787,
+  "excess_wrote": -0.0005168622454222241,
+  "excess_wrote_ci": [
+   -0.0025380710659898475,
+   0.0010152284263959391
+  ],
+  "n_not": 24,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
+  "model": "olmo2-7b-it",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 0.979,
+  "n_wrote": 1958,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 42,
+  "lure_not": 0.11904761904761904,
+  "pseudo_not": 0.21739130434782608,
+  "excess_not": -0.09834368530020704,
+  "excess_not_ci": null
+ },
+ {
+  "model": "olmo2-7b-it",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 0.9875,
+  "n_wrote": 1975,
+  "lure_wrote": 0.0010126582278481013,
+  "pseudo_wrote": 0.002048131080389145,
+  "excess_wrote": -0.0010354728525410436,
+  "excess_wrote_ci": [
+   -0.0030721966205837174,
+   0.0010240655401945725
+  ],
+  "n_not": 25,
+  "lure_not": 0.04,
+  "pseudo_not": 0.0,
+  "excess_not": 0.04,
+  "excess_not_ci": null
+ },
+ {
+  "model": "olmo2-7b-it",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 0.9825,
+  "n_wrote": 1965,
+  "lure_wrote": 0.004071246819338422,
+  "pseudo_wrote": 0.000513347022587269,
+  "excess_wrote": 0.0035578997967511536,
+  "excess_wrote_ci": [
+   0.001026694045174538,
+   0.007186858316221766
+  ],
+  "n_not": 35,
+  "lure_not": 0.08571428571428572,
+  "pseudo_not": 0.2,
+  "excess_not": -0.1142857142857143,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 4,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 4,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 4,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 4,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 4,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 0.7535,
+  "n_wrote": 1507,
+  "lure_wrote": 0.006635700066357001,
+  "pseudo_wrote": 0.007434944237918215,
+  "excess_wrote": -0.0007992441715612142,
+  "excess_wrote_ci": [
+   -0.0022304832713754648,
+   0.0022304832713754648
+  ],
+  "n_not": 493,
+  "lure_not": 0.06490872210953347,
+  "pseudo_not": 0.05714285714285714,
+  "excess_not": 0.007765864966676327,
+  "excess_not_ci": [
+   -0.002197802197802198,
+   0.017582417582417582
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 4,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 0.6575,
+  "n_wrote": 1315,
+  "lure_wrote": 0.0007604562737642585,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0007604562737642585,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 685,
+  "lure_not": 0.07153284671532846,
+  "pseudo_not": 0.07157894736842105,
+  "excess_not": -4.610065309258726e-05,
+  "excess_not_ci": [
+   -0.00631578947368421,
+   0.00631578947368421
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 4,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 0.708,
+  "n_wrote": 1416,
+  "lure_wrote": 0.00423728813559322,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.00423728813559322,
+  "excess_wrote_ci": [
+   0.00145985401459854,
+   0.008029197080291971
+  ],
+  "n_not": 584,
+  "lure_not": 0.07191780821917808,
+  "pseudo_not": 0.075,
+  "excess_not": -0.003082191780821919,
+  "excess_not_ci": [
+   -0.04285714285714286,
+   0.010714285714285714
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 4,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 0.801,
+  "n_wrote": 1602,
+  "lure_wrote": 0.0024968789013732834,
+  "pseudo_wrote": 0.0013908205841446453,
+  "excess_wrote": 0.0011060583172286381,
+  "excess_wrote_ci": [
+   -0.0013908205841446453,
+   0.004172461752433936
+  ],
+  "n_not": 398,
+  "lure_not": 0.05025125628140704,
+  "pseudo_not": 0.08053691275167785,
+  "excess_not": -0.03028565647027081,
+  "excess_not_ci": [
+   -0.053691275167785234,
+   0.03355704697986577
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 4,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 0.7975,
+  "n_wrote": 1595,
+  "lure_wrote": 0.005015673981191223,
+  "pseudo_wrote": 0.0013192612137203166,
+  "excess_wrote": 0.0036964127674709063,
+  "excess_wrote_ci": [
+   0.0006596306068601583,
+   0.0079155672823219
+  ],
+  "n_not": 405,
+  "lure_not": 0.08888888888888889,
+  "pseudo_not": 0.11801242236024845,
+  "excess_not": -0.029123533471359556,
+  "excess_not_ci": [
+   -0.037267080745341616,
+   0.062111801242236024
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 4,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 0.862,
+  "n_wrote": 1724,
+  "lure_wrote": 0.0034802784222737818,
+  "pseudo_wrote": 0.0055079559363525096,
+  "excess_wrote": -0.002027677514078728,
+  "excess_wrote_ci": [
+   -0.006119951040391677,
+   0.0012239902080783353
+  ],
+  "n_not": 276,
+  "lure_not": 0.057971014492753624,
+  "pseudo_not": 0.05263157894736842,
+  "excess_not": 0.005339435545385206,
+  "excess_not_ci": [
+   -0.08771929824561403,
+   0.0
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 4,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 0.3165,
+  "n_wrote": 633,
+  "lure_wrote": 0.01263823064770932,
+  "pseudo_wrote": 0.010362694300518135,
+  "excess_wrote": 0.0022755363471911854,
+  "excess_wrote_ci": [
+   -0.0069084628670120895,
+   0.015544041450777202
+  ],
+  "n_not": 1367,
+  "lure_not": 0.036576444769568395,
+  "pseudo_not": 0.04604200323101777,
+  "excess_not": -0.009465558461449378,
+  "excess_not_ci": [
+   -0.0210016155088853,
+   -0.0016155088852988692
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 4,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 0.299,
+  "n_wrote": 598,
+  "lure_wrote": 0.026755852842809364,
+  "pseudo_wrote": 0.0017391304347826088,
+  "excess_wrote": 0.025016722408026756,
+  "excess_wrote_ci": [
+   0.008695652173913044,
+   0.034782608695652174
+  ],
+  "n_not": 1402,
+  "lure_not": 0.04136947218259629,
+  "pseudo_not": 0.03983739837398374,
+  "excess_not": 0.0015320738086125468,
+  "excess_not_ci": [
+   -0.005691056910569106,
+   0.01869918699186992
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 5,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 0.586,
+  "n_wrote": 1172,
+  "lure_wrote": 0.006825938566552901,
+  "pseudo_wrote": 0.007226738934056007,
+  "excess_wrote": -0.00040080036750310584,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 828,
+  "lure_not": 0.08816425120772947,
+  "pseudo_not": 0.08839779005524862,
+  "excess_not": -0.00023353884751914356,
+  "excess_not_ci": [
+   -0.006906077348066298,
+   0.006906077348066298
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 5,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 0.6575,
+  "n_wrote": 1315,
+  "lure_wrote": 0.012167300380228136,
+  "pseudo_wrote": 0.013089005235602094,
+  "excess_wrote": -0.000921704855373958,
+  "excess_wrote_ci": [
+   -0.0017452006980802793,
+   0.0034904013961605585
+  ],
+  "n_not": 685,
+  "lure_not": 0.09197080291970802,
+  "pseudo_not": 0.0899830220713073,
+  "excess_not": 0.0019877808484007192,
+  "excess_not_ci": [
+   -0.003395585738539898,
+   0.02037351443123939
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 5,
+  "regime": "cot",
+  "target": "v3",
+  "frac_wrote": 0.5435,
+  "n_wrote": 1087,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0011494252873563218,
+  "excess_wrote": -0.0011494252873563218,
+  "excess_wrote_ci": [
+   -0.0034482758620689655,
+   0.0
+  ],
+  "n_not": 913,
+  "lure_not": 0.0832420591456736,
+  "pseudo_not": 0.0824891461649783,
+  "excess_not": 0.0007529129806953111,
+  "excess_not_ci": [
+   -0.005788712011577424,
+   0.008683068017366137
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 5,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 0.597,
+  "n_wrote": 1194,
+  "lure_wrote": 0.006700167504187605,
+  "pseudo_wrote": 0.012974051896207584,
+  "excess_wrote": -0.006273884392019979,
+  "excess_wrote_ci": [
+   -0.010978043912175649,
+   0.0
+  ],
+  "n_not": 806,
+  "lure_not": 0.0794044665012407,
+  "pseudo_not": 0.08119079837618404,
+  "excess_not": -0.0017863318749433421,
+  "excess_not_ci": [
+   -0.016238159675236806,
+   0.005412719891745603
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 5,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 0.5615,
+  "n_wrote": 1123,
+  "lure_wrote": 0.020480854853072127,
+  "pseudo_wrote": 0.015560165975103735,
+  "excess_wrote": 0.004920688877968392,
+  "excess_wrote_ci": [
+   -0.005186721991701245,
+   0.013485477178423237
+  ],
+  "n_not": 877,
+  "lure_not": 0.07525655644241733,
+  "pseudo_not": 0.08439897698209718,
+  "excess_not": -0.009142420539679855,
+  "excess_not_ci": [
+   -0.023017902813299233,
+   0.0012787723785166241
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 5,
+  "regime": "cot_s11",
+  "target": "v3",
+  "frac_wrote": 0.386,
+  "n_wrote": 772,
+  "lure_wrote": 0.012953367875647668,
+  "pseudo_wrote": 0.010542168674698794,
+  "excess_wrote": 0.002411199200948873,
+  "excess_wrote_ci": [
+   -0.006024096385542169,
+   0.01355421686746988
+  ],
+  "n_not": 1228,
+  "lure_not": 0.08469055374592833,
+  "pseudo_not": 0.08943089430894309,
+  "excess_not": -0.0047403405630147555,
+  "excess_not_ci": [
+   -0.016260162601626018,
+   0.0
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 5,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 0.996,
+  "n_wrote": 1992,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 8,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 5,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 0.9995,
+  "n_wrote": 1999,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 1,
+  "lure_not": 0.0,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b",
+  "level": 5,
+  "regime": "cot_s13",
+  "target": "v3",
+  "frac_wrote": 0.9995,
+  "n_wrote": 1999,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 1,
+  "lure_not": 0.0,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 5,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 0.7785,
+  "n_wrote": 1557,
+  "lure_wrote": 0.00899165061014772,
+  "pseudo_wrote": 0.010135135135135136,
+  "excess_wrote": -0.0011434845249874166,
+  "excess_wrote_ci": [
+   -0.0033783783783783786,
+   0.002027027027027027
+  ],
+  "n_not": 443,
+  "lure_not": 0.06772009029345373,
+  "pseudo_not": 0.07142857142857142,
+  "excess_not": -0.0037084811351176944,
+  "excess_not_ci": [
+   -0.015873015873015872,
+   0.007936507936507936
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 5,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 0.8225,
+  "n_wrote": 1645,
+  "lure_wrote": 0.009726443768996961,
+  "pseudo_wrote": 0.011635423400129283,
+  "excess_wrote": -0.0019089796311323216,
+  "excess_wrote_ci": [
+   -0.005817711700064641,
+   0.003232062055591467
+  ],
+  "n_not": 355,
+  "lure_not": 0.07042253521126761,
+  "pseudo_not": 0.07357859531772576,
+  "excess_not": -0.00315606010645815,
+  "excess_not_ci": [
+   -0.013377926421404682,
+   0.013377926421404682
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 5,
+  "regime": "cot",
+  "target": "v3",
+  "frac_wrote": 0.9675,
+  "n_wrote": 1935,
+  "lure_wrote": 0.020155038759689922,
+  "pseudo_wrote": 0.02445369406867846,
+  "excess_wrote": -0.004298655308988538,
+  "excess_wrote_ci": [
+   -0.010926118626430802,
+   0.0026014568158168575
+  ],
+  "n_not": 65,
+  "lure_not": 0.07692307692307693,
+  "pseudo_not": 0.05263157894736842,
+  "excess_not": 0.02429149797570851,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 5,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 0.5875,
+  "n_wrote": 1175,
+  "lure_wrote": 0.02127659574468085,
+  "pseudo_wrote": 0.018467220683287166,
+  "excess_wrote": 0.0028093750613936846,
+  "excess_wrote_ci": [
+   -0.0018467220683287165,
+   0.0110803324099723
+  ],
+  "n_not": 825,
+  "lure_not": 0.06909090909090909,
+  "pseudo_not": 0.07092198581560284,
+  "excess_not": -0.0018310767246937504,
+  "excess_not_ci": [
+   -0.014184397163120567,
+   0.005673758865248227
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 5,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 0.6095,
+  "n_wrote": 1219,
+  "lure_wrote": 0.022969647251845776,
+  "pseudo_wrote": 0.028368794326241134,
+  "excess_wrote": -0.005399147074395358,
+  "excess_wrote_ci": [
+   -0.00975177304964539,
+   0.0026595744680851063
+  ],
+  "n_not": 781,
+  "lure_not": 0.06914212548015365,
+  "pseudo_not": 0.07097791798107256,
+  "excess_not": -0.0018357925009189063,
+  "excess_not_ci": [
+   -0.015812302839116717,
+   0.011041009463722398
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 5,
+  "regime": "cot_s11",
+  "target": "v3",
+  "frac_wrote": 0.5045,
+  "n_wrote": 1009,
+  "lure_wrote": 0.019821605550049554,
+  "pseudo_wrote": 0.013237063778580024,
+  "excess_wrote": 0.00658454177146953,
+  "excess_wrote_ci": [
+   -0.0012033694344163659,
+   0.015643802647412757
+  ],
+  "n_not": 991,
+  "lure_not": 0.08072653884964683,
+  "pseudo_not": 0.08545918367346939,
+  "excess_not": -0.00473264482382256,
+  "excess_not_ci": [
+   -0.016581632653061226,
+   0.015306122448979591
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 5,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 0.9715,
+  "n_wrote": 1943,
+  "lure_wrote": 0.001029336078229542,
+  "pseudo_wrote": 0.0005165289256198347,
+  "excess_wrote": 0.0005128071526097073,
+  "excess_wrote_ci": [
+   0.0,
+   0.0015495867768595042
+  ],
+  "n_not": 57,
+  "lure_not": 0.08771929824561403,
+  "pseudo_not": 0.0967741935483871,
+  "excess_not": -0.009054895302773064,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 5,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 0.963,
+  "n_wrote": 1926,
+  "lure_wrote": 0.0005192107995846313,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0005192107995846313,
+  "excess_wrote_ci": [
+   0.0,
+   0.0015682174594877157
+  ],
+  "n_not": 74,
+  "lure_not": 0.0945945945945946,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0945945945945946,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama32-3b",
+  "level": 5,
+  "regime": "cot_s13",
+  "target": "v3",
+  "frac_wrote": 0.9945,
+  "n_wrote": 1989,
+  "lure_wrote": 0.001005530417295123,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.001005530417295123,
+  "excess_wrote_ci": [
+   0.0,
+   0.002551020408163265
+  ],
+  "n_not": 11,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ }
+]
