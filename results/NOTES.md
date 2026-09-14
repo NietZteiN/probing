@@ -509,3 +509,20 @@ the problem, not of the format.**
   into the queue.
 - Worker queue: probe jobs ran before their cache jobs (no ordering) and failed; tasks can
   now declare `# needs: <path>` and are deferred until it exists.
+
+## 2026-09-14 (night) — second family, level 3, Gemma-3-4B-it: the internals replicate
+
+Cells picked by selectivity (rule 8), neutral-trained probes on the intermediate variable:
+
+| position | Llama-3.2-3B: acc / sel / lure | Gemma-3-4B: acc / sel / lure |
+|---|---|---|
+| end of defining equation (P2) | .49 / .32 / .065 | .44 / .38 / .055 |
+| value step (P4) | .98 / .66 / .000 | 1.00 / .90 / .000 |
+| answer (P5) | 1.00 / .83 / .000 | 1.00 / .90 / .000 |
+
+At the query the lure is readable in both models but the control task scores .94–.97 there:
+name identity, not a value, exactly as in Llama. Patching (500 pairs): under a chain, injecting
+the name's activations changes 0.0% of answers in Gemma (0.2% Llama) and there are no lure
+errors to remove; without a chain the neutral patch removes 62% of Gemma's lure errors
+(Llama 75%) with word-control damage 14% (Llama 22%, at floor accuracy), and injection lures
+2.4% (Llama 2.6%). C3 and C4 therefore hold across families. OLMo-2-7B probes pending.
