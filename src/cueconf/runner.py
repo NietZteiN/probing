@@ -125,12 +125,13 @@ def forced_pass(tok, model, input_ids_list: Sequence[list[int]], positions_list:
 def run_condition(tok, model, model_key: str, level: int, regime: str, condition: str,
                   instances: list[Instance], out_dir: Path, batch_size: int, max_new_tokens: int,
                   layers: Sequence[int] | None = None, do_free: bool = True, do_forced: bool = True,
-                  all_positions: bool = False) -> dict:
+                  all_positions: bool = False, demo_pool: Sequence[str] | None = None) -> dict:
     """all_positions: cache EVERY token of the instance region (Kudo et al. style, E27) instead of
     the labelled positions; position labels become t<i> with i counted from the instance start,
     and meta records the token strings of the first instance for axis labels."""
     out_dir.mkdir(parents=True, exist_ok=True)
-    demos = make_demos(level, scheme_of(condition), n=parse_regime(regime)[1], seed=demo_seed_of(regime))
+    demos = make_demos(level, scheme_of(condition), n=parse_regime(regime)[1], seed=demo_seed_of(regime),
+                       **({"pool": demo_pool} if demo_pool else {}))
     t0 = time.time()
     lays = [layout(x, demos, regime) for x in instances]
     toks = [tokenize_layout(tok, lay) for lay in lays]
@@ -141,7 +142,10 @@ def run_condition(tok, model, model_key: str, level: int, regime: str, condition
     keep_idx, excluded = [], []
     for k, t in enumerate(toks):
         sig = (t["n_tokens"], tuple(t["positions"][kk] for kk in labels))
-        bad_names = [r for r, v in t["name_ntok"].items() if v != [1]]
+        # every name must tokenize the way the group's reference instance does: one token in the
+        # word scheme (guaranteed by the verified pool), two in the identifier scheme (E38), so
+        # twins stay aligned either way
+        bad_names = [r for r, v in t["name_ntok"].items() if v != toks[0]["name_ntok"].get(r)]
         if sig != ref or bad_names:
             excluded.append({"id": instances[k].id, "n_tokens": t["n_tokens"], "multi_token_names": bad_names})
         else:

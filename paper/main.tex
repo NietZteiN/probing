@@ -239,16 +239,22 @@ of \NUM{replication-pre-v1} and \NUM{replication-pre-v2} (theirs: 17.8 and 33.2)
 \paragraph{RQ1: behaviour.} Table~\ref{tab:behavior} reports, per model and regime, accuracy
 and the pre-registered contrasts pooled over three demonstration sets, with a contrast claimed
 only when its sign holds in every set. Without a chain the name's value is used as a shortcut:
-a congruent name on the queried variable adds 4.8 points for
+a congruent name on the queried variable adds \NUM{facilitationllama318bdirectv1} points for
 Llama-3.1-8B at level 3 and up to \NUM{facilitationmax} points at level 5, and an incongruent
-name yields lure answers 1.2 points above chance at level 3 and up
-to \NUM{lureexcessmax} points where accuracy is at floor. With a chain the same contrasts are
-within \NUM{chain-lure-bound} points of zero in every cell, and congruent and incongruent names
-move together. The irrelevant-lure control at level 4 separates presence from binding: a number
-word on the distractor costs accuracy but produces no lure answers. What the chain does not
+name yields lure answers \NUM{lure_excessllama318bdirectv1} points above chance at level 3 and up
+to \NUM{lureexcessmax} points where accuracy is at floor. With a chain the contrasts vanish:
+an equivalence test with a \NUM{eq-delta}-point margin finds \NUM{eq-cot-equivalent} of
+\NUM{eq-cot-cells} chain cells equivalent to zero, against \NUM{eq-direct-effect} of
+\NUM{eq-direct-cells} direct cells with an effect. The exception is the weakest model,
+\NUM{eq-exc-model}, whose chain solves \NUM{eq-exc-neutral-acc}\% of level-\NUM{eq-exc-level}
+problems with word names against \NUM{eq-exc-letter-acc}\% with letters; there a lure on the
+\NUM{eq-exc-role} variable adds \NUM{eq-exc-mean} points [\NUM{eq-exc-lo}, \NUM{eq-exc-hi}].
+The mechanism predicts this: a model that fails to compute a value never writes it. The
+irrelevant-lure control at level 4 separates presence from binding: a number word on the
+distractor costs accuracy but produces no lure answers. What the chain does not
 remove is a word-class effect: a number-word name on the queried variable at level 4 costs
-Llama-3.2-3B 10.5 points whether or not its value agrees, and the
-error analysis shows the model restating the wrong equation next.
+Llama-3.2-3B \NUM{wordclass-cost-L4} points whether or not its value agrees (the model
+restates the wrong equation next).
 
 \begin{table}[t]
 \centering\small
@@ -264,17 +270,16 @@ in Table~\ref{tab:levels-appendix}.}
 \label{tab:behavior}
 \end{table}
 
-\paragraph{RQ2: representation.} Figure~\ref{fig:master}(c) shows what the probe reads at every token, and
-Figure~\ref{fig:heat} in the appendix adds the layer sweep behind it. At P2, the
+\paragraph{RQ2: representation.} Figure~\ref{fig:master}(c) shows what the probe reads at every token
+(layer sweep: Figure~\ref{fig:heat}, appendix). At P2, the
 end of the defining equation, the true value is already partly computed (accuracy
 \NUM{p2-acc}, selectivity \NUM{p2-sel}) and the lure is weak (lure rate \NUM{p2-lure}). At P3,
 the query, a neutral-trained probe reads the lure in \NUM{p3-lure} of instances, but the control
-task scores \NUM{p3-ctl} there: the readout is the name's identity, not a value, and we do not
-claim it. At P4 and P5 the true value is decodable at \NUM{p4-acc} with the lure at zero in
-every condition and level; per-token probes show the lure decodable only at the name's own
-tokens, and a number word bound to a computed variable has lure mass \NUM{bound-mass} at the
-answer against \NUM{unbound-mass} for an unbound one on the distractor. The outcome cell is
-``lure fades, answer correct'', reached by replacement at the value step rather than suppression.
+task scores \NUM{p3-ctl} there: the readout is the name's identity, not a value. At P4 and P5 the true value is decodable at \NUM{p4-acc} with the lure at zero in
+every condition and level; the lure is decodable only at the name's own tokens, and a number
+word bound to a computed variable has lure mass \NUM{bound-mass} at the answer against
+\NUM{unbound-mass} for an unbound one on the distractor: the lure fades by replacement at the
+value step, not by suppression.
 
 
 
@@ -283,40 +288,38 @@ removed by patching the name's tokens from the matched neutral twin, by layer, w
 errors and restores the true-minus-lure margin fully (normalised logit difference
 \NUM{nld-3b}), the alternative-lure patch is followed in \NUM{follow-new-lure} of cases, and the
 span grid places the effect in the defining equation at layers \NUM{grid-layers}. The word
-control changes \NUM{control-damage} of correct answers at this floor accuracy, so we report the
-localisation and not a recovery rate. For Llama-3.1-8B the no-chain lure rate at level 3 is at
-chance and both patches behave alike; the effect exists only where the lure does. With a chain
-there are no lure errors to patch and both controls are clean.
+control changes \NUM{control-damage} of correct answers at this floor accuracy, so we report
+localisation, not recovery. For Llama-3.1-8B the no-chain lure rate at level 3 is at chance and both patches behave
+alike. With a chain there are no lure errors to patch, and injecting the name's activations
+into a neutral run changes no answer.
 
 
 \section{Related Work}
 
 \citet{kudo2026faithful} established when sub-answers are computed during chain of thought on
-clean arithmetic; we add cue conflict to ask what that computation is sensitive to. Two recent
-studies bring the Stroop design to language models: \citet{wang2026stroop} pits a local
+clean arithmetic; we add cue conflict. Two studies bring the Stroop design to language models: \citet{wang2026stroop} pits a local
 redefinition of a word against its familiar associate and restores the lost margin by patching
 from a matched neutral prompt; \citet{hu2026conflict} read a congruency effect off next-token
-probabilities in a colour-rule task every model solves. Both measure one next token; neither has
-errors, a chain of thought, or probes over reasoning steps. Faithfulness has been measured from
-the outside by perturbing prompts, chains or parameters
+probabilities in a colour-rule task every model solves. Both measure one next token, with no errors, no chain and no probes over steps.
+Faithfulness has been measured from the outside by perturbing prompts, chains or parameters
 \cite{turpin2023unfaithful,lanham2023measuring,chen2025reasoning,tutek2025unlearning}; we
-measure it inside the model under a cue whose true and lure values are both known. On
-arithmetic, \citet{liu2026readout} show that small models copy the trailing chain number and
+measure it inside the model under a cue whose true and lure values are both known.
+\citet{liu2026readout} show that small models copy the trailing chain number and
 \citet{prabhakar2024deciphering} that an output prior can override a correct chain; our
-late-readout outcome is stated against a positional-copy control. Misleading identifiers and
-comments hurt on real code \cite{le2026obfuscated,le2025names,lam2025codecrash}; we trade
-realism for localisation. Binding work asks how a value attaches to a name
+late-readout outcome is stated against a positional-copy control. Misleading identifiers
+hurt on real code \cite{le2026obfuscated,le2025names,lam2025codecrash}; we trade realism for
+localisation. Binding work asks how a value attaches to a name
 \cite{feng2024binding,wu2025binding,gurarieh2026mixing}; we ask whether the attachment survives
-a name carrying a competing value. \citet{shi2023distracted} add irrelevant context; here the
-distractor is the name itself. The design is \citet{stroop1935} and \citet{geirhos2019texture}.
+a name carrying a competing value. The design is \citet{stroop1935} and
+\citet{geirhos2019texture}.
 
 \section{Conclusion}
 
-A misleading variable name is used when the model has nothing better: without a chain of
-thought the name's value becomes the answer, with a chain it is replaced at the step that
-computes the value and never reaches the output. For faithfulness this is the reassuring cell of
-the outcome table, and it comes with two cautions: the chain leaves a word-class effect on which
-equation the model attends to next, and the demonstration set moves accuracy more than any name.
+A misleading name is used when the model has nothing better: without a chain its value
+becomes the answer; with a chain it is replaced at the step that writes the value. The
+protection comes from solving the problem, not from the format: the one model whose chain
+fails is the one the chain does not protect. Two cautions remain: a word-class effect on equation
+selection, and demonstration sets that move accuracy more than any name.
 
 \section*{Limitations}
 

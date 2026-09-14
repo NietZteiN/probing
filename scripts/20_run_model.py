@@ -88,6 +88,7 @@ def main() -> int:
                 rows_ = rows_[:a.train_limit]
             cond = rows_[0].condition
             s = run_condition(tok, model, a.model, a.level, regime, cond, rows_, out, bs, MAX_NEW[parse_regime(regime)[0]],
+                              demo_pool=manifest.get("demo_words") if manifest.get("scheme", "word") != "word" else None,
                               layers=a.layers, do_free=(not g.startswith("train_")) and not a.all_positions,
                               do_forced=(not a.no_forced) and (a.forced_all or "_alt@" not in g), all_positions=a.all_positions)
             print(f"{a.model} L{a.level} {regime} {g}: n={s['n']} acc={s.get('free_accuracy')} lure={s.get('free_lure_rate')} "

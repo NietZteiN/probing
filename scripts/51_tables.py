@@ -123,6 +123,38 @@ def main() -> int:
                                    8: "eight"}.get(len({k.split('/')[0] for sw in sweeps.values() for k in sw}), "several")
             numbers["model-list"] = ", ".join(sorted({MODEL.get(k.split("/")[0], k.split("/")[0])
                                                       for sw in sweeps.values() for k in sw}))
+        # equivalence bounds over every chain cell (E37): counts, and the exception(s) named
+        eqf = RESULTS_DIR / "summary" / "equivalence.json"
+        if eqf.exists():
+            eq = json.loads(eqf.read_text())
+            cot = {k: v for k, v in eq["cells"].items() if "/cot/" in k}
+            direct = {k: v for k, v in eq["cells"].items() if "/direct/" in k}
+            numbers["eq-delta"] = f"{100*eq['delta']:.0f}"
+            numbers["eq-cot-cells"] = str(len(cot))
+            numbers["eq-cot-equivalent"] = str(sum(v["equivalent"] for v in cot.values()))
+            numbers["eq-direct-cells"] = str(len(direct))
+            numbers["eq-direct-effect"] = str(sum(v["claimable"] for v in direct.values()))
+            exc = [(k, v) for k, v in cot.items() if not v["equivalent"]]
+            numbers["eq-cot-exceptions"] = str(len(exc))
+            if exc:
+                k, v = max(exc, key=lambda kv: abs(kv[1]["mean"]))
+                L, m, _, c = k.split("/")
+                numbers["eq-exc-model"] = MODEL.get(m, m)
+                numbers["eq-exc-level"] = L[1:]
+                numbers["eq-exc-role"] = "queried" if c.endswith("v1") else "intermediate"
+                numbers["eq-exc-mean"] = f"{100*v['mean']:+.1f}"
+                numbers["eq-exc-lo"] = f"{100*v['ci95'][0]:+.1f}"
+                numbers["eq-exc-hi"] = f"{100*v['ci95'][1]:+.1f}"
+                sw = sweeps.get(int(L[1:]), {}).get(f"{m}/cot", {}).get("groups", {})
+                if sw:
+                    numbers["eq-exc-neutral-acc"] = f"{100*sw['neutral']['acc_mean']:.0f}"
+                    numbers["eq-exc-letter-acc"] = f"{100*sw['letter']['acc_mean']:.0f}"
+        # the level-4 word-class cost on the queried variable (E26), pooled over seeds, both signs
+        sw4 = sweeps.get(4, {}).get("llama32-3b/cot")
+        if sw4:
+            g = sw4["groups"]
+            cost = g["neutral"]["acc_mean"] - 0.5 * (g["congruent@v1"]["acc_mean"] + g["incongruent@v1"]["acc_mean"])
+            numbers["wordclass-cost-L4"] = f"{100*cost:.1f}"
         rep = RESULTS_DIR / "summary" / "llama32-3b" / "L3" / "cot" / "replication.json"
         if rep.exists():
             r = json.loads(rep.read_text())
