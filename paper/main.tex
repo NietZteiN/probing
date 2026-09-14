@@ -98,9 +98,9 @@ design to multi-step arithmetic with variable assignments.
 \paragraph{Motivation.} Names that contradict the surrounding code degrade model performance
 \cite{le2025names,lam2025codecrash,le2026obfuscated}, but these results do not indicate
 \emph{where} the name interferes, since a drop in accuracy is consistent with a corrupted input, a corrupted
-computation, or a correct computation misread at the output. \citet{kudo2026faithful} show, using linear probes and activation patching on arithmetic of this
-kind, that the value of each variable becomes linearly decodable only as the CoT writes it, but
-their variable names are single letters, so a decoded value of 5 can only originate from the
+computation, or a correct computation misread at the output. \citet{kudo2026faithful} show, with linear probes and activation patching on such arithmetic,
+that each variable's value becomes linearly decodable only as the CoT writes it, but their
+variable names are single letters, so a decoded value of 5 can only originate from the
 computation. Our incongruent names supply a competing value, so that a probe's output indicates which
 source the representation holds.
 
