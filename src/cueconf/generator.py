@@ -50,7 +50,7 @@ from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Iterable, Iterator, Sequence
 
-from .words import LETTERS, NEUTRAL_CANDIDATES, NUMBER_WORDS
+from .words import LETTERS, NEUTRAL_CANDIDATES, NUMBER_WORDS, SCHEMES, WORD_SCHEME
 
 DIGITS = range(10)
 OPS = ("+", "-")
@@ -286,8 +286,10 @@ def legal_lures(ar: Arithmetic, target: str) -> list[int]:
 # ----------------------------------------------------------------------------- matched sets
 
 def make_set(ar: Arithmetic, set_id: str, rng: random.Random, pool: Sequence[str],
-             targets: Iterable[str] | None = None) -> list[Instance]:
-    """All conditions for one arithmetic. `targets` defaults to every non-distractor role."""
+             targets: Iterable[str] | None = None, scheme=WORD_SCHEME) -> list[Instance]:
+    """All conditions for one arithmetic. `targets` defaults to every non-distractor role.
+    `scheme` decides what a number-carrying name looks like: an English number word (the paper's
+    main condition) or an identifier such as `q4` (E38)."""
     spec = LEVELS[ar.level]
     roles = _roles(ar)
     chain_roles = [r for r in roles if r != spec["distractor"]]
@@ -311,23 +313,23 @@ def make_set(ar: Arithmetic, set_id: str, rng: random.Random, pool: Sequence[str
     out.append(inst("letter", letter_names(ar, rng), None, None, "letter"))
     out.append(inst("neutral", base, None, None, "neutral"))
     for t in targets:
-        cong = dict(base); cong[t] = NUMBER_WORDS[ar.values[t]]
+        cong = dict(base); cong[t] = scheme.number_names[ar.values[t]]
         out.append(inst("congruent", cong, t, None, f"cong@{t}"))
         lures = legal_lures(ar, t)
         if len(lures) < 2:
             raise ValueError(f"{set_id}: fewer than two legal lures for {t}; resample")
         l1, l2 = rng.sample(lures, 2)
-        inc = dict(base); inc[t] = NUMBER_WORDS[l1]
+        inc = dict(base); inc[t] = scheme.number_names[l1]
         out.append(inst("incongruent", inc, t, l1, f"inc@{t}"))
-        inc2 = dict(base); inc2[t] = NUMBER_WORDS[l2]
+        inc2 = dict(base); inc2[t] = scheme.number_names[l2]
         out.append(inst("incongruent_alt", inc2, t, l2, f"incalt@{t}"))
         nalt = dict(base); nalt[t] = alt_word
         out.append(inst("neutral_alt", nalt, t, None, f"nalt@{t}"))
     if spec["distractor"]:
         d = spec["distractor"]
         lures = legal_lures(ar, d)
-        irr = dict(base); irr[d] = NUMBER_WORDS[rng.choice(lures)]
-        out.append(inst("irrelevant", irr, d, irr_lure(irr, d), f"irr@{d}"))
+        irr = dict(base); irr[d] = scheme.number_names[rng.choice(lures)]
+        out.append(inst("irrelevant", irr, d, scheme.to_digit[irr[d]], f"irr@{d}"))
     return out
 
 
@@ -337,7 +339,8 @@ def irr_lure(names: dict[str, str], role: str) -> int:
 
 
 def sample_sets(level: int, n: int, seed: int, pool: Sequence[str] = NEUTRAL_CANDIDATES,
-                allowed_exprs: set[str] | None = None, targets: Iterable[str] | None = None) -> Iterator[list[Instance]]:
+                allowed_exprs: set[str] | None = None, targets: Iterable[str] | None = None,
+                scheme=WORD_SCHEME) -> Iterator[list[Instance]]:
     """n matched sets whose digit expressions lie in `allowed_exprs` (default: the test pool of
     `expression_split()`), unique at the rendered-input level."""
     rng = random.Random(seed)
@@ -351,7 +354,7 @@ def sample_sets(level: int, n: int, seed: int, pool: Sequence[str] = NEUTRAL_CAN
             raise RuntimeError("generator stalled: constraints too tight for this level")
         ar = sample_arithmetic(level, rng, allowed_exprs=allowed_exprs)
         try:
-            s = make_set(ar, f"L{level}-{seed}-{made:05d}", rng, pool, targets)
+            s = make_set(ar, f"L{level}-{seed}-{made:05d}", rng, pool, targets, scheme=scheme)
         except ValueError:
             continue
         neutral = next(x for x in s if x.condition == "neutral")

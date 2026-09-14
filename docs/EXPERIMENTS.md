@@ -106,3 +106,16 @@ next token under teacher forcing, as Kudo et al. do).
 5. E15, E16 only if the gate passed with time to spare (Oct 2–8).
 
 Total for the gate: ≈ 12 GPU-h. Everything in C: ≈ 50 GPU-h more.
+
+## H. A stronger cue (E38, added 2026-09-14)
+
+The number word is the weakest form of a misleading name: a reviewer can object that an explicit
+assignment ought to beat a bare lexical prior. **E38** repeats the level-3 design with
+identifier-style names, the way programmers write them: the misleading name is `q4` and its
+matched neutral twin is `qf`. Every tokenizer in the panel splits a two-character identifier
+into stem and suffix, so both are two tokens and the twins stay aligned; the stem `q` with
+suffixes f, g, j is the only combination that splits identically to `q0`–`q9` in all six models
+and in every context of the template (checked 2026-09-14, `src/cueconf/words.py`). Dataset:
+`data/L3_ident/`, built with 4,000 probe-training instances because three names cannot generate
+10,000 distinct problems. Four models, three demonstration sets, both regimes; behaviour first,
+probes only if the behaviour shows something the word scheme does not.

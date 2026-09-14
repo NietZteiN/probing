@@ -43,6 +43,7 @@ def main() -> int:
     ap.add_argument("--all-positions", action="store_true", help="E27: cache every token of the instance region; groups get the suffix __alltok")
     ap.add_argument("--layer-stride", type=int, default=1, help="keep every k-th layer (index 0 = embeddings); 2 halves the cache")
     ap.add_argument("--train-limit", type=int, default=None, help="cap probe-train instances (E27 uses 4000)")
+    ap.add_argument("--data-suffix", default="", help="'_ident' to use the identifier-name dataset (E38)")
     ap.add_argument("--overwrite", action="store_true",
                     help="redo groups that already have a summary.json (e.g. a behaviour-only run that now needs caches)")
     ap.add_argument("--no-forced", action="store_true", help="behaviour only: no hidden states, no forced logits (demo-seed sweeps)")
@@ -52,7 +53,7 @@ def main() -> int:
                          "instance for a 3B model (13 positions x 29 layers x 3072 x fp16): 254 GB per (model, level) with them, ~150 GB without")
     a = ap.parse_args()
     m = model_entry(a.model)
-    d = DATA_DIR / f"L{a.level}"
+    d = DATA_DIR / f"L{a.level}{a.data_suffix}"
     manifest = json.loads((d / "manifest.json").read_text())
     if not manifest["word_pool"]["verified"]:
         print("FATAL: dataset built with UNVERIFIED word lists; run make tokcheck then make data", file=sys.stderr)
@@ -78,7 +79,7 @@ def main() -> int:
     suffix = "__alltok" if a.all_positions else ""
     for regime in a.regimes:
         for g, rows in groups.items():
-            out = OUT_DIR / "runs" / a.model / f"L{a.level}" / regime / (g + suffix)
+            out = OUT_DIR / "runs" / a.model / f"L{a.level}{a.data_suffix}" / regime / (g + suffix)
             if (out / "summary.json").exists() and not a.overwrite:
                 print(f"skip {out} (done)")
                 continue

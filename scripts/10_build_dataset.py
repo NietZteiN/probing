@@ -22,6 +22,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from cueconf.config import DATA_DIR, load_config  # noqa: E402
 from cueconf.generator import content_hash, expression_split, sample_sets, sample_single, write_jsonl  # noqa: E402
+from cueconf.words import SCHEMES  # noqa: E402
 from cueconf.prompts import split_pool  # noqa: E402
 from cueconf.words import NEUTRAL_CANDIDATES  # noqa: E402
 
@@ -45,15 +46,25 @@ def main() -> int:
     ap.add_argument("--n-test", type=int, default=cfg["n_test_sets"])
     ap.add_argument("--n-train", type=int, default=cfg["n_probe_train"])
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--scheme", default="word", choices=sorted(SCHEMES),
+                    help="'word' = English number words vs common nouns (main); 'ident' = q4 vs qf (E38)")
     a = ap.parse_args()
-    pool, pool_info = word_pool()
-    demo_words, inst_words = split_pool(pool)
-    if len(inst_words) < 20:
+    scheme = SCHEMES[a.scheme]
+    if a.scheme == "word":
+        pool, pool_info = word_pool()
+        demo_words, inst_words = split_pool(pool)
+    else:
+        # the identifier pool is three names verified against every tokenizer in the panel; demos
+        # and instances share it, since three names cannot be split two ways
+        pool = list(scheme.neutral_pool)
+        pool_info = {"verified": True, "models": ["all (stem+suffix split checked per tokenizer)"]}
+        demo_words = inst_words = pool
+    if a.scheme == "word" and len(inst_words) < 20:
         print(f"FATAL: only {len(inst_words)} instance words after rule 4; widen NEUTRAL_CANDIDATES", file=sys.stderr)
         return 1
     sha = subprocess.run(["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True, cwd=DATA_DIR.parent).stdout.strip()
     for level in a.levels:
-        d = DATA_DIR / f"L{level}"
+        d = DATA_DIR / (f"L{level}" if a.scheme == "word" else f"L{level}_{a.scheme}")
         if (d / "manifest.json").exists() and not a.force:
             print(f"L{level}: exists, skipping (use --force)")
             continue
@@ -62,7 +73,7 @@ def main() -> int:
         for cond in cfg["probe_train_conditions"]:
             rows = list(sample_single(level, a.n_train, cfg["seeds"]["probe_train"], cond, pool=inst_words, allowed_exprs=train_exprs))
             counts[f"probe_train_{cond}"] = write_jsonl(d / f"probe_train_{cond}.jsonl", rows)
-        sets = list(sample_sets(level, a.n_test, cfg["seeds"]["test"], pool=inst_words, allowed_exprs=test_exprs))
+        sets = list(sample_sets(level, a.n_test, cfg["seeds"]["test"], pool=inst_words, allowed_exprs=test_exprs, scheme=scheme))
         flat = [x for s in sets for x in s]
         counts["test_sets"] = write_jsonl(d / "test_sets.jsonl", flat)
         counts["test_matched_sets"] = len(sets)
@@ -72,7 +83,7 @@ def main() -> int:
             groups[g] = groups.get(g, 0) + 1
         manifest = {"level": level, "built_utc": datetime.now(timezone.utc).isoformat(), "git": sha,
                     "seeds": cfg["seeds"], "counts": counts, "groups": groups, "word_pool": pool_info,
-                    "n_instance_words": len(inst_words), "demo_words": demo_words,
+                    "scheme": a.scheme, "n_instance_words": len(inst_words), "demo_words": demo_words,
                     "expression_holdout": {"n_train": len(train_exprs), "n_test": len(test_exprs), "test": sorted(test_exprs)},
                     "content_hash": content_hash(flat)}
         (d / "manifest.json").write_text(json.dumps(manifest, indent=2))
