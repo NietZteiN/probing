@@ -420,3 +420,36 @@ instruct models** (llama32-3b-it, llama31-8b-it, gemma3-4b-it, olmo2-7b-it), whe
 instruction is in-distribution. If the instruct models also fail, the fallback is a
 *prose-chain* regime: worked examples that reason in prose rather than in the equation format,
 which tests format-dependence without requiring instruction-following.
+
+## 2026-09-14 — E35 lure injection, and E36 on instruct models: both tier-A questions answered
+
+**E35 (injection).** Transplanting the misleading name's activations at its own token positions
+INTO a clean neutral run, 500 matched pairs, reading the final answer:
+
+| model | regime | answer becomes the injected lure (all layers) | best single layer | accuracy before → after |
+|---|---|---|---|---|
+| 3B | chain | **0.000** | 0.002 (layer 1) | 1.00 → 1.00 |
+| 8B | chain | **0.000** | 0.000 | 1.00 → 1.00 |
+| 3B | direct | 0.026 | 0.026 (layer 0) | .156 → .148 |
+| 8B | direct | 0.010 | 0.019 (layer 1) | .420 → .436 |
+
+Prediction confirmed. Under a chain the name's representation can be transplanted wholesale and
+the model still writes the right answer; the chain is causally insensitive to it. Without a
+chain the same transplant shifts the answer to the injected number in 1–3% of cases, at the
+earliest layers, the same locus the removal test found.
+
+**E36 (free-form reasoning) now works, on instruct models.** No worked examples, only the
+instruction; the models write prose reasoning ("## Step 1: First, we need to solve for the
+variable \"ant\"...") and parse cleanly:
+
+| model | neutral | name agrees | name lies | answers the name |
+|---|---|---|---|---|
+| Llama-3.2-3B-Instruct | 71.0 | 80.1 | 69.6 | 0.4 |
+| Llama-3.1-8B-Instruct | 67.0 | 71.4 | 67.2 | 0.0 |
+| Gemma-3-4B-it | 84.9 | 80.4 | 82.4 | 0.8 |
+| OLMo-2-7B-Instruct | 63.8 | 61.6 | 60.9 | 1.6 |
+
+**The result does not depend on our prompt format.** With reasoning the models invent
+themselves, at 61–85% accuracy (well off ceiling, unlike the forced format), the name's value
+still never becomes the answer: at most 1.6%. Interference is within 1.5 points everywhere.
+A congruent name still helps the 3B model (+9.1), which is the facilitation asymmetry again.
