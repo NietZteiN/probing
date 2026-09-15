@@ -20,11 +20,12 @@ ticked only when its numbers are in `results/summary/` and reach the paper throu
 - [x] Value-step decodability vs behaviour, 8 cells (E39)
 - [x] Positional-copy control, pooled (E22)
 - [x] Lure-distance covariate (E19), teacher-forced lure rate (E20), error taxonomy (E26)
-- [x] Identifier-name cue, level 3, four models, three demonstration sets — **run, not analysed** (E38)
+- [x] Identifier-name cue, level 3, four models, three demonstration sets (E38)
 
 ## To do before submission (2026-10-12)
 
-- [ ] Analyse E38: `56_seed_sweep.py --levels 3 --data-suffix _ident`, `57_equivalence.py`; decide whether it enters the paper or the appendix
+**No GPU experiments remain.** Everything below is CPU analysis, writing or submission admin.
+
 - [ ] Regenerate every figure after the final data (`52_figs`, `53_kudo_figs`, `58_token_figure`, `60_master_figure`)
 - [ ] `99_selfcheck.py` with zero failures on the final state
 - [ ] Final `make paper`: body ≤ 4 pages, no red `\NUM`, no overfull boxes

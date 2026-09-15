@@ -609,3 +609,23 @@ this as an alignment over 8 cells, not as a causal claim.
 Also: `92_page_budget.py` was too lenient (a heading within the first 4% of a page counted as a
 clean break, so 3 lines of conclusion on page 5 still reported "body ends on page 4"). Now any
 body text above the heading counts. Body is genuinely 4 pages.
+
+## 2026-09-15 — E38 (identifier names): the cue is specific to number words
+
+`q4` in place of `four`, level 3, four models, three demonstration sets. Compared with the word
+scheme on the same four models:
+
+| scheme | direct-regime lure excess (4 cells) | reliable |
+|---|---|---|
+| number words (`four`) | -0.2 to +2.8 pts | 3 of 4 |
+| identifiers (`q4`) | -0.2 to +0.2 pts | 0 of 4 |
+
+So a digit inside an identifier is **not** read as the variable's value, even without a chain,
+while a number word is. The pre-registration expected the identifier might be a *stronger* cue
+(an explicit digit rather than a lexical association); it is weaker, and in fact absent.
+Accuracy still moves under the identifier scheme (facilitation +8.2 for Gemma-3-4B, -2.3 for
+Llama-3.2-3B, both reliable, no consistent sign), so the name is not ignored; its digit simply
+never becomes the answer. This bounds the paper's claim to lexical priors and is now a Results
+paragraph.
+
+**All GPU experiments for the paper are complete as of this entry.**

@@ -243,6 +243,17 @@ Across the \NUM{vs-cells} (model, target) cells for which we have probes, the
 and the one whose value is not (accuracy \NUM{vs-undecodable-acc}) is the exception. On this
 evidence, writing the token is not sufficient: the model must hold the value there.
 
+\paragraph{Identifier names.} A reviewer may object that a bare lexical prior is the weakest
+form of a misleading name. We repeated level~3 with identifier-style names, writing
+\texttt{q4} where the word scheme writes \texttt{four}, on \NUM{ident-models} models with three
+demonstration sets. Without CoT the digit inside the identifier is not answered: the lure excess
+is \NUM{ident-direct-lure-lo} to \NUM{ident-direct-lure-hi} points over
+\NUM{ident-direct-cells} cells, with \NUM{ident-direct-lure-claim} reliable, against
+\NUM{word-direct-lure-lo} to \NUM{word-direct-lure-hi} points and
+\NUM{word-direct-lure-claim} of \NUM{word-direct-cells} reliable for the same models under the
+word scheme. The effect we report is therefore specific to number words, not to digits
+appearing in a name.
+
 \paragraph{Word class.} One effect is not removed by CoT. At level 4, a number word on the
 queried variable costs Llama-3.2-3B \NUM{wordclass-cost-L4} points
 (\NUM{wordclass-cost-L4-lo}--\NUM{wordclass-cost-L4-hi} across demonstration sets) whether or not

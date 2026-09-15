@@ -309,6 +309,25 @@ def main() -> int:
                 r = max(lo, key=lambda r: abs(r[3]))
                 numbers["vs-undecodable-acc"] = f"{r[2]:.2f}"
                 numbers["vs-undecodable-n"] = str(len(lo))
+# identifier-name scheme (E38): a digit inside an identifier (q4) instead of a number word
+        idf = RESULTS_DIR / "summary" / "seed_sweep_L3_ident.json"
+        if idf.exists():
+            idn = json.loads(idf.read_text()); wrd = sweeps.get(3, {})
+            def span(d, regime, contrast):
+                v = [c["pooled_mean"] for k, c in ((k, d[k]["contrasts"].get(contrast)) for k in d)
+                     if k.endswith("/" + regime) and c]
+                cl = [k for k in d if k.endswith("/" + regime) and (d[k]["contrasts"].get(contrast) or {}).get("claimable")]
+                return (min(v), max(v), len(cl), len(v)) if v else None
+            common = {k for k in set(idn) & set(wrd)}
+            for tag, d in (("ident", {k: v for k, v in idn.items() if k in common}),
+                           ("word", {k: v for k, v in wrd.items() if k in common})):
+                sp = span(d, "direct", "lure_excess@v1")
+                if sp:
+                    numbers[f"{tag}-direct-lure-lo"] = f"{100*sp[0]:+.1f}"
+                    numbers[f"{tag}-direct-lure-hi"] = f"{100*sp[1]:+.1f}"
+                    numbers[f"{tag}-direct-lure-claim"] = str(sp[2])
+                    numbers[f"{tag}-direct-cells"] = str(sp[3])
+            numbers["ident-models"] = {2: "two", 3: "three", 4: "four"}.get(len({k.split("/")[0] for k in common}), str(len({k.split("/")[0] for k in common})))
         irf = RESULTS_DIR / "summary" / "irrelevant_L4.json"
         if irf.exists():
             ir = json.loads(irf.read_text())
