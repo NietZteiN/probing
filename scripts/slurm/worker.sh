@@ -1,6 +1,12 @@
 #!/bin/bash
 # A reserved GPU: one batch job that holds a card and runs queued tasks one at a time.
 #
+# NOTE: a running worker keeps executing the copy of this loop that bash parsed when it
+# started. Editing this file does NOT change workers that are already running (2026-09-14: the
+# "# needs:" defer below was added while two workers were up, and they ignored it, so a probe
+# job ran before its cache job and failed). After changing this file, drain and resubmit the
+# workers before relying on the new behaviour.
+#
 # WHY THIS AND NOT salloc. `salloc --no-shell` + `srun --jobid` fails from juno's login node
 # ("Zero Bytes were transmitted or received", job 391543) while srun INSIDE a batch job works.
 # So a reservation here is a long-lived batch job with a work loop, not an interactive alloc.

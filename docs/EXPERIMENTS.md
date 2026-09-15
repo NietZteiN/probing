@@ -119,3 +119,12 @@ and in every context of the template (checked 2026-09-14, `src/cueconf/words.py`
 `data/L3_ident/`, built with 4,000 probe-training instances because three names cannot generate
 10,000 distinct problems. Four models, three demonstration sets, both regimes; behaviour first,
 probes only if the behaviour shows something the word scheme does not.
+
+## I. Internals for the exception model (E39, added 2026-09-14)
+
+OLMo-2-1B-Instruct is the one model whose chain does not remove the lure (+3.3 points on the
+intermediate variable, and it survives the value-written control). It had no probes or patching.
+**E39** runs the level-3 internals stack for it: caches, neutral-trained probes and patching in
+both regimes. The question is whether the lure is still decodable at the value step and the
+answer position, where every other model has erased it. Behaviour is already known (47% neutral
+accuracy with word names, 77% with letters).
