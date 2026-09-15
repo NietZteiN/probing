@@ -87,41 +87,54 @@ def main() -> int:
     pred = stack(cond, "pred", keep)                # [n_pos, n_layers, n_kept]
     sel = np.stack([pred[t, best[t]] for t in range(n_pos)])   # [n_pos, n_inst]
 
-    fig, axes = plt.subplots(2, 1, figsize=(13.5, 6.2), sharex=True,
-                             gridspec_kw={"height_ratios": [1, 1], "hspace": 0.22})
-    for ax, mask, title in ((axes[0], correct, "problems the model answers correctly unaided"),
-                            (axes[1], ~correct, "problems the model answers wrongly unaided")):
-        n = int(mask.sum())
-        for t_ in name_tokens:
-            ax.axvspan(t_ - 0.5, t_ + 0.5, color="#E6D9A8", alpha=0.55, lw=0, zorder=0)
-        ax.axvline(cot0 - 0.5, color="0.35", lw=1.2, ls="--", zorder=1)
-        if n:
-            ax.plot((sel[:, mask] == true_v[mask]).mean(1), "-", lw=1.9, color=GREEN, zorder=3,
-                    label="probe reads the true value")
-            ax.plot((sel[:, mask] == lure_v[mask]).mean(1), "-", lw=1.9, color=RED, zorder=3,
-                    label="probe reads the value the name denotes")
-            if not mask.all():
-                ax.plot((sel[:, mask] == pred_v[mask]).mean(1), "-", lw=1.9, color=PURPLE, zorder=3,
-                        label="probe reads the answer the model gives")
-        ax.set_ylim(-0.03, 1.05); ax.set_xlim(-0.5, n_pos - 0.5)
-        ax.set_ylabel("share of problems")
-        ax.set_title(f"{title}  (n = {n:,})", loc="left", fontsize=10.5)
-        ax.legend(loc="upper left", frameon=False, fontsize=8.6)
-    axes[1].set_xticks(range(n_pos))
-    axes[1].set_xticklabels([mte["token_strings"][i].replace("\n", "\\n") for i in range(n_pos)],
-                            rotation=90, family="monospace", fontsize=6)
-    axes[0].text(cot0 - 1.0, 1.0, "the problem", ha="right", fontsize=8.8, color="0.3")
-    axes[0].text(cot0 + 0.2, 1.0, "the model's chain of thought", ha="left", fontsize=8.8, color="0.3")
-    fig.suptitle(f"What the state holds for “{name}” with the correct chain supplied, split by whether "
-                 f"the model answers that problem correctly on its own\n"
-                 f"({MODEL.get(a.model, a.model)}, level {a.level}, {REGIME.get(a.regime, a.regime)}; "
-                 f"in the upper panel the true value and the model's answer coincide)",
-                 x=0.005, ha="left", fontsize=10.5)
+# probing accuracy per (token, layer) for each split, exactly Kudo et al.'s quantity
+    def acc_grid(mask):
+        return np.stack([[float((pred[t, li, mask] == true_v[mask]).mean()) for li in range(len(layers))]
+                         for t in range(n_pos)])                      # [n_pos, n_layers]
+    A_ok, A_bad = acc_grid(correct), acc_grid(~correct)
+    n_ok, n_bad = int(correct.sum()), int((~correct).sum())
+
+    fig = plt.figure(figsize=(13.5, 7.4))
+    gs = fig.add_gridspec(3, 1, height_ratios=[1.25, 1, 1], hspace=0.30)
+    ax0 = fig.add_subplot(gs[0]); ax1 = fig.add_subplot(gs[1], sharex=ax0); ax2 = fig.add_subplot(gs[2], sharex=ax0)
+
+    # --- top: max-over-layers probing accuracy, one line per split (Kudo's curve)
+    for t_ in name_tokens:
+        ax0.axvspan(t_ - 0.5, t_ + 0.5, color="#E6D9A8", alpha=0.55, lw=0, zorder=0)
+    ax0.axvline(cot0 - 0.5, color="0.35", lw=1.2, ls="--", zorder=1)
+    ax0.plot(A_ok.max(1), "-", lw=2.0, color=GREEN, zorder=3, label=f"problems answered correctly (n = {n_ok:,})")
+    ax0.plot(A_bad.max(1), "-", lw=2.0, color=RED, zorder=3, label=f"problems answered wrongly (n = {n_bad:,})")
+    ax0.axhline(0.1, color="0.6", lw=0.8, ls=":", zorder=1)
+    ax0.text(0.3, 0.115, "chance", fontsize=7.5, color="0.5")
+    ax0.set_ylim(-0.03, 1.05); ax0.set_xlim(-0.5, n_pos - 0.5)
+    ax0.set_ylabel("probing accuracy\n(max over layers)")
+    ax0.set_title(f"Probing accuracy for “{name}” at each token, by whether the model answers that "
+                  f"problem correctly", loc="left", fontsize=11)
+    ax0.legend(loc="upper left", frameon=False, fontsize=9)
+    ax0.text(cot0 - 1.0, 1.0, "the problem", ha="right", fontsize=8.6, color="0.3")
+    ax0.text(cot0 + 0.2, 1.0, "the chain of thought", ha="left", fontsize=8.6, color="0.3")
+
+    # --- the two heatmaps, token x layer, same colour scale
+    for ax, A, lab in ((ax1, A_ok, f"answered correctly (n = {n_ok:,})"), (ax2, A_bad, f"answered wrongly (n = {n_bad:,})")):
+        im = ax.imshow(A.T, aspect="auto", origin="lower", vmin=0, vmax=1, cmap="viridis",
+                       extent=(-0.5, n_pos - 0.5, layers[0] - 0.5, layers[-1] + 0.5))
+        ax.axvline(cot0 - 0.5, color="w", lw=1.0, ls="--")
+        ax.set_ylabel("layer"); ax.set_title(lab, loc="left", fontsize=9.5)
+    fig.colorbar(im, ax=[ax1, ax2], fraction=0.018, pad=0.008, label="probing accuracy")
+
+    ax2.set_xticks(range(n_pos))
+    ax2.set_xticklabels([mte["token_strings"][i].replace("\n", "\\n") for i in range(n_pos)],
+                        rotation=90, family="monospace", fontsize=6)
+    for ax in (ax0, ax1):
+        ax.tick_params(labelbottom=False)
+    fig.text(0.005, 0.005, "Probes read the variable's true value; states come from a forced pass over the "
+                           "correct chain, so the lower panel asks what the state holds for problems this model "
+                           "gets wrong unaided.", fontsize=8, color="0.35")
+
     FIG.mkdir(parents=True, exist_ok=True)
     stem = FIG / f"fig4_errors_{a.model}_L{a.level}_{a.regime}_{a.role}"
     fig.savefig(stem.with_suffix(".pdf"), bbox_inches="tight"); fig.savefig(stem.with_suffix(".png"), dpi=150, bbox_inches="tight")
-    print(f"wrote {stem}.png  ({int(correct.sum())} correct, {int((~correct).sum())} wrong, "
-          f"layers chosen on neutral)")
+    print(f"wrote {stem}.png  ({n_ok} correct, {n_bad} wrong)")
     return 0
 
 

@@ -91,11 +91,11 @@ design to multi-step arithmetic with variable assignments.
 \paragraph{Motivation.} Names that contradict the surrounding code degrade model performance
 \cite{le2025names,lam2025codecrash,le2026obfuscated}, but such results do not indicate
 \emph{where} the name interferes: a drop in accuracy is consistent with a corrupted input, a
-corrupted computation, or a correct computation misread at the output. \citet{kudo2026faithful} show, with linear probes and activation patching on such arithmetic,
-that each variable's value becomes linearly decodable only as the CoT writes it, but their
-variable names are single letters, so a decoded value of 5 can only originate from the
-computation. Our incongruent names supply a competing value, so that a probe's output indicates which
-source the representation holds.
+corrupted computation, or a correct computation misread at the output. \citet{kudo2026faithful}
+show, with linear probes and patching on such arithmetic, that each variable's value becomes
+decodable only as the CoT writes it; their variable names are single letters, so a decoded 5 can
+only come from the computation. Our incongruent names supply a competing value, so a probe's
+output indicates which source the state holds.
 
 We construct matched sets of problems: the same arithmetic rendered in the naming conditions of
 Table~\ref{tab:conditions} at the five difficulty levels of Table~\ref{tab:levels}, solved with
@@ -110,11 +110,23 @@ name's own tokens and is absent at the step that writes the variable's value.
 
 \section{Setup}
 
-\paragraph{Task.} We reuse the problems, difficulty levels and prompt format of
-\citet{kudo2026faithful}. A problem is a list of equations over the digits $0$--$9$ with $+$ and
-$-$, ending in a query, and every variable's value is itself a single digit. Three worked
-examples of the same level precede each problem, and Table~\ref{tab:levels} gives one problem
-per level. Level~3 is our main level.
+\paragraph{What we take from \citet{kudo2026faithful}.} This study is built on theirs, and we
+state the borrowing explicitly. Taken unchanged: the arithmetic task and its five levels
+(their Table~1), the single-digit constraint, the three fixed same-level worked examples, the
+probe recipe (a 10-way digit classifier on the residual stream, SGD at $10^{-3}$ for 10{,}000
+full-batch epochs, one probe per token and layer), the quantities $t^{*}$,
+$t^{*}_{\text{eq}}$, $\mathrm{Acc}^{\prec\mathrm{CoT}}$, $\mathrm{Acc}^{\succ\mathrm{CoT}}$ with
+$\tau=0.9$, the span-by-layer-window patching design, and two of their models.
+Figures~\ref{fig:heat} and~\ref{fig:kudo3} follow the layout of their Figures~2 and~3. Ours is
+the cue conflict: the naming conditions, the matched twins and the rules that keep a lure from
+being correct for another reason, the matched-twin baselines behind every number here, the
+demonstration-seed claim rule and the equivalence bounds. We reimplemented their task and probes
+from the paper rather than running their public code; no code is shared.
+
+\paragraph{Task.} A problem is a list of equations over the digits $0$--$9$ with $+$ and $-$,
+ending in a query, and every variable's value is itself a single digit. Three worked examples of
+the same level precede each problem; Table~\ref{tab:levels} gives one per level. Level~3 is our
+main level.
 
 \paragraph{Naming conditions.} Each problem is generated once and rendered in the conditions of
 Table~\ref{tab:conditions}, where arithmetic, operators and digits are identical across a set
@@ -124,11 +136,11 @@ former case and a different value, the \emph{lure value}, in the latter. The tar
 the queried or the intermediate variable, and we report the two cases separately, since they are
 different manipulations.
 
-\paragraph{Generation rules.} Only one variable per problem carries a number word, and the lure
-value differs from every variable's value and from every digit in the problem, so that a lure
-answer cannot be correct for another reason. Names are single tokens in every context of the
-template under each model's tokenizer, so twins have the same length and the same token
-positions (Appendix~A). The \emph{irrelevant lure} condition places the number word on a distractor.
+\paragraph{Generation rules.} One variable per problem carries a number word, and the lure value
+differs from every variable's value and every digit in the problem, so a lure answer cannot be
+correct for another reason. Names are single tokens in every template context under each
+tokenizer, so twins share length and token positions (Appendix~A). The \emph{irrelevant lure}
+condition puts the number word on a distractor.
 
 \paragraph{Regimes.} In the \emph{chain-of-thought} regime, the model writes the worked steps
 shown in Table~\ref{tab:levels} and then the answer. In the \emph{direct} regime, it writes only
@@ -141,17 +153,17 @@ as reliable only when its sign is the same in all three sets and a cluster boots
 matched problems excludes zero.
 
 \paragraph{Probes.} A linear probe reads a chosen variable's value from the residual stream,
-one probe per position, layer and seed, following \citeauthor{kudo2026faithful}. Probes are
+one probe per position, layer and seed, with \citeauthor{kudo2026faithful}'s recipe and
+hyperparameters. Probes are
 trained on neutral problems only, so that they never observe a number word in a name slot. Each
 is paired with a control probe trained on labels that are a fixed random function of the
 variable's \emph{name} \cite{hewitt2019control}; where the control also scores highly, the probe
 is reading the identity of the name rather than a value.
 
-\paragraph{Patching.} To test whether the name causes a behavior, we replace the activations
-at its tokens with those of the matched twin and read the output again \cite{zhang2024patching}.
-Two controls accompany every intervention: replacing one neutral word with another bounds the
-damage of any replacement, and replacing one lure with another indicates whether the answer
-follows the name.
+\paragraph{Patching.} To test whether the name causes a behavior we replace the activations at
+its tokens with the matched twin's and read the output again \cite{zhang2024patching}. Two
+controls accompany every intervention: one neutral word for another bounds the damage of any
+replacement, and one lure for another shows whether the answer follows the name.
 
 \paragraph{Models.} \NUM{model-list}.
 
@@ -357,7 +369,8 @@ reported here.
 \begin{figure*}[h]
 \centering
 \IfFileExists{figures/fig2_tokens_llama32-3b_L3_cot_v2.pdf}{\includegraphics[width=\textwidth]{figures/fig2_tokens_llama32-3b_L3_cot_v2.pdf}}{\fbox{\parbox{0.95\textwidth}{\centering\small\textcolor{red}{[Figure 2, generated by scripts/58\_token\_figure.py]}}}}
-\caption{Per-token probes for the incongruent condition (name \texttt{nine}, true value 1),
+\caption{In the layout of \citeauthor{kudo2026faithful}'s Figure~2. Per-token probes for the
+incongruent condition (name \texttt{nine}, true value 1),
 Llama-3.2-3B, level~3, CoT. Top: how often the best-layer probe reads the true value (green) or
 the lure (red). Bottom: true-value accuracy by layer. Dashed line: start of the chain; shaded:
 the name's tokens.}
@@ -394,6 +407,18 @@ the code.
 \caption{Lure errors removed by patching the name's tokens from the neutral twin, by layer,
 direct regime, with the neutral-word control patch (damage) and the alternative-lure patch.}
 \label{fig:patch}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\IfFileExists{figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr.pdf}{\includegraphics[width=\columnwidth]{figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr.pdf}}{\fbox{\parbox{0.95\columnwidth}{\centering\small\textcolor{red}{[Figure 4, generated by scripts/64\_kudo\_fig3.py]}}}}
+\caption{In the layout of \citeauthor{kudo2026faithful}'s Figure~3, for problems this model
+answers with the lure. Each cell is the probe's top-1 prediction at that layer and token: green
+the variable's true value, red the value the model answered, amber the value its name denotes,
+grey anything else. The first panel is the probe's most common prediction on neutral problems,
+which is what it emits where it reads nothing; cells carry information only where they differ
+from it.}
+\label{fig:kudo3}
 \end{figure}
 
 \section{Additional levels, models and demonstration sets}
