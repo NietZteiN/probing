@@ -26,11 +26,11 @@ ticked only when its numbers are in `results/summary/` and reach the paper throu
 
 **No GPU experiments remain.** Everything below is CPU analysis, writing or submission admin.
 
-- [ ] Regenerate every figure after the final data (`52_figs`, `53_kudo_figs`, `58_token_figure`, `60_master_figure`)
-- [ ] `99_selfcheck.py` with zero failures on the final state
-- [ ] Final `make paper`: body ≤ 4 pages, no red `\NUM`, no overfull boxes
-- [ ] Anonymise for review (author block, repository link, acknowledgements)
-- [ ] ARR checklist and Limitations section reviewed against the final text
+- [x] Regenerate every figure after the final data (`52_figs`, `53_kudo_figs`, `58_token_figure`, `60_master_figure`)
+- [x] `99_selfcheck.py` with zero failures on the final state (2026-09-15)
+- [x] Final `make paper`: body ≤ 4 pages, no red `\NUM`, no overfull boxes (2026-09-15)
+- [x] Anonymise for review: author block anonymous, no repository link, no acknowledgements, PDF metadata carries no author (2026-09-15)
+- [ ] ARR responsible-NLP checklist (submission form) and a final human read of Limitations — the author's call
 
 ## Not planned for this paper
 
