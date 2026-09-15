@@ -94,7 +94,7 @@ def main() -> int:
     A_ok, A_bad = acc_grid(correct), acc_grid(~correct)
     n_ok, n_bad = int(correct.sum()), int((~correct).sum())
 
-    fig = plt.figure(figsize=(13.5, 7.4))
+    fig = plt.figure(figsize=(9.4, 5.2))
     gs = fig.add_gridspec(3, 1, height_ratios=[1.25, 1, 1], hspace=0.30)
     ax0 = fig.add_subplot(gs[0]); ax1 = fig.add_subplot(gs[1], sharex=ax0); ax2 = fig.add_subplot(gs[2], sharex=ax0)
 
@@ -107,10 +107,10 @@ def main() -> int:
     ax0.axhline(0.1, color="0.6", lw=0.8, ls=":", zorder=1)
     ax0.text(0.3, 0.115, "chance", fontsize=7.5, color="0.5")
     ax0.set_ylim(-0.03, 1.05); ax0.set_xlim(-0.5, n_pos - 0.5)
-    ax0.set_ylabel("probing accuracy\n(max over layers)")
+    ax0.set_ylabel("probing accuracy\n(max over layers)", fontsize=8.5)
     ax0.set_title(f"Probing accuracy for “{name}” at each token, by whether the model answers that "
-                  f"problem correctly", loc="left", fontsize=11)
-    ax0.legend(loc="upper left", frameon=False, fontsize=9)
+                  f"problem correctly", loc="left", fontsize=10)
+    ax0.legend(loc="upper left", frameon=False, fontsize=8.5)
     ax0.text(cot0 - 1.0, 1.0, "the problem", ha="right", fontsize=8.6, color="0.3")
     ax0.text(cot0 + 0.2, 1.0, "the chain of thought", ha="left", fontsize=8.6, color="0.3")
 
@@ -119,12 +119,12 @@ def main() -> int:
         im = ax.imshow(A.T, aspect="auto", origin="lower", vmin=0, vmax=1, cmap="viridis",
                        extent=(-0.5, n_pos - 0.5, layers[0] - 0.5, layers[-1] + 0.5))
         ax.axvline(cot0 - 0.5, color="w", lw=1.0, ls="--")
-        ax.set_ylabel("layer"); ax.set_title(lab, loc="left", fontsize=9.5)
+        ax.set_ylabel("layer"); ax.set_title(lab, loc="left", fontsize=8.5)
     fig.colorbar(im, ax=[ax1, ax2], fraction=0.018, pad=0.008, label="probing accuracy")
 
     ax2.set_xticks(range(n_pos))
     ax2.set_xticklabels([mte["token_strings"][i].replace("\n", "\\n") for i in range(n_pos)],
-                        rotation=90, family="monospace", fontsize=6)
+                        rotation=90, family="monospace", fontsize=5.6)
     for ax in (ax0, ax1):
         ax.tick_params(labelbottom=False)
     fig.text(0.005, 0.005, "Probes read the variable's true value; states come from a forced pass over the "
