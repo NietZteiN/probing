@@ -103,7 +103,7 @@ def main() -> int:
     sw = json.loads((RESULTS_DIR / "summary" / f"seed_sweep_L{a.level}.json").read_text())
 
     fig = plt.figure(figsize=(16.4, 4.7))
-    gs = GridSpec(1, 4, width_ratios=[0.74, 0.98, 0.86, 1.86], wspace=0.20, figure=fig)
+    gs = GridSpec(1, 4, width_ratios=[0.98, 0.98, 0.86, 1.70], wspace=0.20, figure=fig)
     gs.update(left=0.005, right=0.995)
     axa = fig.add_subplot(gs[:, 0]); axa.axis("off")
     axb1 = fig.add_subplot(gs[:, 1])
@@ -113,38 +113,33 @@ def main() -> int:
     # ---- (a) the manipulation
     axa.set_title("(a)  the manipulation", loc="left", fontsize=11)
     rows_a = [("neutral", "truck=2 + ant, ant=7 - 6; truck=?", GREY,
-               "the answer is 3"),
+               "answer 3"),
               ("the name agrees", "three=2 + ant, ant=7 - 6; three=?", GREEN,
-               "the answer is 3, and the name says 3"),
+               "answer 3; the name says 3"),
               ("the name lies", "four=2 + ant, ant=7 - 6; four=?", RED,
-               "the answer is 3, but the name says 4")]
-    y = 0.92
+               "answer 3; the name says 4")]
+    y = 0.88
     for lab, prob, col, note in rows_a:
-        axa.text(0, y, lab, fontsize=10, color=col, weight="bold", transform=axa.transAxes)
-        axa.text(0, y - 0.085, prob, fontsize=8.8, family="monospace", color=col, transform=axa.transAxes)
-        axa.text(0, y - 0.155, note, fontsize=8.5, color="0.4", style="italic", transform=axa.transAxes)
-        y -= 0.27
-    axa.text(0, 0.14, "Same arithmetic every time.\nOnly the name of the variable\n"
-                      "being asked about changes.\n\n"
-                      "The model either writes out\nthe steps, ending\n"
-                      "\u201cfour=2 + 1, four=3\u201d,\nor answers \u201cfour=3\u201d directly.",
-             fontsize=8.6, color="0.4", linespacing=1.6, va="top", transform=axa.transAxes)
+        axa.text(0, y, lab, fontsize=10.5, color=col, weight="bold", transform=axa.transAxes)
+        axa.text(0, y - 0.09, prob, fontsize=8.6, family="monospace", color=col, transform=axa.transAxes)
+        axa.text(0, y - 0.165, note, fontsize=8.6, color="0.4", style="italic", transform=axa.transAxes)
+        y -= 0.29
+    axa.text(0, 0.0, "same arithmetic; only the name of\nthe queried variable changes",
+             fontsize=8.8, color="0.4", linespacing=1.5, va="bottom", transform=axa.transAxes)
 
     # ---- (b) headline
     rows = layout_models(sw)
     paired(axb1, sw, rows, "facilitation@v1",
-           "(b)  when the name says the right answer,\n      is the model more often right?",
-           "accuracy gained (points)", a.delta, band=True, ylabels=True)
+           "(b)  name says the right answer:\n      accuracy gained",
+           "points", a.delta, band=True, ylabels=True)
     paired(axb2, sw, rows, "lure_excess@v1",
-           "when the name says a wrong number,\ndoes the model answer that instead?",
-           "how much more often the answer is\nthe name's own number (points)", a.delta, band=True, ylabels=False)
-    for ax in (axb1, axb2):
-        ax.text(0, -0.5, "no effect", fontsize=8, color="0.45", ha="center", va="bottom")
+           "name says a wrong number:\nlure answers above chance",
+           "points", a.delta, band=True, ylabels=False)
     h = [plt.Line2D([], [], color=RED, marker="o", ls="", ms=6, label="no chain of thought"),
          plt.Line2D([], [], color=BLUE, marker="s", ls="", ms=6, label="with chain of thought"),
-         plt.Rectangle((0, 0), 1, 1, color="0.90", label="within 2 points of no effect")]
-    axb1.legend(handles=h, loc="upper center", bbox_to_anchor=(1.06, -0.115), ncol=3,
-                frameon=False, fontsize=9.5)
+         plt.Rectangle((0, 0), 1, 1, color="0.90", label="within 2 points of zero")]
+    axb1.legend(handles=h, loc="upper center", bbox_to_anchor=(1.10, -0.10), ncol=3,
+                frameon=False, fontsize=9.5, handletextpad=0.5, columnspacing=1.4)
 
     # ---- (c) inside the model
     pj = OUT_DIR / "probes" / a.probe_model / f"L{a.level}" / "cot" / f"train_neutral__alltok" / f"{a.role}.json"
@@ -174,25 +169,25 @@ def main() -> int:
              label=f"probe reads {ex['values'][a.role]}, the true value of “{name}”")
     axc.plot(curve("lure_rate"), "-", lw=1.9, color=RED, zorder=3,
              label=f"probe reads {ex['lure']}, what the word “{name}” means")
-    axc.set_ylim(-0.03, 1.22); axc.set_xlim(-0.5, n_pos - 0.5)
+    axc.set_ylim(-0.03, 1.16); axc.set_xlim(-0.5, n_pos - 0.5)
     axc.set_yticks([0, 0.25, 0.5, 0.75, 1.0])
     axc.set_ylabel("share of problems")
     import matplotlib.patches as mpatches
-    hc = [plt.Line2D([], [], color=GREEN, lw=1.9, label=f"probe reads {ex['values'][a.role]}, the true value of “{name}”"),
-          plt.Line2D([], [], color=RED, lw=1.9, label=f"probe reads {ex['lure']}, what the word “{name}” means"),
-          mpatches.Patch(color="#E6D9A8", alpha=0.55, label=f"tokens that spell “{name}”")]
-    axc.legend(handles=hc, loc="lower left", bbox_to_anchor=(0.005, 0.02), framealpha=0.96, fontsize=8.5)
-    axc.set_title("(c)  what the model holds, token by token", loc="left")
+    hc = [plt.Line2D([], [], color=GREEN, lw=1.9, label=f"reads {ex['values'][a.role]}, the true value"),
+          plt.Line2D([], [], color=RED, lw=1.9, label=f"reads {ex['lure']}, what “{name}” means"),
+          mpatches.Patch(color="#E6D9A8", alpha=0.55, label=f"the name's tokens")]
+    axc.legend(handles=hc, loc="upper left", bbox_to_anchor=(0.005, 0.90), frameon=False, fontsize=8.8)
+    axc.set_title("(c)  what a probe reads at each token (Llama-3.2-3B)", loc="left")
     axc.set_xticks(range(n_pos))
     axc.set_xticklabels([mte["token_strings"][i].replace("\n", "\\n") for i in range(n_pos)],
                         rotation=90, family="monospace", fontsize=6)
-    axc.text(cot0 / 2, 1.14, "the problem", ha="center", fontsize=9, color="0.3")
-    axc.text(cot0 + (n_pos - cot0) / 2, 1.14, "the model's chain of thought", ha="center", fontsize=9, color="0.3")
+    axc.text(cot0 - 1.0, 1.10, "the problem", ha="right", fontsize=8.8, color="0.3")
+    axc.text(cot0 + 0.2, 1.10, "the model's chain of thought", ha="left", fontsize=8.8, color="0.3")
     wt = max((max(v) - t0 for k, v in mte["segment_tokens"].items() if k.endswith(f":value:{a.role}")), default=None)
     if wt is not None:
         axc.axvline(wt, color=GREEN, lw=1.1, ls=":", zorder=2)
-        axc.text(wt - 0.6, 1.04, f"the chain writes “{name}={ex['values'][a.role]}”",
-                 fontsize=9, color="#0F5C40", ha="right", va="center")
+        axc.text(wt - 0.8, 1.02, f"the chain writes “{name}={ex['values'][a.role]}”",
+                 fontsize=8.8, color="#0F5C40", ha="right", va="center")
 
     FIG.mkdir(parents=True, exist_ok=True)
     stem = FIG / f"fig1_master_L{a.level}"

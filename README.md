@@ -1,5 +1,7 @@
 # Cue conflict in chain-of-thought arithmetic
 
+The experiment checklist is [CHECKLIST.md](CHECKLIST.md).
+
 Does chain of thought let a language model's computation override a misleading variable name,
 and where inside the model does that happen? A Stroop-style test built on Kudo et al.'s
 (Findings of EACL 2026) controlled multi-step arithmetic: every problem appears with
