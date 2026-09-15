@@ -262,7 +262,7 @@ def main() -> int:
             if best:
                 v, L, dmg, kk = best
                 numbers["exc-inject"] = f"{100*v:.1f}\\%"
-                numbers["exc-inject-layer"] = L
+                numbers["exc-inject-layer"] = L.lstrip("L")
                 numbers["exc-inject-damage"] = f"{100*dmg:.1f}\\%"
                 # the word control at the SAME layer; fall back to the other target's control
                 for cand in (kk.replace("inject", "ctl_word"), "ctl_word@v1.json", "ctl_word@v2.json"):

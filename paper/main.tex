@@ -277,7 +277,7 @@ of the defining equation, the true value is partly computed (accuracy \NUM{p2-ac
 \NUM{p2-sel}) and the lure value is weakly decodable (\NUM{p2-lure}). At P3, the query, a probe
 reads the lure value in \NUM{p3-lure} of instances, but the control task also scores
 \NUM{p3-ctl} there, so the probe is reading the identity of the name. At P4 and P5, the true value is decodable at \NUM{p4-acc} and the
-lure is at zero in every condition and level. At level~4 a number word on a computed variable
+lure is at zero in every condition and every level probed for this model. At level~4 a number word on a computed variable
 has a lure mass of \NUM{bound-mass} at the answer, against \NUM{unbound-mass} for one on the
 distractor, whose own value is not decodable (accuracy \NUM{distractor-acc}).
 
@@ -292,7 +292,7 @@ span grid places the effect at the equation that defines the name, where patchin
 \NUM{grid-layers} alone removes up to \NUM{grid-top-removed} of the errors. Because the word control changes \NUM{control-damage} of correct answers at this floor
 accuracy, we report localization rather than recovery. For Llama-3.1-8B, whose no-CoT lure excess at level 3 is small, the neutral and
 alternative-lure patches remove lure errors equally, so the patching gives no evidence of a
-name-specific cause. With CoT, there are at most \NUM{cot-lure-err-max} lure errors in 2{,}000 instances to remove,
+name-specific cause. With CoT, no model makes more than \NUM{cot-lure-err-max} lure error in 2{,}000 instances,
 and injection changes the answer in at most \NUM{inject-cot-max} of 500 pairs for every model
 except \NUM{eq-exc-model}, reported above.
 
@@ -325,8 +325,8 @@ that writes it. Whether the chain states the value does not predict it.
 The task is synthetic arithmetic with short chains, so the results need not transfer to real
 code, which is the motivation for the task rather than a finding. The models are at most 12B
 parameters, and within-family comparisons indicate the direction of a trend only. The lures are
-English number words; digit-bearing names such as \texttt{x2}, other languages, and optimized
-lures remain future work. Linear probes can miss information that is encoded nonlinearly; the
+English number words; identifier-style names were tested at level~3 only, and other languages
+and optimized lures remain future work. Linear probes can miss information that is encoded nonlinearly; the
 patching experiments address this in part, but hidden states carry mixed information and
 patching cannot exclude side effects, which is why we report two control patches. Finally, the
 CoT format writes the name beside the computed value at every step, which may itself assist
