@@ -561,3 +561,28 @@ Every claim checked against its source. Corrected in the text (all numbers now `
 Verified unchanged: Table 1 (64 cells + stars vs sweep), Kudo's 17.8/33.2 (their Table 3),
 figure instances (truck/four/3 in Fig. 1c; truck/nine/1 in Fig. 2), E26 wording, all refs,
 labels and bib keys. Body: 4 pages. Self-check: 0 failures.
+
+## 2026-09-15 — the exception gets a causal signature (E39)
+
+OLMo-2-1B-Instruct internals at level 3. Patching under CoT **force-decodes the gold chain**, so
+base accuracy is 97% even though the model's own chains are right only 47% of the time. Under
+that correct chain, injecting the misleading name's activations into a neutral run moves the
+answer to the lure in **2.7% of 500 pairs at layer 5** (of 16), with total damage 7.0% at that
+layer. The neutral-word control at the same layer does 0.4%. Every other model is at 0.0–0.2%.
+Of the damage the injection causes, 39% lands on the lure specifically, against 11% if the shift
+were unspecific over ten digits.
+
+Three independent measurements now agree for this model: behaviour (+3.3 lure excess under CoT),
+the value-written control (+3.7 excess on the 1,207 instances whose chain wrote the correct
+value), and patching (above). The exception is real, causal and localized; the paper says so and
+still does not claim a mechanism for why the other seven models are immune.
+
+Also corrected: the positional-copy control is now in the appendix with pooled numbers. Across
+every model, level and demonstration set there are 4,073 CoT lure errors at the answer; the
+number immediately before the answer is the lure in 13% and the true value in 11%. Neither
+dominates, so positional copying does NOT account for the remaining CoT lure errors. (Per-cell
+values at levels 1–2 reach 25–88% and are not representative.)
+
+Operational: `# needs:` deferral in the worker queue only applies to workers started AFTER the
+edit; bash has already parsed the loop in a running worker. That is why the OLMo probe job ran
+before its cache job and failed. Documented at the top of `scripts/slurm/worker.sh`.

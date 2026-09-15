@@ -12,7 +12,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from cueconf.config import PROJECT_ROOT, RESULTS_DIR, load_config  # noqa: E402
+from cueconf.config import OUT_DIR, PROJECT_ROOT, RESULTS_DIR, load_config  # noqa: E402
 
 PAPER = PROJECT_ROOT / "paper"
 PRETTY = {"llama32-3b": "Llama-3.2-3B", "llama32-3b-it": "Llama-3.2-3B-Inst.", "llama31-8b": "Llama-3.1-8B",
@@ -229,20 +229,63 @@ def main() -> int:
             numbers["n-models-all-levels"] = {1: "one", 2: "two", 3: "three"}.get(sum(1 for v in per.values() if len(v) == 5), str(sum(1 for v in per.values() if len(v) == 5)))
         # chain regime: how often injecting the name's activations changes the answer (max over
         # layers and models with patching), and the most lure errors any model made in 2,000
-        inj, err = [], []
+# injection under CoT: the exception model is reported separately from the rest, because it is
+        # the one model where the name still moves the answer through a forced correct chain
+        EXC = "olmo2-1b-it"
+        inj, err, exc = [], [], {}
         for pf in (RESULTS_DIR / "summary").glob("*/L3/cot/patching.json"):
-            d = json.loads(pf.read_text())
+            d = json.loads(pf.read_text()); mk = pf.parts[-4]
             for kk in ("inject@v1", "inject@v2"):
                 for L, v in d.get(kk, {}).items():
-                    if "anspre" in v and v["anspre"].get("lure_injected") is not None:
-                        inj.append(v["anspre"]["lure_injected"])
+                    a_ = v.get("anspre") if isinstance(v, dict) else None
+                    if a_ and a_.get("lure_injected") is not None:
+                        (exc.setdefault(kk, []) if mk == EXC else inj).append((a_["lure_injected"], L, a_.get("damage")))
             for kk in ("main@v1", "main@v2"):
                 a_ = d.get(kk, {}).get("ALL", {}).get("anspre")
                 if a_: err.append(a_["n_lure_err"])
         if inj:
-            numbers["inject-cot-max"] = f"{100*max(inj):.1f}\\%"
+            numbers["inject-cot-max"] = f"{100*max(v for v, _, _ in inj):.1f}\\%"
         if err:
             numbers["cot-lure-err-max"] = str(max(err))
+        # the exception model, read straight from its patching files (per-layer summaries)
+        pdir = OUT_DIR / "patching" / EXC / "L3" / "cot"
+        if pdir.exists():
+            best = None
+            for kk in ("inject@v1", "inject@v2"):
+                f_ = pdir / f"{kk}.json"
+                if not f_.exists(): continue
+                sm = json.loads(f_.read_text())["summary"]
+                for L, v in sm.items():
+                    a_ = v.get("anspre") if isinstance(v, dict) else None
+                    if a_ and a_.get("lure_injected") is not None and (best is None or a_["lure_injected"] > best[0]):
+                        best = (a_["lure_injected"], L, a_["damage"], kk)
+            if best:
+                v, L, dmg, kk = best
+                numbers["exc-inject"] = f"{100*v:.1f}\\%"
+                numbers["exc-inject-layer"] = L
+                numbers["exc-inject-damage"] = f"{100*dmg:.1f}\\%"
+                # the word control at the SAME layer; fall back to the other target's control
+                for cand in (kk.replace("inject", "ctl_word"), "ctl_word@v1.json", "ctl_word@v2.json"):
+                    cf = pdir / (cand if cand.endswith(".json") else cand + ".json")
+                    if cf.exists():
+                        c = json.loads(cf.read_text())["summary"].get(L, {}).get("anspre")
+                        if c:
+                            numbers["exc-ctlword"] = f"{100*c['damage']:.1f}\\%"
+                            break
+# positional-copy control (E22): among CoT lure errors at the answer, how often the number
+        # standing just before the answer is the lure rather than the true value
+        cc_err = cc_lure = cc_true = 0; cc_cells = 0
+        for cf in (RESULTS_DIR / "summary").glob("*/L*/cot*/copy_control.json"):
+            for v in json.loads(cf.read_text()).values():
+                n = v.get("n_lure_errors_at_p5") or 0
+                if n:
+                    cc_cells += 1; cc_err += n
+                    cc_lure += n * (v.get("trailing_is_lure") or 0.0)
+                    cc_true += n * (v.get("trailing_is_true_intermediate") or 0.0)
+        if cc_err:
+            numbers["copy-n-err"] = str(cc_err)
+            numbers["copy-lure-frac"] = f"{100*cc_lure/cc_err:.0f}\\%"
+            numbers["copy-true-frac"] = f"{100*cc_true/cc_err:.0f}\\%"
         irf = RESULTS_DIR / "summary" / "irrelevant_L4.json"
         if irf.exists():
             ir = json.loads(irf.read_text())

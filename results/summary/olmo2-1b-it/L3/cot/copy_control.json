@@ -1,9 +1,9 @@
 {
  "incongruent@v1": {
-  "n_lure_errors_at_p5": 45,
-  "trailing_is_true_intermediate": 0.13333333333333333,
-  "trailing_is_lure": 0.044444444444444446,
-  "chain_wrote_true_at_p4": 0.1111111111111111,
+  "n_lure_errors_at_p5": 46,
+  "trailing_is_true_intermediate": 0.13043478260869565,
+  "trailing_is_lure": 0.043478260869565216,
+  "chain_wrote_true_at_p4": 0.10869565217391304,
   "rows": [
    {
     "id": "L3-44-00011-inc@v1",
@@ -46,14 +46,6 @@
     "chain_wrote_true_at_p4": false
    },
    {
-    "id": "L3-44-00167-inc@v1",
-    "trailing": 3,
-    "trailing_is_true_intermediate": false,
-    "trailing_is_lure": false,
-    "trailing_is_answer": false,
-    "chain_wrote_true_at_p4": false
-   },
-   {
     "id": "L3-44-00232-inc@v1",
     "trailing": 2,
     "trailing_is_true_intermediate": true,
@@ -71,7 +63,7 @@
    },
    {
     "id": "L3-44-00325-inc@v1",
-    "trailing": 0,
+    "trailing": 1,
     "trailing_is_true_intermediate": false,
     "trailing_is_lure": false,
     "trailing_is_answer": false,
@@ -254,6 +246,14 @@
     "chain_wrote_true_at_p4": false
    },
    {
+    "id": "L3-44-01111-inc@v1",
+    "trailing": 2,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
     "id": "L3-44-01131-inc@v1",
     "trailing": 3,
     "trailing_is_true_intermediate": false,
@@ -284,6 +284,14 @@
     "trailing_is_lure": false,
     "trailing_is_answer": true,
     "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L3-44-01282-inc@v1",
+    "trailing": 2,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
    },
    {
     "id": "L3-44-01602-inc@v1",
@@ -368,10 +376,10 @@
   ]
  },
  "incongruent@v2": {
-  "n_lure_errors_at_p5": 137,
-  "trailing_is_true_intermediate": 0.18248175182481752,
-  "trailing_is_lure": 0.29927007299270075,
-  "chain_wrote_true_at_p4": 0.4744525547445255,
+  "n_lure_errors_at_p5": 131,
+  "trailing_is_true_intermediate": 0.183206106870229,
+  "trailing_is_lure": 0.3053435114503817,
+  "chain_wrote_true_at_p4": 0.48091603053435117,
   "rows": [
    {
     "id": "L3-44-00000-inc@v2",
@@ -396,14 +404,6 @@
     "trailing_is_lure": false,
     "trailing_is_answer": false,
     "chain_wrote_true_at_p4": true
-   },
-   {
-    "id": "L3-44-00051-inc@v2",
-    "trailing": 2,
-    "trailing_is_true_intermediate": false,
-    "trailing_is_lure": false,
-    "trailing_is_answer": false,
-    "chain_wrote_true_at_p4": false
    },
    {
     "id": "L3-44-00072-inc@v2",
@@ -436,14 +436,6 @@
     "trailing_is_lure": false,
     "trailing_is_answer": false,
     "chain_wrote_true_at_p4": false
-   },
-   {
-    "id": "L3-44-00183-inc@v2",
-    "trailing": 6,
-    "trailing_is_true_intermediate": true,
-    "trailing_is_lure": false,
-    "trailing_is_answer": true,
-    "chain_wrote_true_at_p4": true
    },
    {
     "id": "L3-44-00204-inc@v2",
@@ -718,14 +710,6 @@
     "chain_wrote_true_at_p4": true
    },
    {
-    "id": "L3-44-00626-inc@v2",
-    "trailing": 5,
-    "trailing_is_true_intermediate": false,
-    "trailing_is_lure": false,
-    "trailing_is_answer": true,
-    "chain_wrote_true_at_p4": false
-   },
-   {
     "id": "L3-44-00633-inc@v2",
     "trailing": 7,
     "trailing_is_true_intermediate": false,
@@ -770,6 +754,30 @@
     "trailing": 2,
     "trailing_is_true_intermediate": false,
     "trailing_is_lure": true,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-00721-inc@v2",
+    "trailing": 4,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": false
+   },
+   {
+    "id": "L3-44-00743-inc@v2",
+    "trailing": 12,
+    "trailing_is_true_intermediate": false,
+    "trailing_is_lure": false,
+    "trailing_is_answer": false,
+    "chain_wrote_true_at_p4": true
+   },
+   {
+    "id": "L3-44-00769-inc@v2",
+    "trailing": 5,
+    "trailing_is_true_intermediate": true,
+    "trailing_is_lure": false,
     "trailing_is_answer": false,
     "chain_wrote_true_at_p4": false
    }

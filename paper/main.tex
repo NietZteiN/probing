@@ -214,8 +214,8 @@ computed, which serves as a no-computation control.}
 \paragraph{Replication.} On the letter condition, per-token probes trained on letters reproduce
 the positions reported by \citeauthor{kudo2026faithful} for Llama-3.2-3B: the queried variable
 becomes decodable at equation \NUM{replication-eq-v1} of the chain and the intermediate variable
-at equation \NUM{replication-eq-v2}, as in their Table~3. Our pre-CoT maxima,
-\NUM{replication-pre-v1} and \NUM{replication-pre-v2}, are higher than their 17.8 and 33.2.
+at equation \NUM{replication-eq-v2}, as in their Table~3. Our pre-CoT maxima, \NUM{replication-pre-v1} and
+\NUM{replication-pre-v2}, exceed their 17.8 and 33.2.
 
 \paragraph{Behavior.} Table~\ref{tab:behavior} reports accuracy and the pre-registered
 contrasts for each model and regime, averaged over three demonstration sets. Without CoT, the
@@ -236,27 +236,29 @@ one exception is the smallest model, \NUM{eq-exc-model}, whose CoT solves
 \paragraph{Does the written value explain the effect of CoT?} A natural explanation is that the
 chain states each variable's value, and that the stated value replaces the value denoted by the
 name. We split the incongruent instances by whether the model's own chain stated the true value
-of the target variable, and compare each half with the matched neutral twin passed through the
-same split. The raw lure rate differs considerably between the halves, but so does the rate at
-which the twin produces the same digit, because a model whose chain has broken down produces an
-arbitrary digit. After subtracting this baseline, the excess is \NUM{vw-excess-wrote} points
-over \NUM{vw-cells-wrote} cells in which the value was written and \NUM{vw-excess-not} over
-\NUM{vw-cells-not} cells in which it was not. The exception survives the control:
+of the target, and compare each half with the matched neutral twin under the same split. The raw
+lure rate differs considerably between the halves, but so does the rate at which the twin
+produces that digit, because a model whose chain has broken down produces an arbitrary digit.
+After subtracting this baseline, the excess is \NUM{vw-excess-wrote} points over
+\NUM{vw-cells-wrote} cells in which the value was written and \NUM{vw-excess-not} over
+\NUM{vw-cells-not} in which it was not. The exception survives the control:
 \NUM{eq-exc-model} is lured \NUM{vw-olmo-excess} points [\NUM{vw-olmo-lo}, \NUM{vw-olmo-hi}] on
-the \NUM{vw-olmo-n} instances in which its chain wrote the correct value.
+the \NUM{vw-olmo-n} instances in which its chain wrote the correct value. Patching agrees: injecting the misleading name into a neutral run of
+that model, with a correct chain force-decoded, moves the answer to the lure in
+\NUM{exc-inject} of pairs at layer~\NUM{exc-inject-layer}, against \NUM{exc-ctlword} for the
+word control at the same layer and \NUM{inject-cot-max} for every other model.
 
-\paragraph{Irrelevant lures.} At level 4, a number word on the distractor changes accuracy by at
-most \NUM{irr-acc-delta-max} points. Without CoT it is nevertheless answered
-\NUM{irr-direct-lo} to \NUM{irr-direct-hi} points above the neutral baseline
-(\NUM{irr-direct-claimable} of \NUM{irr-direct-cells} cells reliable), so a number word that
-names an unused variable is also read as a value; with CoT the excess is \NUM{irr-cot-lo} to
-\NUM{irr-cot-hi} points (\NUM{irr-cot-claimable} of \NUM{irr-cot-cells} reliable).
+\paragraph{Irrelevant lures.} At level 4 a number word on the distractor changes accuracy by at
+most \NUM{irr-acc-delta-max} points. Without CoT it is nevertheless answered \NUM{irr-direct-lo} to
+\NUM{irr-direct-hi} points above the neutral baseline (\NUM{irr-direct-claimable} of
+\NUM{irr-direct-cells} cells reliable), so a number word naming an unused variable is also read
+as a value; with CoT the excess is \NUM{irr-cot-lo} to \NUM{irr-cot-hi} points
+(\NUM{irr-cot-claimable} of \NUM{irr-cot-cells} reliable).
 
 \paragraph{Word class.} One effect is not removed by CoT. At level 4, a number word on the
-queried variable reduces the accuracy of Llama-3.2-3B by \NUM{wordclass-cost-L4} points
-(\NUM{wordclass-cost-L4-lo} to \NUM{wordclass-cost-L4-hi} across demonstration sets) whether or
-not the denoted value agrees with the true value; in these instances the model restates the
-wrong equation in the following step.
+queried variable costs Llama-3.2-3B \NUM{wordclass-cost-L4} points
+(\NUM{wordclass-cost-L4-lo}--\NUM{wordclass-cost-L4-hi} across demonstration sets) whether or not
+the denoted value agrees; the model then restates the wrong equation.
 
 \begin{table}[t]
 \centering\small
@@ -278,11 +280,10 @@ corresponding layer sweep. At P2, the end
 of the defining equation, the true value is partly computed (accuracy \NUM{p2-acc}, selectivity
 \NUM{p2-sel}) and the lure value is weakly decodable (\NUM{p2-lure}). At P3, the query, a probe
 reads the lure value in \NUM{p3-lure} of instances, but the control task also scores
-\NUM{p3-ctl} there, so the probe is reading the identity of the name. At P4 and P5, the true
-value is decodable at \NUM{p4-acc} and the lure value is at zero in every condition and level.
-At level~4, a number word on a computed variable has a lure mass of \NUM{bound-mass} at the
-answer position, against \NUM{unbound-mass} for one on the distractor, whose value is itself
-not decodable (accuracy \NUM{distractor-acc}).
+\NUM{p3-ctl} there, so the probe is reading the identity of the name. At P4 and P5, the true value is decodable at \NUM{p4-acc} and the
+lure is at zero in every condition and level. At level~4 a number word on a computed variable
+has a lure mass of \NUM{bound-mass} at the answer, against \NUM{unbound-mass} for one on the
+distractor, whose own value is not decodable (accuracy \NUM{distractor-acc}).
 
 
 
@@ -296,32 +297,33 @@ span grid places the effect at the equation that defines the name, where patchin
 accuracy, we report localization rather than recovery. For Llama-3.1-8B, whose no-CoT lure excess at level 3 is small, the neutral and
 alternative-lure patches remove lure errors equally, so the patching gives no evidence of a
 name-specific cause. With CoT, there are at most \NUM{cot-lure-err-max} lure errors in 2{,}000 instances to remove,
-and injecting the activations of the name into a neutral run changes the answer in at most
-\NUM{inject-cot-max} of 500 pairs.
+and injection changes the answer in at most \NUM{inject-cot-max} of 500 pairs for every model
+except \NUM{eq-exc-model}, reported above.
 
 
 \section{Related Work}
 
 \citet{kudo2026faithful} established when sub-answers are computed during CoT on clean
-arithmetic, and we add a cue conflict to that setting. Two studies apply the Stroop design to
-language models: \citet{wang2026stroop} place a local redefinition of a word in conflict with
-its familiar associate, and \citet{hu2026conflict} measure a congruency effect in next-token
-probabilities on a color-rule task. Both measure a single next token, without a chain of thought. Faithfulness has been measured externally by perturbing prompts, chains, or
-parameters \cite{turpin2023unfaithful,lanham2023measuring,chen2025reasoning,tutek2025unlearning};
-we measure it internally under a cue whose two values are known. Since small models can
+arithmetic, and we add a cue conflict to that setting. Two studies apply the Stroop design to language models
+\cite{wang2026stroop,hu2026conflict}, but both measure a single next token, without a chain of
+thought. Faithfulness has been measured externally by perturbing prompts, chains, or parameters
+\cite{turpin2023unfaithful,lanham2023measuring,chen2025reasoning,tutek2025unlearning}; we measure
+it internally under a cue whose two values are known. Since small models can
 copy the trailing number of the chain \cite{liu2026readout} and an output prior can override a
-correct chain \cite{prabhakar2024deciphering}, we report a positional-copy control. Misleading identifiers degrade performance on real
-code \cite{le2026obfuscated,le2025names,lam2025codecrash}, whereas our task is synthetic, which
-allows the effect to be localized. Work on binding \cite{feng2024binding,wu2025binding,gurarieh2026mixing} asks how a value is
-attached to a name; we ask whether that attachment survives a competing value.
+correct chain \cite{prabhakar2024deciphering}, we report a positional-copy control
+(Appendix~B). Misleading identifiers degrade performance on real code
+\cite{le2026obfuscated,le2025names,lam2025codecrash}; our synthetic task allows the effect to be
+localized. Work on binding \cite{feng2024binding,wu2025binding,gurarieh2026mixing} asks how a value
+attaches to a name; we ask whether that attachment survives a competing value.
 
 \section{Conclusion}
 
 We introduced a cue-conflict arithmetic task to ask where a misleading variable name interferes.
-Without CoT, the value denoted by the name is used as the answer, and patching localizes this
-effect to the early layers at the equation defining the name. With CoT, we observe no effect at
-any level, with one exception among \NUM{n-models} models, and whether the chain states the
-value does not predict its size.
+Without CoT, the value it denotes is used as the answer, and patching localizes this to the
+early layers at the equation defining the name. With CoT, we observe no effect at any level,
+except in one of \NUM{n-models} models, where the name still moves the answer through a correct
+chain at a single early layer. Whether the chain states the value does not predict the effect's
+size.
 
 \section*{Limitations}
 
@@ -367,6 +369,13 @@ those tokens and at the query, and it disappears the moment the chain writes
 tokens are shown; positions are the same for all 2{,}000.}
 \label{fig:heat}
 \end{figure*}
+
+\paragraph{Positional-copy control.} \citet{liu2026readout} report that small models copy
+whichever number stands in the trailing slot of the chain. Pooling the \NUM{copy-n-err} CoT lure
+errors at the answer position over every model, level and demonstration set, the number
+immediately preceding the answer in the model's own chain is the lure in \NUM{copy-lure-frac} of
+them and the target's true value in \NUM{copy-true-frac}. Neither dominates, so positional
+copying does not account for the CoT lure errors that remain.
 
 For every (variable, position, layer, seed) we report probe accuracy for the true value, lure
 rate, lure mass and margin, alongside the accuracy of a control probe trained on labels that are
