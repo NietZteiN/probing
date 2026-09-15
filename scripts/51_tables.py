@@ -286,6 +286,29 @@ def main() -> int:
             numbers["copy-n-err"] = str(cc_err)
             numbers["copy-lure-frac"] = f"{100*cc_lure/cc_err:.0f}\\%"
             numbers["copy-true-frac"] = f"{100*cc_true/cc_err:.0f}\\%"
+# Is the target's value linearly decodable at the step where the chain writes it, and does
+        # that line up with the behavioural lure excess? One row per (model with probes, role).
+        vs = []
+        for gf in (RESULTS_DIR / "summary").glob("*/L3/cot/probes_grid.json"):
+            mk = gf.parts[-4]; gg = json.loads(gf.read_text())
+            for role in ("v1", "v2"):
+                cells = {k.split("|")[1]: v for k, v in gg.get(f"train_neutral/{role}", {}).items()
+                         if k.startswith(f"cotpre@{role}|")}
+                if not cells: continue
+                L = max(cells, key=lambda L: cells[L]["neutral"]["accuracy"][0] - cells[L]["neutral"]["control_acc"])
+                acc = cells[L]["neutral"]["accuracy"][0]
+                ex = sweeps.get(3, {}).get(f"{mk}/cot", {}).get("contrasts", {}).get(f"lure_excess@{role}")
+                if ex: vs.append((mk, role, acc, ex["pooled_mean"], ex["claimable"]))
+        if vs:
+            hi = [r for r in vs if r[2] >= 0.9]; lo = [r for r in vs if r[2] < 0.9]
+            numbers["vs-cells"] = str(len(vs))
+            numbers["vs-decodable"] = str(len(hi))
+            numbers["vs-decodable-min"] = f"{min(r[2] for r in hi):.2f}" if hi else "--"
+            numbers["vs-decodable-maxexcess"] = f"{100*max(abs(r[3]) for r in hi):.1f}" if hi else "--"
+            if lo:
+                r = max(lo, key=lambda r: abs(r[3]))
+                numbers["vs-undecodable-acc"] = f"{r[2]:.2f}"
+                numbers["vs-undecodable-n"] = str(len(lo))
         irf = RESULTS_DIR / "summary" / "irrelevant_L4.json"
         if irf.exists():
             ir = json.loads(irf.read_text())

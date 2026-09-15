@@ -586,3 +586,26 @@ values at levels 1–2 reach 25–88% and are not representative.)
 Operational: `# needs:` deferral in the worker queue only applies to workers started AFTER the
 edit; bash has already parsed the loop in a running worker. That is why the OLMo probe job ran
 before its cache job and failed. Documented at the top of `scripts/slurm/worker.sh`.
+
+## 2026-09-15 — what actually predicts the protection: representation, not the written token
+
+OLMo-2-1B CoT probes finished. At the step where the chain writes the INTERMEDIATE variable's
+value, that model's probe reaches accuracy 0.22 (selectivity +0.07, lure at chance .095) — the
+value is not linearly represented there. For the QUERIED variable the same model reaches 1.00.
+Across the 8 (model, target) cells with probes:
+
+| value decodable at the writing step | cells | behavioural lure excess |
+|---|---|---|
+| yes (accuracy ≥ .98) | 7 | all within ±0.5 pts |
+| no (accuracy .22) | 1 | +3.3 pts, the exception |
+
+The alignment is role-specific: OLMo-2-1B's behavioural exception is on v2 (+3.3, reliable) and
+not on v1 (+0.5, not reliable), exactly matching where its probe fails. Together with the
+injection result (answer moves to the lure at layer 5 under a forced correct chain), this gives
+a coherent account that survives the control that killed the earlier one: **writing the value as
+a token is not sufficient; the model must also hold the value at that step.** The paper states
+this as an alignment over 8 cells, not as a causal claim.
+
+Also: `92_page_budget.py` was too lenient (a heading within the first 4% of a page counted as a
+clean break, so 3 lines of conclusion on page 5 still reported "body ends on page 4"). Now any
+body text above the heading counts. Body is genuinely 4 pages.

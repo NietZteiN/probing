@@ -25,7 +25,9 @@ def main() -> int:
         m = re.search(r"(?m)^\s*(Limitations|References)", t) if i else None
         if m:
             # the page still holds body text unless the heading is at its very top
-            body_end = i + 1 if m.start() > 0.04 * len(t) else i
+            # any body text before the heading means the body reached this page; allow only a
+            # heading sitting in the first line or two (page break landed exactly on it)
+            body_end = i + 1 if len(t[:m.start()].splitlines()) > 1 else i
             break
     tex = re.sub(r"(?m)%.*$", "", (ROOT / "paper" / "main.tex").read_text())
     keys = set(re.findall(r"\\NUM\{([^}]*)\}", tex))
