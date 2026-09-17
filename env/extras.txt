@@ -6,3 +6,4 @@ statsmodels
 pypdf        # read papers/ without a poppler install
 tqdm
 scikit-learn
+pypdfium2  # PDF page rasteriser for checking built papers (2026-09-17)
