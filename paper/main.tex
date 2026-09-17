@@ -237,8 +237,8 @@ one exception is the smallest model, \NUM{eq-exc-model}, whose CoT solves
 chain states each variable's value, and that the stated value replaces the value the name
 denotes. We split the incongruent instances by whether the model's own chain stated the target's
 true value, and compare each half with the matched neutral twin under the same split. The raw
-lure rate differs considerably between the halves, but so does the rate at which the twin
-produces that digit, since a model whose chain has broken down produces an arbitrary digit.
+lure rate differs between the halves, but so does the rate at which the twin produces that
+digit, since a broken chain ends in an arbitrary digit.
 After subtracting this baseline, the excess is \NUM{vw-excess-wrote} points over
 \NUM{vw-cells-wrote} cells in which the value was written and \NUM{vw-excess-not} over
 \NUM{vw-cells-not} in which it was not, so writing the value as text does not account for the
@@ -246,15 +246,15 @@ effect. The exception survives the control: \NUM{eq-exc-model} is lured \NUM{vw-
 points [\NUM{vw-olmo-lo}, \NUM{vw-olmo-hi}] on the \NUM{vw-olmo-n} instances in which its chain
 wrote the correct value, and injecting the misleading name into a neutral run of it, with a
 correct chain force-decoded, moves the answer to the lure in \NUM{exc-inject} of pairs at
-layer~\NUM{exc-inject-layer}, against \NUM{exc-ctlword} for the word control at that layer and
-\NUM{inject-cot-max} for every other model.
+layer~\NUM{exc-inject-layer} (\NUM{exc-inject-damage} of answers change in total), while the
+word control changes \NUM{exc-ctlword} of answers at that layer and injection moves the answer
+to the lure in at most \NUM{inject-cot-max} of pairs for every other model.
 
 What does line up with the effect is whether the value is \emph{represented} at that step.
 Across the \NUM{vs-cells} (model, target) cells for which we have probes, the
 \NUM{vs-decodable} whose value is decodable where the chain writes it (accuracy $\geq$
 \NUM{vs-decodable-min}) have a lure excess within \NUM{vs-decodable-maxexcess} points of zero,
-and the one whose value is not (accuracy \NUM{vs-undecodable-acc}) is the exception. On this
-evidence, writing the token is not sufficient: the model must hold the value there.
+and the one whose value is not (accuracy \NUM{vs-undecodable-acc}) is the exception.
 
 \paragraph{Identifier names.} A reviewer may object that a bare lexical prior is the weakest
 form of a misleading name. We repeated level~3 with identifier-style names, writing
@@ -284,27 +284,27 @@ Table~\ref{tab:levels-appendix}.}
 \end{table}
 
 \paragraph{Probing results.} Figure~\ref{fig:master}(c) shows the probe predictions at each
-token for Llama-3.2-3B at level~3 with CoT, and Figure~\ref{fig:heat} in the appendix the
-corresponding layer sweep. At P2, the end
+token for Llama-3.2-3B at level~3 with CoT, Figure~\ref{fig:heat} the layer sweep,
+Figure~\ref{fig:dump-fig4-errors-llama32-3b-L3-cot-v1} the same probes split by whether the
+model answered correctly, and Figure~\ref{fig:ownchain} their predictions over the model's own
+wrong chains. At P2, the end
 of the defining equation, the true value is partly computed (accuracy \NUM{p2-acc}, selectivity
 \NUM{p2-sel}) and the lure value is weakly decodable (\NUM{p2-lure}). At P3, the query, a probe
 reads the lure value in \NUM{p3-lure} of instances, but the control task also scores
 \NUM{p3-ctl} there, so the probe is reading the identity of the name. At P4 and P5, the true value is decodable at \NUM{p4-acc} and the
-lure is at zero in every condition and every level probed for this model. At level~4 a number word on a computed variable
-has a lure mass of \NUM{bound-mass} at the answer, against \NUM{unbound-mass} for one on the
-distractor, whose own value is not decodable (accuracy \NUM{distractor-acc}).
+lure is at zero in every condition and every level probed for this model.
 
 
 
-\paragraph{Causal intervention.} Figure~\ref{fig:patch} in the appendix shows, for the direct
-regime, the proportion of lure errors removed by patching the tokens of the name from the
+\paragraph{Causal intervention.} Figure~\ref{fig:patch} shows, for the direct regime, the proportion of lure errors removed by patching the tokens of the name from the
 matched neutral twin, by layer, with both controls. For Llama-3.2-3B, patching all layers removes \NUM{lure-removed-3b} of the lure errors and
 restores the margin between the true and lure values (normalized logit difference
 \NUM{nld-3b}), the alternative-lure patch is followed in \NUM{follow-new-lure} of cases, and the
 span grid places the effect at the equation that defines the name, where patching layers
 \NUM{grid-layers} alone removes up to \NUM{grid-top-removed} of the errors. Because the word control changes \NUM{control-damage} of correct answers at this floor
-accuracy, we report localization rather than recovery. For Llama-3.1-8B, whose no-CoT lure excess at level 3 is small, the neutral and
-alternative-lure patches remove lure errors equally, so the patching gives no evidence of a
+accuracy, we report localization rather than recovery. For Llama-3.1-8B, whose no-CoT lure excess at level~3 is small, the neutral and
+alternative-lure patches remove lure errors equally
+(Figure~\ref{fig:dump-fig3-patching-llama31-8b-L3-v2}), so the patching gives no evidence of a
 name-specific cause. With CoT, no model makes more than \NUM{cot-lure-err-max} lure error in 2{,}000 instances,
 and injection changes the answer in at most \NUM{inject-cot-max} of 500 pairs for every model
 except \NUM{eq-exc-model}, reported above.
@@ -330,8 +330,8 @@ We introduced a cue-conflict arithmetic task to ask where a misleading variable 
 interferes. Without CoT, its value is used as the answer, and patching localizes this to the
 early layers at the equation defining the name. With CoT, we observe no effect at any level
 except in one of \NUM{n-models} models, where the name still moves the answer through a correct
-chain. The effect tracks whether the model represents the value at the step
-that writes it. Whether the chain states the value does not predict it.
+chain. Of the eight cells probed, the exception is the one whose value is not decodable at
+the step that writes it; whether the chain states the value does not predict the effect.
 
 \section*{Limitations}
 
@@ -383,7 +383,10 @@ most \NUM{irr-acc-delta-max} points. Without CoT it is nevertheless answered \NU
 to \NUM{irr-direct-hi} points above the neutral baseline (\NUM{irr-direct-claimable} of
 \NUM{irr-direct-cells} cells reliable), so a number word naming a variable the answer does not
 depend on is also read as a value; with CoT the excess is \NUM{irr-cot-lo} to \NUM{irr-cot-hi}
-points (\NUM{irr-cot-claimable} of \NUM{irr-cot-cells} reliable).
+points (\NUM{irr-cot-claimable} of \NUM{irr-cot-cells} reliable). In the probes, a number
+word on a computed variable has a lure mass of \NUM{bound-mass} at the answer, against
+\NUM{unbound-mass} for one on the distractor, whose own value is not decodable (accuracy
+\NUM{distractor-acc}).
 
 \paragraph{Positional-copy control.} \citet{liu2026readout} report that small models copy
 whichever number stands in the trailing slot of the chain. Pooling the \NUM{copy-n-err} CoT lure
@@ -412,7 +415,7 @@ direct regime, with the neutral-word control patch (damage) and the alternative-
 
 \begin{figure}[h]
 \centering
-\IfFileExists{figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr.pdf}{\includegraphics[width=\columnwidth]{figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr.pdf}}{\fbox{\parbox{0.95\columnwidth}{\centering\small\textcolor{red}{[Figure 4, generated by scripts/64\_kudo\_fig3.py]}}}}
+\IfFileExists{figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i0.pdf}{\includegraphics[width=\columnwidth]{figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i0.pdf}}{\fbox{\parbox{0.95\columnwidth}{\centering\small\textcolor{red}{[Figure 4, generated by scripts/64\_kudo\_fig3.py]}}}}
 \caption{In the layout of \citeauthor{kudo2026faithful}'s Figure~3, for problems this model
 answers with the lure. Each cell is the probe's top-1 prediction at that layer and token: green
 the variable's true value, red the value the model answered, amber the value its name denotes,
@@ -421,6 +424,21 @@ which is what it emits where it reads nothing; cells carry information only wher
 from it.}
 \label{fig:kudo3}
 \end{figure}
+
+\begin{figure*}[h]
+\centering
+\IfFileExists{figures/fig_own_chain_llama32-3b_L3_cot_v1.pdf}{\includegraphics[width=\textwidth]{figures/fig_own_chain_llama32-3b_L3_cot_v1.pdf}}{\fbox{\parbox{0.95\textwidth}{\centering\small\textcolor{red}{[own-chain figure, generated by scripts/67\_own\_chain\_figure.py]}}}}
+\caption{The probes of Figure~\ref{fig:kudo3} applied to the model's own generated chain rather
+than to a force-decoded gold chain, for the eight level-3 incongruent problems that Llama-3.2-3B
+answered wrongly under CoT (the first \NUM{ownchain-n} of \NUM{ownchain-total} wrong answers
+in 2{,}000 instances). Probes are
+trained on neutral problems at the step that writes the variable's value and applied at every
+generated token and every second layer; colours as in Figure~\ref{fig:kudo3}, boxed columns the
+name's own tokens. With eight instances this is a picture, not a rate: the states hold the
+value the model is about to write (red) in the late layers, and the name's value (amber) is
+confined to the early layers at and after the name's tokens.}
+\label{fig:ownchain}
+\end{figure*}
 
 \section{Additional levels, models and demonstration sets}
 Table~\ref{tab:levels-appendix} repeats Table~\ref{tab:behavior} for the other four levels.

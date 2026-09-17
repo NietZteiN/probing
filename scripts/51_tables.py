@@ -165,7 +165,7 @@ def main() -> int:
                 sel = [r for r in vw if r[f"n_{tag}"] >= 50 and r[f"excess_{tag}"] is not None]
                 if sel:
                     w = [r[f"n_{tag}"] for r in sel]
-                    numbers[f"vw-excess-{tag}"] = f"{100*np.average([r[f'excess_{tag}'] for r in sel], weights=w):+.1f}"
+                    numbers[f"vw-excess-{tag}"] = f"{100*np.average([r[f'excess_{tag}'] for r in sel], weights=w):+.2f}"
                     numbers[f"vw-cells-{tag}"] = str(len(sel))
             olmo = [r for r in vw if r["model"] == "olmo2-1b-it" and r["target"] == "v2"
                     and r["regime"] == "cot" and r.get("excess_wrote_ci")]
@@ -175,6 +175,12 @@ def main() -> int:
                 numbers["vw-olmo-lo"] = f"{100*ci[0]:+.1f}"
                 numbers["vw-olmo-hi"] = f"{100*ci[1]:+.1f}"
                 numbers["vw-olmo-n"] = str(r["n_wrote"])
+        # own-chain probe figure (26_own_chain_probe.py / 67_own_chain_figure.py): how many instances it shows
+        oc = RESULTS_DIR / "summary" / "llama32-3b" / "L3" / "cot" / "own_chain_v1.json"
+        ob = OUT_DIR / "runs" / "llama32-3b" / "L3" / "cot" / "incongruent@v1" / "behavior.jsonl"
+        if oc.exists() and ob.exists():
+            numbers["ownchain-n"] = str(len(json.loads(oc.read_text())))
+            numbers["ownchain-total"] = str(sum(1 for l in ob.open() if not json.loads(l)["correct"]))
         kt = RESULTS_DIR / "summary" / "llama32-3b" / "L3" / "cot" / "kudo_table.json"
         if kt.exists():
             k = json.loads(kt.read_text())
