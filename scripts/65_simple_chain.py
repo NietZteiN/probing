@@ -53,8 +53,20 @@ def load_group(d: Path) -> dict[str, dict]:
     return {r["set_id"]: r for r in map(json.loads, f.open())}
 
 
+_NAMES: dict[int, dict[str, dict[str, str]]] = {}
+
+
+def names_of(level: int) -> dict[str, dict[str, str]]:
+    """id -> role -> surface name, from the dataset: rows written before 2026-09-14 carry no names."""
+    if level not in _NAMES:
+        from cueconf.config import DATA_DIR
+        _NAMES[level] = {r["id"]: r["names"] for r in map(json.loads, (DATA_DIR / f"L{level}" / "test_sets.jsonl").open())}
+    return _NAMES[level]
+
+
 def cell(model: str, level: int, base: str, role: str, seeds: list[int]) -> dict | None:
     per_seed = {}
+    names = names_of(level)
     for sd in seeds:
         d = OUT_DIR / "runs" / model / f"L{level}" / (base if sd == 7 else f"{base}_s{sd}")
         inc, neu = load_group(d / f"incongruent@{role}"), load_group(d / "neutral")
@@ -65,8 +77,8 @@ def cell(model: str, level: int, base: str, role: str, seeds: list[int]) -> dict
             t = neu.get(sid)
             if t is None or r["lure"] is None:
                 continue
-            w_inc = written_value(r["generation"], r["names"][role])
-            w_neu = written_value(t["generation"], t["names"][role])
+            w_inc = written_value(r["generation"], names[r["id"]][role])
+            w_neu = written_value(t["generation"], names[t["id"]][role])
             rows.append({"set": sid, "seed": sd,
                          "wl": float(w_inc == r["lure"]), "wl_twin": float(w_neu == r["lure"]),
                          "al": float(r["pred_is_lure"]), "al_twin": float(t["pred"] == r["lure"]),
