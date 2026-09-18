@@ -7,7 +7,7 @@ from cueconf.words import NEUTRAL_CANDIDATES
 
 
 @pytest.mark.parametrize("level", sorted(LEVELS))
-@pytest.mark.parametrize("regime", ["cot", "direct"])
+@pytest.mark.parametrize("regime", ["cot", "direct", "simple"])
 def test_positions_point_at_the_right_characters(level, regime):
     demos = {s: make_demos(level, s) for s in ("letter", "word")}
     for s in sample_sets(level, 15, seed=9):
@@ -92,7 +92,7 @@ def test_segments_tile_the_instance_region():
     demos = make_demos(3, "word")
     for s in sample_sets(3, 5, seed=21):
         for x in s:
-            for regime in ("cot", "direct"):
+            for regime in ("cot", "direct", "simple"):
                 lay = layout(x, demos, regime)
                 segs = lay.segments
                 labels = [l for l, _, _ in segs]

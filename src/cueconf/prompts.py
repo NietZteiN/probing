@@ -36,7 +36,10 @@ from typing import Sequence
 from .generator import (Instance, cot_steps, instance_arithmetic, sample_single)
 from .words import NEUTRAL_CANDIDATES
 
-REGIMES = ("cot", "direct", "free")
+REGIMES = ("cot", "direct", "free", "simple")
+# simple: Kudo et al.'s "Simple CoT" (their Table 6): the chain writes only the value steps,
+# `cup=5, pen=6`, never the equation. The value-only format of the code study (`v = 3`), so the
+# two studies fill the same ladder: no chain / value only / expression then value (E31).
 N_DEMOS = 3
 DEMO_SEED = 7
 N_DEMO_WORDS = 12          # reserved for demos, never used in probe-train or test instances
@@ -85,8 +88,17 @@ def scheme_of(condition: str) -> str:
     return "letter" if condition == "letter" else "word"
 
 
+def render_simple(inst: Instance) -> str:
+    """Value steps only: `cup=5, pen=6`. Derived from the same chain, so the value of every role
+    is written exactly once, in dependency order, with the query last."""
+    ar = instance_arithmetic(inst)
+    return ", ".join(t for kind, _, t in cot_steps(ar, inst.names) if kind == "value")
+
+
 def output_of(inst: Instance, regime: str) -> str:
     base = parse_regime(regime)[0]
+    if base == "simple":
+        return render_simple(inst)
     return inst.cot if base in ("cot", "free") else inst.direct
 
 
@@ -177,8 +189,11 @@ def layout(inst: Instance, demos: Sequence[Instance], regime: str) -> Layout:
     for r in names:
         pos[f"cotpre@{r}"] = None
         pos[f"cot@{r}"] = None
-    if parse_regime(regime)[0] in ("cot", "free"):
+    base = parse_regime(regime)[0]
+    if base in ("cot", "free", "simple"):
         steps = cot_steps(ar, names)
+        if base == "simple":
+            steps = [s for s in steps if s[0] == "value"]
         obuf = []
         for k, (kind, role, text) in enumerate(steps):
             if k:
@@ -206,13 +221,13 @@ def layout(inst: Instance, demos: Sequence[Instance], regime: str) -> Layout:
                 assert text[len(names[role])] == "="
                 pos[f"cotpre@{role}"] = eq_at
                 pos[f"cot@{role}"] = eq_at + 1
-        assert ", ".join(obuf) == inst.cot
+        assert ", ".join(obuf) == output_of(inst, regime)
     else:
         at = emit(inst.direct)
         segments.append(("cot:0:value:" + ar.query, at, at + len(inst.direct)))
         spans[ar.query].append((at, at + len(names[ar.query])))
         eq_at = at + len(names[ar.query])
-    pos["anspre"] = pos[f"cotpre@{ar.query}"] if parse_regime(regime)[0] in ("cot", "free") else eq_at
+    pos["anspre"] = pos[f"cotpre@{ar.query}"] if base in ("cot", "free", "simple") else eq_at
     pos["ans"] = pos["anspre"] + 1
     text = prompt[:start] + "".join(buf)
     assert text == prompt + output_of(inst, regime)

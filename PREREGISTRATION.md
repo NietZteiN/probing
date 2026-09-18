@@ -111,3 +111,19 @@ value step; a positive causal test in place of the removal test, which has no er
 Predictions recorded before seeing the results: E34 lure excess above δ at the stated variable
 and within δ at the computed one; E35 injection rate near zero at the value step; E36 lure
 excess within δ, i.e. the format is not what removes the lure.
+
+**Amendment 4 (2026-09-18, before any run of the regime).** E31, the value-only chain
+(`simple`: demonstrations and model write `cup=5, pen=6`, the value steps of the chain without
+the equations; Kudo et al.'s "Simple CoT", Table 6). This is the arithmetic counterpart of the
+code study's terse trace (`v = 3`), whose contamination the code study located at the readout.
+The full chain used everywhere else in this paper writes the expression before every value, so
+it corresponds to the code study's `trace_expr`. Predictions, fixed here: (i) at level 3 the
+written-lure excess at the target's value step (the model writes `name=<lure>` for the
+number-word variable, against the matched neutral twin's rate of writing that digit for the
+same role) exceeds δ = 2 points for at least Llama-3.2-3B and Llama-3.1-8B, on the intermediate
+variable at least; (ii) for the same models, a neutral-trained probe at `cotpre@r` in the simple
+regime reads the true value at ≥ 0.85, so the failure, if present, is one of readout and not of
+representation, as in code. Refutation: (i) false for both Llama models means the value-only
+format is dangerous in code and not in arithmetic, and the merged paper must say why rather than
+claim symmetry. Analysis script fixed in advance: `65_simple_chain.py` (written-lure excess at
+the value step per role, three demonstration seeds, cluster bootstrap, the paper's claim rule).

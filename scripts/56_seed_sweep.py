@@ -64,7 +64,7 @@ def main() -> int:
     for L in a.levels:
         report = {}
         for m in models:
-            for base in ("cot", "direct"):
+            for base in ("cot", "direct", "simple"):
                 per_seed = {}
                 for sd in a.seeds:
                     d = OUT_DIR / "runs" / m / f"L{L}{a.data_suffix}" / (base if sd == 7 else f"{base}_s{sd}")

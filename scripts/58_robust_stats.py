@@ -165,7 +165,7 @@ def main() -> int:
 
     mixed = {}
     for m in models:
-        for base in ("cot", "direct"):
+        for base in ("cot", "direct", "simple"):
             for role in ("v1", "v2"):
                 df = long_frame(m, a.level, base, role, a.max_sets)
                 if not len(df):
