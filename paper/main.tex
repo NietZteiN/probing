@@ -341,7 +341,11 @@ parameters, and within-family comparisons indicate the direction of a trend only
 English number words; identifier-style names were tested at level~3 only, and other languages
 and optimized lures remain future work. Linear probes can miss information that is encoded nonlinearly; the
 patching experiments address this in part, but hidden states carry mixed information and
-patching cannot exclude side effects, which is why we report two control patches. Finally, the
+patching cannot exclude side effects, which is why we report two control patches. The claim
+that the effect tracks whether the value is represented holds across the cells we probed, but
+the corresponding instance-level regression of a lure error on the probe margin is not
+sign-consistent (Appendix~\ref{app:sweeps}), so that link is weaker than the cell-level
+pattern suggests. Finally, the
 CoT format writes the name beside the computed value at every step, which may itself assist
 recovery; the direct regime bounds this effect from the other side.
 
@@ -366,6 +370,7 @@ runner excludes and counts any instance that does not; no instance was excluded 
 reported here.
 
 \section{Full sweeps and selectivity}
+\label{app:sweeps}
 
 \begin{figure*}[h]
 \centering
@@ -387,6 +392,39 @@ points (\NUM{irr-cot-claimable} of \NUM{irr-cot-cells} reliable). In the probes,
 word on a computed variable has a lure mass of \NUM{bound-mass} at the answer, against
 \NUM{unbound-mass} for one on the distractor, whose own value is not decodable (accuracy
 \NUM{distractor-acc}).
+
+\paragraph{Mixed-effects check.} Every lure excess we report is a paired per-set difference
+summarised by a cluster bootstrap. A bootstrap over matched sets is not a model of the
+dependence between the two members of a twin pair, so we refit each level-3 cell as
+\texttt{answered\_lure \textasciitilde{} incongruent + C(seed)} with a random intercept per
+matched set, on the long form of the same data: one row per set, condition and demonstration
+set, with the outcome on both members being the digit the misleading name denotes, so the
+neutral member carries the pseudo-lure baseline. The fixed effect on \texttt{incongruent} is
+the lure excess in log odds. The fit
+cost grows with the number of random effects, so each cell uses a fixed random subsample of
+\NUM{mix-cap} matched sets and both procedures are computed on exactly those rows. Of the
+\NUM{mix-cells} cells that admit a fit, \NUM{mix-agree} agree with the bootstrap on whether
+the effect excludes zero, and \NUM{mix-unfitted} more have no variation in the outcome and are
+not fitted. The \NUM{mix-differ-n} disagreements all run the same way: the mixed model's
+interval excludes zero where the bootstrap's does not, and all \NUM{mix-differ-neg} of them
+are negative, meaning fewer lure answers under the misleading name than under its neutral twin.
+In \NUM{mix-lost} of the \NUM{mix-cells} cells does the
+mixed model withdraw support for an effect the bootstrap finds, so no claim in the body rests
+on the choice of procedure. We keep the bootstrap in the
+body because it estimates the quantity in Table~\ref{tab:behavior} on the scale it is
+reported.
+
+\paragraph{Instance-level link, and where it fails.} The body argues at the level of cells:
+the one cell whose value is not decodable where the chain writes it is the one cell with a
+surviving effect. The finer version of that claim is per instance, so we also fit, for each
+(model, level, regime, role), a clustered logit of a lure error on the probe's margin
+(log $p_{\text{true}} -$ log $p_{\text{lure}}$) at the layer with the best neutral accuracy.
+The mechanism predicts a negative coefficient: a state that favours the true value should
+produce fewer lure answers. Across \NUM{link-fits} fits, \NUM{link-sig} reach $p < .05$, of
+which \NUM{link-neg} are negative and \NUM{link-pos} positive. The predicted direction
+dominates but is not uniform, and \NUM{link-pos-topmodel-n} of the exceptions come from a
+single model, so we treat the instance-level link as unresolved and rest the claim on the
+cell-level pattern.
 
 \paragraph{Positional-copy control.} \citet{liu2026readout} report that small models copy
 whichever number stands in the trailing slot of the chain. Pooling the \NUM{copy-n-err} CoT lure

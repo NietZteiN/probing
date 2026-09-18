@@ -384,6 +384,29 @@ def main() -> int:
             numbers["follow-new-lure"] = f"{100*l['follows_src_lure']:.0f}\\%"
         numbers.setdefault("grid-layers", "?")
 
+    # ---- E21 + E7: the two robustness statistics (scripts/58_robust_stats.py)
+    rs = RESULTS_DIR / "summary" / "robust_stats_L3.json"
+    if rs.exists():
+        d = json.loads(rs.read_text())
+        numbers["mix-cells"] = str(d["mixed_fitted"])
+        numbers["mix-agree"] = str(d["mixed_agree"])
+        numbers["mix-unfitted"] = str(d["mixed_cells"] - d["mixed_fitted"])
+        numbers["mix-cap"] = str(d.get("max_sets", 0))
+        fitted = [(k, c) for k, c in d["mixed_effects"].items() if "coef" in c.get("mixed", {})]
+        diff = [c for k, c in fitted if c.get("verdict") == "differ"]
+        numbers["mix-differ-n"] = str(len(diff))
+        # a disagreement matters only if it removes support for something the body claims
+        numbers["mix-lost"] = str(sum(1 for _, c in fitted
+                                      if (c["boot_lo"] > 0 or c["boot_hi"] < 0) and not c["mixed"]["excludes_zero"]))
+        numbers["mix-differ-neg"] = str(sum(1 for c in diff if c["mixed"]["coef"] < 0))
+        lk = d["link"]
+        numbers["link-fits"] = str(lk["total_fits"]); numbers["link-sig"] = str(lk["total_sig"])
+        numbers["link-neg"] = str(lk["sig_negative"]); numbers["link-pos"] = str(lk["sig_positive"])
+        import collections as _c
+        pos_models = _c.Counter(r["model"] for r in lk["fits"] if r["p"] < 0.05 and r["coef"] > 0)
+        if pos_models:
+            numbers["link-pos-topmodel-n"] = str(pos_models.most_common(1)[0][1])
+
     narrative(numbers)
     n_main = build([3], PAPER / "tables" / "behavior.tex", "3")
     n_app = build([1, 2, 4, 5], PAPER / "tables" / "behavior_levels.tex", "1, 2, 4 and 5")
