@@ -629,3 +629,39 @@ never becomes the answer. This bounds the paper's claim to lexical priors and is
 paragraph.
 
 **All GPU experiments for the paper are complete as of this entry.**
+
+## 2026-09-19 — E31 (value-only chain), interim: the direction is right, the effect is not robust
+
+Six of eight models have all three demonstration seeds; the two Llama probe jobs and the 8B
+behaviour sweep are still queued behind other projects on h100.
+
+**The predicted direction appears.** Under the value-only chain (`cup=5, pen=6`, no equations)
+several models write the lure at the target's value step above the matched twin's rate, where
+the full chain does not: OLMo-2-1B +2.8 and +5.8 (intermediate, queried), Gemma-3-4B +1.3
+(queried), OLMo-2-7B +1.8 (intermediate), Llama-3.2-3B +9.2 (intermediate). Under the full
+chain the same cells are 0.0 to +0.5 and mostly inside δ = 2.
+
+**But it is a demonstration artefact in the largest cells.** Llama-3.2-3B's +9.2 is
++1.7 / +24.2 / +1.7 by seed; Gemma-3-4B's +3.1 is +0.0 / +8.2 / +1.2; Llama-3.2-3B's queried
+cell is +0.1 / +8.2 / −1.6 and fails the sign rule. Seed 11 carries almost everything. The
+pooled number passes the claim rule and is still not a property of the format.
+
+Ruled out: name reuse across demonstrations. Seed 11 reuses `star` with two different values,
+but seed 13 reuses `song` and `seed` the same way and behaves like seed 7. Not diagnosed.
+
+**Accuracy collapses in this format**, as \citet{kudo2026faithful} also report for it: neutral
+accuracy 26–40% for the Llama and OLMo models against 96–100% with the full chain, and 77–99%
+for the Gemma models. A twin-matched excess is still valid at floor, but a format this broken
+is weak evidence about a mechanism.
+
+**Prediction (ii) fails for the one model that has probes.** For OLMo-2-1B the true value is
+decodable at the step that writes it at only 0.58 (queried) and 0.38 (intermediate), far below
+the pre-registered 0.85. For that model the value-only chain is a REPRESENTATION failure, which
+is what it already was under the full chain, not the readout failure the code study shows. The
+decisive test is the Llama 3B and 8B probes, still queued.
+
+**Consequence for the merged paper.** If the Llama probes also come out low, the value-only
+chain does not supply the arithmetic readout-failure point the merged narrative needs, and the
+bottom-right/top-right symmetry in `codecue/docs/MERGED_NARRATIVE.md` does not hold. More runs
+on more seeds would not fix that; it would be a different result, and the merge would have to be
+re-argued or dropped.

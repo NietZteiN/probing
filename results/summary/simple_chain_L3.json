@@ -1,0 +1,346 @@
+{
+ "llama32-3b/L3/simple/v2": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 2000,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": 9.2,
+   "lo": 8.45,
+   "hi": 9.95,
+   "by_seed": {
+    "7": 1.7,
+    "11": 24.2,
+    "13": 1.7
+   },
+   "claimable": true,
+   "within_delta": false,
+   "rate_inc": 14.05,
+   "rate_twin": 4.85
+  },
+  "answer_lure_excess": {
+   "mean": 2.18,
+   "lo": 1.48,
+   "hi": 2.85,
+   "by_seed": {
+    "7": -0.4,
+    "11": 6.8,
+    "13": 0.15
+   },
+   "claimable": false,
+   "within_delta": false,
+   "rate_inc": 7.95,
+   "rate_twin": 5.77
+  },
+  "acc_neutral": 31.3,
+  "acc_incongruent": 27.7,
+  "wrote_target_value_step": 97.7
+ },
+ "llama32-3b/L3/simple/v1": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 2000,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": 2.25,
+   "lo": 1.55,
+   "hi": 2.92,
+   "by_seed": {
+    "7": 0.05,
+    "11": 8.25,
+    "13": -1.55
+   },
+   "claimable": false,
+   "within_delta": false,
+   "rate_inc": 8.1,
+   "rate_twin": 5.85
+  },
+  "answer_lure_excess": {
+   "mean": 2.25,
+   "lo": 1.55,
+   "hi": 2.92,
+   "by_seed": {
+    "7": 0.05,
+    "11": 8.25,
+    "13": -1.55
+   },
+   "claimable": false,
+   "within_delta": false,
+   "rate_inc": 8.1,
+   "rate_twin": 5.85
+  },
+  "acc_neutral": 31.3,
+  "acc_incongruent": 24.9,
+  "wrote_target_value_step": 91.8
+ },
+ "llama32-3b/L3/cot/v2": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 2000,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": -0.05,
+   "lo": -0.15,
+   "hi": 0.0,
+   "by_seed": {
+    "7": -0.1,
+    "11": 0.0,
+    "13": -0.05
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.05
+  },
+  "answer_lure_excess": {
+   "mean": -0.17,
+   "lo": -0.3,
+   "hi": -0.05,
+   "by_seed": {
+    "7": -0.15,
+    "11": -0.05,
+    "13": -0.3
+   },
+   "claimable": true,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.17
+  },
+  "acc_neutral": 98.3,
+  "acc_incongruent": 99.4,
+  "wrote_target_value_step": 99.5
+ },
+ "llama32-3b/L3/cot/v1": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 2000,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": 0.13,
+   "lo": 0.02,
+   "hi": 0.28,
+   "by_seed": {
+    "7": 0.35,
+    "11": 0.0,
+    "13": 0.05
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.23,
+   "rate_twin": 0.1
+  },
+  "answer_lure_excess": {
+   "mean": 0.13,
+   "lo": 0.02,
+   "hi": 0.28,
+   "by_seed": {
+    "7": 0.35,
+    "11": 0.0,
+    "13": 0.05
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.23,
+   "rate_twin": 0.1
+  },
+  "acc_neutral": 98.3,
+  "acc_incongruent": 97.2,
+  "wrote_target_value_step": 100.0
+ },
+ "llama32-3b-it/L3/simple/v2": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 2000,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": 2.2,
+   "lo": 1.67,
+   "hi": 2.77,
+   "by_seed": {
+    "7": 0.95,
+    "11": 2.1,
+    "13": 3.55
+   },
+   "claimable": true,
+   "within_delta": false,
+   "rate_inc": 5.93,
+   "rate_twin": 3.73
+  },
+  "answer_lure_excess": {
+   "mean": -0.4,
+   "lo": -1.02,
+   "hi": 0.27,
+   "by_seed": {
+    "7": -0.6,
+    "11": -0.05,
+    "13": -0.55
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 5.2,
+   "rate_twin": 5.6
+  },
+  "acc_neutral": 40.4,
+  "acc_incongruent": 40.6,
+  "wrote_target_value_step": 97.0
+ },
+ "llama32-3b-it/L3/simple/v1": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 2000,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": -1.13,
+   "lo": -1.7,
+   "hi": -0.55,
+   "by_seed": {
+    "7": -0.75,
+    "11": 0.6,
+    "13": -3.25
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 4.28,
+   "rate_twin": 5.42
+  },
+  "answer_lure_excess": {
+   "mean": -1.13,
+   "lo": -1.7,
+   "hi": -0.55,
+   "by_seed": {
+    "7": -0.75,
+    "11": 0.6,
+    "13": -3.25
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 4.28,
+   "rate_twin": 5.42
+  },
+  "acc_neutral": 40.4,
+  "acc_incongruent": 40.6,
+  "wrote_target_value_step": 98.2
+ },
+ "llama32-3b-it/L3/cot/v2": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 2000,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": 0.0,
+   "lo": 0.0,
+   "hi": 0.0,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.0
+  },
+  "answer_lure_excess": {
+   "mean": 0.0,
+   "lo": 0.0,
+   "hi": 0.0,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.0
+  },
+  "acc_neutral": 100.0,
+  "acc_incongruent": 99.9,
+  "wrote_target_value_step": 100.0
+ },
+ "llama32-3b-it/L3/cot/v1": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 2000,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": 0.0,
+   "lo": 0.0,
+   "hi": 0.0,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.0
+  },
+  "answer_lure_excess": {
+   "mean": 0.0,
+   "lo": 0.0,
+   "hi": 0.0,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.0
+  },
+  "acc_neutral": 100.0,
+  "acc_incongruent": 100.0,
+  "wrote_target_value_step": 100.0
+ }
+}
