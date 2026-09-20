@@ -713,3 +713,37 @@ less to decode. The formats are only superficially the same manipulation.
 number in either draft depends on it. The negative result is worth one appendix paragraph in
 the arithmetic paper (the format that writes values without equations degrades the computation
 rather than exposing the name) and it is honest grounds for NOT merging.
+
+## 2026-09-20 — E18, patching scope: the localisation is robust; one artefact at layer 0
+
+`--scope prompt` restricts the patch to the name's occurrences in the PROMPT, against the
+reported `--scope all`, which also patches the name where it appears in the model's own output.
+Llama-3.2-3B, level 3, direct regime, read at the answer position, 2,000 instances per role.
+Written to `main@<role>__promptscope.json`; the reported files are untouched (`--out-suffix`).
+
+| role | scope | best window | lure removed | damage |
+|---|---|---|---|---|
+| intermediate (v2) | all occurrences | W0-3 | 43.4% | 26.6% |
+| intermediate (v2) | prompt only | W0-3 | 43.4% | 27.8% |
+| queried (v1) | all occurrences | W0-3 | 52.9% | 25.0% |
+| queried (v1) | prompt only | W4-7 | 52.3% | 28.4% |
+| queried (v1) | prompt only | W0-3 | **2.9%** | **76.0%** |
+
+**Reading.** For the intermediate variable the two scopes are indistinguishable: its name never
+appears in the answer line, so "prompt only" and "all occurrences" are the same set of tokens.
+For the queried variable they agree from layer 4 on (52.3 vs 52.9) and disagree at layer 0,
+where the prompt-only patch removes almost nothing and destroys three quarters of the correct
+answers. That is a mechanical artefact, not a result: the queried variable's name also sits at
+the readout (`pen=` on the answer line), so patching its prompt copies alone leaves the model
+reading a name whose early representation no longer matches the one it just processed. By
+layers 4–7 the information has propagated and the two scopes agree.
+
+The same artefact appeared in the code project, where patching only a name's DEFINITION token
+left its later uses unpatched and cost 75–80% damage at layer 0. Both projects landed on the
+same rule: patch every occurrence of the name, or restrict the read to layers past the point
+where the name's own tokens still carry the difference.
+
+**Conclusion for the paper.** The reported localisation does not depend on the scope choice.
+Where the two can differ, they agree; where they do not agree, the prompt-only variant is
+degenerate for a reason that has nothing to do with the cue conflict. This answers the reviewer
+question the row was written for.
