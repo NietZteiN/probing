@@ -59,7 +59,7 @@ def main() -> int:
     inst = {x["id"]: x for x in json.loads((base / f"{cond}__alltok" / "meta.json").read_text())["instances"]} \
         if (base / f"{cond}__alltok" / "meta.json").exists() else {}
     wrong = [r for r in rows if not r["correct"]][: a.n]
-    m = model_entry(a.model); tok, model = load_model(m["hf_id"])
+    m = model_entry(a.model); tok, model = load_model(m["hf_id"], adapter=m.get("adapter"))
     demos = make_demos(a.level, scheme_of("incongruent"), n=parse_regime(a.regime)[1], seed=demo_seed_of(a.regime))
     out = []
     for r in wrong:

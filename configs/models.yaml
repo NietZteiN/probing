@@ -92,3 +92,43 @@ models:
     tuned: true
     partition: h200
     batch_size: 16
+
+  # ---- model-kind axis (2026-09-20): one spine, Llama-3.1-8B-Instruct, five kinds of tuning.
+  # The three tuned entries are obtune project artefacts (LoRA r=32 on the instruct model), folded
+  # into the weights at load time. They share the instruct tokenizer, so the verified word pool and
+  # every token position carry over unchanged.
+  llama31-8b-it-ft:
+    hf_id: meta-llama/Llama-3.1-8B-Instruct
+    adapter: /work/jvl210002/migration/obtune/runs/adapters/llama31-8b/python/L0_r32_s42/best
+    origin: Meta + obtune LoRA
+    kind: tuned
+    tuned: true
+    partition: h100
+    batch_size: 16
+    note: single-task domain finetune (python, L0, seed 42).
+  llama31-8b-it-ftmulti:
+    hf_id: meta-llama/Llama-3.1-8B-Instruct
+    adapter: /work/jvl210002/migration/obtune/runs/adapters/llama31-8b/python/L0-L1b-L1r-L2-S1-S2_r32_s42/best
+    origin: Meta + obtune LoRA
+    kind: tuned
+    tuned: true
+    partition: h100
+    batch_size: 16
+    note: joint multi-task finetune over six tasks (seed 42).
+  llama31-8b-it-merged:
+    hf_id: meta-llama/Llama-3.1-8B-Instruct
+    adapter: /work/jvl210002/migration/obtune/runs/merges/llama31-8b_python_ties/d0p5
+    origin: Meta + obtune TIES merge
+    kind: tuned
+    tuned: true
+    partition: h100
+    batch_size: 16
+    note: TIES merge (density 0.5) of six single-task adapters.
+  nemotron-nano-8b:
+    hf_id: nvidia/Llama-3.1-Nemotron-Nano-8B-v1
+    origin: NVIDIA
+    kind: reasoning
+    tuned: true
+    partition: h100
+    batch_size: 16
+    note: reasoning-tuned on the Llama-3.1-8B spine; the E16 row's model finally available in a non-Chinese checkpoint.

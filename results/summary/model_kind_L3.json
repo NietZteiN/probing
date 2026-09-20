@@ -1,0 +1,186 @@
+{
+ "llama31-8b/L3/direct/v1": {
+  "kind": "core",
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n": 6000,
+  "acc_neutral": 53.4,
+  "acc_incongruent": 53.5,
+  "lure_rate": 4.58,
+  "pseudo_rate": 3.38,
+  "lure_excess": {
+   "mean": 1.2,
+   "lo": 0.73,
+   "hi": 1.67,
+   "by_seed": {
+    "7": 0.35,
+    "11": 1.1,
+    "13": 2.15
+   },
+   "claimable": true
+  },
+  "facilitation": {
+   "mean": 4.77,
+   "lo": 3.87,
+   "hi": 5.72,
+   "by_seed": {
+    "7": 7.5,
+    "11": 1.3,
+    "13": 5.5
+   },
+   "claimable": true
+  },
+  "interference": {
+   "mean": -0.1,
+   "lo": -1.02,
+   "hi": 0.8,
+   "by_seed": {
+    "7": -3.1,
+    "11": 0.75,
+    "13": 2.05
+   },
+   "claimable": false
+  }
+ },
+ "llama31-8b/L3/direct/v2": {
+  "kind": "core",
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n": 6000,
+  "acc_neutral": 53.4,
+  "acc_incongruent": 55.6,
+  "lure_rate": 3.55,
+  "pseudo_rate": 3.57,
+  "lure_excess": {
+   "mean": -0.02,
+   "lo": -0.48,
+   "hi": 0.45,
+   "by_seed": {
+    "7": -0.05,
+    "11": 0.5,
+    "13": -0.5
+   },
+   "claimable": false
+  },
+  "facilitation": {
+   "mean": 3.82,
+   "lo": 2.9,
+   "hi": 4.72,
+   "by_seed": {
+    "7": 6.6,
+    "11": 1.7,
+    "13": 3.15
+   },
+   "claimable": true
+  },
+  "interference": {
+   "mean": -2.15,
+   "lo": -3.07,
+   "hi": -1.22,
+   "by_seed": {
+    "7": -4.5,
+    "11": 0.3,
+    "13": -2.25
+   },
+   "claimable": false
+  }
+ },
+ "llama31-8b-it/L3/direct/v1": {
+  "kind": "pair",
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n": 6000,
+  "acc_neutral": 52.2,
+  "acc_incongruent": 51.4,
+  "lure_rate": 3.07,
+  "pseudo_rate": 2.92,
+  "lure_excess": {
+   "mean": 0.15,
+   "lo": -0.28,
+   "hi": 0.6,
+   "by_seed": {
+    "7": 0.7,
+    "11": -0.1,
+    "13": -0.15
+   },
+   "claimable": false
+  },
+  "facilitation": {
+   "mean": 1.72,
+   "lo": 0.82,
+   "hi": 2.6,
+   "by_seed": {
+    "7": 2.8,
+    "11": -2.3,
+    "13": 4.65
+   },
+   "claimable": false
+  },
+  "interference": {
+   "mean": 0.82,
+   "lo": -0.15,
+   "hi": 1.77,
+   "by_seed": {
+    "7": -0.2,
+    "11": 3.3,
+    "13": -0.65
+   },
+   "claimable": false
+  }
+ },
+ "llama31-8b-it/L3/direct/v2": {
+  "kind": "pair",
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n": 6000,
+  "acc_neutral": 52.2,
+  "acc_incongruent": 51.1,
+  "lure_rate": 3.25,
+  "pseudo_rate": 3.03,
+  "lure_excess": {
+   "mean": 0.22,
+   "lo": -0.28,
+   "hi": 0.72,
+   "by_seed": {
+    "7": 0.35,
+    "11": -0.55,
+    "13": 0.85
+   },
+   "claimable": false
+  },
+  "facilitation": {
+   "mean": 5.23,
+   "lo": 4.18,
+   "hi": 6.22,
+   "by_seed": {
+    "7": 4.2,
+    "11": 6.55,
+    "13": 4.95
+   },
+   "claimable": true
+  },
+  "interference": {
+   "mean": 1.08,
+   "lo": 0.1,
+   "hi": 2.07,
+   "by_seed": {
+    "7": 0.1,
+    "11": -1.95,
+    "13": 5.1
+   },
+   "claimable": false
+  }
+ }
+}

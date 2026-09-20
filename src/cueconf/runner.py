@@ -38,7 +38,7 @@ from .prompts import (demo_seed_of, layout, make_demos, parse_answer, parse_answ
 DIGIT_STRS = [str(d) for d in range(10)]
 
 
-def load_model(hf_id: str, dtype=torch.bfloat16, device: str = "cuda"):
+def load_model(hf_id: str, dtype=torch.bfloat16, device: str = "cuda", adapter: str | None = None):
     """Loads any causal LM in the panel. Gemma-3 checkpoints are multimodal
     (Gemma3ForConditionalGeneration): AutoModelForCausalLM returns the wrapper, whose
     `config.text_config` holds the layer count and width and whose `.model.language_model` is the
@@ -54,6 +54,13 @@ def load_model(hf_id: str, dtype=torch.bfloat16, device: str = "cuda"):
     except ValueError:
         from transformers import AutoModel
         model = AutoModel.from_pretrained(hf_id, dtype=dtype, device_map=device)
+    if adapter:
+        # A finetuned or merged model in the panel is a LoRA on one of the bases we already run
+        # (obtune artefacts). Fold the adapter into the weights so the rest of the pipeline sees an
+        # ordinary causal LM: hidden-state caching, probes and patching all index layers directly.
+        from peft import PeftModel
+        model = PeftModel.from_pretrained(model, adapter, torch_dtype=dtype)
+        model = model.merge_and_unload()
     model.eval()
     return tok, model
 

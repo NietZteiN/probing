@@ -68,7 +68,7 @@ def main() -> int:
     groups.update(tests)
     if a.groups:
         groups = {g: groups[g] for g in a.groups}
-    tok, model = load_model(m["hf_id"])
+    tok, model = load_model(m["hf_id"], adapter=m.get("adapter"))
     bs = a.batch_size or m.get("batch_size", 16)
     if a.layer_stride > 1 and a.layers is None:
         from cueconf.runner import text_config

@@ -127,3 +127,28 @@ representation, as in code. Refutation: (i) false for both Llama models means th
 format is dangerous in code and not in arithmetic, and the merged paper must say why rather than
 claim symmetry. Analysis script fixed in advance: `65_simple_chain.py` (written-lure excess at
 the value step per role, three demonstration seeds, cluster bootstrap, the paper's claim rule).
+
+**Amendment 5 (2026-09-20, before any of these runs).** Model-kind axis. The panel so far varies
+family and size; it does not vary *how* a model was tuned. We add four models on one spine,
+Llama-3.1-8B-Instruct, so that tokenizer, word pool and token positions are identical and every
+row is comparable instance by instance: a single-task LoRA finetune, a joint multi-task LoRA
+finetune, a TIES merge of six single-task adapters (all three obtune artefacts, folded into the
+weights at load time), and a reasoning-tuned checkpoint on the same spine
+(`nvidia/Llama-3.1-Nemotron-Nano-8B-v1`). With the base and instruct models already in the panel
+this gives the ladder base → instruct → finetune → multi-task → merge → reasoning.
+
+Prediction, fixed here: the direct-regime lure excess does NOT differ beyond the equivalence
+margin δ = 2 between instruct and any of the three tuned variants, because LoRA finetuning on a
+code/task mixture changes what the model knows, not whether it reads a variable's value off its
+name. The reasoning model is a separate case and no prediction is fixed for it, since its output
+format differs and its regime has to be chosen (below). Refutation of the tuned prediction: any
+tuned variant differing from `llama31-8b-it` by more than δ under the claim rule, which would
+say that the effect is a property of the tuning mixture rather than of the architecture or the
+pretraining.
+
+Analysis fixed in advance: `68_model_kind.py`, reporting lure excess over the matched neutral
+twin with the paper's claim rule (same sign in all three demonstration seeds, pooled cluster
+bootstrap excluding zero). Reasoning models emit a thinking prefix before the answer, so the
+few-shot `direct` and `cot` regimes may not apply to them; if they do not, the reasoning row is
+reported in the `free` regime only and is labelled as not directly comparable to the rest of the
+ladder rather than being forced into it.

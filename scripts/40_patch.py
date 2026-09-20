@@ -61,7 +61,7 @@ def main() -> int:
         by_set[x.set_id][(x.condition, x.target)] = x
     spec = LEVELS[a.level]
     targets = a.targets or [r for r, _ in spec["eqs"] if r != spec["distractor"]]
-    tok, model = load_model(m["hf_id"])
+    tok, model = load_model(m["hf_id"], adapter=m.get("adapter"))
     if a.grid:
         sets = list(by_set.values())
         for srcname in a.sources:
