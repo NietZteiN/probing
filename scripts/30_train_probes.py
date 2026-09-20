@@ -37,6 +37,8 @@ def main() -> int:
     ap.add_argument("--no-control", action="store_true")
     ap.add_argument("--test-groups", nargs="*", default=None)
     ap.add_argument("--suffix", default="", help="'__alltok' to probe the E27 all-token caches; output goes to <train><suffix>/")
+    ap.add_argument("--out-suffix", default="", help="append to the OUTPUT directory only, leaving the cache path alone: "
+                                                     "a recipe variant (E17) must not overwrite the probes the paper reports")
     a = ap.parse_args()
     base = OUT_DIR / "runs" / a.model / f"L{a.level}" / a.regime
     train_dir = base / (a.train + a.suffix)
@@ -50,7 +52,7 @@ def main() -> int:
         test_dirs = {g: test_dirs[g] for g in a.test_groups}
     roles = a.roles or [lhs for lhs, _ in LEVELS[a.level]["eqs"]]
     for role in roles:
-        out = OUT_DIR / "probes" / a.model / f"L{a.level}" / a.regime / (a.train + a.suffix) / f"{role}.json"
+        out = OUT_DIR / "probes" / a.model / f"L{a.level}" / a.regime / (a.train + a.suffix + a.out_suffix) / f"{role}.json"
         train_and_eval(train_dir, test_dirs, role, out, seeds=tuple(a.seeds), optimizer=a.optimizer, epochs=a.epochs,
                        lr=a.lr, layers=a.layers, positions=a.positions, control=not a.no_control, standardize=a.standardize)
         print(f"wrote {out}")

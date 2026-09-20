@@ -45,6 +45,8 @@ def main() -> int:
     ap.add_argument("--contrasts", nargs="+", default=list(CONTRASTS))
     ap.add_argument("--targets", nargs="*", default=None)
     ap.add_argument("--scope", default="all", choices=["all", "prompt"])
+    ap.add_argument("--out-suffix", default="", help="append to the output FILENAME: a scope variant (E18) must not "
+                                                     "overwrite the patching results the paper reports")
     ap.add_argument("--window", type=int, default=4)
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--only-lure-errors", action="store_true")
@@ -113,7 +115,7 @@ def main() -> int:
             if a.only_lure_errors and cname == "main":
                 beh = OUT_DIR / "runs" / a.model / f"L{a.level}" / a.regime / f"{dst_c}@{t}" / "behavior.jsonl"
                 only = {json.loads(l)["id"] for l in beh.open() if json.loads(l)["pred_is_lure"]}
-            out = OUT_DIR / "patching" / a.model / f"L{a.level}" / a.regime / f"{cname}@{t}.json"
+            out = OUT_DIR / "patching" / a.model / f"L{a.level}" / a.regime / f"{cname}@{t}{a.out_suffix}.json"
             if out.exists():
                 print(f"skip {out}"); continue
             s = run_contrast(tok, model, a.level, a.regime, pairs, f"{cname}@{t}", out, scope=a.scope, window=a.window, only_ids=only)

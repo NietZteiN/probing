@@ -668,8 +668,8 @@ re-argued or dropped.
 
 ## 2026-09-19 (complete) — E31: BOTH pre-registered predictions refuted; the merge's symmetry fails
 
-All eight models, three demonstration seeds. Probes for Llama-3.1-8B and OLMo-2-1B; the
-Llama-3.2-3B probe job hit the a30 walltime and is re-running on h100 (413159).
+All eight models, three demonstration seeds. Probes for all three cached models (the Llama-3.2-3B job hit the a30 walltime and was re-run
+on h100 as 413159, 1:55).
 
 **Prediction (i), written-lure excess above δ = 2 for BOTH Llama models on the intermediate:
 refuted.** Llama-3.1-8B is +0.15 [−0.10, +0.40] there, inside δ; its queried variable is +1.17,
@@ -678,10 +678,16 @@ seed it is one demonstration set, not the format. The instruct models are +0.2 t
 claimable and inside δ. So the value-only format does not reliably let the name into the
 arithmetic chain.
 
-**Prediction (ii), the value decodable at ≥ 0.85 where the chain writes it: refuted.**
+**Prediction (ii), the value decodable at ≥ 0.85 where the chain writes it: refuted on all
+three probed models.** Llama-3.2-3B is the decisive one: it carries the only large behavioural
+effect (+24.2 on one seed, at the intermediate variable), and its value is decodable there at
+0.788, below the threshold. So even the model that is lured does not have the value sitting
+intact to be misread.
 
 | model | regime | probe at its own value step, queried / intermediate |
 |---|---|---|
+| Llama-3.2-3B | simple | **0.609 / 0.788** |
+| Llama-3.2-3B | cot | 1.000 / 0.982 |
 | Llama-3.1-8B | simple | **0.812 / 0.592** |
 | Llama-3.1-8B | cot | 1.000 / 0.994 |
 | OLMo-2-1B | simple | **0.577 / 0.382** |
