@@ -665,3 +665,45 @@ chain does not supply the arithmetic readout-failure point the merged narrative 
 bottom-right/top-right symmetry in `codecue/docs/MERGED_NARRATIVE.md` does not hold. More runs
 on more seeds would not fix that; it would be a different result, and the merge would have to be
 re-argued or dropped.
+
+## 2026-09-19 (complete) — E31: BOTH pre-registered predictions refuted; the merge's symmetry fails
+
+All eight models, three demonstration seeds. Probes for Llama-3.1-8B and OLMo-2-1B; the
+Llama-3.2-3B probe job hit the a30 walltime and is re-running on h100 (413159).
+
+**Prediction (i), written-lure excess above δ = 2 for BOTH Llama models on the intermediate:
+refuted.** Llama-3.1-8B is +0.15 [−0.10, +0.40] there, inside δ; its queried variable is +1.17,
+claimable but also inside δ. Llama-3.2-3B is +9.20 and passes, but at +1.7 / +24.2 / +1.7 by
+seed it is one demonstration set, not the format. The instruct models are +0.2 to +0.9,
+claimable and inside δ. So the value-only format does not reliably let the name into the
+arithmetic chain.
+
+**Prediction (ii), the value decodable at ≥ 0.85 where the chain writes it: refuted.**
+
+| model | regime | probe at its own value step, queried / intermediate |
+|---|---|---|
+| Llama-3.1-8B | simple | **0.812 / 0.592** |
+| Llama-3.1-8B | cot | 1.000 / 0.994 |
+| OLMo-2-1B | simple | **0.577 / 0.382** |
+| OLMo-2-1B | cot | 0.998 / 0.802 |
+
+Dropping the equations does not leave the computation intact and break the readout. It degrades
+the computation itself: the same model, same problems, same probe recipe, loses 0.19 to 0.42 of
+decoding accuracy at the step that writes the value.
+
+**Consequence: the ladder in `codecue/docs/MERGED_NARRATIVE.md` does not hold.** The merge was
+built on arithmetic's value-only chain supplying a READOUT failure, matching the code study,
+where the value is decodable at 0.85–1.00 and the name still wins. Arithmetic gives the
+opposite: where the name gets in at all, the value is not there to be read. The two tasks do
+not share a mechanism across the format ladder, and the "two conditions, one per task" story is
+not supported.
+
+Why this is not surprising in hindsight: in the code task the program stays in the prompt, so
+the model can recompute `len(xs)` at the decision token whatever the trace format writes. In
+arithmetic the chain's restatement of each equation is the computation; remove it and there is
+less to decode. The formats are only superficially the same manipulation.
+
+**What survives.** Both papers as they stand are untouched: this was a new regime, and no
+number in either draft depends on it. The negative result is worth one appendix paragraph in
+the arithmetic paper (the format that writes values without equations degrades the computation
+rather than exposing the name) and it is honest grounds for NOT merging.
