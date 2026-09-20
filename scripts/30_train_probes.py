@@ -45,9 +45,16 @@ def main() -> int:
     if not (train_dir / "meta.json").exists():
         print(f"FATAL: no cache at {train_dir}; run 20_run_model.py first", file=sys.stderr)
         return 2
-    test_dirs = {p.name.removesuffix(a.suffix): p for p in sorted(base.iterdir())
-                 if (p / "meta.json").exists() and not p.name.startswith("train_") and p.name.endswith(a.suffix)
-                 and (a.suffix or "__" not in p.name)}
+    # A group has a forced cache only if 20_run_model.py was given --forced-all; by default the
+    # *_alt control groups are behaviour-only, because probes never read them and patching
+    # recomputes activations. Skip those rather than dying on a missing hidden.npy.
+    cand = [p for p in sorted(base.iterdir())
+            if (p / "meta.json").exists() and not p.name.startswith("train_") and p.name.endswith(a.suffix)
+            and (a.suffix or "__" not in p.name)]
+    test_dirs = {p.name.removesuffix(a.suffix): p for p in cand if (p / "hidden.npy").exists()}
+    skipped = [p.name for p in cand if not (p / "hidden.npy").exists()]
+    if skipped:
+        print(f"# no forced cache, not evaluated: {', '.join(skipped)}", flush=True)
     if a.test_groups:
         test_dirs = {g: test_dirs[g] for g in a.test_groups}
     roles = a.roles or [lhs for lhs, _ in LEVELS[a.level]["eqs"]]
