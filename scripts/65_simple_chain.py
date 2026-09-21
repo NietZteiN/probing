@@ -129,8 +129,11 @@ def main() -> int:
                       f"{w['mean']:+6.2f} [{w['lo']:+6.2f},{w['hi']:+6.2f}]{star} "
                       f"{'/'.join(f'{v:+.1f}' for v in w['by_seed'].values()):>22s}  "
                       f"{al['mean']:+6.2f} [{al['lo']:+6.2f},{al['hi']:+6.2f}]{'*' if al['claimable'] else ''}")
+    # merge, never clobber: a run restricted to one regime or one model must not erase the rest
     f = RESULTS_DIR / "summary" / f"simple_chain_L{a.level}.json"
-    f.write_text(json.dumps(report, indent=1))
+    prev = json.loads(f.read_text()) if f.exists() else {}
+    prev.update(report)
+    f.write_text(json.dumps(prev, indent=1))
     print(f"\n* claimable (same sign in every seed, pooled CI excludes 0); = equivalent to zero (CI inside ±{DELTA:.0f})")
     print(f"wrote {f}")
     return 0

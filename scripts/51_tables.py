@@ -71,8 +71,17 @@ def main() -> int:
             if not sp.exists():
                 continue
             sw = json.loads(sp.read_text())
+            # Table 1 is the PANEL: family and size. The tuned and reasoning rungs vary how one
+            # spine was tuned and belong to the ladder in Appendix~\ref{app:kind}, not here.
+            panel = {m for m, e in load_config("models.yaml")["models"].items()
+                     if e.get("kind") not in ("tuned", "reasoning")}
             for key, rec in sorted(sw.items()):
                 k, regime = key.split("/")
+                # cot and direct are the paper's two regimes. `simple` (the value-only chain,
+                # Appendix~\ref{app:simple}) is also in the sweep and must never render here: the
+                # row label below collapses anything that is not cot to "direct".
+                if k not in panel or regime not in ("cot", "direct"):
+                    continue
                 g, cons = rec["groups"], rec["contrasts"]
 
                 def num(name):
@@ -406,6 +415,144 @@ def main() -> int:
         pos_models = _c.Counter(r["model"] for r in lk["fits"] if r["p"] < 0.05 and r["coef"] > 0)
         if pos_models:
             numbers["link-pos-topmodel-n"] = str(pos_models.most_common(1)[0][1])
+
+    # ---- E17 probe recipe + E18 patching scope (69_recipe_scope.py)
+    rsf = RESULTS_DIR / "summary" / "recipe_scope_L3.json"
+    if rsf.exists():
+        rs = json.loads(rsf.read_text())
+        rec = rs.get("recipe", {})
+        for name in ("sgd", "lbfgs", "std"):
+            for pos, key in (("v1/cotpre@v1", "cotpre-v1"), ("v2/cotpre@v2", "cotpre-v2"),
+                             ("v1/end@v1", "end-v1"), ("v2/end@v2", "end-v2"),
+                             ("v1/query", "query-v1"), ("v2/query", "query-v2"), ("v1/anspre", "anspre")):
+                v = rec.get(name, {}).get(pos)
+                if v is not None:
+                    numbers[f"e17-{name}-{key}"] = f"{v:.3f}"
+        vals = [v for name in rec for k, v in rec[name].items() if k.endswith(("cotpre@v1", "cotpre@v2"))]
+        if vals:
+            numbers["e17-value-lo"] = f"{min(vals):.2f}"; numbers["e17-value-hi"] = f"{max(vals):.2f}"
+        ends = [v for name in rec for k, v in rec[name].items() if "end@" in k]
+        if ends:
+            numbers["e17-end-lo"] = f"{min(ends):.2f}"; numbers["e17-end-hi"] = f"{max(ends):.2f}"
+        qs = [v for name in rec for k, v in rec[name].items() if k.endswith("query")]
+        if qs:
+            numbers["e17-query-lo"] = f"{min(qs):.2f}"; numbers["e17-query-hi"] = f"{max(qs):.2f}"
+        sc = rs.get("scope", {})
+        for role in ("v1", "v2"):
+            for tag in ("all", "prompt"):
+                cells = sc.get(f"{role}/{tag}", {})
+                wins = {k: v for k, v in cells.items() if k.startswith("W")}
+                if wins:
+                    bk, bv = max(wins.items(), key=lambda kv: kv[1]["lure_removed"])
+                    numbers[f"e18-{role}-{tag}-best"] = bk.replace("W", "").replace("-", "--")
+                    numbers[f"e18-{role}-{tag}-removed"] = f"{100*bv['lure_removed']:.0f}"
+                    numbers[f"e18-{role}-{tag}-damage"] = f"{100*bv['damage']:.0f}"
+                w03 = cells.get("W0-3")
+                if w03:
+                    numbers[f"e18-{role}-{tag}-w03"] = f"{100*w03['lure_removed']:.0f}"
+                    numbers[f"e18-{role}-{tag}-w03damage"] = f"{100*w03['damage']:.0f}"
+        lines = ["\\begin{tabular}{@{}llrrr@{}}", "\\toprule",
+                 "Position & Variable & SGD (reported) & L-BFGS & standardized \\\\", "\\midrule"]
+        for pos, lab, role in (("end@{r}", "defining equation", "v1"), ("end@{r}", "defining equation", "v2"),
+                               ("query", "query", "v1"), ("query", "query", "v2"),
+                               ("cotpre@{r}", "value step", "v1"), ("cotpre@{r}", "value step", "v2"),
+                               ("anspre", "answer", "v1")):
+            key = f"{role}/{pos.format(r=role)}"
+            row = [rec.get(n, {}).get(key) for n in ("sgd", "lbfgs", "std")]
+            if any(v is not None for v in row):
+                var = "queried" if role == "v1" else "intermediate"
+                lines.append(f"{lab} & {var} & " + " & ".join(f"{v:.3f}" if v is not None else "--" for v in row) + " \\\\")
+        lines += ["\\bottomrule", "\\end{tabular}"]
+        (PAPER / "tables" / "recipe.tex").write_text("\n".join(lines) + "\n")
+
+    # ---- E31 value-only chain (65_simple_chain.py)
+    scf = RESULTS_DIR / "summary" / "simple_chain_L3.json"
+    if scf.exists():
+        sc = json.loads(scf.read_text())
+        SH = {"llama32-3b": "l3b", "llama31-8b": "l8b", "olmo2-1b-it": "olmo1"}
+        for m, sh in SH.items():
+            for role in ("v1", "v2"):
+                c = sc.get(f"{m}/L3/simple/{role}")
+                if not c:
+                    continue
+                w = c["written_lure_excess"]
+                numbers[f"simple-{sh}-{role}"] = f"{w['mean']:+.2f}"
+                numbers[f"simple-{sh}-{role}-lo"] = f"{w['lo']:+.2f}"; numbers[f"simple-{sh}-{role}-hi"] = f"{w['hi']:+.2f}"
+                numbers[f"simple-{sh}-{role}-seeds"] = " / ".join(f"{v:+.1f}" for v in w["by_seed"].values())
+                numbers[f"simple-{sh}-acc"] = f"{c['acc_neutral']:.0f}"
+        # probe decodability at the step that writes the value, simple vs the full chain
+        import glob as _glob
+        for m, sh in SH.items():
+            for reg in ("simple", "cot"):
+                for role in ("v1", "v2"):
+                    f = OUT_DIR / "probes" / m / "L3" / reg / "train_neutral" / f"{role}.json"
+                    if not f.exists():
+                        continue
+                    best = 0.0
+                    for r in json.loads(f.read_text())["results"]:
+                        if r["position"] != f"cotpre@{role}":
+                            continue
+                        acc = r["eval"].get("neutral", {}).get("accuracy")
+                        if acc and acc > best:
+                            best = acc
+                    if best:
+                        numbers[f"simpleprobe-{sh}-{reg}-{role}"] = f"{best:.2f}"
+
+    # ---- E40 model-kind ladder (68_model_kind.py)
+    mkf = RESULTS_DIR / "summary" / "model_kind_L3.json"
+    if mkf.exists():
+        mk = json.loads(mkf.read_text())
+        RUNGS = [("llama31-8b", "base", "base"), ("llama31-8b-it", "instruct", "it"),
+                 ("llama31-8b-it-ft", "single-task finetune", "ft"),
+                 ("llama31-8b-it-ftmulti", "multi-task finetune", "ftm"),
+                 ("llama31-8b-it-merged", "weight merge", "merge"),
+                 ("nemotron-nano-8b", "reasoning-tuned", "reas")]
+        for m, _, sh in RUNGS:
+            for role in ("v1", "v2"):
+                for reg, rtag in (("direct", ""), ("cot", "-cot")):
+                    c = mk.get(f"{m}/L3/{reg}/{role}")
+                    if not c or "lure_excess" not in c:
+                        continue
+                    e = c["lure_excess"]
+                    numbers[f"kind-{sh}-{role}{rtag}"] = f"{e['mean']:+.2f}"
+                    numbers[f"kind-{sh}-{role}{rtag}-lo"] = f"{e['lo']:+.2f}"
+                    numbers[f"kind-{sh}-{role}{rtag}-hi"] = f"{e['hi']:+.2f}"
+                    if reg == "direct":
+                        numbers[f"kind-{sh}-acc"] = f"{c['acc_neutral']:.1f}"
+                    else:
+                        numbers[f"kind-{sh}-acc-cot"] = f"{c['acc_neutral']:.1f}"
+        tuned = [f"{m}/L3/direct/{r}" for m, _, sh in RUNGS if sh in ("ft", "ftm", "merge") for r in ("v1", "v2")]
+        it = {r: mk.get(f"llama31-8b-it/L3/direct/{r}", {}).get("lure_excess", {}).get("mean") for r in ("v1", "v2")}
+        gaps = [abs(mk[k]["lure_excess"]["mean"] - it[k.rsplit("/", 1)[1]]) for k in tuned
+                if k in mk and it.get(k.rsplit("/", 1)[1]) is not None]
+        if gaps:
+            numbers["kind-maxgap"] = f"{max(gaps):.2f}"; numbers["kind-tuned-cells"] = str(len(gaps))
+        cotvals = [abs(mk[f"{m}/L3/cot/{r}"]["lure_excess"]["mean"]) for m, _, _ in RUNGS for r in ("v1", "v2")
+                   if f"{m}/L3/cot/{r}" in mk]
+        if cotvals:
+            numbers["kind-cot-max"] = f"{max(cotvals):.2f}"
+        numbers["kind-rungs"] = str(len(RUNGS))
+        lines = ["\\begin{tabular}{@{}llrrr@{}}", "\\toprule",
+                 "Tuning & Model & Queried & Intermediate & Acc. \\\\", "\\midrule"]
+        DISP = {"llama31-8b": "Llama-3.1-8B", "llama31-8b-it": "\\quad + instruct",
+                "llama31-8b-it-ft": "\\quad + task LoRA", "llama31-8b-it-ftmulti": "\\quad + multi-task LoRA",
+                "llama31-8b-it-merged": "\\quad + TIES merge", "nemotron-nano-8b": "Nemotron-Nano-8B"}
+        for m, lab, _ in RUNGS:
+            cells = []
+            for role in ("v1", "v2"):
+                c = mk.get(f"{m}/L3/direct/{role}")
+                if not c or "lure_excess" not in c:
+                    cells.append("--"); continue
+                e = c["lure_excess"]
+                cells.append(f"{e['mean']:+.2f}{'$^{*}$' if e['claimable'] else ''}")
+            acc = mk.get(f"{m}/L3/direct/v1", {}).get("acc_neutral")
+            if acc is None:
+                acc = mk.get(f"{m}/L3/direct/v2", {}).get("acc_neutral")
+            if acc is None:
+                continue
+            lines.append(f"{lab} & {DISP[m]} & " + " & ".join(cells) + f" & {acc:.1f} \\\\")
+        lines += ["\\bottomrule", "\\end{tabular}"]
+        (PAPER / "tables" / "modelkind.tex").write_text("\n".join(lines) + "\n")
 
     narrative(numbers)
     n_main = build([3], PAPER / "tables" / "behavior.tex", "3")

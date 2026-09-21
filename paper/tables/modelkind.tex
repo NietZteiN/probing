@@ -1,0 +1,12 @@
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Tuning & Model & Queried & Intermediate & Acc. \\
+\midrule
+base & Llama-3.1-8B & +1.20$^{*}$ & -0.02 & 53.4 \\
+instruct & \quad + instruct & +0.15 & +0.22 & 52.2 \\
+single-task finetune & \quad + task LoRA & +0.05 & +0.23 & 52.2 \\
+multi-task finetune & \quad + multi-task LoRA & -0.58$^{*}$ & -0.08 & 46.1 \\
+weight merge & \quad + TIES merge & -0.10 & +0.10 & 51.9 \\
+reasoning-tuned & Nemotron-Nano-8B & +0.52 & +0.32 & 34.5 \\
+\bottomrule
+\end{tabular}

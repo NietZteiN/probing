@@ -212,6 +212,16 @@ def check_sweeps(level: int) -> None:
     have_runs = {m for m in load_config("models.yaml")["models"]
                  if (OUT_DIR / "runs" / m / f"L{level}" / "cot").is_dir()}
     in_sweep = {k.split("/")[0] for k in sw}
+    panel = {m for m, e in load_config("models.yaml")["models"].items()
+             if e.get("kind") not in ("tuned", "reasoning")}
+    tbl = RESULTS_DIR.parent.parent / "paper" / "tables" / "behavior.tex"
+    if tbl.exists():
+        body = tbl.read_text()
+        strays = [m for m in (have_runs - panel) if m in body]
+        check(not strays, f"Table 1 shows ladder models {strays}; they belong in the appendix ladder table")
+    if tbl.exists():
+        nrows = sum(1 for ln in tbl.read_text().splitlines() if "&" in ln and "\\\\" in ln and "multicolumn" not in ln and "accuracy" not in ln)
+        check(nrows <= 2 * len(panel), f"Table 1 has {nrows} rows for {len(panel)} panel models: a third regime is leaking in")
     check(not (have_runs - in_sweep),
           f"sweep L{level}: {sorted(have_runs - in_sweep)} have runs but are missing from the sweep "
           f"(re-run 56_seed_sweep.py; Table 1 and Figure 1 read this file)")

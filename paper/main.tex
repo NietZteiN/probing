@@ -227,8 +227,8 @@ points at level 5, where accuracy is near the floor (\NUM{lureexcessmax-lo} to
 \NUM{lureexcessmax-hi} points across the three demonstration sets). With CoT, these contrasts are
 absent. An equivalence test with a margin of \NUM{eq-delta} points finds
 \NUM{eq-cot-equivalent} of \NUM{eq-cot-cells} CoT cells equivalent to zero, against
-\NUM{eq-direct-effect} of \NUM{eq-direct-cells} direct cells in which an effect is present. The
-one exception is the smallest model, \NUM{eq-exc-model}, whose CoT solves
+\NUM{eq-direct-effect} of \NUM{eq-direct-cells} direct cells in which an effect is present. How a model was tuned does not move this, over \NUM{kind-rungs} rungs on one spine
+(Appendix~\ref{app:kind}). The one exception is the smallest model, \NUM{eq-exc-model}, whose CoT solves
 \NUM{eq-exc-neutral-acc}\% of level-\NUM{eq-exc-level} problems with word names and
 \NUM{eq-exc-letter-acc}\% with letters. There, a lure on the \NUM{eq-exc-role} variable adds
 \NUM{eq-exc-mean} points [\NUM{eq-exc-lo}, \NUM{eq-exc-hi}].
@@ -256,21 +256,18 @@ Across the \NUM{vs-cells} (model, target) cells for which we have probes, the
 \NUM{vs-decodable-min}) have a lure excess within \NUM{vs-decodable-maxexcess} points of zero,
 and the one whose value is not (accuracy \NUM{vs-undecodable-acc}) is the exception.
 
-\paragraph{Identifier names.} A reviewer may object that a bare lexical prior is the weakest
-form of a misleading name. We repeated level~3 with identifier-style names, writing
-\texttt{q4} where the word scheme writes \texttt{four}, on \NUM{ident-models} models with three
-demonstration sets. Without CoT the digit inside the identifier is not answered: the lure excess
+\paragraph{Identifier names.} A bare lexical prior is the weakest form of a misleading name, so
+we repeated level~3 with identifier-style names, writing \texttt{q4} where the word scheme
+writes \texttt{four}, on \NUM{ident-models} models with three demonstration sets. Without CoT the digit inside the identifier is not answered: the lure excess
 is \NUM{ident-direct-lure-lo} to \NUM{ident-direct-lure-hi} points over
 \NUM{ident-direct-cells} cells, with \NUM{ident-direct-lure-claim} reliable, against
 \NUM{word-direct-lure-lo} to \NUM{word-direct-lure-hi} points and
 \NUM{word-direct-lure-claim} of \NUM{word-direct-cells} reliable for the same models under the
-word scheme. The effect we report is therefore specific to number words, not to digits
-appearing in a name.
+word scheme. The effect is therefore specific to number words rather than to digits in a name.
 
-\paragraph{Word class.} One effect is not removed by CoT. At level 4, a number word on the
-queried variable costs Llama-3.2-3B \NUM{wordclass-cost-L4} points
-(\NUM{wordclass-cost-L4-lo}--\NUM{wordclass-cost-L4-hi} across demonstration sets) whether or not
-the denoted value agrees; the model then restates the wrong equation.
+\paragraph{Word class.} One effect is not removed by CoT. At level 4, a number word on the queried
+variable costs Llama-3.2-3B \NUM{wordclass-cost-L4} points whether or not the denoted value
+agrees, and the model then restates the wrong equation.
 
 \begin{table}[t]
 \centering\small
@@ -301,7 +298,7 @@ matched neutral twin, by layer, with both controls. For Llama-3.2-3B, patching a
 restores the margin between the true and lure values (normalized logit difference
 \NUM{nld-3b}), the alternative-lure patch is followed in \NUM{follow-new-lure} of cases, and the
 span grid places the effect at the equation that defines the name, where patching layers
-\NUM{grid-layers} alone removes up to \NUM{grid-top-removed} of the errors. Because the word control changes \NUM{control-damage} of correct answers at this floor
+\NUM{grid-layers} alone removes up to \NUM{grid-top-removed} of the errors. Because the word control changes \NUM{control-damage} of correct answers at this
 accuracy, we report localization rather than recovery. For Llama-3.1-8B, whose no-CoT lure excess at level~3 is small, the neutral and
 alternative-lure patches remove lure errors equally
 (Figure~\ref{fig:dump-fig3-patching-llama31-8b-L3-v2}), so the patching gives no evidence of a
@@ -327,11 +324,10 @@ localized.
 \section{Conclusion}
 
 We introduced a cue-conflict arithmetic task to ask where a misleading variable name
-interferes. Without CoT, its value is used as the answer, and patching localizes this to the
-early layers at the equation defining the name. With CoT, we observe no effect at any level
-except in one of \NUM{n-models} models, where the name still moves the answer through a correct
-chain. Of the eight cells probed, the exception is the one whose value is not decodable at
-the step that writes it; whether the chain states the value does not predict the effect.
+interferes. Without CoT its value is used as the answer, and patching localizes this to the
+early layers at the equation defining the name. With CoT we observe no effect at any level
+except in one of \NUM{n-models} models, whose value is the one of eight probed cells not
+decodable where the chain writes it.
 
 \section*{Limitations}
 
@@ -477,6 +473,107 @@ value the model is about to write (red) in the late layers, and the name's value
 confined to the early layers at and after the name's tokens.}
 \label{fig:ownchain}
 \end{figure*}
+
+\section{How the model was tuned}
+\label{app:kind}
+
+Table~\ref{tab:behavior} varies family and size. It does not vary how a model was produced from
+its pretrained weights, so we add a ladder that holds the spine fixed at Llama-3.1-8B-Instruct
+and changes only the tuning: the pretrained model, the instruction-tuned model, a single-task
+LoRA finetune, a joint finetune over six tasks, a TIES merge of six single-task adapters, and a
+reasoning-tuned checkpoint on the same spine. The three LoRA rows are folded into the weights
+before evaluation, so every model in the ladder is an ordinary causal LM with the same
+tokenizer; the verified word pool, the token positions and the matched sets are therefore
+identical down the ladder, and each rung is comparable to the others instance by instance.
+
+\begin{table}[h]
+\centering\small
+\resizebox{\columnwidth}{!}{\tabinput{modelkind}}
+\caption{Level 3, no CoT, lure answers above the matched twin's rate, mean over three
+demonstration sets. \emph{Acc.} is neutral accuracy. $^{*}$ as in Table~\ref{tab:behavior}.}
+\label{tab:kind}
+\end{table}
+
+Without CoT the pretrained model is the only rung with a reliable positive effect
+(\NUM{kind-base-v1} on the queried variable); the instruction-tuned model is at
+\NUM{kind-it-v1}, and the three tuned variants lie between \NUM{kind-ftm-v1} and
+\NUM{kind-ft-v2}, none differing from the instruction-tuned model by more than
+\NUM{kind-maxgap} points over \NUM{kind-tuned-cells} cells. With CoT every rung is within
+\NUM{kind-cot-max} of zero. Two numbers in the table need their context. The multi-task
+finetune's \NUM{kind-ftm-v1} is reliable and negative, and it is also the only rung that loses
+accuracy (\NUM{kind-ftm-acc}\% against \NUM{kind-it-acc}\%), so the likelier reading is that the
+joint finetune is worse at the task rather than more robust to the name. The reasoning-tuned
+model has the lowest accuracy of the six (\NUM{kind-reas-acc}\%), and a model that answers
+arbitrarily produces the lure digit and the twin's digit alike, which is what the twin
+subtraction is for. It is also the only rung whose CoT lure rate is above zero
+(\NUM{kind-reas-v2-cot} on the intermediate variable), far inside the equivalence margin and not
+reliable under our rule, and we report it rather than claim it.
+
+This checkpoint gates its long-form reasoning on a system instruction. Our prompts are raw
+completions with no system message, which is what keeps token positions identical across the
+panel, so this rung is a reasoning-tuned model with that mode off. A model reasoning at length
+would need a chat template and a different token layout, and is outside this comparison.
+
+\section{Probe recipe and patching scope}
+\label{app:recipe}
+
+Two choices inherited from \citet{kudo2026faithful} could in principle carry our probing and
+patching results, so we vary each one.
+
+\paragraph{Recipe.} We refit the level-3 probes for Llama-3.2-3B with L-BFGS, and with SGD on
+standardized inputs, against the reported recipe.
+
+\begin{table}[h]
+\centering\small
+\resizebox{\columnwidth}{!}{\tabinput{recipe}}
+\caption{Best-layer accuracy for the true value, neutral instances, under three probe recipes.}
+\label{tab:recipe}
+\end{table}
+
+The picture is the same under all three: the value is decodable where the chain writes it
+(\NUM{e17-value-lo}--\NUM{e17-value-hi}) and not at the end of its defining equation
+(\NUM{e17-end-lo}--\NUM{e17-end-hi}). The query position moves, from \NUM{e17-sgd-query-v2}
+under the reported recipe to \NUM{e17-std-query-v2} under standardization, within a range of
+\NUM{e17-query-lo}--\NUM{e17-query-hi} over recipes and variables. We already report that
+position as the presence of the name rather than a decoded value, because its control task
+scores \NUM{p3-ctl}, so a recipe that reads the name better does not change its reading.
+
+\paragraph{Scope.} Patching every occurrence of the name includes the copy the model writes in
+its own output. Restricting the patch to the name's occurrences in the prompt leaves the
+intermediate variable unchanged, since its name never appears in the answer: removal is
+\NUM{e18-v2-all-removed}\% at layers~\NUM{e18-v2-all-best} under both scopes. For the queried
+variable the two agree from layer~4 on (\NUM{e18-v1-prompt-removed}\% at
+layers~\NUM{e18-v1-prompt-best}, against \NUM{e18-v1-all-removed}\% at
+layers~\NUM{e18-v1-all-best}) and disagree at layer~0, where the prompt-only patch removes
+\NUM{e18-v1-prompt-w03}\% and damages \NUM{e18-v1-prompt-w03damage}\% of correct answers. That
+is mechanical: the queried variable's name also sits at the position we read, so patching its
+prompt copies alone leaves the model reading a name whose early representation no longer
+matches. The localization we report does not depend on the choice.
+
+\section{A chain that writes values without equations}
+\label{app:simple}
+
+Our chain restates each equation before substituting into it, as
+\citeauthor{kudo2026faithful}'s does. Their Table~6 also reports a format that writes only the
+sub-results, \texttt{cup=5, pen=6}. That format is the arithmetic counterpart of a code trace,
+which writes a variable's value and never the expression that produced it, so we ran it on the
+panel at level 3 with three demonstration sets, with two predictions registered in advance: that
+the name would reach the value step, and that the value would still be decodable there, making
+any failure one of readout.
+
+Both predictions fail. Llama-3.1-8B writes the lure at the intermediate's value step
+\NUM{simple-l8b-v2} points above its twin, inside the equivalence margin; Llama-3.2-3B is at
+\NUM{simple-l3b-v2}, but across the three demonstration sets that is
+\NUM{simple-l3b-v2-seeds}, so one set carries it. More informative is what the probes say. At
+the step that writes the value, the true value is decodable at \NUM{simpleprobe-l8b-simple-v1}
+and \NUM{simpleprobe-l8b-simple-v2} for Llama-3.1-8B and at
+\NUM{simpleprobe-l3b-simple-v1} and \NUM{simpleprobe-l3b-simple-v2} for Llama-3.2-3B, against
+\NUM{simpleprobe-l8b-cot-v1} and \NUM{simpleprobe-l8b-cot-v2} for the same model under the full
+chain. Neutral accuracy falls with it, to \NUM{simple-l8b-acc}\% and \NUM{simple-l3b-acc}\%.
+
+Dropping the equations does not leave the computation intact and expose the readout. It degrades
+the computation. Whatever a terse trace does to a model reading code, the arithmetic analogue of
+that format is a different phenomenon, and we do not treat the two as one.
 
 \section{Additional levels, models and demonstration sets}
 Table~\ref{tab:levels-appendix} repeats Table~\ref{tab:behavior} for the other four levels.

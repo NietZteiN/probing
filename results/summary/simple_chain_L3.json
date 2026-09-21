@@ -1374,5 +1374,349 @@
   "acc_neutral": 95.3,
   "acc_incongruent": 95.8,
   "wrote_target_value_step": 100.0
+ },
+ "llama31-8b-it-ft/L3/cot/v2": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 2000,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": 0.0,
+   "lo": 0.0,
+   "hi": 0.0,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.0
+  },
+  "answer_lure_excess": {
+   "mean": -0.02,
+   "lo": -0.05,
+   "hi": 0.0,
+   "by_seed": {
+    "7": 0.0,
+    "11": -0.05,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.02
+  },
+  "acc_neutral": 99.8,
+  "acc_incongruent": 100.0,
+  "wrote_target_value_step": 100.0
+ },
+ "llama31-8b-it-ft/L3/cot/v1": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 2000,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": 0.0,
+   "lo": 0.0,
+   "hi": 0.0,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.0
+  },
+  "answer_lure_excess": {
+   "mean": 0.0,
+   "lo": 0.0,
+   "hi": 0.0,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.0
+  },
+  "acc_neutral": 99.8,
+  "acc_incongruent": 100.0,
+  "wrote_target_value_step": 100.0
+ },
+ "llama31-8b-it-ftmulti/L3/cot/v2": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 2000,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": 0.0,
+   "lo": 0.0,
+   "hi": 0.0,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.0
+  },
+  "answer_lure_excess": {
+   "mean": 0.0,
+   "lo": 0.0,
+   "hi": 0.0,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.0
+  },
+  "acc_neutral": 99.8,
+  "acc_incongruent": 100.0,
+  "wrote_target_value_step": 100.0
+ },
+ "llama31-8b-it-ftmulti/L3/cot/v1": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 2000,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": 0.0,
+   "lo": 0.0,
+   "hi": 0.0,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.0
+  },
+  "answer_lure_excess": {
+   "mean": 0.0,
+   "lo": 0.0,
+   "hi": 0.0,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.0
+  },
+  "acc_neutral": 99.8,
+  "acc_incongruent": 99.9,
+  "wrote_target_value_step": 100.0
+ },
+ "llama31-8b-it-merged/L3/cot/v2": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 2000,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": 0.0,
+   "lo": 0.0,
+   "hi": 0.0,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.0
+  },
+  "answer_lure_excess": {
+   "mean": 0.0,
+   "lo": 0.0,
+   "hi": 0.0,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.0,
+   "rate_twin": 0.0
+  },
+  "acc_neutral": 99.7,
+  "acc_incongruent": 100.0,
+  "wrote_target_value_step": 100.0
+ },
+ "llama31-8b-it-merged/L3/cot/v1": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 2000,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": 0.0,
+   "lo": -0.05,
+   "hi": 0.05,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.02,
+   "rate_twin": 0.02
+  },
+  "answer_lure_excess": {
+   "mean": 0.0,
+   "lo": -0.05,
+   "hi": 0.05,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.02,
+   "rate_twin": 0.02
+  },
+  "acc_neutral": 99.7,
+  "acc_incongruent": 99.9,
+  "wrote_target_value_step": 100.0
+ },
+ "nemotron-nano-8b/L3/cot/v2": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 64,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": 0.15,
+   "lo": 0.02,
+   "hi": 0.3,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.35,
+    "13": -0.05
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.2,
+   "rate_twin": 0.05
+  },
+  "answer_lure_excess": {
+   "mean": 0.3,
+   "lo": 0.12,
+   "hi": 0.49,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.55,
+    "13": 0.05
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.32,
+   "rate_twin": 0.02
+  },
+  "acc_neutral": 97.5,
+  "acc_incongruent": 91.8,
+  "wrote_target_value_step": 90.8
+ },
+ "nemotron-nano-8b/L3/cot/v1": {
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n_per_seed": {
+   "7": 64,
+   "11": 2000,
+   "13": 2000
+  },
+  "written_lure_excess": {
+   "mean": 0.12,
+   "lo": 0.02,
+   "hi": 0.25,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.2,
+    "13": 0.05
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.15,
+   "rate_twin": 0.02
+  },
+  "answer_lure_excess": {
+   "mean": 0.12,
+   "lo": 0.02,
+   "hi": 0.25,
+   "by_seed": {
+    "7": 0.0,
+    "11": 0.2,
+    "13": 0.05
+   },
+   "claimable": false,
+   "within_delta": true,
+   "rate_inc": 0.15,
+   "rate_twin": 0.02
+  },
+  "acc_neutral": 97.5,
+  "acc_incongruent": 93.5,
+  "wrote_target_value_step": 99.4
  }
 }

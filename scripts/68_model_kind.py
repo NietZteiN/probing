@@ -112,8 +112,11 @@ def main() -> int:
                       f"{e.get('mean',float('nan')):+7.2f} [{e.get('lo',float('nan')):+6.2f},{e.get('hi',float('nan')):+6.2f}]"
                       f"{'*' if e.get('claimable') else ' '} "
                       f"{'/'.join(f'{v:+.1f}' for v in e.get('by_seed',{}).values()):>20s}")
+    # merge, never clobber: a run restricted to one regime or one model must not erase the rest
     f = RESULTS_DIR / "summary" / f"model_kind_L{a.level}.json"
-    f.write_text(json.dumps(report, indent=1))
+    prev = json.loads(f.read_text()) if f.exists() else {}
+    prev.update(report)
+    f.write_text(json.dumps(prev, indent=1))
     print(f"\n* same sign in every demonstration seed and pooled CI excluding zero")
     print(f"wrote {f}")
     return 0
