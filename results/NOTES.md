@@ -791,3 +791,53 @@ Still open: the reasoning rung. `nvidia/Llama-3.1-Nemotron-Nano-8B-v1` is downlo
 the tokenizer check; a 64-instance smoke run across direct / cot / free with a 1,024-token
 budget (job 414918) decides whether the few-shot regimes apply to it at all, or whether it has
 to be reported in the free regime and labelled as not comparable to the rungs above.
+
+## 2026-09-21 — E17, probe recipe: the picture does not depend on the optimiser
+
+Llama-3.2-3B, level 3, CoT, neutral-trained probes, best layer per position. Kudo et al.'s SGD
+recipe (10k full-batch epochs, lr 1e-3) against L-BFGS and against SGD on standardized inputs.
+Variants written under `train_neutral__lbfgs` / `__std`; the reported probes are untouched.
+
+| position | role | SGD (reported) | L-BFGS | standardized |
+|---|---|---|---|---|
+| end@v1 | v1 | 0.184 | 0.190 | 0.183 |
+| query | v1 | 0.183 | 0.316 | 0.280 |
+| cotpre@v1 | v1 | 1.000 | 1.000 | 1.000 |
+| anspre | v1 | 1.000 | 1.000 | 1.000 |
+| end@v2 | v2 | 0.496 | 0.422 | 0.420 |
+| query | v2 | 0.271 | 0.366 | 0.393 |
+| cotpre@v2 | v2 | 0.982 | 0.962 | 0.972 |
+| anspre | v2 | 1.000 | 1.000 | 1.000 |
+
+**Every claim the paper makes from probes survives.** The value is decodable where the chain
+writes it (0.96–1.00 under all three recipes) and is not decodable at the end of its defining
+equation (0.18–0.50). The one position that moves is the query, where L-BFGS and standardization
+read 0.28–0.39 against SGD's 0.18–0.27. That position is already reported as name identity
+rather than a decoded value, because its Hewitt–Liang control scores 0.96–1.00, so a higher raw
+number there changes nothing: a probe that reads the name better is still reading the name.
+
+Cost note for anyone repeating this: the full L-BFGS sweep over all 13 positions and 3 seeds hit
+an 11 h wall (job 413825). The table above is L-BFGS on the six positions the paper cites with
+one seed (7:54 on h100). SGD at 10k epochs remains much the cheaper recipe.
+
+## 2026-09-21 — the reasoning rung follows the few-shot formats
+
+64-instance smoke run of `nvidia/Llama-3.1-Nemotron-Nano-8B-v1` before committing the panel:
+
+| regime | neutral acc | unparsed |
+|---|---|---|
+| direct | 56.2% | 4.7% |
+| cot | 100.0% | 0.0% |
+| free | 57.8% | 0.0% |
+
+It emits `truck=8` in the direct regime and the full worked chain in the CoT regime, with no
+thinking prefix, so the reasoning rung is directly comparable to the rest of the ladder and gets
+the same treatment (job 415122: both regimes, three demonstration seeds, plus free).
+
+**Caveat to state wherever this row is reported.** Nemotron-Nano gates its long-form reasoning
+on a `detailed thinking on` system prompt. Our prompts are raw completions with no system
+message and no chat template, by design, so what we measure is this checkpoint with its
+reasoning mode OFF. That is a reasoning-TUNED model, not a model in the act of reasoning at
+length. Exercising the other mode would need a chat-template path through the runner, which
+would also change the token layout and break comparability with every other row; it is a
+separate experiment, not a variant of this one.
