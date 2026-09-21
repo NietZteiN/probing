@@ -747,3 +747,47 @@ where the name's own tokens still carry the difference.
 Where the two can differ, they agree; where they do not agree, the prompt-only variant is
 degenerate for a reason that has nothing to do with the cue conflict. This answers the reviewer
 question the row was written for.
+
+## 2026-09-21 — model-kind axis (Amendment 5): how a model was tuned does not change the effect
+
+One spine, Llama-3.1-8B-Instruct, five rungs; the three tuned rows are obtune LoRA artefacts
+folded into the weights at load time. All four new checkpoints tokenize identically to the
+instruct model (same 95/112 neutral words, same positions, nothing misaligned), so every row is
+comparable instance by instance and no dataset was rebuilt. Level 3, three demonstration seeds,
+1,000 matched sets per cell.
+
+**Direct regime (no chain), lure excess over the matched neutral twin:**
+
+| rung | model | queried | intermediate | neutral acc |
+|---|---|---|---|---|
+| base | Llama-3.1-8B | **+1.20 [0.73, 1.67]** | −0.02 | 53.4% |
+| instruct | Llama-3.1-8B-Instruct | +0.15 | +0.22 | 52.2% |
+| single-task finetune | + python LoRA | +0.05 | +0.23 | 52.2% |
+| multi-task finetune | + joint LoRA (6 tasks) | **−0.58 [−0.95, −0.22]** | −0.08 | 46.1% |
+| TIES merge | + merge of 6 adapters | −0.10 | +0.10 | 51.9% |
+
+**Chain regime: every rung is at zero.** Excesses are 0.00 to 0.02 with intervals inside
+±0.05, on 99.7–99.8% neutral accuracy for the four instruct-derived models.
+
+**Pre-registered prediction holds.** No tuned variant differs from the instruct model by more
+than δ = 2 on either role, in either regime; the largest gap anywhere is 0.73 points. LoRA
+finetuning on a task mixture, joint finetuning over six tasks, and a TIES merge of six adapters
+all leave the cue conflict exactly where instruction tuning left it.
+
+**What does move, slightly, is instruction tuning itself.** The base model is the only rung with
+a claimable positive excess (+1.20 on the queried variable); every instruct-derived rung is
+within noise of zero. Same spine, same tokenizer, same problems, so this is a cleaner
+base-vs-instruct comparison than the panel's cross-family one.
+
+**Two honest caveats.** The multi-task finetune's −0.58 is claimable and NEGATIVE: under a
+misleading name it produces the lure digit slightly less often than its twin does. It is also
+the only rung whose accuracy drops (46.1% against 52.2%), so the likeliest reading is that the
+joint finetune made it worse at this task rather than more robust to the cue. And direct-regime
+lure rates here are 2.8–4.6% against pseudo-lure rates of 2.9–3.8%, so all of these are small
+differences between small numbers; the equivalence statement is the load-bearing one, not any
+individual point estimate.
+
+Still open: the reasoning rung. `nvidia/Llama-3.1-Nemotron-Nano-8B-v1` is downloaded and passes
+the tokenizer check; a 64-instance smoke run across direct / cot / free with a 1,024-token
+budget (job 414918) decides whether the few-shot regimes apply to it at all, or whether it has
+to be reported in the free regime and labelled as not comparable to the rungs above.

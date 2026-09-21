@@ -40,6 +40,9 @@ def main() -> int:
     ap.add_argument("--layers", type=int, nargs="*", default=None)
     ap.add_argument("--batch-size", type=int, default=None)
     ap.add_argument("--limit", type=int, default=None, help="cap instances per group (smoke tests)")
+    ap.add_argument("--max-new", type=int, default=None,
+                    help="override the per-regime generation budget; a reasoning model emits a thinking "
+                         "prefix before the answer and needs far more than the few-shot regimes do")
     ap.add_argument("--all-positions", action="store_true", help="E27: cache every token of the instance region; groups get the suffix __alltok")
     ap.add_argument("--layer-stride", type=int, default=1, help="keep every k-th layer (index 0 = embeddings); 2 halves the cache")
     ap.add_argument("--train-limit", type=int, default=None, help="cap probe-train instances (E27 uses 4000)")
@@ -87,7 +90,7 @@ def main() -> int:
             if g.startswith("train_") and a.train_limit:
                 rows_ = rows_[:a.train_limit]
             cond = rows_[0].condition
-            s = run_condition(tok, model, a.model, a.level, regime, cond, rows_, out, bs, MAX_NEW[parse_regime(regime)[0]],
+            s = run_condition(tok, model, a.model, a.level, regime, cond, rows_, out, bs, (a.max_new or MAX_NEW[parse_regime(regime)[0]]),
                               demo_pool=manifest.get("demo_words") if manifest.get("scheme", "word") != "word" else None,
                               layers=a.layers, do_free=(not g.startswith("train_")) and not a.all_positions,
                               do_forced=(not a.no_forced) and (a.forced_all or "_alt@" not in g), all_positions=a.all_positions)
