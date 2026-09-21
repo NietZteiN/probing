@@ -841,3 +841,51 @@ reasoning mode OFF. That is a reasoning-TUNED model, not a model in the act of r
 length. Exercising the other mode would need a chat-template path through the runner, which
 would also change the token layout and break comparability with every other row; it is a
 separate experiment, not a variant of this one.
+
+## 2026-09-21 (complete) — the reasoning rung, and the model-kind ladder in full
+
+`nvidia/Llama-3.1-Nemotron-Nano-8B-v1`, same spine, same tokenizer, both few-shot regimes with
+three demonstration seeds plus free (job 415122, 1:33).
+
+**Direct regime:** +0.52 [−0.05, +1.04] queried, +0.32 [−0.27, +0.89] intermediate. Neither is
+claimable; both intervals cover zero and both sit inside δ = 2.
+**Chain regime:** +0.12 [0.02, 0.25] and +0.30 [0.12, 0.49]. The intervals exclude zero but the
+by-seed signs are +0.0 / +0.2 / +0.1 and +0.0 / +0.6 / +0.1, so one seed is flat in each and the
+claim rule is not met. Reported as not claimable.
+**Free regime:** 0.00 on both roles, as for the instruct model.
+
+**Two things about this rung that must travel with the numbers.**
+
+1. It is the only rung whose CoT lure RATE is meaningfully above zero: 0.15% and 0.32%, against
+   0.00–0.02% for every other rung on this spine, with a pseudo-lure of 0.02%. That is six
+   instances in two thousand. Far inside the equivalence margin, not claimable, and worth one
+   sentence rather than a claim: if anything on this ladder hints that reasoning tuning weakens
+   the chain's protection, it is this, and it is not evidence.
+2. Its accuracy is the lowest on the ladder: 34.5% direct against 46–53% for the rest, and 97.5%
+   CoT against 99.7–99.8%. A model that is worse at the task produces more arbitrary digits,
+   which inflates both the lure and the pseudo-lure rate; the twin subtraction is what keeps the
+   contrast honest at that accuracy.
+
+**The ladder, direct regime, lure excess over the matched twin, level 3, three seeds:**
+
+| rung | queried | intermediate | neutral acc |
+|---|---|---|---|
+| base | **+1.20 [0.73, 1.67]** | −0.02 | 53.4% |
+| instruct | +0.15 | +0.22 | 52.2% |
+| single-task finetune | +0.05 | +0.23 | 52.2% |
+| multi-task finetune | **−0.58 [−0.95, −0.22]** | −0.08 | 46.1% |
+| TIES merge | −0.10 | +0.10 | 51.9% |
+| reasoning-tuned | +0.52 | +0.32 | 34.5% |
+
+Under a chain every rung is between −0.13 and +0.30 and no rung is claimable.
+
+**Conclusion.** Across six ways of producing a model from one pretrained spine — nothing,
+instruction tuning, single-task LoRA, multi-task LoRA, a TIES merge of six adapters, and
+reasoning tuning — the cue conflict does not move beyond the equivalence margin. Only the base
+model shows a claimable positive effect without a chain, and a chain removes the effect for all
+six. How a model was tuned is not what decides whether it reads a variable's value off its name;
+whether it writes a chain is.
+
+Caveat carried from the smoke entry: Nemotron-Nano gates long-form reasoning on a system prompt
+that our raw-completion prompts never send, so this rung is a reasoning-TUNED checkpoint with
+its reasoning mode off, not a model reasoning at length.

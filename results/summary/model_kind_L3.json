@@ -1,658 +1,12 @@
 {
- "llama31-8b/L3/direct/v1": {
-  "kind": "core",
+ "nemotron-nano-8b/L3/free/v1": {
+  "kind": "reasoning",
   "seeds": [
-   7,
-   11,
-   13
+   7
   ],
-  "n": 6000,
-  "acc_neutral": 53.4,
-  "acc_incongruent": 53.5,
-  "lure_rate": 4.58,
-  "pseudo_rate": 3.38,
-  "lure_excess": {
-   "mean": 1.2,
-   "lo": 0.73,
-   "hi": 1.67,
-   "by_seed": {
-    "7": 0.35,
-    "11": 1.1,
-    "13": 2.15
-   },
-   "claimable": true
-  },
-  "facilitation": {
-   "mean": 4.77,
-   "lo": 3.87,
-   "hi": 5.72,
-   "by_seed": {
-    "7": 7.5,
-    "11": 1.3,
-    "13": 5.5
-   },
-   "claimable": true
-  },
-  "interference": {
-   "mean": -0.1,
-   "lo": -1.02,
-   "hi": 0.8,
-   "by_seed": {
-    "7": -3.1,
-    "11": 0.75,
-    "13": 2.05
-   },
-   "claimable": false
-  }
- },
- "llama31-8b/L3/direct/v2": {
-  "kind": "core",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 53.4,
-  "acc_incongruent": 55.6,
-  "lure_rate": 3.55,
-  "pseudo_rate": 3.57,
-  "lure_excess": {
-   "mean": -0.02,
-   "lo": -0.48,
-   "hi": 0.45,
-   "by_seed": {
-    "7": -0.05,
-    "11": 0.5,
-    "13": -0.5
-   },
-   "claimable": false
-  },
-  "facilitation": {
-   "mean": 3.82,
-   "lo": 2.9,
-   "hi": 4.72,
-   "by_seed": {
-    "7": 6.6,
-    "11": 1.7,
-    "13": 3.15
-   },
-   "claimable": true
-  },
-  "interference": {
-   "mean": -2.15,
-   "lo": -3.07,
-   "hi": -1.22,
-   "by_seed": {
-    "7": -4.5,
-    "11": 0.3,
-    "13": -2.25
-   },
-   "claimable": false
-  }
- },
- "llama31-8b-it/L3/direct/v1": {
-  "kind": "pair",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 52.2,
-  "acc_incongruent": 51.4,
-  "lure_rate": 3.07,
-  "pseudo_rate": 2.92,
-  "lure_excess": {
-   "mean": 0.15,
-   "lo": -0.28,
-   "hi": 0.6,
-   "by_seed": {
-    "7": 0.7,
-    "11": -0.1,
-    "13": -0.15
-   },
-   "claimable": false
-  },
-  "facilitation": {
-   "mean": 1.72,
-   "lo": 0.82,
-   "hi": 2.6,
-   "by_seed": {
-    "7": 2.8,
-    "11": -2.3,
-    "13": 4.65
-   },
-   "claimable": false
-  },
-  "interference": {
-   "mean": 0.82,
-   "lo": -0.15,
-   "hi": 1.77,
-   "by_seed": {
-    "7": -0.2,
-    "11": 3.3,
-    "13": -0.65
-   },
-   "claimable": false
-  }
- },
- "llama31-8b-it/L3/direct/v2": {
-  "kind": "pair",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 52.2,
-  "acc_incongruent": 51.1,
-  "lure_rate": 3.25,
-  "pseudo_rate": 3.03,
-  "lure_excess": {
-   "mean": 0.22,
-   "lo": -0.28,
-   "hi": 0.72,
-   "by_seed": {
-    "7": 0.35,
-    "11": -0.55,
-    "13": 0.85
-   },
-   "claimable": false
-  },
-  "facilitation": {
-   "mean": 5.23,
-   "lo": 4.18,
-   "hi": 6.22,
-   "by_seed": {
-    "7": 4.2,
-    "11": 6.55,
-    "13": 4.95
-   },
-   "claimable": true
-  },
-  "interference": {
-   "mean": 1.08,
-   "lo": 0.1,
-   "hi": 2.07,
-   "by_seed": {
-    "7": 0.1,
-    "11": -1.95,
-    "13": 5.1
-   },
-   "claimable": false
-  }
- },
- "llama31-8b-it-ft/L3/direct/v1": {
-  "kind": "tuned",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 52.2,
-  "acc_incongruent": 56.0,
-  "lure_rate": 3.18,
-  "pseudo_rate": 3.13,
-  "lure_excess": {
-   "mean": 0.05,
-   "lo": -0.4,
-   "hi": 0.5,
-   "by_seed": {
-    "7": 0.1,
-    "11": 0.8,
-    "13": -0.75
-   },
-   "claimable": false
-  },
-  "facilitation": {
-   "mean": 11.17,
-   "lo": 10.03,
-   "hi": 12.28,
-   "by_seed": {
-    "7": 9.8,
-    "11": 3.1,
-    "13": 20.6
-   },
-   "claimable": true
-  },
-  "interference": {
-   "mean": -3.73,
-   "lo": -4.83,
-   "hi": -2.68,
-   "by_seed": {
-    "7": -2.45,
-    "11": 3.05,
-    "13": -11.8
-   },
-   "claimable": false
-  }
- },
- "llama31-8b-it-ft/L3/direct/v2": {
-  "kind": "tuned",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 52.2,
-  "acc_incongruent": 49.6,
-  "lure_rate": 3.82,
-  "pseudo_rate": 3.58,
-  "lure_excess": {
-   "mean": 0.23,
-   "lo": -0.25,
-   "hi": 0.73,
-   "by_seed": {
-    "7": 0.0,
-    "11": -0.05,
-    "13": 0.75
-   },
-   "claimable": false
-  },
-  "facilitation": {
-   "mean": 6.58,
-   "lo": 5.5,
-   "hi": 7.67,
-   "by_seed": {
-    "7": 7.8,
-    "11": 4.75,
-    "13": 7.2
-   },
-   "claimable": true
-  },
-  "interference": {
-   "mean": 2.63,
-   "lo": 1.53,
-   "hi": 3.68,
-   "by_seed": {
-    "7": 3.55,
-    "11": 2.55,
-    "13": 1.8
-   },
-   "claimable": true
-  }
- },
- "llama31-8b-it-ftmulti/L3/direct/v1": {
-  "kind": "tuned",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 46.1,
-  "acc_incongruent": 44.7,
-  "lure_rate": 2.75,
-  "pseudo_rate": 3.33,
-  "lure_excess": {
-   "mean": -0.58,
-   "lo": -0.95,
-   "hi": -0.22,
-   "by_seed": {
-    "7": -0.3,
-    "11": -0.9,
-    "13": -0.55
-   },
-   "claimable": true
-  },
-  "facilitation": {
-   "mean": -0.22,
-   "lo": -1.02,
-   "hi": 0.68,
-   "by_seed": {
-    "7": -1.1,
-    "11": 0.75,
-    "13": -0.3
-   },
-   "claimable": false
-  },
-  "interference": {
-   "mean": 1.38,
-   "lo": 0.57,
-   "hi": 2.17,
-   "by_seed": {
-    "7": 2.75,
-    "11": 0.55,
-    "13": 0.85
-   },
-   "claimable": true
-  }
- },
- "llama31-8b-it-ftmulti/L3/direct/v2": {
-  "kind": "tuned",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 46.1,
-  "acc_incongruent": 44.1,
-  "lure_rate": 3.7,
-  "pseudo_rate": 3.78,
-  "lure_excess": {
-   "mean": -0.08,
-   "lo": -0.52,
-   "hi": 0.37,
-   "by_seed": {
-    "7": 0.05,
-    "11": -0.45,
-    "13": 0.15
-   },
-   "claimable": false
-  },
-  "facilitation": {
-   "mean": 5.55,
-   "lo": 4.62,
-   "hi": 6.53,
-   "by_seed": {
-    "7": 4.1,
-    "11": 6.9,
-    "13": 5.65
-   },
-   "claimable": true
-  },
-  "interference": {
-   "mean": 1.98,
-   "lo": 1.02,
-   "hi": 2.88,
-   "by_seed": {
-    "7": 1.5,
-    "11": 1.05,
-    "13": 3.4
-   },
-   "claimable": true
-  }
- },
- "llama31-8b-it-merged/L3/direct/v1": {
-  "kind": "tuned",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 51.9,
-  "acc_incongruent": 51.7,
-  "lure_rate": 3.03,
-  "pseudo_rate": 3.13,
-  "lure_excess": {
-   "mean": -0.1,
-   "lo": -0.52,
-   "hi": 0.32,
-   "by_seed": {
-    "7": 0.15,
-    "11": -0.25,
-    "13": -0.2
-   },
-   "claimable": false
-  },
-  "facilitation": {
-   "mean": 2.43,
-   "lo": 1.58,
-   "hi": 3.27,
-   "by_seed": {
-    "7": 2.95,
-    "11": -1.45,
-    "13": 5.8
-   },
-   "claimable": false
-  },
-  "interference": {
-   "mean": 0.25,
-   "lo": -0.63,
-   "hi": 1.18,
-   "by_seed": {
-    "7": -0.3,
-    "11": 2.85,
-    "13": -1.8
-   },
-   "claimable": false
-  }
- },
- "llama31-8b-it-merged/L3/direct/v2": {
-  "kind": "tuned",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 51.9,
-  "acc_incongruent": 51.4,
-  "lure_rate": 3.42,
-  "pseudo_rate": 3.32,
-  "lure_excess": {
-   "mean": 0.1,
-   "lo": -0.4,
-   "hi": 0.6,
-   "by_seed": {
-    "7": 0.25,
-    "11": -1.05,
-    "13": 1.1
-   },
-   "claimable": false
-  },
-  "facilitation": {
-   "mean": 5.95,
-   "lo": 4.92,
-   "hi": 6.92,
-   "by_seed": {
-    "7": 4.65,
-    "11": 7.0,
-    "13": 6.2
-   },
-   "claimable": true
-  },
-  "interference": {
-   "mean": 0.57,
-   "lo": -0.37,
-   "hi": 1.53,
-   "by_seed": {
-    "7": -0.6,
-    "11": -2.0,
-    "13": 4.3
-   },
-   "claimable": false
-  }
- },
- "llama31-8b/L3/cot/v1": {
-  "kind": "core",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 95.2,
-  "acc_incongruent": 94.5,
-  "lure_rate": 0.22,
-  "pseudo_rate": 0.35,
-  "lure_excess": {
-   "mean": -0.13,
-   "lo": -0.27,
-   "hi": -0.02,
-   "by_seed": {
-    "7": -0.4,
-    "11": 0.0,
-    "13": 0.0
-   },
-   "claimable": false
-  },
-  "facilitation": {
-   "mean": -1.28,
-   "lo": -1.73,
-   "hi": -0.83,
-   "by_seed": {
-    "7": -3.2,
-    "11": 0.0,
-    "13": -0.65
-   },
-   "claimable": false
-  },
-  "interference": {
-   "mean": 0.7,
-   "lo": 0.28,
-   "hi": 1.12,
-   "by_seed": {
-    "7": 2.05,
-    "11": 0.05,
-    "13": 0.0
-   },
-   "claimable": false
-  }
- },
- "llama31-8b/L3/cot/v2": {
-  "kind": "core",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 95.2,
-  "acc_incongruent": 94.5,
-  "lure_rate": 0.3,
-  "pseudo_rate": 0.32,
-  "lure_excess": {
-   "mean": -0.02,
-   "lo": -0.15,
-   "hi": 0.12,
-   "by_seed": {
-    "7": -0.05,
-    "11": 0.0,
-    "13": 0.0
-   },
-   "claimable": false
-  },
-  "facilitation": {
-   "mean": 3.78,
-   "lo": 3.25,
-   "hi": 4.33,
-   "by_seed": {
-    "7": 11.85,
-    "11": -0.5,
-    "13": 0.0
-   },
-   "claimable": false
-  },
-  "interference": {
-   "mean": 0.73,
-   "lo": 0.22,
-   "hi": 1.27,
-   "by_seed": {
-    "7": 1.7,
-    "11": 0.0,
-    "13": 0.5
-   },
-   "claimable": false
-  }
- },
- "llama31-8b-it/L3/cot/v1": {
-  "kind": "pair",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 99.7,
-  "acc_incongruent": 99.9,
-  "lure_rate": 0.02,
-  "pseudo_rate": 0.02,
-  "lure_excess": {
-   "mean": 0.0,
-   "lo": -0.05,
-   "hi": 0.05,
-   "by_seed": {
-    "7": 0.0,
-    "11": 0.0,
-    "13": 0.0
-   },
-   "claimable": false
-  },
-  "facilitation": {
-   "mean": 0.23,
-   "lo": 0.1,
-   "hi": 0.38,
-   "by_seed": {
-    "7": 0.0,
-    "11": 0.35,
-    "13": 0.35
-   },
-   "claimable": false
-  },
-  "interference": {
-   "mean": -0.23,
-   "lo": -0.42,
-   "hi": -0.08,
-   "by_seed": {
-    "7": 0.0,
-    "11": -0.35,
-    "13": -0.35
-   },
-   "claimable": false
-  }
- },
- "llama31-8b-it/L3/cot/v2": {
-  "kind": "pair",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 99.7,
-  "acc_incongruent": 100.0,
-  "lure_rate": 0.02,
-  "pseudo_rate": 0.0,
-  "lure_excess": {
-   "mean": 0.02,
-   "lo": 0.0,
-   "hi": 0.05,
-   "by_seed": {
-    "7": 0.0,
-    "11": 0.05,
-    "13": 0.0
-   },
-   "claimable": false
-  },
-  "facilitation": {
-   "mean": 0.33,
-   "lo": 0.17,
-   "hi": 0.52,
-   "by_seed": {
-    "7": 0.0,
-    "11": 0.55,
-    "13": 0.45
-   },
-   "claimable": false
-  },
-  "interference": {
-   "mean": -0.32,
-   "lo": -0.5,
-   "hi": -0.15,
-   "by_seed": {
-    "7": 0.0,
-    "11": -0.5,
-    "13": -0.45
-   },
-   "claimable": false
-  }
- },
- "llama31-8b-it-ft/L3/cot/v1": {
-  "kind": "tuned",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 99.8,
-  "acc_incongruent": 100.0,
+  "n": 64,
+  "acc_neutral": 57.8,
+  "acc_incongruent": 70.3,
   "lure_rate": 0.0,
   "pseudo_rate": 0.0,
   "lure_excess": {
@@ -660,91 +14,37 @@
    "lo": 0.0,
    "hi": 0.0,
    "by_seed": {
-    "7": 0.0,
-    "11": 0.0,
-    "13": 0.0
+    "7": 0.0
    },
    "claimable": false
   },
   "facilitation": {
-   "mean": 0.1,
-   "lo": -0.02,
-   "hi": 0.2,
+   "mean": 9.38,
+   "lo": -4.69,
+   "hi": 23.44,
    "by_seed": {
-    "7": 0.0,
-    "11": 0.2,
-    "13": 0.1
+    "7": 9.38
    },
    "claimable": false
   },
   "interference": {
-   "mean": -0.13,
-   "lo": -0.23,
-   "hi": -0.03,
+   "mean": -12.5,
+   "lo": -28.12,
+   "hi": 3.12,
    "by_seed": {
-    "7": 0.0,
-    "11": -0.2,
-    "13": -0.2
+    "7": -12.5
    },
    "claimable": false
   }
  },
- "llama31-8b-it-ft/L3/cot/v2": {
-  "kind": "tuned",
+ "nemotron-nano-8b/L3/free/v2": {
+  "kind": "reasoning",
   "seeds": [
-   7,
-   11,
-   13
+   7
   ],
-  "n": 6000,
-  "acc_neutral": 99.8,
-  "acc_incongruent": 100.0,
-  "lure_rate": 0.0,
-  "pseudo_rate": 0.02,
-  "lure_excess": {
-   "mean": -0.02,
-   "lo": -0.05,
-   "hi": 0.0,
-   "by_seed": {
-    "7": 0.0,
-    "11": -0.05,
-    "13": 0.0
-   },
-   "claimable": false
-  },
-  "facilitation": {
-   "mean": 0.17,
-   "lo": 0.07,
-   "hi": 0.28,
-   "by_seed": {
-    "7": 0.0,
-    "11": 0.35,
-    "13": 0.15
-   },
-   "claimable": false
-  },
-  "interference": {
-   "mean": -0.15,
-   "lo": -0.27,
-   "hi": -0.03,
-   "by_seed": {
-    "7": 0.0,
-    "11": -0.3,
-    "13": -0.15
-   },
-   "claimable": false
-  }
- },
- "llama31-8b-it-ftmulti/L3/cot/v1": {
-  "kind": "tuned",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 99.8,
-  "acc_incongruent": 99.9,
+  "n": 64,
+  "acc_neutral": 57.8,
+  "acc_incongruent": 75.0,
   "lure_rate": 0.0,
   "pseudo_rate": 0.0,
   "lure_excess": {
@@ -752,45 +52,37 @@
    "lo": 0.0,
    "hi": 0.0,
    "by_seed": {
-    "7": 0.0,
-    "11": 0.0,
-    "13": 0.0
+    "7": 0.0
    },
    "claimable": false
   },
   "facilitation": {
-   "mean": 0.17,
-   "lo": 0.08,
-   "hi": 0.28,
+   "mean": 12.5,
+   "lo": -3.12,
+   "hi": 28.12,
    "by_seed": {
-    "7": 0.0,
-    "11": 0.1,
-    "13": 0.4
+    "7": 12.5
    },
    "claimable": false
   },
   "interference": {
-   "mean": -0.15,
-   "lo": -0.27,
-   "hi": -0.05,
+   "mean": -17.19,
+   "lo": -31.29,
+   "hi": -3.12,
    "by_seed": {
-    "7": 0.0,
-    "11": -0.05,
-    "13": -0.4
+    "7": -17.19
    },
    "claimable": false
   }
  },
- "llama31-8b-it-ftmulti/L3/cot/v2": {
-  "kind": "tuned",
+ "llama31-8b-it/L3/free/v1": {
+  "kind": "pair",
   "seeds": [
-   7,
-   11,
-   13
+   7
   ],
-  "n": 6000,
-  "acc_neutral": 99.8,
-  "acc_incongruent": 100.0,
+  "n": 2000,
+  "acc_neutral": 67.0,
+  "acc_incongruent": 67.2,
   "lure_rate": 0.0,
   "pseudo_rate": 0.0,
   "lure_excess": {
@@ -798,123 +90,63 @@
    "lo": 0.0,
    "hi": 0.0,
    "by_seed": {
-    "7": 0.0,
-    "11": 0.0,
-    "13": 0.0
+    "7": 0.0
    },
    "claimable": false
   },
   "facilitation": {
-   "mean": 0.23,
-   "lo": 0.12,
-   "hi": 0.37,
+   "mean": 4.3,
+   "lo": 1.65,
+   "hi": 7.0,
    "by_seed": {
-    "7": 0.0,
-    "11": 0.1,
-    "13": 0.6
-   },
-   "claimable": false
-  },
-  "interference": {
-   "mean": -0.23,
-   "lo": -0.37,
-   "hi": -0.12,
-   "by_seed": {
-    "7": 0.0,
-    "11": -0.1,
-    "13": -0.6
-   },
-   "claimable": false
-  }
- },
- "llama31-8b-it-merged/L3/cot/v1": {
-  "kind": "tuned",
-  "seeds": [
-   7,
-   11,
-   13
-  ],
-  "n": 6000,
-  "acc_neutral": 99.7,
-  "acc_incongruent": 99.9,
-  "lure_rate": 0.02,
-  "pseudo_rate": 0.02,
-  "lure_excess": {
-   "mean": 0.0,
-   "lo": -0.05,
-   "hi": 0.05,
-   "by_seed": {
-    "7": 0.0,
-    "11": 0.0,
-    "13": 0.0
-   },
-   "claimable": false
-  },
-  "facilitation": {
-   "mean": 0.2,
-   "lo": 0.08,
-   "hi": 0.33,
-   "by_seed": {
-    "7": 0.0,
-    "11": 0.35,
-    "13": 0.25
+    "7": 4.3
    },
    "claimable": false
   },
   "interference": {
    "mean": -0.2,
-   "lo": -0.37,
-   "hi": -0.05,
+   "lo": -2.8,
+   "hi": 2.5,
    "by_seed": {
-    "7": 0.0,
-    "11": -0.3,
-    "13": -0.3
+    "7": -0.2
    },
    "claimable": false
   }
  },
- "llama31-8b-it-merged/L3/cot/v2": {
-  "kind": "tuned",
+ "llama31-8b-it/L3/free/v2": {
+  "kind": "pair",
   "seeds": [
-   7,
-   11,
-   13
+   7
   ],
-  "n": 6000,
-  "acc_neutral": 99.7,
-  "acc_incongruent": 100.0,
-  "lure_rate": 0.0,
+  "n": 2000,
+  "acc_neutral": 67.0,
+  "acc_incongruent": 71.2,
+  "lure_rate": 0.05,
   "pseudo_rate": 0.0,
   "lure_excess": {
-   "mean": 0.0,
+   "mean": 0.05,
    "lo": 0.0,
-   "hi": 0.0,
+   "hi": 0.15,
    "by_seed": {
-    "7": 0.0,
-    "11": 0.0,
-    "13": 0.0
+    "7": 0.05
    },
    "claimable": false
   },
   "facilitation": {
-   "mean": 0.3,
-   "lo": 0.13,
-   "hi": 0.48,
+   "mean": -1.75,
+   "lo": -4.55,
+   "hi": 0.95,
    "by_seed": {
-    "7": 0.0,
-    "11": 0.5,
-    "13": 0.4
+    "7": -1.75
    },
    "claimable": false
   },
   "interference": {
-   "mean": -0.32,
-   "lo": -0.5,
-   "hi": -0.17,
+   "mean": -4.2,
+   "lo": -6.75,
+   "hi": -1.6,
    "by_seed": {
-    "7": 0.0,
-    "11": -0.5,
-    "13": -0.45
+    "7": -4.2
    },
    "claimable": false
   }
