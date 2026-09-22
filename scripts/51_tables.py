@@ -554,6 +554,29 @@ def main() -> int:
         lines += ["\\bottomrule", "\\end{tabular}"]
         (PAPER / "tables" / "modelkind.tex").write_text("\n".join(lines) + "\n")
 
+    # ---- E23: Geirhos-style lure index, lure / (lure + true), congruent trials excluded.
+    # Reported as a range beside the twin-subtracted excess, which the matched design makes the
+    # stronger quantity; the index is the comparable number for the shape/texture literature.
+    import numpy as _np
+    idx = {"direct": [], "cot": []}
+    for m in load_config("models.yaml")["models"]:
+        if load_config("models.yaml")["models"][m].get("kind") in ("tuned", "reasoning"):
+            continue
+        for reg in ("direct", "cot"):
+            f = RESULTS_DIR / "summary" / m / "L3" / reg / "behavior_table.json"
+            if not f.exists():
+                continue
+            d = json.loads(f.read_text())
+            for g, rec in d.items():
+                if g.startswith("incongruent@") and rec.get("lure_index") is not None:
+                    v = rec["lure_index"]
+                    idx[reg].append(v[0] if isinstance(v, list) else v)
+    for reg in ("direct", "cot"):
+        if idx[reg]:
+            numbers[f"lureindex-{reg}-lo"] = f"{min(idx[reg]):.2f}"
+            numbers[f"lureindex-{reg}-hi"] = f"{max(idx[reg]):.2f}"
+            numbers[f"lureindex-{reg}-n"] = str(len(idx[reg]))
+
     narrative(numbers)
     n_main = build([3], PAPER / "tables" / "behavior.tex", "3")
     n_app = build([1, 2, 4, 5], PAPER / "tables" / "behavior_levels.tex", "1, 2, 4 and 5")

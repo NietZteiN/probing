@@ -422,6 +422,14 @@ dominates but is not uniform, and \NUM{link-pos-topmodel-n} of the exceptions co
 single model, so we treat the instance-level link as unresolved and rest the claim on the
 cell-level pattern.
 
+\paragraph{Lure index.} The shape--texture literature reports a cue-conflict index rather than a
+difference: lure answers over lure plus true answers, with congruent trials excluded
+\cite{geirhos2019texture}. Over the \NUM{lureindex-direct-n} (model, target) cells at level~3
+it is \NUM{lureindex-direct-lo}--\NUM{lureindex-direct-hi} without CoT and
+\NUM{lureindex-cot-lo}--\NUM{lureindex-cot-hi} with it. We report the twin-subtracted excess in
+the body instead, because the index has no baseline for the rate at which a model produces that
+digit anyway, which at these accuracies is most of it.
+
 \paragraph{Positional-copy control.} \citet{liu2026readout} report that small models copy
 whichever number stands in the trailing slot of the chain. Pooling the \NUM{copy-n-err} CoT lure
 errors at the answer position over every model, level and demonstration set, the number
