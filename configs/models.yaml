@@ -132,3 +132,14 @@ models:
     partition: h100
     batch_size: 16
     note: reasoning-tuned on the Llama-3.1-8B spine; the E16 row's model finally available in a non-Chinese checkpoint.
+
+  # E15: the pretrained half of the Gemma pair, so the base-vs-instruct contrast exists outside
+  # the Llama family. Same tokenizer as gemma3-4b-it, so the verified word pool carries over.
+  gemma3-4b:
+    hf_id: google/gemma-3-4b-pt
+    origin: Google
+    kind: pair
+    tuned: false
+    partition: a30
+    batch_size: 16
+    note: base-vs-instruct pair with gemma3-4b-it. Added 2026-09-22.
