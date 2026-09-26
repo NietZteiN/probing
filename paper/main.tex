@@ -333,7 +333,11 @@ decodable where the chain writes it.
 
 The task is synthetic arithmetic with short chains, so the results need not transfer to real
 code, which is the motivation for the task rather than a finding. The models are at most 12B
-parameters, and within-family comparisons indicate the direction of a trend only. The lures are
+parameters, and within-family comparisons indicate the direction of a trend only; the comparison
+across tuning stages rests on two families, which disagree on which stage carries the small
+direct-regime effect (Appendix~\ref{app:kind}). Instruction-tuned models are prompted as raw
+completions without their chat template, which keeps token positions identical across the panel
+but is not how they are usually deployed. The lures are
 English number words; identifier-style names were tested at level~3 only, and other languages
 and optimized lures remain future work. Linear probes can miss information that is encoded nonlinearly; the
 patching experiments address this in part, but hidden states carry mixed information and
@@ -352,6 +356,14 @@ recovery; the direct regime bounds this effect from the other side.
 Our pre-CoT probe maxima on the letter condition, \NUM{replication-pre-v1} and
 \NUM{replication-pre-v2}, exceed the 17.8 and 33.2 that \citet{kudo2026faithful} report for the
 same model, while the positions agree; we attribute the difference to probe training details.
+The same letter-trained per-token probes on Llama-3.1-8B place the intermediate variable at
+equation \NUM{replication8b-eq-v2}, as for Llama-3.2-3B, but the queried variable at equation
+\NUM{replication8b-eq-v1} rather than \NUM{replication-eq-v1}: the equation that restates its
+definition (\texttt{pen=1 + cup} in the running example) once the intermediate's value has been
+written, two equations before the one that writes the queried value. The pre-CoT maxima are
+\NUM{replication8b-pre-v1} and \NUM{replication8b-pre-v2}. In the larger model the queried value
+is therefore decodable before the chain states it; its heatmaps and patching grids are in the
+figure appendix.
 
 Rule~4 is decided per model, not by eye. For each model we tokenize every candidate name in the
 five contexts of the template (line start, after a comma, after each operator, before the
@@ -503,7 +515,7 @@ The bottom block repeats the pretrained-to-instruct step in a second family, Gem
 \label{tab:kind}
 \end{table}
 
-Without CoT the pretrained model is the only rung with a reliable positive effect
+Without CoT the pretrained model is the only rung of the Llama ladder with a reliable positive effect
 (\NUM{kind-base-v1} on the queried variable); the instruction-tuned model is at
 \NUM{kind-it-v1}, and the three tuned variants lie between \NUM{kind-ftm-v1} and
 \NUM{kind-ft-v2}, none differing from the instruction-tuned model by more than
@@ -522,6 +534,12 @@ This checkpoint gates its long-form reasoning on a system instruction. Our promp
 completions with no system message, which is what keeps token positions identical across the
 panel, so this rung is a reasoning-tuned model with that mode off. A model reasoning at length
 would need a chat template and a different token layout, and is outside this comparison.
+
+The Gemma pair in the bottom block runs the other way: the pretrained model has no reliable
+effect (\NUM{kind-gb-v1} on the queried variable) and the instruction-tuned model has one
+(\NUM{kind-gi-v1}). Which tuning stage carries the small direct-regime effect therefore differs
+between families, and the ladder should not be read as showing that the effect comes from
+pretraining in general.
 
 \section{Probe recipe and patching scope}
 \label{app:recipe}
@@ -586,6 +604,21 @@ that format is a different phenomenon, and we do not treat the two as one.
 
 \section{Additional levels, models and demonstration sets}
 Table~\ref{tab:levels-appendix} repeats Table~\ref{tab:behavior} for the other four levels.
+The pretrained Gemma-3-4B, the base half of the Gemma pair, is reported in
+Table~\ref{tab:kind} rather than in Table~\ref{tab:behavior}.
+
+\paragraph{Data, compute and software.} Each level has \NUM{n-test-sets} matched sets, each
+rendered in every condition, and \NUM{n-probe-train} separately generated problems for
+training probes; every probe is trained with \NUM{probe-seeds} seeds. Every run is inference: no language model is trained, and the probes are
+linear. All experiments together used at most \NUM{compute-gpuh} GPU-hours on NVIDIA A30, H100
+and H200 cards, counted as allocated time and so including idle time of the job queue.
+The models are from the Llama~3 \citep{grattafiori2024llama3}, Gemma~3 \citep{gemmateam2025gemma3}
+and OLMo~2 \citep{olmo2024olmo2} families, with the reasoning-tuned checkpoint from
+\citet{bercovich2025nemotron}, each used under its release licence for research. Models run in
+PyTorch \citep{paszke2019pytorch} with Transformers \citep{wolf2020transformers}, and the probes are
+trained in PyTorch; the L-BFGS refit of Appendix~\ref{app:recipe} uses scikit-learn
+\citep{pedregosa2011sklearn}, and the mixed-effects check uses statsmodels
+\citep{seabold2010statsmodels}.
 
 \begin{table}[h]
 \centering\small

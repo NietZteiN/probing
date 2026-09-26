@@ -43,6 +43,14 @@ CAPTIONS = {
         "after \\citeauthor{kudo2026faithful}'s Figures~5--6.",
     "kudo_fig5_llama32-3b_L3_direct_v2": "The same grids in the direct regime.",
     "fig3_patching_llama32-3b_L3_v2": "Lure errors removed by patching, by layer, with both controls.",
+    "kudo_fig2_llama31-8b_L3_cot_v1": "Llama-3.1-8B, chain-of-thought regime, queried variable: the accuracy "
+        "heatmaps of the Llama-3.2-3B figures. The value is decodable from the equation that restates the "
+        "variable's definition, before the chain writes it.",
+    "kudo_fig2_llama31-8b_L3_cot_v2": "Llama-3.1-8B, chain-of-thought regime, intermediate variable.",
+    "kudo_fig2_llama31-8b_L3_direct_v2": "Llama-3.1-8B, direct regime, intermediate variable.",
+    "kudo_fig5_llama31-8b_L3_cot_v2": "Llama-3.1-8B, span-by-layer-window patching grids, chain-of-thought "
+        "regime. The lure-removal panel is empty: none of the 500 patched problems is answered with the lure.",
+    "kudo_fig5_llama31-8b_L3_direct_v2": "Llama-3.1-8B, the same grids in the direct regime.",
 }
 SKIP = ("fig2_margin", "kudo_fig3_")          # superseded by fig4/fig5
 

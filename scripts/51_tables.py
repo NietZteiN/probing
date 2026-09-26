@@ -191,14 +191,27 @@ def main() -> int:
         if oc.exists() and ob.exists():
             numbers["ownchain-n"] = str(len(json.loads(oc.read_text())))
             numbers["ownchain-total"] = str(sum(1 for l in ob.open() if not json.loads(l)["correct"]))
-        kt = RESULTS_DIR / "summary" / "llama32-3b" / "L3" / "cot" / "kudo_table.json"
-        if kt.exists():
+        # data, seeds and compute statement (ARR B6, C1, C3); compute from 70_compute_budget.py
+        cj = RESULTS_DIR / "summary" / "compute.json"
+        if cj.exists():
+            numbers["compute-gpuh"] = f"{json.loads(cj.read_text())['gpu_hours']:.0f}"
+        ds = load_config("dataset.yaml")
+        numbers["n-test-sets"] = f"{ds['n_test_sets']:,}".replace(",", "{,}")
+        numbers["n-probe-train"] = f"{ds['n_probe_train']:,}".replace(",", "{,}")
+        pj = OUT_DIR / "probes" / "llama32-3b" / "L3" / "cot" / "train_neutral" / "v1.json"
+        if pj.exists():
+            numbers["probe-seeds"] = str(len({r["seed"] for r in json.loads(pj.read_text())["results"]}))
+        # replication-* is the 3B (body); replication8b-* the same quantities for the 8B (appendix, E28)
+        for model, tag in (("llama32-3b", "replication"), ("llama31-8b", "replication8b")):
+            kt = RESULTS_DIR / "summary" / model / "L3" / "cot" / "kudo_table.json"
+            if not kt.exists():
+                continue
             k = json.loads(kt.read_text())
             for v in ("v1", "v2"):
                 c = k.get(f"train_letter/{v}", {}).get("letter")
                 if c:
-                    numbers[f"replication-pre-{v}"] = f"{100*c['acc_pre_cot']:.1f}"
-                    numbers[f"replication-eq-{v}"] = c["t_star_segment"].split(":")[1]
+                    numbers[f"{tag}-pre-{v}"] = f"{100*c['acc_pre_cot']:.1f}"
+                    numbers[f"{tag}-eq-{v}"] = c["t_star_segment"].split(":")[1]
         # level-4 lure mass at the ANSWER position for both the bound (incongruent@v2) and the
         # unbound (irrelevant@v3) number word, best-accuracy layer, so the two are comparable
         g4f = RESULTS_DIR / "summary" / "llama32-3b" / "L4" / "cot" / "probes_grid.json"
@@ -559,6 +572,10 @@ def main() -> int:
             return f"{lab} & {DISP[m]} & " + " & ".join(cells) + f" & {acc:.1f} \\\\"
         lines += [r for m, lab, _ in RUNGS if (r := kind_row(m, lab))]
         gemma = [r for m, lab in GEMMA_PAIR if (r := kind_row(m, lab))]
+        for m, sh in (("gemma3-4b", "gb"), ("gemma3-4b-it", "gi")):
+            e = mk.get(f"{m}/L3/direct/v1", {}).get("lure_excess")
+            if e:
+                numbers[f"kind-{sh}-v1"] = f"{e['mean']:+.2f}"
         if len(gemma) == len(GEMMA_PAIR):
             lines += ["\\midrule"] + gemma
         lines += ["\\bottomrule", "\\end{tabular}"]

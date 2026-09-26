@@ -1,0 +1,19 @@
+{
+ "gpu_hours": 177.7,
+ "by_partition": {
+  "a30": {
+   "gpu_hours": 24.5,
+   "jobs": 6
+  },
+  "h100": {
+   "gpu_hours": 37.8,
+   "jobs": 19
+  },
+  "h200": {
+   "gpu_hours": 115.4,
+   "jobs": 81
+  }
+ },
+ "manifests": 109,
+ "note": "allocated time incl. idle queue workers; an upper bound"
+}
