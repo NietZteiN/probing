@@ -139,6 +139,27 @@ def main() -> int:
             ladder = {m for m in swept if cfg.get(m, {}).get("kind") in ("tuned", "reasoning")}
             numbers["model-list"] = ", ".join(sorted(MODEL.get(m, m) for m in swept - ladder))
             numbers["n-ladder"] = words[len(ladder)] if len(ladder) < len(words) else str(len(ladder))
+            # how general "without CoT the models use the value" is: models with a reliable positive
+            # facilitation or lure excess on either target at level 3, and those with a lure excess
+            sw3 = sweeps.get(3, {})
+
+            def pos_claim(m, c):
+                cc = sw3.get(f"{m}/direct", {}).get("contrasts", {})
+                return any(cc.get(f"{c}@{r}", {}).get("claimable") and cc[f"{c}@{r}"]["pooled_mean"] > 0 for r in ("v1", "v2"))
+            m3 = sorted({k.split("/")[0] for k in sw3})
+            nv = sum(1 for m in m3 if pos_claim(m, "facilitation") or pos_claim(m, "lure_excess"))
+            nl = sum(1 for m in m3 if pos_claim(m, "lure_excess"))
+            numbers["n-value-models"] = words[nv] if nv < len(words) else str(nv)
+            numbers["n-lure-models"] = words[nl] if nl < len(words) else str(nl)
+            # the demonstration set: largest across-set range of neutral accuracy in any cot/direct cell
+            spreads = [g["acc_range"][1] - g["acc_range"][0] for sw in sweeps.values() for k, r in sw.items()
+                       if k.endswith(("/cot", "/direct")) and len(r["seeds"]) == 3 and (g := r["groups"].get("neutral"))]
+            numbers["demo-spread-max"] = f"{100*max(spreads):.0f}"
+            # accuracy contrasts that survive under CoT (the equivalence test covers lure excess only)
+            cot_acc = [(L, k, n) for L, sw in sweeps.items() for k, r in sw.items() if k.endswith("/cot")
+                       for n, c in r["contrasts"].items() if n.split("@")[0] in ("facilitation", "interference") and c["claimable"]]
+            numbers["cot-acc-cells"] = str(len(cot_acc))
+            numbers["cot-acc-models"] = str(len({k.split("/")[0] for _, k, _ in cot_acc}))
         # equivalence bounds over every chain cell (E37): counts, and the exception(s) named
         eqf = RESULTS_DIR / "summary" / "equivalence.json"
         if eqf.exists():
@@ -268,6 +289,7 @@ def main() -> int:
         # the one model where the name still moves the answer through a forced correct chain
         EXC = "olmo2-1b-it"
         inj, err, exc = [], [], {}
+        inj_models, err_models, inj_n = set(), set(), set()
         for pf in (RESULTS_DIR / "summary").glob("*/L3/cot/patching.json"):
             d = json.loads(pf.read_text()); mk = pf.parts[-4]
             for kk in ("inject@v1", "inject@v2"):
@@ -275,9 +297,17 @@ def main() -> int:
                     a_ = v.get("anspre") if isinstance(v, dict) else None
                     if a_ and a_.get("lure_injected") is not None:
                         (exc.setdefault(kk, []) if mk == EXC else inj).append((a_["lure_injected"], L, a_.get("damage")))
+                        if mk != EXC:
+                            inj_models.add(mk)
+                            if a_.get("n"): inj_n.add(a_["n"])
             for kk in ("main@v1", "main@v2"):
                 a_ = d.get(kk, {}).get("ALL", {}).get("anspre")
-                if a_: err.append(a_["n_lure_err"])
+                if a_: err.append(a_["n_lure_err"]); err_models.add(mk)
+        # the sentences these feed are scoped to the models actually patched, not "every model"
+        wd = "zero one two three four five six seven eight nine ten".split()
+        numbers["inject-other-models"] = wd[len(inj_models)] if len(inj_models) < len(wd) else str(len(inj_models))
+        numbers["inject-n"] = "{,}".join(f"{max(inj_n):,}".split(",")) if inj_n else "?"
+        numbers["patch-cot-models"] = wd[len(err_models)] if len(err_models) < len(wd) else str(len(err_models))
         if inj:
             numbers["inject-cot-max"] = f"{100*max(v for v, _, _ in inj):.1f}\\%"
         if err:
@@ -380,6 +410,9 @@ def main() -> int:
             r = json.loads(rep.read_text())
             for v in ("v1", "v2"):
                 numbers.setdefault(f"replication-pre-{v}", f"{100*r[v]['acc_pre_cot']:.1f}")
+                # the labelled-position estimate beside the per-token one (replication-pre-* is the max
+                # over every pre-chain token when the per-token probes exist): both are reported
+                numbers[f"replication-pos-pre-{v}"] = f"{100*r[v]['acc_pre_cot']:.1f}"
         pg = RESULTS_DIR / "summary" / "llama32-3b" / "L3" / "cot" / "probes_grid.json"
         if pg.exists():
             grid = json.loads(pg.read_text())["train_neutral/v2"]
@@ -436,6 +469,16 @@ def main() -> int:
         cfg = load_config("models.yaml")["models"]
         body = {m for m, e in cfg.items() if e.get("kind") not in ("tuned", "reasoning") and e.get("table1", True)}
         numbers["mix-lost-body"] = str(sum(1 for k in lost if k.split("/")[0] in body and k.split("/")[2] in ("cot", "direct")))
+        # starred Table 1 lure-excess cells (full data) that the 600-set subsample supports under neither procedure
+        sw3 = json.loads((RESULTS_DIR / "summary" / "seed_sweep_L3.json").read_text())
+        sub_lost = [k for k, c in fitted
+                    if k.split("/")[0] in body and k.split("/")[2] in ("cot", "direct")
+                    and sw3.get(f"{k.split('/')[0]}/{k.split('/')[2]}", {}).get("contrasts", {}).get(f"lure_excess@{k.split('/')[3]}", {}).get("claimable")
+                    and not (c["boot_lo"] > 0 or c["boot_hi"] < 0) and not c["mixed"]["excludes_zero"]]
+        numbers["mix-sub-lost-n"] = str(len(sub_lost))
+        numbers["mix-sub-lost-cells"] = "; ".join(
+            f"{MODEL.get(k.split('/')[0], k.split('/')[0])}, {'CoT' if k.split('/')[2] == 'cot' else 'no CoT'}, "
+            f"{'queried' if k.split('/')[3] == 'v1' else 'intermediate'} variable" for k in sub_lost) or "none"
         nb = int(numbers["mix-lost-body"])
         numbers["mix-lost-body-text"] = "none of these is" if nb == 0 else f"{nb} of these {'is' if nb == 1 else 'are'}"
         if numbers["mix-lost-body"] != "0":

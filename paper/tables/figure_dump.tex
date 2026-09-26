@@ -2,6 +2,7 @@
 \clearpage
 \onecolumn
 \section{Every figure at full size}
+\label{app:figs}
 Each figure below is reproduced on its own page. Wide figures are placed on landscape pages, which a PDF viewer displays upright, so nothing has to be read sideways.
 
 \begin{landscape}
@@ -77,7 +78,7 @@ Each figure below is reproduced on its own page. Wide figures are placed on land
 \begin{landscape}
 \begin{figure}[p]\centering
 \includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/fig5_kudo3_llama32-3b_L3_cot_v2_err_i0.pdf}
-\caption{As above, for the intermediate variable.}\label{fig:dump-fig5-kudo3-llama32-3b-L3-cot-v2-err-i0}
+\caption{As above, for the intermediate variable. Red is the model's final answer, which is the queried variable's value, so a cell that matches it is not a readout of this variable.}\label{fig:dump-fig5-kudo3-llama32-3b-L3-cot-v2-err-i0}
 \end{figure}
 \end{landscape}
 
@@ -105,7 +106,7 @@ Each figure below is reproduced on its own page. Wide figures are placed on land
 \begin{landscape}
 \begin{figure}[p]\centering
 \includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/kudo_fig5_llama32-3b_L3_cot_v2.pdf}
-\caption{Span-by-layer-window patching grids, three sources, after \citeauthor{kudo2026faithful}'s Figures~5--6.}\label{fig:dump-kudo-fig5-llama32-3b-L3-cot-v2}
+\caption{Span-by-layer-window patching grids, three sources (the lure-removal panel is empty: with CoT there are too few lure errors to draw), after \citeauthor{kudo2026faithful}'s Figures~5--6.}\label{fig:dump-kudo-fig5-llama32-3b-L3-cot-v2}
 \end{figure}
 \end{landscape}
 
@@ -120,6 +121,55 @@ Each figure below is reproduced on its own page. Wide figures are placed on land
 \begin{figure}[p]\centering
 \includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/fig3_patching_llama32-3b_L3_v2.pdf}
 \caption{Lure errors removed by patching, by layer, with both controls.}\label{fig:dump-fig3-patching-llama32-3b-L3-v2}
+\end{figure}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/kudo_fig2_llama32-3b_L3_cot_v1.pdf}
+\caption{Accuracy heatmaps as above, chain-of-thought regime, queried variable.}\label{fig:dump-kudo-fig2-llama32-3b-L3-cot-v1}
+\end{figure}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/kudo_fig2_llama32-3b_L3_direct_v1.pdf}
+\caption{The same heatmaps in the direct regime, queried variable.}\label{fig:dump-kudo-fig2-llama32-3b-L3-direct-v1}
+\end{figure}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/kudo_fig5_llama32-3b_L3_cot_v1.pdf}
+\caption{Span-by-layer-window patching grids, chain-of-thought regime, queried variable; the lure-removal panel is empty for the same reason.}\label{fig:dump-kudo-fig5-llama32-3b-L3-cot-v1}
+\end{figure}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/kudo_fig5_llama32-3b_L3_direct_v1.pdf}
+\caption{The same grids in the direct regime, queried variable.}\label{fig:dump-kudo-fig5-llama32-3b-L3-direct-v1}
+\end{figure}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/fig3_patching_llama32-3b_L3_v1.pdf}
+\caption{Lure errors removed by patching, by layer, with both controls, queried variable.}\label{fig:dump-fig3-patching-llama32-3b-L3-v1}
+\end{figure}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/fig_own_chain_llama32-3b_L3_cot_v1.pdf}
+\caption{The own-chain probe figure at full size.}\label{fig:dump-fig-own-chain-llama32-3b-L3-cot-v1}
+\end{figure}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}[p]\centering
+\includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/fig3_patching_llama31-8b_L3_v2.pdf}
+\caption{Llama-3.1-8B, lure errors removed by patching, by layer, with both controls, direct regime, intermediate variable.}\label{fig:dump-fig3-patching-llama31-8b-L3-v2}
 \end{figure}
 \end{landscape}
 
@@ -160,70 +210,21 @@ Each figure below is reproduced on its own page. Wide figures are placed on land
 
 \begin{landscape}
 \begin{figure}[p]\centering
-\includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/fig3_patching_llama31-8b_L3_v2.pdf}
-\caption{\texttt{fig3\_patching\_llama31-8b\_L3\_v2}.}\label{fig:dump-fig3-patching-llama31-8b-L3-v2}
-\end{figure}
-\end{landscape}
-
-\begin{landscape}
-\begin{figure}[p]\centering
-\includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/fig3_patching_llama32-3b_L3_v1.pdf}
-\caption{\texttt{fig3\_patching\_llama32-3b\_L3\_v1}.}\label{fig:dump-fig3-patching-llama32-3b-L3-v1}
-\end{figure}
-\end{landscape}
-
-\begin{landscape}
-\begin{figure}[p]\centering
-\includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/fig_own_chain_llama32-3b_L3_cot_v1.pdf}
-\caption{\texttt{fig\_own\_chain\_llama32-3b\_L3\_cot\_v1}.}\label{fig:dump-fig-own-chain-llama32-3b-L3-cot-v1}
-\end{figure}
-\end{landscape}
-
-\begin{landscape}
-\begin{figure}[p]\centering
 \includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/kudo_fig2_llama31-8b_L3_direct_v1.pdf}
-\caption{\texttt{kudo\_fig2\_llama31-8b\_L3\_direct\_v1}.}\label{fig:dump-kudo-fig2-llama31-8b-L3-direct-v1}
-\end{figure}
-\end{landscape}
-
-\begin{landscape}
-\begin{figure}[p]\centering
-\includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/kudo_fig2_llama32-3b_L3_cot_v1.pdf}
-\caption{\texttt{kudo\_fig2\_llama32-3b\_L3\_cot\_v1}.}\label{fig:dump-kudo-fig2-llama32-3b-L3-cot-v1}
-\end{figure}
-\end{landscape}
-
-\begin{landscape}
-\begin{figure}[p]\centering
-\includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/kudo_fig2_llama32-3b_L3_direct_v1.pdf}
-\caption{\texttt{kudo\_fig2\_llama32-3b\_L3\_direct\_v1}.}\label{fig:dump-kudo-fig2-llama32-3b-L3-direct-v1}
+\caption{Llama-3.1-8B, direct regime, queried variable.}\label{fig:dump-kudo-fig2-llama31-8b-L3-direct-v1}
 \end{figure}
 \end{landscape}
 
 \begin{landscape}
 \begin{figure}[p]\centering
 \includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/kudo_fig5_llama31-8b_L3_cot_v1.pdf}
-\caption{\texttt{kudo\_fig5\_llama31-8b\_L3\_cot\_v1}.}\label{fig:dump-kudo-fig5-llama31-8b-L3-cot-v1}
+\caption{Llama-3.1-8B, patching grids, chain-of-thought regime, queried variable; the lure-removal panel is empty for the same reason.}\label{fig:dump-kudo-fig5-llama31-8b-L3-cot-v1}
 \end{figure}
 \end{landscape}
 
 \begin{landscape}
 \begin{figure}[p]\centering
 \includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/kudo_fig5_llama31-8b_L3_direct_v1.pdf}
-\caption{\texttt{kudo\_fig5\_llama31-8b\_L3\_direct\_v1}.}\label{fig:dump-kudo-fig5-llama31-8b-L3-direct-v1}
-\end{figure}
-\end{landscape}
-
-\begin{landscape}
-\begin{figure}[p]\centering
-\includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/kudo_fig5_llama32-3b_L3_cot_v1.pdf}
-\caption{\texttt{kudo\_fig5\_llama32-3b\_L3\_cot\_v1}.}\label{fig:dump-kudo-fig5-llama32-3b-L3-cot-v1}
-\end{figure}
-\end{landscape}
-
-\begin{landscape}
-\begin{figure}[p]\centering
-\includegraphics[width=\linewidth,height=0.88\textheight,keepaspectratio]{figures/kudo_fig5_llama32-3b_L3_direct_v1.pdf}
-\caption{\texttt{kudo\_fig5\_llama32-3b\_L3\_direct\_v1}.}\label{fig:dump-kudo-fig5-llama32-3b-L3-direct-v1}
+\caption{Llama-3.1-8B, patching grids, direct regime, queried variable.}\label{fig:dump-kudo-fig5-llama31-8b-L3-direct-v1}
 \end{figure}
 \end{landscape}

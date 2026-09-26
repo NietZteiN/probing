@@ -70,10 +70,12 @@ def main() -> int:
     f = RESULTS_DIR / "summary" / a.model / f"L{a.level}" / a.patch_regime / "patching.json"
     if f.exists():
         pt = json.loads(f.read_text())
-        # main: lure removed among lure errors (and normalised LD); ctl_word: damage; ctl_lure: follows the new lure
+        # main: lure removed among lure errors (and normalised LD); ctl_word: damage; ctl_lure: lure removed and follows the
+        # new lure (removal by the lure control is what shows whether removal is name-specific, text on the 8B)
         for name, key, style, lab in ((f"main@{r}", "lure_removed", "-", "lure removed (neutral patch)"),
                                       (f"main@{r}", "normalized_ld_mean", "-.", "normalised logit diff."),
                                       (f"ctl_word@{r}", "damage", "--", "damage (word control)"),
+                                      (f"ctl_lure@{r}", "lure_removed", ".-", "lure removed (lure control)"),
                                       (f"ctl_lure@{r}", "follows_src_lure", ":", "follows new lure (lure control)")):
             if name not in pt:
                 continue

@@ -37,8 +37,8 @@ FAMILIES = [("Llama", ["llama32-3b", "llama32-3b-it", "llama31-8b", "llama31-8b-
             ("OLMo", ["olmo2-1b-it", "olmo2-7b-it"])]
 SHORT = {"llama32-3b": "Llama-3.2-3B", "llama32-3b-it": "Llama-3.2-3B Inst.",
          "llama31-8b": "Llama-3.1-8B", "llama31-8b-it": "Llama-3.1-8B Inst.",
-         "gemma3-4b-it": "Gemma-3-4B", "gemma3-12b-it": "Gemma-3-12B",
-         "olmo2-1b-it": "OLMo-2-1B", "olmo2-7b-it": "OLMo-2-7B"}
+         "gemma3-4b-it": "Gemma-3-4B Inst.", "gemma3-12b-it": "Gemma-3-12B Inst.",
+         "olmo2-1b-it": "OLMo-2-1B Inst.", "olmo2-7b-it": "OLMo-2-7B Inst."}
 
 
 def layout_models(sw: dict):
@@ -133,7 +133,7 @@ def main() -> int:
            "(b)  name says the right answer:\n      accuracy gained",
            "points", a.delta, band=True, ylabels=True)
     paired(axb2, sw, rows, "lure_excess@v1",
-           "name says a wrong number:\nlure answers above chance",
+           "name says a wrong number:\nlure answers above the neutral twin",
            "points", a.delta, band=True, ylabels=False)
     h = [plt.Line2D([], [], color=RED, marker="o", ls="", ms=6, label="no chain of thought"),
          plt.Line2D([], [], color=BLUE, marker="s", ls="", ms=6, label="with chain of thought"),
@@ -194,8 +194,8 @@ def main() -> int:
     fig.savefig(stem.with_suffix(".pdf"), bbox_inches="tight")
     fig.savefig(stem.with_suffix(".png"), dpi=150, bbox_inches="tight")
     plt.close(fig)
-    n_models = len({k.split('/')[0] for k in sw})
-    print(f"wrote {stem}.png  ({n_models} models at level {a.level})")
+    # count the rows drawn, not the sweep: the sweep also holds ladder models and gemma3-4b (pt)
+    print(f"wrote {stem}.png  ({len(rows)} models plotted at level {a.level}, of {len({k.split('/')[0] for k in sw})} in the sweep)")
     return 0
 
 

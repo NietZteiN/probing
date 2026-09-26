@@ -24,6 +24,7 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from cueconf.config import OUT_DIR, PROJECT_ROOT, RESULTS_DIR  # noqa: E402
+from cueconf.display import MODEL, REGIME, ROLE_WORD, condition  # noqa: E402
 
 FIG = PROJECT_ROOT / "paper" / "figures"
 
@@ -105,7 +106,7 @@ def main() -> int:
             axes[0, j].plot(np.nanmax(Lr, axis=0), color="#B5321F", lw=1.2, label="lure rate (max)")
             axes[0, j].legend(fontsize=6, loc="upper left")
         axes[0, j].set_ylim(0, 1.02); axes[0, j].axvline(cot0 - 0.5, color="grey", lw=0.8, ls="--")
-        axes[0, j].set_title(f"{cond}: value of {r}", fontsize=9)
+        axes[0, j].set_title(condition(cond), fontsize=9)   # the suptitle names the variable
         im = axes[1, j].imshow(A, aspect="auto", origin="lower", cmap="viridis", vmin=0, vmax=1)
         axes[1, j].axvline(cot0 - 0.5, color="w", lw=0.8, ls="--")
         axes[1, j].set_yticks(range(len(layers))); axes[1, j].set_yticklabels(layers, fontsize=6)
@@ -127,7 +128,9 @@ def main() -> int:
         axes[1, j].axvline(cot0 - 0.5, color="w", lw=0.8, ls="--"); axes[2, j].axvline(cot0 - 0.5, color="k", lw=0.8, ls="--")
     fig.colorbar(im, ax=axes[1, :].tolist(), fraction=0.015, label="probe accuracy")
     axes[1, 0].set_ylabel("layer"); axes[2, 0].set_ylabel("layer")
-    fig.suptitle(f"{a.model}, level {a.level}, {a.regime}: per-token probes for the value of {r} (trained on {a.train})", fontsize=10)
+    trained = {"train_neutral": "neutral", "train_letter": "letter"}.get(a.train, a.train)
+    fig.suptitle(f"{MODEL.get(a.model, a.model)}, level {a.level}, {REGIME.get(a.regime, a.regime)}: per-token probes for the "
+                 f"value of the {ROLE_WORD.get(r, r)} variable (trained on {trained} problems)", fontsize=10)
     fig.savefig(FIG / f"kudo_fig2_{a.model}_L{a.level}_{a.regime}_{r}.pdf", bbox_inches="tight")
     fig.savefig(FIG / f"kudo_fig2_{a.model}_L{a.level}_{a.regime}_{r}.png", dpi=150, bbox_inches="tight"); plt.close(fig)
 
