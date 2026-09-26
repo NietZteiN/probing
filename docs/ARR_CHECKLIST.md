@@ -23,12 +23,16 @@ not imply a clean internal state, is itself a finding reported in the paper.
 OLMo 2, Llama-Nemotron) and the software (PyTorch, Transformers, scikit-learn, statsmodels) in
 the appendix paragraph *Data, compute and software*.
 
-**B2. Licence or terms of use discussed?** Yes, briefly: *Data, compute and software* says each model is used
-under its release licence for research. The licences are the Llama 3.1 and 3.2 Community
-Licenses, the Gemma Terms of Use, Apache 2.0 (OLMo 2) and the NVIDIA Open Model License
-(Llama-3.1-Nemotron-Nano-8B). Kudo et al.'s code is not used: the format and probe recipe are
-reimplemented from the paper (*Setup*), and the clone in `third_party/` has no licence file.
-*(To verify: the licence of each checkpoint on its Hugging Face card.)*
+**B2. Licence or terms of use discussed?** Yes, briefly: *Data, compute and software* says
+each model is used under its release licence for research. Verified on the Hugging Face model
+cards (2026-09-25): Llama 3.2 Community License (Llama-3.2-3B and -Instruct), Llama 3.1
+Community License (Llama-3.1-8B and -Instruct, and the three LoRA/merge variants built on it),
+Gemma Terms of Use (Gemma-3-4B pt and it, Gemma-3-12B-it), Apache 2.0 (both OLMo 2 models), and
+the NVIDIA Open Model License for Llama-3.1-Nemotron-Nano-8B (its card also points to the Llama
+3.1 Community License, "Built with Llama"). All permit non-commercial research use. Kudo et
+al.'s repository has no licence (all rights reserved by default); the paper reimplements their
+format and recipe from the paper (*Setup*), and the local clone is gitignored, so none of their
+code is redistributed.
 
 **B3. Use consistent with intended use?** Yes. All models are used for non-commercial research
 inference, which every licence above permits. The released artifacts (generator, word lists,

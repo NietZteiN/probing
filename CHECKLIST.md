@@ -32,7 +32,9 @@ ticked only when its numbers are in `results/summary/` and reach the paper throu
 - [x] Anonymise for review: author block anonymous, no repository link, no acknowledgements, PDF metadata carries no author (2026-09-15)
 - [ ] ARR responsible-NLP checklist: answers drafted in `docs/ARR_CHECKLIST.md` (2026-09-25); the author
       checks them against the live form, confirms the AI-assistant (E1) and risks (A2) wording, and submits
-- [ ] Verify the eight bibliography entries added 2026-09-25 (`note = {... verify}` in `paper/refs.bib`)
+- [x] Bibliography verified against arXiv / ACL Anthology / NeurIPS / JMLR / DOI (2026-09-25); fixed the
+      placeholder author of pan2026survey and removed three `note` fields that printed in the references,
+      one of which ("cite in the third person") de-anonymised a self-citation
 - [x] Limitations re-read against the final results (2026-09-25): added the two-family tuning
       disagreement and the raw-completion prompting of instruction-tuned models
 

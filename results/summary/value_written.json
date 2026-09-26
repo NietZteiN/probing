@@ -600,6 +600,126 @@
   "excess_not_ci": null
  },
  {
+  "model": "gemma3-4b",
+  "level": 3,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 0.999,
+  "n_wrote": 1998,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 2,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-4b",
+  "level": 3,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-4b",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-4b",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-4b",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "gemma3-4b",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
   "model": "gemma3-4b-it",
   "level": 3,
   "regime": "cot",
@@ -966,6 +1086,366 @@
   "excess_not_ci": null
  },
  {
+  "model": "llama31-8b-it-ft",
+  "level": 3,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-ft",
+  "level": 3,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-ft",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-ft",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 0.9985,
+  "n_wrote": 1997,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 3,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-ft",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-ft",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 0.9995,
+  "n_wrote": 1999,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 1,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-ftmulti",
+  "level": 3,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-ftmulti",
+  "level": 3,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-ftmulti",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-ftmulti",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 0.999,
+  "n_wrote": 1998,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 2,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-ftmulti",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-ftmulti",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 0.9975,
+  "n_wrote": 1995,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 5,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-merged",
+  "level": 3,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-merged",
+  "level": 3,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 0.9995,
+  "n_wrote": 1999,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 1,
+  "lure_not": 0.0,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-merged",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0005,
+  "pseudo_wrote": 0.0005002501250625312,
+  "excess_wrote": -2.5012506253121927e-07,
+  "excess_wrote_ci": [
+   -0.0015007503751875938,
+   0.0015007503751875938
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-merged",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 0.998,
+  "n_wrote": 1996,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 4,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-merged",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "llama31-8b-it-merged",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 0.9985,
+  "n_wrote": 1997,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 3,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
   "model": "llama32-3b",
   "level": 3,
   "regime": "cot",
@@ -1206,26 +1686,146 @@
   "excess_not_ci": null
  },
  {
+  "model": "nemotron-nano-8b",
+  "level": 3,
+  "regime": "cot",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "n_wrote": 2000,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "nemotron-nano-8b",
+  "level": 3,
+  "regime": "cot",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "n_wrote": 64,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "nemotron-nano-8b",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v1",
+  "frac_wrote": 0.9735,
+  "n_wrote": 1947,
+  "lure_wrote": 0.002054442732408834,
+  "pseudo_wrote": 0.0005184033177812338,
+  "excess_wrote": 0.0015360394146276004,
+  "excess_wrote_ci": [
+   0.0,
+   0.0036288232244686366
+  ],
+  "n_not": 53,
+  "lure_not": 0.018867924528301886,
+  "pseudo_not": 0.0,
+  "excess_not": 0.018867924528301886,
+  "excess_not_ci": null
+ },
+ {
+  "model": "nemotron-nano-8b",
+  "level": 3,
+  "regime": "cot_s11",
+  "target": "v2",
+  "frac_wrote": 0.843,
+  "n_wrote": 1686,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 314,
+  "lure_not": 0.03821656050955414,
+  "pseudo_not": 0.0,
+  "excess_not": 0.03821656050955414,
+  "excess_not_ci": null
+ },
+ {
+  "model": "nemotron-nano-8b",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v1",
+  "frac_wrote": 0.9945,
+  "n_wrote": 1989,
+  "lure_wrote": 0.0005027652086475615,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0005027652086475615,
+  "excess_wrote_ci": [
+   0.0,
+   0.0015120967741935483
+  ],
+  "n_not": 11,
+  "lure_not": 0.0,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null
+ },
+ {
+  "model": "nemotron-nano-8b",
+  "level": 3,
+  "regime": "cot_s13",
+  "target": "v2",
+  "frac_wrote": 0.996,
+  "n_wrote": 1992,
+  "lure_wrote": 0.000502008032128514,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.000502008032128514,
+  "excess_wrote_ci": [
+   0.0,
+   0.0015090543259557343
+  ],
+  "n_not": 8,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null
+ },
+ {
   "model": "olmo2-1b-it",
   "level": 3,
   "regime": "cot",
   "target": "v1",
-  "frac_wrote": 0.674,
-  "n_wrote": 1348,
-  "lure_wrote": 0.008160237388724036,
-  "pseudo_wrote": 0.010666666666666666,
-  "excess_wrote": -0.00250642927794263,
+  "frac_wrote": 0.67,
+  "n_wrote": 1340,
+  "lure_wrote": 0.008208955223880597,
+  "pseudo_wrote": 0.01157613535173642,
+  "excess_wrote": -0.003367180127855824,
   "excess_wrote_ci": [
-   -0.008888888888888889,
-   0.005333333333333333
+   -0.009795191451469279,
+   0.004452359750667854
   ],
-  "n_not": 652,
-  "lure_not": 0.05214723926380368,
-  "pseudo_not": 0.054502369668246446,
-  "excess_not": -0.002355130404442768,
+  "n_not": 660,
+  "lure_not": 0.05303030303030303,
+  "pseudo_not": 0.05411764705882353,
+  "excess_not": -0.0010873440285204955,
   "excess_not_ci": [
-   -0.023696682464454975,
-   0.023696682464454975
+   -0.021176470588235293,
+   0.02823529411764706
   ]
  },
  {
@@ -1233,22 +1833,22 @@
   "level": 3,
   "regime": "cot",
   "target": "v2",
-  "frac_wrote": 0.6035,
-  "n_wrote": 1207,
-  "lure_wrote": 0.05716652858326429,
-  "pseudo_wrote": 0.019981834695731154,
-  "excess_wrote": 0.037184693887533135,
+  "frac_wrote": 0.604,
+  "n_wrote": 1208,
+  "lure_wrote": 0.055463576158940396,
+  "pseudo_wrote": 0.019945602901178604,
+  "excess_wrote": 0.03551797325776179,
   "excess_wrote_ci": [
-   0.021798365122615803,
-   0.051771117166212535
+   0.019038984587488667,
+   0.04986400725294651
   ],
-  "n_not": 793,
-  "lure_not": 0.08575031525851198,
-  "pseudo_not": 0.05128205128205128,
-  "excess_not": 0.0344682639764607,
+  "n_not": 792,
+  "lure_not": 0.08080808080808081,
+  "pseudo_not": 0.05063291139240506,
+  "excess_not": 0.030175169415675752,
   "excess_not_ci": [
-   -0.04487179487179487,
-   0.03205128205128205
+   -0.05063291139240506,
+   0.02531645569620253
   ]
  },
  {

@@ -59,7 +59,12 @@ def condition(label: str) -> str:
 MODEL = {"llama32-3b": "Llama-3.2-3B", "llama32-3b-it": "Llama-3.2-3B-Instruct",
          "llama31-8b": "Llama-3.1-8B", "llama31-8b-it": "Llama-3.1-8B-Instruct",
          "gemma3-4b": "Gemma-3-4B", "gemma3-4b-it": "Gemma-3-4B-it", "gemma3-12b-it": "Gemma-3-12B-it",
-         "olmo2-1b-it": "OLMo-2-1B-Instruct", "olmo2-7b-it": "OLMo-2-7B-Instruct"}
+         "olmo2-1b-it": "OLMo-2-1B-Instruct", "olmo2-7b-it": "OLMo-2-7B-Instruct",
+         # the tuning ladder (Appendix app:kind): LoRA artefacts folded into Llama-3.1-8B-Instruct
+         "llama31-8b-it-ft": "Llama-3.1-8B-Instruct + task LoRA",
+         "llama31-8b-it-ftmulti": "Llama-3.1-8B-Instruct + multi-task LoRA",
+         "llama31-8b-it-merged": "Llama-3.1-8B-Instruct + TIES merge",
+         "nemotron-nano-8b": "Llama-3.1-Nemotron-Nano-8B"}
 
 REGIME = {"cot": "with chain of thought", "direct": "direct answer", "free": "free-form reasoning"}
 

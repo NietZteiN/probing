@@ -129,10 +129,16 @@ def main() -> int:
             numbers["facilitationmax"] = f"{100*max(scan('facilitation', 'direct')):.0f}"
             numbers["lureexcessmax"] = f"{100*max(scan('lure_excess', 'direct')):.0f}"
             numbers["chain-lure-bound"] = f"{100*max(abs(v) for v in scan('lure_excess', 'cot')):.1f}"
-            numbers["n-models"] = {2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven",
-                                   8: "eight"}.get(len({k.split('/')[0] for sw in sweeps.values() for k in sw}), "several")
-            numbers["model-list"] = ", ".join(sorted({MODEL.get(k.split("/")[0], k.split("/")[0])
-                                                      for sw in sweeps.values() for k in sw}))
+            # a count, never a vague word: "several" rendered in the abstract once the sweep passed eight
+            words = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen".split()
+            nm = len({k.split('/')[0] for sw in sweeps.values() for k in sw})
+            numbers["n-models"] = words[nm] if nm < len(words) else str(nm)
+            # the body lists the panel by name; the tuning ladder is a count pointing to its appendix
+            cfg = load_config("models.yaml")["models"]
+            swept = {k.split("/")[0] for sw in sweeps.values() for k in sw}
+            ladder = {m for m in swept if cfg.get(m, {}).get("kind") in ("tuned", "reasoning")}
+            numbers["model-list"] = ", ".join(sorted(MODEL.get(m, m) for m in swept - ladder))
+            numbers["n-ladder"] = words[len(ladder)] if len(ladder) < len(words) else str(len(ladder))
         # equivalence bounds over every chain cell (E37): counts, and the exception(s) named
         eqf = RESULTS_DIR / "summary" / "equivalence.json"
         if eqf.exists():
@@ -419,9 +425,26 @@ def main() -> int:
         diff = [c for k, c in fitted if c.get("verdict") == "differ"]
         numbers["mix-differ-n"] = str(len(diff))
         # a disagreement matters only if it removes support for something the body claims
-        numbers["mix-lost"] = str(sum(1 for _, c in fitted
-                                      if (c["boot_lo"] > 0 or c["boot_hi"] < 0) and not c["mixed"]["excludes_zero"]))
+        lost = [k for k, c in fitted if (c["boot_lo"] > 0 or c["boot_hi"] < 0) and not c["mixed"]["excludes_zero"]]
+        gained = [c for _, c in fitted if c["mixed"]["excludes_zero"] and not (c["boot_lo"] > 0 or c["boot_hi"] < 0)]
+        numbers["mix-lost"] = str(len(lost))
         numbers["mix-differ-neg"] = str(sum(1 for c in diff if c["mixed"]["coef"] < 0))
+        numbers["mix-gained"] = str(len(gained))
+        numbers["mix-gained-neg"] = str(sum(1 for c in gained if c["mixed"]["coef"] < 0))
+        # the claim "no body claim rests on the procedure" is computed, not asserted: a lost cell
+        # counts against it when it is a Table 1 cell (panel model, cot or direct regime)
+        cfg = load_config("models.yaml")["models"]
+        body = {m for m, e in cfg.items() if e.get("kind") not in ("tuned", "reasoning") and e.get("table1", True)}
+        numbers["mix-lost-body"] = str(sum(1 for k in lost if k.split("/")[0] in body and k.split("/")[2] in ("cot", "direct")))
+        nb = int(numbers["mix-lost-body"])
+        numbers["mix-lost-body-text"] = "none of these is" if nb == 0 else f"{nb} of these {'is' if nb == 1 else 'are'}"
+        if numbers["mix-lost-body"] != "0":
+            print(f"WARNING: {numbers['mix-lost-body']} Table 1 cell(s) lose support under the mixed model; "
+                  "the appendix sentence 'no claim in the body rests on the choice of procedure' is now false")
+        rname = {"cot": "CoT", "direct": "no CoT", "simple": "value-only chain"}
+        numbers["mix-lost-cells"] = "; ".join(
+            f"{MODEL.get(k.split('/')[0], k.split('/')[0])}, {rname.get(k.split('/')[2], k.split('/')[2])}, "
+            f"{'queried' if k.split('/')[3] == 'v1' else 'intermediate'} variable" for k in lost) or "none"
         lk = d["link"]
         numbers["link-fits"] = str(lk["total_fits"]); numbers["link-sig"] = str(lk["total_sig"])
         numbers["link-neg"] = str(lk["sig_negative"]); numbers["link-pos"] = str(lk["sig_positive"])
