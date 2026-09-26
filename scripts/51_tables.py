@@ -73,8 +73,9 @@ def main() -> int:
             sw = json.loads(sp.read_text())
             # Table 1 is the PANEL: family and size. The tuned and reasoning rungs vary how one
             # spine was tuned and belong to the ladder in Appendix~\ref{app:kind}, not here.
+            # `table1: false` in models.yaml keeps a panel model in the appendix only (page budget).
             panel = {m for m, e in load_config("models.yaml")["models"].items()
-                     if e.get("kind") not in ("tuned", "reasoning")}
+                     if e.get("kind") not in ("tuned", "reasoning") and e.get("table1", True)}
             for key, rec in sorted(sw.items()):
                 k, regime = key.split("/")
                 # cot and direct are the paper's two regimes. `simple` (the value-only chain,
@@ -536,8 +537,13 @@ def main() -> int:
                  "Tuning & Model & Queried & Intermediate & Acc. \\\\", "\\midrule"]
         DISP = {"llama31-8b": "Llama-3.1-8B", "llama31-8b-it": "\\quad + instruct",
                 "llama31-8b-it-ft": "\\quad + task LoRA", "llama31-8b-it-ftmulti": "\\quad + multi-task LoRA",
-                "llama31-8b-it-merged": "\\quad + TIES merge", "nemotron-nano-8b": "Nemotron-Nano-8B"}
-        for m, lab, _ in RUNGS:
+                "llama31-8b-it-merged": "\\quad + TIES merge", "nemotron-nano-8b": "Nemotron-Nano-8B",
+                "gemma3-4b": "Gemma-3-4B", "gemma3-4b-it": "\\quad + instruct"}
+        # E15: the same base -> instruct step in a second family, as a block under the ladder.
+        # Gemma-3-4B is kept out of Table 1 (page budget, 2026-09-25) and reported here instead.
+        GEMMA_PAIR = [("gemma3-4b", "base"), ("gemma3-4b-it", "instruct")]
+
+        def kind_row(m, lab):
             cells = []
             for role in ("v1", "v2"):
                 c = mk.get(f"{m}/L3/direct/{role}")
@@ -549,8 +555,12 @@ def main() -> int:
             if acc is None:
                 acc = mk.get(f"{m}/L3/direct/v2", {}).get("acc_neutral")
             if acc is None:
-                continue
-            lines.append(f"{lab} & {DISP[m]} & " + " & ".join(cells) + f" & {acc:.1f} \\\\")
+                return None
+            return f"{lab} & {DISP[m]} & " + " & ".join(cells) + f" & {acc:.1f} \\\\"
+        lines += [r for m, lab, _ in RUNGS if (r := kind_row(m, lab))]
+        gemma = [r for m, lab in GEMMA_PAIR if (r := kind_row(m, lab))]
+        if len(gemma) == len(GEMMA_PAIR):
+            lines += ["\\midrule"] + gemma
         lines += ["\\bottomrule", "\\end{tabular}"]
         (PAPER / "tables" / "modelkind.tex").write_text("\n".join(lines) + "\n")
 

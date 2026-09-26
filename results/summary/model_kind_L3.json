@@ -1426,77 +1426,93 @@
  "gemma3-4b/L3/direct/v1": {
   "kind": "pair",
   "seeds": [
-   7
+   7,
+   11,
+   13
   ],
-  "n": 2000,
-  "acc_neutral": 60.9,
-  "acc_incongruent": 61.8,
-  "lure_rate": 2.8,
-  "pseudo_rate": 2.45,
+  "n": 6000,
+  "acc_neutral": 60.2,
+  "acc_incongruent": 64.7,
+  "lure_rate": 2.48,
+  "pseudo_rate": 2.4,
   "lure_excess": {
-   "mean": 0.35,
-   "lo": -0.3,
-   "hi": 1.0,
+   "mean": 0.08,
+   "lo": -0.37,
+   "hi": 0.52,
    "by_seed": {
-    "7": 0.35
+    "7": 0.35,
+    "11": -0.45,
+    "13": 0.35
    },
    "claimable": false
   },
   "facilitation": {
-   "mean": 2.9,
-   "lo": 1.05,
-   "hi": 4.8,
+   "mean": 5.32,
+   "lo": 4.1,
+   "hi": 6.53,
    "by_seed": {
-    "7": 2.9
+    "7": 2.9,
+    "11": 3.2,
+    "13": 9.85
    },
-   "claimable": false
+   "claimable": true
   },
   "interference": {
-   "mean": -0.9,
-   "lo": -2.7,
-   "hi": 0.85,
+   "mean": -4.52,
+   "lo": -5.68,
+   "hi": -3.33,
    "by_seed": {
-    "7": -0.9
+    "7": -0.9,
+    "11": -3.75,
+    "13": -8.9
    },
-   "claimable": false
+   "claimable": true
   }
  },
  "gemma3-4b/L3/direct/v2": {
   "kind": "pair",
   "seeds": [
-   7
+   7,
+   11,
+   13
   ],
-  "n": 2000,
-  "acc_neutral": 60.9,
-  "acc_incongruent": 58.8,
-  "lure_rate": 3.0,
-  "pseudo_rate": 2.7,
+  "n": 6000,
+  "acc_neutral": 60.2,
+  "acc_incongruent": 55.6,
+  "lure_rate": 2.8,
+  "pseudo_rate": 2.78,
   "lure_excess": {
-   "mean": 0.3,
-   "lo": -0.4,
-   "hi": 1.05,
+   "mean": 0.02,
+   "lo": -0.48,
+   "hi": 0.53,
    "by_seed": {
-    "7": 0.3
+    "7": 0.3,
+    "11": -0.25,
+    "13": 0.0
    },
    "claimable": false
   },
   "facilitation": {
-   "mean": 3.0,
-   "lo": 1.35,
-   "hi": 4.7,
+   "mean": 0.25,
+   "lo": -0.82,
+   "hi": 1.35,
    "by_seed": {
-    "7": 3.0
+    "7": 3.0,
+    "11": -6.45,
+    "13": 4.2
    },
    "claimable": false
   },
   "interference": {
-   "mean": 2.05,
-   "lo": 0.2,
-   "hi": 3.9,
+   "mean": 4.6,
+   "lo": 3.38,
+   "hi": 5.82,
    "by_seed": {
-    "7": 2.05
+    "7": 2.05,
+    "11": 9.1,
+    "13": 2.65
    },
-   "claimable": false
+   "claimable": true
   }
  },
  "llama32-3b-it/L3/direct/v1": {
@@ -2054,47 +2070,11 @@
  "gemma3-4b/L3/cot/v1": {
   "kind": "pair",
   "seeds": [
-   7
+   7,
+   11,
+   13
   ],
-  "n": 2000,
-  "acc_neutral": 100.0,
-  "acc_incongruent": 99.9,
-  "lure_rate": 0.0,
-  "pseudo_rate": 0.0,
-  "lure_excess": {
-   "mean": 0.0,
-   "lo": 0.0,
-   "hi": 0.0,
-   "by_seed": {
-    "7": 0.0
-   },
-   "claimable": false
-  },
-  "facilitation": {
-   "mean": 0.05,
-   "lo": 0.0,
-   "hi": 0.15,
-   "by_seed": {
-    "7": 0.05
-   },
-   "claimable": false
-  },
-  "interference": {
-   "mean": 0.05,
-   "lo": 0.0,
-   "hi": 0.15,
-   "by_seed": {
-    "7": 0.05
-   },
-   "claimable": false
-  }
- },
- "gemma3-4b/L3/cot/v2": {
-  "kind": "pair",
-  "seeds": [
-   7
-  ],
-  "n": 2000,
+  "n": 6000,
   "acc_neutral": 100.0,
   "acc_incongruent": 100.0,
   "lure_rate": 0.0,
@@ -2104,25 +2084,77 @@
    "lo": 0.0,
    "hi": 0.0,
    "by_seed": {
-    "7": 0.0
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
    },
    "claimable": false
   },
   "facilitation": {
-   "mean": 0.05,
+   "mean": 0.02,
    "lo": 0.0,
-   "hi": 0.15,
+   "hi": 0.05,
    "by_seed": {
-    "7": 0.05
+    "7": 0.05,
+    "11": 0.0,
+    "13": 0.0
    },
    "claimable": false
   },
   "interference": {
-   "mean": -0.05,
-   "lo": -0.15,
+   "mean": 0.02,
+   "lo": 0.0,
+   "hi": 0.05,
+   "by_seed": {
+    "7": 0.05,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false
+  }
+ },
+ "gemma3-4b/L3/cot/v2": {
+  "kind": "pair",
+  "seeds": [
+   7,
+   11,
+   13
+  ],
+  "n": 6000,
+  "acc_neutral": 100.0,
+  "acc_incongruent": 100.0,
+  "lure_rate": 0.0,
+  "pseudo_rate": 0.0,
+  "lure_excess": {
+   "mean": 0.0,
+   "lo": 0.0,
    "hi": 0.0,
    "by_seed": {
-    "7": -0.05
+    "7": 0.0,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false
+  },
+  "facilitation": {
+   "mean": 0.02,
+   "lo": 0.0,
+   "hi": 0.05,
+   "by_seed": {
+    "7": 0.05,
+    "11": 0.0,
+    "13": 0.0
+   },
+   "claimable": false
+  },
+  "interference": {
+   "mean": -0.02,
+   "lo": -0.05,
+   "hi": 0.0,
+   "by_seed": {
+    "7": -0.05,
+    "11": 0.0,
+    "13": 0.0
    },
    "claimable": false
   }
