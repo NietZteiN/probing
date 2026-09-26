@@ -611,6 +611,11 @@ def main() -> int:
                    if f"{m}/L3/cot/{r}" in mk]
         if cotvals:
             numbers["kind-cot-max"] = f"{max(cotvals):.2f}"
+        # the body's tuning sentence: the largest no-CoT lure excess on any rung (all six, not only the finetunes)
+        dirvals = [abs(mk[f"{m}/L3/direct/{r}"]["lure_excess"]["mean"]) for m, _, _ in RUNGS for r in ("v1", "v2")
+                   if f"{m}/L3/direct/{r}" in mk]
+        if dirvals:
+            numbers["kind-direct-max"] = f"{max(dirvals):.2f}"
         numbers["kind-rungs"] = str(len(RUNGS))
         lines = ["\\begin{tabular}{@{}llrrr@{}}", "\\toprule",
                  "Tuning & Model & Queried & Intermediate & Acc. \\\\", "\\midrule"]

@@ -226,7 +226,7 @@ points at level 5, where accuracy is near the floor (\NUM{lureexcessmax-lo} to
 \NUM{lureexcessmax-hi} points across the three demonstration sets). With CoT, the lure excess is
 absent, although \NUM{cot-acc-cells} accuracy contrasts in \NUM{cot-acc-models} models remain reliable. An equivalence test with a margin of \NUM{eq-delta} points finds
 \NUM{eq-cot-equivalent} of \NUM{eq-cot-cells} CoT cells equivalent to zero, against
-\NUM{eq-direct-effect} of \NUM{eq-direct-cells} direct cells in which an effect is present. How a model was tuned moves the lure excess by at most \NUM{kind-maxgap} points over \NUM{kind-rungs} rungs on one spine
+\NUM{eq-direct-effect} of \NUM{eq-direct-cells} direct cells in which an effect is present. How a model was tuned keeps the lure excess within \NUM{kind-direct-max} points without CoT and \NUM{kind-cot-max} with it, over \NUM{kind-rungs} rungs on one spine
 (Appendix~\ref{app:kind}). The one exception is the smallest model, \NUM{eq-exc-model}, whose CoT solves
 \NUM{eq-exc-neutral-acc}\% of level-\NUM{eq-exc-level} problems with word names and
 \NUM{eq-exc-letter-acc}\% with letters. There, a lure on the \NUM{eq-exc-role} variable adds
@@ -516,8 +516,8 @@ The bottom block repeats the pretrained-to-instruct step in a second family, Gem
 \label{tab:kind}
 \end{table}
 
-Without CoT the pretrained model is the only rung of the Llama ladder with a reliable positive effect
-(\NUM{kind-base-v1} on the queried variable); the instruction-tuned model is at
+Without CoT the pretrained model (\NUM{kind-base-v1}) and the reasoning-tuned model (\NUM{kind-reas-v1})
+are the rungs of the Llama ladder with a reliable positive effect on the queried variable; the instruction-tuned model is at
 \NUM{kind-it-v1}, and the three tuned variants lie between \NUM{kind-ftm-v1} and
 \NUM{kind-ft-v2}, none differing from the instruction-tuned model by more than
 \NUM{kind-maxgap} points over \NUM{kind-tuned-cells} cells. With CoT every rung is within

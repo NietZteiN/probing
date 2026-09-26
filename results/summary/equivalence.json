@@ -686,37 +686,37 @@
    "claimable": false
   },
   "L3/nemotron-nano-8b/cot/lure_excess@v1": {
-   "mean": 0.0012303149606299212,
+   "mean": 0.0008333333333333334,
    "ci95": [
-    0.00024618263094809196,
-    0.002461841457410143
+    0.00016666666666666666,
+    0.0016666666666666668
    ],
    "equivalent": true,
    "claimable": false
   },
   "L3/nemotron-nano-8b/cot/lure_excess@v2": {
-   "mean": 0.002952755905511811,
+   "mean": 0.002,
    "ci95": [
-    0.0012315270935960591,
-    0.004681100231866112
+    0.0008333333333333334,
+    0.0031666666666666666
    ],
    "equivalent": true,
    "claimable": false
   },
   "L3/nemotron-nano-8b/direct/lure_excess@v1": {
-   "mean": 0.00516732283464567,
+   "mean": 0.0135,
    "ci95": [
-    -0.0007376626105400066,
-    0.01009112782149874
+    0.008329166666666667,
+    0.018333333333333333
    ],
    "equivalent": true,
-   "claimable": false
+   "claimable": true
   },
   "L3/nemotron-nano-8b/direct/lure_excess@v2": {
-   "mean": 0.0031988188976377952,
+   "mean": 0.0033333333333333335,
    "ci95": [
-    -0.002706742901558322,
-    0.009080257047066954
+    -0.0013333333333333333,
+    0.008
    ],
    "equivalent": true,
    "claimable": false
@@ -943,7 +943,7 @@
   "cot_equivalent": 43,
   "cot_with_effect": 1,
   "direct_cells": 44,
-  "direct_with_effect": 12,
+  "direct_with_effect": 13,
   "max_abs_cot_mean": 0.03166666666666667
  }
 }

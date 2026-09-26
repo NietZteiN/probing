@@ -987,69 +987,69 @@
    "verdict": "agree"
   },
   "nemotron-nano-8b/L3/cot/v1": {
-   "n_rows": 2440,
+   "n_rows": 3600,
    "n_sets": 600,
-   "boot_excess": 0.16,
+   "boot_excess": 0.11,
    "boot_lo": 0.0,
-   "boot_hi": 0.41,
-   "rate_inc": 0.25,
-   "rate_neu": 0.08,
+   "boot_hi": 0.28,
+   "rate_inc": 0.17,
+   "rate_neu": 0.06,
    "mixed": {
-    "coef": 0.024,
-    "sd": 0.598,
-    "lo": -1.148,
-    "hi": 1.195,
+    "coef": -0.133,
+    "sd": 0.573,
+    "lo": -1.256,
+    "hi": 0.989,
     "excludes_zero": false
    },
    "verdict": "agree"
   },
   "nemotron-nano-8b/L3/cot/v2": {
-   "n_rows": 2440,
+   "n_rows": 3600,
    "n_sets": 600,
-   "boot_excess": 0.41,
-   "boot_lo": 0.08,
-   "boot_hi": 0.82,
-   "rate_inc": 0.41,
+   "boot_excess": 0.28,
+   "boot_lo": 0.06,
+   "boot_hi": 0.56,
+   "rate_inc": 0.28,
    "rate_neu": 0.0,
    "mixed": {
-    "coef": 0.977,
-    "sd": 0.45,
-    "lo": 0.094,
-    "hi": 1.859,
+    "coef": 0.768,
+    "sd": 0.447,
+    "lo": -0.108,
+    "hi": 1.643,
+    "excludes_zero": false
+   },
+   "verdict": "differ"
+  },
+  "nemotron-nano-8b/L3/direct/v1": {
+   "n_rows": 3600,
+   "n_sets": 600,
+   "boot_excess": 1.22,
+   "boot_lo": 0.33,
+   "boot_hi": 2.17,
+   "rate_inc": 5.22,
+   "rate_neu": 4.0,
+   "mixed": {
+    "coef": 0.375,
+    "sd": 0.129,
+    "lo": 0.123,
+    "hi": 0.627,
     "excludes_zero": true
    },
    "verdict": "agree"
   },
-  "nemotron-nano-8b/L3/direct/v1": {
-   "n_rows": 2440,
-   "n_sets": 600,
-   "boot_excess": -0.33,
-   "boot_lo": -1.31,
-   "boot_hi": 0.66,
-   "rate_inc": 3.52,
-   "rate_neu": 3.85,
-   "mixed": {
-    "coef": -0.198,
-    "sd": 0.196,
-    "lo": -0.582,
-    "hi": 0.186,
-    "excludes_zero": false
-   },
-   "verdict": "agree"
-  },
   "nemotron-nano-8b/L3/direct/v2": {
-   "n_rows": 2440,
+   "n_rows": 3600,
    "n_sets": 600,
-   "boot_excess": 0.33,
-   "boot_lo": -0.9,
-   "boot_hi": 1.55,
-   "rate_inc": 5.0,
-   "rate_neu": 4.67,
+   "boot_excess": -0.06,
+   "boot_lo": -1.0,
+   "boot_hi": 0.89,
+   "rate_inc": 4.72,
+   "rate_neu": 4.78,
    "mixed": {
-    "coef": 0.078,
-    "sd": 0.174,
-    "lo": -0.264,
-    "hi": 0.419,
+    "coef": -0.049,
+    "sd": 0.138,
+    "lo": -0.32,
+    "hi": 0.222,
     "excludes_zero": false
    },
    "verdict": "agree"
@@ -1842,13 +1842,14 @@
  },
  "mixed_cells": 68,
  "mixed_fitted": 57,
- "mixed_agree": 51,
+ "mixed_agree": 50,
  "mixed_differ": [
   "gemma3-12b-it/L3/simple/v1",
   "olmo2-1b-it/L3/direct/v2",
   "olmo2-7b-it/L3/cot/v2",
   "olmo2-7b-it/L3/direct/v1",
   "olmo2-7b-it/L3/direct/v2",
-  "llama31-8b-it-ft/L3/direct/v2"
+  "llama31-8b-it-ft/L3/direct/v2",
+  "nemotron-nano-8b/L3/cot/v2"
  ]
 }
