@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-08",
+  "change": "Accessible abstracts retaining result-evidence-implication structure",
+  "abstract_words": 124,
+  "strict_arr_checks_passed": true,
+  "text_through_limitations_pages": 4,
+  "only_abstract_changed_in_manuscript": true,
+  "unchanged_numerical_inputs_and_figures_checked": 390,
+  "no_overfull_or_latex_errors": true,
+  "main_tex_sha256": "0b8b453b96b51e948469a5dfbf46d825dcc6176e26362a9a4179b551ffbc8128",
+  "main_pdf_sha256": "287aca51acf1ed55b154d304403a8a10b3523ab0b95babd0793f3cc6b2926f37",
+  "visual_review_pages": [
+    1,
+    4
+  ],
+  "visual_review_passed": true
+}

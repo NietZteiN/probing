@@ -6,6 +6,14 @@ ticked only when its numbers are in `results/summary/` and reach the paper throu
 
 *Last updated 2026-10-08. ARR deadline 2026-10-12 (AoE).*
 
+## Abstracts for readers outside the project (2026-10-08)
+
+- [x] Keep the direct main-result, evidence and implication structure while explaining
+  the task and comparisons in ordinary words. Replace unexplained technical terms with
+  concrete descriptions of the models' answers and the separate internal predictors.
+  Preserve the central result numbers and scope.
+  Verification: `log/accessible_abstracts_2026-10-08/verification.json` in each repository.
+
 ## Direct scientific abstracts (2026-10-08)
 
 - [x] Lead both abstracts with the main finding, summarize the design and central

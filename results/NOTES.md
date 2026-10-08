@@ -1108,3 +1108,11 @@ Rewrote the abstract to lead with the main result, summarize its experimental ev
 and state the implication directly. Illustrative examples remain in the introduction;
 secondary results remain in the body. No scientific results or numerical inputs changed.
 Build and layout verification: `log/result_first_abstracts_2026-10-08/verification.json`.
+
+### 2026-10-08 — Abstracts for readers outside the project
+
+Kept the direct result–evidence–implication structure and reduced terminology. Explained
+what the models report, what changes between the two problem versions, and how the
+internal predictions are measured. Preserved the main result numbers and scientific
+scope; no experimental results changed.
+Verification: `log/accessible_abstracts_2026-10-08/verification.json`.

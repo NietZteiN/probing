@@ -65,6 +65,11 @@ additional naming controls, full probe sweeps, tuning comparisons and alternativ
 
 ## Writing conventions
 
+For readers outside this project, keep the abstract's result–evidence–implication order
+but explain the task and comparison in ordinary words. Define the requested calculation
+or reported variable values before using technical labels. Avoid unexplained equivalence,
+matched-pair, activation and trace terminology; keep the central numbers and precise scope.
+
 The abstract states the behavioral result first, summarizes the matched-name comparison
 and equivalence result, then explains the implication for robustness in arithmetic
 reasoning. Keep the running example in the introduction and secondary probe findings

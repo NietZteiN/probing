@@ -36,17 +36,17 @@
 \maketitle
 
 \begin{abstract}
-Asking language models to write out arithmetic calculations reduces answers that follow
-a misleading variable name. Building on \citeauthor{kudo2026faithful}'s arithmetic study,
-we test \NUM{n-models} models on pairs of problems with the same equations. In one version,
-a variable has an ordinary name; in the other, its name is a word for an incorrect digit.
-When asked only for the final answer, models more often return the digit suggested by
-the misleading name. Asking them to write the calculation before answering, known as
-chain-of-thought prompting, reduces this tendency. In \NUM{eq-cot-equivalent} of
-\NUM{eq-cot-cells} comparisons, the added error rate meets our
-\NUM{eq-delta}-percentage-point threshold for a small effect. Writing the calculation
-therefore makes answers more robust to misleading wording while the underlying math
-remains unchanged.
+Chain-of-thought (CoT) prompting reduces arithmetic answers that follow misleading
+variable names rather than the equations. Building on \citeauthor{kudo2026faithful}'s
+arithmetic study, we construct matched problems in which a variable's name denotes an
+incorrect digit while the equations remain unchanged. Across \NUM{n-models} models and
+three sets of worked examples, we compare final-answer-only prompts with CoT prompts
+that request the calculation before the answer. Under final-answer-only prompting,
+misleading names increase answers matching the named digit. Under CoT, the difference
+from ordinary names meets a $\pm\NUM{eq-delta}$-percentage-point equivalence bound in
+\NUM{eq-cot-equivalent} of \NUM{eq-cot-cells} comparisons. The matched design isolates
+resistance to irrelevant words as a measurable benefit of written arithmetic reasoning:
+asking for the calculation reduces the influence of a competing answer suggested by the name.
 \end{abstract}
 
 \section{Introduction}
