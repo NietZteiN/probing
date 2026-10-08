@@ -1,0 +1,72 @@
+−5 0 5
+percentage points
+Llama-3.2-3B
+Llama-3.2-3B Inst.
+Llama-3.1-8B
+Llama-3.1-8B Inst.
+Gemma-3-4B Inst.
+Gemma-3-12B Inst.
+OLMo-2-1B Inst.
+OLMo-2-7B Inst.
+(a) Accuracy gained
+from a congruent name
+−2 0 2
+percentage points
+(b) Excess errors from
+misleading names
+0 10 20 30 40
+token position in the problem and gold chain
+0.00
+0.25
+0.50
+0.75
+1.00proportion
+chain starts
+before value write
+(c) Probe readouts during the gold chain (Llama-3.2-3B)
+true-value accuracy name-suggested prediction name tokens
+direct answer chain of thought two-point margin
+Figure 1: Level 3 queried-variable effects: (a) congruent-name accuracy gains; (b) excess name errors. Means
+and 95% intervals across three demonstration sets; grey: ±2 points. (c) Best-layer true-value accuracy and name-
+suggested predictions under the correct chain. Shading: name positions; dotted line: position before the queried
+value.
+Name Problem (answer: 6)
+Neutral pen=1 + cup, cup=2 + 3; pen=?
+Congruent six=1 + cup, cup=2 + 3; six=?
+Incongruent four=1 + cup, cup=2 + 3; four=?
+Table 1: Matched names preserve the arithmetic. The
+misleading digit, 4, occurs nowhere else.
+tered 90% mean neutral-CoT accuracy ﬂoor; ex-080
+cluded results appear in Table 4.081
+Excess name errors subtracts the neutral twin’s082
+rate of answering the name-suggested digit from083
+the misleading-name rate. This controls arbitrary084
+digit answers when accuracy is low. Facilita-085
+tion is congruent-minus-neutral accuracy; interfer-086
+ence is neutral-minus-incongruent accuracy. Reli-087
+able effects have consistent signs across all three088
+demonstration sets and 95% intervals excluding089
+zero. Equivalence requires a 90% interval inside090
+±2 points. Cluster bootstraps resample matched091
+problems with their demonstration repeats (Ap-092
+pendix B). 093
+Probes train on separate neutral problems with 094
+three seeds. Random digits assigned to names con- 095
+trol for learning name identity ( Hewitt and Liang , 096
+2019). Patching replaces name activations with a 097
+matched twin’s (Zhang and Nanda, 2024); neutral- 098
+word and alternative-name controls test disruption 099
+and name speciﬁcity. Most measurements sup- 100
+ply the correct chain. Generated-chain probes 101
+select layers on computation-disjoint validation 102
+problems before held-out testing (Appendix N). 103
+3 Results 104
+3.1 Writing calculations limits misleading 105
+answers 106
+Table 2 separates overall accuracy changes from 107
+answers matching the misleading digit. The lat- 108
+ter tests attraction to a speciﬁc wrong answer 109
+while preserving the equations. Without CoT, a 110
+congruent name raises Llama-3.1-8B’s accuracy 111
+by +4.8 points, and a misleading name produces 112
+2

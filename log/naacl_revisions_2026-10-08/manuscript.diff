@@ -1,0 +1,73 @@
+diff --git a/paper/main.tex b/paper/main.tex
+index 0ba8a9a..3ab9636 100644
+--- a/paper/main.tex
++++ b/paper/main.tex
+@@ -78,9 +78,9 @@ during CoT. We add a name that suggests a different answer while preserving the
+ This conflict, like those in Stroop and shape--texture studies
+ \cite{stroop1935,geirhos2019texture}, separates the name's suggestion from the computed value.
+ 
+-To measure which values are readable inside the model, we train a \emph{linear probe}:
+-a small predictor of a variable's true digit from internal activations, trained on
+-separate problems. A probe predicting 6 and the model answering 6 are separate observations.
++A separate analysis asks which values are readable inside the model. We train a
++\emph{linear probe}, a small predictor of a variable's true digit from internal activations,
++on separate problems. A probe predicting 6 and the model answering 6 are separate observations.
+ We show that asking the model to write the calculation reduces answers matching the
+ misleading name in almost every tested contrast. The paired renaming comparison makes
+ resistance to a competing word a measurable benefit of CoT while holding the equations fixed.
+@@ -151,9 +151,11 @@ equivalence bound.}
+ \label{tab:behavior}
+ \end{table*}
+ 
+-\subsection{Writing a chain limits name errors}
++\subsection{Writing calculations limits misleading answers}
+ 
+-Table~\ref{tab:behavior} shows the naming effects at the main level. Without CoT, a congruent
++Table~\ref{tab:behavior} separates overall accuracy changes from answers matching the
++misleading digit. The latter tests attraction to a specific wrong answer while preserving
++the equations. Without CoT, a congruent
+ name raises Llama-3.1-8B's accuracy by \NUM{facilitationllama318bdirectv1} points, and a
+ misleading name produces \NUM{lure_excessllama318bdirectv1} points of excess name errors on the queried
+ variable. Across levels, the largest effects occur where direct-answer accuracy is near chance; the matched baseline prevents those arbitrary digit answers from being attributed to
+@@ -163,7 +165,7 @@ With CoT, \NUM{eq-cot-equivalent} of \NUM{eq-cot-cells} name-error contrasts mee
+ bound. The exception is \NUM{eq-exc-model}: its intermediate-variable excess is
+ \NUM{eq-exc-mean} points [\NUM{eq-exc-lo}, \NUM{eq-exc-hi}]. Its neutral CoT accuracy is
+ \NUM{eq-exc-neutral-acc}\%, compared with \NUM{eq-exc-letter-acc}\% under letter names.
+-CoT therefore limits the name's numeric influence without removing every naming effect:
++CoT limits answers matching the misleading digit. Overall accuracy still depends on names:
+ \NUM{cot-acc-cells} accuracy contrasts remain reliable
+ (Appendix~\ref{app:equivalence}).
+ 
+@@ -179,6 +181,7 @@ neutral-word damage and alternative-name controls.}
+ 
+ \subsection{Value readouts and task competence}
+ 
++The probe analysis investigates information accompanying the behavioral change.
+ A name's digit can be readable without representing the computed value. For Llama-3.2-3B,
+ the intermediate value is partly decodable after its defining equation (neutral accuracy
+ \NUM{p2-acc}; selectivity \NUM{p2-sel}). At the query, the name-identity control scores
+@@ -235,16 +238,17 @@ parameters \cite{turpin2023unfaithful,lanham2023measuring,chen2025reasoning,tute
+ we combine a known conflicting cue with internal readouts. Positional copying and output priors
+ can also explain arithmetic errors \cite{liu2026readout,prabhakar2024deciphering}; our copy
+ control is reported in Appendix~\ref{app:sweeps}.
+-A companion code study \citep{anon2026code} examines value writes in Python traces; this
+-paper tests arithmetic name errors and their association with value-step readouts.
++A companion code study \citep{anon2026code} tests readouts before actual wrong value writes
++in Python traces and changes the demonstration format. Here the main finding is a reduction
++in arithmetic answers matching a misleading name while the equations remain unchanged.
+ 
+ \section{Conclusion}
+ 
+-Writing a chain limits answers suggested by misleading names in almost every tested arithmetic contrast.
+-A correct value stated in the chain is insufficient to explain that reduction. The probe
+-association depends on the low-accuracy exception, whose generated-chain probes fail calibration
+-even after training on generated neutral chains.
+-The behavioral finding therefore remains stronger than the proposed internal explanation.
++Writing calculations limits answers suggested by misleading names in almost every tested
++arithmetic contrast. The paired renaming test measures resistance to a competing word while
++holding the equations fixed. The internal explanation remains unresolved: the probe
++association depends on one model, whose generated-chain readouts fail calibration even
++after retraining.
+ 
+ \section*{Limitations}
+ 

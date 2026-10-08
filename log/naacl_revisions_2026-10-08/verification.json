@@ -1,0 +1,22 @@
+{
+  "existing_summary_count": 342,
+  "changed_existing_summaries": [],
+  "abstract_unchanged": true,
+  "numbers_tex_unchanged": true,
+  "figures_unchanged": {
+    "paper/figures/fig1_master_L3.pdf": "cb2a38bc123195bf1f15592bef6cda4f798a93d892002c46ae6c89552c079bf2",
+    "paper/figures/fig3_patching_llama32-3b_L3_v1.pdf": "7d2c24c75b74865e488af795f18e9727e7c4017c6a374d764d2c0ff7124338eb",
+    "paper/figures/fig2_tokens_llama32-3b_L3_cot_v2.pdf": "082e357bbb45c23a9e5fa0a02832519542cb53f0ea21892e41a5643e91c002ae",
+    "paper/figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i0.pdf": "6690bf6d024dd5304975e882d5365c4de3e9de8569f1f70b8b8f8d20c74ba0dd",
+    "paper/figures/fig_own_chain_llama32-3b_L3_cot_v1.pdf": "dfbd187804140fe33e0a7829b512a805e3e1d286123f06bad5aae8e1414997d2",
+    "paper/figures/fig2_tokens_gemma3-4b-it_L3_cot_v1.pdf": "55d6d4b7f91a14180c5b09cb22ee5f34690a471fdf0eb750259cb6c86fee817d",
+    "paper/figures/fig2_tokens_gemma3-4b-it_L3_cot_v2.pdf": "fe0b3306794c910dc26cab89b1c185e1578837be965f594bc67cc1b8182d6395"
+  },
+  "main_and_limitations_end_page": 4,
+  "references_start_page": 5,
+  "pdf_pages": 49,
+  "strict_submission_build": "passed",
+  "overfull_boxes": false,
+  "new_experiment_status": "Llama-3B extraction running; OLMo/Llama-8B queued; no validated results available",
+  "pdf_sha256": "7010c9656f5cf066a9ef46b5f5a0da900f50eb440dce52ed335e7958f316cf6a"
+}

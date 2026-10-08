@@ -1116,3 +1116,17 @@ what the models report, what changes between the two problem versions, and how t
 internal predictions are measured. Preserved the main result numbers and scientific
 scope; no experimental results changed.
 Verification: `log/accessible_abstracts_2026-10-08/verification.json`.
+
+### 2026-10-08 — NAACL review revisions
+
+Centered the argument on resistance to a competing word while holding the equations fixed.
+Results now distinguish overall accuracy from answers matching the misleading digit.
+Probes are introduced as a separate investigation; the unresolved internal explanation
+and calibration failures remain explicit. Related work distinguishes the companion code
+study's actual-error readouts and demonstration-format intervention. Existing results,
+abstract and figures are unchanged. Both the body and Limitations fit within four pages.
+
+The shared checklist records the code paper's new main evidence table and queued
+prompt-end comparison (449113 running, 449114 queued, dependent release 449115). The comparison
+is pending; no experimental result is claimed. Verification of this editorial revision:
+`log/naacl_revisions_2026-10-08/verification.json`.

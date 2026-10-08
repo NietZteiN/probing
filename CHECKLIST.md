@@ -317,6 +317,21 @@ Per-stage logs are in `log/round3_*.out`; machine-readable status is
   then update the numbers generator and mechanism figure to consume them. The held-out
   decodability claim remains unverified until this is complete.
 
+## NAACL review follow-up — 2026-10-08
+
+- [x] Center the arithmetic narrative on resistance to a misleading word with the equations
+  held fixed; distinguish overall accuracy from answers matching the misleading digit.
+- [x] Present probes as a separate investigation; preserve the unresolved internal explanation.
+- [x] Distinguish the contributions of the arithmetic and companion code papers.
+- [x] Put code error-conditioned probe intervals and computation counts in the main table,
+  alongside the independent screened-name replication with separate cohorts labeled.
+- [x] Implement and test the prospective code prompt-end versus pre-write comparison.
+- [x] Queue two GPU allocations: 449113 (a30) and 449114 (h100).
+- [ ] Complete GPU runs: 449113 is running; 449114 is queued. Release job 449115
+  waits for both to succeed. See
+  `../codecue/docs/PROMPT_PROBE_COMPARISON.md` and `../codecue/docs/EXPERIMENTS.md`.
+- [ ] Integrate the validated comparison into the code manuscript and rebuild/push.
+
 ## Not planned for this paper
 
 E7 (instance-level margin link: fitted and reported as unresolved in the appendix), E11,

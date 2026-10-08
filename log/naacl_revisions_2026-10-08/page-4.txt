@@ -1,0 +1,95 @@
+errors reverses from r = −0.997 to +0.776 when145
+OLMo-2-1B is omitted (Appendix L). Overall task146
+competence remains a competing account. Within-147
+problem ﬁts also disagree on the association’s sign148
+(Appendix E).149
+Gold-trained probes score 19.4–62.2% on150
+OLMo-2-1B’s neutral generated chains. Training151
+on generated neutral chains raises this to 50.3–152
+80.1%, still below the 90% calibration threshold153
+in every cell. Llama-3.2-3B reaches 96.3–100.0%154
+with the same design, but its name-error cases re-155
+main rare. The exception’s generated-chain read-156
+outs therefore remain descriptive (Appendix N).157
+Merely stating the correct value does not ex-158
+plain the pattern. We split the model’s generated159
+chains by whether they state that value and com-160
+pare only twins falling in the same split. The ex-161
+ception still has +3.6 points of excess name er-162
+rors [+2.6, +4.7] across 2739 matched observa-163
+tions from 3 demonstration sets, despite stating the164
+correct value. The full control is in Appendix D.165
+3.3 Patching localizes the answer-only effect166
+For Llama-3.2-3B without CoT, replacing name167
+activations with the neutral twin’s removes 52% of168
+name errors when all layers are patched (Figure 2).169
+A span-by-layer sweep places the strongest effects170
+at the deﬁning equation in layers 0–7, where re-171
+moval reaches 69% (Appendix K). The neutral-172
+word control also damages 22% of correct an-173
+swers. The patch identiﬁes a region sensitive to the174
+name; disruption limits claims about the restored175
+computation.176
+The Llama-3.1-8B controls do not distinguish a177
+name-speciﬁc cause: neutral and alternative-name178
+patches remove errors similarly. Under a gold179
+CoT, injecting the misleading name into a neutral180
+run of the exception model moves 2.7% of answers181
+to the name-suggested value, while the word con-182
+trol changes 0.4% at the same layer. These in-183
+terventions test only the selected models and po-184
+sitions; they do not establish a common causal185
+mechanism across models.186
+4 Related work187
+Kudo et al. (2026) locate intermediate-value read-188
+outs during arithmetic CoT; our competing names189
+distinguish a computed value from a lexical cue.190
+Earlier Stroop studies test a single next token191
+(Wang, 2026; Hu et al. , 2026). Faithfulness stud-192
+ies perturb prompts, chains or parameters ( Turpin193
+et al., 2023; Lanham et al., 2023; Chen et al., 2025; 194
+Tutek et al. , 2025); we combine a known conﬂict- 195
+ing cue with internal readouts. Positional copying 196
+and output priors can also explain arithmetic er- 197
+rors (Liu, 2026; Prabhakar et al. , 2024); our copy 198
+control is reported in Appendix E. A companion 199
+code study ( Anonymous, 2026) tests readouts be- 200
+fore actual wrong value writes in Python traces 201
+and changes the demonstration format. Here the 202
+main ﬁnding is a reduction in arithmetic answers 203
+matching a misleading name while the equations 204
+remain unchanged. 205
+5 Conclusion 206
+Writing calculations limits answers suggested by 207
+misleading names in almost every tested arith- 208
+metic contrast. The paired renaming test measures 209
+resistance to a competing word while holding the 210
+equations ﬁxed. The internal explanation remains 211
+unresolved: the probe association depends on one 212
+model, whose generated-chain readouts fail cali- 213
+bration even after retraining. 214
+Limitations 215
+• Scope. Short synthetic arithmetic with En- 216
+glish number words does not establish real- 217
+code effects. Identiﬁer-style names cover one 218
+level. Models are at most 12B, with raw 219
+completion prompts; chat templates and long- 220
+form reasoning are untested. Accuracy varies 221
+with demonstrations, so behavioral claims re- 222
+quire agreement across three sets. 223
+• Internal measurements. Probes establish 224
+decodability, not use. Most measurements 225
+supply correct chains. Generated-chain cal- 226
+ibration passes for Llama-3.2-3B but fails 227
+for OLMo-2-1B, even after retraining (Ap- 228
+pendix N); only two models are tested. 229
+The nine-model correlation is descriptive, re- 230
+verses without OLMo, and confounds value 231
+availability with competence; variable roles 232
+are not independent models. 233
+• Interventions. Patches replace mixed repre- 234
+sentations and damage correct answers. CoT 235
+also repeats names and equations; the value- 236
+only format changes performance and is not 237
+an equivalent intervention (Appendix H). 238
+4

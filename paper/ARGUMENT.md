@@ -18,7 +18,11 @@ removing OLMo-2-1B reverses the model-mean correlations. Generated-chain
 transfer is strong for Llama-3.2-3B but fails the neutral calibration threshold for OLMo-2-1B.
 Training directly on generated neutral chains improves OLMo's calibration but still fails
 in all six held-out cells; Llama passes all six with the same design.
-These readouts do not establish why chains reduce name errors.
+These readouts do not establish why chains reduce name errors. Keep this internal analysis
+separate from the primary behavioral contribution. Overall accuracy changes and excess
+answers matching the misleading digit are distinct outcomes; the equivalence finding
+concerns the latter. The companion code paper instead tests readouts before actual wrong
+writes and manipulates the demonstrated trace format.
 
 Introduce linear probes through their purpose: predicting the correct digit from internal
 activations. A probe recovering 6 and a language model answering 6 are separate observations.
