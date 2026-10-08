@@ -1157,3 +1157,19 @@ The readability pass explains equation order, probe controls, generated-chain ca
 and the written-value comparison directly. Both body and Limitations fit on four pages.
 Data self-check: zero failures (80 historical warnings). Strict build and stronger reference
 checks pass. Evidence: `log/accuracy_readability_2026-10-08/`.
+
+
+### 2026-10-08 — Figures that explain the paper
+
+Rebuilt the main figures around the task, comparison and finding, with plain-language
+labels and the necessary definitions inside the image. The code paper shows the actual
+length-versus-sum program and complete generated assignment values, then separates
+original-name error readouts from the independent screened-name format replication.
+The arithmetic paper shows the unchanged equations, compares requested response formats,
+and summarizes the broad name-error result separately from its two-operation plot.
+Its second figure shows all generated-calculation readout checks in the two tested models.
+Detailed layer curves and patching controls remain in the appendices; arithmetic full-size
+captions now explain how to read each plot type. Numerical summaries and abstracts are
+unchanged. Companion figure JSON files record the displayed data. Four-page text through
+Limitations and strict submission checks were verified; artifacts:
+`log/figure_understandability_2026-10-08/`.

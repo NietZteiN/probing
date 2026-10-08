@@ -1,0 +1,1170 @@
+{
+  "level3_queried_variable": {
+    "llama32-3b": {
+      "direct": {
+        "by_seed": {
+          "7": 0.0395,
+          "11": 0.004,
+          "13": 0.04
+        },
+        "pooled_mean": 0.027833333333333335,
+        "ci95": [
+          0.021166666666666667,
+          0.03367083333333333
+        ],
+        "same_sign_all_seeds": true,
+        "claimable": true
+      },
+      "cot": {
+        "by_seed": {
+          "7": 0.0035,
+          "11": 0.0,
+          "13": 0.0005
+        },
+        "pooled_mean": 0.0013333333333333333,
+        "ci95": [
+          0.00016666666666666666,
+          0.0028333333333333335
+        ],
+        "same_sign_all_seeds": false,
+        "claimable": false
+      }
+    },
+    "llama32-3b-it": {
+      "direct": {
+        "by_seed": {
+          "7": -0.002,
+          "11": -0.0005,
+          "13": 0.0075
+        },
+        "pooled_mean": 0.0016666666666666668,
+        "ci95": [
+          -0.0025041666666666667,
+          0.006333333333333333
+        ],
+        "same_sign_all_seeds": false,
+        "claimable": false
+      },
+      "cot": {
+        "by_seed": {
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0
+        },
+        "pooled_mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "same_sign_all_seeds": false,
+        "claimable": false
+      }
+    },
+    "llama31-8b": {
+      "direct": {
+        "by_seed": {
+          "7": 0.0035,
+          "11": 0.011,
+          "13": 0.0215
+        },
+        "pooled_mean": 0.012,
+        "ci95": [
+          0.007333333333333333,
+          0.0165
+        ],
+        "same_sign_all_seeds": true,
+        "claimable": true
+      },
+      "cot": {
+        "by_seed": {
+          "7": -0.004,
+          "11": 0.0,
+          "13": 0.0
+        },
+        "pooled_mean": -0.0013333333333333333,
+        "ci95": [
+          -0.0026666666666666666,
+          -0.00016666666666666666
+        ],
+        "same_sign_all_seeds": false,
+        "claimable": false
+      }
+    },
+    "llama31-8b-it": {
+      "direct": {
+        "by_seed": {
+          "7": 0.007,
+          "11": -0.001,
+          "13": -0.0015
+        },
+        "pooled_mean": 0.0015,
+        "ci95": [
+          -0.0026708333333333332,
+          0.006166666666666667
+        ],
+        "same_sign_all_seeds": false,
+        "claimable": false
+      },
+      "cot": {
+        "by_seed": {
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0
+        },
+        "pooled_mean": 0.0,
+        "ci95": [
+          -0.0005,
+          0.0005
+        ],
+        "same_sign_all_seeds": false,
+        "claimable": false
+      }
+    },
+    "gemma3-4b-it": {
+      "direct": {
+        "by_seed": {
+          "7": 0.0175,
+          "11": 0.004,
+          "13": 0.005
+        },
+        "pooled_mean": 0.008833333333333334,
+        "ci95": [
+          0.004,
+          0.0135
+        ],
+        "same_sign_all_seeds": true,
+        "claimable": true
+      },
+      "cot": {
+        "by_seed": {
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0
+        },
+        "pooled_mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "same_sign_all_seeds": false,
+        "claimable": false
+      }
+    },
+    "gemma3-12b-it": {
+      "direct": {
+        "by_seed": {
+          "7": -0.003,
+          "11": -0.0055,
+          "13": 0.0015
+        },
+        "pooled_mean": -0.0023333333333333335,
+        "ci95": [
+          -0.0055,
+          0.001
+        ],
+        "same_sign_all_seeds": false,
+        "claimable": false
+      },
+      "cot": {
+        "by_seed": {
+          "7": 0.0,
+          "11": 0.0,
+          "13": 0.0
+        },
+        "pooled_mean": 0.0,
+        "ci95": [
+          0.0,
+          0.0
+        ],
+        "same_sign_all_seeds": false,
+        "claimable": false
+      }
+    },
+    "olmo2-1b-it": {
+      "direct": {
+        "by_seed": {
+          "7": 0.0155,
+          "11": 0.0125,
+          "13": 0.054
+        },
+        "pooled_mean": 0.027333333333333334,
+        "ci95": [
+          0.0191625,
+          0.035666666666666666
+        ],
+        "same_sign_all_seeds": true,
+        "claimable": true
+      },
+      "cot": {
+        "by_seed": {
+          "7": -0.001,
+          "11": -0.005,
+          "13": 0.0195
+        },
+        "pooled_mean": 0.0045,
+        "ci95": [
+          -0.0015041666666666665,
+          0.010337499999999996
+        ],
+        "same_sign_all_seeds": false,
+        "claimable": false
+      }
+    },
+    "olmo2-7b-it": {
+      "direct": {
+        "by_seed": {
+          "7": 0.001,
+          "11": -0.0045,
+          "13": -0.0035
+        },
+        "pooled_mean": -0.0023333333333333335,
+        "ci95": [
+          -0.007004166666666666,
+          0.002
+        ],
+        "same_sign_all_seeds": false,
+        "claimable": false
+      },
+      "cot": {
+        "by_seed": {
+          "7": -0.0005,
+          "11": -0.0005,
+          "13": -0.0015
+        },
+        "pooled_mean": -0.0008333333333333334,
+        "ci95": [
+          -0.002,
+          0.0003333333333333333
+        ],
+        "same_sign_all_seeds": true,
+        "claimable": false
+      }
+    }
+  },
+  "cot_equivalence": {
+    "L1/llama32-3b/cot/lure_excess@v1": {
+      "mean": 0.0011666666666666668,
+      "ci90": [
+        0.0003333333333333333,
+        0.0021666666666666666
+      ],
+      "ci95": [
+        0.00016666666666666666,
+        0.0023333333333333335
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L1/llama32-3b/cot/lure_excess@v2": {
+      "mean": 0.003,
+      "ci90": [
+        0.0015,
+        0.004666666666666667
+      ],
+      "ci95": [
+        0.0011666666666666668,
+        0.005
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L1/llama31-8b/cot/lure_excess@v1": {
+      "mean": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L1/llama31-8b/cot/lure_excess@v2": {
+      "mean": 0.00016666666666666666,
+      "ci90": [
+        0.0,
+        0.0005
+      ],
+      "ci95": [
+        0.0,
+        0.0005
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L2/llama32-3b/cot/lure_excess@v1": {
+      "mean": 0.005333333333333333,
+      "ci90": [
+        0.0036666666666666666,
+        0.007166666666666667
+      ],
+      "ci95": [
+        0.0035,
+        0.0075
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": true
+    },
+    "L2/llama32-3b/cot/lure_excess@v2": {
+      "mean": -0.0005,
+      "ci90": [
+        -0.0013333333333333333,
+        0.0003333333333333333
+      ],
+      "ci95": [
+        -0.0015,
+        0.0005
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L2/llama31-8b/cot/lure_excess@v1": {
+      "mean": 0.00016666666666666666,
+      "ci90": [
+        0.0,
+        0.0005
+      ],
+      "ci95": [
+        0.0,
+        0.0005
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L2/llama31-8b/cot/lure_excess@v2": {
+      "mean": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/llama32-3b/cot/lure_excess@v1": {
+      "mean": 0.0013333333333333333,
+      "ci90": [
+        0.0003333333333333333,
+        0.0025
+      ],
+      "ci95": [
+        0.00016666666666666666,
+        0.0028333333333333335
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/llama32-3b/cot/lure_excess@v2": {
+      "mean": -0.0016666666666666668,
+      "ci90": [
+        -0.0026750000000000064,
+        -0.0006666666666666666
+      ],
+      "ci95": [
+        -0.003,
+        -0.0006666666666666666
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": true
+    },
+    "L3/llama32-3b-it/cot/lure_excess@v1": {
+      "mean": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/llama32-3b-it/cot/lure_excess@v2": {
+      "mean": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/llama31-8b/cot/lure_excess@v1": {
+      "mean": -0.0013333333333333333,
+      "ci90": [
+        -0.0025,
+        -0.0003333333333333333
+      ],
+      "ci95": [
+        -0.0026666666666666666,
+        -0.00016666666666666666
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/llama31-8b/cot/lure_excess@v2": {
+      "mean": -0.00016666666666666666,
+      "ci90": [
+        -0.0013333333333333333,
+        0.001
+      ],
+      "ci95": [
+        -0.0015,
+        0.0011666666666666668
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/llama31-8b-it/cot/lure_excess@v1": {
+      "mean": 0.0,
+      "ci90": [
+        -0.0003333333333333333,
+        0.0003333333333333333
+      ],
+      "ci95": [
+        -0.0005,
+        0.0005
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/llama31-8b-it/cot/lure_excess@v2": {
+      "mean": 0.00016666666666666666,
+      "ci90": [
+        0.0,
+        0.0005
+      ],
+      "ci95": [
+        0.0,
+        0.0005
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/gemma3-4b-it/cot/lure_excess@v1": {
+      "mean": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/gemma3-4b-it/cot/lure_excess@v2": {
+      "mean": 0.00016666666666666666,
+      "ci90": [
+        0.0,
+        0.0005
+      ],
+      "ci95": [
+        0.0,
+        0.0005
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/gemma3-12b-it/cot/lure_excess@v1": {
+      "mean": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/gemma3-12b-it/cot/lure_excess@v2": {
+      "mean": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/olmo2-1b-it/cot/lure_excess@v1": {
+      "mean": 0.0045,
+      "ci90": [
+        -0.0005,
+        0.0095
+      ],
+      "ci95": [
+        -0.0015041666666666665,
+        0.010337499999999996
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/olmo2-1b-it/cot/lure_excess@v2": {
+      "mean": 0.03166666666666667,
+      "ci90": [
+        0.025166666666666667,
+        0.0385
+      ],
+      "ci95": [
+        0.0236625,
+        0.03966666666666667
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": false,
+      "claimable": true
+    },
+    "L3/olmo2-7b-it/cot/lure_excess@v1": {
+      "mean": -0.0008333333333333334,
+      "ci90": [
+        -0.0016666666666666668,
+        0.0
+      ],
+      "ci95": [
+        -0.002,
+        0.0003333333333333333
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/olmo2-7b-it/cot/lure_excess@v2": {
+      "mean": -0.0003333333333333333,
+      "ci90": [
+        -0.0016666666666666668,
+        0.001
+      ],
+      "ci95": [
+        -0.002,
+        0.0013333333333333333
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/llama31-8b-it-ft/cot/lure_excess@v1": {
+      "mean": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/llama31-8b-it-ft/cot/lure_excess@v2": {
+      "mean": -0.00016666666666666666,
+      "ci90": [
+        -0.0005,
+        0.0
+      ],
+      "ci95": [
+        -0.0005,
+        0.0
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/llama31-8b-it-ftmulti/cot/lure_excess@v1": {
+      "mean": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/llama31-8b-it-ftmulti/cot/lure_excess@v2": {
+      "mean": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/llama31-8b-it-merged/cot/lure_excess@v1": {
+      "mean": 0.0,
+      "ci90": [
+        -0.0003333333333333333,
+        0.0003333333333333333
+      ],
+      "ci95": [
+        -0.0005,
+        0.0005
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/llama31-8b-it-merged/cot/lure_excess@v2": {
+      "mean": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/nemotron-nano-8b/cot/lure_excess@v1": {
+      "mean": 0.0008333333333333334,
+      "ci90": [
+        0.0003333333333333333,
+        0.0015
+      ],
+      "ci95": [
+        0.00016666666666666666,
+        0.0016666666666666668
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/nemotron-nano-8b/cot/lure_excess@v2": {
+      "mean": 0.002,
+      "ci90": [
+        0.001,
+        0.003
+      ],
+      "ci95": [
+        0.0008333333333333334,
+        0.0031666666666666666
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/gemma3-4b/cot/lure_excess@v1": {
+      "mean": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L3/gemma3-4b/cot/lure_excess@v2": {
+      "mean": 0.0,
+      "ci90": [
+        0.0,
+        0.0
+      ],
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L4/llama32-3b/cot/lure_excess@v1": {
+      "mean": 0.006833333333333334,
+      "ci90": [
+        0.0035,
+        0.01
+      ],
+      "ci95": [
+        0.002829166666666667,
+        0.010666666666666666
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L4/llama32-3b/cot/lure_excess@v2": {
+      "mean": 0.0036666666666666666,
+      "ci90": [
+        0.0003333333333333333,
+        0.007166666666666667
+      ],
+      "ci95": [
+        -0.0005,
+        0.008166666666666666
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L4/llama31-8b/cot/lure_excess@v1": {
+      "mean": -0.0003333333333333333,
+      "ci90": [
+        -0.0015,
+        0.0008333333333333334
+      ],
+      "ci95": [
+        -0.0018333333333333333,
+        0.001
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L4/llama31-8b/cot/lure_excess@v2": {
+      "mean": 0.002,
+      "ci90": [
+        0.0006666666666666666,
+        0.0033333333333333335
+      ],
+      "ci95": [
+        0.0005,
+        0.0035
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L5/llama32-3b/cot/lure_excess@v1": {
+      "mean": 0.0008333333333333334,
+      "ci90": [
+        -0.0016666666666666668,
+        0.003
+      ],
+      "ci95": [
+        -0.0020041666666666667,
+        0.0035
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L5/llama32-3b/cot/lure_excess@v2": {
+      "mean": -0.0006666666666666666,
+      "ci90": [
+        -0.0033333333333333335,
+        0.002
+      ],
+      "ci95": [
+        -0.004,
+        0.0026666666666666666
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L5/llama32-3b/cot/lure_excess@v3": {
+      "mean": -0.0008333333333333334,
+      "ci90": [
+        -0.004,
+        0.0026666666666666666
+      ],
+      "ci95": [
+        -0.004170833333333333,
+        0.0033333333333333335
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L5/llama31-8b/cot/lure_excess@v1": {
+      "mean": -0.003,
+      "ci90": [
+        -0.005333333333333333,
+        -0.0006666666666666666
+      ],
+      "ci95": [
+        -0.005833333333333334,
+        -0.0003333333333333333
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L5/llama31-8b/cot/lure_excess@v2": {
+      "mean": -0.0015,
+      "ci90": [
+        -0.004166666666666667,
+        0.0011666666666666668
+      ],
+      "ci95": [
+        -0.004833333333333334,
+        0.002
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    },
+    "L5/llama31-8b/cot/lure_excess@v3": {
+      "mean": 0.0008333333333333334,
+      "ci90": [
+        -0.0021666666666666666,
+        0.0036666666666666666
+      ],
+      "ci95": [
+        -0.0026666666666666666,
+        0.004170833333333329
+      ],
+      "n": 6000,
+      "n_sets": 2000,
+      "seeds": [
+        7,
+        11,
+        13
+      ],
+      "contrast": "lure_excess",
+      "equivalent": true,
+      "claimable": false
+    }
+  }
+}

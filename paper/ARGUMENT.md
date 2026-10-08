@@ -93,3 +93,16 @@ conventions explicitly, and preserve inconclusive or contrary results.
 Terminology: a name-suggested value is the incorrect digit implied by the misleading name.
 A name error writes that digit; excess name errors subtract the matched neutral twin's
 rate of writing the same digit. Probe predictions of that value are a separate readout.
+
+
+The main figures must tell the story without the body text. Figure 1 shows the fixed
+arithmetic problem, explains the competing answer, compares final-answer-only and
+calculation-first responses, and states the 43/44 equivalence result with its actual
+confidence level. The plotted two-operation queried-variable scope is distinct from the
+broader 44 contrasts. OLMo-2-1B is marked as below the planned accuracy floor.
+Figure 2 explains the separate internal predictor and tests it on the model's own generated
+calculations. It shows all six calibration estimates and intervals per model and the
+planned 90% minimum. These are correct-digit readouts on ordinary-name problems, not
+behavioral accuracies or accuracy on name-error cases. Layer sweeps and patching plots stay
+in the appendix. Each full-size appendix caption explains the plot's axes, cells, colours,
+denominators and supplied-versus-generated calculations.

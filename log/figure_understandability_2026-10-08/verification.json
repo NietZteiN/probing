@@ -1,0 +1,14 @@
+{
+  "four_pages_through_limitations": true,
+  "total_pages": 51,
+  "main_figures_visually_reviewed": true,
+  "strict_submission_check": true,
+  "no_overfull_or_undefined_references": true,
+  "abstract_unchanged": true,
+  "data_audit": {
+    "saved_summaries_unchanged": 342,
+    "plot_data_match": true
+  },
+  "selfcheck_log": "selfcheck.log",
+  "pdf_sha256": "2652895b282f367ab310b2c96c674863eddd326ff47e1fc837b1b3753b72f1e3"
+}

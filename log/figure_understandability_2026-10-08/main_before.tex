@@ -87,11 +87,11 @@ resistance to a competing word a measurable benefit of CoT while holding the equ
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/story_behavior.pdf}
-\caption{Renaming leaves the correct answer unchanged. \textbf{(a)} Writing calculations
-reduces added misleading-digit answers on two-operation tasks. \textbf{(b)} Across task
-depths and both variable roles, \NUM{eq-cot-equivalent}/\NUM{eq-cot-cells} written-calculation comparisons fall within the
-two-point margin. This concerns answers matching the misleading digit, not all errors.}
+\IfFileExists{figures/fig1_master_L3.pdf}{\includegraphics[width=\textwidth]{figures/fig1_master_L3.pdf}}{\fbox{\parbox{0.95\textwidth}{\centering\small\textcolor{red}{[Figure 1 not generated]}}}}
+\caption{Level~3 queried-variable effects: \textbf{(a)} congruent-name accuracy gains;
+\textbf{(b)} excess name errors. Means and 95\% intervals across three demonstration sets;
+grey: $\pm2$ points. \textbf{(c)} Best-layer true-value accuracy and name-suggested predictions
+under the correct chain. Shading: name positions; dotted line: position before the queried value.}
 \label{fig:master}
 \end{figure*}
 
@@ -105,7 +105,20 @@ all five levels (Appendix~\ref{app:task}). Matched versions change one name
 another digit, absent from all inputs and variable values. We rename queried and intermediate
 variables separately. All names occupy one token, preserving matched token positions.
 
-
+\begin{table}[t]
+\centering\small
+\resizebox{\columnwidth}{!}{\begin{tabular}{@{}ll@{}}
+\toprule
+Name & Problem (answer: 6) \\
+\midrule
+Neutral & \texttt{pen=1 + cup, cup=2 + 3; pen=?} \\
+Congruent & \texttt{\textcolor{con}{six}=1 + cup, cup=2 + 3; six=?} \\
+Incongruent & \texttt{\textcolor{inc}{four}=1 + cup, cup=2 + 3; four=?} \\
+\bottomrule
+\end{tabular}}
+\caption{Matched names preserve the arithmetic. The misleading digit, 4, occurs nowhere else.}
+\label{tab:conditions}
+\end{table}
 
 Both prompting conditions use three fixed sets of three worked examples. We evaluate
 \NUM{n-models} Llama, Gemma and OLMo checkpoints (Appendices~\ref{app:task}, \ref{app:kind}).
@@ -142,8 +155,8 @@ equivalence bound.}
 
 \subsection{Writing calculations limits misleading answers}
 
-Figure~\ref{fig:master} shows added misleading-digit answers; Table~\ref{tab:behavior}
-also reports changes in overall accuracy. Without CoT, a congruent
+Table~\ref{tab:behavior} separates accuracy changes from answers matching the misleading
+digit. Without CoT, a congruent
 name raises Llama-3.1-8B's accuracy by \NUM{facilitationllama318bdirectv1} points, and a
 misleading name produces \NUM{lure_excessllama318bdirectv1} points of excess name errors on the queried
 variable. Across levels, the largest effects occur where direct-answer accuracy is near chance; the matched baseline prevents those arbitrary digit answers from being attributed to
@@ -159,15 +172,14 @@ CoT limits answers matching the misleading digit. Overall accuracy still depends
 
 
 
-\begin{figure*}[t]
+\begin{figure}[t]
 \centering
-\includegraphics[width=\textwidth]{figures/story_readouts.pdf}
-\caption{A check on interpreting internal predictions. Predictors trained and tested on
-separate ordinary-name problems recover correct digits from generated calculations reliably
-in Llama-3.2-3B. All six OLMo-2-1B checks fall below the planned 90\% minimum. These
-readouts therefore cannot yet explain its misleading-name errors.}
-\label{fig:readout-check}
-\end{figure*}
+\IfFileExists{figures/fig3_patching_llama32-3b_L3_v1.pdf}{\includegraphics[width=\columnwidth]{figures/fig3_patching_llama32-3b_L3_v1.pdf}}{\fbox{\textcolor{red}{[Patching figure not generated]}}}
+\caption{Llama-3.2-3B, answer-only: queried-variable name errors removed by layer, with
+neutral-word damage and alternative-name controls. Removal counts changes away from the
+name-suggested digit.}
+\label{fig:patch}
+\end{figure}
 
 \subsection{What the probes recover}
 
@@ -192,7 +204,7 @@ Within-problem fits also disagree on the association's sign (Appendix~\ref{app:s
 Probes trained on correct calculations score \NUM{generated-olmo1-cal-lo}--\NUM{generated-olmo1-cal-hi}\% on
 OLMo-2-1B's neutral generated chains. Training on generated neutral chains raises this to
 \NUM{r6-generated-olmo1-cal-min}--\NUM{r6-generated-olmo1-cal-max}\%, still below the 90\%
-minimum for interpreting these probes in every cell (Figure~\ref{fig:readout-check}). Llama-3.2-3B reaches
+minimum for interpreting these probes in every cell. Llama-3.2-3B reaches
 \NUM{r6-generated-llama3-cal-min}--\NUM{r6-generated-llama3-cal-max}\% with the same design,
 but its name-error cases remain rare. OLMo's generated-chain readouts therefore
 remain descriptive (Appendix~\ref{app:round6-generated}).
@@ -264,21 +276,6 @@ an equivalent intervention (Appendix~\ref{app:simple}).
 
 \section{Task, models and replication}
 \label{app:task}
-
-\begin{table}[t]
-\centering\small
-\resizebox{\columnwidth}{!}{\begin{tabular}{@{}ll@{}}
-\toprule
-Name & Problem (answer: 6) \\
-\midrule
-Neutral & \texttt{pen=1 + cup, cup=2 + 3; pen=?} \\
-Congruent & \texttt{\textcolor{con}{six}=1 + cup, cup=2 + 3; six=?} \\
-Incongruent & \texttt{\textcolor{inc}{four}=1 + cup, cup=2 + 3; four=?} \\
-\bottomrule
-\end{tabular}}
-\caption{Matched names preserve the arithmetic. The misleading digit, 4, occurs nowhere else.}
-\label{tab:conditions}
-\end{table}
 A problem contains single-digit variables, addition or subtraction, and a query. The five
 levels vary dependency order, depth and the presence of an unused equation
 (Table~\ref{tab:levels}). Three same-level worked examples precede each test problem.
@@ -411,25 +408,6 @@ latter's true value has probe accuracy \NUM{distractor-acc}.
 \section{Full sweeps and selectivity}
 \label{app:sweeps}
 
-\begin{figure*}[t]
-\centering
-\IfFileExists{figures/fig1_master_L3.pdf}{\includegraphics[width=\textwidth]{figures/fig1_master_L3.pdf}}{\fbox{\parbox{0.95\textwidth}{\centering\small\textcolor{red}{[Figure 1 not generated]}}}}
-\caption{Level~3 queried-variable effects: \textbf{(a)} congruent-name accuracy gains;
-\textbf{(b)} excess name errors. Means and 95\% intervals across three demonstration sets;
-grey: $\pm2$ points, a reference band rather than an equivalence test. \textbf{(c)} Best-layer true-value accuracy and name-suggested predictions
-under a supplied correct calculation. OLMo-2-1B is below the planned neutral-accuracy floor. Shading: name positions; dotted line: position before the queried value.}
-\label{fig:detailed-master}
-\end{figure*}
-
-\begin{figure}[t]
-\centering
-\IfFileExists{figures/fig3_patching_llama32-3b_L3_v1.pdf}{\includegraphics[width=\columnwidth]{figures/fig3_patching_llama32-3b_L3_v1.pdf}}{\fbox{\textcolor{red}{[Patching figure not generated]}}}
-\caption{Llama-3.2-3B, answer-only: queried-variable name errors removed by layer, with
-neutral-word damage and alternative-name controls. Removal counts changes away from the
-name-suggested digit.}
-\label{fig:patch}
-\end{figure}
-
 \begin{figure*}[h]
 \centering
 \IfFileExists{figures/fig2_tokens_llama32-3b_L3_cot_v2.pdf}{\includegraphics[width=\textwidth]{figures/fig2_tokens_llama32-3b_L3_cot_v2.pdf}}{\fbox{\parbox{0.95\textwidth}{\centering\small\textcolor{red}{[Figure 2, generated by scripts/58\_token\_figure.py]}}}}
@@ -490,7 +468,7 @@ Appendix~\ref{app:task}.
 \begin{figure}[h]
 \centering
 \IfFileExists{figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i0.pdf}{\includegraphics[width=\columnwidth]{figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i0.pdf}}{\fbox{\parbox{0.95\columnwidth}{\centering\small\textcolor{red}{[Figure 4, generated by scripts/64\_kudo\_fig3.py]}}}}
-\caption{Adapted from \citeauthor{kudo2026faithful}'s Figure~3. Read columns left to right as tokens are processed; rows run from early model layers at the bottom to later layers at the top. Each cell contains a separate predictor's digit, not a generated digit. Probes read a supplied correct
+\caption{Adapted from \citeauthor{kudo2026faithful}'s Figure~3. Probes read a supplied correct
 calculation for a problem the model answers with the name-suggested digit. Bottom: majority
 prediction over three probe seeds at each layer and token; green
 the variable's true value, red the value the model answered, amber the value its name denotes,

@@ -6,6 +6,19 @@ ticked only when its numbers are in `results/summary/` and reach the paper throu
 
 *Last updated 2026-10-08. ARR deadline 2026-10-12 (AoE).*
 
+## Figures that explain the paper (2026-10-08)
+
+- [x] Rebuild both papers' main figures to show the task, changed condition, measured
+  outcome and finding without relying on the body text. Define added misleading-digit
+  errors and separate internal predictions from generated answers. Keep the code paper's
+  original-name probe cohort distinct from its fresh screened-name replication.
+- [x] Put detailed layer curves and patching plots in the appendix; give full-size
+  arithmetic figures independent instructions for reading axes, cells and colours.
+- [x] Audit plotted values against saved summaries, inspect the actual-size PDFs and
+  keep all text through Limitations on four pages. Numerical results and abstracts are
+  unchanged. Verification: `log/figure_understandability_2026-10-08/verification.json`
+  in each repository.
+
 ## Abstracts for readers outside the project (2026-10-08)
 
 - [x] Keep the direct main-result, evidence and implication structure while explaining
