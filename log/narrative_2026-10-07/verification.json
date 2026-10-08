@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-07",
+  "change": "Abstract and introduction clarity; arithmetic patching heading terminology",
+  "strict_check": "ARR: body 4/4 pages; total 50; abstract 175 words; A4 portrait; 0 unembedded fonts\nDraft: 0 unfilled numbers; unresolved references: False; missing assets: False",
+  "result_summaries_checked": 342,
+  "result_summaries_unchanged": true,
+  "number_macros_unchanged": true,
+  "source_scope_check": "Preamble unchanged; body after introduction unchanged except arithmetic patching heading",
+  "main_content_first_pages": {
+    "Figure 1:": 2,
+    "Figure 2:": 3,
+    "Table 1:": 2,
+    "Table 2:": 4,
+    "Conclusion": 4
+  },
+  "visual_review_pages": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "git_diff_check_passed": true,
+  "no_overfull_or_latex_errors": true,
+  "main_tex_sha256": "784b70e896948444d8699e2b2d3e6ec6dc2ef45ce2e6c5fd177402386e4cafa4",
+  "main_pdf_sha256": "0238c2663eb3ee9f316959d5455b0ddc31ae2b7a5479ad546e84a9354b9be140",
+  "notes": "Prose revision only; no experiments or numerical regeneration."
+}

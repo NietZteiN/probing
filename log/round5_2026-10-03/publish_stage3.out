@@ -1,0 +1,17 @@
+warn codellama-7b-it/L3_n200/codechain/congruent@v1: parse rate 0.915
+warn codellama-7b-it/L3_n200/codechain/congruent@v3: parse rate 0.940
+warn codellama-7b-it/L3_n200/codechain/incongruent@v1: parse rate 0.890
+warn codellama-7b-it/L3_n200/codechain/incongruent@v3: parse rate 0.920
+warn codellama-7b-it/L3_n200/codechain/incongruent_alt@v1: parse rate 0.925
+warn codellama-7b-it/L3_n200/codechain/incongruent_alt@v3: parse rate 0.930
+warn codellama-7b-it/L3_n200/codechain/neutral_alt: parse rate 0.955
+warn codellama-7b-it/L5_n200/codechain/congruent@v1: parse rate 0.945
+warn codellama-7b-it/L5_n200/codechain/incongruent@v1: parse rate 0.885
+warn codellama-7b-it/L5_n200/codechain/incongruent@v3: parse rate 0.955
+warn codellama-7b-it/L5_n200/codechain/incongruent_alt@v1: parse rate 0.860
+warn codellama-7b-it/L5_n200/codechain/incongruent_alt@v3: parse rate 0.910
+warn codellama-7b-it/L5_n200/codechain/neutral: parse rate 0.943
+warn codellama-7b-it/L5_n200/codechain/neutral_alt: parse rate 0.955
+warn llama31-8b-it/L3_n200/codechain/congruent@v1: parse rate 0.840
+
+checks complete: 0 failures, 49 warnings

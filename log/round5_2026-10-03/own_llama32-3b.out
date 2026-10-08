@@ -1,0 +1,7 @@
+Loading weights:   0%|          | 0/254 [00:00<?, ?it/s]Loading weights:   4%|▎         | 9/254 [00:00<00:02, 88.09it/s]Loading weights:  20%|█▉        | 50/254 [00:00<00:00, 269.94it/s]Loading weights:  37%|███▋      | 94/254 [00:00<00:00, 339.22it/s]Loading weights:  54%|█████▎    | 136/254 [00:00<00:00, 369.98it/s]Loading weights:  69%|██████▉   | 176/254 [00:00<00:00, 375.94it/s]Loading weights:  87%|████████▋ | 220/254 [00:00<00:00, 393.81it/s]Loading weights: 100%|██████████| 254/254 [00:00<00:00, 366.14it/s]
+completed llama32-3b cot v1: 416 rows, 416 boundaries
+completed llama32-3b cot_s11 v1: 400 rows, 399 boundaries
+completed llama32-3b cot_s13 v1: 410 rows, 407 boundaries
+completed llama32-3b cot v2: 400 rows, 400 boundaries
+completed llama32-3b cot_s11 v2: 400 rows, 400 boundaries
+completed llama32-3b cot_s13 v2: 400 rows, 398 boundaries

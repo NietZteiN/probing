@@ -1,0 +1,29 @@
+{
+  "stages": [
+    {
+      "stage": "selfcheck",
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/99_selfcheck.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "stage": "tests",
+      "argv": [
+        "make",
+        "test"
+      ],
+      "exit_code": 0
+    },
+    {
+      "stage": "generated",
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/51_tables.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "changed_generated": []
+}

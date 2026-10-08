@@ -1,0 +1,7 @@
+Loading weights:   0%|          | 0/179 [00:00<?, ?it/s]Loading weights:  23%|██▎       | 42/179 [00:00<00:00, 413.47it/s]Loading weights:  47%|████▋     | 84/179 [00:00<00:00, 405.98it/s]Loading weights:  70%|███████   | 126/179 [00:00<00:00, 400.42it/s]Loading weights:  93%|█████████▎| 167/179 [00:00<00:00, 403.31it/s]Loading weights: 100%|██████████| 179/179 [00:00<00:00, 420.92it/s]
+completed olmo2-1b-it cot v1: 538 rows, 518 boundaries
+completed olmo2-1b-it cot_s11 v1: 518 rows, 484 boundaries
+completed olmo2-1b-it cot_s13 v1: 718 rows, 691 boundaries
+completed olmo2-1b-it cot v2: 564 rows, 494 boundaries
+completed olmo2-1b-it cot_s11 v2: 442 rows, 235 boundaries
+completed olmo2-1b-it cot_s13 v2: 460 rows, 272 boundaries

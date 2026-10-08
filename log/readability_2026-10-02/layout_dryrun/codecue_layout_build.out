@@ -1,0 +1,58 @@
+/work/jvl210002/migration/envs/tex/bin/tectonic -X compile --keep-logs main.tex
+note: "version 2" Tectonic command-line interface activated
+note: Running TeX ...
+warning: lineno.sty:296: Invalid UTF-8 byte or sequence at line 296 replaced by U+FFFD.
+warning: main.tex:122: Underfull \hbox (badness 1067) in paragraph at lines 118--122
+warning: main.tex:308: Underfull \vbox (badness 3302) has occurred while \output is active
+warning: main.tex:459: Underfull \hbox (badness 1418) in paragraph at lines 454--459
+warning: main.tex:459: Underfull \hbox (badness 1308) in paragraph at lines 454--459
+note: Running BibTeX on main.aux ...
+note: Rerunning TeX because bibtex was run ...
+warning: lineno.sty:296: Invalid UTF-8 byte or sequence at line 296 replaced by U+FFFD.
+warning: main.tex:122: Underfull \hbox (badness 1067) in paragraph at lines 118--122
+warning: main.bbl:13: Underfull \hbox (badness 2698) in paragraph at lines 10--13
+warning: main.bbl:21: Underfull \hbox (badness 1371) in paragraph at lines 15--21
+warning: main.bbl:21: Underfull \hbox (badness 1546) in paragraph at lines 15--21
+warning: main.bbl:44: Underfull \hbox (badness 1158) in paragraph at lines 39--44
+warning: main.bbl:55: Underfull \hbox (badness 5954) in paragraph at lines 47--55
+warning: main.bbl:83: Underfull \hbox (badness 1769) in paragraph at lines 78--83
+warning: main.tex:459: Underfull \hbox (badness 1418) in paragraph at lines 454--459
+warning: main.tex:459: Underfull \hbox (badness 1308) in paragraph at lines 454--459
+note: Rerunning TeX because "main.aux" changed ...
+warning: lineno.sty:296: Invalid UTF-8 byte or sequence at line 296 replaced by U+FFFD.
+warning: main.tex:122: Underfull \hbox (badness 1067) in paragraph at lines 118--122
+warning: main.tex:224: Underfull \vbox (badness 4556) has occurred while \output is active
+warning: main.bbl:13: Underfull \hbox (badness 2698) in paragraph at lines 10--13
+warning: main.bbl:21: Underfull \hbox (badness 1371) in paragraph at lines 15--21
+warning: main.bbl:21: Underfull \hbox (badness 1546) in paragraph at lines 15--21
+warning: main.bbl:44: Underfull \hbox (badness 1158) in paragraph at lines 39--44
+warning: main.bbl:55: Underfull \hbox (badness 5954) in paragraph at lines 47--55
+warning: main.bbl:83: Underfull \hbox (badness 1769) in paragraph at lines 78--83
+warning: main.tex:371: Underfull \hbox (badness 1014) in paragraph at lines 363--371
+warning: main.tex:459: Underfull \hbox (badness 1418) in paragraph at lines 454--459
+warning: main.tex:459: Underfull \hbox (badness 1308) in paragraph at lines 454--459
+note: Rerunning TeX because "main.aux" changed ...
+warning: lineno.sty:296: Invalid UTF-8 byte or sequence at line 296 replaced by U+FFFD.
+warning: main.tex:122: Underfull \hbox (badness 1067) in paragraph at lines 118--122
+warning: main.tex:224: Underfull \vbox (badness 4556) has occurred while \output is active
+warning: main.bbl:13: Underfull \hbox (badness 2698) in paragraph at lines 10--13
+warning: main.bbl:21: Underfull \hbox (badness 1371) in paragraph at lines 15--21
+warning: main.bbl:21: Underfull \hbox (badness 1546) in paragraph at lines 15--21
+warning: main.bbl:44: Underfull \hbox (badness 1158) in paragraph at lines 39--44
+warning: main.bbl:55: Underfull \hbox (badness 5954) in paragraph at lines 47--55
+warning: main.bbl:83: Underfull \hbox (badness 1769) in paragraph at lines 78--83
+warning: main.tex:371: Underfull \hbox (badness 1014) in paragraph at lines 363--371
+warning: main.tex:459: Underfull \hbox (badness 1418) in paragraph at lines 454--459
+warning: main.tex:459: Underfull \hbox (badness 1308) in paragraph at lines 454--459
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+note: Running xdvipdfmx ...
+note: Writing `main.blg` (190 B)
+note: Writing `main.pdf` (125 KiB)
+note: Writing `main.log` (18.6328125 KiB)
+note: Skipped writing 3 intermediate files (use --keep-intermediates to keep them)
+/work/jvl210002/migration/envs/probe-cu129/bin/python check_arr.py
+ARR: body 4/4 pages; total 8; abstract 122 words; A4 portrait; 0 unembedded fonts
+Draft: 0 unfilled numbers; unresolved references: False; missing assets: False
+/work/jvl210002/migration/envs/probe-cu129/bin/python check_arr.py --strict
+ARR: body 4/4 pages; total 8; abstract 122 words; A4 portrait; 0 unembedded fonts
+Draft: 0 unfilled numbers; unresolved references: False; missing assets: False

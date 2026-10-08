@@ -1,0 +1,3 @@
+/work/jvl210002/migration/probing/scripts/54_grid_figs.py:92: RuntimeWarning: All-NaN slice encountered
+  ax2.plot(range(len(segs)), np.nanmax(M, axis=0), "k.-", lw=1)
+wrote /work/jvl210002/migration/probing/paper/figures/kudo_fig5_llama32-3b_L3_cot_v2.png with sources ['other', 'neutral', 'incongruent_alt']

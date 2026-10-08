@@ -1,0 +1,296 @@
+{
+  "created_utc": "2026-10-03T03:41:38.355040+00:00",
+  "request": "Readability pass, blockers and new experiments; reserve 1-2 GPUs for about a day",
+  "gpu_workers": 2,
+  "walltime_per_worker": "24:00:00",
+  "fallback_reason": "Usable A30/H100 GPUs fully occupied at submission. Two H200 fallback workers were requested and broadened to H100/H200 to use the first suitable cards to free up; exclude the slow MIG node g-06-01. This permits 12B caching and probes. Two workers plus the existing normal CPU allocation keep this experiment pass within the shared juno running-job budget.",
+  "experiments": {
+    "V1": "Replace leaked code probes; same 2000 training count, new disjoint neutral computations, three probe seeds and name controls",
+    "V2": "Repeat corrected code probes with demonstration sets 7/11/13; fixed training programs, no selection by outcomes",
+    "G2": "Extend the arithmetic value-step association to three additional panel models (six model-variable pairs), 10000 independent neutral training examples; cached gold CoT under demonstration set 7",
+    "G3": "Gemma-3-4B-Instruct per-token probes, both roles, 4000 independent neutral training and 1000 test instances per group, demonstration set 7; exploratory generalization of the Llama token pattern"
+  },
+  "analysis_rules": {
+    "code_layer_selection": "maximize neutral evaluation accuracy, average three probe seeds; evaluate misleading-name accuracy at that layer; report per-demo-set range and controls",
+    "arith_layer_selection": "maximize neutral selectivity, as in existing primary analysis",
+    "claims": "Retain behavioral findings; any representation claim must follow new measured outcomes. Exploratory extensions do not change preregistration retrospectively."
+  },
+  "tasks": [
+    {
+      "name": "code_olmo2-7b-it_trace",
+      "project": "codecue",
+      "commands": [
+        "python scripts/30_cache_and_probe.py --model olmo2-7b-it --level 5 --role v1 --regime trace --n-train 2000 --cell-only --positions pre@v1 --batch-size 8"
+      ],
+      "queue_file": "/work/jvl210002/migration/probing/queue/pending/20261003T_round4_00_code_olmo2-7b-it_trace.sh",
+      "status": "queued"
+    },
+    {
+      "name": "code_llama32-3b-it_trace",
+      "project": "codecue",
+      "commands": [
+        "python scripts/30_cache_and_probe.py --model llama32-3b-it --level 5 --role v1 --regime trace --n-train 2000 --cell-only --positions pre@v1 --batch-size 8"
+      ],
+      "queue_file": "/work/jvl210002/migration/probing/queue/pending/20261003T_round4_01_code_llama32-3b-it_trace.sh",
+      "status": "queued"
+    },
+    {
+      "name": "code_llama31-8b-it_trace",
+      "project": "codecue",
+      "commands": [
+        "python scripts/30_cache_and_probe.py --model llama31-8b-it --level 5 --role v1 --regime trace --n-train 2000 --cell-only --positions pre@v1 --batch-size 8"
+      ],
+      "queue_file": "/work/jvl210002/migration/probing/queue/pending/20261003T_round4_02_code_llama31-8b-it_trace.sh",
+      "status": "queued"
+    },
+    {
+      "name": "code_olmo2-7b-it_trace_s11",
+      "project": "codecue",
+      "commands": [
+        "python scripts/30_cache_and_probe.py --model olmo2-7b-it --level 5 --role v1 --regime trace_s11 --n-train 2000 --cell-only --positions pre@v1 --batch-size 8"
+      ],
+      "queue_file": "/work/jvl210002/migration/probing/queue/pending/20261003T_round4_03_code_olmo2-7b-it_trace_s11.sh",
+      "status": "queued"
+    },
+    {
+      "name": "code_llama32-3b-it_trace_s11",
+      "project": "codecue",
+      "commands": [
+        "python scripts/30_cache_and_probe.py --model llama32-3b-it --level 5 --role v1 --regime trace_s11 --n-train 2000 --cell-only --positions pre@v1 --batch-size 8"
+      ],
+      "queue_file": "/work/jvl210002/migration/probing/queue/pending/20261003T_round4_04_code_llama32-3b-it_trace_s11.sh",
+      "status": "queued"
+    },
+    {
+      "name": "code_llama31-8b-it_trace_s11",
+      "project": "codecue",
+      "commands": [
+        "python scripts/30_cache_and_probe.py --model llama31-8b-it --level 5 --role v1 --regime trace_s11 --n-train 2000 --cell-only --positions pre@v1 --batch-size 8"
+      ],
+      "queue_file": "/work/jvl210002/migration/probing/queue/pending/20261003T_round4_05_code_llama31-8b-it_trace_s11.sh",
+      "status": "queued"
+    },
+    {
+      "name": "code_olmo2-7b-it_trace_s13",
+      "project": "codecue",
+      "commands": [
+        "python scripts/30_cache_and_probe.py --model olmo2-7b-it --level 5 --role v1 --regime trace_s13 --n-train 2000 --cell-only --positions pre@v1 --batch-size 8"
+      ],
+      "queue_file": "/work/jvl210002/migration/probing/queue/pending/20261003T_round4_06_code_olmo2-7b-it_trace_s13.sh",
+      "status": "queued"
+    },
+    {
+      "name": "code_llama32-3b-it_trace_s13",
+      "project": "codecue",
+      "commands": [
+        "python scripts/30_cache_and_probe.py --model llama32-3b-it --level 5 --role v1 --regime trace_s13 --n-train 2000 --cell-only --positions pre@v1 --batch-size 8"
+      ],
+      "queue_file": "/work/jvl210002/migration/probing/queue/pending/20261003T_round4_07_code_llama32-3b-it_trace_s13.sh",
+      "status": "queued"
+    },
+    {
+      "name": "code_llama31-8b-it_trace_s13",
+      "project": "codecue",
+      "commands": [
+        "python scripts/30_cache_and_probe.py --model llama31-8b-it --level 5 --role v1 --regime trace_s13 --n-train 2000 --cell-only --positions pre@v1 --batch-size 8"
+      ],
+      "queue_file": "/work/jvl210002/migration/probing/queue/pending/20261003T_round4_08_code_llama31-8b-it_trace_s13.sh",
+      "status": "queued"
+    },
+    {
+      "name": "arith_panel_llama32-3b-it",
+      "project": "probing",
+      "commands": [
+        "python scripts/20_run_model.py --model llama32-3b-it --level 3 --regimes cot --groups train_neutral neutral incongruent@v1 incongruent@v2 --cache-only --cache-suffix __r4 --batch-size 4",
+        "python scripts/30_train_probes.py --model llama32-3b-it --level 3 --regime cot --roles v1 v2 --suffix __r4 --positions cotpre@v1 cotpre@v2 --test-groups neutral incongruent@v1 incongruent@v2"
+      ],
+      "queue_file": "/work/jvl210002/migration/probing/queue/pending/20261003T_round4_09_arith_panel_llama32-3b-it.sh",
+      "status": "queued"
+    },
+    {
+      "name": "arith_panel_llama31-8b-it",
+      "project": "probing",
+      "commands": [
+        "python scripts/20_run_model.py --model llama31-8b-it --level 3 --regimes cot --groups train_neutral neutral incongruent@v1 incongruent@v2 --cache-only --cache-suffix __r4 --batch-size 4",
+        "python scripts/30_train_probes.py --model llama31-8b-it --level 3 --regime cot --roles v1 v2 --suffix __r4 --positions cotpre@v1 cotpre@v2 --test-groups neutral incongruent@v1 incongruent@v2"
+      ],
+      "queue_file": "/work/jvl210002/migration/probing/queue/pending/20261003T_round4_10_arith_panel_llama31-8b-it.sh",
+      "status": "queued"
+    },
+    {
+      "name": "arith_panel_gemma3-12b-it",
+      "project": "probing",
+      "commands": [
+        "python scripts/20_run_model.py --model gemma3-12b-it --level 3 --regimes cot --groups train_neutral neutral incongruent@v1 incongruent@v2 --cache-only --cache-suffix __r4 --batch-size 4",
+        "python scripts/30_train_probes.py --model gemma3-12b-it --level 3 --regime cot --roles v1 v2 --suffix __r4 --positions cotpre@v1 cotpre@v2 --test-groups neutral incongruent@v1 incongruent@v2"
+      ],
+      "queue_file": "/work/jvl210002/migration/probing/queue/pending/20261003T_round4_11_arith_panel_gemma3-12b-it.sh",
+      "status": "queued"
+    },
+    {
+      "name": "arith_token_gemma3-4b-it",
+      "project": "probing",
+      "commands": [
+        "python scripts/20_run_model.py --model gemma3-4b-it --level 3 --regimes cot --groups train_neutral neutral incongruent@v1 incongruent@v2 --cache-only --all-positions --cache-suffix __r4 --train-limit 4000 --limit 1000 --batch-size 4",
+        "python scripts/30_train_probes.py --model gemma3-4b-it --level 3 --regime cot --roles v1 v2 --suffix __alltok__r4 --test-groups neutral incongruent@v1 incongruent@v2"
+      ],
+      "queue_file": "/work/jvl210002/migration/probing/queue/pending/20261003T_round4_12_arith_token_gemma3-4b-it.sh",
+      "status": "queued"
+    }
+  ],
+  "workers": [
+    {
+      "job_id": "439652",
+      "requested_partition": "h100,h200",
+      "gres": "gpu:1",
+      "walltime": "24:00:00",
+      "exclude": "g-06-01"
+    },
+    {
+      "job_id": "439653",
+      "requested_partition": "h100,h200",
+      "gres": "gpu:1",
+      "walltime": "24:00:00",
+      "exclude": "g-06-01"
+    }
+  ],
+  "submitted_utc": "2026-10-03T03:43:04.536255+00:00",
+  "collector_job": "439676",
+  "collector_dependency": "afterany:439652:439653",
+  "input_sha256": {
+    "codecue/configs/compute.yaml": "e68d33e215b35f922e3277ddd389cd47ec95503a489b82fc791b0e0ea6a8643c",
+    "codecue/configs/models.yaml": "5f3106ca90462ad5ed54b2b3e39de883aa33e0960e55d356ba108f944fe31397",
+    "codecue/data/L5/manifest.json": "e0fc113cf417f36581e677dd927afeeb1be0db474be5c8b8a6068caadd3a2d36",
+    "codecue/data/L5/test_sets.jsonl": "320c0b4e3aaa7f7621b634a7b1036c02b1925e5f933950026bd55cc224e8cf39",
+    "codecue/data/L5/train_neutral.jsonl": "5e91e190a67f376f08af4a343b3da4f4dbe8b9ff38024247d6a4b2f89d2f0ab3",
+    "codecue/scripts/10_build_dataset.py": "801123aeecebd7d2c57ce14ebb9321e3a5be0f6548315393e5253ea33f24b8ec",
+    "codecue/scripts/11_layout_check.py": "5ff5294a63b0a45abd7b2d162ed51f175f8aab52a19dc265dcce3eb69df49747",
+    "codecue/scripts/12_lure_gate.py": "2f07d8f95005e2b6272971461faba83bd836db5bf29a7f6a1f556a6fc48982b8",
+    "codecue/scripts/13_force_value.py": "ec8d21815274432a09c5eabe993041a789231e811368914bcda0e841fc82e5d3",
+    "codecue/scripts/14_span_check.py": "77f90dd666e8e6c6bc83baf9c7905d172d6c2713a0748236cd86af31fef40df2",
+    "codecue/scripts/15_build_cruxeval.py": "bb6931807c5cf5d7c23843ad7e7797fae40a248ea6a1cdf5ccda16bb50554929",
+    "codecue/scripts/16_build_gentask.py": "4d9ee6d688b1cf1dcb3db8bf16fc05b72fdfc9433e095da08662fb4e32af4832",
+    "codecue/scripts/20_run_model.py": "a02997c5bc376942cbeee47cac77fdfbcf215745035599dbf75c0c345b477aeb",
+    "codecue/scripts/21_run_cruxeval.py": "aeffa4799541c0ff19da60919bd7ec74fcf90c8149ec2471c81042f792017c8e",
+    "codecue/scripts/22_run_gentask.py": "716ebab38edcb4882b0b224a99b02907b290a12e8e5756fb6e246672f6058b0b",
+    "codecue/scripts/30_cache_and_probe.py": "c3724c9ae34b83640fcce6c5d0ce5c5de6f8ad9d06128ee4ae37e47c45b76999",
+    "codecue/scripts/40_patch.py": "032dd58acd07197257a1e87c816ae09706fa3f247625f703e8a8b13a747eb804",
+    "codecue/scripts/50_sweep.py": "b2a7af503462365efcb7b091539c3b9495f133eeee551a9f854dff76c204b21e",
+    "codecue/scripts/51_numbers.py": "ca1a63ad413a8427891a615f9acde3c0d0d5863beb7eff9356dd96ab895e9775",
+    "codecue/scripts/57_equivalence.py": "7acc55028daf16edfb460b99411435c2d60acdc64275367f6b7e06b81c70a4aa",
+    "codecue/scripts/61_reparse.py": "66fefc820f0e271bfaaf7db5c9922a06881c038faebd7cb199e88b5c1384ca7c",
+    "codecue/scripts/70_idea_figure.py": "62bb574cbcfff10c8bed44fd82eb3332edc57cf177f8c94aa720bd5f6ba4d506",
+    "codecue/scripts/71_mechanism_figure.py": "a5ea55d0da1f38c03c58b23367f02724fb165fa5f46d11aef5adea9c109c2047",
+    "codecue/scripts/72_disjoint_completion.py": "d968e3fdd8aa180f845b0d0db5e2930317e063e040a25b6eb566748204aa40b3",
+    "codecue/scripts/92_page_budget.py": "dc32e57136eddf1e7b6981e59a2f2515f26315824837b8eae6b0159c31aa26eb",
+    "codecue/scripts/99_selfcheck.py": "17cbeb8a9d430fd9ed756ac44d1db98f436edc821e554a147e73a99b071e8109",
+    "codecue/scripts/env.sh": "86e2295b918282f91c3966e39348442dc8c5bf8931792ee2348bd64c5655ac3f",
+    "codecue/src/codecue/__init__.py": "74db69d1fc22dd62cedbdca06ab7591136d94214770978df425cc6332099a105",
+    "codecue/src/codecue/cache.py": "0f4464439774ac53474ddc0e9322a9902c60b36ec666c05fabfb0695d215e946",
+    "codecue/src/codecue/config.py": "4ba803420f421f8af330488fffd4a1c66623a739b0043b4bef17c87dce2f40ca",
+    "codecue/src/codecue/generator.py": "eeb41aedc72cad9ef160a1defe0db9b895000a065f6669922837b19dba73730b",
+    "codecue/src/codecue/gentask.py": "8163f104b02356b006692e7496e50d7a801dee55b4b0031d5e0e405f410ebb2d",
+    "codecue/src/codecue/layout.py": "b7a4457402e13ffa4c0df8aa010fbec6fffa4c97cd02d1ceb9ed365302820d4e",
+    "codecue/src/codecue/lures.py": "9e63aac1eee60817daf504bb0cab2d692b4851526b78041cf41c00e91cbaeff3",
+    "codecue/src/codecue/models.py": "b58f6e511cb48933cd5076c29624a44adf21c9d3167b54b7fa5cf679d4342ad5",
+    "codecue/src/codecue/patching.py": "a69b35d8d870250b4f445065bf6794a604f0e53aff4def0a91770a67c76f7b45",
+    "codecue/src/codecue/probe_data.py": "d36a5b6c480351675ca494b6c5ed735174c207231caa4f8dacd9686175148ea4",
+    "codecue/src/codecue/probe_validation.py": "554fed59d434a2a04d69abe43f5e85a1db2d01176bf1df0077108088ef652e28",
+    "codecue/src/codecue/probes.py": "db0b12064894509bf02e9a5d83e4507ed35901e9ca2925698e068a4aab90ccdc",
+    "codecue/src/codecue/prompts.py": "019eeeb3379c1eeac8f8f29c7af636281d7d79abd1e37ec2da1b3ca130906b1d",
+    "codecue/src/codecue/reporting.py": "4633a5f13d6b4a365e892ec2a6402aad1b2f0f781da5fa17ccc6fdd88dd20678",
+    "codecue/src/codecue/runner.py": "72c78f8d1a12c38fb3fa9b22b766727a9570098a8e3c86b112558b68b9a82b84",
+    "codecue/src/codecue/sandbox.py": "bad3c187164d33d58c1b15521227999eb325400396d0fe4af932894045ccfbab",
+    "codecue/src/codecue/stats.py": "0acbe61acaea72a8505accc3f8bdb106aa9102247a213201cfaa3e32b0f48aea",
+    "probing/configs/compute.yaml": "e68d33e215b35f922e3277ddd389cd47ec95503a489b82fc791b0e0ea6a8643c",
+    "probing/configs/dataset.yaml": "6a9771a766599d27a698d0b6b4a577ddd023a88afd8d3ab228768ab03bb532cb",
+    "probing/configs/models.yaml": "85f8e593b9378a723dc62684c9d08fb422865a4c76ec77607281a641eb707613",
+    "probing/data/L3/manifest.json": "5ba682862a90dc1f844c2feaa7fa163ee31f6f00c6c329d5496ae82708495b21",
+    "probing/data/L3/probe_train_neutral.jsonl": "e37f2336034bbe5aaa0e293f2723ee3fb83de59f7e6f75e4621dbff5683e2f44",
+    "probing/data/L3/test_sets.jsonl": "f8949a66c7e76c98b755f4eb2134c918e979e6c26fcdf7c11c3742302b83f2e1",
+    "probing/queue/pending/20261003T_round4_00_code_olmo2-7b-it_trace.sh": "bb2fd6f7eda2ceb6215bb0c3abe325fac33e4258a8eb2f0cfa169927568f94ba",
+    "probing/queue/pending/20261003T_round4_01_code_llama32-3b-it_trace.sh": "d87c865897bef7c188ce72f43219fd4c92df6d2d364d8ae708264bc2640406df",
+    "probing/queue/pending/20261003T_round4_02_code_llama31-8b-it_trace.sh": "f9daf0b009c40b0a8dd3a7cd6fbfe6986d3861cca05080115f1c5e1c9f9adcf3",
+    "probing/queue/pending/20261003T_round4_03_code_olmo2-7b-it_trace_s11.sh": "f5bc2b4ded5ff4060f4272d2b456f7ea77fe16c2e7ce0c2bf0462d5f6f1dd08f",
+    "probing/queue/pending/20261003T_round4_04_code_llama32-3b-it_trace_s11.sh": "1d8742e14df786ca3eb536463b9314f234a1d62fe0254f8d63097dd95826087b",
+    "probing/queue/pending/20261003T_round4_05_code_llama31-8b-it_trace_s11.sh": "b1d17005bbb64fb51c2179115eef789bec5b895b1441b73bf26b80ccf7b007e6",
+    "probing/queue/pending/20261003T_round4_06_code_olmo2-7b-it_trace_s13.sh": "1974f4b896c42554494e613aba0f2b8df72fdc1c9caa79ec98a1612655a0794d",
+    "probing/queue/pending/20261003T_round4_07_code_llama32-3b-it_trace_s13.sh": "49e55eb3d4ba6849a40c7c67debe02c86d6add6285a1039a740520ab57015fbd",
+    "probing/queue/pending/20261003T_round4_08_code_llama31-8b-it_trace_s13.sh": "11df45ccdbe9ac744d79b5e285a72368ec85a87af14f2d4a761f68ad620402c0",
+    "probing/queue/pending/20261003T_round4_09_arith_panel_llama32-3b-it.sh": "e3ade2bad617c533aa7c99aab2e8f9970cfbd214c43a9bbf3070d1d895e89500",
+    "probing/queue/pending/20261003T_round4_10_arith_panel_llama31-8b-it.sh": "735b0ffdc3c43135a5a35945c91849d0ca1d6b21c8bf76572ee314f2edf59291",
+    "probing/queue/pending/20261003T_round4_11_arith_panel_gemma3-12b-it.sh": "0263d266225a69349d1ff6c75f5761ec824d9e89f8f7f5cabe8ab201d3cb0906",
+    "probing/queue/pending/20261003T_round4_12_arith_token_gemma3-4b-it.sh": "9266a3897caf8bbe66cf6d5108fbaf3efc009676ec476088792b961607dd2a31",
+    "probing/scripts/00_status.py": "447b16d0fc60c57e1884d530074a0b6eda7e442006e6706b821bd0909e3ffd71",
+    "probing/scripts/10_build_dataset.py": "291921a380086c254477b5be464b5b589c87da145ac49a8ec09b14f34c60bbff",
+    "probing/scripts/11_tokenizer_check.py": "6edb4875762c21e63a63c6c41e7326fb9a43bb40ac090e614a3d1b47b5c2bd7e",
+    "probing/scripts/12_ident_layout_check.py": "12e27075887e55c14a90c10c0fadcbef05fa6b35886aff8a07f80cd3e9517232",
+    "probing/scripts/20_run_model.py": "a96e1b3c24d00129bbdbc91721aa2ca86c0046b34676e91f88932ef20505b6bb",
+    "probing/scripts/26_own_chain_probe.py": "d35fab9382e20c3077cadd5c33c7e36b30efd2d0d9894ee2ef9245f5e2f559f5",
+    "probing/scripts/30_train_probes.py": "ec14074ee145d50088f45a2b3c29c840b1bebceb7f5d8efa48dc1ae38eeff1ad",
+    "probing/scripts/40_patch.py": "284326ddafbbd7ca9b6af3656bed8ab615e9ce9d610ed1cbe8bacdb6695c662d",
+    "probing/scripts/50_analysis.py": "d2171ff4afc602c224c88c66025699f1fc247fb3637937c009eaac383a567675",
+    "probing/scripts/51_tables.py": "be56b63c6f8495a1b3f8c02d410b840fd09dd912d97cd6bdc245cc73d75a5e82",
+    "probing/scripts/52_figs.py": "0d2d4bb67446dbe355b776f1faac7742aee45af890d271e8de025650d318242c",
+    "probing/scripts/53_kudo_figs.py": "11bb50836bcf2053ef23e92b5d20d8d3045f256eedaa9bdba8cbb8313f007a31",
+    "probing/scripts/54_grid_figs.py": "e344e3743f9b577edac822738367f1287b852ad7845f7027e2e21660b00ac4f9",
+    "probing/scripts/55_extra_analyses.py": "5e98fb690a7d445bb12fec14ba5e45affdfcd34c4490c7a79ab41d6064f1d9c5",
+    "probing/scripts/56_seed_sweep.py": "a54ae783f8607c449daa0dc65cb6b679954b5e1ff42f3228896d1338748ed451",
+    "probing/scripts/57_equivalence.py": "f164b9599ad975ee2d794c6349f638325ac14fd8de4d52c4c0b189667a14c56f",
+    "probing/scripts/58_robust_stats.py": "ec0fee28037b373aa9d515dbb44e8bfbfb2245b773c35b32822514098e9c86c7",
+    "probing/scripts/58_token_figure.py": "ebf74a99c1ddb1252a18681a7558f57be4d6422942662dab3f591a4ab549fe1c",
+    "probing/scripts/59_error_figure.py": "4f15bf3e686bdf33ed99d52007c2f5661ca1dbfe1f2855f46139dc1f4dd07292",
+    "probing/scripts/60_master_figure.py": "c6a91ec85998f871c7db18b921050f6fd715f2e7c985fd720b127fb0d816dfd3",
+    "probing/scripts/61_reparse.py": "88b3f262ae1beca4b0000abf76422b8482db2d8644ec49cffda0acbf34a75927",
+    "probing/scripts/62_value_written.py": "f5a0929ff606e227babb99d0ed1be466803fa7e0474c90e3514559d18c6b6e40",
+    "probing/scripts/63_irrelevant.py": "ce17f91482c2c1175035d03f57d8368d3e3cb031efe3a2b4e044aece67714c59",
+    "probing/scripts/64_kudo_fig3.py": "9de31eb2493056395c0925d621ebaa637bce2dc1ec08ac1686fd772cfb435f81",
+    "probing/scripts/65_simple_chain.py": "6d309d142c64608486bbe9dc701c5e302ccbc7bddcdfa24646ea0f9921ecf609",
+    "probing/scripts/66_figure_dump.py": "b6226d6f3550a0a1e2748bf84ba31dea1d505f4371a9e9275bb482905f021289",
+    "probing/scripts/67_own_chain_figure.py": "512c1f100a59e5dcdfb7be1a75a0b40b7fcd4ad54b62a67d2742c45e72d7d539",
+    "probing/scripts/68_model_kind.py": "f3d007d6c1ed9abd3572c26ea0665cf74f938b1d441964b004e22a953947e182",
+    "probing/scripts/69_recipe_scope.py": "78ba4c791647ceca737cc65f2811093287c6f5d59beb42e35115dc3a983125a4",
+    "probing/scripts/70_compute_budget.py": "32a6f0ff78f43683cabfde47d6a80c43f285ebffe9efcba2c4597dd0e251795d",
+    "probing/scripts/71_round3_completion.py": "cc18882a154fed96b07d7898ea7aa06a2005eb9e79fe38fa8194a5d3ac9ebe7c",
+    "probing/scripts/72_round4_completion.py": "3bcd9e669716cfa361f032be27c11f9ed119c4810d963b9eaf3f54a384c12484",
+    "probing/scripts/74_pre_value_check.py": "cc8035acf5d0a6fbb4568362fb37f1b69791129310030704b7cd26e118fafec9",
+    "probing/scripts/92_page_budget.py": "dc32e57136eddf1e7b6981e59a2f2515f26315824837b8eae6b0159c31aa26eb",
+    "probing/scripts/99_selfcheck.py": "120f750ebf5993551d764f777e142e45128ef7d222fccf1ea95cb1cb702cef74",
+    "probing/scripts/env.sh": "8203eac705b008feeee9c5ac942613d903da782d47704a90da04abf6e520a638",
+    "probing/scripts/slurm/enqueue.sh": "eb595ef629af7de3be1dcea50211f587fb9d2173e535b5b2eb810b7bf6fcd496",
+    "probing/scripts/slurm/pipeline.py": "ea989ef40fe97c93098b9d61cf28d9fa996c86e8d80fa58eba4a66a6f0b35532",
+    "probing/scripts/slurm/stamp.py": "73c0da322c7e95e113c9c677e846edfef3ec398a8695ad1d61e6d1a12463e054",
+    "probing/scripts/slurm/submit.py": "09c734069bbf889bf8b00b1f9cbdbe74e3304640cb926b935cddfe8b4c65399c",
+    "probing/scripts/slurm/submit_e31.py": "41744b73a54242fd20a758e43317528d7c8c4e28f7f38c8bef819f722d4895e2",
+    "probing/scripts/slurm/worker.sh": "27f3227a5c4dad2f34cd86c443a415f2a142fc6c95398943be83b2fa821c5cfd",
+    "probing/src/cueconf/__init__.py": "5cfa4e6ee277e76d11cf26cd60e77fa6a6fab57219d8c2891397997c5e876bc0",
+    "probing/src/cueconf/config.py": "beb6fa933b6d9ca716fef767553ea3f0129c488bbbb40ed2897a3f312e72b4f6",
+    "probing/src/cueconf/display.py": "8278f3a1428ca8720ea60e1c51a29f6965074359c4577303666e9e6eaf59fcff",
+    "probing/src/cueconf/generator.py": "8dd2fffbcc46f856467b54ce11f735d5066d9c836670d65e9fcf79fd35b6f970",
+    "probing/src/cueconf/patch_summary.py": "7296b2f95fde17a9de7c66b6173d975ed9aee62705d5a49a688baf5d214ef84e",
+    "probing/src/cueconf/patching.py": "aad7d76b5d7428148fe1627b80445e015c43d2e21f0a6711d6b96e9c4fce2d02",
+    "probing/src/cueconf/probes.py": "533aad85af82b92ab4e005b46801c96a3c7e9452f97d12cd2c42e4badcdabda5",
+    "probing/src/cueconf/prompts.py": "849e5e711e76cd3816f066a050f2db6b2ae55becbf4d1cdc48fc04ebd28da057",
+    "probing/src/cueconf/runner.py": "96c9a712cf4208657e6fc9ccbfb0c384a604931b3a100e07426d4dbad70dcd27",
+    "probing/src/cueconf/stats.py": "5b3eb1ab8cedbe15291cde23c07e8d143852c0527ca4f3ebf403df686e9db2c2",
+    "probing/src/cueconf/tokcheck.py": "a6517189ae96b74daae1d6ef03991ace595dbae1aa927bd40741e658d4f5471d",
+    "probing/src/cueconf/words.py": "7fa2cede4458fb49a17eeba29935dd356848db300ed6ef0cf7d34d9fad9a0a40"
+  },
+  "inputs_recorded_utc": "2026-10-03T04:57:13.241409+00:00",
+  "preflight": {
+    "arithmetic_cpu_passed": 62,
+    "arithmetic_heavy_passed": 4,
+    "code_cpu_passed": 42,
+    "heavy_job": "439688",
+    "value_boundary_job": "439757",
+    "value_boundary_samples": 2464,
+    "value_boundary_status": "passed",
+    "per_row_boundary_guards": true,
+    "strict_body_pages": {
+      "probing": 4,
+      "codecue": 4
+    },
+    "future_appendix_layout": "passed on isolated copies with synthetic values; not experiment results"
+  },
+  "worker_status_at_preflight": "pending; GPUs not allocated yet"
+}

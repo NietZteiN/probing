@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "verified_utc": "2026-10-07T16:50:23.866361+00:00",
+  "prior_work_source": "https://aclanthology.org/2026.findings-eacl.59/",
+  "repositories": {
+    "probing": {
+      "changed_scope": "abstract only",
+      "abstract_words": 174,
+      "body_pages": 4,
+      "total_pages": 50,
+      "strict_build": "passed",
+      "all_main_figures_and_tables_within_four_pages": true,
+      "numbers": "unchanged",
+      "result_summaries_verified_unchanged": 342,
+      "visually_inspected_pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "layout": "No clipping, overlap or overflow",
+      "pdf_sha256": "0cd12a3bebb8cd7b5eba72420b61ad84a84c46a2e17d1dd96ca6fa87e9435203"
+    },
+    "codecue": {
+      "changed_scope": "abstract only",
+      "abstract_words": 192,
+      "body_pages": 4,
+      "total_pages": 12,
+      "strict_build": "passed",
+      "all_main_figures_and_tables_within_four_pages": true,
+      "numbers": "unchanged",
+      "result_summaries_verified_unchanged": 17,
+      "visually_inspected_pages": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "layout": "No clipping, overlap or overflow",
+      "pdf_sha256": "1636e74970277af2db215823842204703cc31853d252f15ae9dc8d9cc7d73356"
+    }
+  }
+}

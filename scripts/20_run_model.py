@@ -47,6 +47,8 @@ def main() -> int:
     ap.add_argument("--layer-stride", type=int, default=1, help="keep every k-th layer (index 0 = embeddings); 2 halves the cache")
     ap.add_argument("--train-limit", type=int, default=None, help="cap probe-train instances (E27 uses 4000)")
     ap.add_argument("--data-suffix", default="", help="'_ident' to use the identifier-name dataset (E38)")
+    ap.add_argument("--cache-only", action="store_true", help="cache forced states without changing behavior outputs")
+    ap.add_argument("--cache-suffix", default="", help="separate cache-only runs from the existing experiment")
     ap.add_argument("--overwrite", action="store_true",
                     help="redo groups that already have a summary.json (e.g. a behaviour-only run that now needs caches)")
     ap.add_argument("--no-forced", action="store_true", help="behaviour only: no hidden states, no forced logits (demo-seed sweeps)")
@@ -55,6 +57,10 @@ def main() -> int:
                          "probes never read them and patching recomputes activations). A labelled cache is 2.3 MB per "
                          "instance for a 3B model (13 positions x 29 layers x 3072 x fp16): 254 GB per (model, level) with them, ~150 GB without")
     a = ap.parse_args()
+    if a.cache_suffix and (not a.cache_only or not a.cache_suffix.startswith("__")):
+        ap.error("--cache-suffix requires --cache-only and a suffix starting with __")
+    if a.cache_only and a.no_forced:
+        ap.error("--cache-only cannot be combined with --no-forced")
     m = model_entry(a.model)
     d = DATA_DIR / f"L{a.level}{a.data_suffix}"
     manifest = json.loads((d / "manifest.json").read_text())
@@ -79,7 +85,7 @@ def main() -> int:
         a.layers = list(range(0, nl + 1, a.layer_stride))
         if nl not in a.layers:
             a.layers.append(nl)
-    suffix = "__alltok" if a.all_positions else ""
+    suffix = ("__alltok" if a.all_positions else "") + a.cache_suffix
     for regime in a.regimes:
         for g, rows in groups.items():
             out = OUT_DIR / "runs" / a.model / f"L{a.level}{a.data_suffix}" / regime / (g + suffix)
@@ -88,11 +94,11 @@ def main() -> int:
                 continue
             rows_ = rows[:a.limit] if a.limit else rows
             if g.startswith("train_") and a.train_limit:
-                rows_ = rows_[:a.train_limit]
+                rows_ = rows[:a.train_limit]
             cond = rows_[0].condition
             s = run_condition(tok, model, a.model, a.level, regime, cond, rows_, out, bs, (a.max_new or MAX_NEW[parse_regime(regime)[0]]),
                               demo_pool=manifest.get("demo_words") if manifest.get("scheme", "word") != "word" else None,
-                              layers=a.layers, do_free=(not g.startswith("train_")) and not a.all_positions,
+                              layers=a.layers, do_free=(not g.startswith("train_")) and not a.all_positions and not a.cache_only,
                               do_forced=(not a.no_forced) and (a.forced_all or "_alt@" not in g), all_positions=a.all_positions)
             print(f"{a.model} L{a.level} {regime} {g}: n={s['n']} acc={s.get('free_accuracy')} lure={s.get('free_lure_rate')} "
                   f"excluded={len(s['excluded'])} {s['seconds']}s", flush=True)

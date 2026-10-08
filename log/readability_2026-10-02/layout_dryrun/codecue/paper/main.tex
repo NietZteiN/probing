@@ -1,0 +1,460 @@
+% Cue conflict in code traces -- ARR short-paper draft (4 pages of body).
+% Every quantity is a \NUM{} key written by scripts/51_numbers.py; an unfilled key renders red.
+% Tables are generated into paper/tables/ by the same script. Build: make paper.
+
+\documentclass[11pt]{article}
+\usepackage[review]{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{url}
+
+\providecommand{\NUM}[1]{\textcolor{red}{$\langle\langle$\texttt{#1}$\rangle\rangle$}}
+\providecommand{\tabinput}[1]{\IfFileExists{tables/#1.tex}{\input{tables/#1.tex}}{\textcolor{red}{[table \texttt{#1} not generated yet]}}}
+\IfFileExists{numbers.tex}{\input{numbers.tex}}{}
+
+\definecolor{con}{RGB}{0,110,60}
+\definecolor{inc}{RGB}{180,30,30}
+
+\title{Misleading Identifiers Change What Code Traces Write}
+
+\author{Anonymous ACL submission}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A misleading identifier can change the intermediate value a code trace writes. We test short
+Python functions whose matched versions differ
+in one identifier, across \NUM{n-models} instruction-tuned models and three demonstration sets.
+In a terse trace, a variable assigned \texttt{len(xs)} but named like a sum produces
+\NUM{cell-llama8-excess} to \NUM{cell-olmo7-excess} points of written-lure excess in three
+models. Patching the identifier
+at an early layer or the writing position at a later layer removes most lure writes in the
+tested pairs. Including the expression beside the value in demonstrations sharply reduces
+the effect. The effect is smaller in REPL and comment formats, weaker at 34B parameters, and
+undetected on renamed CRUXEval functions in direct-answer and prose regimes. These results
+establish a format-dependent naming error. 
+\end{abstract}
+
+\section{Introduction}
+
+A variable named \texttt{sum\_all} is assigned \texttt{len(xs)}. On input \texttt{[5, 3]},
+the code gives it value 2, but its name suggests 8. In Figure~\ref{fig:idea}, OLMo-2-7B writes
+8 when its examples show a terse trace such as \texttt{v = 3}. It writes the correct value
+when the same examples include the expression: \texttt{v = len(xs) = 3}.
+The program and input are unchanged.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/idea.pdf}
+\caption{\textbf{(a)} The code and the name imply different values for one variable.
+\textbf{(b)} OLMo-2-7B's trace for the same problem under two demonstration formats:
+values alone (red) or expressions with values (green). Table~\ref{tab:formats} gives the
+aggregate effects.}
+\label{fig:idea}
+\end{figure*}
+
+Misleading identifiers reduce accuracy on code tasks, and step-by-step reasoning can leave
+that loss unresolved \cite{le2025names,lam2025codecrash,le2026obfuscated}. A wrong trace does
+not tell us whether the model lacks the correct value or fails to write an available one.
+\citet{kudo2026faithful} study intermediate values during arithmetic chains with probes and
+patching. We use these tools on code, where an identifier can suggest an executable operation
+that differs from its assignment.
+
+We compare matched functions with congruent, neutral and misleading names. Executing the
+implied operation supplies the name's \emph{lure value}; executing the code supplies the true
+value. The strongest effect occurs when a length-computed variable has a sum-like name.
+Patches at the name and writing position reduce lure writes, as does including the expression
+in the examples. Probes compare the computed digit with the value the trace writes.
+
+\section{Study design}
+
+Each problem is a short Python function over a list of distinct digits. Assignments apply
+list aggregates (\texttt{len}, \texttt{sum}, \texttt{max}, \texttt{min}) or integer operations,
+followed by a return and a call. True intermediate and final values are single digits.
+The main level has three dependent assignments; Appendix~\ref{app:levels} gives the full design.
+We test \NUM{n-models} instruction-tuned models with 1,000 matched problems per level and target,
+with three fixed sets of three worked examples. CodeLlama-34B supplies an additional scale check.
+
+Each matched pair differs only in one target identifier. A congruent name implies the assigned operation;
+a misleading name implies another. Its lure value must differ from every value, constant and
+input element in the problem. This prevents copying from explaining a lure write and excludes \texttt{max} and \texttt{min}
+as lure operations on the aggregate step. We also check which operation each model associates
+with each identifier. This check is diagnostic: names were retained even when they failed
+the planned meaning gate (Appendix~\ref{app:gate}).
+
+In the \emph{direct} regime, models write the return value. In \emph{trace}, they first write
+each assignment's value, as in \texttt{qq = 3, v = 6, vv = 9}. The \emph{trace-expr} comparison
+adds the expression to each demonstrated step, as in \texttt{qq = len(xs) = 3}.
+REPL, comment and free-prose formats test the effect's scope (Appendix~\ref{app:formats}).
+
+Our main measure is \emph{written-lure excess}: the rate at which a misleading trace writes
+the lure at the target step, minus the neutral twin's rate of writing that same digit.
+We measure lure answers similarly in the direct regime. We call an effect reliable when its sign
+agrees across all three demonstration sets and a 95\% cluster-bootstrap interval excludes
+zero. To support a small-effect claim, a 90\% interval must fit inside the preregistered
+$\pm\NUM{eq-delta}$-point margin. Other cases remain inconclusive
+(Appendix~\ref{app:stats}).
+
+For three models, a linear probe predicts the target digit from a hidden state at one token
+and layer. Probes train on neutral traces, with three training seeds. We read the \emph{decision token}: the \texttt{=} immediately before the
+first traced value. We supply the correct trace prefix up to this token, before the model writes a value. Patching
+replaces either the name tokens or this position with a matched neutral twin's activations at
+one layer. A neutral-for-neutral patch measures disruption. Probe controls and implementation
+details are in Appendix~\ref{app:probes}. Probe training and evaluation use disjoint program computations.
+
+\section{Results}
+
+\subsection{Terse traces follow a misleading name}
+
+Table~\ref{tab:cells} shows the main level. Under sum-like names, length-computed variables
+produce \NUM{cell-olmo7-excess}, \NUM{cell-llama3-excess} and \NUM{cell-llama8-excess} points
+of written-lure excess in OLMo-2-7B, Llama-3.2-3B and Llama-3.1-8B. On neutral programs, their trace accuracies are \NUM{cell-olmo7-acc}, \NUM{cell-llama3-acc} and \NUM{cell-llama8-acc}\%,
+respectively. These models usually trace neutral programs correctly.
+
+The sum is not these models' usual error on a length step. On wrong neutral traces, sum writes
+account for only \NUM{neuerr-sum-lo}--\NUM{neuerr-sum-hi}\% of errors; maximum values and
+off-by-one lengths are more common. The sum-like name changes which wrong value they write.
+CodeLlama-7B's larger effect occurs on a maximum-computed variable
+(\NUM{cellmax-codellama-excess} points); CodeGemma-7B shows that pairing at level~3.
+The full pairing matrix is in Appendix~\ref{app:matrix}. Direct-answer lure effects are much
+smaller: \NUM{direct-lure-min-L5} to \NUM{direct-lure-max-L5} points at this level.
+
+\begin{table*}[t]
+\centering\small
+\tabinput{cells}
+\caption{Level~5, means over three demonstration sets. \emph{Trace acc.}: neutral accuracy.
+\emph{Direct: lure}: excess lure answers for the queried variable. The trace columns give
+written-lure excess for length- or maximum-computed variables with sum-like names, with 95\%
+bootstrap intervals. Effects are percentage points. $^{*}$ marks a consistent sign across
+sets and an interval excluding zero.}
+\label{tab:cells}
+\end{table*}
+
+\subsection{Readouts and patches at the writing position}
+
+At the decision token, neutral-trained probes recover the computed digit with accuracy of
+\NUM{probe-olmo7-code}\%, \NUM{probe-llama3-code}\% and \NUM{probe-llama8-code}\% in the
+three affected models. Each layer is selected by neutral accuracy, averaging three probe seeds.
+Training uses separate programs; renamed test computations are excluded. The name-identity
+controls score \NUM{probe-olmo7-ctl}, \NUM{probe-llama3-ctl} and \NUM{probe-llama8-ctl} on
+neutral programs. These readouts measure decodable information, not whether the model uses
+the digit to generate its trace. Appendix~\ref{app:probes} gives the demonstration-set repeats.
+
+Patching independently tests sensitivity to the name and the writing position
+(Figure~\ref{fig:mechanism}). Replacing name tokens at layer~0 removes
+\NUM{patch-olmo7-name-best}\% and \NUM{patch-llama3-name-best}\% of lure writes in the two
+models with aligned twins. Name-site removal declines in later layers. At the decision token,
+removal is weak early and strong from the middle of the network onward; all-layer replacement
+removes \NUM{patch-olmo7-pre-all}--\NUM{patch-llama8-pre-all}\%. The neutral-word control
+changes at most \NUM{patch-llama3-wordctl}\% of outputs. The patches identify positions sensitive to the misleading name. They replace an entire
+hidden-state vector, so they cannot identify which feature changes the output.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/mechanism.pdf}
+\caption{Patching removes lure writes at different layers depending on the site: name tokens
+(red) or decision token (blue). Dashed green: true-value probe accuracy on programs excluded from training.
+Grey: damage to correct predictions from the name patch. Llama-3.1-8B's affected identifier,
+\texttt{sum\_all}, lacks a token-aligned neutral twin, so its name-site curve is unavailable.}
+\label{fig:mechanism}
+\end{figure*}
+
+\subsection{Showing the expression reduces the effect}
+
+We keep the programs, models and demonstration sets fixed and change the examples from
+\texttt{v = 3} to \texttt{v = len(xs) = 3}. Written-lure rates fall by
+\NUM{expr-olmo7-drop}, \NUM{expr-llama3-drop} and \NUM{expr-llama8-drop} points in the three
+models (Table~\ref{tab:formats}). OLMo-2-7B retains
+\NUM{cell-olmo7-traceexpr-excess} points of excess; the two Llama effects approach zero.
+Thus the expression format sharply reduces the error without eliminating it in every model.
+
+\begin{table}[t]
+\centering\small
+\tabinput{formats}
+\caption{Written-lure excess for length-computed variables with sum-like names under four
+demonstration formats. Programs and example sets are fixed; effects are percentage points.
+Intervals appear in Table~\ref{tab:formats-ci}.}
+\label{tab:formats}
+\end{table}
+
+REPL transcripts also omit expressions, yet their effects are several times smaller;
+comment traces reduce them further. The larger checkpoint has a smaller maximum-step effect:
+CodeLlama-34B has \NUM{cell34-len-excess} excess on length steps and
+\NUM{cell34-max-excess} [\NUM{cell34-max-lo}, \NUM{cell34-max-hi}] on maximum steps.
+The latter interval crosses the equivalence margin. Renamed CRUXEval functions show no detectable
+accuracy effect in direct-answer or prose regimes; those tests do not include the synthetic
+trace format (Appendix~\ref{app:boundaries}).
+
+\section{Related work}
+
+Misleading identifiers affect real-code accuracy
+\cite{le2025names,lam2025codecrash,le2026obfuscated,orvalho2025mutations,gao2023cream}.
+Our matched synthetic tasks make the implied operation executable and locate where its value
+can enter a trace. \citet{kudo2026faithful} study arithmetic value readouts, while
+\citet{anon2026arith} relate reduced lure answers to decodable values in a companion arithmetic
+study. Here misleading names change trace writes. The two studies do not establish a shared
+mechanism. Prompt and chain perturbations test faithfulness externally
+\cite{turpin2023unfaithful,lanham2023measuring,chen2025reasoning}; we intervene at the value-writing
+position. Earlier Stroop studies focus on next-token prediction
+\cite{stroop1935,geirhos2019texture,wang2026stroop,hu2026conflict}.
+
+\section{Conclusion}
+
+In the tested terse traces, a sum-like identifier can change the value the model writes.
+Name-site and decision-site patches reduce these
+lure writes, as does including the expression in demonstrations. The effect's dependence on
+format, operation and model limits its use as an account of errors on natural code.
+
+\section*{Limitations}
+
+The programs are short and synthetic, with single-digit true values. The format with the
+largest effect is constructed for this study; REPL and comment formats show less interference.
+The natural-code check covers \NUM{crux-n} renamed CRUXEval functions in direct-answer and
+prose regimes. Its intervals bound accuracy differences in those settings, not lure writes in
+synthetic traces.
+
+We study models up to 34B parameters, with internal measurements on three smaller models.
+Name-identity controls measure identifier information in the readout. A readable digit
+does not establish that the model uses it during generation. Layers are selected on neutral
+evaluation accuracy, so those neutral scores are descriptive. Patches replace mixed representations and
+cannot exclude side effects. A token-aligned name patch is unavailable for Llama-3.1-8B's
+\texttt{sum\_all} cases. The registered REPL prediction was not supported, and identifiers
+were retained despite failures of the planned meaning gate
+(Appendices~\ref{app:formats} and~\ref{app:gate}). The model panel also excludes models of Chinese origin and
+therefore omits some strong open code models tested by \citet{le2026obfuscated}.
+
+\bibliography{refs}
+
+\appendix
+
+\section{Task levels and identifiers}
+\label{app:levels}
+
+Levels vary dependency depth, distractors and which assignment receives the misleading name.
+The primary comparison uses level~5. A function is generated once; renaming preserves its
+statements, input and executable result. Table~\ref{tab:gate} lists the operation suggested by
+each identifier. Sum and length are admissible lure operations on the aggregate step; minimum
+and maximum are excluded because their result is already present in the input.
+
+
+\begin{table*}[t]
+\centering\small
+\begin{tabular}{@{}clc@{}}
+\toprule
+Level & Neutral program (body) & Traced steps \\
+\midrule
+1 & \texttt{v = len(xs); return v} & 1 \\
+2 & \texttt{v = len(xs); w = v * 2; return w} & 2 \\
+3 & \texttt{v = len(xs); w = max(xs); u = v + w; return u} & 3 \\
+4 & level 3 with an unused fourth assignment & 3 \\
+5 & \texttt{v = len(xs); w = v * 2; u = w + 3; return u} & 3 \\
+6 & level 5 with the misleading name on the middle step & 3 \\
+\bottomrule
+\end{tabular}
+\caption{The levels, one example each. The aggregate in the first statement is any of
+\texttt{len}, \texttt{sum}, \texttt{max}, \texttt{min}; unary operations are \texttt{*2},
+\texttt{//2}, \texttt{+c}, \texttt{-c}. The misleading name sits on the first statement at
+levels 1--5 and on the second at level 6.}
+\label{tab:levels}
+\end{table*}
+
+\begin{table*}[t]
+\centering\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Family & Names & Implied operation \\
+\midrule
+len & \texttt{count}, \texttt{n\_items}, \texttt{length} & \texttt{len(xs)} \\
+sum & \texttt{total}, \texttt{sum\_all}, \texttt{acc} & \texttt{sum(xs)} \\
+max & \texttt{largest}, \texttt{max\_val}, \texttt{peak} & \texttt{max(xs)} \\
+min & \texttt{smallest}, \texttt{min\_val}, \texttt{low} & \texttt{min(xs)} \\
+double & \texttt{double}, \texttt{twice} & \texttt{2 * a} \\
+half & \texttt{half} & \texttt{a // 2} \\
+succ & \texttt{succ}, \texttt{next\_val} & \texttt{a + 1} \\
+pred & \texttt{pred}, \texttt{prev\_val} & \texttt{a - 1} \\
+add & \texttt{combined}, \texttt{both} & \texttt{a + b} \\
+sub & \texttt{diff}, \texttt{gap} & \texttt{a - b} \\
+mul & \texttt{product}, \texttt{scaled} & \texttt{a * b} \\
+\bottomrule
+\end{tabular}
+\caption{The lure table. The gate (Appendix~\ref{app:gate}) scores each name by the log-probability each
+model assigns to the candidate right-hand sides; \NUM{gate-pass} of \NUM{gate-names} names are
+read as intended by at least 80\% of models. The min and max names cannot be lures on the
+aggregate step (their value is an input element) and are used as congruent and
+alternative-lure names.}
+\label{tab:gate}
+\end{table*}
+
+\section{Identifier meanings}
+\label{app:gate}
+For each identifier and model, we compare log-probabilities of candidate right-hand sides after
+a prefix such as \texttt{def f(xs):\textbackslash n\ \ \ \ total =}.
+The highest-scoring operation records what that identifier evokes. Of \NUM{gate-names} names,
+\NUM{gate-pass} match the intended operation in at least 80\% of models. Most sum-family names
+instead evoke length in \NUM{gate-sum-len-readers} of \NUM{n-models} models. This check matters
+when interpreting a small effect: an identifier need not suggest the same operation to every model.
+The design planned to retain only names passing the 80\% panel gate. The runs instead retained
+the full name table, so the reported comparisons depart from that selection rule. The results
+concern these named groups; they do not establish that every model reads each name as intended.
+
+\section{Operation and name pairings}
+\label{app:matrix}
+
+Table~\ref{tab:matrix} reports all tested aggregate/name pairings. The reverse of the main
+length-to-sum conflict is weak at level~5: sum-computed variables with length-like names have
+excess within two points for models above the neutral-accuracy floor. At level~3, OLMo-2-7B has
+\NUM{pair-olmo7-L3-sumlen-excess} points of excess in that pairing.
+Gemma-3-4B shows no main-cell effect, consistent with its identifier-meaning check. OLMo-2-1B's
+neutral accuracy is only \NUM{cell-olmo1-acc}\%, making its small, broadly distributed effects
+harder to interpret as a specific trace failure.
+
+
+\begin{table*}[t]
+\centering\small
+\tabinput{matrix}
+\caption{Written-lure excess at the aggregate step, trace regime, level 3 / level 5, three
+sets of worked examples pooled; $^{*}$ as in Table~\ref{tab:cells}.}
+\label{tab:matrix}
+\end{table*}
+
+\section{Demonstration formats}
+\label{app:formats}
+
+All few-shot comparisons hold programs, demonstration identities and model weights fixed.
+The trace writes \texttt{qq = 3}; trace-expr writes \texttt{qq = len(xs) = 3}; REPL writes
+\texttt{>{}>{}> qq} followed by \texttt{3}; comment mode annotates each assignment with its
+value. Prose asks for step-by-step reasoning without demonstrations. Table~\ref{tab:formats-ci}
+gives the paired excess and interval for each few-shot format.
+
+On the main conflict, REPL excess is \NUM{cell-olmo7-repl-excess} and
+\NUM{cell-llama3-repl-excess} points for OLMo-2-7B and Llama-3.2-3B, compared with
+\NUM{cell-llama8-repl-excess} for Llama-3.1-8B. Comments leave
+\NUM{cell-llama3-comment-excess} points in Llama-3.2-3B and near-zero excess in the other two.
+Prose has little initial lure writing, so asking it to state or recompute values does not test
+removal of the large trace effect. The prediction that REPL would stay within a factor of two
+of trace was not supported; the comment prediction held only for two models.
+
+The paired trace-minus-trace-expr lure-rate reductions are \NUM{expr-olmo7-drop} points
+[\NUM{expr-olmo7-drop-lo}, \NUM{expr-olmo7-drop-hi}], \NUM{expr-llama3-drop}
+[\NUM{expr-llama3-drop-lo}, \NUM{expr-llama3-drop-hi}] and \NUM{expr-llama8-drop}
+[\NUM{expr-llama8-drop-lo}, \NUM{expr-llama8-drop-hi}] for OLMo-2-7B, Llama-3.2-3B and
+Llama-3.1-8B. These 95\% intervals keep each matched program's demonstration-seed repeats together.
+
+
+\begin{table*}[t]
+\centering\small
+\tabinput{formats_ci}
+\caption{Table~\ref{tab:formats} with 95\% bootstrap intervals over matched problems.}
+\label{tab:formats-ci}
+\end{table*}
+
+\section{Probe and patching details}
+\label{app:probes}
+
+We follow \citeauthor{kudo2026faithful}'s 10-class linear-probe recipe, with three seeds and
+neutral-only training. Each probe predicts a target digit from one residual-stream position
+and layer. Name-identity controls use deterministic random labels keyed on the identifier
+\cite{hewitt2019control}. Neutral names and values vary independently, and misleading names
+are absent from training. The original implementation reused test programs in training. The reported reruns
+replace those scores: they train on \NUM{probe-n-train} independent neutral programs and
+evaluate \NUM{probe-n-test} misleading-name programs, with overlap guards that ignore name
+spelling. Table~\ref{tab:probe-repeats} reports the name controls alongside digit accuracy.
+
+% Disjoint-probe demonstration repeats
+The main scores use demonstration set 7. Repeating training and evaluation with sets 11 and 13
+gives true-digit accuracies of \NUM{probe-olmo7-demo-lo}--\NUM{probe-olmo7-demo-hi}\%,
+\NUM{probe-llama3-demo-lo}--\NUM{probe-llama3-demo-hi}\% and
+\NUM{probe-llama8-demo-lo}--\NUM{probe-llama8-demo-hi}\% across the three sets. Each repeat
+uses the same independent training programs and three probe seeds; its layer is selected by
+that set's neutral accuracy. These repeats assess prompt sensitivity, not a causal role for
+the decoded digit. Table~\ref{tab:probe-repeats} gives both conditions' readouts and controls.
+
+\begin{table*}[t]
+\centering\small
+\tabinput{probe_repeats}
+\caption{Disjoint code probes, three demonstration sets. Neutral and misleading are
+true-digit accuracy; each control column gives name-identity accuracy for that condition.
+Majority predicts the most frequent digit in training on the misleading test programs.
+Rates are percentages, averaged over three probe seeds. Layers are selected by neutral accuracy.}
+\label{tab:probe-repeats}
+\end{table*}
+
+We supply the correct trace token by token when caching probe inputs. The decision position is the \texttt{=} before the
+first traced value; later values cannot affect this position under causal attention. Patching
+uses only the prompt and this trace prefix. Name patches replace every aligned
+occurrence of the identifier; decision patches replace only that writing position. Both use
+one layer at a time and include a neutral-for-neutral disruption control
+\cite{zhang2024patching}. The alternative-lure control is uninformative in the main cell:
+every sum-family identifier implies the same sum, so there is no distinct source lure.
+Llama-3.1-8B's affected two-token name lacks aligned neutral twins for the name-site intervention.
+
+
+\begin{table*}[t]
+\centering\small
+\tabinput{patch}
+\caption{Layers behind Figure~\ref{fig:mechanism}. Name tokens: lure writes removed by
+replacing every token of the name at layer 0, damage to correct instances, and the first
+layer after which removal falls below 10\%. Decision token: first layer at which a
+single-layer replacement removes 50\% and 90\% of lure writes, removal with every layer
+replaced, and its damage. Llama-3.1-8B's lure writes fall on a two-token name without a
+token-aligned twin.}
+\label{tab:patch}
+\end{table*}
+
+\section{Scope checks}
+\label{app:boundaries}
+
+\paragraph{Operation and scale.} Moving the misleading name to a unary middle step produces
+no reliable effect for models above the accuracy floor; the largest excess is
+\NUM{l6-max-excess} points. CodeLlama-34B's length-to-sum effect is \NUM{cell34-len-excess},
+while its maximum-to-sum effect is \NUM{cell34-max-excess} points
+[\NUM{cell34-max-lo}, \NUM{cell34-max-hi}]. The latter is a reliable positive effect, but its
+interval extends beyond the two-point margin. Its small point estimate cannot be reported as
+equivalence. The larger-checkpoint result supports the registered maximum-to-sum direction
+and reliable-effect criterion, while its magnitude is much smaller than CodeLlama-7B's.
+
+\paragraph{Natural code.} We select \NUM{crux-n} CRUXEval functions with length, loop-counter
+or maximum assignments, rename the target by AST rewriting to \texttt{v} or \texttt{total},
+and verify execution after renaming. Direct and prose accuracy contrasts all have intervals
+covering zero on the \NUM{crux-used} functions whose renamed target is used downstream.
+Their endpoints stay within \NUM{crux-direct-bound} and
+\NUM{crux-prose-bound} points, respectively (Table~\ref{tab:crux}). These are bounded results
+for those functions and prompts; they do not test the terse few-shot trace used in the synthetic
+study.
+
+
+\begin{table*}[t]
+\centering\small
+\tabinput{crux}
+\caption{\NUM{crux-n} CRUXEval functions that assign a variable from \texttt{len(\ldots)}
+(\NUM{crux-kind-len}), a loop counter (\NUM{crux-kind-counter}) or \texttt{max(\ldots)}
+(\NUM{crux-kind-max}), of which \NUM{crux-used} use it downstream; each rendered with the
+original name, the neutral name \texttt{v}, and the misleading name \texttt{total}. Accuracy
+on all neutral renderings, and the paired misleading-minus-neutral difference in points on
+the downstream-used subset, with a bootstrap interval over functions.}
+\label{tab:crux}
+\end{table*}
+
+
+\section{Effect and equivalence checks}
+\label{app:stats}
+Each contrast subtracts the neutral twin's rate for the same digit. We resample matched problems
+with demonstration-seed replicates together and use 95\% cluster-bootstrap intervals.
+Reliability also requires a consistent sign across all three demonstration sets.
+
+Equivalence applies the $\pm\NUM{eq-delta}$-point margin to 90\% intervals from the same
+cluster bootstrap (two one-sided 5\% tests), using 2,000 draws. Across \NUM{eq-cells} tested contrasts,
+\NUM{eq-equivalent} intervals lie wholly inside the margin, \NUM{eq-witheffect} contrasts have
+reliable effects without meeting that bound, and \NUM{eq-inconclusive} meet neither criterion.
+A small estimate or an interval covering zero does not by itself establish equivalence.
+
+\end{document}

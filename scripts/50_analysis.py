@@ -35,7 +35,7 @@ def behavior_frame(run_dir: Path) -> pd.DataFrame:
     rows = []
     for g in sorted(run_dir.iterdir()):
         f = g / "behavior.jsonl"
-        if f.exists():
+        if f.exists() and "__" not in g.name:
             for line in f.open():
                 d = json.loads(line); d["group"] = g.name
                 d["names_target"] = d.get("names", {}).get(d["target"]) if d.get("target") else None

@@ -1,4 +1,4 @@
-# Cue conflict in chain-of-thought arithmetic
+# Chain of Thought Reduces Errors from Misleading Names in Arithmetic
 
 The experiment checklist is [CHECKLIST.md](CHECKLIST.md).
 
@@ -7,8 +7,12 @@ and where inside the model does that happen? A Stroop-style test built on Kudo e
 (Findings of EACL 2026) controlled multi-step arithmetic: every problem appears with
 **neutral**, **congruent** and **incongruent** variable names under identical arithmetic, with
 and without chain of thought. Linear probes trained on neutral problems only read out whether
-the model represents the true value or the lure; activation patching from the matched neutral
-twin tests whether the name's influence causes the errors.
+the model represents the true value or the name-suggested value; activation patching from the matched neutral
+twin tests where replacing the name representation changes the errors, with disruption and
+alternative-name controls.
+
+The revised manuscript follows the behavioral contrast, the value readout and the patching
+evidence. Its argument and interpretation limits are in [paper/ARGUMENT.md](paper/ARGUMENT.md).
 
 - [`PLAN.md`](PLAN.md) — the science: thesis, conditions, positions, metrics, outcome table,
   timeline to the **October 12, 2026** ARR deadline (short paper).
@@ -50,7 +54,7 @@ python scripts/50_analysis.py && python scripts/51_tables.py && python scripts/5
 make paper                                 # tectonic; prints body page count vs the 4-page limit
 ```
 
-The running example: `pen=1 + two, two=2 + 3; pen=?` — `two` has true value 5 and lure value 2.
+The running example: `four=1 + cup, cup=2 + 3; four=?` — `four` has true value 6 and name-suggested value 4.
 
 ## Task format
 

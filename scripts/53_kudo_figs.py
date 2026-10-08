@@ -6,12 +6,12 @@
 
 Outputs in paper/figures/:
   kudo_fig2_<model>_L<level>_<regime>_<role>.{pdf,png}   accuracy heatmaps (token x layer) for neutral /
-        congruent / incongruent with the max-over-layers curve above; lure-rate and margin heatmaps
+        congruent / incongruent with the max-over-layers curve above; name-error-rate and margin heatmaps
         for incongruent; x-axis = the tokens of the first instance
   kudo_fig3_<model>_L<level>_<regime>_<role>.{pdf,png}   top-1 probe prediction trajectories (best layer per
         token) on lure-error instances and on random incongruent instances (E30)
 and results/summary/<model>/L<level>/<regime>/kudo_table.json: per condition, t*, t*_eq,
-Acc<CoT, Acc>CoT (Kudo Tables 2-3) plus t_lure and max lure rate before / after the chain.
+Acc<CoT, Acc>CoT (Kudo Tables 2-3) plus t_lure and max name-suggested prediction rate before / after the chain.
 """
 from __future__ import annotations
 
@@ -29,8 +29,8 @@ from cueconf.display import MODEL, REGIME, ROLE_WORD, condition  # noqa: E402
 FIG = PROJECT_ROOT / "paper" / "figures"
 
 
-def load(model: str, level: int, regime: str, train: str, role: str):
-    pj = OUT_DIR / "probes" / model / f"L{level}" / regime / f"{train}__alltok" / f"{role}.json"
+def load(model: str, level: int, regime: str, train: str, role: str, cache_suffix: str = ""):
+    pj = OUT_DIR / "probes" / model / f"L{level}" / regime / f"{train}__alltok{cache_suffix}" / f"{role}.json"
     d = json.loads(pj.read_text())
     meta = json.loads((Path(d["train_dir"]) / "meta.json").read_text())
     return d, meta, np.load(pj.with_suffix(".npz"))
@@ -87,8 +87,10 @@ def main() -> int:
     ap.add_argument("--model", required=True); ap.add_argument("--level", type=int, default=3)
     ap.add_argument("--regime", default="cot"); ap.add_argument("--role", default="v2"); ap.add_argument("--tau", type=float, default=0.9)
     ap.add_argument("--train", default="train_neutral"); ap.add_argument("--trajectories", action="store_true")
+    ap.add_argument("--cache-suffix", default="", help="isolated all-token cache tag")
+    ap.add_argument("--figures-only", action="store_true", help="redraw figures without rewriting collected summaries")
     a = ap.parse_args()
-    d, meta, npz = load(a.model, a.level, a.regime, a.train, a.role)
+    d, meta, npz = load(a.model, a.level, a.regime, a.train, a.role, a.cache_suffix)
     layers = sorted({r["layer"] for r in d["results"]})
     n_pos = len(meta["pos_labels"]); toks = meta["token_strings"]
     cot0 = meta["n_prompt_tokens"] - meta["instance_start_token"]
@@ -103,7 +105,7 @@ def main() -> int:
         axes[0, j].plot(np.nanmax(A, axis=0), color="k", lw=1.2, label="acc (max over layers)")
         if "incongruent" in cond:
             Lr = grid(d, cond, "lure_rate", n_pos, layers)
-            axes[0, j].plot(np.nanmax(Lr, axis=0), color="#B5321F", lw=1.2, label="lure rate (max)")
+            axes[0, j].plot(np.nanmax(Lr, axis=0), color="#B5321F", lw=1.2, label="name-suggested prediction (max)")
             axes[0, j].legend(fontsize=6, loc="upper left")
         axes[0, j].set_ylim(0, 1.02); axes[0, j].axvline(cot0 - 0.5, color="grey", lw=0.8, ls="--")
         axes[0, j].set_title(condition(cond), fontsize=9)   # the suptitle names the variable
@@ -113,7 +115,7 @@ def main() -> int:
         if "incongruent" in cond:
             Mg = grid(d, cond, "margin_mean", n_pos, layers); v = np.nanmax(np.abs(Mg)) if not np.all(np.isnan(Mg)) else 1
             im2 = axes[2, j].imshow(Mg, aspect="auto", origin="lower", cmap="RdBu", vmin=-v, vmax=v)
-            axes[2, j].set_title("margin log p(true) - log p(lure)", fontsize=8)
+            axes[2, j].set_title("margin log p(true) - log p(name value)", fontsize=8)
             fig.colorbar(im2, ax=axes[2, j], fraction=0.03)
         else:
             Lr = grid(d, cond, "accuracy", n_pos, layers)  # placeholder panel: control accuracy if present
@@ -140,7 +142,8 @@ def main() -> int:
     out.mkdir(parents=True, exist_ok=True)
     prev = json.loads((out / "kudo_table.json").read_text()) if (out / "kudo_table.json").exists() else {}
     prev[f"{a.train}/{r}"] = tab
-    (out / "kudo_table.json").write_text(json.dumps(prev, indent=1))
+    if not a.figures_only:
+        (out / "kudo_table.json").write_text(json.dumps(prev, indent=1))
     print(json.dumps(tab, indent=1))
 
     # ---- Fig. 3 analogue: trajectories (E30)
@@ -158,7 +161,7 @@ def main() -> int:
         rng = np.random.default_rng(0)
         sample = list(lure_err[:12]) + list(rng.choice([i for i in range(len(ids)) if i not in lure_err], 12, replace=False))
         fig, ax = plt.subplots(figsize=(11, 0.35 * len(sample) + 1.5))
-        meta_te = json.loads((OUT_DIR / "runs" / a.model / f"L{a.level}" / a.regime / f"{cond}__alltok" / "meta.json").read_text())
+        meta_te = json.loads((OUT_DIR / "runs" / a.model / f"L{a.level}" / a.regime / f"{cond}__alltok{a.cache_suffix}" / "meta.json").read_text())
         for row, i in enumerate(sample):
             inst = meta_te["instances"][i]; true = inst["values"][r]; lure = inst["lure"]
             for t in range(n_pos):
@@ -168,11 +171,11 @@ def main() -> int:
                 p = int(npz[key][i])
                 col = "#157A55" if p == true else ("#B5321F" if p == lure else "#C8CCD3")
                 ax.scatter(t, row, s=14, color=col, marker="s")
-            ax.text(-1, row, ("lure err " if i in lure_err else "ok ") + inst["id"].split("-")[-2], fontsize=5, ha="right", va="center")
+            ax.text(-1, row, ("name error " if i in lure_err else "ok ") + inst["id"].split("-")[-2], fontsize=5, ha="right", va="center")
         ax.axvline(cot0 - 0.5, color="grey", lw=0.8, ls="--")
         ax.set_xticks(range(n_pos)); ax.set_xticklabels([t.replace("\n", "⏎") for t in toks], rotation=90, fontsize=5, family="monospace")
         ax.set_yticks([]); ax.set_xlim(-0.5, n_pos - 0.5)
-        ax.set_title(f"top-1 probe prediction for {r} at the best layer per token: green = true, red = lure, grey = other", fontsize=8)
+        ax.set_title(f"top-1 probe prediction for {r} at the best layer per token: green = true, red = name-suggested, grey = other", fontsize=8)
         fig.savefig(FIG / f"kudo_fig3_{a.model}_L{a.level}_{a.regime}_{r}.pdf", bbox_inches="tight")
         fig.savefig(FIG / f"kudo_fig3_{a.model}_L{a.level}_{a.regime}_{r}.png", dpi=150, bbox_inches="tight"); plt.close(fig)
     print(f"figures -> {FIG}")

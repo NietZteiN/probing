@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-07",
+  "text_through_limitations_pages": 4,
+  "references_start_page": 5,
+  "total_pages_including_references_and_appendix": 49,
+  "strict_check": "ARR: body 4/4 pages; total 49; abstract 175 words; A4 portrait; 0 unembedded fonts\nDraft: 0 unfilled numbers; unresolved references: False; missing assets: False",
+  "main_caption_source_words": {
+    "before": 166,
+    "after": 103
+  },
+  "visual_review_pages": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "main_figure_table_pages": {
+    "Figure 1:": 2,
+    "Figure 2:": 3,
+    "Table 1:": 2,
+    "Table 2:": 3
+  },
+  "unchanged_inputs_verified": 390,
+  "all_number_macro_occurrences_unchanged": true,
+  "abstract_unchanged": true,
+  "introduction_prose_unchanged": true,
+  "appendix_source_unchanged": true,
+  "no_font_or_margin_changes": true,
+  "git_diff_check_passed": true,
+  "no_overfull_or_latex_errors": true,
+  "main_tex_sha256": "64189b58e9a5cc280e1de93224743ca2494ed41741f943f7bb227c3070c860de",
+  "main_pdf_sha256": "55450c773d172a16cbf47e771eed8a528f46fe2d76f6382a2632f685ce44f01f"
+}

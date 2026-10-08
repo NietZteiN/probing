@@ -111,6 +111,8 @@ class BatchedProbes:
         W = self.W.clone().requires_grad_(True); b = self.b.clone().requires_grad_(True)
         opt = torch.optim.SGD([W, b], lr=lr)
         Xf = X.float()
+        if not torch.isfinite(Xf).all():
+            raise ValueError("non-finite training cache; probe fitting cannot proceed")
         yk = y.unsqueeze(0).expand(X.shape[0], -1).reshape(-1)
         K, n, _ = X.shape
         for _ in range(epochs):
@@ -119,6 +121,8 @@ class BatchedProbes:
             # mean over n per probe, summed over probes: each probe's gradient is its own mean loss
             loss = torch.nn.functional.cross_entropy(logits.reshape(K * n, N_CLASSES), yk, reduction="none").view(K, n).mean(1).sum()
             loss.backward(); opt.step()
+        if not torch.isfinite(W).all() or not torch.isfinite(b).all():
+            raise ValueError("non-finite fitted probe weights")
         self.W, self.b = W.detach(), b.detach()
 
     def probe(self, k: int, d: int) -> "LinearProbe":
@@ -129,6 +133,8 @@ class BatchedProbes:
 
 def evaluate(probe: LinearProbe, X: torch.Tensor, y: np.ndarray, lure: np.ndarray) -> dict:
     lp = probe.logprobs(X).cpu().numpy()
+    if not np.isfinite(lp).all():
+        raise ValueError("non-finite evaluation readout; refusing a spurious argmax score")
     pred = lp.argmax(-1)
     yt = y
     p_true = np.exp(lp[np.arange(len(yt)), yt])

@@ -1,0 +1,58 @@
+{
+ "train_neutral/v1/incongruent@v1": {
+  "order": [
+   "def@v1",
+   "end@v1",
+   "query",
+   "cotpre@v1",
+   "anspre"
+  ],
+  "max_margin": {
+   "cotpre@v1": 9.865485778570175,
+   "cotpre@v2": 1.2085022144714992
+  },
+  "crossover": "def@v1"
+ },
+ "train_neutral/v2/incongruent@v2": {
+  "order": [
+   "def@v2",
+   "end@v2",
+   "query",
+   "cotpre@v2",
+   "anspre"
+  ],
+  "max_margin": {
+   "cotpre@v1": 9.239368355015914,
+   "cotpre@v2": 9.116677095651626
+  },
+  "crossover": "def@v2"
+ },
+ "train_neutral__r4/v1/incongruent@v1": {
+  "order": [
+   "def@v1",
+   "end@v1",
+   "query",
+   "cotpre@v1",
+   "anspre"
+  ],
+  "max_margin": {
+   "cotpre@v1": 9.865485778570175,
+   "cotpre@v2": 1.2085022144714992
+  },
+  "crossover": "def@v1"
+ },
+ "train_neutral__r4/v2/incongruent@v2": {
+  "order": [
+   "def@v2",
+   "end@v2",
+   "query",
+   "cotpre@v2",
+   "anspre"
+  ],
+  "max_margin": {
+   "cotpre@v1": 9.239368355015914,
+   "cotpre@v2": 9.116677095651626
+  },
+  "crossover": "def@v2"
+ }
+}

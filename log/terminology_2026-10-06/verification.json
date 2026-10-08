@@ -1,0 +1,469 @@
+{
+  "status": "passed",
+  "verified_utc": "2026-10-06T23:29:32.937324+00:00",
+  "title": "Chain of Thought Reduces Errors from Misleading Names in Arithmetic",
+  "summary_files_verified_unchanged": 359,
+  "repositories": {
+    "probing": {
+      "strict_build": "passed",
+      "main_pages": 4,
+      "total_pages": 50,
+      "abstract_words": 137,
+      "old_term_pages": [],
+      "number_macros": "byte-identical",
+      "main_figures_and_tables_within_budget": true,
+      "visually_inspected_pages": [
+        1,
+        2,
+        3,
+        4,
+        49,
+        50
+      ],
+      "visual_findings": "No clipping or overlap; definitions and longer labels readable.",
+      "changed_scripts_compiled": [
+        "82_round6_tables.py",
+        "79_round5_tables.py",
+        "66_figure_dump.py",
+        "60_master_figure.py",
+        "58_token_figure.py",
+        "54_grid_figs.py",
+        "53_kudo_figs.py",
+        "52_figs.py",
+        "51_tables.py"
+      ],
+      "pdf_sha256": "4ace7c702a25ef24bd80039cbf5c24f4f5fb1898f33843d820b3f6cdf564ada5",
+      "latex_sha256": "6d75469dd6e07ee04215c33487170e0e9f23dc3156e0e9ec9e48ddce4ebfe4c9"
+    },
+    "codecue": {
+      "strict_build": "passed",
+      "main_pages": 4,
+      "total_pages": 12,
+      "abstract_words": 154,
+      "old_term_pages": [],
+      "number_macros": "byte-identical",
+      "main_figures_and_tables_within_budget": true,
+      "visually_inspected_pages": [
+        1,
+        2,
+        3,
+        4,
+        9,
+        11,
+        12
+      ],
+      "visual_findings": "No clipping or overlap; definitions and longer labels readable.",
+      "changed_scripts_compiled": [
+        "80_round6_tables.py",
+        "77_followup_tables.py",
+        "51_numbers.py"
+      ],
+      "pdf_sha256": "5bbc1b5d656f14b9866d79e3dbb8f5f1bde1df4fee94a2edf36b81f2c90e5621",
+      "latex_sha256": "030bab5a9d32f6064c42636fc57620b7dbb533d005d57dfc2a1a71c036bf129c"
+    }
+  },
+  "plot_redraws": {
+    "initial_batch": [
+      {
+        "name": "fig1_master_L3",
+        "script": "60_master_figure.py",
+        "args": [],
+        "exit_code": 0
+      },
+      {
+        "name": "fig2_tokens_gemma3-4b-it_L3_cot_v1",
+        "script": "58_token_figure.py",
+        "args": [
+          "--model",
+          "gemma3-4b-it",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--role",
+          "v1",
+          "--cache-suffix",
+          "__r5_fp32"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "fig2_tokens_gemma3-4b-it_L3_cot_v2",
+        "script": "58_token_figure.py",
+        "args": [
+          "--model",
+          "gemma3-4b-it",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--role",
+          "v2",
+          "--cache-suffix",
+          "__r5_fp32"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "fig2_tokens_llama32-3b_L3_cot_v1",
+        "script": "58_token_figure.py",
+        "args": [
+          "--model",
+          "llama32-3b",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--role",
+          "v1"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "fig2_tokens_llama32-3b_L3_cot_v2",
+        "script": "58_token_figure.py",
+        "args": [
+          "--model",
+          "llama32-3b",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--role",
+          "v2"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "fig2_tokens_llama32-3b_L3_direct_v2",
+        "script": "58_token_figure.py",
+        "args": [
+          "--model",
+          "llama32-3b",
+          "--level",
+          "3",
+          "--regime",
+          "direct",
+          "--role",
+          "v2"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig2_gemma3-4b-it_L3_cot_v1",
+        "script": "53_kudo_figs.py",
+        "args": [
+          "--model",
+          "gemma3-4b-it",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--role",
+          "v1",
+          "--figures-only",
+          "--cache-suffix",
+          "__r5_fp32"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig2_gemma3-4b-it_L3_cot_v2",
+        "script": "53_kudo_figs.py",
+        "args": [
+          "--model",
+          "gemma3-4b-it",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--role",
+          "v2",
+          "--figures-only",
+          "--cache-suffix",
+          "__r5_fp32"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig2_llama31-8b_L3_cot_v1",
+        "script": "53_kudo_figs.py",
+        "args": [
+          "--model",
+          "llama31-8b",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--role",
+          "v1",
+          "--figures-only"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig2_llama31-8b_L3_cot_v2",
+        "script": "53_kudo_figs.py",
+        "args": [
+          "--model",
+          "llama31-8b",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--role",
+          "v2",
+          "--figures-only"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig2_llama31-8b_L3_direct_v1",
+        "script": "53_kudo_figs.py",
+        "args": [
+          "--model",
+          "llama31-8b",
+          "--level",
+          "3",
+          "--regime",
+          "direct",
+          "--role",
+          "v1",
+          "--figures-only"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig2_llama31-8b_L3_direct_v2",
+        "script": "53_kudo_figs.py",
+        "args": [
+          "--model",
+          "llama31-8b",
+          "--level",
+          "3",
+          "--regime",
+          "direct",
+          "--role",
+          "v2",
+          "--figures-only"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig2_llama32-3b_L3_cot_v1",
+        "script": "53_kudo_figs.py",
+        "args": [
+          "--model",
+          "llama32-3b",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--role",
+          "v1",
+          "--figures-only"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig2_llama32-3b_L3_cot_v2",
+        "script": "53_kudo_figs.py",
+        "args": [
+          "--model",
+          "llama32-3b",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--role",
+          "v2",
+          "--figures-only"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig2_llama32-3b_L3_direct_v1",
+        "script": "53_kudo_figs.py",
+        "args": [
+          "--model",
+          "llama32-3b",
+          "--level",
+          "3",
+          "--regime",
+          "direct",
+          "--role",
+          "v1",
+          "--figures-only"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig2_llama32-3b_L3_direct_v2",
+        "script": "53_kudo_figs.py",
+        "args": [
+          "--model",
+          "llama32-3b",
+          "--level",
+          "3",
+          "--regime",
+          "direct",
+          "--role",
+          "v2",
+          "--figures-only"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig5_llama31-8b_L3_cot_v1",
+        "script": "54_grid_figs.py",
+        "args": [
+          "--model",
+          "llama31-8b",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--target",
+          "v1"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig5_llama31-8b_L3_cot_v2",
+        "script": "54_grid_figs.py",
+        "args": [
+          "--model",
+          "llama31-8b",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--target",
+          "v2"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig5_llama31-8b_L3_direct_v1",
+        "script": "54_grid_figs.py",
+        "args": [
+          "--model",
+          "llama31-8b",
+          "--level",
+          "3",
+          "--regime",
+          "direct",
+          "--target",
+          "v1"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig5_llama31-8b_L3_direct_v2",
+        "script": "54_grid_figs.py",
+        "args": [
+          "--model",
+          "llama31-8b",
+          "--level",
+          "3",
+          "--regime",
+          "direct",
+          "--target",
+          "v2"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig5_llama32-3b_L3_cot_v1",
+        "script": "54_grid_figs.py",
+        "args": [
+          "--model",
+          "llama32-3b",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--target",
+          "v1"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig5_llama32-3b_L3_cot_v2",
+        "script": "54_grid_figs.py",
+        "args": [
+          "--model",
+          "llama32-3b",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--target",
+          "v2"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig5_llama32-3b_L3_direct_v1",
+        "script": "54_grid_figs.py",
+        "args": [
+          "--model",
+          "llama32-3b",
+          "--level",
+          "3",
+          "--regime",
+          "direct",
+          "--target",
+          "v1"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "kudo_fig5_llama32-3b_L3_direct_v2",
+        "script": "54_grid_figs.py",
+        "args": [
+          "--model",
+          "llama32-3b",
+          "--level",
+          "3",
+          "--regime",
+          "direct",
+          "--target",
+          "v2"
+        ],
+        "exit_code": 0
+      },
+      {
+        "name": "patch_llama32-3b",
+        "script": "52_figs.py",
+        "args": [
+          "--model",
+          "llama32-3b",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--patch-regime",
+          "direct"
+        ],
+        "exit_code": 2
+      },
+      {
+        "name": "patch_llama31-8b",
+        "script": "52_figs.py",
+        "args": [
+          "--model",
+          "llama31-8b",
+          "--level",
+          "3",
+          "--regime",
+          "cot",
+          "--patch-regime",
+          "direct"
+        ],
+        "exit_code": 2
+      }
+    ],
+    "patch_cli_repair": "Removed unsupported --regime; passed explicit role invocations for Llama-3B v1/v2 and Llama-8B v2. PDFs pass the terminology audit. No experiment or summary changed."
+  }
+}

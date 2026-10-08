@@ -1,0 +1,5438 @@
+PAGE 1
+Chain of Thought Limits Lure Answers in Arithmetic
+Anonymous ACL submission
+001 Abstract
+002 A variable named four can have value 6.
+003 We ask whether writing a chain of thought
+004 keeps a model from answering 4. We test
+005 matched arithmetic problems that differ in
+006 one name, across thirteen models and three
+007 sets of worked examples. Without a chain,
+008 eleven models show a naming effect on accu￾009 racy or lure answers. With a chain, 43 of 44
+010 lure contrasts fall within the preregistered ±2-
+011 point margin. The exception is OLMo-2-1B￾012 Instruct. On neutral problems, probes read the
+013 true value accurately at the step that writes it in
+014 9 of 10 tested model–variable pairs; the excep￾015 tion has low probe accuracy at that step. Patch￾016 ing localizes the no-chain effect in Llama-3.2-
+017 3B to early layers at the variable’s defining
+018 equation. Reduced lure answers accompany
+019 accurate value readouts across the tested pairs.
+020 Yet the exception can state the correct value
+021 and still answer with the lure.
+022 1 Introduction
+023 In the problem
+024 pen=1 + cup, cup=2 + 3; pen=?
+025 pen has value 6. Renaming it four leaves the an￾026 swer unchanged:
+027 four=1 + cup, cup=2 + 3; four=?
+028 The definition says 6; the name suggests 4. We
+029 call 4 the lure value. Because it is absent from the
+030 equations and differs from every variable’s value,
+031 answering 4 points to the name rather than to a
+032 copied digit.
+033 Misleading identifiers and comments reduce ac￾034 curacy on code tasks (Le et al., 2025; Lam et al.,
+035 2025; Le et al., 2026). Accuracy alone cannot
+036 locate the error: the model may misread the in￾037 put, compute the wrong value, or answer incor￾038 rectly despite retaining the right value. Arith￾039 metic with named variables gives us a known cor￾040 rect value to compare with the lure. Kudo et al.
+(2026) use probes and patching to study when 041
+values become available during chain-of-thought 042
+(CoT) arithmetic. We add names that disagree 043
+with those values. This cue-conflict design, used 044
+in Stroop tasks and shape–texture studies (Stroop, 045
+1935; Geirhos et al., 2019), gives the name and the 046
+computation distinct answers. 047
+Writing a chain usually limits lure answers. 048
+Without CoT, names affect answers in eleven mod- 049
+els. With CoT, almost every lure contrast meets 050
+our equivalence bound, although some accuracy 051
+effects remain. We then ask what distinguishes 052
+the exception. Across the probed model–variable 053
+pairs, low lure excess accompanies an accurate 054
+value readout at the step that writes it. This is an 055
+association; the readout need not drive the answer. 056
+2 Study design 057
+We use Kudo et al.’s single-digit arithmetic task: 058
+equations with addition or subtraction, followed 059
+by a query. Our main level requires two opera- 060
+tions, with the queried variable defined before its 061
+dependency. Two models are also tested on all five 062
+levels (Appendix A). Each problem has matched 063
+versions differing in one variable name (Table 1). 064
+A congruent number word denotes that variable’s 065
+true value; an incongruent word denotes a lure. We 066
+vary the queried and intermediate variables sepa- 067
+rately. The lure cannot equal any variable’s value 068
+or input digit. Names occupy one token in every 069
+context, keeping twins’ token positions identical. 070
+Models either write a chain that restates and 071
+evaluates each equation or answer directly. Ev- 072
+ery behavioral comparison uses three fixed sets 073
+of three worked examples. We evaluate thirteen 074
+checkpoints from the Llama, Gemma and OLMo 075
+families; the model list and tuning comparisons 076
+are in Appendices A and F. The main behavioral 077
+table follows the preregistered 90% mean neutral- 078
+CoT accuracy floor; the excluded model’s results 079
+1
+
+PAGE 2
+−5 0 5
+percentage points
+Llama-3.2-3B
+Llama-3.2-3B Inst.
+Llama-3.1-8B
+Llama-3.1-8B Inst.
+Gemma-3-4B Inst.
+Gemma-3-12B Inst.
+OLMo-2-1B Inst.
+OLMo-2-7B Inst.
+(a) Accuracy gained
+from a congruent name
+−2 0 2
+percentage points
+(b) Lure answers above
+the neutral baseline
+0 10 20 30 40
+token position in the problem and gold chain
+0.00
+0.25
+0.50
+0.75
+1.00
+proportion
+chain starts
+before value write
+(c) Probe readouts during the gold chain (Llama-3.2-3B)
+true-value accuracy lure rate name tokens
+direct answer chain of thought two-point margin
+Figure 1: Eight panel models, queried-variable effects at level 3: (a) congruent-name accuracy gain and (b) lure ex￾cess, averaged over three demonstration sets with 95% intervals. Grey marks the two-point margin. (c) Maximum￾over-layers true-value accuracy and lure rate at each token position, pooled over incongruent problems under a
+gold chain. The value readout concerns the queried variable. Shading marks name positions; the dotted line marks
+the position before its value.
+Name Problem (answer: 6)
+Neutral pen=1 + cup, cup=2 + 3; pen=?
+Congruent six=1 + cup, cup=2 + 3; six=?
+Incongruent four=1 + cup, cup=2 + 3; four=?
+Table 1: Renaming the queried variable changes one
+cue while preserving the arithmetic. The incongruent
+name denotes 4, which appears nowhere else in the
+problem.
+080 remain in the appendix.
+081 Our main measure is lure excess: how often the
+082 incongruent problem receives the lure answer, mi￾083 nus how often its neutral twin receives that same
+084 digit. Subtracting this baseline matters when ac￾085 curacy is low. We also report congruent-minus￾086 neutral accuracy (facilitation) and neutral-minus￾087 incongruent accuracy (interference). We call an
+088 effect reliable when its sign agrees across all three
+089 demonstration sets and its 95% cluster-bootstrap
+interval excludes zero. We call an effect small 090
+enough to meet the equivalence bound when its 091
+90% interval fits wholly inside ±2 points. We 092
+resample matched problems with their seed repli- 093
+cates together (Appendix B). 094
+A linear probe predicts a variable’s digit from a 095
+hidden state at one token and layer. Probes train 096
+on separate neutral problems, with three training 097
+seeds. A control assigns a random digit to each 098
+name, testing how well the same probe can learn 099
+name identity (Hewitt and Liang, 2019). Patch- 100
+ing replaces activations at the name’s tokens with 101
+a matched twin’s (Zhang and Nanda, 2024). We 102
+report both a neutral-word control for disruption 103
+and an alternative-lure control for name-specific 104
+effects. Internal readouts use a force-decoded gold 105
+chain unless stated otherwise; they differ from the 106
+model’s freely generated answers. 107
+2
+
+PAGE 3
+Model Regime Neutral number word on the number word on the
+accuracy queried variable intermediate variable
+(%) helps lures helps lures
+Gemma-3-12B-it CoT 100 [100,100] +0.0 +0.0 +0.0 +0.0
+Gemma-3-12B-it direct 78 [76,81] -3.2∗
+-0.2 -3.7∗
++0.4
+Gemma-3-4B-it CoT 100 [100,100] -0.0 +0.0 -0.0 +0.0
+Gemma-3-4B-it direct 55 [48,59] +0.2 +0.9∗
++0.6 +0.3
+Llama-3.1-8B-Instruct CoT 100 [99,100] +0.2 +0.0 +0.3 +0.0
+Llama-3.1-8B-Instruct direct 52 [45,65] +1.7 +0.1 +5.2∗
++0.2
+Llama-3.1-8B CoT 95 [86,100] -1.3 -0.1 +3.8 -0.0
+Llama-3.1-8B direct 53 [41,62] +4.8∗
++1.2∗
++3.8∗
+-0.0
+Llama-3.2-3B-Instruct CoT 100 [100,100] -0.0 +0.0 -0.2 +0.0
+Llama-3.2-3B-Instruct direct 44 [40,50] -1.8∗
++0.2 +0.5 +0.5
+Llama-3.2-3B CoT 98 [97,100] -1.2 +0.1 +0.9 -0.2∗
+Llama-3.2-3B direct 22 [13,31] +5.4∗
++2.8∗
++1.1 +1.8
+OLMo-2-7B-Instruct CoT 95 [93,97] +0.7∗
+-0.1 -2.7 -0.0
+OLMo-2-7B-Instruct direct 54 [50,58] +0.6 -0.2 +3.8∗
+-0.4
+Table 2: Level 3, means over three demonstration sets (ranges in brackets). Helps: congruent-minus-neutral
+accuracy. Lures: lure excess. Both are percentage points. ∗ marks a consistent sign across sets and a 95% interval
+excluding zero. CoT lure effects meet the two-point equivalence bound. The excluded low-accuracy model appears
+in Table 4; additional models and levels appear in Tables 7 and 9.
+108 3 Results
+109 3.1 Writing a chain limits lure answers
+110 Table 2 shows the naming effects at the main level.
+111 Without CoT, a congruent name raises Llama-3.1-
+112 8B’s accuracy by +4.8 points, and a misleading
+113 name produces +1.2 points of lure excess on the
+114 queried variable. Across levels, the largest ef￾115 fects occur where direct-answer accuracy is near
+116 chance; the matched baseline prevents those ar￾117 bitrary digit answers from being attributed to the
+118 name.
+119 With CoT, 43 of 44 lure contrasts meet the
+120 equivalence bound. The exception is OLMo-2-1B￾121 Instruct: its intermediate-variable lure excess is
+122 +3.2 points [+2.5, +3.9]. Its neutral CoT accuracy
+123 is 47%, compared with 77% under letter names.
+124 CoT therefore limits the name’s numeric influence
+125 without removing every naming effect: 15 accu￾126 racy contrasts remain reliable (Appendix B).
+127 3.2 The value readout distinguishes the
+128 exception
+129 We next compare readouts of the computed digit
+130 and the name’s digit. For Llama-3.2-3B, the inter￾131 mediate value is partly decodable at the end of its
+defining equation (neutral accuracy 0.49; selectiv- 132
+ity 0.32). The lure can also be read near occur- 133
+rences of the name. At the query, however, the 134
+name-identity control scores 0.97, so a high lure 135
+readout there is not evidence that the value has 136
+been bound to the variable. At the value-writing 137
+step and before the final answer, true-value probe 138
+accuracy reaches 0.98 or more and the lure read- 139
+out falls to zero (Appendix E). Figure 1(c) shows 140
+the corresponding queried-variable readout. 141
+Across the 10 probed model–variable pairs, we 142
+compare neutral accuracy at the layer with highest 143
+neutral selectivity. The 9 with true-value accuracy 144
+of at least 0.98 at the writing step have lure ex- 145
+cess within 0.4 points of zero. Among pairs below 146
+the 0.9 threshold, the largest lure excess belongs 147
+to the exception model, with accuracy 0.22. This 148
+supports a link between a decodable value and re- 149
+duced lure answers. Within individual problems, 150
+the probe–error association changes sign across 151
+fits. We therefore cannot use these readouts to ex- 152
+plain each answer (Appendix E). 153
+Merely stating the correct value does not ex- 154
+plain the pattern. We split the model’s generated 155
+chains by whether they state that value and com- 156
+3
+
+PAGE 4
+0 5 10 15 20 25 ALL
+layer patched
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+proportion / normalized change
+Llama-3.2-3B, direct answer
+neutral: removes lure
+normalized logit diff.
+word: damage
+new lure: removes old
+new lure: followed
+Figure 2: Llama-3.2-3B without CoT, queried variable:
+lure errors removed by the neutral-twin patch, along￾side neutral-word damage and the alternative-lure con￾trol, by layer.
+157 pare only twins falling in the same split. The
+158 exception still has +3.6 points of lure excess
+159 [+2.6, +4.7] across 2739 matched observations
+160 from 3 demonstration sets, despite stating the cor￾161 rect value. The full control is in Appendix D.
+162 3.3 Patching localizes the no-chain effect
+163 For Llama-3.2-3B without CoT, replacing the
+164 name’s activations with its neutral twin’s removes
+165 52% of lure errors when all layers are patched
+166 (Figure 2). A span-by-layer sweep places the
+167 strongest effects at the defining equation in lay￾168 ers 0–7, where removal reaches 69% (Appendix J).
+169 The neutral-word control also damages 22% of
+170 correct answers. The patch identifies a region sen￾171 sitive to the name, but the disruption limits what
+172 we can say about the computation it restores.
+173 The Llama-3.1-8B controls do not distinguish a
+174 name-specific cause: neutral and alternative-lure
+175 patches remove errors similarly. Under a gold
+176 CoT, injecting the misleading name into a neutral
+177 run of the exception model moves 2.7% of answers
+178 to the lure, while the word control changes 0.4% at
+179 the same layer. These interventions test only the
+180 selected models and positions; they do not estab￾181 lish a common causal mechanism across models.
+182 4 Related work
+183 Kudo et al. (2026) locate intermediate-value read￾184 outs during arithmetic CoT; our competing names
+185 distinguish a computed value from a lexical cue.
+186 Earlier Stroop studies test a single next token
+(Wang, 2026; Hu et al., 2026). Faithfulness stud- 187
+ies perturb prompts, chains or parameters (Turpin 188
+et al., 2023; Lanham et al., 2023; Chen et al., 2025; 189
+Tutek et al., 2025); we combine a known conflict- 190
+ing cue with internal readouts. Positional copying 191
+and output priors can also explain arithmetic errors 192
+(Liu, 2026; Prabhakar et al., 2024); our copy con- 193
+trol is reported in Appendix E. A companion code 194
+study (Anonymous, 2026) examines value writes 195
+in Python traces; this paper tests arithmetic lure 196
+answers and their association with value-step read- 197
+outs. 198
+5 Conclusion 199
+Writing a chain limits lure answers in almost ev- 200
+ery tested arithmetic contrast. Across the probed 201
+pairs, this reduction accompanies an accurately de- 202
+codable value at the writing step; stating the value 203
+in the chain alone is insufficient. In the exception, 204
+the chain itself can write the lure and pass it to the 205
+answer. 206
+Limitations 207
+The task uses short synthetic arithmetic chains and 208
+English number words. It does not establish how 209
+misleading identifiers affect real code. Identifier- 210
+style names were tested at one level only (Ap- 211
+pendix D). Models are at most 12B parameters 212
+and receive raw completion prompts; instruction- 213
+tuned models’ chat templates and long-form rea- 214
+soning modes are untested. Demonstration choice 215
+changes accuracy substantially, which is why ev- 216
+ery behavioral claim must hold across three sets. 217
+Linear probes reveal decodable information, not 218
+necessarily the representation used to generate an 219
+answer. Most internal measurements supply the 220
+correct chain token by token. The small sample of 221
+models’ own chains is illustrative (Appendix E). 222
+The value-readout association holds across the 223
+probed pairs but is unresolved within instances 224
+and may reflect overall task competence. Patch- 225
+ing changes mixed representations and can dam- 226
+age correct answers, limiting the causal conclu- 227
+sions. Finally, the chain repeats names and equa- 228
+tions; the value-only format changes performance 229
+and cannot be treated as an equivalent intervention 230
+(Appendix H). 231
+References 232
+Anonymous. 2026. Misleading identifiers change what 233
+code traces write. Under review. 234
+4
+
+PAGE 5
+235 Akhiad Bercovich et al. 2025. Llama-Nemotron:
+236 Efficient reasoning models. arXiv preprint
+237 arXiv:2505.00949.
+238 Yanda Chen et al. 2025. Reasoning models don’t
+239 always say what they think. arXiv preprint
+240 arXiv:2505.05410.
+241 Robert Geirhos, Patricia Rubisch, Claudio Michaelis,
+242 Matthias Bethge, Felix A. Wichmann, and Wieland
+243 Brendel. 2019. ImageNet-trained CNNs are biased
+244 towards texture; increasing shape bias improves ac￾245 curacy and robustness. In International Conference
+246 on Learning Representations.
+247 Gemma Team. 2025. Gemma 3 technical report. arXiv
+248 preprint arXiv:2503.19786.
+249 Aaron Grattafiori et al. 2024. The Llama 3 herd of mod￾250 els. arXiv preprint arXiv:2407.21783.
+251 John Hewitt and Percy Liang. 2019. Designing and
+252 interpreting probes with control tasks. In Proceed￾253 ings of the 2019 Conference on Empirical Methods
+254 in Natural Language Processing and the 9th Inter￾255 national Joint Conference on Natural Language Pro￾256 cessing (EMNLP-IJCNLP), pages 2733–2743.
+257 Xiaoyang Hu, Mike Angstadt, Shane Storks, Zan
+258 Huang, Aman Taxali, Alex Weigard, Richard L.
+259 Lewis, and Chandra Sripada. 2026. Conflict and
+260 congruency effects in large language models: In￾261 weight and in-context competition in a verbal con￾262 flict task. arXiv preprint arXiv:2608.11510.
+263 Keito Kudo, Yoichi Aoki, Tatsuki Kuribayashi,
+264 Shusaku Sone, Masaya Taniguchi, Ana Brassard,
+265 Keisuke Sakaguchi, and Kentaro Inui. 2026. LLMs
+266 faithfully and iteratively compute answers during
+267 CoT: A systematic analysis with multi-step arith￾268 metics. In Findings of the Association for Compu￾269 tational Linguistics: EACL 2026, pages 1114–1153.
+270 Man Ho Lam, Chaozheng Wang, Jen-tse Huang, and
+271 Michael R. Lyu. 2025. CodeCrash: Exposing LLM
+272 fragility to misleading natural language in code rea￾273 soning. In Advances in Neural Information Process￾274 ing Systems, volume 38, pages 133886–133932.
+275 Tamera Lanham, Anna Chen, Ansh Radhakrishnan,
+276 Benoit Steiner, Carson Denison, Danny Hernan￾277 dez, Dustin Li, Esin Durmus, Evan Hubinger, Jack￾278 son Kernion, Kamile Lukoši ˙ ut¯ e, Karina Nguyen, ˙
+279 Newton Cheng, Nicholas Joseph, Nicholas Schiefer,
+280 Oliver Rausch, Robin Larson, Sam McCandlish,
+281 Sandipan Kundu, and 11 others. 2023. Measuring
+282 faithfulness in chain-of-thought reasoning. arXiv
+283 preprint arXiv:2307.13702.
+284 Cuong Chi Le, Minh V. T. Pham, Cuong Duc Van,
+285 Hoang N. Phan, Huy N. Phan, and Tien N. Nguyen.
+286 2025. When names disappear: Revealing what
+287 LLMs actually understand about code. arXiv
+288 preprint arXiv:2510.03178.
+Jack Le, Anh H. N. Nguyen, and Tien N. Nguyen. 2026. 289
+Do machines struggle where humans do? LLM and 290
+human comprehension of obfuscated code. arXiv 291
+preprint arXiv:2606.31725. 292
+Ming Liu. 2026. The readout shortcut: Positional 293
+number copying dominates arithmetic CoT read- 294
+out in small language models. arXiv preprint 295
+arXiv:2605.22870. 296
+Adam Paszke, Sam Gross, Francisco Massa, Adam 297
+Lerer, James Bradbury, Gregory Chanan, Trevor 298
+Killeen, Zeming Lin, Natalia Gimelshein, Luca 299
+Antiga, Alban Desmaison, Andreas Kopf, Edward 300
+Yang, Zachary DeVito, Martin Raison, Alykhan Te- 301
+jani, Sasank Chilamkurthy, Benoit Steiner, Lu Fang, 302
+and 2 others. 2019. PyTorch: An imperative style, 303
+high-performance deep learning library. In Ad- 304
+vances in Neural Information Processing Systems, 305
+volume 32. Curran Associates, Inc. 306
+Fabian Pedregosa, Gaël Varoquaux, Alexandre Gram- 307
+fort, Vincent Michel, Bertrand Thirion, Olivier 308
+Grisel, Mathieu Blondel, Peter Prettenhofer, Ron 309
+Weiss, Vincent Dubourg, Jake Vanderplas, Alexan- 310
+dre Passos, David Cournapeau, Matthieu Brucher, 311
+Matthieu Perrot, and Édouard Duchesnay. 2011. 312
+Scikit-learn: Machine learning in Python. Journal 313
+of Machine Learning Research, 12(85):2825–2830. 314
+Akshara Prabhakar, Thomas L. Griffiths, and 315
+R. Thomas McCoy. 2024. Deciphering the 316
+factors influencing the efficacy of chain-of-thought: 317
+Probability, memorization, and noisy reasoning. 318
+In Findings of the Association for Computational 319
+Linguistics: EMNLP 2024, pages 3710–3724. 320
+Skipper Seabold and Josef Perktold. 2010. Statsmod- 321
+els: Econometric and statistical modeling with 322
+Python. In Proceedings of the 9th Python in Science 323
+Conference, pages 92–96. 324
+J. Ridley Stroop. 1935. Studies of interference in serial 325
+verbal reactions. Journal of Experimental Psychol- 326
+ogy, 18(6):643–662. 327
+Team OLMo. 2024. 2 OLMo 2 furious. arXiv preprint 328
+arXiv:2501.00656. 329
+Miles Turpin, Julian Michael, Ethan Perez, and Samuel 330
+Bowman. 2023. Language models don’t always say 331
+what they think: Unfaithful explanations in chain-of- 332
+thought prompting. In Advances in Neural Informa- 333
+tion Processing Systems, volume 36, pages 74952– 334
+74965. 335
+Martin Tutek, Fateme Hashemi Chaleshtori, Ana 336
+Marasovic, and Yonatan Belinkov. 2025. ´ Measuring 337
+chain of thought faithfulness by unlearning reason- 338
+ing steps. In Proceedings of the 2025 Conference on 339
+Empirical Methods in Natural Language Processing, 340
+pages 9946–9971. 341
+Han-yu Wang. 2026. Persistent priors, preserved tar- 342
+gets: A Stroop-style paradigm for lexical override. 343
+arXiv preprint arXiv:2606.07555. 344
+5
+
+PAGE 6
+Level Problem (neutral names) Steps Held Distr.
+1 pen=1 + cup, cup=2; pen=? 1 1 0
+2 pen=2 + 3, cup=1 + pen; cup=? 2 0 0
+3 pen=1 + cup, cup=2 + 3; pen=? 2 1 0
+4 pen=1 + cup, cup=2 + 3, 2 1 1
+box=4 + 5; pen=?
+5 pen=1 + cup, cup=2 + box, 3 2 0
+box=1 + 2; pen=?
+Table 3: The five levels of Kudo et al. (2026): additions
+or subtractions needed (Steps), variables unresolved
+when first read (Held), and unused equations (Distr.).
+At level 1 the intermediate value is stated rather than
+computed.
+345 Thomas Wolf, Lysandre Debut, Victor Sanh, Julien
+346 Chaumond, Clement Delangue, Anthony Moi, Pier￾347 ric Cistac, Tim Rault, Rémi Louf, Morgan Funtow￾348 icz, Joe Davison, Sam Shleifer, Patrick von Platen,
+349 Clara Ma, Yacine Jernite, Julien Plu, Canwen Xu,
+350 Teven Le Scao, Sylvain Gugger, and 3 others. 2020.
+351 Transformers: State-of-the-art natural language pro￾352 cessing. In Proceedings of the 2020 Conference on
+353 Empirical Methods in Natural Language Processing:
+354 System Demonstrations, pages 38–45, Online. Asso￾355 ciation for Computational Linguistics.
+356 Fred Zhang and Neel Nanda. 2024. Towards best prac￾357 tices of activation patching in language models: Met￾358 rics and methods. In International Conference on
+359 Learning Representations.
+360 A Task, models and replication
+361 A problem contains single-digit variables, addi￾362 tion or subtraction, and a query. The five levels
+363 vary dependency order, depth and the presence
+364 of an unused equation (Table 3). Three same￾365 level worked examples precede each test prob￾366 lem. The evaluated models are Gemma-3-12B￾367 it, Gemma-3-4B, Gemma-3-4B-it, Llama-3.1-
+368 8B, Llama-3.1-8B-Instruct, Llama-3.2-3B, Llama￾369 3.2-3B-Instruct, OLMo-2-1B-Instruct, OLMo-2-
+370 7B-Instruct, plus four derived checkpoints (Ap￾371 pendix F).
+372 We reimplement Kudo et al. (2026)’s task and
+373 probe recipe rather than using their code. The
+374 shared choices are single-digit outputs, same-level
+375 demonstrations, a 10-way linear residual-stream
+classifier, full-batch SGD at 10−3
+376 for 10,000
+377 epochs, and their span-by-layer-window patching
+378 design. For replication we train on letter names
+and report t
+∗
+, t
+∗
+eq, Acc≺CoT and Acc≻CoT 379 at
+380 τ = 0.9. The Llama-3.2-3B value-writing po￾381 sitions agree with their Table 3: equation 5 for
+382 the queried variable and 2 for the intermediate.
+383 Our additions are the conflicting names, matched
+baselines, demonstration-set claim rule and equiv- 384
+alence bound. 385
+On the letter condition, pre-chain probe max- 386
+ima for Llama-3.2-3B are 30.4 and 47.9, compared 387
+with 17.8 and 33.2 reported by Kudo et al. (2026). 388
+The value-writing positions agree; the accuracy 389
+difference may reflect training details. Llama- 390
+3.1-8B’s intermediate value becomes decodable at 391
+equation 2, but its queried value becomes decod- 392
+able at equation 3, earlier than Llama-3.2-3B’s 393
+equation 5. The larger model can therefore expose 394
+that value before writing its final evaluation. Full 395
+heatmaps appear in Appendix J. 396
+B Equivalence checks 397
+Following preregistration Amendment 3, equiv- 398
+alence requires a 90% cluster-bootstrap interval 399
+wholly inside the ±2-point margin (two one- 400
+sided 5% tests). We resample matched sets with 401
+their demonstration-seed replicates together, using 402
+4,000 bootstrap draws. Other behavioral intervals 403
+remain at 95%. For CoT accuracy, 61 of 88 fa- 404
+cilitation and interference contrasts meet the same 405
+equivalence bound. Of the 15 reliable accuracy 406
+contrasts, 5 are also equivalent within the margin 407
+and 10 are not; a detectable effect can still be small. 408
+The written-value control uses the same matched 409
+pairs for its excess estimate and interval; the ex- 410
+ception model’s estimate pools all three demon- 411
+stration sets and clusters on matched set. 412
+C Tokenizer checks 413
+We test candidate names in five tokenizer con- 414
+texts and retain words that form one token with- 415
+out merging with a neighbor. For Llama 3, all ten 416
+number words and 95 of 112 neutral candidates 417
+pass. Gemma and OLMo use the same lists; run- 418
+time checks confirm equal token lengths and po- 419
+sitions within matched groups. Spaces around bi- 420
+nary operators prevent merges such as 1-two. No 421
+instance in the reported runs is excluded by the 422
+layout check. 423
+D Additional naming and written-value 424
+controls 425
+Written values. We split generated chains by 426
+whether they state the target’s true value. An ob- 427
+servation enters the excess estimate only when its 428
+neutral twin falls in the same split. The estimate 429
+and its 95% interval use those same paired obser- 430
+vations. Pooled over eligible cells, lure excess is 431
+6
+
+PAGE 7
+Model Regime Neutral number word on the number word on the
+accuracy queried variable intermediate variable
+(%) helps lures helps lures
+OLMo-2-1B-Instruct CoT 47 [44,51] -5.7∗
++0.4 +7.0∗
++3.2∗
+OLMo-2-1B-Instruct direct 34 [30,38] -0.0 +2.7∗
++3.0∗
+-0.2
+Table 4: The level-3 model below the preregistered 90% mean neutral-CoT accuracy floor, excluded from the main
+behavioral table. Columns and claim markers follow Table 2.
+Contrast Cells Equivalent Reliable
+CoT lure 44 43 3
+CoT accuracy 88 61 15
+Direct lure 44 31 13
+Table 5: Equivalence within the two-point margin uses
+90% intervals; reliability uses 95% intervals excluding
+zero and the same sign across all three demonstration
+sets. Each accuracy cell is one facilitation or interfer￾ence contrast.
+432 +0.08 points in 132 cells where the value is stated
+433 and -0.10 in 27 where it is not. The exception per￾434 sists in the stated-value split (main text), so this
+435 split does not explain its effect.
+436 Identifier-style names. At level 3, four mod￾437 els receive names such as q4 instead of four,
+438 under three demonstration sets. Without CoT,
+439 queried-variable lure excess ranges from -0.2 to
+440 +0.2 points; 0 of 4 cells are reliable. For num￾441 ber words on the same models, the range is -0.2
+442 to +2.8, with 3 of 4 reliable. The numeric lure ef￾443 fect is therefore stronger for number words in this
+444 comparison; congruent identifier names can still
+445 improve accuracy.
+446 Word-class effects. With CoT at level 4, a num￾447 ber word on the queried variable costs Llama-3.2-
+448 3B 9.9 accuracy points whether the name agrees
+449 with the value or not. Those errors restate the
+450 wrong equation. This is distinct from answering
+451 the digit the name denotes, which is why the lure
+452 result cannot be read as removal of every naming
+453 effect.
+454 Unused variables. A number word on the
+455 level 4 distractor changes accuracy by at most 1.2
+456 points. Its no-CoT lure excess ranges from +2.1 to
+457 +2.3; 2 of 2 cells are reliable. With CoT, the range
+458 is +0.0 to +1.0, with 0 of 2 reliable. At the answer
+459 position, probe lure mass is 0.004 for a computed
+460 variable and 0.118 for the distractor; the latter’s
+461 true value has probe accuracy 0.04.
+E Full sweeps and selectivity 462
+Mixed-effects check. We compare the 463
+paired bootstrap with a mixed logit model, 464
+answered_lure ~ incongruent + C(seed), 465
+with a random intercept for matched set. Each 466
+twin’s outcome refers to the same lure digit. Both 467
+procedures use the same fixed subsample of 600 468
+sets per cell. Of 57 fitted cells, 50 agree on 469
+whether the interval excludes zero; 11 additional 470
+cells have no outcome variation. The mixed fit 471
+supports an effect in 5 cells where the bootstrap 472
+does not and withdraws support in 2 cells where it 473
+does (Gemma-3-12B-it, value-only chain, queried 474
+variable; Llama-3.1-Nemotron-Nano-8B, CoT, 475
+intermediate variable). Subsampling also removes 476
+support from 1 starred Table 2 cell under both 477
+procedures (Gemma-3-4B-it, no CoT, queried 478
+variable). The mixed model uses variational 479
+Bayes, so its interval is an approximate posterior 480
+interval. We retain the full-data bootstrap as the 481
+primary estimate on the reported percentage-point 482
+scale. 483
+Instance-level association. Within each model, 484
+level, regime, variable and position, we regress 485
+lure errors on the probe margin, log ptrue − 486
+log plure, with standard errors clustered on 487
+matched set. The layer is selected by neutral ac- 488
+curacy. Of 57 fits, 27 have p < .05: 22 coeffi- 489
+cients are negative and 5 positive. The direction is 490
+not consistent, and 4 positive results come from 491
+the model supplying most fits. This leaves the 492
+instance-level association unresolved, even though 493
+the aggregate pattern across model–variable pairs 494
+is clear. 495
+Lure index. For comparison with shape–texture 496
+studies (Geirhos et al., 2019), we also compute 497
+lure answers divided by lure plus true answers, ex- 498
+cluding congruent trials. Across 18 level 3 model– 499
+variable pairs, the index ranges from 0.02 to 0.38 500
+without CoT and from 0.00 to 0.16 with CoT. The 501
+main text uses paired excess because the index 502
+7
+
+PAGE 8
+Target Read Errors Neutral removed Word dmg. Alt. removed Alt. followed
+v1 value 0 – 1.6 – 0.0
+v1 answer 0 – 1.6 – 0.0
+v2 value 28 92.9 7.3 82.1 4.0
+v2 answer 3 100.0 0.8 100.0 0.6
+Table 6: OLMo-2-1B-Instruct, CoT, 500 matched pairs per target, patching name tokens at all layers. Removed:
+percentage of baseline lure predictions removed by the neutral-twin patch. Word damage: percentage of cor￾rect neutral predictions damaged by the word control. Alt. removed: baseline lure predictions removed by the
+alternative-lure patch. Alt. followed: percentage following that source’s lure. Rates are percentages; – means
+undefined. These readouts force the gold chain, so their baseline errors differ from errors in the model’s own
+generated chains.
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+share of problems
+(best layer)
+the input problem the supplied correct chain
+supplied value token
+true-value accuracy
+lure rate
+truck
+=
+2
+ +
+ nine
+,
+ nine
+=
+7
+ -
+6
+;
+ truck
+=
+?\n
+truck
+=
+2
+ +
+ nine
+,
+ nine
+=
+7
+ -
+6
+,
+ nine
+=
+1
+,
+ truck
+=
+2
+ +
+ nine
+,
+ truck
+=
+2
+ +
+1
+,
+ truck
+=
+3
+every token of one problem and its solution (shaded: the name “nine”, whose value is 1 but which denotes 9)
+0
+5
+10
+15
+20
+25
+layer
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+probe reads the true value (share of problems)
+Llama-3.2-3B, with chain of thought: intermediate-value probe readouts
+Figure 3: In the layout of Kudo et al.’s Figure 2. Per-token probes for the incongruent condition, Llama-3.2-3B,
+level 3, CoT. Top: how often the best-layer probe reads the true value (green) or the lure (red). Bottom: true-value
+accuracy by layer. The displayed tokens are from one example; the rates pool problems with different values and
+names. Dashed line: start of the supplied correct chain; dotted line: position before the target value; arrow: the
+supplied value token. Shading marks the name’s tokens.
+503 does not subtract how often the neutral model an￾504 swers that digit.
+505 Positional-copy control. Across 4110 gener￾506 ated CoT lure errors over models, levels and
+507 demonstration sets, the number immediately pre￾508 ceding the answer is the lure in 13% of cases and
+509 the target’s true value in 11%. A trailing lure is
+510 therefore absent from many errors. This check
+511 constrains the positional-copy explanation of Liu
+512 (2026), but does not identify what was copied in
+513 each case.
+514 Probes report true-value accuracy, lure rate, lure
+515 mass and margin, with name-identity control ac￾516 curacy and selectivity (Hewitt and Liang, 2019).
+517 P1 is the name token, P2 the end of its defining
+equation, P3 the query, P4 the position before its 518
+value is written, and P5 the position before the fi- 519
+nal answer. P1 is a reference, not evidence for a 520
+computed value. At P3 the control is near 1, so a 521
+lure readout there may reflect name identity. Fig- 522
+ure 3 shows the CoT token sweep; Appendix J 523
+contains the other conditions and direct regime. 524
+Letter-trained replication uses the metrics in Ap- 525
+pendix A. 526
+F How the models were tuned 527
+We compare six checkpoints on the Llama-3.1-8B 528
+architecture: pretrained, instruction-tuned, single- 529
+task LoRA, multi-task LoRA, TIES-merged 530
+adapters and reasoning-tuned. Adapters are folded 531
+8
+
+PAGE 9
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+5 5 5 0 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 0 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 0 5 5 5 5 5 0 5 5 5 5 5 1
+5 5 3 0 0 5 5 5 5 0 5 5 5 5 5 5 5 5 3 0 0 0 5 5 5 0 5 5 5 5 5 5 5 5 5 5 0 0 5 5 5 5 0 0 3 5 5 5 1
+5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 5 5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 0 0 5 5 4 0 0 5 5 5 5 0 0 3 0 5 5 1
+5 5 2 0 0 0 0 5 5 0 0 0 5 5 5 5 5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 0 0 5 5 5 0 0 5 5 5 0 0 0 1 5 5 5 1
+0 5 2 0 0 0 0 0 5 0 0 0 0 5 5 5 5 5 5 0 0 0 0 0 5 0 0 0 0 0 0 0 3 0 5 5 8 0 0 5 5 5 0 0 7 0 5 5 1
+3 5 5 0 0 0 0 0 5 0 0 0 0 0 5 5 5 5 0 0 0 0 0 0 0 0 0 0 0 0 5 3 0 0 5 5 8 0 0 5 5 3 0 0 1 0 0 0 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 5 0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 3 3 0 5 5 8 0 0 0 0 0 0 0 1 1 0 0 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 1 0 0 0 0 8 8 0 7 1 1 1 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 8 0 0 0 0 8 8 0 7 1 1 3 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 0 0 0 0 0 0 0 0 0 0 4 8 0 0 0 0 0 1 0 1 1 1 1 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 0 0 1 0 1 1 7 1 1
+3 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 1 0 8 0 1 1 7 1 1
+4 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 8 0 0 0 5 1 1 0 8 1 7 1 1
+3 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 2 1 0 0 8 1 1 1 1
+3 4 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 1 0 0 2 1 8 0 0 1 2 1 0 1 5 1 1 1 1
+BASELINE: the probe's most common prediction on neutral problems (its default where it reads nothing) — a coloured cell below means something only where it differs from this four
+=
+7
+ -
+ cap
+,
+ cap
+=
+5
+ +
+2
+;
+ four
+=
+?\n
+four
+=
+7
+ -
+ cap
+,
+ cap
+=
+5
+ +
+2
+,
+ cap
+=
+7
+,
+ four
+=
+7
+ -
+ cap
+,
+ four
+=
+7
+ -
+7
+,
+ four
+=
+0
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+5 5 3 0 5 5 5 5 5 0 5 0 5 0 5 5 5 5 3 0 5 5 5 5 5 0 5 0 5 5 5 0 5 0 5 3 0 5 5 0 5 3 0 5 0 5 0 5 0
+5 5 3 0 0 0 0 5 5 0 0 0 0 0 5 5 5 5 3 0 0 0 0 5 5 0 0 0 0 0 5 0 0 0 5 3 0 0 0 0 5 3 0 0 0 0 0 0 0
+0 5 7 0 0 0 4 0 5 0 0 0 0 0 5 5 5 5 7 0 0 0 4 5 5 0 0 0 0 4 5 0 0 0 0 0 0 0 0 0 5 3 0 0 0 0 0 0 0
+0 0 7 0 0 0 0 5 5 0 0 0 0 0 5 5 5 5 7 0 0 0 0 4 5 0 0 0 0 0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 0 0 0 0 3 0 0 0 0 0 5 5 5 5 7 0 0 0 0 5 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 0 0 0 0 3 0 0 0 0 0 7 5 0 5 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 0 0 0 0 3 0 0 0 0 0 7 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 0 0 0 0 3 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 4 0 0 0 5 0 0 0 0 0 2 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 4 0 0 0 0 0 0 0 0 0 7 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 4 0 0 0 0 0 0 0 0 0 7 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 4 0 0 0 0 0 0 0 0 0 1 0 0 0 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 4 0 0 0 0 0 0 0 0 0 1 0 0 0 3 3 0 0 0 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 4 0 0 0 0 0 0 0 0 0 1 3 0 0 3 3 0 0 0 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 3 0 3 3 4 4 0 0 0 0 8 1 0 0 0 0 4 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+“four” holds 0; the name denotes 4; model WRONG: answered 4
+Top-1 probe prediction at every layer and token (Llama-3.2-3B, L3, with chain of thought; boxed = the name's tokens, dashed = start of the chain)
+true value the model's answer (when wrong) what the name denotes other
+Figure 4: In the layout of Kudo et al.’s Figure 3, for
+problems this model answers with the lure. Each cell
+is the probe’s top-1 prediction at that layer and token:
+green the variable’s true value, red the value the model
+answered, amber the value its name denotes, grey any￾thing else. The first panel is the probe’s most com￾mon prediction on neutral problems, which is what it
+emits where it reads nothing; cells carry information
+only where they differ from it.
+532 into the weights before evaluation. Shared tokeniz￾533 ers and identical matched problems permit paired
+534 comparisons (Table 7). A pretrained/instruct
+535 Gemma pair supplies a second family comparison.
+Tuning Model Queried Intermediate Acc.
+base Llama-3.1-8B +1.20∗
+-0.02 53.4
+instruct + instruct +0.15 +0.22 52.2
+single-task finetune + task LoRA +0.05 +0.23 52.2
+multi-task finetune + multi-task LoRA -0.58∗
+-0.08 46.1
+weight merge + TIES merge -0.10 +0.10 51.9
+reasoning-tuned Nemotron-Nano-8B +1.35∗ +0.33 39.4
+base Gemma-3-4B +0.08 +0.02 60.2
+instruct + instruct +0.88∗ +0.33 54.9
+Table 7: Level 3, no CoT, lure answers above the
+matched twin’s rate, mean over three demonstration
+sets. Acc. is neutral accuracy. ∗
+as in Table 2. The
+bottom block repeats the pretrained-to-instruct step in
+a second family, Gemma-3-4B.
+536 The pretrained and reasoning-tuned Llama
+537 checkpoints have reliable positive queried￾538 variable lure excess without CoT (+1.20 and
+539 +1.35 points). The three task-tuned variants differ
+540 from the instruction-tuned checkpoint by at most
+541 0.73 points across 6 comparisons. These are
+542 observed differences, not tests of checkpoint-to￾543 checkpoint equivalence. Every checkpoint’s CoT
+544 lure excess is at most 0.20 points in magnitude.
+545 Task accuracy complicates interpretation. The
+546 multi-task model’s reliable negative excess (-0.58)
+547 accompanies lower neutral accuracy (46.1%, ver￾548 sus 52.2%). The reasoning-tuned checkpoint has
+549 the lowest accuracy (39.4%). It also requires a sys￾550 tem instruction to enable long-form reasoning; our
+551 raw-completion prompts leave that mode off. The
+552 result concerns the checkpoint under this prompt,
+not reasoning mode in deployment. 553
+Only the instruct Gemma effect passes the claim 554
+rule (+0.88, versus +0.08 pretrained). The differ- 555
+ence is untested and both estimates lie within the 556
+margin, so the pair cannot establish where in train- 557
+ing name interference arises. 558
+G Probe recipe and patching scope 559
+We check two implementation choices inherited 560
+from Kudo et al. (2026): the probe optimizer and 561
+the name occurrences included in a patch. 562
+Recipe. We refit the level-3 probes for Llama- 563
+3.2-3B with L-BFGS, and with SGD on standard- 564
+ized inputs, against the reported recipe. 565
+Position Variable SGD (reported) L-BFGS standardized
+defining equation queried 0.184 0.190 0.183
+defining equation intermediate 0.496 0.422 0.420
+query queried 0.183 0.316 0.280
+query intermediate 0.271 0.366 0.393
+value step queried 1.000 1.000 1.000
+value step intermediate 0.982 0.962 0.972
+answer queried 1.000 1.000 1.000
+Table 8: Best-layer accuracy for the true value, neutral
+instances, under three probe recipes.
+All three recipes give the same qualitative re- 566
+sult: the value is decodable where the chain writes 567
+it (0.96–1.00) and not at the end of its defining 568
+equation (0.18–0.50). The query position moves, 569
+from 0.271 under the reported recipe to 0.393 un- 570
+der standardization, within a range of 0.18–0.39 571
+over recipes and variables. We already report that 572
+position as the presence of the name rather than a 573
+decoded value, because its control task scores 0.97, 574
+so this variation does not change the interpretation 575
+of that position. 576
+Scope. Patching every occurrence of the name 577
+includes the copy the model writes in its own out- 578
+put. In the direct regime, restricting the patch to 579
+the name’s occurrences in the prompt leaves the 580
+intermediate variable essentially unchanged, since 581
+its name never appears in the answer: removal 582
+is 43% at layers 0–3 under both scopes. For the 583
+queried variable the best windows remove simi- 584
+lar shares (52% at layers 4–7 prompt-only, against 585
+53% at layers 0–3), the prompt-only patch re- 586
+moves less in the later windows, and the two dis- 587
+agree most in the first window, where the prompt- 588
+only patch removes 3% and damages 76% of cor- 589
+rect answers. That is mechanical: the queried 590
+variable’s name also sits at the position we read, 591
+so patching its prompt copies alone leaves the 592
+9
+
+PAGE 10
+six
+=
+7
+ +
+ table
+,
+ table
+=
+2
+ -
+2
+,
+ table
+=
+4
+,
+ six
+=
+7
+ +
+ table
+,
+ six
+=
+7
+ +
+4
+,
+ six
+=
+11
+\n\n
+0
+6
+12
+18
+24
+layer
+5 5 5 5 3 4 3 5 5 5 5 5 4 3 5 5 4 3 5 5 5 3 4 3 5 5 5 5 5 4 3 5 5 4
+4 5 4 3 1 3 5 4 5 5 5 5 5 5 4 5 3 3 5 5 3 5 4 4 5 5 3 3 3 5 4 5 3 3
+9 4 8 1 1 8 8 4 8 5 3 1 8 1 5 8 8 0 0 8 1 1 8 8 5 8 0 0 0 8 1 5 8 0
+3 8 8 5 0 8 8 8 7 5 5 0 8 8 5 8 8 8 8 8 5 1 8 8 8 8 5 5 5 8 3 5 8 7
+3 8 5 5 5 8 5 5 5 5 3 2 5 5 5 5 8 5 5 5 5 5 5 3 5 5 9 5 5 3 3 9 5 3
+5 5 8 3 0 3 4 5 5 5 0 5 3 5 5 8 3 0 5 8 5 5 3 4 5 5 5 0 2 9 4 8 8 0
+0 3 8 8 9 3 3 8 1 0 3 1 0 0 1 2 0 0 0 8 5 9 0 9 8 8 8 8 8 9 8 9 9 3
+2 5 5 5 3 3 3 0 4 3 3 2 3 0 0 0 3 3 8 5 3 3 8 8 8 5 3 3 8 8 8 9 6 3
+8 8 8 3 3 3 0 2 2 2 3 6 3 0 2 2 8 3 8 8 2 2 8 8 8 8 0 4 8 8 8 9 2 8
+7 7 9 9 2 3 0 0 0 2 7 2 7 0 4 0 6 7 7 5 2 6 7 7 7 5 4 2 6 7 9 9 0 7
+7 7 5 0 3 0 2 0 0 2 7 0 0 0 4 0 6 7 7 1 0 2 7 7 9 5 4 4 7 7 9 1 0 7
+7 7 1 0 0 0 2 2 0 2 7 0 2 0 0 0 6 7 7 1 2 6 6 7 9 1 4 4 0 7 9 9 0 7
+7 7 5 6 6 0 2 2 0 2 3 6 6 0 0 0 6 7 7 1 3 6 6 7 7 4 4 4 6 6 9 9 1 7
+7 7 1 2 2 2 2 2 2 2 2 0 2 0 4 0 6 7 7 1 2 6 6 7 7 4 4 4 6 6 9 9 0 7
+7 7 5 6 6 6 2 2 1 2 2 6 6 1 0 6 6 7 7 1 6 6 6 1 7 1 4 4 6 6 9 9 1 3
+“six” holds 7; the name denotes 6; model answered 11
+five
+=
+2
+ -
+ bread
+,
+ bread
+=
+2
+ -
+2
+,
+ bread
+=
+0
+,
+ five
+=
+2
+ -
+ bread
+,
+ five
+=
+2
+ -
+2
+,
+ five
+=
+0
+\n\n
+0
+6
+12
+18
+24
+layer
+5 5 5 5 3 4 3 5 5 5 5 5 4 3 5 4 4 5 5 5 5 3 4 5 5 5 5 5 5 4 5 5 4 4
+5 5 5 5 4 3 4 5 5 5 5 5 5 4 5 3 3 3 5 5 5 4 3 3 5 5 3 5 5 5 4 5 3 4
+9 4 4 9 1 8 8 0 8 5 5 5 8 4 0 0 0 0 0 4 5 1 8 5 5 4 5 5 5 0 4 5 0 0
+3 8 7 7 4 8 8 4 8 5 0 0 8 4 4 1 8 8 8 7 5 1 8 8 3 7 5 5 0 8 3 0 1 7
+3 8 5 2 2 3 3 0 5 5 3 5 8 3 0 0 5 3 0 5 5 5 2 3 3 5 5 0 5 0 3 0 0 0
+7 5 8 5 4 3 4 3 5 5 0 0 3 4 0 0 0 0 4 5 5 2 3 0 5 5 5 2 2 3 4 0 0 0
+0 0 0 0 0 0 3 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 4 5 4 4 0 0 0 0 0 0
+2 0 2 4 2 3 0 0 0 4 3 0 0 0 0 0 0 0 0 0 2 0 0 3 0 0 0 3 0 0 0 0 0 3
+2 2 2 2 2 8 0 0 0 2 3 2 2 0 0 0 2 2 0 2 2 2 2 2 0 0 0 2 2 8 0 0 0 8
+2 2 0 9 2 0 0 0 0 3 7 0 0 0 0 0 5 0 0 0 3 5 5 0 2 0 2 2 0 5 0 0 0 7
+2 2 0 3 2 0 2 0 0 2 7 0 0 0 0 0 5 0 2 0 0 0 5 0 2 0 0 2 0 5 0 0 0 7
+2 2 0 0 0 0 2 2 2 2 7 0 0 0 0 0 5 2 2 0 0 5 5 0 2 0 0 2 0 5 0 0 0 7
+2 2 0 3 6 3 2 2 0 2 3 6 3 0 0 0 5 2 2 0 3 5 5 0 2 0 2 2 0 5 0 0 0 3
+2 2 0 3 2 3 2 2 2 2 2 0 5 0 0 0 5 2 2 0 0 5 5 0 2 2 2 2 0 5 0 0 0 7
+2 2 1 1 1 1 2 2 1 2 2 1 1 1 0 1 5 2 2 1 1 5 5 2 2 2 2 2 1 5 2 0 0 3
+“five” holds 2; the name denotes 5; model answered 0
+nine
+=
+0
+ +
+ wheel
+,
+ wheel
+=
+4
+ +
+2
+,
+ wheel
+=
+2
+,
+ nine
+=
+0
+ +
+ wheel
+,
+ nine
+=
+0
+ +
+2
+,
+ nine
+=
+2
+\n\n
+0
+6
+12
+18
+24
+layer
+3 5 4 5 3 4 3 5 5 5 5 5 4 3 5 5 4 5 5 4 5 3 4 5 5 4 5 5 5 4 5 5 5 4
+4 5 3 3 5 3 0 5 5 5 5 5 5 5 5 5 3 5 5 3 3 5 3 5 5 3 3 5 5 4 5 5 5 5
+9 4 4 1 1 8 8 5 8 5 5 1 8 5 5 8 8 0 0 2 1 1 8 4 4 2 3 0 1 8 4 4 0 0
+3 8 7 5 0 8 9 7 8 5 5 9 8 1 8 7 8 8 8 1 5 1 8 8 8 7 5 5 7 8 3 0 7 7
+3 8 5 5 5 9 9 8 5 5 3 5 8 5 8 5 3 5 5 5 2 5 3 4 4 5 2 0 5 3 5 9 5 3
+0 4 0 3 0 3 4 3 8 5 0 5 3 0 8 8 3 0 5 5 5 5 3 4 5 5 5 3 6 3 4 8 8 0
+0 8 8 8 9 8 3 8 8 8 3 8 8 5 8 6 0 0 0 2 2 2 0 4 8 8 8 8 8 8 0 8 0 0
+2 2 2 3 3 3 3 8 5 5 3 5 3 3 5 6 3 2 2 2 2 2 3 3 4 8 3 3 2 4 3 4 4 3
+2 0 8 8 3 8 4 4 8 4 3 6 8 2 4 2 2 2 0 2 2 2 8 2 4 2 2 3 2 8 2 4 2 8
+0 0 9 9 9 9 4 4 1 2 8 6 8 0 6 1 9 0 0 1 8 1 9 0 4 2 2 2 1 9 2 2 0 8
+0 0 0 0 0 0 4 4 3 2 9 3 3 0 6 0 9 0 0 0 0 0 9 0 0 2 2 2 7 9 2 2 2 7
+0 0 0 0 0 0 4 4 2 2 7 9 9 0 6 0 9 0 0 1 0 9 9 0 0 2 2 2 1 9 2 2 0 7
+0 0 0 0 0 8 4 4 2 2 3 6 9 0 6 1 9 0 0 1 3 9 9 0 0 2 2 2 1 9 2 2 0 7
+0 0 0 2 0 2 4 4 2 2 2 0 2 2 6 0 9 0 0 1 2 9 9 0 0 2 2 2 0 9 2 2 2 0
+0 0 1 6 1 6 4 4 2 2 2 1 1 1 2 1 9 1 0 1 1 1 9 0 0 2 2 2 1 9 2 2 1 3
+“nine” holds 6; the name denotes 9; model answered 2
+nine
+=
+0
+ +
+ wheel
+,
+ wheel
+=
+5
+ +
+1
+,
+ wheel
+=
+5
+,
+ nine
+=
+0
+ +
+ wheel
+,
+ nine
+=
+0
+ +
+5
+,
+ nine
+=
+5
+\n\n
+0
+6
+12
+18
+24
+layer
+3 5 4 5 3 4 3 5 5 5 5 4 4 3 5 5 4 5 5 4 5 3 4 5 5 4 5 5 5 4 5 5 5 4
+4 5 3 3 5 3 0 5 3 3 5 1 3 4 5 3 3 5 5 3 3 5 3 5 5 3 3 5 5 3 5 5 3 3
+9 4 4 1 1 8 8 5 8 5 0 1 8 5 5 8 8 0 0 2 1 1 8 1 4 2 1 0 1 8 1 4 8 0
+3 8 7 5 0 8 9 7 8 5 5 9 8 1 7 8 8 8 8 1 5 1 8 8 8 7 5 5 7 8 3 4 8 7
+3 8 5 5 5 9 9 8 3 5 3 3 8 5 8 5 8 0 8 5 5 5 9 4 4 5 2 0 3 8 3 9 8 0
+7 4 0 3 0 3 4 3 8 5 0 3 3 5 8 8 0 0 5 5 2 2 3 4 5 5 5 3 2 3 4 8 8 0
+0 8 8 8 9 8 3 8 8 8 3 8 8 8 8 8 0 0 0 2 8 0 0 4 8 8 8 8 8 8 0 8 8 0
+2 2 2 3 3 3 3 8 5 5 3 3 3 3 5 5 3 0 0 2 3 3 3 3 8 8 5 3 2 4 5 5 0 3
+2 0 8 8 3 8 3 8 8 1 3 6 8 2 5 2 8 2 0 2 8 2 8 2 4 8 8 3 2 8 8 5 0 8
+0 0 9 9 9 8 5 5 1 1 8 6 9 7 5 2 9 0 0 2 8 1 9 0 5 5 5 5 1 9 5 5 0 8
+0 0 0 0 0 0 5 5 1 1 9 3 3 0 5 2 9 0 0 0 0 0 9 0 0 1 5 5 1 9 5 5 2 7
+0 0 0 0 0 0 5 5 1 1 9 9 9 0 5 2 9 0 0 1 0 9 9 0 0 1 5 5 1 9 5 5 0 7
+0 0 0 0 0 8 5 5 1 1 3 6 9 5 5 2 9 0 0 0 5 9 9 0 0 1 5 5 1 9 5 5 0 7
+0 0 0 2 0 2 5 5 1 1 3 0 2 5 5 2 9 0 0 1 5 9 9 0 0 1 5 5 1 9 5 5 0 0
+0 0 1 6 1 6 5 5 1 1 1 1 1 1 5 1 9 1 0 1 1 1 9 0 0 1 5 5 1 9 5 5 1 3
+“nine” holds 6; the name denotes 9; model answered 5
+two
+=
+9
+ -
+ ink
+,
+ ink
+=
+7
+ +
+1
+,
+ ink
+=
+6
+,
+ two
+=
+9
+ -
+ ink
+,
+ two
+=
+9
+ -
+6
+,
+ two
+=
+3
+\n\n
+0
+6
+12
+18
+24
+layer
+5 5 5 5 3 4 3 5 5 5 5 4 4 3 5 5 4 3 5 5 5 3 4 3 5 5 5 5 5 4 3 5 5 4
+5 5 5 5 3 3 4 3 5 3 1 1 3 4 5 5 3 4 5 5 3 3 3 4 5 5 3 5 3 3 4 5 3 5
+0 4 4 9 1 8 8 0 8 0 0 1 8 1 5 8 8 0 5 4 9 1 0 0 5 8 0 0 1 8 4 5 8 0
+7 7 8 5 2 8 3 8 8 5 0 9 8 2 8 8 8 4 4 8 5 1 8 5 5 8 5 5 5 8 4 3 7 7
+3 8 5 5 2 5 3 8 3 5 3 3 9 3 8 5 3 0 5 5 5 2 2 3 5 5 5 0 3 3 3 5 0 3
+0 5 8 5 9 3 4 3 0 0 0 3 3 3 8 8 0 0 5 8 5 2 3 0 5 5 5 5 0 3 5 5 0 0
+0 4 8 0 0 3 3 8 8 9 0 8 8 3 8 8 0 0 2 2 2 0 0 0 4 8 5 8 0 1 0 3 0 0
+2 2 2 3 2 3 3 8 5 5 3 5 3 3 5 5 3 2 0 2 2 2 3 3 3 0 3 3 2 3 0 2 2 3
+6 8 2 8 2 8 0 8 1 1 3 6 8 2 6 2 2 2 2 3 2 2 2 2 2 0 0 2 2 2 0 3 1 3
+9 9 0 9 9 9 7 7 1 1 9 6 9 0 6 0 2 0 9 1 1 2 2 0 9 0 6 6 1 2 3 3 0 3
+3 9 3 0 9 0 7 7 1 1 3 0 0 0 6 0 2 0 9 0 0 2 2 0 9 0 6 6 2 2 3 3 0 3
+9 9 0 0 0 0 7 7 1 1 3 0 0 0 6 0 2 0 9 1 6 0 2 0 9 1 6 6 0 2 3 3 0 3
+9 9 0 0 6 0 7 7 1 1 3 6 7 0 6 0 2 2 9 0 6 0 2 0 9 0 6 6 0 2 3 3 0 3
+9 9 0 0 0 0 7 7 1 1 3 0 2 7 6 0 2 2 9 0 6 2 2 0 9 0 6 6 0 2 3 3 0 3
+9 9 1 5 1 1 7 7 1 1 1 1 1 1 8 1 2 2 9 1 6 2 2 0 9 1 6 6 1 2 3 3 1 3
+“two” holds 1; the name denotes 2; model answered 3
+five
+=
+1
+ +
+ fan
+,
+ fan
+=
+4
+ +
+2
+,
+ fan
+=
+5
+,
+ five
+=
+1
+ +
+ fan
+,
+ five
+=
+1
+ +
+5
+,
+ five
+=
+6
+\n\n
+0
+6
+12
+18
+24
+layer
+5 5 4 5 4 4 4 5 5 5 5 5 4 4 5 5 4 5 5 4 5 4 4 5 5 4 5 5 5 4 5 5 5 4
+5 5 4 3 5 3 1 3 8 5 5 5 5 5 3 8 3 3 5 3 3 5 3 3 5 4 3 5 3 3 4 5 3 5
+9 4 4 1 1 8 8 4 8 5 0 1 8 8 5 8 8 1 5 4 1 1 8 1 5 5 1 5 1 8 9 5 0 0
+3 8 7 5 0 8 8 8 8 5 5 9 8 8 8 8 8 8 8 5 5 1 8 8 8 8 5 5 8 8 3 8 8 5
+3 8 5 5 3 8 3 8 5 5 3 5 9 3 8 8 8 0 8 5 5 5 3 3 5 8 5 5 0 8 3 8 0 0
+7 5 8 3 0 3 3 3 2 5 0 5 3 3 8 8 3 0 9 8 5 3 3 0 3 5 5 6 2 9 5 8 9 0
+0 8 8 8 9 8 3 8 8 8 3 8 8 4 8 8 8 0 8 8 8 8 8 8 8 8 8 8 8 8 0 9 9 8
+2 5 2 3 5 5 3 8 5 5 3 5 3 3 8 5 3 0 3 3 3 3 3 3 8 5 5 3 2 8 0 9 0 3
+2 2 2 1 4 8 8 4 8 4 3 6 8 2 3 8 2 2 2 2 2 2 2 2 4 8 0 3 2 8 0 9 0 8
+1 1 1 0 1 9 4 4 1 2 8 6 9 7 3 2 7 1 1 5 5 1 5 1 5 5 3 5 1 7 8 6 0 6
+0 1 0 0 3 0 4 4 5 2 7 0 0 0 7 2 5 1 1 1 0 0 5 2 5 5 5 5 2 5 6 6 2 7
+1 1 1 0 0 0 4 4 2 2 0 0 0 0 3 0 5 1 1 1 5 5 5 1 1 5 5 5 0 5 6 6 0 7
+1 1 5 5 6 4 4 4 4 2 3 6 5 4 3 2 5 1 1 1 5 5 5 1 1 1 5 5 0 5 6 6 0 3
+1 1 5 5 0 5 4 4 2 2 2 0 5 4 3 2 5 1 1 1 5 5 5 1 1 1 5 5 0 5 6 6 0 7
+1 1 5 1 1 1 4 4 2 2 2 1 5 1 3 1 5 1 1 1 5 1 5 1 1 1 5 5 1 5 5 6 5 3
+“five” holds 7; the name denotes 5; model answered 6
+three
+=
+2
+ -
+ chair
+,
+ chair
+=
+2
+ -
+2
+,
+ chair
+=
+0
+,
+ three
+=
+2
+ -
+ chair
+,
+ three
+=
+2
+ -
+2
+,
+ three
+=
+0
+\n\n
+0
+6
+12
+18
+24
+layer
+5 5 5 5 3 4 3 5 5 5 5 5 4 3 5 4 4 5 5 5 5 3 4 5 5 5 5 5 5 4 5 5 4 4
+0 5 5 5 5 3 4 4 5 3 5 5 5 4 4 3 3 5 5 5 3 5 4 4 5 5 3 5 5 5 4 5 3 4
+0 4 4 9 1 8 8 0 8 5 5 5 8 1 0 0 8 0 5 4 5 1 8 0 5 4 0 0 5 0 0 5 0 0
+7 8 7 7 0 8 8 0 8 5 0 0 8 1 0 1 8 0 8 7 5 5 8 4 5 5 5 5 0 8 0 0 1 5
+3 8 5 2 2 2 3 0 5 5 3 5 8 3 0 0 5 0 5 5 5 5 2 3 3 5 5 0 0 0 0 0 0 0
+0 5 8 5 0 3 3 4 5 5 0 2 3 0 0 0 0 0 4 4 5 2 3 0 5 5 5 2 2 1 0 0 0 0
+0 0 0 0 0 0 3 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 4 5 3 2 0 0 0 0 0 0
+2 2 2 3 2 3 3 0 0 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 3 0 0 0 0 0 3
+2 2 2 3 2 4 0 0 0 4 3 6 0 0 0 0 2 2 0 2 2 2 2 0 0 0 0 2 2 8 0 0 0 3
+2 2 0 0 2 0 0 2 0 3 8 0 0 0 0 0 3 0 0 0 3 3 3 0 0 0 2 2 0 3 0 0 0 7
+2 2 0 0 2 0 2 2 0 2 3 0 0 0 0 0 3 2 2 0 3 3 3 0 0 0 0 2 0 3 0 0 0 3
+2 2 0 0 0 0 2 2 2 2 3 0 0 0 0 0 3 2 2 0 0 3 3 0 2 0 0 2 0 3 0 0 0 7
+2 2 0 3 0 3 2 2 2 2 3 3 3 0 0 3 3 2 2 0 3 3 3 0 2 0 2 2 0 3 0 0 0 3
+2 2 0 3 0 2 2 2 2 2 2 0 3 2 0 0 3 2 2 0 3 3 3 0 2 2 2 2 0 3 0 0 0 5
+2 2 3 1 1 3 2 2 1 2 2 1 3 1 0 3 3 3 2 3 3 3 3 2 2 2 2 2 1 3 0 0 0 3
+“three” holds 2; the name denotes 3; model answered 0
+four
+=
+0
+ +
+ ink
+,
+ ink
+=
+7
+ +
+1
+,
+ ink
+=
+7
+,
+ four
+=
+0
+ +
+ ink
+,
+ four
+=
+0
+ +
+7
+,
+ four
+=
+7
+\n\n
+0
+6
+12
+18
+24
+layer
+5 5 4 5 3 4 3 5 5 5 5 4 4 3 5 5 4 5 5 4 5 3 4 5 5 4 5 5 5 4 5 5 5 4
+5 5 3 5 4 3 4 5 5 3 3 1 3 4 5 5 3 0 5 3 5 3 3 0 5 3 5 5 5 3 0 5 5 5
+5 4 4 1 1 8 8 0 8 5 0 1 8 8 8 8 8 0 0 2 1 1 8 1 4 4 0 0 1 8 1 4 8 0
+9 8 7 5 9 8 9 8 8 5 0 9 8 2 8 8 8 8 8 2 5 1 8 8 8 8 5 5 8 8 8 4 8 7
+3 8 5 0 2 8 3 8 5 5 3 9 8 3 8 5 8 0 0 5 5 5 2 3 0 5 5 0 0 8 3 9 0 0
+7 4 0 2 0 3 4 8 0 5 0 8 3 3 8 8 0 0 4 5 2 3 3 0 5 0 5 0 0 3 4 4 8 0
+0 4 2 8 9 8 3 8 8 8 3 8 8 8 8 8 0 0 0 0 0 0 0 0 8 8 8 8 8 8 0 8 0 0
+2 2 2 4 4 3 4 8 5 5 3 4 3 3 9 5 2 0 0 2 2 2 3 3 8 8 5 3 1 8 8 8 0 3
+0 0 2 8 2 8 8 8 1 1 3 8 8 2 7 2 2 2 0 2 8 2 2 2 4 8 8 3 8 8 8 8 0 8
+0 0 1 9 9 9 7 7 1 1 9 6 9 7 7 2 4 0 0 5 1 1 4 0 7 7 1 7 1 4 8 7 0 7
+0 0 0 0 0 0 7 7 1 1 3 0 0 0 7 2 4 0 0 0 0 0 4 0 0 1 7 7 1 4 8 7 0 3
+0 0 0 0 0 0 7 7 1 1 3 0 0 7 7 2 4 0 0 1 7 0 4 0 0 1 7 7 1 4 7 7 0 7
+0 0 0 0 0 0 7 7 1 1 3 6 4 7 7 2 4 0 0 1 7 4 4 0 0 1 7 7 1 4 7 7 0 3
+0 0 0 0 0 0 7 7 1 1 3 0 4 7 7 2 4 0 0 1 7 0 4 0 7 1 7 7 0 4 7 7 0 5
+0 0 4 1 1 1 7 7 1 1 1 1 3 1 7 1 4 4 0 4 1 4 4 0 7 1 7 7 4 4 7 7 1 3
+“four” holds 8; the name denotes 4; model answered 7
+Top-1 probe prediction over the model's own chain (Llama-3.2-3B, L3, with chain of thought; probes trained at the value step of “v1” on neutral problems; 8 instances)
+true value the model's answer (when wrong) what the name denotes other
+Figure 5: Probes trained at the value step, applied to the model’s own generated chain rather than to a force-decoded
+gold chain, for the 8 level-3 incongruent problems that Llama-3.2-3B answered wrongly under CoT (the first 8 of
+108 wrong answers in 2,000 instances). Probes are trained on neutral problems at the step that writes the variable’s
+value and applied at every generated token and every second layer; colours as in Figure 4, boxed columns the
+name’s own tokens. This small sample contains no lure answers and is illustrative rather than an estimate of their
+rate.
+593 model reading a name whose early representation
+594 no longer matches. The localization we report
+595 does not depend on the choice.
+596 H A chain that writes values without
+597 equations
+598 Our chain restates each equation before substitut￾599 ing into it, as Kudo et al.’s does. Their Tables 5–
+600 6 also report a format that writes only the sub￾601 results, cup=5, pen=6. That format is the arith￾602 metic counterpart of a code trace, which writes a
+603 variable’s value and never the expression that pro￾604 duced it, so we ran it on the panel at level 3 with
+605 three demonstration sets, with two predictions reg￾606 istered in advance for both Llama models: that
+607 the written-lure excess at the intermediate’s value
+step would exceed the 2-point margin, and that the 608
+value would still be decodable there (probe accu- 609
+racy at least 0.85), making any failure one of read- 610
+out. 611
+Both predictions fail as registered. Llama-3.1- 612
+8B writes the lure at the intermediate’s value step 613
++0.15 points above its twin, inside the margin. 614
+Llama-3.2-3B is at +9.20, which passes our claim 615
+rule, but across the three demonstration sets that is 616
++1.7 / +24.2 / +1.7, so one set carries most of it. 617
+More informative is what the probes say. At the 618
+step that writes the value, the true value is decod- 619
+able at 0.81 and 0.59 for Llama-3.1-8B and at 0.61 620
+and 0.79 for Llama-3.2-3B, against 1.00 and 0.99 621
+for the same model under the full chain. Neutral 622
+accuracy falls with it, to 54% and 31%. 623
+10
+
+PAGE 11
+624 Removing the equations lowers both accuracy
+625 and true-value probe readouts. It therefore fails
+626 to isolate a readout error while preserving those
+627 measures. This result does not support a shared
+628 explanation for value-only arithmetic chains and
+629 code traces.
+630 I Additional levels, models and
+631 demonstration sets
+632 Table 9 repeats Table 2 for the other four levels.
+633 The pretrained Gemma-3-4B, the base half of the
+634 Gemma pair, is reported in Table 7 rather than in
+635 Table 2.
+636 Data, compute and software. Each level has
+637 2,000 matched sets, each rendered in every con￾638 dition, and 10,000 separately generated problems
+639 for training probes; every SGD probe is trained
+640 with 3 seeds. Every run here is inference and the
+641 probes are linear; the three adapter checkpoints of
+642 Appendix F were trained in a separate project, and
+643 that compute is not counted below. The recorded
+644 allocation time totals at most 178 GPU-hours on
+645 NVIDIA A30, H100 and H200 cards, including
+646 idle time within allocations. The models are from
+647 the Llama 3 (Grattafiori et al., 2024), Gemma 3
+648 (Gemma Team, 2025) and OLMo 2 (Team OLMo,
+649 2024) families, with the reasoning-tuned check￾650 point from Bercovich et al. (2025), each used un￾651 der its release licence for research. Models run
+652 in PyTorch (Paszke et al., 2019) with Transform￾653 ers (Wolf et al., 2020), and the probes are trained
+654 in PyTorch; the L-BFGS refit of Appendix G
+655 uses scikit-learn (Pedregosa et al., 2011), and
+656 the mixed-effects check uses statsmodels (Seabold
+657 and Perktold, 2010).
+658 Per-set values, the pooled estimate and the
+659 claim rule are released with the code, together
+660 with the level-4 irrelevant-lure control, the lure￾661 distance analysis, the teacher-forced lure rates,
+662 and the error taxonomy behind the word-class ef￾663 fect.
+Model Level Regime Neutral number word on the number word on the
+accuracy queried variable intermediate variable
+(%) helps lures helps lures
+Llama-3.1-8B 1 CoT 99 [98,100] +0.0 +0.0 +0.3 +0.0
+Llama-3.1-8B 1 direct 74 [38,99] +16.1∗ +11.2∗ +8.8∗ +1.3
+Llama-3.2-3B 1 CoT 97 [95,100] +1.1 +0.1 -2.4 +0.3
+Llama-3.2-3B 1 direct 46 [21,93] +0.6 +5.9∗
+-3.9∗ +2.6∗
+Llama-3.1-8B 2 CoT 100 [100,100] -0.1 +0.0 -0.0 +0.0
+Llama-3.1-8B 2 direct 36 [33,37] +11.8∗ +0.7 +2.6 +2.2
+Llama-3.2-3B 2 CoT 94 [90,98] +3.7 +0.5∗ +1.0∗
+-0.1
+Llama-3.2-3B 2 direct 29 [27,30] +10.8∗ +2.5∗ +2.6∗ +2.2
+Llama-3.1-8B 4 CoT 88 [63,100] +1.0 -0.0 -2.3 +0.2
+Llama-3.1-8B 4 direct 28 [26,31] +13.7∗ +5.8 +6.0∗ +0.2
+Llama-3.2-3B 4 CoT 64 [26,85] -10.2∗ +0.7 -2.6∗ +0.4
+Llama-3.2-3B 4 direct 20 [16,23] -1.6 +1.9 -0.2 +1.2∗
+Llama-3.1-8B 5 CoT 65 [43,100] +1.2 -0.3 +0.1 -0.1
+Llama-3.1-8B 5 direct 20 [13,26] +20.2∗ +20.5∗ +0.9 +0.4
+Llama-3.2-3B 5 CoT 69 [48,97] -1.4 +0.1 -2.5 -0.1
+Llama-3.2-3B 5 direct 12 [11,12] +4.7∗ +3.5∗ +1.1∗ +0.5
+Table 9: As Table 2, for levels 1, 2, 4 and 5 (Llama-3.2-
+3B and Llama-3.1-8B). Level 1 is the no-computation
+control: the intermediate variable’s value is stated
+rather than computed.
+11
+
+PAGE 12
+664 J Every figure at full size
+665 Each figure below is reproduced as a full-width fig￾666 ure on a portrait page, within the ACL margins.
+12
+
+PAGE 13
+−5 0 5
+percentage points
+Llama-3.2-3B
+Llama-3.2-3B Inst.
+Llama-3.1-8B
+Llama-3.1-8B Inst.
+Gemma-3-4B Inst.
+Gemma-3-12B Inst.
+OLMo-2-1B Inst.
+OLMo-2-7B Inst.
+(a) Accuracy gained
+from a congruent name
+−2 0 2
+percentage points
+(b) Lure answers above
+the neutral baseline
+0 10 20 30 40
+token position in the problem and gold chain
+0.00
+0.25
+0.50
+0.75
+1.00
+proportion
+chain starts
+before value write
+(c) Probe readouts during the gold chain (Llama-3.2-3B)
+true-value accuracy lure rate name tokens
+direct answer chain of thought two-point margin
+Figure 6: Figure 1 at full size.
+13
+
+PAGE 14
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+share of problems
+(best layer)
+the input problem the supplied correct chain
+supplied value token
+true-value accuracy
+lure rate
+truck
+=
+2
+ +
+ nine
+,
+ nine
+=
+7
+ -
+6
+;
+ truck
+=
+?\n
+truck
+=
+2
+ +
+ nine
+,
+ nine
+=
+7
+ -
+6
+,
+ nine
+=
+1
+,
+ truck
+=
+2
+ +
+ nine
+,
+ truck
+=
+2
+ +
+1
+,
+ truck
+=
+3
+every token of one problem and its solution (shaded: the name “nine”, whose value is 1 but which denotes 9)
+0
+5
+10
+15
+20
+25
+layer
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+probe reads the true value (share of problems)
+Llama-3.2-3B, with chain of thought: intermediate-value probe readouts
+Figure 7: Figure 2 at full size: per-token probes, chain-of-thought regime, intermediate variable.
+14
+
+PAGE 15
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+share of problems
+(best layer)
+the problem the model reads the chain of thought the model writes
+here the chain writes “four=3”
+reads the TRUE value (3)
+reads the LURE value (4)
+four
+=
+2
+ +
+ ant
+,
+ ant
+=
+7
+ -
+6
+;
+ four
+=
+?\n
+four
+=
+2
+ +
+ ant
+,
+ ant
+=
+7
+ -
+6
+,
+ ant
+=
+1
+,
+ four
+=
+2
+ +
+ ant
+,
+ four
+=
+2
+ +
+1
+,
+ four
+=
+3
+every token of one problem and its solution (shaded: the name “four”, whose value is 3 but which denotes 4)
+0
+5
+10
+15
+20
+25
+layer
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+probe reads the true value (share of problems)
+Llama-3.2-3B, with chain of thought. Probe question: what value does the model hold for “four”?
+Figure 8: Per-token probes, chain-of-thought regime, queried variable.
+15
+
+PAGE 16
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+share of problems
+(best layer)
+the problem the model reads the chain of thought the model writes
+reads the TRUE value (1)
+reads the LURE value (9)
+truck
+=
+2
+ +
+ nine
+,
+ nine
+=
+7
+ -
+6
+;
+ truck
+=
+?\n
+truck
+=
+3
+every token of one problem and its solution (shaded: the name “nine”, whose value is 1 but which denotes 9)
+0
+5
+10
+15
+20
+25
+layer
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+probe reads the true value (share of problems)
+Llama-3.2-3B, direct answer. Probe question: what value does the model hold for “nine”?
+Figure 9: Per-token probes, direct regime, intermediate variable.
+16
+
+PAGE 17
+0.00
+0.25
+0.50
+0.75
+1.00
+probing accuracy
+(max over layers)
+chance
+the problem the chain of thought
+Probing accuracy for “four” at each token, by whether the model answers that problem correctly
+problems answered correctly (n = 1,892)
+problems answered wrongly (n = 108)
+0
+10
+20
+layer
+answered correctly (n = 1,892) four
+=
+2
+ +
+ ant
+,
+ ant
+=
+7
+ -
+6
+;
+ four
+=
+?\n
+four
+=
+2
+ +
+ ant
+,
+ ant
+=
+7
+ -
+6
+,
+ ant
+=
+1
+,
+ four
+=
+2
+ +
+ ant
+,
+ four
+=
+2
+ +
+1
+,
+ four
+=
+3
+0
+10
+20
+layer
+answered wrongly (n = 108)
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+probing accuracy
+Probes read the variable's true value; states come from a forced pass over the correct chain, so the lower panel asks what the state holds for problems this model gets wrong unaided.
+Figure 10: Probing accuracy split by whether the model answers the problem correctly on its own, with the layer
+sweep for each half.
+17
+
+PAGE 18
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+5 5 5 0 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 0 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 0 5 5 5 5 5 0 5 5 5 5 5 1
+5 5 3 0 0 5 5 5 5 0 5 5 5 5 5 5 5 5 3 0 0 0 5 5 5 0 5 5 5 5 5 5 5 5 5 5 0 0 5 5 5 5 0 0 3 5 5 5 1
+5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 5 5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 0 0 5 5 4 0 0 5 5 5 5 0 0 3 0 5 5 1
+5 5 2 0 0 0 0 5 5 0 0 0 5 5 5 5 5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 0 0 5 5 5 0 0 5 5 5 0 0 0 1 5 5 5 1
+0 5 2 0 0 0 0 0 5 0 0 0 0 5 5 5 5 5 5 0 0 0 0 0 5 0 0 0 0 0 0 0 3 0 5 5 8 0 0 5 5 5 0 0 7 0 5 5 1
+3 5 5 0 0 0 0 0 5 0 0 0 0 0 5 5 5 5 0 0 0 0 0 0 0 0 0 0 0 0 5 3 0 0 5 5 8 0 0 5 5 3 0 0 1 0 0 0 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 5 0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 3 3 0 5 5 8 0 0 0 0 0 0 0 1 1 0 0 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 1 0 0 0 0 8 8 0 7 1 1 1 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 8 0 0 0 0 8 8 0 7 1 1 3 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 0 0 0 0 0 0 0 0 0 0 4 8 0 0 0 0 0 1 0 1 1 1 1 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 0 0 1 0 1 1 7 1 1
+3 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 1 0 8 0 1 1 7 1 1
+4 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 8 0 0 0 5 1 1 0 8 1 7 1 1
+3 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 2 1 0 0 8 1 1 1 1
+3 4 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 1 0 0 2 1 8 0 0 1 2 1 0 1 5 1 1 1 1
+BASELINE: the probe's most common prediction on neutral problems (its default where it reads nothing) — a coloured cell below means something only where it differs from this four
+=
+7
+ -
+ cap
+,
+ cap
+=
+5
+ +
+2
+;
+ four
+=
+?\n
+four
+=
+7
+ -
+ cap
+,
+ cap
+=
+5
+ +
+2
+,
+ cap
+=
+7
+,
+ four
+=
+7
+ -
+ cap
+,
+ four
+=
+7
+ -
+7
+,
+ four
+=
+0
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+5 5 3 0 5 5 5 5 5 0 5 0 5 0 5 5 5 5 3 0 5 5 5 5 5 0 5 0 5 5 5 0 5 0 5 3 0 5 5 0 5 3 0 5 0 5 0 5 0
+5 5 3 0 0 0 0 5 5 0 0 0 0 0 5 5 5 5 3 0 0 0 0 5 5 0 0 0 0 0 5 0 0 0 5 3 0 0 0 0 5 3 0 0 0 0 0 0 0
+0 5 7 0 0 0 4 0 5 0 0 0 0 0 5 5 5 5 7 0 0 0 4 5 5 0 0 0 0 4 5 0 0 0 0 0 0 0 0 0 5 3 0 0 0 0 0 0 0
+0 0 7 0 0 0 0 5 5 0 0 0 0 0 5 5 5 5 7 0 0 0 0 4 5 0 0 0 0 0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 0 0 0 0 3 0 0 0 0 0 5 5 5 5 7 0 0 0 0 5 5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 0 0 0 0 3 0 0 0 0 0 7 5 0 5 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 0 0 0 0 3 0 0 0 0 0 7 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 0 0 0 0 3 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 4 0 0 0 5 0 0 0 0 0 2 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 4 0 0 0 0 0 0 0 0 0 7 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 4 0 0 0 0 0 0 0 0 0 7 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 4 0 0 0 0 0 0 0 0 0 1 0 0 0 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 4 0 0 0 0 0 0 0 0 0 1 0 0 0 3 3 0 0 0 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 0 4 0 0 0 0 0 0 0 0 0 1 3 0 0 3 3 0 0 0 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 7 3 0 3 3 4 4 0 0 0 0 8 1 0 0 0 0 4 4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+“four” holds 0; the name denotes 4; model WRONG: answered 4
+Top-1 probe prediction at every layer and token (Llama-3.2-3B, L3, with chain of thought; boxed = the name's tokens, dashed = start of the chain)
+true value the model's answer (when wrong) what the name denotes other
+Figure 11: Top-1 probe prediction at every layer and token, on a problem answered with the lure. Layout after
+Kudo et al.’s Figure 3.
+18
+
+PAGE 19
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+5 5 5 0 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 0 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 0 5 5 5 5 5 0 5 5 5 5 5 1
+5 5 3 0 0 5 5 5 5 0 5 5 5 5 5 5 5 5 3 0 0 0 5 5 5 0 5 5 5 5 5 5 5 5 5 5 0 0 5 5 5 5 0 0 3 5 5 5 1
+5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 5 5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 0 0 5 5 4 0 0 5 5 5 5 0 0 3 0 5 5 1
+5 5 2 0 0 0 0 5 5 0 0 0 5 5 5 5 5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 0 0 5 5 5 0 0 5 5 5 0 0 0 1 5 5 5 1
+0 5 2 0 0 0 0 0 5 0 0 0 0 5 5 5 5 5 5 0 0 0 0 0 5 0 0 0 0 0 0 0 3 0 5 5 8 0 0 5 5 5 0 0 7 0 5 5 1
+3 5 5 0 0 0 0 0 5 0 0 0 0 0 5 5 5 5 0 0 0 0 0 0 0 0 0 0 0 0 5 3 0 0 5 5 8 0 0 5 5 3 0 0 1 0 0 0 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 5 0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 3 3 0 5 5 8 0 0 0 0 0 0 0 1 1 0 0 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 1 0 0 0 0 8 8 0 7 1 1 1 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 8 0 0 0 0 8 8 0 7 1 1 3 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 0 0 0 0 0 0 0 0 0 0 4 8 0 0 0 0 0 1 0 1 1 1 1 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 0 0 1 0 1 1 7 1 1
+3 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 1 0 8 0 1 1 7 1 1
+4 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 8 0 0 0 5 1 1 0 8 1 7 1 1
+3 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 2 1 0 0 8 1 1 1 1
+3 4 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 1 0 0 2 1 8 0 0 1 2 1 0 1 5 1 1 1 1
+BASELINE: the probe's most common prediction on neutral problems (its default where it reads nothing) — a coloured cell below means something only where it differs from this four
+=
+2
+ +
+ pear
+,
+ pear
+=
+7
+ -
+6
+;
+ four
+=
+?\n
+four
+=
+2
+ +
+ pear
+,
+ pear
+=
+7
+ -
+6
+,
+ pear
+=
+1
+,
+ four
+=
+2
+ +
+ pear
+,
+ four
+=
+2
+ +
+1
+,
+ four
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+5 5 5 8 5 5 5 5 0 5 5 5 5 0 5 5 5 5 5 8 5 5 5 5 0 5 5 5 5 5 5 5 5 0 5 5 8 5 5 0 5 5 8 5 5 5 0 5 3
+5 5 0 8 2 5 2 3 3 3 3 3 5 0 5 5 5 5 0 8 2 5 2 3 3 3 3 3 5 3 3 3 3 0 5 0 8 5 5 0 5 0 8 8 5 5 0 5 3
+0 5 2 8 2 5 2 5 3 5 3 3 5 0 5 5 5 5 2 8 2 5 2 5 3 5 3 3 5 2 3 3 5 0 5 1 8 5 5 5 5 2 8 8 5 5 5 5 3
+0 0 2 8 2 7 3 5 6 5 5 1 5 0 5 5 5 0 7 8 6 5 3 3 6 3 3 3 5 3 3 1 3 0 5 1 8 8 5 0 5 7 8 8 5 5 5 5 3
+0 0 2 8 6 8 7 5 5 6 7 1 5 0 5 5 5 3 2 8 8 8 3 3 6 3 3 3 3 3 3 3 3 5 3 1 7 8 5 5 5 7 8 7 5 5 5 5 3
+0 0 0 8 7 8 7 7 6 7 5 1 5 5 7 5 5 3 2 8 7 5 7 5 6 3 3 3 5 3 5 3 3 5 3 1 7 7 8 0 5 7 7 7 7 3 5 5 3
+0 0 0 7 7 8 7 7 6 7 6 1 5 3 5 5 0 5 2 7 7 5 7 5 6 3 5 3 5 3 3 1 5 5 5 1 7 7 5 0 3 7 7 7 5 5 5 5 3
+0 0 2 7 7 7 7 7 6 7 6 4 5 3 7 5 0 5 2 6 7 7 7 3 6 3 4 3 3 3 3 1 3 3 5 2 7 7 5 0 8 2 8 7 5 5 5 5 3
+0 0 2 7 7 7 7 7 6 7 3 4 5 4 7 5 5 5 2 7 7 4 3 6 6 3 3 3 3 7 4 1 3 5 2 2 7 7 3 5 2 2 7 5 5 5 5 2 3
+0 0 2 8 7 7 7 7 6 6 5 4 4 2 7 5 2 2 2 7 7 4 3 6 6 3 1 4 3 2 3 3 3 5 2 2 7 7 4 5 2 5 7 5 5 5 3 3 3
+0 0 2 7 7 7 7 2 6 6 4 3 3 3 7 0 2 2 2 2 7 3 2 6 4 3 4 3 3 3 3 3 3 2 2 2 4 7 0 2 2 5 7 5 3 5 3 3 3
+0 0 2 7 7 7 7 2 6 6 4 3 0 3 7 4 2 5 2 2 7 2 2 6 4 3 4 3 3 2 2 1 3 2 2 2 7 7 0 2 2 5 7 3 3 5 3 3 3
+0 0 2 7 7 7 7 2 6 6 4 3 5 2 5 4 2 2 2 2 7 2 2 6 4 3 4 3 2 2 4 1 3 2 5 2 7 7 0 2 5 5 7 5 3 5 3 3 3
+0 0 2 7 7 7 2 2 6 7 4 3 0 3 5 3 2 2 2 2 7 2 6 2 4 3 4 6 2 2 4 1 1 2 5 2 7 7 5 2 5 5 2 3 2 5 3 3 3
+0 0 0 7 8 7 2 2 6 7 2 3 0 8 8 4 8 7 7 7 7 2 7 2 2 3 4 6 2 2 2 1 1 5 3 2 7 5 4 2 5 3 5 3 5 4 3 3 3
+“four” holds 3; the name denotes 4; model WRONG: answered 4
+Top-1 probe prediction at every layer and token (Llama-3.2-3B, L3, with chain of thought; boxed = the name's tokens, dashed = start of the chain)
+true value the model's answer (when wrong) what the name denotes other
+Figure 12: A second problem answered with the lure.
+19
+
+PAGE 20
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+5 5 5 0 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 0 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 0 5 5 5 5 5 0 5 5 5 5 5 1
+5 5 3 0 0 5 5 5 5 0 5 5 5 5 5 5 5 5 3 0 0 0 5 5 5 0 5 5 5 5 5 5 5 5 5 5 0 0 5 5 5 5 0 0 3 5 5 5 1
+5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 5 5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 0 0 5 5 4 0 0 5 5 5 5 0 0 3 0 5 5 1
+5 5 2 0 0 0 0 5 5 0 0 0 5 5 5 5 5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 0 0 5 5 5 0 0 5 5 5 0 0 0 1 5 5 5 1
+0 5 2 0 0 0 0 0 5 0 0 0 0 5 5 5 5 5 5 0 0 0 0 0 5 0 0 0 0 0 0 0 3 0 5 5 8 0 0 5 5 5 0 0 7 0 5 5 1
+3 5 5 0 0 0 0 0 5 0 0 0 0 0 5 5 5 5 0 0 0 0 0 0 0 0 0 0 0 0 5 3 0 0 5 5 8 0 0 5 5 3 0 0 1 0 0 0 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 5 0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 3 3 0 5 5 8 0 0 0 0 0 0 0 1 1 0 0 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 1 0 0 0 0 8 8 0 7 1 1 1 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 8 0 0 0 0 8 8 0 7 1 1 3 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 0 0 0 0 0 0 0 0 0 0 4 8 0 0 0 0 0 1 0 1 1 1 1 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 0 0 1 0 1 1 7 1 1
+3 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 1 0 8 0 1 1 7 1 1
+4 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 8 0 0 0 5 1 1 0 8 1 7 1 1
+3 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 2 1 0 0 8 1 1 1 1
+3 4 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 1 0 0 2 1 8 0 0 1 2 1 0 1 5 1 1 1 1
+BASELINE: the probe's most common prediction on neutral problems (its default where it reads nothing) — a coloured cell below means something only where it differs from this four
+=
+8
+ -
+ soap
+,
+ soap
+=
+5
+ +
+1
+;
+ four
+=
+?\n
+four
+=
+8
+ -
+ soap
+,
+ soap
+=
+5
+ +
+1
+,
+ soap
+=
+6
+,
+ four
+=
+8
+ -
+ soap
+,
+ four
+=
+8
+ -
+6
+,
+ four
+=
+2
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+5 5 5 0 0 5 0 5 5 0 5 5 5 0 5 5 5 5 5 0 0 5 0 5 5 0 5 5 5 0 5 0 5 0 5 5 0 0 5 0 5 5 0 5 0 5 0 5 2
+5 5 4 0 0 0 0 0 5 0 0 0 0 0 5 5 5 5 4 0 0 0 0 0 5 0 0 0 0 0 5 0 0 0 5 0 0 0 0 0 5 4 0 0 0 0 0 0 2
+0 5 8 0 0 0 0 3 5 0 0 0 5 0 4 5 5 5 8 0 0 0 0 0 5 0 0 0 0 0 0 0 0 0 0 4 0 0 3 0 0 4 0 0 1 0 0 0 2
+0 0 8 0 0 0 0 0 5 0 0 0 0 0 5 0 5 0 8 0 0 0 0 4 5 0 0 0 0 0 3 1 0 0 0 2 0 0 0 0 0 4 0 0 1 0 0 0 2
+0 0 8 0 0 0 0 0 5 0 0 0 0 0 5 5 5 0 8 0 0 0 0 0 5 0 0 0 0 0 0 1 0 5 5 2 0 0 0 0 0 4 0 0 2 3 0 3 2
+0 0 8 0 0 0 0 0 5 0 0 0 0 0 8 5 0 5 4 0 0 0 0 0 0 0 0 0 0 0 0 1 5 5 0 2 0 0 0 0 0 2 0 0 2 2 5 3 2
+0 0 8 0 0 0 0 0 5 0 0 0 0 0 8 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 5 4 2 0 0 0 0 0 2 0 0 2 2 0 3 2
+0 0 8 0 0 0 0 3 5 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 2 1 1 0 0 0 2 0 0 2 2 2 2 2
+0 0 8 0 0 0 0 3 5 0 0 0 0 0 8 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 2 1 1 0 0 0 1 1 1 2 2 1 2 2
+0 0 8 0 0 0 0 0 0 0 0 0 0 0 8 0 0 0 4 0 0 0 0 5 9 0 0 0 0 0 0 1 0 0 0 2 1 1 0 0 2 2 1 1 2 1 2 2 2
+0 0 8 0 0 0 0 0 0 0 0 0 0 0 8 0 0 0 4 0 0 0 0 9 0 0 0 0 0 0 0 8 0 0 0 2 1 1 0 2 2 2 1 1 2 1 2 2 2
+0 0 8 0 0 0 0 0 0 0 0 2 0 0 8 0 0 0 4 0 0 0 0 9 0 0 0 0 0 0 0 1 0 0 2 2 2 1 0 0 2 2 2 2 2 0 2 2 2
+0 0 8 0 0 0 0 0 0 0 0 2 0 0 8 0 0 0 4 0 0 0 0 9 0 0 0 0 0 0 1 1 0 0 2 2 2 1 0 2 2 2 2 2 2 1 2 2 2
+0 0 8 5 0 0 0 0 0 0 0 2 0 0 8 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 2 2 2 1 4 2 2 2 1 1 2 0 2 2 2
+0 0 0 8 0 0 0 0 0 0 0 2 0 8 4 0 8 4 4 4 0 0 0 1 0 0 4 0 0 0 1 1 1 1 2 2 1 1 4 1 2 2 1 1 2 1 2 2 2
+“four” holds 2; the name denotes 4; model WRONG: answered 4
+Top-1 probe prediction at every layer and token (Llama-3.2-3B, L3, with chain of thought; boxed = the name's tokens, dashed = start of the chain)
+true value the model's answer (when wrong) what the name denotes other
+Figure 13: A third problem answered with the lure.
+20
+
+PAGE 21
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+5 5 5 0 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 0 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 0 5 5 5 5 5 0 5 5 5 5 5 1
+5 5 3 0 0 5 5 5 5 0 5 5 5 5 5 5 5 5 3 0 0 0 5 5 5 0 5 5 5 5 5 5 5 5 5 5 0 0 5 5 5 5 0 0 3 5 5 5 1
+5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 5 5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 0 0 5 5 4 0 0 5 5 5 5 0 0 3 0 5 5 1
+5 5 2 0 0 0 0 5 5 0 0 0 5 5 5 5 5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 0 0 5 5 5 0 0 5 5 5 0 0 0 1 5 5 5 1
+0 5 2 0 0 0 0 0 5 0 0 0 0 5 5 5 5 5 5 0 0 0 0 0 5 0 0 0 0 0 0 0 3 0 5 5 8 0 0 5 5 5 0 0 7 0 5 5 1
+3 5 5 0 0 0 0 0 5 0 0 0 0 0 5 5 5 5 0 0 0 0 0 0 0 0 0 0 0 0 5 3 0 0 5 5 8 0 0 5 5 3 0 0 1 0 0 0 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 5 0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 3 3 0 5 5 8 0 0 0 0 0 0 0 1 1 0 0 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 1 0 0 0 0 8 8 0 7 1 1 1 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 8 0 0 0 0 8 8 0 7 1 1 3 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 0 0 0 0 0 0 0 0 0 0 4 8 0 0 0 0 0 1 0 1 1 1 1 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 0 0 1 0 1 1 7 1 1
+3 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 1 0 8 0 1 1 7 1 1
+4 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 8 0 0 0 5 1 1 0 8 1 7 1 1
+3 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 2 1 0 0 8 1 1 1 1
+3 4 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 1 0 0 2 1 8 0 0 1 2 1 0 1 5 1 1 1 1
+BASELINE: the probe's most common prediction on neutral problems (its default where it reads nothing) — a coloured cell below means something only where it differs from this six
+=
+7
+ +
+ table
+,
+ table
+=
+2
+ -
+2
+;
+ six
+=
+?\n
+six
+=
+7
+ +
+ table
+,
+ table
+=
+2
+ -
+2
+,
+ table
+=
+0
+,
+ six
+=
+7
+ +
+ table
+,
+ six
+=
+7
+ +
+0
+,
+ six
+=
+7
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+0 5 3 8 3 5 3 5 5 5 5 0 5 0 5 5 0 5 3 8 3 5 3 5 5 5 5 0 5 3 5 5 5 0 5 3 8 3 5 0 5 3 8 5 5 5 0 5 7
+4 0 3 8 4 5 4 4 0 5 5 4 5 3 0 5 4 0 3 8 4 5 4 4 0 5 5 4 5 4 4 3 0 3 0 3 8 5 5 3 0 3 8 8 5 5 3 5 7
+4 0 7 8 7 5 4 5 0 5 5 4 5 0 5 5 5 3 7 8 7 5 4 5 0 5 5 4 5 0 5 3 5 3 5 3 8 7 5 3 5 7 8 8 8 5 0 5 7
+0 0 7 8 7 8 7 4 7 5 5 7 5 0 5 5 0 0 7 8 7 5 7 7 7 5 5 4 4 0 0 3 5 3 5 7 8 7 5 3 5 7 8 8 7 5 3 5 7
+0 0 7 9 7 8 7 5 7 5 7 7 5 3 5 5 0 5 7 9 7 8 7 7 7 5 0 7 4 0 5 2 5 5 5 7 9 7 8 5 5 7 9 8 8 7 0 8 7
+0 0 7 8 7 8 7 7 7 7 7 7 7 8 7 5 5 5 7 8 7 8 7 7 7 7 8 7 4 5 5 8 3 3 3 7 9 7 8 5 5 7 9 8 8 7 5 5 7
+0 0 7 7 7 8 7 7 7 5 7 7 7 8 7 5 0 5 7 7 7 5 7 8 7 7 8 7 5 5 5 2 5 3 5 7 9 7 7 5 8 7 9 8 7 7 8 7 7
+0 0 7 9 7 8 7 7 7 5 7 7 7 8 8 7 5 8 7 9 7 8 7 8 7 8 8 7 5 7 8 8 8 3 7 7 9 7 7 8 9 7 8 8 7 7 8 7 7
+0 0 7 8 7 7 7 7 7 5 7 7 7 4 7 7 4 7 7 7 7 7 7 7 7 7 0 7 7 7 8 8 7 9 7 7 7 7 7 9 9 7 8 8 7 9 9 7 7
+0 0 7 8 7 7 7 7 7 7 4 7 4 8 9 5 4 7 7 9 7 7 7 7 7 7 0 7 7 7 7 8 7 7 7 7 7 7 7 9 9 7 8 8 7 9 7 7 7
+0 0 7 8 7 7 7 7 7 7 4 7 3 8 9 3 7 7 7 7 7 7 7 7 7 7 0 7 7 7 7 8 3 7 7 7 7 7 9 7 9 9 8 8 8 9 7 7 7
+3 0 7 9 7 7 7 7 7 7 4 7 7 3 9 7 7 7 7 7 7 7 7 7 7 7 0 7 7 7 7 8 3 7 7 7 7 7 5 9 9 9 8 8 8 7 7 7 7
+3 0 7 9 7 7 7 7 7 7 7 7 3 4 9 7 7 7 7 7 7 7 7 7 7 7 0 7 7 7 4 8 5 7 7 7 7 7 9 9 9 7 8 8 8 7 7 7 7
+0 0 7 9 7 7 7 7 7 7 7 7 3 8 9 3 9 7 7 7 7 7 7 7 7 7 0 7 7 7 7 8 3 7 7 9 7 7 9 9 9 7 7 7 7 8 7 7 7
+0 0 7 9 7 7 7 7 7 7 7 7 0 8 9 6 9 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 7 9 7 9 7 9 9 7 7 7 7 7 7 7 7
+“six” holds 7; the name denotes 6; model WRONG: answered 11
+Top-1 probe prediction at every layer and token (Llama-3.2-3B, L3, with chain of thought; boxed = the name's tokens, dashed = start of the chain)
+true value the model's answer (when wrong) what the name denotes other
+Figure 14: As above, on a problem answered wrongly for another reason.
+21
+
+PAGE 22
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+5 5 5 0 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 0 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 0 5 5 5 5 5 0 5 5 5 5 5 1
+5 5 3 0 0 5 5 5 5 0 5 5 5 5 5 5 5 5 3 0 0 0 5 5 5 0 5 5 5 5 5 5 5 5 5 5 0 0 5 5 5 5 0 0 3 5 5 5 1
+5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 5 5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 0 0 5 5 4 0 0 5 5 5 5 0 0 3 0 5 5 1
+5 5 2 0 0 0 0 5 5 0 0 0 5 5 5 5 5 5 5 0 0 0 5 5 5 0 0 0 5 5 5 0 0 5 5 5 0 0 5 5 5 0 0 0 1 5 5 5 1
+0 5 2 0 0 0 0 0 5 0 0 0 0 5 5 5 5 5 5 0 0 0 0 0 5 0 0 0 0 0 0 0 3 0 5 5 8 0 0 5 5 5 0 0 7 0 5 5 1
+3 5 5 0 0 0 0 0 5 0 0 0 0 0 5 5 5 5 0 0 0 0 0 0 0 0 0 0 0 0 5 3 0 0 5 5 8 0 0 5 5 3 0 0 1 0 0 0 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 5 0 5 0 0 0 0 0 0 0 0 0 0 0 0 0 3 3 0 5 5 8 0 0 0 0 0 0 0 1 1 0 0 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 1 0 0 0 0 8 8 0 7 1 1 1 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 8 0 0 0 0 8 8 0 7 1 1 3 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 0 0 0 0 0 0 0 0 0 0 4 8 0 0 0 0 0 1 0 1 1 1 1 1
+3 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 0 0 1 0 1 1 7 1 1
+3 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 1 0 8 0 1 1 7 1 1
+4 5 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 5 8 0 0 0 5 1 1 0 8 1 7 1 1
+3 3 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 8 0 0 0 2 1 0 0 8 1 1 1 1
+3 4 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 1 0 0 2 1 8 0 0 1 2 1 0 1 5 1 1 1 1
+BASELINE: the probe's most common prediction on neutral problems (its default where it reads nothing) — a coloured cell below means something only where it differs from this five
+=
+2
+ -
+ bread
+,
+ bread
+=
+2
+ -
+2
+;
+ five
+=
+?\n
+five
+=
+2
+ -
+ bread
+,
+ bread
+=
+2
+ -
+2
+,
+ bread
+=
+0
+,
+ five
+=
+2
+ -
+ bread
+,
+ five
+=
+2
+ -
+0
+,
+ five
+=
+2
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+0 5 5 0 0 5 0 5 5 5 5 0 5 0 5 5 0 5 5 0 0 5 0 5 5 5 5 0 5 0 5 5 5 0 5 5 0 0 5 0 5 5 0 5 5 5 0 5 2
+3 5 0 0 0 0 0 5 0 5 5 4 5 0 5 5 0 5 0 0 0 0 0 5 0 5 5 4 5 0 5 3 5 0 5 0 0 0 0 0 5 0 0 0 3 0 0 5 2
+4 5 2 0 0 0 7 3 0 4 5 0 0 4 5 0 4 5 0 0 0 0 0 3 0 4 3 4 4 0 3 3 3 3 5 2 0 0 0 0 5 0 0 0 2 0 4 5 2
+0 0 2 0 0 0 0 0 0 3 4 7 4 3 0 0 3 0 0 0 0 0 0 0 0 5 4 0 0 7 3 3 3 3 3 2 0 0 0 3 0 0 0 0 2 3 3 3 2
+0 0 2 0 0 0 0 0 0 0 4 0 0 3 0 0 3 3 0 0 0 0 0 0 0 4 0 0 0 0 0 2 3 3 4 2 2 0 0 3 0 0 0 0 2 3 0 3 2
+0 0 2 0 0 0 0 0 0 0 4 0 0 3 0 0 3 0 0 0 0 0 0 0 0 4 0 0 0 0 0 2 3 3 4 2 2 0 0 0 0 2 0 0 2 3 3 3 2
+0 0 2 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 4 0 0 0 0 0 2 3 3 4 2 2 0 0 0 0 0 0 0 2 3 3 3 2
+0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 2 0 4 0 0 0 0 0 2 2 3 3 2 2 0 0 0 0 2 0 0 2 3 3 2 2
+0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 2 0 4 0 0 0 2 0 2 1 0 0 2 0 0 0 0 0 0 0 2 2 2 3 2 2
+0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 4 0 0 0 2 0 2 1 0 0 2 0 0 0 0 0 0 0 2 2 3 2 2 2
+0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 2 0 2 0 0 0 2 0 2 3 0 0 0 0 0 0 0 0 0 0 2 2 0 2 2 2
+0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 2 2 0 2 0 0 0 2 2 2 3 2 0 0 0 0 0 0 0 0 0 2 2 0 2 2 2
+0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 2 2 2 5 2 0 0 0 0 0 0 0 0 0 2 2 0 2 2 2
+3 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 2 2 5 2 2 0 0 0 0 0 0 0 0 2 2 0 2 2 2
+2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0 0 4 0 0 2 2 5 5 2 2 2 0 0 5 0 2 0 0 2 5 5 2 2 2
+“five” holds 2; the name denotes 5; model WRONG: answered 0
+Top-1 probe prediction at every layer and token (Llama-3.2-3B, L3, with chain of thought; boxed = the name's tokens, dashed = start of the chain)
+true value the model's answer (when wrong) what the name denotes other
+Figure 15: A second such problem.
+22
+
+PAGE 23
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0 0 4 0 0 0 0
+0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 4 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1
+0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 3 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1
+0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 2 4 2 3 0 0 0 1 4 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1
+0 0 0 0 0 0 0 0 0 0 0 3 4 0 0 0 0 0 0 0 0 0 0 0 2 4 2 3 0 0 0 1 4 0 4 4 0 0 4 0 0 0 0 0 1 1 0 1 1
+0 0 0 0 0 0 0 0 0 0 0 3 4 0 4 0 0 0 0 0 0 4 4 4 2 4 2 3 4 4 4 1 1 4 4 4 4 4 4 0 4 4 4 4 1 1 1 4 1
+0 0 0 0 0 0 0 0 0 0 0 3 4 0 2 0 0 0 0 0 0 0 2 1 2 3 2 3 4 4 4 1 1 0 1 4 1 4 0 0 0 1 1 1 1 4 1 1 1
+4 0 0 0 0 0 0 0 0 0 0 2 4 0 4 0 0 0 0 0 0 0 2 3 2 3 2 3 4 4 1 1 1 0 1 1 1 4 0 0 0 1 1 1 1 1 1 1 1
+4 0 0 0 0 0 0 0 0 0 0 3 0 0 4 0 0 0 0 0 0 0 2 1 2 3 3 3 4 4 1 1 1 0 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1
+4 0 0 0 0 0 0 0 0 0 0 3 0 0 4 0 0 0 0 0 0 0 2 1 2 3 3 3 4 4 1 1 1 0 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1
+4 0 0 0 0 0 0 0 0 0 0 3 0 0 1 0 0 0 0 0 0 4 2 1 2 3 3 3 4 4 1 1 1 0 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1
+3 3 0 0 0 0 0 0 0 0 0 3 0 0 1 0 0 0 4 0 0 4 2 2 2 3 3 3 4 4 1 1 1 0 1 1 1 0 0 0 1 1 1 1 1 1 1 1 1
+4 4 0 0 0 4 0 0 0 2 0 3 0 4 1 0 0 2 4 0 0 2 2 2 2 3 3 3 4 4 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1
+BASELINE: the probe's most common prediction on neutral problems (its default where it reads nothing) — a coloured cell below means something only where it differs from this truck
+=
+2
+ +
+ nine
+,
+ nine
+=
+7
+ -
+6
+;
+ truck
+=
+?\n
+truck
+=
+2
+ +
+ nine
+,
+ nine
+=
+7
+ -
+6
+,
+ nine
+=
+1
+,
+ truck
+=
+2
+ +
+ nine
+,
+ truck
+=
+2
+ +
+1
+,
+ truck
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0
+4 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 3
+0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1
+0 0 2 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 1 0 3 0 1 1 0 0 1 4 0 0 0 0 0 0 0 1 1 0 0 1
+0 0 2 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 4 2 0 0 0 3 1 3 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1
+0 0 2 0 0 0 4 4 0 0 0 1 0 0 0 0 0 0 0 0 0 2 4 0 0 1 1 1 0 0 0 1 1 1 0 0 0 0 0 0 0 0 0 4 1 1 0 0 1
+4 0 2 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 3 1 1 1 0 0 0 1 1 1 1 1 0 0 1 0 0 0 0 4 1 1 1 1 1
+4 0 2 0 0 0 2 2 0 0 0 1 0 4 1 0 0 0 0 0 0 0 0 1 3 1 1 3 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+4 0 2 0 0 2 0 0 0 0 3 3 0 0 1 0 0 0 0 2 0 0 0 2 3 1 1 3 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 2 1
+4 0 2 0 0 0 0 0 0 0 0 3 0 4 1 0 0 0 0 2 2 2 0 3 2 3 3 3 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+4 0 2 0 1 3 1 0 0 0 0 3 0 0 1 0 0 0 0 2 2 4 0 3 2 3 3 3 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+4 0 2 0 0 3 1 0 0 0 0 3 0 0 1 0 0 0 0 0 2 0 0 2 3 3 3 3 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+4 0 2 0 0 3 1 0 0 0 0 3 0 0 1 0 0 0 0 0 2 3 0 2 3 3 3 3 0 1 1 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1
+4 4 2 0 0 0 0 0 0 0 0 3 0 0 1 0 2 0 0 0 4 8 0 3 3 3 3 3 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+2 4 2 2 2 8 0 0 0 0 0 3 0 0 1 7 0 0 0 0 0 8 5 3 3 3 3 8 8 2 1 1 1 1 1 1 1 1 7 1 1 1 1 1 1 1 1 1 1
+“nine” holds 1; the name denotes 9; model WRONG: answered 4
+Top-1 probe prediction at every layer and token (Llama-3.2-3B, L3, with chain of thought; boxed = the name's tokens, dashed = start of the chain)
+true value the model's answer (when wrong) what the name denotes other
+Figure 16: As above, for the intermediate variable. Red is the model’s final answer, which is the queried variable’s
+value, so a cell that matches it is not a readout of this variable.
+23
+
+PAGE 24
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0 0 0 0 0 0 0 0 0 0 0 0 4 0 0 0 0
+0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 1 4 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1
+0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 3 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1
+0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 2 4 2 3 0 0 0 1 4 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 1
+0 0 0 0 0 0 0 0 0 0 0 3 4 0 0 0 0 0 0 0 0 0 0 0 2 4 2 3 0 0 0 1 4 0 4 4 0 0 4 0 0 0 0 0 1 1 0 1 1
+0 0 0 0 0 0 0 0 0 0 0 3 4 0 4 0 0 0 0 0 0 4 4 4 2 4 2 3 4 4 4 1 1 4 4 4 4 4 4 0 4 4 4 4 1 1 1 4 1
+0 0 0 0 0 0 0 0 0 0 0 3 4 0 2 0 0 0 0 0 0 0 2 1 2 3 2 3 4 4 4 1 1 0 1 4 1 4 0 0 0 1 1 1 1 4 1 1 1
+4 0 0 0 0 0 0 0 0 0 0 2 4 0 4 0 0 0 0 0 0 0 2 3 2 3 2 3 4 4 1 1 1 0 1 1 1 4 0 0 0 1 1 1 1 1 1 1 1
+4 0 0 0 0 0 0 0 0 0 0 3 0 0 4 0 0 0 0 0 0 0 2 1 2 3 3 3 4 4 1 1 1 0 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1
+4 0 0 0 0 0 0 0 0 0 0 3 0 0 4 0 0 0 0 0 0 0 2 1 2 3 3 3 4 4 1 1 1 0 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1
+4 0 0 0 0 0 0 0 0 0 0 3 0 0 1 0 0 0 0 0 0 4 2 1 2 3 3 3 4 4 1 1 1 0 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1
+3 3 0 0 0 0 0 0 0 0 0 3 0 0 1 0 0 0 4 0 0 4 2 2 2 3 3 3 4 4 1 1 1 0 1 1 1 0 0 0 1 1 1 1 1 1 1 1 1
+4 4 0 0 0 4 0 0 0 2 0 3 0 4 1 0 0 2 4 0 0 2 2 2 2 3 3 3 4 4 1 1 1 1 1 1 1 1 0 1 1 1 1 1 1 1 1 1 1
+BASELINE: the probe's most common prediction on neutral problems (its default where it reads nothing) — a coloured cell below means something only where it differs from this seed
+=
+3
+ +
+ one
+,
+ one
+=
+3
+ +
+0
+;
+ seed
+=
+?\n
+seed
+=
+3
+ +
+ one
+,
+ one
+=
+3
+ +
+0
+,
+ one
+=
+3
+,
+ seed
+=
+3
+ +
+ one
+,
+ seed
+=
+3
+ +
+3
+,
+ seed
+=
+6
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+0 0 0 0 0 0 0 0 0 4 0 2 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0 2 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0
+0 0 0 0 0 0 0 0 0 4 4 2 4 0 0 0 0 0 0 0 0 0 0 0 0 4 4 2 4 4 0 3 3 0 0 0 0 0 0 0 0 0 0 0 3 3 3 0 3
+0 0 3 0 0 0 0 0 0 4 4 2 4 4 4 4 4 0 3 0 0 0 0 0 0 4 4 2 2 4 4 3 4 4 4 0 4 0 4 0 0 0 4 2 3 3 3 3 3
+0 0 3 0 0 0 0 0 2 4 4 2 2 3 4 4 3 4 3 4 0 0 0 0 4 4 2 2 2 4 4 3 4 4 4 0 4 0 0 0 0 0 4 2 3 4 3 3 3
+4 0 3 0 0 0 0 0 0 4 4 2 2 4 2 4 4 4 2 4 4 4 4 4 4 4 2 2 2 4 4 3 3 3 4 0 4 0 0 4 0 0 0 2 3 4 4 3 3
+4 0 3 0 0 0 4 0 2 4 4 2 2 4 2 4 4 2 2 4 4 2 4 4 4 4 2 2 2 4 4 3 2 4 0 0 4 0 0 0 0 2 2 2 3 1 4 3 3
+4 0 3 0 0 4 0 0 2 4 4 2 4 4 2 4 4 2 2 4 4 2 4 2 4 4 2 2 2 2 4 3 3 1 1 3 4 0 2 4 0 2 2 0 3 4 4 4 3
+4 0 3 4 0 4 0 4 2 4 4 2 4 4 4 4 4 2 2 4 4 2 4 2 4 4 2 2 2 4 4 3 3 1 1 2 1 0 1 0 0 2 2 1 3 3 4 4 3
+0 0 3 0 0 4 0 0 2 4 4 2 4 4 4 4 4 2 2 4 2 2 4 4 4 4 2 2 2 2 2 3 3 1 3 1 1 3 1 3 0 3 3 0 3 4 3 3 3
+0 0 3 0 0 4 0 2 2 4 4 2 4 4 3 4 4 2 2 4 2 4 4 4 6 2 4 2 2 4 3 3 3 3 3 1 1 3 1 3 0 3 3 0 3 3 3 3 3
+0 0 3 0 0 4 1 2 0 4 4 2 4 4 3 4 4 2 2 4 2 4 4 4 6 2 4 2 2 1 3 3 3 3 3 1 1 3 3 3 0 3 3 3 3 3 3 3 3
+0 0 3 0 0 0 1 2 0 6 4 4 4 4 3 4 0 2 2 2 2 4 4 4 6 4 4 2 4 2 3 3 3 3 3 1 1 1 1 3 3 3 3 3 3 3 3 3 3
+0 0 3 0 0 0 0 0 0 4 4 4 4 4 3 4 0 2 4 2 2 1 6 4 6 4 4 2 1 4 3 3 3 3 3 1 1 1 1 3 3 3 3 3 3 3 3 3 3
+0 0 3 0 0 0 0 0 0 4 4 5 4 4 3 4 0 0 4 2 2 1 6 4 6 4 4 4 1 4 3 3 3 3 3 1 1 1 1 3 3 3 3 3 3 3 3 3 3
+0 0 3 0 0 0 0 0 0 7 6 4 4 4 3 4 4 2 4 6 6 1 6 4 6 2 4 5 1 1 3 3 3 3 3 1 1 1 1 3 3 3 3 3 3 3 3 3 3
+“one” holds 3; the name denotes 1; model WRONG: answered 3
+Top-1 probe prediction at every layer and token (Llama-3.2-3B, L3, with chain of thought; boxed = the name's tokens, dashed = start of the chain)
+true value the model's answer (when wrong) what the name denotes other
+Figure 17: A second problem, intermediate variable.
+24
+
+PAGE 25
+0
+1
+neutral
+0
+1
+congruent (intermediate)
+0
+1
+incongruent (intermediate)
+acc (max over layers)
+lure rate (max)
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+; bin
+=
+?⏎ bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+, chair
+=
+3
+, bin
+=
+0
+ + chair
+, bin
+=
+0
+ +
+3
+, bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+; bin
+=
+?⏎ bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+, chair
+=
+3
+, bin
+=
+0
+ + chair
+, bin
+=
+0
+ +
+3
+, bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+; bin
+=
+?⏎ bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+, chair
+=
+3
+, bin
+=
+0
+ + chair
+, bin
+=
+0
+ +
+3
+, bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+margin log p(true) - log p(lure)
+−5
+0
+5
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+probe accuracy
+Llama-3.2-3B, level 3, with chain of thought: per-token probes for the value of the intermediate variable (trained on neutral problems)
+Figure 18: Accuracy heatmaps by token and layer for the neutral, congruent and incongruent conditions, in the
+layout of Kudo et al.’s Figure 2.
+25
+
+PAGE 26
+0
+1
+neutral
+0
+1
+congruent (intermediate)
+0
+1
+incongruent (intermediate)
+acc (max over layers)
+lure rate (max)
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+bin
+=
+0
+ +
+ chair
+,
+ chair
+=
+4
+ -
+1
+;
+ bin
+=
+?⏎
+bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ +
+ chair
+,
+ chair
+=
+4
+ -
+1
+;
+ bin
+=
+?⏎
+bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ +
+ chair
+,
+ chair
+=
+4
+ -
+1
+;
+ bin
+=
+?⏎
+bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+margin log p(true) - log p(lure)
+−5.0
+−2.5
+0.0
+2.5
+5.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+probe accuracy
+Llama-3.2-3B, level 3, direct answer: per-token probes for the value of the intermediate variable (trained on neutral problems)
+Figure 19: The same heatmaps in the direct regime.
+26
+
+PAGE 27
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers whose activations were replaced
+answer follows a different problem
+(does this span carry the answer?)
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+lure answer removed
+(patched from the neutral twin)
+too few lure errors (0) to draw
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+answer follows a swapped-in lure
+(patched from a different lure)
+pen's equation
+cup's equation
+query line
+step 1: restate pen
+step 2: restate cup
+step 3: write cup's value
+step 4: restate pen
+step 5: substitute into pen
+step 6: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: restate pen
+step 2: restate cup
+step 3: write cup's value
+step 4: restate pen
+step 5: substitute into pen
+step 6: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: restate pen
+step 2: restate cup
+step 3: write cup's value
+step 4: restate pen
+step 5: substitute into pen
+step 6: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Llama-3.2-3B, level 3, with chain of thought, number word on the intermediate variable
+Figure 20: Span-by-layer-window patching grids, three sources (the lure-removal panel is empty: with CoT there
+are too few lure errors to draw), after Kudo et al.’s Figures 5–6.
+27
+
+PAGE 28
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers whose activations were replaced
+answer follows a different problem
+(does this span carry the answer?)
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+lure answer removed
+(patched from the neutral twin)
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+answer follows a swapped-in lure
+(patched from a different lure)
+pen's equation
+cup's equation
+query line
+step 1: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Llama-3.2-3B, level 3, direct answer, number word on the intermediate variable
+Figure 21: The same grids in the direct regime.
+28
+
+PAGE 29
+0 5 10 15 20 25
+layer patched
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+share of cases
+Llama-3.2-3B, direct answer
+neutral: removes lure
+normalized logit diff.
+word: damage
+new lure: removes old
+new lure: followed
+Figure 22: Lure errors removed by patching, by layer, with both controls.
+29
+
+PAGE 30
+0
+1
+neutral
+0
+1
+congruent (queried)
+0
+1
+incongruent (queried)
+acc (max over layers)
+lure rate (max)
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+; bin
+=
+?⏎ bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+, chair
+=
+3
+, bin
+=
+0
+ + chair
+, bin
+=
+0
+ +
+3
+, bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+; bin
+=
+?⏎ bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+, chair
+=
+3
+, bin
+=
+0
+ + chair
+, bin
+=
+0
+ +
+3
+, bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+; bin
+=
+?⏎ bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+, chair
+=
+3
+, bin
+=
+0
+ + chair
+, bin
+=
+0
+ +
+3
+, bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+margin log p(true) - log p(lure)
+−5
+0
+5
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+probe accuracy
+Llama-3.2-3B, level 3, with chain of thought: per-token probes for the value of the queried variable (trained on neutral problems)
+Figure 23: Accuracy heatmaps as above, chain-of-thought regime, queried variable.
+30
+
+PAGE 31
+0
+1
+neutral
+0
+1
+congruent (queried)
+0
+1
+incongruent (queried)
+acc (max over layers)
+lure rate (max)
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+bin
+=
+0
+ +
+ chair
+,
+ chair
+=
+4
+ -
+1
+;
+ bin
+=
+?⏎
+bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+layer
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ +
+ chair
+,
+ chair
+=
+4
+ -
+1
+;
+ bin
+=
+?⏎
+bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ +
+ chair
+,
+ chair
+=
+4
+ -
+1
+;
+ bin
+=
+?⏎
+bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+margin log p(true) - log p(lure)
+−5
+0
+5
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+probe accuracy
+Llama-3.2-3B, level 3, direct answer: per-token probes for the value of the queried variable (trained on neutral problems)
+Figure 24: The same heatmaps in the direct regime, queried variable.
+31
+
+PAGE 32
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers whose activations were replaced
+answer follows a different problem
+(does this span carry the answer?)
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+lure answer removed
+(patched from the neutral twin)
+too few lure errors (1) to draw
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+answer follows a swapped-in lure
+(patched from a different lure)
+pen's equation
+cup's equation
+query line
+step 1: restate pen
+step 2: restate cup
+step 3: write cup's value
+step 4: restate pen
+step 5: substitute into pen
+step 6: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: restate pen
+step 2: restate cup
+step 3: write cup's value
+step 4: restate pen
+step 5: substitute into pen
+step 6: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: restate pen
+step 2: restate cup
+step 3: write cup's value
+step 4: restate pen
+step 5: substitute into pen
+step 6: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Llama-3.2-3B, level 3, with chain of thought, number word on the queried variable
+Figure 25: Span-by-layer-window patching grids, chain-of-thought regime, queried variable; the lure-removal
+panel is empty for the same reason.
+32
+
+PAGE 33
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers whose activations were replaced
+answer follows a different problem
+(does this span carry the answer?)
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+lure answer removed
+(patched from the neutral twin)
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+answer follows a swapped-in lure
+(patched from a different lure)
+pen's equation
+cup's equation
+query line
+step 1: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Llama-3.2-3B, level 3, direct answer, number word on the queried variable
+Figure 26: The same grids in the direct regime, queried variable.
+33
+
+PAGE 34
+0 5 10 15 20 25 ALL
+layer patched
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+proportion / normalized change
+Llama-3.2-3B, direct answer
+neutral: removes lure
+normalized logit diff.
+word: damage
+new lure: removes old
+new lure: followed
+Figure 27: Lure errors removed by patching, by layer, with both controls, queried variable.
+34
+
+PAGE 35
+six
+=
+7
+ +
+ table
+,
+ table
+=
+2
+ -
+2
+,
+ table
+=
+4
+,
+ six
+=
+7
+ +
+ table
+,
+ six
+=
+7
+ +
+4
+,
+ six
+=
+11
+\n\n
+0
+6
+12
+18
+24
+layer
+5 5 5 5 3 4 3 5 5 5 5 5 4 3 5 5 4 3 5 5 5 3 4 3 5 5 5 5 5 4 3 5 5 4
+4 5 4 3 1 3 5 4 5 5 5 5 5 5 4 5 3 3 5 5 3 5 4 4 5 5 3 3 3 5 4 5 3 3
+9 4 8 1 1 8 8 4 8 5 3 1 8 1 5 8 8 0 0 8 1 1 8 8 5 8 0 0 0 8 1 5 8 0
+3 8 8 5 0 8 8 8 7 5 5 0 8 8 5 8 8 8 8 8 5 1 8 8 8 8 5 5 5 8 3 5 8 7
+3 8 5 5 5 8 5 5 5 5 3 2 5 5 5 5 8 5 5 5 5 5 5 3 5 5 9 5 5 3 3 9 5 3
+5 5 8 3 0 3 4 5 5 5 0 5 3 5 5 8 3 0 5 8 5 5 3 4 5 5 5 0 2 9 4 8 8 0
+0 3 8 8 9 3 3 8 1 0 3 1 0 0 1 2 0 0 0 8 5 9 0 9 8 8 8 8 8 9 8 9 9 3
+2 5 5 5 3 3 3 0 4 3 3 2 3 0 0 0 3 3 8 5 3 3 8 8 8 5 3 3 8 8 8 9 6 3
+8 8 8 3 3 3 0 2 2 2 3 6 3 0 2 2 8 3 8 8 2 2 8 8 8 8 0 4 8 8 8 9 2 8
+7 7 9 9 2 3 0 0 0 2 7 2 7 0 4 0 6 7 7 5 2 6 7 7 7 5 4 2 6 7 9 9 0 7
+7 7 5 0 3 0 2 0 0 2 7 0 0 0 4 0 6 7 7 1 0 2 7 7 9 5 4 4 7 7 9 1 0 7
+7 7 1 0 0 0 2 2 0 2 7 0 2 0 0 0 6 7 7 1 2 6 6 7 9 1 4 4 0 7 9 9 0 7
+7 7 5 6 6 0 2 2 0 2 3 6 6 0 0 0 6 7 7 1 3 6 6 7 7 4 4 4 6 6 9 9 1 7
+7 7 1 2 2 2 2 2 2 2 2 0 2 0 4 0 6 7 7 1 2 6 6 7 7 4 4 4 6 6 9 9 0 7
+7 7 5 6 6 6 2 2 1 2 2 6 6 1 0 6 6 7 7 1 6 6 6 1 7 1 4 4 6 6 9 9 1 3
+“six” holds 7; the name denotes 6; model answered 11
+five
+=
+2
+ -
+ bread
+,
+ bread
+=
+2
+ -
+2
+,
+ bread
+=
+0
+,
+ five
+=
+2
+ -
+ bread
+,
+ five
+=
+2
+ -
+2
+,
+ five
+=
+0
+\n\n
+0
+6
+12
+18
+24
+layer
+5 5 5 5 3 4 3 5 5 5 5 5 4 3 5 4 4 5 5 5 5 3 4 5 5 5 5 5 5 4 5 5 4 4
+5 5 5 5 4 3 4 5 5 5 5 5 5 4 5 3 3 3 5 5 5 4 3 3 5 5 3 5 5 5 4 5 3 4
+9 4 4 9 1 8 8 0 8 5 5 5 8 4 0 0 0 0 0 4 5 1 8 5 5 4 5 5 5 0 4 5 0 0
+3 8 7 7 4 8 8 4 8 5 0 0 8 4 4 1 8 8 8 7 5 1 8 8 3 7 5 5 0 8 3 0 1 7
+3 8 5 2 2 3 3 0 5 5 3 5 8 3 0 0 5 3 0 5 5 5 2 3 3 5 5 0 5 0 3 0 0 0
+7 5 8 5 4 3 4 3 5 5 0 0 3 4 0 0 0 0 4 5 5 2 3 0 5 5 5 2 2 3 4 0 0 0
+0 0 0 0 0 0 3 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 4 5 4 4 0 0 0 0 0 0
+2 0 2 4 2 3 0 0 0 4 3 0 0 0 0 0 0 0 0 0 2 0 0 3 0 0 0 3 0 0 0 0 0 3
+2 2 2 2 2 8 0 0 0 2 3 2 2 0 0 0 2 2 0 2 2 2 2 2 0 0 0 2 2 8 0 0 0 8
+2 2 0 9 2 0 0 0 0 3 7 0 0 0 0 0 5 0 0 0 3 5 5 0 2 0 2 2 0 5 0 0 0 7
+2 2 0 3 2 0 2 0 0 2 7 0 0 0 0 0 5 0 2 0 0 0 5 0 2 0 0 2 0 5 0 0 0 7
+2 2 0 0 0 0 2 2 2 2 7 0 0 0 0 0 5 2 2 0 0 5 5 0 2 0 0 2 0 5 0 0 0 7
+2 2 0 3 6 3 2 2 0 2 3 6 3 0 0 0 5 2 2 0 3 5 5 0 2 0 2 2 0 5 0 0 0 3
+2 2 0 3 2 3 2 2 2 2 2 0 5 0 0 0 5 2 2 0 0 5 5 0 2 2 2 2 0 5 0 0 0 7
+2 2 1 1 1 1 2 2 1 2 2 1 1 1 0 1 5 2 2 1 1 5 5 2 2 2 2 2 1 5 2 0 0 3
+“five” holds 2; the name denotes 5; model answered 0
+nine
+=
+0
+ +
+ wheel
+,
+ wheel
+=
+4
+ +
+2
+,
+ wheel
+=
+2
+,
+ nine
+=
+0
+ +
+ wheel
+,
+ nine
+=
+0
+ +
+2
+,
+ nine
+=
+2
+\n\n
+0
+6
+12
+18
+24
+layer
+3 5 4 5 3 4 3 5 5 5 5 5 4 3 5 5 4 5 5 4 5 3 4 5 5 4 5 5 5 4 5 5 5 4
+4 5 3 3 5 3 0 5 5 5 5 5 5 5 5 5 3 5 5 3 3 5 3 5 5 3 3 5 5 4 5 5 5 5
+9 4 4 1 1 8 8 5 8 5 5 1 8 5 5 8 8 0 0 2 1 1 8 4 4 2 3 0 1 8 4 4 0 0
+3 8 7 5 0 8 9 7 8 5 5 9 8 1 8 7 8 8 8 1 5 1 8 8 8 7 5 5 7 8 3 0 7 7
+3 8 5 5 5 9 9 8 5 5 3 5 8 5 8 5 3 5 5 5 2 5 3 4 4 5 2 0 5 3 5 9 5 3
+0 4 0 3 0 3 4 3 8 5 0 5 3 0 8 8 3 0 5 5 5 5 3 4 5 5 5 3 6 3 4 8 8 0
+0 8 8 8 9 8 3 8 8 8 3 8 8 5 8 6 0 0 0 2 2 2 0 4 8 8 8 8 8 8 0 8 0 0
+2 2 2 3 3 3 3 8 5 5 3 5 3 3 5 6 3 2 2 2 2 2 3 3 4 8 3 3 2 4 3 4 4 3
+2 0 8 8 3 8 4 4 8 4 3 6 8 2 4 2 2 2 0 2 2 2 8 2 4 2 2 3 2 8 2 4 2 8
+0 0 9 9 9 9 4 4 1 2 8 6 8 0 6 1 9 0 0 1 8 1 9 0 4 2 2 2 1 9 2 2 0 8
+0 0 0 0 0 0 4 4 3 2 9 3 3 0 6 0 9 0 0 0 0 0 9 0 0 2 2 2 7 9 2 2 2 7
+0 0 0 0 0 0 4 4 2 2 7 9 9 0 6 0 9 0 0 1 0 9 9 0 0 2 2 2 1 9 2 2 0 7
+0 0 0 0 0 8 4 4 2 2 3 6 9 0 6 1 9 0 0 1 3 9 9 0 0 2 2 2 1 9 2 2 0 7
+0 0 0 2 0 2 4 4 2 2 2 0 2 2 6 0 9 0 0 1 2 9 9 0 0 2 2 2 0 9 2 2 2 0
+0 0 1 6 1 6 4 4 2 2 2 1 1 1 2 1 9 1 0 1 1 1 9 0 0 2 2 2 1 9 2 2 1 3
+“nine” holds 6; the name denotes 9; model answered 2
+nine
+=
+0
+ +
+ wheel
+,
+ wheel
+=
+5
+ +
+1
+,
+ wheel
+=
+5
+,
+ nine
+=
+0
+ +
+ wheel
+,
+ nine
+=
+0
+ +
+5
+,
+ nine
+=
+5
+\n\n
+0
+6
+12
+18
+24
+layer
+3 5 4 5 3 4 3 5 5 5 5 4 4 3 5 5 4 5 5 4 5 3 4 5 5 4 5 5 5 4 5 5 5 4
+4 5 3 3 5 3 0 5 3 3 5 1 3 4 5 3 3 5 5 3 3 5 3 5 5 3 3 5 5 3 5 5 3 3
+9 4 4 1 1 8 8 5 8 5 0 1 8 5 5 8 8 0 0 2 1 1 8 1 4 2 1 0 1 8 1 4 8 0
+3 8 7 5 0 8 9 7 8 5 5 9 8 1 7 8 8 8 8 1 5 1 8 8 8 7 5 5 7 8 3 4 8 7
+3 8 5 5 5 9 9 8 3 5 3 3 8 5 8 5 8 0 8 5 5 5 9 4 4 5 2 0 3 8 3 9 8 0
+7 4 0 3 0 3 4 3 8 5 0 3 3 5 8 8 0 0 5 5 2 2 3 4 5 5 5 3 2 3 4 8 8 0
+0 8 8 8 9 8 3 8 8 8 3 8 8 8 8 8 0 0 0 2 8 0 0 4 8 8 8 8 8 8 0 8 8 0
+2 2 2 3 3 3 3 8 5 5 3 3 3 3 5 5 3 0 0 2 3 3 3 3 8 8 5 3 2 4 5 5 0 3
+2 0 8 8 3 8 3 8 8 1 3 6 8 2 5 2 8 2 0 2 8 2 8 2 4 8 8 3 2 8 8 5 0 8
+0 0 9 9 9 8 5 5 1 1 8 6 9 7 5 2 9 0 0 2 8 1 9 0 5 5 5 5 1 9 5 5 0 8
+0 0 0 0 0 0 5 5 1 1 9 3 3 0 5 2 9 0 0 0 0 0 9 0 0 1 5 5 1 9 5 5 2 7
+0 0 0 0 0 0 5 5 1 1 9 9 9 0 5 2 9 0 0 1 0 9 9 0 0 1 5 5 1 9 5 5 0 7
+0 0 0 0 0 8 5 5 1 1 3 6 9 5 5 2 9 0 0 0 5 9 9 0 0 1 5 5 1 9 5 5 0 7
+0 0 0 2 0 2 5 5 1 1 3 0 2 5 5 2 9 0 0 1 5 9 9 0 0 1 5 5 1 9 5 5 0 0
+0 0 1 6 1 6 5 5 1 1 1 1 1 1 5 1 9 1 0 1 1 1 9 0 0 1 5 5 1 9 5 5 1 3
+“nine” holds 6; the name denotes 9; model answered 5
+two
+=
+9
+ -
+ ink
+,
+ ink
+=
+7
+ +
+1
+,
+ ink
+=
+6
+,
+ two
+=
+9
+ -
+ ink
+,
+ two
+=
+9
+ -
+6
+,
+ two
+=
+3
+\n\n
+0
+6
+12
+18
+24
+layer
+5 5 5 5 3 4 3 5 5 5 5 4 4 3 5 5 4 3 5 5 5 3 4 3 5 5 5 5 5 4 3 5 5 4
+5 5 5 5 3 3 4 3 5 3 1 1 3 4 5 5 3 4 5 5 3 3 3 4 5 5 3 5 3 3 4 5 3 5
+0 4 4 9 1 8 8 0 8 0 0 1 8 1 5 8 8 0 5 4 9 1 0 0 5 8 0 0 1 8 4 5 8 0
+7 7 8 5 2 8 3 8 8 5 0 9 8 2 8 8 8 4 4 8 5 1 8 5 5 8 5 5 5 8 4 3 7 7
+3 8 5 5 2 5 3 8 3 5 3 3 9 3 8 5 3 0 5 5 5 2 2 3 5 5 5 0 3 3 3 5 0 3
+0 5 8 5 9 3 4 3 0 0 0 3 3 3 8 8 0 0 5 8 5 2 3 0 5 5 5 5 0 3 5 5 0 0
+0 4 8 0 0 3 3 8 8 9 0 8 8 3 8 8 0 0 2 2 2 0 0 0 4 8 5 8 0 1 0 3 0 0
+2 2 2 3 2 3 3 8 5 5 3 5 3 3 5 5 3 2 0 2 2 2 3 3 3 0 3 3 2 3 0 2 2 3
+6 8 2 8 2 8 0 8 1 1 3 6 8 2 6 2 2 2 2 3 2 2 2 2 2 0 0 2 2 2 0 3 1 3
+9 9 0 9 9 9 7 7 1 1 9 6 9 0 6 0 2 0 9 1 1 2 2 0 9 0 6 6 1 2 3 3 0 3
+3 9 3 0 9 0 7 7 1 1 3 0 0 0 6 0 2 0 9 0 0 2 2 0 9 0 6 6 2 2 3 3 0 3
+9 9 0 0 0 0 7 7 1 1 3 0 0 0 6 0 2 0 9 1 6 0 2 0 9 1 6 6 0 2 3 3 0 3
+9 9 0 0 6 0 7 7 1 1 3 6 7 0 6 0 2 2 9 0 6 0 2 0 9 0 6 6 0 2 3 3 0 3
+9 9 0 0 0 0 7 7 1 1 3 0 2 7 6 0 2 2 9 0 6 2 2 0 9 0 6 6 0 2 3 3 0 3
+9 9 1 5 1 1 7 7 1 1 1 1 1 1 8 1 2 2 9 1 6 2 2 0 9 1 6 6 1 2 3 3 1 3
+“two” holds 1; the name denotes 2; model answered 3
+five
+=
+1
+ +
+ fan
+,
+ fan
+=
+4
+ +
+2
+,
+ fan
+=
+5
+,
+ five
+=
+1
+ +
+ fan
+,
+ five
+=
+1
+ +
+5
+,
+ five
+=
+6
+\n\n
+0
+6
+12
+18
+24
+layer
+5 5 4 5 4 4 4 5 5 5 5 5 4 4 5 5 4 5 5 4 5 4 4 5 5 4 5 5 5 4 5 5 5 4
+5 5 4 3 5 3 1 3 8 5 5 5 5 5 3 8 3 3 5 3 3 5 3 3 5 4 3 5 3 3 4 5 3 5
+9 4 4 1 1 8 8 4 8 5 0 1 8 8 5 8 8 1 5 4 1 1 8 1 5 5 1 5 1 8 9 5 0 0
+3 8 7 5 0 8 8 8 8 5 5 9 8 8 8 8 8 8 8 5 5 1 8 8 8 8 5 5 8 8 3 8 8 5
+3 8 5 5 3 8 3 8 5 5 3 5 9 3 8 8 8 0 8 5 5 5 3 3 5 8 5 5 0 8 3 8 0 0
+7 5 8 3 0 3 3 3 2 5 0 5 3 3 8 8 3 0 9 8 5 3 3 0 3 5 5 6 2 9 5 8 9 0
+0 8 8 8 9 8 3 8 8 8 3 8 8 4 8 8 8 0 8 8 8 8 8 8 8 8 8 8 8 8 0 9 9 8
+2 5 2 3 5 5 3 8 5 5 3 5 3 3 8 5 3 0 3 3 3 3 3 3 8 5 5 3 2 8 0 9 0 3
+2 2 2 1 4 8 8 4 8 4 3 6 8 2 3 8 2 2 2 2 2 2 2 2 4 8 0 3 2 8 0 9 0 8
+1 1 1 0 1 9 4 4 1 2 8 6 9 7 3 2 7 1 1 5 5 1 5 1 5 5 3 5 1 7 8 6 0 6
+0 1 0 0 3 0 4 4 5 2 7 0 0 0 7 2 5 1 1 1 0 0 5 2 5 5 5 5 2 5 6 6 2 7
+1 1 1 0 0 0 4 4 2 2 0 0 0 0 3 0 5 1 1 1 5 5 5 1 1 5 5 5 0 5 6 6 0 7
+1 1 5 5 6 4 4 4 4 2 3 6 5 4 3 2 5 1 1 1 5 5 5 1 1 1 5 5 0 5 6 6 0 3
+1 1 5 5 0 5 4 4 2 2 2 0 5 4 3 2 5 1 1 1 5 5 5 1 1 1 5 5 0 5 6 6 0 7
+1 1 5 1 1 1 4 4 2 2 2 1 5 1 3 1 5 1 1 1 5 1 5 1 1 1 5 5 1 5 5 6 5 3
+“five” holds 7; the name denotes 5; model answered 6
+three
+=
+2
+ -
+ chair
+,
+ chair
+=
+2
+ -
+2
+,
+ chair
+=
+0
+,
+ three
+=
+2
+ -
+ chair
+,
+ three
+=
+2
+ -
+2
+,
+ three
+=
+0
+\n\n
+0
+6
+12
+18
+24
+layer
+5 5 5 5 3 4 3 5 5 5 5 5 4 3 5 4 4 5 5 5 5 3 4 5 5 5 5 5 5 4 5 5 4 4
+0 5 5 5 5 3 4 4 5 3 5 5 5 4 4 3 3 5 5 5 3 5 4 4 5 5 3 5 5 5 4 5 3 4
+0 4 4 9 1 8 8 0 8 5 5 5 8 1 0 0 8 0 5 4 5 1 8 0 5 4 0 0 5 0 0 5 0 0
+7 8 7 7 0 8 8 0 8 5 0 0 8 1 0 1 8 0 8 7 5 5 8 4 5 5 5 5 0 8 0 0 1 5
+3 8 5 2 2 2 3 0 5 5 3 5 8 3 0 0 5 0 5 5 5 5 2 3 3 5 5 0 0 0 0 0 0 0
+0 5 8 5 0 3 3 4 5 5 0 2 3 0 0 0 0 0 4 4 5 2 3 0 5 5 5 2 2 1 0 0 0 0
+0 0 0 0 0 0 3 0 0 0 3 0 0 0 0 0 0 0 0 0 0 0 0 0 4 5 3 2 0 0 0 0 0 0
+2 2 2 3 2 3 3 0 0 3 3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 3 0 0 0 0 0 3
+2 2 2 3 2 4 0 0 0 4 3 6 0 0 0 0 2 2 0 2 2 2 2 0 0 0 0 2 2 8 0 0 0 3
+2 2 0 0 2 0 0 2 0 3 8 0 0 0 0 0 3 0 0 0 3 3 3 0 0 0 2 2 0 3 0 0 0 7
+2 2 0 0 2 0 2 2 0 2 3 0 0 0 0 0 3 2 2 0 3 3 3 0 0 0 0 2 0 3 0 0 0 3
+2 2 0 0 0 0 2 2 2 2 3 0 0 0 0 0 3 2 2 0 0 3 3 0 2 0 0 2 0 3 0 0 0 7
+2 2 0 3 0 3 2 2 2 2 3 3 3 0 0 3 3 2 2 0 3 3 3 0 2 0 2 2 0 3 0 0 0 3
+2 2 0 3 0 2 2 2 2 2 2 0 3 2 0 0 3 2 2 0 3 3 3 0 2 2 2 2 0 3 0 0 0 5
+2 2 3 1 1 3 2 2 1 2 2 1 3 1 0 3 3 3 2 3 3 3 3 2 2 2 2 2 1 3 0 0 0 3
+“three” holds 2; the name denotes 3; model answered 0
+four
+=
+0
+ +
+ ink
+,
+ ink
+=
+7
+ +
+1
+,
+ ink
+=
+7
+,
+ four
+=
+0
+ +
+ ink
+,
+ four
+=
+0
+ +
+7
+,
+ four
+=
+7
+\n\n
+0
+6
+12
+18
+24
+layer
+5 5 4 5 3 4 3 5 5 5 5 4 4 3 5 5 4 5 5 4 5 3 4 5 5 4 5 5 5 4 5 5 5 4
+5 5 3 5 4 3 4 5 5 3 3 1 3 4 5 5 3 0 5 3 5 3 3 0 5 3 5 5 5 3 0 5 5 5
+5 4 4 1 1 8 8 0 8 5 0 1 8 8 8 8 8 0 0 2 1 1 8 1 4 4 0 0 1 8 1 4 8 0
+9 8 7 5 9 8 9 8 8 5 0 9 8 2 8 8 8 8 8 2 5 1 8 8 8 8 5 5 8 8 8 4 8 7
+3 8 5 0 2 8 3 8 5 5 3 9 8 3 8 5 8 0 0 5 5 5 2 3 0 5 5 0 0 8 3 9 0 0
+7 4 0 2 0 3 4 8 0 5 0 8 3 3 8 8 0 0 4 5 2 3 3 0 5 0 5 0 0 3 4 4 8 0
+0 4 2 8 9 8 3 8 8 8 3 8 8 8 8 8 0 0 0 0 0 0 0 0 8 8 8 8 8 8 0 8 0 0
+2 2 2 4 4 3 4 8 5 5 3 4 3 3 9 5 2 0 0 2 2 2 3 3 8 8 5 3 1 8 8 8 0 3
+0 0 2 8 2 8 8 8 1 1 3 8 8 2 7 2 2 2 0 2 8 2 2 2 4 8 8 3 8 8 8 8 0 8
+0 0 1 9 9 9 7 7 1 1 9 6 9 7 7 2 4 0 0 5 1 1 4 0 7 7 1 7 1 4 8 7 0 7
+0 0 0 0 0 0 7 7 1 1 3 0 0 0 7 2 4 0 0 0 0 0 4 0 0 1 7 7 1 4 8 7 0 3
+0 0 0 0 0 0 7 7 1 1 3 0 0 7 7 2 4 0 0 1 7 0 4 0 0 1 7 7 1 4 7 7 0 7
+0 0 0 0 0 0 7 7 1 1 3 6 4 7 7 2 4 0 0 1 7 4 4 0 0 1 7 7 1 4 7 7 0 3
+0 0 0 0 0 0 7 7 1 1 3 0 4 7 7 2 4 0 0 1 7 0 4 0 7 1 7 7 0 4 7 7 0 5
+0 0 4 1 1 1 7 7 1 1 1 1 3 1 7 1 4 4 0 4 1 4 4 0 7 1 7 7 4 4 7 7 1 3
+“four” holds 8; the name denotes 4; model answered 7
+Top-1 probe prediction over the model's own chain (Llama-3.2-3B, L3, with chain of thought; probes trained at the value step of “v1” on neutral problems; 8 instances)
+true value the model's answer (when wrong) what the name denotes other
+Figure 28: The own-chain probe figure at full size.
+35
+
+PAGE 36
+0 5 10 15 20 25 30
+layer whose activations were replaced
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+share of cases
+Llama-3.1-8B, direct answer
+lure removed (neutral patch)
+normalised logit diff.
+damage (word control)
+lure removed (lure control)
+follows new lure (lure control)
+Figure 29: Llama-3.1-8B, lure errors removed by patching, by layer, with both controls, direct regime, intermediate
+variable.
+36
+
+PAGE 37
+0
+1
+neutral
+0
+1
+congruent (queried)
+0
+1
+incongruent (queried)
+acc (max over layers)
+lure rate (max)
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+layer
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+; bin
+=
+?⏎ bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+, chair
+=
+3
+, bin
+=
+0
+ + chair
+, bin
+=
+0
+ +
+3
+, bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+layer
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+; bin
+=
+?⏎ bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+, chair
+=
+3
+, bin
+=
+0
+ + chair
+, bin
+=
+0
+ +
+3
+, bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+; bin
+=
+?⏎ bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+, chair
+=
+3
+, bin
+=
+0
+ + chair
+, bin
+=
+0
+ +
+3
+, bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+margin log p(true) - log p(lure)
+−5
+0
+5
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+probe accuracy
+Llama-3.1-8B, level 3, with chain of thought: per-token probes for the value of the queried variable (trained on neutral problems)
+Figure 30: Llama-3.1-8B, chain-of-thought regime, queried variable: the accuracy heatmaps of the Llama-3.2-3B
+figures. The value is decodable from the equation that restates the variable’s definition, before the chain writes it.
+37
+
+PAGE 38
+0
+1
+neutral
+0
+1
+congruent (intermediate)
+0
+1
+incongruent (intermediate)
+acc (max over layers)
+lure rate (max)
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+layer
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+; bin
+=
+?⏎ bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+, chair
+=
+3
+, bin
+=
+0
+ + chair
+, bin
+=
+0
+ +
+3
+, bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+layer
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+; bin
+=
+?⏎ bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+, chair
+=
+3
+, bin
+=
+0
+ + chair
+, bin
+=
+0
+ +
+3
+, bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+; bin
+=
+?⏎ bin
+=
+0
+ + chair
+, chair
+=
+4
+ -
+1
+, chair
+=
+3
+, bin
+=
+0
+ + chair
+, bin
+=
+0
+ +
+3
+, bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+margin log p(true) - log p(lure)
+−10
+−5
+0
+5
+10
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+probe accuracy
+Llama-3.1-8B, level 3, with chain of thought: per-token probes for the value of the intermediate variable (trained on neutral problems)
+Figure 31: Llama-3.1-8B, chain-of-thought regime, intermediate variable.
+38
+
+PAGE 39
+0
+1
+neutral
+0
+1
+congruent (intermediate)
+0
+1
+incongruent (intermediate)
+acc (max over layers)
+lure rate (max)
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+layer
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+bin
+=
+0
+ +
+ chair
+,
+ chair
+=
+4
+ -
+1
+;
+ bin
+=
+?⏎
+bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+layer
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ +
+ chair
+,
+ chair
+=
+4
+ -
+1
+;
+ bin
+=
+?⏎
+bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ +
+ chair
+,
+ chair
+=
+4
+ -
+1
+;
+ bin
+=
+?⏎
+bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+margin log p(true) - log p(lure)
+−5.0
+−2.5
+0.0
+2.5
+5.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+probe accuracy
+Llama-3.1-8B, level 3, direct answer: per-token probes for the value of the intermediate variable (trained on neutral problems)
+Figure 32: Llama-3.1-8B, direct regime, intermediate variable.
+39
+
+PAGE 40
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers 28-31
+layers whose activations were replaced
+answer follows a different problem
+(does this span carry the answer?)
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers 28-31
+lure answer removed
+(patched from the neutral twin)
+too few lure errors (0) to draw
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers 28-31
+answer follows a swapped-in lure
+(patched from a different lure)
+pen's equation
+cup's equation
+query line
+step 1: restate pen
+step 2: restate cup
+step 3: write cup's value
+step 4: restate pen
+step 5: substitute into pen
+step 6: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: restate pen
+step 2: restate cup
+step 3: write cup's value
+step 4: restate pen
+step 5: substitute into pen
+step 6: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: restate pen
+step 2: restate cup
+step 3: write cup's value
+step 4: restate pen
+step 5: substitute into pen
+step 6: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Llama-3.1-8B, level 3, with chain of thought, number word on the intermediate variable
+Figure 33: Llama-3.1-8B, span-by-layer-window patching grids, chain-of-thought regime. The lure-removal panel
+is empty: none of the 500 patched problems is answered with the lure.
+40
+
+PAGE 41
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers 28-31
+layers whose activations were replaced
+answer follows a different problem
+(does this span carry the answer?)
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers 28-31
+lure answer removed
+(patched from the neutral twin)
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers 28-31
+answer follows a swapped-in lure
+(patched from a different lure)
+pen's equation
+cup's equation
+query line
+step 1: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Llama-3.1-8B, level 3, direct answer, number word on the intermediate variable
+Figure 34: Llama-3.1-8B, the same grids in the direct regime.
+41
+
+PAGE 42
+0
+1
+neutral
+0
+1
+congruent (queried)
+0
+1
+incongruent (queried)
+acc (max over layers)
+lure rate (max)
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+layer
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+bin
+=
+0
+ +
+ chair
+,
+ chair
+=
+4
+ -
+1
+;
+ bin
+=
+?⏎
+bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+layer
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ +
+ chair
+,
+ chair
+=
+4
+ -
+1
+;
+ bin
+=
+?⏎
+bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+control-task accuracy (Hewitt & Liang)
+bin
+=
+0
+ +
+ chair
+,
+ chair
+=
+4
+ -
+1
+;
+ bin
+=
+?⏎
+bin
+=
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+32
+margin log p(true) - log p(lure)
+−5
+0
+5
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+probe accuracy
+Llama-3.1-8B, level 3, direct answer: per-token probes for the value of the queried variable (trained on neutral problems)
+Figure 35: Llama-3.1-8B, direct regime, queried variable.
+42
+
+PAGE 43
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers 28-31
+layers whose activations were replaced
+answer follows a different problem
+(does this span carry the answer?)
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers 28-31
+lure answer removed
+(patched from the neutral twin)
+too few lure errors (0) to draw
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers 28-31
+answer follows a swapped-in lure
+(patched from a different lure)
+pen's equation
+cup's equation
+query line
+step 1: restate pen
+step 2: restate cup
+step 3: write cup's value
+step 4: restate pen
+step 5: substitute into pen
+step 6: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: restate pen
+step 2: restate cup
+step 3: write cup's value
+step 4: restate pen
+step 5: substitute into pen
+step 6: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: restate pen
+step 2: restate cup
+step 3: write cup's value
+step 4: restate pen
+step 5: substitute into pen
+step 6: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Llama-3.1-8B, level 3, with chain of thought, number word on the queried variable
+Figure 36: Llama-3.1-8B, patching grids, chain-of-thought regime, queried variable; the lure-removal panel is
+empty for the same reason.
+43
+
+PAGE 44
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers 28-31
+layers whose activations were replaced
+answer follows a different problem
+(does this span carry the answer?)
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers 28-31
+lure answer removed
+(patched from the neutral twin)
+layers 0-3
+layers 4-7
+layers 8-11
+layers 12-15
+layers 16-19
+layers 20-23
+layers 24-27
+layers 28-31
+answer follows a swapped-in lure
+(patched from a different lure)
+pen's equation
+cup's equation
+query line
+step 1: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+pen's equation
+cup's equation
+query line
+step 1: write pen's value
+span of the problem whose activations were replaced
+0
+1
+best over
+layer blocks
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0
+Llama-3.1-8B, level 3, direct answer, number word on the queried variable
+Figure 37: Llama-3.1-8B, patching grids, direct regime, queried variable.
+44

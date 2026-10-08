@@ -1,0 +1,108 @@
+--- main.before.tex
++++ paper/main.tex
+@@ -37,24 +37,25 @@
+ 
+ \begin{abstract}
+ Renaming a variable should not change an arithmetic answer. Yet a model may answer 4
+-because a variable is named \texttt{four}, even when its equations give 6. We ask whether
+-writing the calculation before answering reduces such errors. We extend
+-\citeauthor{kudo2026faithful}'s study of how language models compute intermediate values
+-during chain-of-thought reasoning. Our problems add misleading variable names while keeping
+-the equations and correct answers fixed. Across \NUM{n-models} models and three sets of worked
+-examples, we compare direct answers with reasoning chains that restate and evaluate each equation.
+-Without written steps, renaming changes accuracy or the frequency of name-suggested answers
+-in \NUM{n-value-models} models. With steps, the increase in name-suggested answers over ordinary
+-names falls within $\pm\NUM{eq-delta}$ percentage points in \NUM{eq-cot-equivalent} of
+-\NUM{eq-cot-cells} comparisons. Classifiers trained to recover values from model states do
+-not establish why: their association with errors depends on one low-accuracy model, and
+-they perform poorly on its generated steps even after training on such steps. The experiments
+-support a behavioral reduction while leaving its internal cause unresolved.
++because a variable is named \texttt{four}, even when its equations give 6. We extend
++\citeauthor{kudo2026faithful}'s arithmetic study by introducing names that conflict with
++the computation. Across \NUM{n-models} models and three sets of worked examples, we compare
++answer-only prompting, which requests just the final digit, with chain-of-thought (CoT)
++prompting, which requests the equations and their evaluation before the answer. Under
++answer-only prompting, renaming changes accuracy or name-suggested answers in
++\NUM{n-value-models} models. Under CoT, the increase in name-suggested answers over ordinary
++names lies within $\pm\NUM{eq-delta}$ percentage points in \NUM{eq-cot-equivalent} of
++\NUM{eq-cot-cells} comparisons. To investigate why, we train linear probes: small predictors
++that try to recover the correct digit from a model's internal activations before it writes
++that value. The relationship between probe accuracy and naming errors reverses when one
++low-accuracy model is omitted. Probes also struggle with that model's own generated
++calculations. CoT usually reduces answers based on misleading names, but these internal
++measurements do not establish the cause.
+ \end{abstract}
+ 
+ \section{Introduction}
+ 
+-In the problem
++Consider the problem
+ \begin{center}
+ \texttt{pen=1 + cup, \quad cup=2 + 3; \quad pen=?}
+ \end{center}
+@@ -62,18 +63,31 @@
+ \begin{center}
+ \texttt{\textcolor{inc}{four}=1 + cup, \quad cup=2 + 3; \quad \textcolor{inc}{four}=?}
+ \end{center}
+-The definition says 6; the name suggests 4. We call 4 the \emph{name-suggested value} and
+-answering 4 a \emph{name error}. That digit occurs nowhere in the equations and differs from
+-every variable's value, so the error points to the name rather than a copied digit.
+-
+-Misleading identifiers and comments reduce accuracy on code tasks
+-\cite{le2025names,lam2025codecrash,le2026obfuscated}. Accuracy alone cannot locate the error:
+-the model may misread the input, compute the wrong value, or answer incorrectly despite
+-retaining the right value. Named-variable arithmetic lets us compare the computed and name-suggested values.
+-\citet{kudo2026faithful} use probes and patching to study when values become available during
+-chain-of-thought (CoT) arithmetic. We add names that disagree with those values. This cue-conflict
+-design, used in Stroop tasks and shape--texture studies
+-\cite{stroop1935,geirhos2019texture}, gives the name and the computation distinct answers.
++Only the label changes: \texttt{cup} is still 5 and the queried variable is still 6.
++Answering 4 instead follows the name. We call 4 the \emph{name-suggested value} and that
++answer a \emph{name error}. Because 4 occurs nowhere in the equations and differs from
++every variable's value, this error can be distinguished from copying a digit.
++
++Can asking the model to calculate before answering reduce this error? In our
++\emph{answer-only} condition, the model is prompted to return just the final digit.
++In our \emph{chain-of-thought} (CoT) condition, it is prompted to restate and evaluate
++the equations before giving that digit. Here the calculation includes
++\texttt{cup=2+3=5} and \texttt{four=1+5=6}. The comparison concerns what the model
++generates; an answer-only response can still involve internal computation.
++
++Misleading names already reduce accuracy on code tasks
++\cite{le2025names,lam2025codecrash,le2026obfuscated}. We use arithmetic to make the
++competing answers explicit, building on \citet{kudo2026faithful}'s study of computation
++during CoT. We add a name that suggests a different answer while preserving the equations.
++This conflict, like those in Stroop and shape--texture studies
++\cite{stroop1935,geirhos2019texture}, separates the name's suggestion from the computed value.
++
++Our first result is behavioral: CoT usually reduces name errors, although other accuracy
++effects remain. We then ask whether the correct value becomes easier to recover inside
++the model. A \emph{linear probe} is a small predictor trained on separate problems to
++predict a variable's true digit from the model's internal activations. Recovering 6 with a
++probe is a different observation from the language model answering 6. The probe--error
++relationship depends on one low-accuracy model, so it does not explain the reduction.
+ 
+ \begin{figure*}[t]
+ \centering
+@@ -86,12 +100,6 @@
+ marks the position before its value.}
+ \label{fig:master}
+ \end{figure*}
+-
+-Writing a chain usually reduces name errors. Without CoT, names affect answers
+-in \NUM{n-value-models} models. With CoT, almost every name-error contrast meets our equivalence bound,
+-although some accuracy effects remain. We then compare value readouts with excess name errors.
+-The readout--error relationship depends on the low-accuracy exception, whose generated-chain
+-probes also fail calibration. The behavioral reduction is clearer than its internal explanation.
+ 
+ \section{Study design}
+ 
+@@ -218,7 +226,7 @@
+ \NUM{vw-olmo-seeds} demonstration sets, despite stating the correct value. The full control is
+ in Appendix~\ref{app:controls}.
+ 
+-\subsection{Patching localizes the no-chain effect}
++\subsection{Patching localizes the answer-only effect}
+ 
+ For Llama-3.2-3B without CoT, replacing name activations with the neutral twin's removes
+ \NUM{lure-removed-3b} of name errors when all layers are patched (Figure~\ref{fig:patch}).

@@ -1,0 +1,15 @@
+wrote 1572 numbers to /work/jvl210002/migration/codecue/paper/numbers.tex
+  cell-olmo7-excess = +58.4
+  cell-olmo7-repl-excess = +9.5
+  cell-olmo7-comment-excess = +0.0
+  cell-llama3-comment-claim = yes
+  cell34-len-excess = +0.0
+  cell34-max-excess = +1.8
+  l6-max-excess = +0.6
+  crux-olmo7-direct-lo = +0.0
+  expr-olmo7-drop = 55
+  probe-olmo7-code = 95
+  probe-olmo7-name = 2
+  patch-olmo7-pre-half = 15
+  patch-olmo7-name-best = 97
+  gate-pass = 12

@@ -1,0 +1,6 @@
+Loading weights:   0%|          | 0/254 [00:00<?, ?it/s]Loading weights:   5%|▌         | 13/254 [00:00<00:01, 123.69it/s]Loading weights:  22%|██▏       | 57/254 [00:00<00:00, 297.76it/s]Loading weights:  38%|███▊      | 97/254 [00:00<00:00, 342.63it/s]Loading weights:  55%|█████▍    | 139/254 [00:00<00:00, 367.14it/s]Loading weights:  72%|███████▏  | 183/254 [00:00<00:00, 387.76it/s]Loading weights:  88%|████████▊ | 224/254 [00:00<00:00, 394.01it/s]Loading weights: 100%|██████████| 254/254 [00:00<00:00, 370.10it/s]
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer TokenizersBackend. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+llama32-3b-it L3 cot train_neutral: n=10000 acc=None lure=None excluded=0 131.2s
+llama32-3b-it L3 cot neutral: n=2000 acc=None lure=None excluded=0 25.7s
+llama32-3b-it L3 cot incongruent@v1: n=2000 acc=None lure=None excluded=0 25.8s
+llama32-3b-it L3 cot incongruent@v2: n=2000 acc=None lure=None excluded=0 25.8s

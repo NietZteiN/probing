@@ -1,0 +1,3 @@
+/work/jvl210002/migration/envs/probe-cu129/bin/python -m pytest tests/ -q
+...............................ssss.................................     [100%]
+64 passed, 4 skipped in 11.62s

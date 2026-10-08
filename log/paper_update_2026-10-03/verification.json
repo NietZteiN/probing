@@ -1,0 +1,87 @@
+{
+  "started_utc": "2026-10-03T13:14:43.507743+00:00",
+  "stages": [
+    {
+      "repo": "codecue",
+      "name": "numbers",
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/51_numbers.py"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/codecue/log/paper_update_2026-10-03/numbers.out"
+    },
+    {
+      "repo": "codecue",
+      "name": "selfcheck",
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/99_selfcheck.py"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/codecue/log/paper_update_2026-10-03/selfcheck.out"
+    },
+    {
+      "repo": "codecue",
+      "name": "build",
+      "argv": [
+        "make",
+        "paper-submission"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/codecue/log/paper_update_2026-10-03/build.out"
+    },
+    {
+      "repo": "probing",
+      "name": "numbers",
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/51_tables.py"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/paper_update_2026-10-03/numbers.out"
+    },
+    {
+      "repo": "probing",
+      "name": "selfcheck",
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/99_selfcheck.py"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/paper_update_2026-10-03/selfcheck.out"
+    },
+    {
+      "repo": "probing",
+      "name": "build",
+      "argv": [
+        "make",
+        "paper-submission"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/paper_update_2026-10-03/build.out"
+    }
+  ],
+  "complete": true,
+  "final_arithmetic_rebuild": {
+    "completed_utc": "2026-10-03T13:22:20.641787+00:00",
+    "reason": "Report competence correlations to three decimal places",
+    "numbers_exit_code": 0,
+    "strict_build_exit_code": 0,
+    "log": "/work/jvl210002/migration/probing/log/paper_update_2026-10-03/build.out"
+  },
+  "visual_review": {
+    "probing": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "codecue": [
+      1,
+      3,
+      4
+    ],
+    "status": "passed"
+  }
+}

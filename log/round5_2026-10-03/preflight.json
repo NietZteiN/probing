@@ -1,0 +1,202 @@
+{
+  "code": [
+    {
+      "model": "olmo2-7b-it",
+      "seed": 7,
+      "kind": "neutral_annotation",
+      "tokens": 270,
+      "source_expression_tokens": 270
+    },
+    {
+      "model": "olmo2-7b-it",
+      "seed": 7,
+      "kind": "numeric_elaboration",
+      "tokens": 282,
+      "source_expression_tokens": 270
+    },
+    {
+      "model": "olmo2-7b-it",
+      "seed": 11,
+      "kind": "neutral_annotation",
+      "tokens": 273,
+      "source_expression_tokens": 273
+    },
+    {
+      "model": "olmo2-7b-it",
+      "seed": 11,
+      "kind": "numeric_elaboration",
+      "tokens": 285,
+      "source_expression_tokens": 273
+    },
+    {
+      "model": "olmo2-7b-it",
+      "seed": 13,
+      "kind": "neutral_annotation",
+      "tokens": 267,
+      "source_expression_tokens": 267
+    },
+    {
+      "model": "olmo2-7b-it",
+      "seed": 13,
+      "kind": "numeric_elaboration",
+      "tokens": 279,
+      "source_expression_tokens": 267
+    },
+    {
+      "model": "llama32-3b-it",
+      "seed": 7,
+      "kind": "neutral_annotation",
+      "tokens": 271,
+      "source_expression_tokens": 271
+    },
+    {
+      "model": "llama32-3b-it",
+      "seed": 7,
+      "kind": "numeric_elaboration",
+      "tokens": 283,
+      "source_expression_tokens": 271
+    },
+    {
+      "model": "llama32-3b-it",
+      "seed": 11,
+      "kind": "neutral_annotation",
+      "tokens": 274,
+      "source_expression_tokens": 274
+    },
+    {
+      "model": "llama32-3b-it",
+      "seed": 11,
+      "kind": "numeric_elaboration",
+      "tokens": 286,
+      "source_expression_tokens": 274
+    },
+    {
+      "model": "llama32-3b-it",
+      "seed": 13,
+      "kind": "neutral_annotation",
+      "tokens": 268,
+      "source_expression_tokens": 268
+    },
+    {
+      "model": "llama32-3b-it",
+      "seed": 13,
+      "kind": "numeric_elaboration",
+      "tokens": 280,
+      "source_expression_tokens": 268
+    }
+  ],
+  "arithmetic": [
+    {
+      "model": "olmo2-1b-it",
+      "seed": 7,
+      "role": "v1",
+      "checked": 31,
+      "missing": 1,
+      "excluded": []
+    },
+    {
+      "model": "olmo2-1b-it",
+      "seed": 7,
+      "role": "v2",
+      "checked": 19,
+      "missing": 13,
+      "excluded": []
+    },
+    {
+      "model": "olmo2-1b-it",
+      "seed": 11,
+      "role": "v1",
+      "checked": 30,
+      "missing": 1,
+      "excluded": [
+        {
+          "id": "L3-44-00009-inc@v1",
+          "reason": "pre-value token includes the supplied value",
+          "boundary": {
+            "marker": 54,
+            "value_start": 55,
+            "value": -1
+          },
+          "token_offsets": [
+            394,
+            396
+          ],
+          "token_text": "=-"
+        }
+      ]
+    },
+    {
+      "model": "olmo2-1b-it",
+      "seed": 11,
+      "role": "v2",
+      "checked": 10,
+      "missing": 22,
+      "excluded": []
+    },
+    {
+      "model": "olmo2-1b-it",
+      "seed": 13,
+      "role": "v1",
+      "checked": 32,
+      "missing": 0,
+      "excluded": []
+    },
+    {
+      "model": "olmo2-1b-it",
+      "seed": 13,
+      "role": "v2",
+      "checked": 15,
+      "missing": 17,
+      "excluded": []
+    },
+    {
+      "model": "llama32-3b",
+      "seed": 7,
+      "role": "v1",
+      "checked": 32,
+      "missing": 0,
+      "excluded": []
+    },
+    {
+      "model": "llama32-3b",
+      "seed": 7,
+      "role": "v2",
+      "checked": 32,
+      "missing": 0,
+      "excluded": []
+    },
+    {
+      "model": "llama32-3b",
+      "seed": 11,
+      "role": "v1",
+      "checked": 32,
+      "missing": 0,
+      "excluded": []
+    },
+    {
+      "model": "llama32-3b",
+      "seed": 11,
+      "role": "v2",
+      "checked": 32,
+      "missing": 0,
+      "excluded": []
+    },
+    {
+      "model": "llama32-3b",
+      "seed": 13,
+      "role": "v1",
+      "checked": 32,
+      "missing": 0,
+      "excluded": []
+    },
+    {
+      "model": "llama32-3b",
+      "seed": 13,
+      "role": "v2",
+      "checked": 32,
+      "missing": 0,
+      "excluded": []
+    }
+  ],
+  "status": "passed"
+}

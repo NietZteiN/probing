@@ -7,7 +7,7 @@ max-over-windows curve underneath, one panel per source.
 
 Sources and the metric drawn:
     other            success_to_source  (Kudo's success rate: the answer becomes the source problem's answer)
-    neutral          lure_removed       (share of lure errors no longer answering the lure)
+    neutral          lure_removed       (share of name errors no longer answering the lure)
     incongruent_alt  follows_src_lure   (share of answers equal to the patched-in lure)
 Read position: the final answer (anspre); use --read cotpre@<target> for the value step.
 """
@@ -29,8 +29,8 @@ from cueconf.patch_summary import summarize_grid  # noqa: E402
 FIG = PROJECT_ROOT / "paper" / "figures"
 METRIC = {"other": "success_to_source", "neutral": "lure_removed", "incongruent_alt": "follows_src_lure"}
 TITLE = {"other": "answer follows a different problem\n(does this span carry the answer?)",
-         "neutral": "lure answer removed\n(patched from the neutral twin)",
-         "incongruent_alt": "answer follows a swapped-in lure\n(patched from a different lure)"}
+         "neutral": "name error removed\n(patched from the neutral twin)",
+         "incongruent_alt": "answer follows the alternative name\n(patched from a different misleading name)"}
 
 
 def seg_order(label: str) -> tuple:
@@ -67,7 +67,7 @@ def main() -> int:
         segs = sorted({c.split("|")[0] for c in summ}, key=seg_order)
         wins = sorted({c.split("|")[1] for c in summ}, key=lambda w: int(w[1:].split("-")[0]))
         M = np.full((len(wins), len(segs)), np.nan)
-        MIN_N = 20   # a rate over fewer than 20 lure errors is not drawn (1/1 = 1.0 misleads)
+        MIN_N = 20   # a rate over fewer than 20 name errors is not drawn (1/1 = 1.0 misleads)
         n_den = None
         for c, agg in summ.items():
             s_, w_ = c.split("|")
@@ -85,8 +85,8 @@ def main() -> int:
             ax.set_ylabel("layers whose activations were replaced")
         ax.set_xticks(range(len(segs))); ax.set_xticklabels([])       # labelled once, under the curve
         n = next(iter(summ.values()))[a.read]["n"] if summ else 0
-        extra = f", lure errors={n_den}" if n_den is not None else ""
-        ax.set_title(TITLE[src] + (f"\ntoo few lure errors ({n_den}) to draw" if n_den is not None and n_den < MIN_N else ""), fontsize=9)
+        extra = f", name errors={n_den}" if n_den is not None else ""
+        ax.set_title(TITLE[src] + (f"\ntoo few name errors ({n_den}) to draw" if n_den is not None and n_den < MIN_N else ""), fontsize=9)
         fig.colorbar(im, ax=ax, fraction=0.04)
         ax2 = axes[1, j]
         ax2.plot(range(len(segs)), np.nanmax(M, axis=0), "k.-", lw=1)

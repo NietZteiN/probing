@@ -1,0 +1,3 @@
+usage: 52_figs.py [-h] --model MODEL [--level LEVEL] [--role ROLE]
+                  [--patch-regime PATCH_REGIME]
+52_figs.py: error: unrecognized arguments: --regime cot

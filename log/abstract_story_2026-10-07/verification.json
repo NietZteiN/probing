@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-07",
+  "change": "Abstract narrative and concrete descriptions of model outputs",
+  "abstract_words": 178,
+  "strict_check": "ARR: body 4/4 pages; total 49; abstract 178 words; A4 portrait; 0 unembedded fonts\nDraft: 0 unfilled numbers; unresolved references: False; missing assets: False",
+  "text_through_limitations_pages": 4,
+  "references_start_page": 5,
+  "main_figure_table_pages": {
+    "Figure 1:": 2,
+    "Figure 2:": 3,
+    "Table 1:": 2,
+    "Table 2:": 3
+  },
+  "unchanged_numerical_inputs_and_figures_checked": 390,
+  "only_abstract_changed": true,
+  "caveats_preserved_in_body_and_limitations": true,
+  "git_diff_check_passed": true,
+  "no_overfull_or_latex_errors": true,
+  "visual_review_pages": [
+    1,
+    4
+  ],
+  "main_tex_sha256": "329e7f38b9bd5e62adce7572c80b8461f8362b955c452093ea0bf20fc2504371",
+  "main_pdf_sha256": "5f0c3fd17eeb7ffe90b6719fbe4dcd8385288654dbd937b8935d3d1d93e36e0c"
+}

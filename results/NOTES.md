@@ -1,5 +1,43 @@
 # Results log
 
+## 2026-10-02 — requested round-3 completion pass
+
+C1–C4 are complete. Equivalence now uses Amendment 3's 90% cluster-bootstrap interval,
+4,000 draws, clustering matched sets with demonstration-seed replicates together. The
+lure result remains 43/44 equivalent CoT cells. Accuracy equivalence covers facilitation
+and interference: 61/88 cells equivalent, including 5 of the 15 reliable effects; the
+other 10 reliable effects do not meet the equivalence criterion. Full intervals and
+metadata are in `results/summary/equivalence.json`; the generated appendix table and text
+distinguish 90% equivalence intervals from 95% behavioral intervals.
+
+The written-value estimate previously mixed an incongruent rate over all examples in a
+split with a neutral rate over matching pairs only, although its CI used paired differences.
+Both rates, the excess and the CI now use the same matched observations. Across seeds
+7/11/13, OLMo-2-1B-Instruct L3 v2 retains a written-value lure excess of +3.61 points,
+95% CI [+2.59, +4.69], n=2,739 matched observations. In the not-written split the corrected
+pooled excess is +0.56 points [−1.19, +2.45], n=1,078. Pooling clusters on matched set across
+seeds. `value_written_pooled.json` retains sample counts, seeds and the estimator description;
+the body reads the pooled exception through `51_tables.py`.
+
+Positional-copy controls were regenerated for all three CoT regimes of the four ladder
+checkpoints and Gemma-3-4B (15 model/regime cells). The rerun exposed archived `__smoke64`
+directories in the Nemotron runs. `50_analysis.py` and `62_value_written.py` now exclude
+these archives, matching the seed sweep's existing policy; Nemotron aggregates were
+regenerated from the full-size groups.
+
+G1 is submitted as SLURM job 438941. A30/H100 were fully allocated; allowing H200 backfill
+is documented in the submission manifest and uses the shared juno QoS. Job 439019 on dev
+depends on its termination, validates all four 500-pair outputs, regenerates aggregates,
+tables and figures, runs the self-check and builds the paper. G1/C5 remain unchecked until
+those outputs and checks pass. Patching reads a force-decoded gold chain, so its baseline
+lure-error counts must not be equated with the 110–131 errors in freely generated chains.
+The collection script publishes the control table with undefined removal rates left blank
+when there are no baseline lure errors.
+
+Before GPU completion: data self-check has zero failures and 80 existing warnings; the
+paper builds with a four-page body and no unfilled numbers or unresolved references.
+Current machine-readable status: `results/summary/round3_completion.json`.
+
 *One entry per result that changes what the paper can say. Numbers here are copied from
 `results/summary/`; the paper reads them from `paper/numbers.tex`, never from this file.*
 
@@ -889,3 +927,169 @@ whether it writes a chain is.
 Caveat carried from the smoke entry: Nemotron-Nano gates long-form reasoning on a system prompt
 that our raw-completion prompts never send, so this rung is a reasoning-TUNED checkpoint with
 its reasoning mode off, not a model reasoning at length.
+
+## Verification after the manuscript rewrite (2026-10-02)
+
+The two drafts were checked against generated results, raw paired observations, the
+preregistrations, local primary papers and current ARR formatting instructions. This entry
+supersedes interpretations in earlier ledger entries where they differ.
+
+- Regenerating numbers and tables before fixes produced identical files. Data self-check:
+  0 failures, 80 existing warnings; CPU tests: 61 passed, 4 tokenizer tests skipped.
+- The main behavioral table now enforces the preregistered 90% mean neutral-CoT accuracy
+  floor. OLMo-2-1B's rows remain in the appendix; the exception is still discussed.
+- The main patching figure had shown the intermediate variable while the cited removal
+  statistics concerned the queried variable. It now shows the queried variable and the
+  simultaneous all-layer patch. The separate span-grid result points to the appendix.
+- The overview readout is for the queried variable; the intermediate readout is identified
+  separately. Token-figure captions and legends now distinguish pooled rates from the
+  example token sequence. The ten-pair association uses neutral accuracy at the layer with
+  highest neutral selectivity, which is now explicit and qualified by task competence.
+- The exception-control table now reports alternative-lure removal as well as following
+  its source lure. Similar removal by the two sources limits name-specific interpretation.
+- Reciprocal anonymous companion citations distinguish the arithmetic and code studies.
+  Kudo's published Table 3 supports the cited 17.8/33.2 pre-chain accuracies.
+- A cache audit of all 56 neutral-trained probe result files found no shared matched-set
+  IDs between their training and evaluation groups; dataset checks also enforce disjoint
+  arithmetic expressions. The companion code paper failed this check and needs fresh probes.
+- Strict builds and final PDF inspection are recorded in `log/verification_2026-10-02/`.
+  No new GPU experiment was required by this verification pass.
+
+## Readability and experiment follow-up (2026-10-02)
+
+Both manuscripts received a readability pass: concrete opening questions, simpler definitions
+of probes and controls, shorter claims, and explicit separation of aggregate associations
+from causal explanations. Both strict builds retain a four-page body. The author authorized
+the blockers and additional experiments with one or two GPUs for about a day. Two 24-hour
+H100/H200 workers were requested (439652, 439653); A30/H100 cards were occupied. The workers remain pending. The fixed task
+list and analysis rules are in `../probing/log/round4_2026-10-02/manifest.json`. This pass
+includes disjoint code probes under all three demonstration sets, six additional arithmetic
+model-variable pairs, and a Gemma per-token sweep. Results remain pending; existing caches
+are preserved, and no scientific claim is restored on the strength of submission alone.
+
+Preflight now passes 62 arithmetic CPU tests, four tokenizer/probe checks in CPU job
+439688, and 42 code CPU tests. CPU job 439757 validates 2,464 sampled layouts across all
+five tokenizers: no pre-value token contains the supplied digit. New caches enforce this
+per row, and collectors require that validation flag. An initial preflight job (439735)
+used the wrong arithmetic training filename; that path was corrected before the successful
+rerun. Both rendered bodies have no out-of-page text. Layout-only builds with synthetic
+values confirm the added appendix fits without expanding either four-page body; those
+files live under the explicitly marked `layout_dryrun/` folder and never supply results.
+CPU collector 439676 will audit completed experiments and rebuild both papers after the
+workers exit. Current code probe claims remain provisional pending the disjoint reruns.
+
+### Reviewer follow-ups (2026-10-03)
+
+Reviewer follow-ups A1/A2/A4/A5 have passed collection and both strict builds. The four-page bodies and new appendix tables passed final layout review. The generated-chain comparison covers two models, two variables and three demonstration sets. OLMo-1B neutral transfer is below 90% in every cell; report those readouts descriptively. Llama-3B passes in all six cells, but lure-writing cases are rare. Competence sensitivity currently covers 16 pairs in eight models; Gemma-12B awaits repaired float32 caches. Sampled Gemma-4B all-token and Gemma-12B caches contained infinities after float16 conversion; originals are retained and both reruns use float32. Workers 439652/439653 continue; final collector 439987 follows round-four collector 439676.
+
+### Round-four collection
+
+Status: needs_attention. Audited cell scores, stages and failures are recorded in `summary/round4_completion.json`. Only validated, rebuilt experiments are ticked in the checklist.
+
+### Round-four collection
+
+Status: complete. Audited cell scores, stages and failures are recorded in `summary/round4_completion.json`. Only validated, rebuilt experiments are ticked in the checklist.
+
+### Post-run status check (2026-10-03)
+
+Both GPU workers completed successfully and released their cards. All five reviewer follow-ups are collected; competence sensitivity covers 18 pairs from nine models. The round-four collector initially requested `robust_stats.json` instead of `robust_stats_L3.json`; job 440251 corrected that path, validated all extensions, included the Gemma token figures and passed both strict builds. No errors remain in `summary/round4_completion.json` or `summary/round5_completion.json`.
+
+### Final manuscript integration (2026-10-03)
+
+The abstract, main results, conclusion and limitations now incorporate the completed competence
+and generated-chain analyses. Main-text counts use the validated nine-model, eighteen-pair
+population; the model-mean probe/lure correlation is -0.997 and becomes +0.776 without OLMo-2-1B.
+Generated neutral calibration is 97.2–100.0% for Llama-3.2-3B and 19.4–62.2% for OLMo-2-1B.
+The manuscript retains the behavioral finding while leaving its internal explanation unresolved.
+All quoted follow-up values are generated from the collected summaries. Both repositories pass
+selfchecks and strict anonymous ACL ARR builds; the arithmetic draft has a four-page body
+and 130-word abstract. Rendered body pages were inspected. Logs and the verification record
+are in `../log/paper_update_2026-10-03/`.
+
+### Targeted validation launch (2026-10-03)
+
+Round-six targeted validation is authorized. Two one-GPU 24-hour workers (440673/440674) are pending priority; no GPU is allocated yet. Cohorts for generated-neutral probe training contain 2,000 rows across 630 computations and 400 validation rows across 155 computations. The cohorts are disjoint from one another, test computations and demonstrations. Focused split/boundary checks and both heavy precision guards pass. CPU collector 440686 follows both workers. Fixed protocol, source hashes and preflight evidence: `../log/round6_2026-10-03/`. Current manuscript numbers remain unchanged until new outputs validate.
+
+### Targeted validation completed (2026-10-03)
+
+All fourteen GPU tasks finished with exit code 0; worker 440673 released its H100 after 50m34s. The pending second request 440674 was cancelled without allocation. Collector 440686 validated the layer check and generated probes, but rejected an in-memory tuple versus JSON-list comparison for the fresh code sample. The unchanged 200-program sample reproduces exactly after JSON normalization and has zero old-corpus overlap. Four regression checks and a local collection retry pass; all three analyses now validate, and `summary/round6_completion.json` is complete with no errors. The queued CPU retry 440950 was cancelled while pending because local lightweight collection completed the work. Generated-neutral training still leaves OLMo calibration at 50.3–80.1% (0/6 cells above 90%); Llama reaches 96.3–100.0% (6/6 pass). Round-six results remain separate from current paper numbers. Full recovery audit: `../log/round6_2026-10-03/manifest.json`.
+
+### Round-six manuscript integration (2026-10-03)
+
+Both current manuscripts now include all three validated round-six analyses. The arithmetic
+abstract, methods, results and limitations distinguish gold-trained transfer from training
+on generated neutral chains. OLMo remains below 90% in all six cells; Llama passes all six,
+but its few lure writes limit interpretation. Source counts distinguish 2,000/400 rows
+from 630/155 independent computations. `scripts/82_round6_tables.py` supplies the new
+numbers and four appendix tables through `scripts/51_tables.py`. No experiment values
+changed. Both selfchecks report zero failures; existing parse-rate warnings remain.
+Both strict builds pass with four-page main bodies (arithmetic: 49 total pages, 134-word
+abstract; code: 12 total pages, 146-word abstract). Rendered body pages and new tables
+were inspected. Logs, input/output hashes and number checks:
+`../log/paper_update_round6_2026-10-03/verification.json`.
+
+### Title and terminology (2026-10-06)
+
+The arithmetic title is now *Chain of Thought Reduces Errors from Misleading Names in
+Arithmetic*. Both drafts define a name error as writing the incorrect value suggested by
+a misleading name. Excess name errors subtract the matched neutral twin's rate of writing
+that same value. Prose, captions, generated tables, plot labels and the companion citation
+use this terminology. Probe predictions remain distinct from generated answers. All number
+macros are byte-identical to the previous versions, and every result-summary hash is
+unchanged. Both strict builds pass; main figures and text fit within four pages. Rendered
+pages and the verification record are in `../log/terminology_2026-10-06/`.
+
+### Abstract clarity (2026-10-07)
+
+Rewrote the abstract to explain the arithmetic naming conflict, the direct-versus-written-step
+comparison, and the extension of Kudo et al.'s arithmetic study before giving results.
+The effect is stated as a change in answers after renaming, relative to ordinary names.
+Internal classifiers are explained through their purpose rather than probe shorthand.
+Abstract: 174 words. Strict build and visual review pass with all main text, figures and
+tables inside four pages. Only the abstract changed in the LaTeX source; all number macros
+and result summaries are unchanged. Before/after evidence: `../log/abstracts_2026-10-07/`.
+
+### Introduction and explanation (2026-10-07)
+
+Rewrote the opening around a variable named `four` whose equations give 6. Answer-only
+prompting requests the final digit; CoT requests the equations and their evaluation before
+the answer, illustrated by `cup=2+3=5` and `four=1+5=6`. The introduction follows the error,
+the behavioral question, the connection to Kudo et al., and the limits of the internal
+measurements. Linear probes are explained as predictors of the true digit from activations,
+separately from the model's answer. The abstract uses the same definitions (175 words).
+The answer-only patching subsection uses the same terminology. Strict checks and visual
+review of all four main pages pass. Number macros and result summaries are unchanged.
+Before/after source, build and verification evidence: `../log/narrative_2026-10-07/`.
+
+### Four-page text including limitations (2026-10-07)
+
+Shortened the main figure/table captions and repeated method descriptions; the abstract,
+introduction narrative and results remain unchanged. Limitations now use three bullets for
+scope, internal measurements and interventions, preserving the generated-chain calibration
+failure, outlier-sensitive correlation, competence ambiguity and patching side effects.
+All text through Limitations fits four pages; References starts on page five. Main table 2
+now appears on page three alongside the results. All number-macro occurrences, generated
+numbers, result summaries and figure assets are unchanged. The appendix source is unchanged.
+Strict checks and visual review of pages 1--4 pass. Evidence: `../log/concise_2026-10-07/`.
+
+### Abstract narrative (2026-10-07)
+
+The abstract now follows the `four`-versus-6 example, the answer-only/CoT comparison,
+the behavioral result, and descriptive probe findings. It describes answers matching the
+misleading word rather than using “naming errors.” The ending states that evaluating the
+equations usually reduces incorrect answers suggested by names. Correlation sensitivity,
+generated-chain calibration failures and causal caveats remain in the unchanged body and
+limitations. The probe comparison states that correct calculations are supplied and that
+readouts concern ordinary-name problems. Only the abstract changed; all numerical inputs
+and figure assets are unchanged. Evidence: `../log/abstract_story_2026-10-07/`.
+
+### Contribution and implication (2026-10-07)
+
+The abstract now identifies the matched conflict as the extension to prior arithmetic
+work: equations are fixed while a name suggests another digit. It explains how that
+comparison distinguishes answers following the word from other mistakes and makes
+resistance to an irrelevant cue a measurable benefit of CoT. Probe results remain
+descriptive, scoped to ordinary-name problems with supplied correct calculations.
+The argument guide reflects this emphasis. LaTeX edits are confined to the abstract;
+the full evidence and caveats remain in the unchanged body. Numerical inputs and figures
+are unchanged. Evidence: `../log/contribution_2026-10-07/`.

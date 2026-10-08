@@ -1,0 +1,184 @@
+{
+  "created_utc": "2026-10-03T06:19:30.907996+00:00",
+  "authorization": "User: sure do all of these",
+  "status": "complete",
+  "workers": [
+    "439652",
+    "439653"
+  ],
+  "scope": [
+    "R5-A1",
+    "R5-A2",
+    "R5-A3",
+    "R5-A4",
+    "R5-A5"
+  ],
+  "code_errors": {
+    "models": [
+      "olmo2-7b-it",
+      "llama32-3b-it",
+      "llama31-8b-it"
+    ],
+    "demonstration_sets": [
+      7,
+      11,
+      13
+    ],
+    "layer_selection": "maximize neutral accuracy, mean of the three probe seeds; never select on lure cases",
+    "eligibility": "token prefixes through the pre-value marker must agree with the cached gold trace; report exclusions and all-row diagnostic separately",
+    "strata": [
+      "lure_write",
+      "correct_write",
+      "other_error"
+    ],
+    "inference": "95% matched-program cluster bootstrap across fixed demonstration sets; average probe seeds before resampling"
+  },
+  "identifiers": {
+    "level": 5,
+    "cell": "len-to-sum",
+    "models": "all seven main panel models",
+    "names": [
+      "total",
+      "sum_all",
+      "acc"
+    ],
+    "subsets": [
+      "all",
+      "each identifier",
+      "original panel gate >=80%",
+      "model-specific meaning check"
+    ],
+    "selection": "gate from original saved scoring, never choose names by behavioral effect; empty gate subset is unavailable, not zero"
+  },
+  "arithmetic_competence": {
+    "level": 3,
+    "regime": "cot",
+    "models": "all available primary neutral-trained probes plus the six completed round-four extension pairs",
+    "layer_selection": "neutral selectivity",
+    "comparisons": [
+      "neutral task accuracy vs probe accuracy vs lure excess",
+      "within-model variable differences",
+      "leave each model out"
+    ],
+    "inference": "descriptive correlations and counts; no high-dimensional regression or independent treatment of roles"
+  },
+  "generated_chains": {
+    "models": [
+      "olmo2-1b-it",
+      "llama32-3b"
+    ],
+    "roles": [
+      "v1",
+      "v2"
+    ],
+    "demonstration_sets": [
+      7,
+      11,
+      13
+    ],
+    "primary_sample": "200 matched sets selected by SHA256(round5:set_id), fixed across models/roles/seeds and independent of outcomes",
+    "additional_cases": "all saved generations whose first standalone numeric assignment to the target writes its lure, plus matched neutral twins; report augmentation separately",
+    "boundary": "first numeric assignment whose final RHS is an integer; read before that value, exclude any token merging with a value digit",
+    "training": "10000 independent neutral gold-chain states from demonstration set 7; primary layer chosen by neutral selectivity; SGD .001,10000 epochs, seeds0/1/2 plus name controls",
+    "calibration": "held-out generated neutral chains in the fixed primary sample; high-accuracy interpretation requires >=90% calibration, otherwise report descriptive readouts only"
+  },
+  "format_controls": {
+    "models": [
+      "olmo2-7b-it",
+      "llama32-3b-it"
+    ],
+    "level": 5,
+    "demonstration_sets": [
+      7,
+      11,
+      13
+    ],
+    "evaluation": "all 285 misleading len-to-sum programs and their 285 neutral twins; fixed IDs for every new format",
+    "formats": [
+      "neutral_annotation",
+      "numeric_elaboration"
+    ],
+    "numeric_elaboration": "each demo step writes name = value + 0 = value; valid arithmetic without referring to the source operation",
+    "neutral_annotation": "name = value followed by a neutral annotation; tokenizer-specific filler gives exact full-demo token count of the source-expression demonstration",
+    "prompt_tail": "same program plus Trace: as existing few-shot trace formats; raw completion, greedy decoding, max160 new tokens, batch8",
+    "comparisons": "paired written-lure excess and paired differences versus existing trace and trace_expr on the same 285 pairs; 95% cluster bootstrap, all three demo sets reported"
+  },
+  "publication": "Collector follows the round-four collector to avoid concurrent paper writers. Only validated outputs reach manuscript tables; unmet calibration does not get promoted to a mechanistic claim.",
+  "updated_utc": "2026-10-03T12:53:37.588465+00:00",
+  "cpu_jobs": {
+    "preflight_failed": "439967",
+    "preflight_passed": "439975",
+    "code_analyses_failed": "439969",
+    "code_analyses_passed": "439976",
+    "competence_initial_failed": "439977",
+    "competence_16_pairs_passed": "439989",
+    "code_disjoint_release": "439983",
+    "partial_publication": [
+      "439986",
+      "439996"
+    ],
+    "final_publication": "439987",
+    "round4_publication": "439676",
+    "publish_controls": "440001",
+    "heavy_tests_passed": "439999",
+    "competence_selected_layer_check": "440000",
+    "final_layout_passed": "440007",
+    "precision_guards": "440009",
+    "competence_auto_publish": "440010"
+  },
+  "cache_repair": {
+    "cause": "float16 storage overflow for Gemma hidden states, confirmed in sampled cached layers",
+    "action": "float32 for Gemma caches; fail on nonfinite states; new __r5_fp32 directories preserve original __r4 caches",
+    "cancelled_process": {
+      "worker": "439652",
+      "pid": 1931489,
+      "reason": "all-token probe training used a cache containing infinities; stop invalid computation and keep the GPU worker"
+    },
+    "tasks": [
+      "round5_04_gemma12_fp32",
+      "round5_05_gemma4_token_fp32"
+    ]
+  },
+  "generated_chain_results": "complete; CPU collector validates and publishes",
+  "code_formats": "all 12 cells validated and published",
+  "competence_models": {
+    "completed": 9,
+    "pairs": 18,
+    "pending_model": null
+  },
+  "preflight": "preflight.json",
+  "preflight_policy": "Guard rejects tokens crossing into a supplied numeric value; preflight records exclusions, not a blanket assertion that every generated chain has a usable boundary.",
+  "source_sha256": {
+    "probing/scripts/78_round5_completion.py": "4b60d07dc84f1953e6ab3a8381e9db047e32034b79e8062f6cc575c7e08b7ec3",
+    "probing/scripts/79_round5_tables.py": "a002d822fb914d8661cf8239219a823e0d2c0fabdfb37ceea929613adc114cf6",
+    "probing/scripts/77_round5_preflight.py": "44d3aac2f8b369c1f1a6704b974961b1fcd88a8c9d4afb285ebe52011aa3f556",
+    "probing/src/cueconf/runner.py": "7e57b71d9912ad3aa600911c66a2f1ce95655eef7e1e021a2e10273edee031b0",
+    "probing/src/cueconf/followups.py": "48411ccc54d66d0b37e04fb822a5ca7aed398bf60eb8cf0e35bbf35ee3cbc5b5",
+    "codecue/src/codecue/followups.py": "b20b371ff79eabe6a22510ecefdd66f38a9c9b6fccbef8887f87ce4b72daf1d2",
+    "probing/scripts/75_generated_chain_followup.py": "e7d396bb94d76ea6b01f41e048e1a2e2511cc47872175f91fb8039b1f8aa9d4e",
+    "probing/scripts/76_competence_followup.py": "5db256d85e641c5aa39a6b63a38d3d368ea86c7852e1834c38fc38a5ebf5ac22",
+    "codecue/scripts/75_format_controls.py": "c84cc4bd65913634bc0a527e293f53ef42be7762bfb4624c04513a5ce4bddb93",
+    "codecue/scripts/76_reviewer_analyses.py": "810c698b0cac0780c1150a1c25d8085673617f38c4b3e045d31803ddab05ba34",
+    "codecue/scripts/77_followup_tables.py": "2884652b818ec2790046ea198d0250b8a0a4f6c4730fd54d1b673bd557d1d4ed",
+    "probing/src/cueconf/probes.py": "b89cbd01cc4b233344b0c6a6bc0585519081aaab60821400d699adb0c1b94b11",
+    "probing/tests/test_cache_precision.py": "da7f1517a37edecca3d0207b83b72890fe42a5e05e9935a1b9c2c937f6cb37fa",
+    "probing/scripts/72_round4_completion.py": "6cd076921eb2d5eed6cadd4a3d35a9d55510a20327da4576f386c3bb86d91064"
+  },
+  "verification": {
+    "arithmetic_full_tests": "69 passed (439999)",
+    "code_tests": "44 passed",
+    "strict_builds": "both pass; four-page bodies; zero missing numbers/references/assets/unembedded fonts",
+    "pdf_review": "new appendix tables inspected; tables shrink to page width without enlarging narrow tables",
+    "diff_check": "both pass",
+    "precision_guards": "6 focused heavy tests passed (440009), including rejecting overflowed caches and nonfinite evaluation scores",
+    "selected_probe_arrays": "All 16 selected-layer cells have complete finite per-instance margins for all three seeds.",
+    "latest_build": "Job 440251 completed all round-four stages with no errors; both papers pass strict builds with four-page bodies."
+  },
+  "workers_status": "both completed successfully; GPUs released",
+  "round4_collection_repair": {
+    "original_job": "439676",
+    "failure": "collector requested robust_stats.json instead of robust_stats_L3.json",
+    "retry": "440251",
+    "status": "complete"
+  }
+}

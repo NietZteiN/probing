@@ -247,11 +247,24 @@ def token_index_map(offsets: Sequence[tuple[int, int]]) -> list[int]:
     return m
 
 
+def assert_before_value(offsets, token_index: int, value_start: int) -> None:
+    """Reject a token that merges a pre-value marker with its supplied answer digit."""
+    if token_index < 0 or token_index >= len(offsets):
+        raise ValueError("unresolved pre-value token")
+    start, end = offsets[token_index]
+    if end <= start or end > value_start:
+        raise ValueError("pre-value token includes the supplied value")
+
+
 def tokenize_layout(tokenizer, lay: Layout) -> dict:
     """Token positions for every label, plus name token counts (rule 4 check) and the ids."""
     enc = tokenizer(lay.text, return_offsets_mapping=True, add_special_tokens=True)
     cmap = token_index_map(enc["offset_mapping"])
     tpos = {k: (cmap[v] if v is not None else None) for k, v in lay.positions.items()}
+    for label, index in tpos.items():
+        if index is not None and (label.startswith("cotpre@") or label == "anspre"):
+            value_label = label.replace("cotpre@", "cot@") if label.startswith("cotpre@") else "ans"
+            assert_before_value(enc["offset_mapping"], index, lay.positions[value_label])
     name_tokens = {r: sorted({cmap[c] for s, e in sp for c in range(s, e)}) for r, sp in lay.name_spans.items()}
     name_ntok = {r: (len({cmap[c] for c in range(s, e)}) for s, e in sp) for r, sp in lay.name_spans.items()}
     name_ntok = {r: sorted(set(v)) for r, v in name_ntok.items()}
@@ -259,6 +272,7 @@ def tokenize_layout(tokenizer, lay: Layout) -> dict:
     seg_tokens = {lab: sorted({cmap[c] for c in range(a, b) if cmap[c] >= 0}) for lab, a, b in (lay.segments or [])}
     inst_tok0 = cmap[lay.instance_start]
     return {
+        "pre_value_boundary_checked": True,
         "segment_tokens": seg_tokens,         # label -> token indices covered by that equation / step
         "instance_start_token": inst_tok0,
         "token_strings": [tokenizer.decode([t]) for t in enc["input_ids"][inst_tok0:]],

@@ -13,6 +13,19 @@ def test_bootstrap_ci_brackets_mean():
     assert lo <= p <= hi and abs(p - 0.7) < 0.05 and hi - lo < 0.15
 
 
+def test_cluster_bootstrap_preserves_unequal_cluster_sizes_and_confidence():
+    values = np.array([1., 0., 0., 0., 1., 1., 1.])
+    clusters = np.array([0, 1, 1, 1, 2, 2, 2])
+    rng = np.random.default_rng(19)
+    groups = [values[clusters == c] for c in np.unique(clusters)]
+    draws = [np.concatenate([groups[i] for i in rng.integers(0, 3, 3)]).mean() for _ in range(301)]
+    point, lo, hi = bootstrap_ci(values, clusters, n_boot=301, seed=19, confidence=0.90)
+    assert point == values.mean()
+    np.testing.assert_allclose([lo, hi], np.percentile(draws, [5, 95]))
+    _, lo95, hi95 = bootstrap_ci(values, clusters, n_boot=301, seed=19)
+    assert lo95 <= lo <= hi <= hi95
+
+
 def test_crossover_and_tstar():
     order = ["end@v2", "query", "cotpre@v2", "anspre"]
     assert crossover_step({"end@v2": -1.0, "query": 0.2, "cotpre@v2": -0.1, "anspre": 1.0}, order) == "anspre"

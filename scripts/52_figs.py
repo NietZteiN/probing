@@ -44,7 +44,7 @@ def main() -> int:
     plt.rcParams.update(rcparams())
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True); ap.add_argument("--level", type=int, default=3); ap.add_argument("--role", default="v2")
-    ap.add_argument("--patch-regime", default="direct", help="regime for Figure 3 (lure errors exist mainly without a chain)")
+    ap.add_argument("--patch-regime", default="direct", help="regime for Figure 3 (name errors exist mainly without a chain)")
     a = ap.parse_args()
     FIG.mkdir(parents=True, exist_ok=True)
     r = a.role
@@ -60,23 +60,23 @@ def main() -> int:
         im = heatmap(ax, grid, f"incongruent@{r}", "margin_mean", pos, REGIME.get(regime, regime))
         if im is not None:
             cb = fig.colorbar(im, ax=ax, fraction=0.045)
-        cb.set_label("log p(true value) - log p(lure value)")
-    fig.suptitle(f"{MODEL.get(a.model, a.model)}: does the state hold the true value or the lure?", y=1.02)
+        cb.set_label("log p(true value) - log p(name-suggested value)")
+    fig.suptitle(f"{MODEL.get(a.model, a.model)}: does the state hold the computed value or the name-suggested value?", y=1.02)
     for ax in axes:
         ax.set_xlabel("position in the problem and its solution")
     fig.tight_layout(); fig.savefig(FIG / f"fig2_margin_{a.model}_L{a.level}_{r}.pdf", bbox_inches="tight"); fig.savefig(FIG / f"fig2_margin_{a.model}_L{a.level}_{r}.png", dpi=160, bbox_inches="tight"); plt.close(fig)
     # ---- Fig 3
-    fig, ax = plt.subplots(figsize=(4.6, 3.0))
+    fig, ax = plt.subplots(figsize=(3.3, 2.9))
     f = RESULTS_DIR / "summary" / a.model / f"L{a.level}" / a.patch_regime / "patching.json"
     if f.exists():
         pt = json.loads(f.read_text())
-        # main: lure removed among lure errors (and normalised LD); ctl_word: damage; ctl_lure: lure removed and follows the
+        # main: lure removed among name errors (and normalised LD); ctl_word: damage; ctl_lure: lure removed and follows the
         # new lure (removal by the lure control is what shows whether removal is name-specific, text on the 8B)
-        for name, key, style, lab in ((f"main@{r}", "lure_removed", "-", "lure removed (neutral patch)"),
-                                      (f"main@{r}", "normalized_ld_mean", "-.", "normalised logit diff."),
-                                      (f"ctl_word@{r}", "damage", "--", "damage (word control)"),
-                                      (f"ctl_lure@{r}", "lure_removed", ".-", "lure removed (lure control)"),
-                                      (f"ctl_lure@{r}", "follows_src_lure", ":", "follows new lure (lure control)")):
+        for name, key, style, lab in ((f"main@{r}", "lure_removed", "-", "neutral: removes error"),
+                                      (f"main@{r}", "normalized_ld_mean", "-.", "normalized logit diff."),
+                                      (f"ctl_word@{r}", "damage", "--", "word: damage"),
+                                      (f"ctl_lure@{r}", "lure_removed", ".-", "alternative name: removes error"),
+                                      (f"ctl_lure@{r}", "follows_src_lure", ":", "alternative value: followed")):
             if name not in pt:
                 continue
             xs, ys = [], []
@@ -84,12 +84,18 @@ def main() -> int:
                 if lset.startswith("L") and "anspre" in agg and agg["anspre"].get(key) is not None:
                     xs.append(int(lset[1:])); ys.append(agg["anspre"][key])
             if xs:
-                ax.plot(xs, ys, style, label=lab)
-        ax.set_xlabel("layer whose activations were replaced")
-        ax.set_ylabel("share of cases"); ax.set_ylim(-0.05, 1.05)
-        ax.set_title(f"{MODEL.get(a.model, a.model)}, {REGIME.get(a.patch_regime, a.patch_regime)}")
+                line, = ax.plot(xs, ys, style, label=lab)
+                all_read = pt[name].get("ALL", {}).get("anspre", {})
+                if all_read.get(key) is not None:
+                    ax.plot(max(xs) + 3, all_read[key], "o", ms=3,
+                            color=line.get_color())
+                    ticks = list(range(0, max(xs) + 1, 5)) + [max(xs) + 3]
+                    ax.set_xticks(ticks, [str(t) for t in ticks[:-1]] + ["ALL"])
+        ax.set_xlabel("layer patched")
+        ax.set_ylabel("proportion / normalized change", fontsize=8); ax.set_ylim(-0.05, 1.05)
+        ax.set_title(f"{MODEL.get(a.model, a.model)}, {REGIME.get(a.patch_regime, a.patch_regime)}", fontsize=9)
         if ax.get_legend_handles_labels()[0]:
-            ax.legend(fontsize=6)
+            ax.legend(fontsize=7.5, loc="upper right", frameon=False)
     else:
         ax.set_title("no patching yet")
     fig.tight_layout(); fig.savefig(FIG / f"fig3_patching_{a.model}_L{a.level}_{r}.pdf"); fig.savefig(FIG / f"fig3_patching_{a.model}_L{a.level}_{r}.png", dpi=160); plt.close(fig)

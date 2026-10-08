@@ -5,7 +5,7 @@ For one (model, level, regime) and a list of instance files:
   1. FREE generation, greedy, stop at newline -> the model's own answer (behaviour: accuracy,
      lure rate). Saved per instance in `behavior.jsonl`.
   2. FORCED pass over prompt + gold output -> residual-stream hidden states at every layer at the
-     labelled positions (prompts.layout), saved as float16 memmaps, one file per condition:
+     labelled positions (prompts.layout), saved as float16 memmaps (float32 for Gemma), one file per condition:
         hidden.npy   [n_inst, n_pos, n_layers+1, d]   (index 0 = embeddings, as in HF)
         meta.json    labels, position order, layer count, per-instance values/lure/target
      plus the next-token distribution at every `*pre` position (`forced_logits.jsonl`: top-10
@@ -105,7 +105,8 @@ def generate_free(tok, model, prompts: Sequence[str], max_new_tokens: int, batch
 
 @torch.no_grad()
 def forced_pass(tok, model, input_ids_list: Sequence[list[int]], positions_list: Sequence[list[int]],
-                pre_positions_list: Sequence[list[int]], batch_size: int, layers: Sequence[int] | None = None):
+                pre_positions_list: Sequence[list[int]], batch_size: int, layers: Sequence[int] | None = None,
+                storage_dtype=np.float16):
     """Yields (hidden [n_pos, n_layers_kept, d] float16 numpy, logprobs at pre positions [n_pre, V]
     float32 numpy) per instance, right-padded so positions are absolute."""
     pad = tok.pad_token_id
@@ -124,7 +125,10 @@ def forced_pass(tok, model, input_ids_list: Sequence[list[int]], positions_list:
         for b in range(len(ids)):
             pos = positions_list[i + b]
             pre = pre_positions_list[i + b]
-            h = stacked[b, pos].to(torch.float16).cpu().numpy()
+            torch_dtype = torch.float32 if storage_dtype == np.float32 else torch.float16
+            h = stacked[b, pos].to(torch_dtype).cpu().numpy()
+            if not np.isfinite(h).all():
+                raise ValueError("non-finite cached hidden states; use float32 storage for this model")
             lp = logp[b, pre].cpu().numpy() if pre else np.zeros((0, logp.shape[-1]), dtype=np.float32)
             yield h, lp
 
@@ -164,6 +168,7 @@ def run_condition(tok, model, model_key: str, level: int, regime: str, condition
     t0i = toks[keep_idx[0]]["instance_start_token"]
     summary = {"model": model_key, "level": level, "regime": regime, "condition": condition,
                "n": len(keep_idx), "excluded": excluded, "labels": labels,
+               "pre_value_boundary_checked": True,
                "positions": {k: toks[keep_idx[0]]["positions"][k] for k in labels},
                "n_tokens": ref[0], "n_prompt_tokens": toks[keep_idx[0]]["n_prompt_tokens"],
                "instance_start_token": t0i, "token_strings": toks[keep_idx[0]]["token_strings"],
@@ -204,10 +209,12 @@ def run_condition(tok, model, model_key: str, level: int, regime: str, condition
         n_layers_total = text_config(model).num_hidden_layers + 1
         keep_layers = list(range(n_layers_total)) if layers is None else list(layers)
         d = text_config(model).hidden_size
-        hidden = np.lib.format.open_memmap(out_dir / "hidden.npy", mode="w+", dtype=np.float16,
+        storage_dtype = np.float32 if model_key.startswith("gemma3-") else np.float16
+        hidden = np.lib.format.open_memmap(out_dir / "hidden.npy", mode="w+", dtype=storage_dtype,
                                            shape=(len(keep_idx), len(pos_labels), len(keep_layers), d))
         fl = (out_dir / "forced_logits.jsonl").open("w")
-        for n, (h, lp) in enumerate(forced_pass(tok, model, ids_list, pos_list, pre_list, batch_size, keep_layers)):
+        for n, (h, lp) in enumerate(forced_pass(tok, model, ids_list, pos_list, pre_list, batch_size, keep_layers,
+                                               storage_dtype=storage_dtype)):
             hidden[n] = h
             x = instances[keep_idx[n]]
             rec = {"id": x.id, "pre": {}}
@@ -221,7 +228,7 @@ def run_condition(tok, model, model_key: str, level: int, regime: str, condition
         fl.close()
         hidden.flush()
         summary.update({"pos_labels": pos_labels, "pre_labels": pre_labels, "layers": keep_layers, "hidden_dim": d,
-                        "hidden_shape": list(hidden.shape)})
+                        "hidden_shape": list(hidden.shape), "hidden_dtype": str(hidden.dtype)})
         (out_dir / "meta.json").write_text(json.dumps({**summary, "instances": [
             {"id": instances[k].id, "set_id": instances[k].set_id, "values": instances[k].values, "target": instances[k].target,
              "lure": instances[k].lure, "answer": instances[k].answer, "query": instances[k].query,

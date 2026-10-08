@@ -1,0 +1,34 @@
+{
+  "checked_utc": "2026-10-03T04:57:13.261823+00:00",
+  "readability": "complete",
+  "preflight": {
+    "arithmetic_cpu_passed": 62,
+    "arithmetic_heavy_passed": 4,
+    "code_cpu_passed": 42,
+    "heavy_job": "439688",
+    "value_boundary_job": "439757",
+    "value_boundary_samples": 2464,
+    "value_boundary_status": "passed",
+    "per_row_boundary_guards": true,
+    "strict_body_pages": {
+      "probing": 4,
+      "codecue": 4
+    },
+    "future_appendix_layout": "passed on isolated copies with synthetic values; not experiment results"
+  },
+  "current_pages": {
+    "probing": 44,
+    "codecue": 8
+  },
+  "out_of_page_glyphs": {
+    "probing": 0,
+    "codecue": 0
+  },
+  "gpu_workers": [
+    "439652",
+    "439653"
+  ],
+  "gpu_status": "pending",
+  "experiment_status": "queued",
+  "collector_job": "439676"
+}

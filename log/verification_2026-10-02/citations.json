@@ -1,0 +1,146 @@
+[
+  {
+    "key": "kudo2026faithful",
+    "title": "{LLMs} Faithfully and Iteratively Compute Answers During {CoT}: A Systematic Analysis With Multi-step Arithmetics",
+    "local_pdf": "/home/jvl210002/work/migration/probing/papers/kudo2026faithful.pdf",
+    "title_word_coverage": 1.0
+  },
+  {
+    "key": "le2025names",
+    "title": "When Names Disappear: Revealing What {LLMs} Actually Understand About Code",
+    "local_pdf": null,
+    "title_word_coverage": 0.7
+  },
+  {
+    "key": "lam2025codecrash",
+    "title": "{CodeCrash}: Exposing {LLM} Fragility to Misleading Natural Language in Code Reasoning",
+    "local_pdf": "/home/jvl210002/work/migration/probing/papers/lam2025codecrash.pdf",
+    "title_word_coverage": 1.0
+  },
+  {
+    "key": "turpin2023unfaithful",
+    "title": "Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting",
+    "local_pdf": "/home/jvl210002/work/migration/probing/papers/turpin2023unfaithful.pdf",
+    "title_word_coverage": 1.0
+  },
+  {
+    "key": "lanham2023measuring",
+    "title": "Measuring Faithfulness in Chain-of-Thought Reasoning",
+    "local_pdf": "/home/jvl210002/work/migration/probing/papers/tutek2025unlearning.pdf",
+    "title_word_coverage": 1.0
+  },
+  {
+    "key": "chen2025reasoning",
+    "title": "Reasoning Models Don't Always Say What They Think",
+    "local_pdf": "/home/jvl210002/work/migration/probing/papers/turpin2023unfaithful.pdf",
+    "title_word_coverage": 1.0
+  },
+  {
+    "key": "stroop1935",
+    "title": "Studies of Interference in Serial Verbal Reactions",
+    "local_pdf": null,
+    "title_word_coverage": 0.4
+  },
+  {
+    "key": "geirhos2019texture",
+    "title": "{ImageNet}-trained {CNNs} are Biased Towards Texture; Increasing Shape Bias Improves Accuracy and Robustness",
+    "local_pdf": "/home/jvl210002/work/migration/probing/papers/geirhos2019texture.pdf",
+    "title_word_coverage": 1.0
+  },
+  {
+    "key": "hewitt2019control",
+    "title": "Designing and Interpreting Probes with Control Tasks",
+    "local_pdf": "/home/jvl210002/work/migration/probing/papers/hewitt2019control.pdf",
+    "title_word_coverage": 1.0
+  },
+  {
+    "key": "zhang2024patching",
+    "title": "Towards Best Practices of Activation Patching in Language Models: Metrics and Methods",
+    "local_pdf": "/home/jvl210002/work/migration/probing/papers/zhang2024patching.pdf",
+    "title_word_coverage": 1.0
+  },
+  {
+    "key": "le2026obfuscated",
+    "title": "Do Machines Struggle Where Humans Do? {LLM} and Human Comprehension of Obfuscated Code",
+    "local_pdf": "/home/jvl210002/work/migration/probing/papers/obf2026humans.pdf",
+    "title_word_coverage": 1.0
+  },
+  {
+    "key": "wang2026stroop",
+    "title": "Persistent Priors, Preserved Targets: A {Stroop}-Style Paradigm for Lexical Override",
+    "local_pdf": "/home/jvl210002/work/migration/probing/papers/stroop2026priors.pdf",
+    "title_word_coverage": 1.0
+  },
+  {
+    "key": "hu2026conflict",
+    "title": "Conflict and Congruency Effects in Large Language Models: In-Weight and In-Context Competition in a Verbal Conflict Task",
+    "local_pdf": "/home/jvl210002/work/migration/probing/papers/stroop2026conflict.pdf",
+    "title_word_coverage": 1.0
+  },
+  {
+    "key": "liu2026readout",
+    "title": "The Readout Shortcut: Positional Number Copying Dominates Arithmetic {CoT} Readout in Small Language Models",
+    "local_pdf": "/home/jvl210002/work/migration/probing/papers/readout2026shortcut.pdf",
+    "title_word_coverage": 1.0
+  },
+  {
+    "key": "tutek2025unlearning",
+    "title": "Measuring Chain of Thought Faithfulness by Unlearning Reasoning Steps",
+    "local_pdf": "/home/jvl210002/work/migration/probing/papers/tutek2025unlearning.pdf",
+    "title_word_coverage": 1.0
+  },
+  {
+    "key": "prabhakar2024deciphering",
+    "title": "Deciphering the Factors Influencing the Efficacy of Chain-of-Thought: Probability, Memorization, and Noisy Reasoning",
+    "local_pdf": "/home/jvl210002/work/migration/probing/papers/prabhakar2024deciphering.pdf",
+    "title_word_coverage": 1.0
+  },
+  {
+    "key": "grattafiori2024llama3",
+    "title": "The {Llama} 3 Herd of Models",
+    "local_pdf": null,
+    "title_word_coverage": 0.75
+  },
+  {
+    "key": "gemmateam2025gemma3",
+    "title": "{Gemma} 3 Technical Report",
+    "local_pdf": null,
+    "title_word_coverage": 0.5
+  },
+  {
+    "key": "olmo2024olmo2",
+    "title": "2 {OLMo} 2 Furious",
+    "local_pdf": null,
+    "title_word_coverage": 0.667
+  },
+  {
+    "key": "bercovich2025nemotron",
+    "title": "{Llama-Nemotron}: Efficient Reasoning Models",
+    "local_pdf": null,
+    "title_word_coverage": 0.6
+  },
+  {
+    "key": "wolf2020transformers",
+    "title": "Transformers: State-of-the-Art Natural Language Processing",
+    "local_pdf": "/home/jvl210002/work/migration/probing/papers/mirzadeh2025gsmsymbolic.pdf",
+    "title_word_coverage": 0.833
+  },
+  {
+    "key": "paszke2019pytorch",
+    "title": "{PyTorch}: An Imperative Style, High-Performance Deep Learning Library",
+    "local_pdf": null,
+    "title_word_coverage": 0.5
+  },
+  {
+    "key": "pedregosa2011sklearn",
+    "title": "Scikit-learn: Machine Learning in {P}ython",
+    "local_pdf": null,
+    "title_word_coverage": 0.5
+  },
+  {
+    "key": "seabold2010statsmodels",
+    "title": "Statsmodels: Econometric and Statistical Modeling with {P}ython",
+    "local_pdf": null,
+    "title_word_coverage": 0.333
+  }
+]

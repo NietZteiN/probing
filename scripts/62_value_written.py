@@ -20,10 +20,12 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
+import numpy as np
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from cueconf.config import DATA_DIR, OUT_DIR, RESULTS_DIR  # noqa: E402
 from cueconf.generator import read_jsonl  # noqa: E402
-from cueconf.prompts import parse_regime  # noqa: E402
+from cueconf.prompts import demo_seed_of, parse_regime  # noqa: E402
 from cueconf.stats import bootstrap_ci  # noqa: E402
 
 
@@ -36,6 +38,25 @@ def wrote_value(text: str, name: str, value: int) -> bool:
 
 def main() -> int:
     rows = []
+    pooled = defaultdict(lambda: {True: {"n": 0, "lure": 0, "nc": 0, "pseudo": 0, "paired_lure": 0, "sets": [], "d": []},
+                                  False: {"n": 0, "lure": 0, "nc": 0, "pseudo": 0, "paired_lure": 0, "sets": [], "d": []}})
+    pool_seeds = defaultdict(set)
+
+    def record(acc, model, level, regime, target):
+        total = acc[True]["n"] + acc[False]["n"]
+        rec = {"model": model, "level": level, "regime": regime, "target": target,
+               "frac_wrote": acc[True]["n"] / total, "estimator": "mean within matched pairs under the same split"}
+        for w, tag in ((True, "wrote"), (False, "not")):
+            a = acc[w]
+            rec[f"n_{tag}"] = a["n"]
+            rec[f"n_matched_{tag}"] = a["nc"]
+            rec[f"raw_lure_{tag}"] = a["lure"] / a["n"] if a["n"] else None
+            rec[f"lure_{tag}"] = a["paired_lure"] / a["nc"] if a["nc"] else None
+            rec[f"pseudo_{tag}"] = a["pseudo"] / a["nc"] if a["nc"] else None
+            rec[f"excess_{tag}"] = float(np.mean(a["d"])) if a["d"] else None
+            rec[f"excess_{tag}_ci"] = (bootstrap_ci(np.array(a["d"]), np.array(a["sets"]))[1:]
+                                       if len(a["d"]) >= 50 else None)
+        return rec
     for L in (1, 2, 3, 4, 5):
         f = DATA_DIR / f"L{L}" / "test_sets.jsonl"
         if not f.exists():
@@ -43,6 +64,8 @@ def main() -> int:
         info = {x.id: x for x in read_jsonl(f)}
         for bf in sorted((OUT_DIR / "runs").glob(f"*/L{L}/*/incongruent@*/behavior.jsonl")):
             model, regime, group = bf.parents[3].name, bf.parents[1].name, bf.parent.name
+            if "__" in group:
+                continue  # archived smoke runs and all-token cache variants are not experiments
             if parse_regime(regime)[0] != "cot":
                 continue
             target = group.split("@")[1]
@@ -54,8 +77,8 @@ def main() -> int:
                 r = json.loads(line); x = info.get(r["id"])
                 if x is not None:
                     neu[x.set_id] = (r, x)
-            acc = {True: {"n": 0, "lure": 0, "nc": 0, "pseudo": 0, "sets": [], "d": []},
-                   False: {"n": 0, "lure": 0, "nc": 0, "pseudo": 0, "sets": [], "d": []}}
+            acc = {True: {"n": 0, "lure": 0, "nc": 0, "pseudo": 0, "paired_lure": 0, "sets": [], "d": []},
+                   False: {"n": 0, "lure": 0, "nc": 0, "pseudo": 0, "paired_lure": 0, "sets": [], "d": []}}
             for line in bf.open():
                 r = json.loads(line); x = info.get(r["id"])
                 if x is None or r["lure"] is None:
@@ -68,25 +91,27 @@ def main() -> int:
                     # the twin must fall in the SAME half, or the baseline is not comparable
                     if wrote_value(nr["generation"], nx.names[target], nx.values[target]) == w:
                         a["nc"] += 1; a["pseudo"] += 1 if nr["pred"] == r["lure"] else 0
+                        a["paired_lure"] += int(r["pred_is_lure"])
                         a["sets"].append(x.set_id)
                         a["d"].append((1 if r["pred_is_lure"] else 0) - (1 if nr["pred"] == r["lure"] else 0))
             if acc[True]["n"] + acc[False]["n"] == 0:
                 continue
-            import numpy as np
-            rec = {"model": model, "level": L, "regime": regime, "target": target,
-                   "frac_wrote": acc[True]["n"] / (acc[True]["n"] + acc[False]["n"])}
-            for w, tag in ((True, "wrote"), (False, "not")):
-                a = acc[w]
-                rec[f"n_{tag}"] = a["n"]
-                rec[f"lure_{tag}"] = a["lure"] / a["n"] if a["n"] else None
-                rec[f"pseudo_{tag}"] = a["pseudo"] / a["nc"] if a["nc"] else None
-                rec[f"excess_{tag}"] = (rec[f"lure_{tag}"] - rec[f"pseudo_{tag}"]) if a["nc"] and a["n"] else None
-                rec[f"excess_{tag}_ci"] = (bootstrap_ci(np.array(a["d"]), np.array(a["sets"]))[1:]
-                                           if len(a["d"]) >= 50 else None)
-            rows.append(rec)
+            rows.append(record(acc, model, L, regime, target))
+            key = (model, L, target)
+            pool_seeds[key].add(demo_seed_of(regime))
+            for w in (True, False):
+                for field in ("n", "lure", "nc", "pseudo", "paired_lure"):
+                    pooled[key][w][field] += acc[w][field]
+                for field in ("sets", "d"):
+                    pooled[key][w][field].extend(acc[w][field])
     out = RESULTS_DIR / "summary" / "value_written.json"
     out.write_text(json.dumps(rows, indent=1, default=float))
-    import numpy as np
+    pooled_rows = []
+    for (model, level, target), acc in sorted(pooled.items()):
+        rec = record(acc, model, level, "cot_pooled", target)
+        rec["seeds"] = sorted(pool_seeds[(model, level, target)])
+        pooled_rows.append(rec)
+    (RESULTS_DIR / "summary" / "value_written_pooled.json").write_text(json.dumps(pooled_rows, indent=1, default=float))
     hdr = (f"{'model':14s} {'L':2s} {'regime':8s} {'tgt':3s} {'wrote%':>7s} | "
            f"{'lure':>6s} {'pseudo':>7s} {'EXCESS':>7s} (written) | {'lure':>6s} {'pseudo':>7s} {'EXCESS':>7s} (not)")
     print(hdr); print("-" * len(hdr))
@@ -98,10 +123,10 @@ def main() -> int:
               f"{f(r['excess_wrote'],7)}            | {f(r['lure_not'])} {f(r['pseudo_not'],7)} {f(r['excess_not'],7)}")
     print()
     for tag, label in (("wrote", "the chain WROTE the value"), ("not", "it did NOT")):
-        sel = [r for r in rows if r[f"n_{tag}"] >= 50 and r[f"excess_{tag}"] is not None]
+        sel = [r for r in rows if r[f"n_matched_{tag}"] >= 50 and r[f"excess_{tag}"] is not None]
         if not sel:
             continue
-        wts = [r[f"n_{tag}"] for r in sel]
+        wts = [r[f"n_matched_{tag}"] for r in sel]
         print(f"pooled over {len(sel):3d} cells where {label:27s}: "
               f"raw lure {100*np.average([r[f'lure_{tag}'] for r in sel], weights=wts):5.2f}%  "
               f"pseudo {100*np.average([r[f'pseudo_{tag}'] for r in sel], weights=wts):5.2f}%  "

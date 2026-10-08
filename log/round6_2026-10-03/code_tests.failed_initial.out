@@ -1,0 +1,16 @@
+
+==================================== ERRORS ====================================
+___________________ ERROR collecting tests/test_followups.py ___________________
+ImportError while importing test module '/work/jvl210002/migration/codecue/tests/test_followups.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/home/jvl210002/.local/share/uv/python/cpython-3.12.14-linux-x86_64-gnu/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_followups.py:1: in <module>
+    from codecue.followups import control_demo, first_value_boundary, write_class
+E   ModuleNotFoundError: No module named 'codecue'
+=========================== short test summary info ============================
+ERROR tests/test_followups.py
+!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.99s

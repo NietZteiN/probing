@@ -30,6 +30,16 @@ def pct(ci):
 def main() -> int:
     ap = argparse.ArgumentParser(); ap.add_argument("--level", type=int, default=3); a = ap.parse_args()
     numbers = {}
+    gemma_tokens = RESULTS_DIR / "summary/gemma3-4b-it/L3/cot/kudo_table.json"
+    if gemma_tokens.exists():
+        token_summary = json.loads(gemma_tokens.read_text())
+        for role in ("v1", "v2"):
+            result = token_summary.get(f"train_neutral/{role}", {}).get("neutral")
+            if result:
+                numbers[f"gemma-token-pre-{role}"] = f"{100*result['acc_pre_cot']:.1f}"
+                first = result.get("t_star")
+                numbers[f"gemma-token-timing-{role}"] = (f"first exceeds 90\\% at token {first}" if first is not None
+                                                         else "does not exceed 90\\% at any measured token")
     for k in load_config("models.yaml")["models"]:
         for regime in ("cot", "direct"):
             f = RESULTS_DIR / "summary" / k / f"L{a.level}" / regime / "behavior_table.json"
@@ -64,7 +74,13 @@ def main() -> int:
     # ---- Table 1 (body): level 3 only, six columns. Other levels go to the appendix table.
     from cueconf.display import MODEL
 
-    def build(levels, path, caption_levels):
+    def body_panel_models(sweep):
+        """Preregistered eligibility, using mean accuracy across demonstration sets."""
+        return {m for m, entry in load_config("models.yaml")["models"].items()
+                if entry.get("kind") not in ("tuned", "reasoning") and entry.get("table1", True)
+                and sweep.get(f"{m}/cot", {}).get("groups", {}).get("neutral", {}).get("acc_mean", 0) >= 0.90}
+
+    def build(levels, path, caption_levels, excluded=False):
         rows = []
         for L in levels:
             sp = RESULTS_DIR / "summary" / f"seed_sweep_L{L}.json"
@@ -76,6 +92,9 @@ def main() -> int:
             # `table1: false` in models.yaml keeps a panel model in the appendix only (page budget).
             panel = {m for m, e in load_config("models.yaml")["models"].items()
                      if e.get("kind") not in ("tuned", "reasoning") and e.get("table1", True)}
+            if L == 3:
+                eligible = body_panel_models(sw)
+                panel = panel - eligible if excluded else eligible
             for key, rec in sorted(sw.items()):
                 k, regime = key.split("/")
                 # cot and direct are the paper's two regimes. `simple` (the value-only chain,
@@ -108,7 +127,7 @@ def main() -> int:
             f.write(f"& {'& ' if len(levels) > 1 else ''}& accuracy & \\multicolumn{{2}}{{c}}{{\\emph{{queried}} variable}} & "
                     f"\\multicolumn{{2}}{{c}}{{\\emph{{intermediate}} variable}} \\\\\n")
             f.write(f"\\cmidrule(lr){{{ncol-3}-{ncol-2}}}\\cmidrule(lr){{{ncol-1}-{ncol}}}\n")
-            f.write(f"& {'& ' if len(levels) > 1 else ''}& (\\%) & helps & lures & helps & lures \\\\\n\\midrule\n")
+            f.write(f"& {'& ' if len(levels) > 1 else ''}& (\\%) & helps & errors & helps & errors \\\\\n\\midrule\n")
             prev = None
             for r in rows:
                 if prev is not None and r[0] != prev:
@@ -140,7 +159,7 @@ def main() -> int:
             numbers["model-list"] = ", ".join(sorted(MODEL.get(m, m) for m in swept - ladder))
             numbers["n-ladder"] = words[len(ladder)] if len(ladder) < len(words) else str(len(ladder))
             # how general "without CoT the models use the value" is: models with a reliable positive
-            # facilitation or lure excess on either target at level 3, and those with a lure excess
+            # facilitation or excess name errors on either target at level 3, and those with a excess name errors
             sw3 = sweeps.get(3, {})
 
             def pos_claim(m, c):
@@ -155,7 +174,7 @@ def main() -> int:
             spreads = [g["acc_range"][1] - g["acc_range"][0] for sw in sweeps.values() for k, r in sw.items()
                        if k.endswith(("/cot", "/direct")) and len(r["seeds"]) == 3 and (g := r["groups"].get("neutral"))]
             numbers["demo-spread-max"] = f"{100*max(spreads):.0f}"
-            # accuracy contrasts that survive under CoT (the equivalence test covers lure excess only)
+            # Accuracy contrasts that survive under CoT; equivalence is reported separately below.
             cot_acc = [(L, k, n) for L, sw in sweeps.items() for k, r in sw.items() if k.endswith("/cot")
                        for n, c in r["contrasts"].items() if n.split("@")[0] in ("facilitation", "interference") and c["claimable"]]
             numbers["cot-acc-cells"] = str(len(cot_acc))
@@ -164,8 +183,20 @@ def main() -> int:
         eqf = RESULTS_DIR / "summary" / "equivalence.json"
         if eqf.exists():
             eq = json.loads(eqf.read_text())
-            cot = {k: v for k, v in eq["cells"].items() if "/cot/" in k}
+            cot = {k: v for k, v in eq["cells"].items() if "/cot/" in k and k.rsplit("/", 1)[1].startswith("lure_excess")}
             direct = {k: v for k, v in eq["cells"].items() if "/direct/" in k}
+            cot_accuracy = {k: v for k, v in eq["cells"].items() if "/cot/" in k and not k.rsplit("/", 1)[1].startswith("lure_excess")}
+            numbers["eq-acc-cells"] = str(len(cot_accuracy))
+            numbers["eq-acc-equivalent"] = str(sum(v["equivalent"] for v in cot_accuracy.values()))
+            numbers["eq-acc-claimable-equivalent"] = str(sum(v["claimable"] and v["equivalent"] for v in cot_accuracy.values()))
+            numbers["eq-acc-claimable-outside"] = str(sum(v["claimable"] and not v["equivalent"] for v in cot_accuracy.values()))
+            lines = ["\\begin{tabular}{@{}lrrr@{}}", "\\toprule",
+                     "Contrast & Cells & Equivalent & Reliable \\\\", "\\midrule"]
+            for label, cells in (("CoT name errors", cot), ("CoT accuracy", cot_accuracy), ("Direct name errors", direct)):
+                lines.append(f"{label} & {len(cells)} & {sum(v['equivalent'] for v in cells.values())} & "
+                             f"{sum(v['claimable'] for v in cells.values())} \\\\")
+            lines += ["\\bottomrule", "\\end{tabular}"]
+            (PAPER / "tables" / "equivalence.tex").write_text("\n".join(lines) + "\n")
             numbers["eq-delta"] = f"{100*eq['delta']:.0f}"
             numbers["eq-cot-cells"] = str(len(cot))
             numbers["eq-cot-equivalent"] = str(sum(v["equivalent"] for v in cot.values()))
@@ -180,8 +211,8 @@ def main() -> int:
                 numbers["eq-exc-level"] = L[1:]
                 numbers["eq-exc-role"] = "queried" if c.endswith("v1") else "intermediate"
                 numbers["eq-exc-mean"] = f"{100*v['mean']:+.1f}"
-                numbers["eq-exc-lo"] = f"{100*v['ci95'][0]:+.1f}"
-                numbers["eq-exc-hi"] = f"{100*v['ci95'][1]:+.1f}"
+                numbers["eq-exc-lo"] = f"{100*v['ci90'][0]:+.1f}"
+                numbers["eq-exc-hi"] = f"{100*v['ci90'][1]:+.1f}"
                 sw = sweeps.get(int(L[1:]), {}).get(f"{m}/cot", {}).get("groups", {})
                 if sw:
                     numbers["eq-exc-neutral-acc"] = f"{100*sw['neutral']['acc_mean']:.0f}"
@@ -199,19 +230,21 @@ def main() -> int:
             import numpy as np
             vw = json.loads(vwf.read_text())
             for tag in ("wrote", "not"):
-                sel = [r for r in vw if r[f"n_{tag}"] >= 50 and r[f"excess_{tag}"] is not None]
+                sel = [r for r in vw if r[f"n_matched_{tag}"] >= 50 and r[f"excess_{tag}"] is not None]
                 if sel:
-                    w = [r[f"n_{tag}"] for r in sel]
+                    w = [r[f"n_matched_{tag}"] for r in sel]
                     numbers[f"vw-excess-{tag}"] = f"{100*np.average([r[f'excess_{tag}'] for r in sel], weights=w):+.2f}"
                     numbers[f"vw-cells-{tag}"] = str(len(sel))
-            olmo = [r for r in vw if r["model"] == "olmo2-1b-it" and r["target"] == "v2"
-                    and r["regime"] == "cot" and r.get("excess_wrote_ci")]
+            vp = json.loads((RESULTS_DIR / "summary" / "value_written_pooled.json").read_text())
+            olmo = [r for r in vp if r["model"] == "olmo2-1b-it" and r["target"] == "v2"
+                    and r["level"] == 3 and r.get("excess_wrote_ci")]
             if olmo:
                 r = olmo[0]; ci = r["excess_wrote_ci"]
                 numbers["vw-olmo-excess"] = f"{100*r['excess_wrote']:+.1f}"
                 numbers["vw-olmo-lo"] = f"{100*ci[0]:+.1f}"
                 numbers["vw-olmo-hi"] = f"{100*ci[1]:+.1f}"
-                numbers["vw-olmo-n"] = str(r["n_wrote"])
+                numbers["vw-olmo-n"] = str(r["n_matched_wrote"])
+                numbers["vw-olmo-seeds"] = str(len(r["seeds"]))
         # own-chain probe figure (26_own_chain_probe.py / 67_own_chain_figure.py): how many instances it shows
         oc = RESULTS_DIR / "summary" / "llama32-3b" / "L3" / "cot" / "own_chain_v1.json"
         ob = OUT_DIR / "runs" / "llama32-3b" / "L3" / "cot" / "incongruent@v1" / "behavior.jsonl"
@@ -239,7 +272,7 @@ def main() -> int:
                 if c:
                     numbers[f"{tag}-pre-{v}"] = f"{100*c['acc_pre_cot']:.1f}"
                     numbers[f"{tag}-eq-{v}"] = c["t_star_segment"].split(":")[1]
-        # level-4 lure mass at the ANSWER position for both the bound (incongruent@v2) and the
+        # level-4 probability of the name-suggested value at the ANSWER position for both the bound (incongruent@v2) and the
         # unbound (irrelevant@v3) number word, best-accuracy layer, so the two are comparable
         g4f = RESULTS_DIR / "summary" / "llama32-3b" / "L4" / "cot" / "probes_grid.json"
         if g4f.exists():
@@ -284,7 +317,7 @@ def main() -> int:
                 for kk in sw: per.setdefault(kk.split("/")[0], set()).add(L)
             numbers["n-models-all-levels"] = {1: "one", 2: "two", 3: "three"}.get(sum(1 for v in per.values() if len(v) == 5), str(sum(1 for v in per.values() if len(v) == 5)))
         # chain regime: how often injecting the name's activations changes the answer (max over
-        # layers and models with patching), and the most lure errors any model made in 2,000
+        # layers and models with patching), and the most name errors any model made in 2,000
 # injection under CoT: the exception model is reported separately from the rest, because it is
         # the one model where the name still moves the answer through a forced correct chain
         EXC = "olmo2-1b-it"
@@ -302,7 +335,8 @@ def main() -> int:
                             if a_.get("n"): inj_n.add(a_["n"])
             for kk in ("main@v1", "main@v2"):
                 a_ = d.get(kk, {}).get("ALL", {}).get("anspre")
-                if a_: err.append(a_["n_lure_err"]); err_models.add(mk)
+                if a_ and mk != EXC:
+                    err.append(a_["n_lure_err"]); err_models.add(mk)
         # the sentences these feed are scoped to the models actually patched, not "every model"
         wd = "zero one two three four five six seven eight nine ten".split()
         numbers["inject-other-models"] = wd[len(inj_models)] if len(inj_models) < len(wd) else str(len(inj_models))
@@ -337,7 +371,31 @@ def main() -> int:
                         if c:
                             numbers["exc-ctlword"] = f"{100*c['damage']:.1f}\\%"
                             break
-# positional-copy control (E22): among CoT lure errors at the answer, how often the number
+        # Round-3 removal and alternative-name controls under the same forced-gold chain.
+        # A zero baseline-error count has no defined removal rate; never print it as zero.
+        ep = RESULTS_DIR / "summary" / EXC / "L3" / "cot" / "patching.json"
+        if ep.exists():
+            patches = json.loads(ep.read_text())
+            required = [f"{contrast}@{target}" for contrast in ("main", "ctl_lure", "ctl_word")
+                        for target in ("v1", "v2")]
+            if all(k in patches for k in required):
+                counts = {v['n'] for k in required for v in patches[k]["ALL"].values()}
+                numbers["exc-controls-n"] = str(next(iter(counts))) if len(counts) == 1 else f"{min(counts)}--{max(counts)}"
+                lines = ["\\begin{tabular}{@{}llrrrrr@{}}", "\\toprule",
+                         "Target & Read & Errors & Neutral removed & Word dmg. & Alt. removed & Alt. followed \\\\", "\\midrule"]
+                def pct(value):
+                    return "--" if value is None else f"{100*value:.1f}"
+                for target in ("v1", "v2"):
+                    main = patches[f"main@{target}"]["ALL"]
+                    word = patches[f"ctl_word@{target}"]["ALL"]
+                    lure = patches[f"ctl_lure@{target}"]["ALL"]
+                    for read, label in ((f"cotpre@{target}", "value"), ("anspre", "answer")):
+                        m, w, l = main[read], word[read], lure[read]
+                        lines.append(f"{target} & {label} & {m['n_lure_err']} & {pct(m['lure_removed'])} & "
+                                     f"{pct(w['damage'])} & {pct(l['lure_removed'])} & {pct(l['follows_src_lure'])} \\\\")
+                lines += ["\\bottomrule", "\\end{tabular}"]
+                (PAPER / "tables" / "exception_patching.tex").write_text("\n".join(lines) + "\n")
+# positional-copy control (E22): among CoT name errors at the answer, how often the number
         # standing just before the answer is the lure rather than the true value
         cc_err = cc_lure = cc_true = 0; cc_cells = 0
         for cf in (RESULTS_DIR / "summary").glob("*/L*/cot*/copy_control.json"):
@@ -352,7 +410,7 @@ def main() -> int:
             numbers["copy-lure-frac"] = f"{100*cc_lure/cc_err:.0f}\\%"
             numbers["copy-true-frac"] = f"{100*cc_true/cc_err:.0f}\\%"
 # Is the target's value linearly decodable at the step where the chain writes it, and does
-        # that line up with the behavioural lure excess? One row per (model with probes, role).
+        # that line up with the behavioural excess name errors? One row per (model with probes, role).
         vs = []
         for gf in (RESULTS_DIR / "summary").glob("*/L3/cot/probes_grid.json"):
             mk = gf.parts[-4]; gg = json.loads(gf.read_text())
@@ -364,6 +422,16 @@ def main() -> int:
                 acc = cells[L]["neutral"]["accuracy"][0]
                 ex = sweeps.get(3, {}).get(f"{mk}/cot", {}).get("contrasts", {}).get(f"lure_excess@{role}")
                 if ex: vs.append((mk, role, acc, ex["pooled_mean"], ex["claimable"]))
+        # The completed competence audit also covers the pretrained Gemma pair.
+        # Use this common validated population for the body and appendix comparison.
+        followup = RESULTS_DIR / "summary/round5_competence.json"
+        if followup.exists():
+            audited = json.loads(followup.read_text())
+            if not audited.get("validated"):
+                raise ValueError("unvalidated competence follow-up")
+            vs = [(r["model"], r["role"], r["neutral_accuracy"], r["lure_excess"],
+                   sweeps[3][f"{r['model']}/cot"]["contrasts"][f"lure_excess@{r['role']}"]["claimable"])
+                  for r in audited["cells"]]
         if vs:
             hi = [r for r in vs if r[2] >= 0.9]; lo = [r for r in vs if r[2] < 0.9]
             numbers["vs-cells"] = str(len(vs))
@@ -467,7 +535,8 @@ def main() -> int:
         # the claim "no body claim rests on the procedure" is computed, not asserted: a lost cell
         # counts against it when it is a Table 1 cell (panel model, cot or direct regime)
         cfg = load_config("models.yaml")["models"]
-        body = {m for m, e in cfg.items() if e.get("kind") not in ("tuned", "reasoning") and e.get("table1", True)}
+        sw3 = json.loads((RESULTS_DIR / "summary" / "seed_sweep_L3.json").read_text())
+        body = body_panel_models(sw3)
         numbers["mix-lost-body"] = str(sum(1 for k in lost if k.split("/")[0] in body and k.split("/")[2] in ("cot", "direct")))
         # starred Table 1 lure-excess cells (full data) that the 600-set subsample supports under neither procedure
         sw3 = json.loads((RESULTS_DIR / "summary" / "seed_sweep_L3.json").read_text())
@@ -611,7 +680,7 @@ def main() -> int:
                    if f"{m}/L3/cot/{r}" in mk]
         if cotvals:
             numbers["kind-cot-max"] = f"{max(cotvals):.2f}"
-        # the body's tuning sentence: the largest no-CoT lure excess on any rung (all six, not only the finetunes)
+        # the body's tuning sentence: the largest no-CoT excess name errors on any rung (all six, not only the finetunes)
         dirvals = [abs(mk[f"{m}/L3/direct/{r}"]["lure_excess"]["mean"]) for m, _, _ in RUNGS for r in ("v1", "v2")
                    if f"{m}/L3/direct/{r}" in mk]
         if dirvals:
@@ -676,7 +745,13 @@ def main() -> int:
             numbers[f"lureindex-{reg}-n"] = str(len(idx[reg]))
 
     narrative(numbers)
+    import runpy
+    followup = runpy.run_path(str(Path(__file__).with_name("79_round5_tables.py")))
+    numbers.update(followup["narrative_numbers"]())
+    independent = runpy.run_path(str(Path(__file__).with_name("82_round6_tables.py")))
+    numbers.update(independent["narrative_numbers"]())
     n_main = build([3], PAPER / "tables" / "behavior.tex", "3")
+    build([3], PAPER / "tables" / "behavior_excluded.tex", "3", excluded=True)
     n_app = build([1, 2, 4, 5], PAPER / "tables" / "behavior_levels.tex", "1, 2, 4 and 5")
     print(f"Table 1: {n_main} rows (level 3); appendix table: {n_app} rows")
     with (PAPER / "numbers.tex").open("w") as f:
@@ -685,6 +760,9 @@ def main() -> int:
             f.write(f"\\expandafter\\newcommand\\csname NUMval@{key}\\endcsname{{{val}}}\n")
         f.write("\\renewcommand{\\NUM}[1]{\\ifcsname NUMval@#1\\endcsname\\csname NUMval@#1\\endcsname\\else\\textcolor{red}{$\\langle\\langle$\\texttt{#1}$\\rangle\\rangle$}\\fi}\n")
     print(f"wrote {len(numbers)} numbers")
+    import runpy
+    runpy.run_path(str(Path(__file__).with_name("79_round5_tables.py")), run_name="__main__")
+    runpy.run_path(str(Path(__file__).with_name("82_round6_tables.py")), run_name="__main__")
     return 0
 
 

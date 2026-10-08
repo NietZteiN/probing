@@ -6,6 +6,15 @@ from cueconf.prompts import (N_DEMOS, layout, make_demos, parse_answer, scheme_o
 from cueconf.words import NEUTRAL_CANDIDATES
 
 
+def test_pre_value_token_excludes_supplied_digit():
+    from cueconf.prompts import assert_before_value
+    assert_before_value([(0, 1), (1, 2), (2, 3)], 1, 2)
+    with pytest.raises(ValueError, match="includes"):
+        assert_before_value([(0, 1), (1, 3)], 1, 2)
+    with pytest.raises(ValueError, match="unresolved"):
+        assert_before_value([(0, 1)], -1, 1)
+
+
 @pytest.mark.parametrize("level", sorted(LEVELS))
 @pytest.mark.parametrize("regime", ["cot", "direct", "simple"])
 def test_positions_point_at_the_right_characters(level, regime):

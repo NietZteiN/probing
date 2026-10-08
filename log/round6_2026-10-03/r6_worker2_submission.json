@@ -1,0 +1,16 @@
+{
+  "name": "r6_worker2",
+  "partition": "h100,h200",
+  "argv": [
+    "env",
+    "WORKER_IDLE_EXIT_MIN=10",
+    "bash",
+    "scripts/slurm/worker.sh",
+    "r6"
+  ],
+  "submitted_utc": "2026-10-03T21:13:18.255308+00:00",
+  "time": "24:00:00",
+  "gpus": 1,
+  "exclude": "g-06-01",
+  "reason": "H100/A30 cards currently occupied; permit H200 backfill under shared juno QoS"
+}

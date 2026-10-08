@@ -1,0 +1,11 @@
+{
+  "started_utc": "2026-10-04T01:06:58.433367+00:00",
+  "status": "complete",
+  "analyses": {
+    "R6-A1": true,
+    "R6-A2": true,
+    "R6-A3": true
+  },
+  "errors": [],
+  "finished_utc": "2026-10-04T01:07:23.286805+00:00"
+}

@@ -1,0 +1,7 @@
+nemotron-nano-8b L3 cot: behavior=20000 probes=0 patching=0 -> /work/jvl210002/migration/probing/results/summary/nemotron-nano-8b/L3/cot
+nemotron-nano-8b L3 cot_s11: behavior=20000 probes=0 patching=0 -> /work/jvl210002/migration/probing/results/summary/nemotron-nano-8b/L3/cot_s11
+nemotron-nano-8b L3 cot_s13: behavior=20000 probes=0 patching=0 -> /work/jvl210002/migration/probing/results/summary/nemotron-nano-8b/L3/cot_s13
+nemotron-nano-8b L3 direct: behavior=20000 probes=0 patching=0 -> /work/jvl210002/migration/probing/results/summary/nemotron-nano-8b/L3/direct
+nemotron-nano-8b L3 direct_s11: behavior=20000 probes=0 patching=0 -> /work/jvl210002/migration/probing/results/summary/nemotron-nano-8b/L3/direct_s11
+nemotron-nano-8b L3 direct_s13: behavior=20000 probes=0 patching=0 -> /work/jvl210002/migration/probing/results/summary/nemotron-nano-8b/L3/direct_s13
+nemotron-nano-8b L3 free: behavior=20000 probes=0 patching=0 -> /work/jvl210002/migration/probing/results/summary/nemotron-nano-8b/L3/free

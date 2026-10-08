@@ -12,18 +12,33 @@ import numpy as np
 import pandas as pd
 
 
-def bootstrap_ci(values: np.ndarray, clusters: np.ndarray, n_boot: int = 2000, seed: int = 0, stat=np.mean) -> tuple[float, float, float]:
+def bootstrap_ci(values: np.ndarray, clusters: np.ndarray, n_boot: int = 2000, seed: int = 0, stat=np.mean,
+                 confidence: float = 0.95) -> tuple[float, float, float]:
     """Cluster bootstrap: resample matched sets with replacement. Returns (point, lo, hi)."""
     rng = np.random.default_rng(seed)
     values = np.asarray(values, dtype=float); clusters = np.asarray(clusters)
+    if not 0 < confidence < 1:
+        raise ValueError("confidence must be between zero and one")
+    if not len(values) or len(values) != len(clusters):
+        raise ValueError("values and clusters must have the same nonzero length")
     uniq, inv = np.unique(clusters, return_inverse=True)
-    by = [values[inv == i] for i in range(len(uniq))]
     point = float(stat(values))
     boots = []
-    for _ in range(n_boot):
-        pick = rng.integers(0, len(by), len(by))
-        boots.append(stat(np.concatenate([by[i] for i in pick])))
-    lo, hi = np.percentile(boots, [2.5, 97.5])
+    if stat is np.mean:
+        # Resampling sums and counts is exactly the mean of resampled observations,
+        # including unequal-sized clusters. Keep each matched set intact across seeds.
+        sums = np.bincount(inv, weights=values)
+        counts = np.bincount(inv)
+        for start in range(0, n_boot, 128):
+            pick = rng.integers(0, len(uniq), (min(128, n_boot - start), len(uniq)))
+            boots.extend(sums[pick].sum(axis=1) / counts[pick].sum(axis=1))
+    else:
+        by = [values[inv == i] for i in range(len(uniq))]
+        for _ in range(n_boot):
+            pick = rng.integers(0, len(by), len(by))
+            boots.append(stat(np.concatenate([by[i] for i in pick])))
+    tail = 100 * (1 - confidence) / 2
+    lo, hi = np.percentile(boots, [tail, 100 - tail])
     return point, float(lo), float(hi)
 
 

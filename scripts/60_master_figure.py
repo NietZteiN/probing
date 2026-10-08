@@ -1,18 +1,11 @@
 #!/usr/bin/env python
-"""Figure 1: the whole paper in one picture.
+"""Figure 1: naming effects and token-position probe readouts at manuscript width.
 
     python scripts/60_master_figure.py [--level 3]
 
-Three panels, left to right:
-  (a) the manipulation, on one problem: the same arithmetic with a neutral name, a name that
-      agrees with the variable's value, and a name that contradicts it;
-  (b) the headline, per model: how much a name changes the answer, with and without a chain of
-      thought. Top strip: accuracy gained when the name agrees. Bottom strip: how much more
-      often the model answers the name's own value when it lies. The grey band is the
-      equivalence bound of two points that the chain-of-thought results sit inside;
-  (c) inside the model, at every token of one problem: how often a probe trained on neutral
-      problems reads the variable's true value, and how often it reads the value its name
-      denotes.
+The matched-problem example is in the main text. Panels show queried-variable facilitation,
+excess name errors, and maximum-over-layers probe readouts under the gold chain. Probe curves pool
+instances with different true/name-suggested digits, so labels name the metric rather than one digit.
 """
 from __future__ import annotations
 
@@ -94,7 +87,6 @@ def main() -> int:
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
-    from matplotlib.gridspec import GridSpec
     ap = argparse.ArgumentParser()
     ap.add_argument("--level", type=int, default=3); ap.add_argument("--delta", type=float, default=0.02)
     ap.add_argument("--probe-model", default="llama32-3b"); ap.add_argument("--role", default="v1")
@@ -102,44 +94,24 @@ def main() -> int:
     plt.rcParams.update(rcparams())
     sw = json.loads((RESULTS_DIR / "summary" / f"seed_sweep_L{a.level}.json").read_text())
 
-    fig = plt.figure(figsize=(16.4, 4.7))
-    gs = GridSpec(1, 4, width_ratios=[0.98, 0.98, 0.86, 1.70], wspace=0.20, figure=fig)
-    gs.update(left=0.005, right=0.995)
-    axa = fig.add_subplot(gs[:, 0]); axa.axis("off")
-    axb1 = fig.add_subplot(gs[:, 1])
-    axb2 = fig.add_subplot(gs[:, 2])          # not sharey: a shared formatter would blank both
-    axc = fig.add_subplot(gs[:, 3])
+    # Render at manuscript width; token labels and the example table are shown elsewhere.
+    fig = plt.figure(figsize=(7.2, 5.1))
+    axb1 = fig.add_axes([0.23, 0.52, 0.31, 0.38])
+    axb2 = fig.add_axes([0.66, 0.52, 0.31, 0.38])
+    axc = fig.add_axes([0.10, 0.09, 0.87, 0.24])
 
-    # ---- (a) the manipulation
-    axa.set_title("(a)  the manipulation", loc="left", fontsize=11)
-    rows_a = [("neutral", "truck=2 + ant, ant=7 - 6; truck=?", GREY,
-               "answer 3"),
-              ("the name agrees", "three=2 + ant, ant=7 - 6; three=?", GREEN,
-               "answer 3; the name says 3"),
-              ("the name lies", "four=2 + ant, ant=7 - 6; four=?", RED,
-               "answer 3; the name says 4")]
-    y = 0.88
-    for lab, prob, col, note in rows_a:
-        axa.text(0, y, lab, fontsize=10.5, color=col, weight="bold", transform=axa.transAxes)
-        axa.text(0, y - 0.09, prob, fontsize=8.6, family="monospace", color=col, transform=axa.transAxes)
-        axa.text(0, y - 0.165, note, fontsize=8.6, color="0.4", style="italic", transform=axa.transAxes)
-        y -= 0.29
-    axa.text(0, 0.0, "same arithmetic; only the name of\nthe queried variable changes",
-             fontsize=8.8, color="0.4", linespacing=1.5, va="bottom", transform=axa.transAxes)
-
-    # ---- (b) headline
     rows = layout_models(sw)
     paired(axb1, sw, rows, "facilitation@v1",
-           "(b)  name says the right answer:\n      accuracy gained",
-           "points", a.delta, band=True, ylabels=True)
+           "(a) Accuracy gained\nfrom a congruent name",
+           "percentage points", a.delta, band=True, ylabels=True)
     paired(axb2, sw, rows, "lure_excess@v1",
-           "name says a wrong number:\nlure answers above the neutral twin",
-           "points", a.delta, band=True, ylabels=False)
-    h = [plt.Line2D([], [], color=RED, marker="o", ls="", ms=6, label="no chain of thought"),
-         plt.Line2D([], [], color=BLUE, marker="s", ls="", ms=6, label="with chain of thought"),
-         plt.Rectangle((0, 0), 1, 1, color="0.90", label="within 2 points of zero")]
-    axb1.legend(handles=h, loc="upper center", bbox_to_anchor=(1.10, -0.10), ncol=3,
-                frameon=False, fontsize=9.5, handletextpad=0.5, columnspacing=1.4)
+           "(b) Excess errors from\nmisleading names",
+           "percentage points", a.delta, band=True, ylabels=False)
+    handles = [plt.Line2D([], [], color=RED, marker="o", ls="", ms=5, label="direct answer"),
+               plt.Line2D([], [], color=BLUE, marker="s", ls="", ms=5, label="chain of thought"),
+               plt.Rectangle((0, 0), 1, 1, color="0.90", label="two-point margin")]
+    fig.legend(handles=handles, loc="center", bbox_to_anchor=(0.57, 0.39), ncol=3,
+               frameon=False, fontsize=8, handletextpad=0.4, columnspacing=1.0)
 
     # ---- (c) inside the model
     pj = OUT_DIR / "probes" / a.probe_model / f"L{a.level}" / "cot" / f"train_neutral__alltok" / f"{a.role}.json"
@@ -166,28 +138,30 @@ def main() -> int:
         axc.axvspan(t - 0.5, t + 0.5, color="#E6D9A8", alpha=0.55, lw=0, zorder=0)
     axc.axvline(cot0 - 0.5, color="0.35", lw=1.2, ls="--")
     axc.plot(curve("accuracy"), "-", lw=1.9, color=GREEN, zorder=3,
-             label=f"probe reads {ex['values'][a.role]}, the true value of “{name}”")
+             label="true-value accuracy")
     axc.plot(curve("lure_rate"), "-", lw=1.9, color=RED, zorder=3,
-             label=f"probe reads {ex['lure']}, what the word “{name}” means")
-    axc.set_ylim(-0.03, 1.16); axc.set_xlim(-0.5, n_pos - 0.5)
+             label="name-suggested prediction")
+    axc.set_ylim(-0.03, 1.30); axc.set_xlim(-0.5, n_pos - 0.5)
     axc.set_yticks([0, 0.25, 0.5, 0.75, 1.0])
     axc.set_ylabel("share of problems")
     import matplotlib.patches as mpatches
-    hc = [plt.Line2D([], [], color=GREEN, lw=1.9, label=f"reads {ex['values'][a.role]}, the true value"),
-          plt.Line2D([], [], color=RED, lw=1.9, label=f"reads {ex['lure']}, what “{name}” means"),
-          mpatches.Patch(color="#E6D9A8", alpha=0.55, label=f"the name's tokens")]
-    axc.legend(handles=hc, loc="upper left", bbox_to_anchor=(0.005, 0.90), frameon=False, fontsize=8.8)
-    axc.set_title("(c)  what a probe reads at each token (Llama-3.2-3B)", loc="left")
-    axc.set_xticks(range(n_pos))
-    axc.set_xticklabels([mte["token_strings"][i].replace("\n", "\\n") for i in range(n_pos)],
-                        rotation=90, family="monospace", fontsize=6)
-    axc.text(cot0 - 1.0, 1.10, "the problem", ha="right", fontsize=8.8, color="0.3")
-    axc.text(cot0 + 0.2, 1.10, "the model's chain of thought", ha="left", fontsize=8.8, color="0.3")
-    wt = max((max(v) - t0 for k, v in mte["segment_tokens"].items() if k.endswith(f":value:{a.role}")), default=None)
-    if wt is not None:
-        axc.axvline(wt, color=GREEN, lw=1.1, ls=":", zorder=2)
-        axc.text(wt - 0.8, 1.02, f"the chain writes “{name}={ex['values'][a.role]}”",
-                 fontsize=8.8, color="#0F5C40", ha="right", va="center")
+    hc = [plt.Line2D([], [], color=GREEN, lw=1.9, label="true-value accuracy"),
+          plt.Line2D([], [], color=RED, lw=1.9, label="name-suggested prediction"),
+          mpatches.Patch(color="#E6D9A8", alpha=0.55, label="name tokens")]
+    axc.legend(handles=hc, loc="upper left", frameon=False, fontsize=8, ncol=3,
+               handlelength=1.6, columnspacing=1.0)
+    axc.set_title("(c) Probe readouts during the gold chain (Llama-3.2-3B)", loc="left", fontsize=10)
+    axc.set_xticks(list(range(0, n_pos, 10)))
+    axc.set_xlabel("token position in the problem and gold chain", fontsize=9)
+    axc.tick_params(labelsize=8)
+    axc.set_ylabel("proportion", fontsize=9)
+    axc.text(cot0 + 0.4, 0.53, "chain starts", fontsize=8, color="0.35", rotation=90, va="center")
+    value_pre = mte["positions"].get(f"cotpre@{a.role}")
+    if value_pre is not None:
+        value_pre -= t0
+        axc.axvline(value_pre, color=GREEN, lw=1.1, ls=":", zorder=2)
+        axc.text(value_pre - 0.5, 0.15, "before value write", fontsize=8,
+                 color="#0F5C40", ha="right", rotation=90, va="bottom")
 
     FIG.mkdir(parents=True, exist_ok=True)
     stem = FIG / f"fig1_master_L{a.level}"

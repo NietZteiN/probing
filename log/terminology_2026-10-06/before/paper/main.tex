@@ -1,0 +1,676 @@
+% Cue conflict in chain-of-thought arithmetic -- ARR short-paper draft (4 pages of body).
+%
+% Every quantity is a \NUM{} macro from paper/numbers.tex, written by scripts/51_tables.py from
+% results/summary/; an undefined key renders in red. No number in the prose is typed by hand.
+%
+% Build: make paper   (tectonic at envs/tex/bin/tectonic; prints body page count vs limit 4)
+
+\documentclass[11pt]{article}
+\usepackage[review]{acl}      % anonymous + line numbers for ARR; final / preprint later
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{url}
+
+% An unfilled number must be impossible to miss.  % grep-skip
+\providecommand{\NUM}[1]{\textcolor{red}{$\langle\langle$\texttt{#1}$\rangle\rangle$}}
+\providecommand{\tabinput}[1]{\IfFileExists{tables/#1.tex}{\input{tables/#1.tex}}{\textcolor{red}{[table \texttt{#1} not generated yet]}}}
+\IfFileExists{numbers.tex}{\input{numbers.tex}}{}
+
+\definecolor{neu}{RGB}{60,60,60}
+\definecolor{con}{RGB}{0,110,60}
+\definecolor{inc}{RGB}{180,30,30}
+
+\title{Chain of Thought Limits Lure Answers in Arithmetic}
+
+\author{Anonymous ACL submission}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A variable named \texttt{four} can have value 6. We ask whether writing a chain of thought
+keeps a model from answering 4. Matched arithmetic problems differ in one name, across
+\NUM{n-models} models and three sets of worked examples. Without a chain,
+\NUM{n-value-models} models show a naming effect on accuracy or lure answers. With a chain,
+\NUM{eq-cot-equivalent} of \NUM{eq-cot-cells} lure contrasts fall within the preregistered
+$\pm\NUM{eq-delta}$-point margin. The exception, OLMo-2-1B-Instruct, also has low task accuracy.
+Value probes cover \NUM{competence-pairs} model--variable pairs, but their association with
+lure excess depends on including that model. Even probes trained on generated neutral chains
+calibrate poorly for the exception but well for Llama-3.2-3B. Patching localizes the no-chain naming effect in
+Llama-3.2-3B to early layers at the defining equation. Chains limit numeric lure answers;
+these measurements do not establish why.
+\end{abstract}
+
+\section{Introduction}
+
+In the problem
+\begin{center}
+\texttt{pen=1 + cup, \quad cup=2 + 3; \quad pen=?}
+\end{center}
+\texttt{pen} has value 6. Renaming it \texttt{four} leaves the answer unchanged:
+\begin{center}
+\texttt{\textcolor{inc}{four}=1 + cup, \quad cup=2 + 3; \quad \textcolor{inc}{four}=?}
+\end{center}
+The definition says 6; the name suggests 4. We call 4 the \emph{lure value}. Because it is
+absent from the equations and differs from every variable's value, answering 4 points to the
+name rather than to a copied digit.
+
+Misleading identifiers and comments reduce accuracy on code tasks
+\cite{le2025names,lam2025codecrash,le2026obfuscated}. Accuracy alone cannot locate the error:
+the model may misread the input, compute the wrong value, or answer incorrectly despite
+retaining the right value. Arithmetic with named variables gives us a known correct value to compare with the lure.
+\citet{kudo2026faithful} use probes and patching to study when values become available during
+chain-of-thought (CoT) arithmetic. We add names that disagree with those values. This cue-conflict
+design, used in Stroop tasks and shape--texture studies
+\cite{stroop1935,geirhos2019texture}, gives the name and the computation distinct answers.
+
+\begin{figure*}[t]
+\centering
+\IfFileExists{figures/fig1_master_L3.pdf}{\includegraphics[width=\textwidth]{figures/fig1_master_L3.pdf}}{\fbox{\parbox{0.95\textwidth}{\centering\small\textcolor{red}{[Figure 1 not generated]}}}}
+\caption{Eight panel models, queried-variable effects at level~3: \textbf{(a)} congruent-name accuracy gain and
+\textbf{(b)} lure excess, averaged over three demonstration sets with 95\% intervals.
+Grey marks the two-point margin. \textbf{(c)} Maximum-over-layers true-value accuracy and lure
+rate at each token position, pooled over incongruent problems under a gold chain.
+The value readout concerns the queried variable. Shading marks name positions; the dotted line
+marks the position before its value.}
+\label{fig:master}
+\end{figure*}
+
+Writing a chain usually limits lure answers. Without CoT, names affect answers
+in \NUM{n-value-models} models. With CoT, almost every lure contrast meets our equivalence bound,
+although some accuracy effects remain. We then compare value readouts with lure excess.
+The apparent readout--lure relationship depends on the low-accuracy exception. Probes trained
+on generated neutral chains also fail calibration for that model. The behavioral reduction
+is clearer than its internal explanation.
+
+\section{Study design}
+
+We use \citeauthor{kudo2026faithful}'s single-digit arithmetic task: equations with addition
+or subtraction, followed by a query. Our main level requires two operations, with the queried
+variable defined before its dependency. Two models are also tested on all five levels
+(Appendix~\ref{app:task}). Each problem has matched versions differing in one variable name
+(Table~\ref{tab:conditions}). A congruent number word denotes that variable's true value;
+an incongruent word denotes a lure. We vary the queried and intermediate variables separately.
+The lure cannot equal any variable's value or input digit. Names occupy one token in every
+context, keeping twins' token positions identical.
+
+\begin{table}[t]
+\centering\small
+\resizebox{\columnwidth}{!}{\begin{tabular}{@{}ll@{}}
+\toprule
+Name & Problem (answer: 6) \\
+\midrule
+Neutral & \texttt{pen=1 + cup, cup=2 + 3; pen=?} \\
+Congruent & \texttt{\textcolor{con}{six}=1 + cup, cup=2 + 3; six=?} \\
+Incongruent & \texttt{\textcolor{inc}{four}=1 + cup, cup=2 + 3; four=?} \\
+\bottomrule
+\end{tabular}}
+\caption{Renaming the queried variable changes one cue while preserving the arithmetic.
+The incongruent name denotes 4, which appears nowhere else in the problem.}
+\label{tab:conditions}
+\end{table}
+
+Models either write a chain that restates and evaluates each equation or answer directly.
+Every behavioral comparison uses three fixed sets of three worked examples. We evaluate
+\NUM{n-models} checkpoints from the Llama, Gemma and OLMo families; the model list and tuning
+comparisons are in Appendices~\ref{app:task} and~\ref{app:kind}.
+The main behavioral table follows the preregistered 90\% mean neutral-CoT accuracy floor;
+the excluded model's results remain in the appendix.
+
+Our main measure is \emph{lure excess}: how often the incongruent problem receives the lure
+answer, minus how often its neutral twin receives that same digit. Subtracting this baseline
+matters when accuracy is low. We also report congruent-minus-neutral accuracy
+(\emph{facilitation}) and neutral-minus-incongruent accuracy (\emph{interference}). We call an effect reliable when its sign agrees across all three demonstration sets and its 95\%
+cluster-bootstrap interval excludes zero. We call an effect small enough to meet the equivalence bound when its 90\% interval fits
+wholly inside $\pm\NUM{eq-delta}$ points. We resample matched problems with their seed replicates together
+(Appendix~\ref{app:equivalence}).
+
+A linear probe predicts a variable's digit from a hidden state at one token and layer.
+Probes train on separate neutral problems, with three training seeds. A control assigns a
+random digit to each name, testing how well the same probe can learn name identity \cite{hewitt2019control}. Patching
+replaces activations at the name's tokens with a matched twin's
+\cite{zhang2024patching}. We report both a neutral-word control for disruption and an
+alternative-lure control for name-specific effects. Most internal measurements supply the
+correct chain token by token. We also train on generated neutral chains, selecting layers on
+computation-disjoint validation problems before testing held-out generations
+(Appendix~\ref{app:round6-generated}).
+
+\section{Results}
+
+\begin{table*}[t]
+\centering\small
+\resizebox{\textwidth}{!}{\tabinput{behavior}}
+\caption{Level~3, means over three demonstration sets (ranges in brackets). \emph{Helps}:
+congruent-minus-neutral accuracy. \emph{Lures}: lure excess. Both are percentage points.
+$^{*}$ marks a consistent sign across sets and a 95\% interval excluding zero. CoT lure effects
+meet the two-point equivalence bound. The excluded low-accuracy model appears in
+Table~\ref{tab:excluded}; additional models and levels appear in Tables~\ref{tab:kind}
+and~\ref{tab:levels-appendix}.}
+\label{tab:behavior}
+\end{table*}
+
+\subsection{Writing a chain limits lure answers}
+
+Table~\ref{tab:behavior} shows the naming effects at the main level. Without CoT, a congruent
+name raises Llama-3.1-8B's accuracy by \NUM{facilitationllama318bdirectv1} points, and a
+misleading name produces \NUM{lure_excessllama318bdirectv1} points of lure excess on the queried
+variable. Across levels, the largest effects occur where direct-answer accuracy is near chance; the matched baseline prevents those arbitrary digit answers from being attributed to
+the name.
+
+With CoT, \NUM{eq-cot-equivalent} of \NUM{eq-cot-cells} lure contrasts meet the equivalence
+bound. The exception is \NUM{eq-exc-model}: its intermediate-variable lure excess is
+\NUM{eq-exc-mean} points [\NUM{eq-exc-lo}, \NUM{eq-exc-hi}]. Its neutral CoT accuracy is
+\NUM{eq-exc-neutral-acc}\%, compared with \NUM{eq-exc-letter-acc}\% under letter names.
+CoT therefore limits the name's numeric influence without removing every naming effect:
+\NUM{cot-acc-cells} accuracy contrasts remain reliable
+(Appendix~\ref{app:equivalence}).
+
+
+
+\subsection{Value readouts and task competence}
+
+A name's digit can be readable without representing the computed value. For Llama-3.2-3B,
+the intermediate value is partly decodable after its defining equation (neutral accuracy
+\NUM{p2-acc}; selectivity \NUM{p2-sel}). At the query, the name-identity control scores
+\NUM{p3-ctl}. By the value-writing step, true-value accuracy reaches \NUM{p4-acc} or more
+and the lure readout falls to zero. A Gemma token sweep also finds different readout timing
+for queried and intermediate values (Appendix~\ref{app:probe-extensions}).
+
+Across \NUM{competence-models} models and \NUM{vs-cells} variable pairs, the \NUM{vs-decodable}
+pairs with neutral probe accuracy of at least \NUM{vs-decodable-min} have lure excess within
+\NUM{vs-decodable-maxexcess} points of zero. The exception's intermediate readout is
+\NUM{vs-undecodable-acc}. Yet the descriptive correlation between model-mean misleading-name
+probe accuracy and lure excess reverses from $r=\NUM{competence-probe-lure-r}$ to
+$\NUM{competence-probe-lure-without-olmo-r}$ when OLMo-2-1B is omitted
+(Appendix~\ref{app:round5-competence}). Overall task competence remains a competing account.
+Within-problem fits also disagree on the association's sign (Appendix~\ref{app:sweeps}).
+
+Gold-trained probes score \NUM{generated-olmo1-cal-lo}--\NUM{generated-olmo1-cal-hi}\% on
+OLMo-2-1B's neutral generated chains. Training on generated neutral chains raises this to
+\NUM{r6-generated-olmo1-cal-min}--\NUM{r6-generated-olmo1-cal-max}\%, still below the 90\%
+calibration threshold in every cell. Llama-3.2-3B reaches
+\NUM{r6-generated-llama3-cal-min}--\NUM{r6-generated-llama3-cal-max}\% with the same design,
+but its lure-writing cases remain rare. The exception's generated-chain readouts therefore
+remain descriptive (Appendix~\ref{app:round6-generated}).
+
+Merely stating the correct value does not explain the pattern. We split the model's generated
+chains by whether they state that value and compare only twins falling in the same split.
+The exception still has \NUM{vw-olmo-excess} points of lure excess
+[\NUM{vw-olmo-lo}, \NUM{vw-olmo-hi}] across \NUM{vw-olmo-n} matched observations from
+\NUM{vw-olmo-seeds} demonstration sets, despite stating the correct value. The full control is
+in Appendix~\ref{app:controls}.
+
+\subsection{Patching localizes the no-chain effect}
+
+For Llama-3.2-3B without CoT, replacing the name's activations with its neutral twin's removes
+\NUM{lure-removed-3b} of lure errors when all layers are patched (Figure~\ref{fig:patch}).
+A span-by-layer sweep places the strongest effects at the
+defining equation in layers \NUM{grid-layers}, where removal reaches \NUM{grid-top-removed}
+(Appendix~\ref{app:figs}). The neutral-word control also damages \NUM{control-damage} of correct
+answers. The patch identifies a region sensitive to the name, but the disruption limits what we can
+say about the computation it restores.
+
+The Llama-3.1-8B controls do not distinguish a name-specific cause: neutral and alternative-lure
+patches remove errors similarly. Under a gold CoT, injecting the misleading name into a neutral
+run of the exception model moves \NUM{exc-inject} of answers to the lure, while the word control
+changes \NUM{exc-ctlword} at the same layer. These interventions test only the selected models and positions; they do not establish a common causal mechanism across models.
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/fig3_patching_llama32-3b_L3_v1.pdf}{\includegraphics[width=\columnwidth]{figures/fig3_patching_llama32-3b_L3_v1.pdf}}{\fbox{\textcolor{red}{[Patching figure not generated]}}}
+\caption{Llama-3.2-3B without CoT, queried variable: lure errors removed by the neutral-twin patch, alongside
+neutral-word damage and the alternative-lure control, by layer.}
+\label{fig:patch}
+\end{figure}
+
+\section{Related work}
+
+\citet{kudo2026faithful} locate intermediate-value readouts during arithmetic CoT; our competing
+names distinguish a computed value from a lexical cue. Earlier Stroop studies test a single next
+token \cite{wang2026stroop,hu2026conflict}. Faithfulness studies perturb prompts, chains or
+parameters \cite{turpin2023unfaithful,lanham2023measuring,chen2025reasoning,tutek2025unlearning};
+we combine a known conflicting cue with internal readouts. Positional copying and output priors
+can also explain arithmetic errors \cite{liu2026readout,prabhakar2024deciphering}; our copy
+control is reported in Appendix~\ref{app:sweeps}.
+A companion code study \citep{anon2026code} examines value writes in Python traces; this
+paper tests arithmetic lure answers and their association with value-step readouts.
+
+\section{Conclusion}
+
+Writing a chain limits numeric lure answers in almost every tested arithmetic contrast.
+A correct value stated in the chain is insufficient to explain that reduction. The probe
+association depends on the low-accuracy exception, whose generated-chain probes fail calibration
+even after training on generated neutral chains.
+The behavioral finding therefore remains stronger than the proposed internal explanation.
+
+\section*{Limitations}
+
+The task uses short synthetic arithmetic chains and English number words. It does not establish
+how misleading identifiers affect real code. Identifier-style names were tested at one level
+only (Appendix~\ref{app:controls}). Models are at most 12B parameters and receive raw completion
+prompts; instruction-tuned models' chat templates and long-form reasoning modes are untested.
+Demonstration choice changes accuracy substantially, which is why every behavioral claim must
+hold across three sets.
+
+Linear probes reveal decodable information, not necessarily the representation used to generate
+an answer. Most internal measurements supply the correct chain token by token. Generated-chain
+probes trained on generated neutral chains meet the calibration threshold for Llama-3.2-3B
+but fail it for OLMo-2-1B (Appendix~\ref{app:round6-generated}). These probes cover two models
+and select layers on independent validation computations. The nine-model competence comparison is descriptive;
+variable roles are not independent models, and omitting OLMo reverses the readout--lure
+correlation. It does not separate value availability from overall task competence.
+Patching changes mixed representations and can damage
+correct answers, limiting the causal conclusions. Finally, the chain repeats names and equations;
+the value-only format changes performance and cannot be treated as an equivalent intervention
+(Appendix~\ref{app:simple}).
+
+\bibliography{refs}
+
+\appendix
+
+\section{Task, models and replication}
+\label{app:task}
+A problem contains single-digit variables, addition or subtraction, and a query. The five
+levels vary dependency order, depth and the presence of an unused equation
+(Table~\ref{tab:levels}). Three same-level worked examples precede each test problem.
+The evaluated models are \NUM{model-list}, plus \NUM{n-ladder} derived checkpoints
+(Appendix~\ref{app:kind}).
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{4pt}
+\resizebox{\columnwidth}{!}{\begin{tabular}{@{}clccc@{}}
+\toprule
+Level & Problem (neutral names) & Steps & Held & Distr. \\
+\midrule
+1 & \texttt{pen=1 + cup, cup=2; pen=?} & 1 & 1 & 0 \\
+2 & \texttt{pen=2 + 3, cup=1 + pen; cup=?} & 2 & 0 & 0 \\
+3 & \texttt{pen=1 + cup, cup=2 + 3; pen=?} & 2 & 1 & 0 \\
+4 & \texttt{pen=1 + cup, cup=2 + 3,} & 2 & 1 & 1 \\
+  & \texttt{\ \ box=4 + 5; pen=?} & & & \\
+5 & \texttt{pen=1 + cup, cup=2 + box,} & 3 & 2 & 0 \\
+  & \texttt{\ \ box=1 + 2; pen=?} & & & \\
+\bottomrule
+\end{tabular}}
+\caption{The five levels of \citet{kudo2026faithful}: additions or subtractions needed
+(\emph{Steps}), variables unresolved when first read (\emph{Held}), and unused equations
+(\emph{Distr.}). At level~1 the intermediate value is stated rather than computed.}
+\label{tab:levels}
+\end{table}
+
+We reimplement \citet{kudo2026faithful}'s task and probe recipe rather than using their code.
+The shared choices are single-digit outputs, same-level demonstrations, a 10-way linear
+residual-stream classifier, full-batch SGD at $10^{-3}$ for 10,000 epochs, and their
+span-by-layer-window patching design. For replication we train on letter names and report
+$t^{*}$, $t^{*}_{\mathrm{eq}}$, $\mathrm{Acc}^{\prec\mathrm{CoT}}$ and
+$\mathrm{Acc}^{\succ\mathrm{CoT}}$ at $\tau=0.9$.
+The Llama-3.2-3B value-writing positions agree with their Table~3: equation
+\NUM{replication-eq-v1} for the queried variable and \NUM{replication-eq-v2} for the intermediate.
+Our additions are the conflicting names, matched baselines, demonstration-set claim rule and
+equivalence bound.
+
+
+
+On the letter condition, pre-chain probe maxima for Llama-3.2-3B are
+\NUM{replication-pre-v1} and \NUM{replication-pre-v2}, compared with 17.8 and 33.2 reported by
+\citet{kudo2026faithful}. The value-writing positions agree; the accuracy difference may reflect
+training details. Llama-3.1-8B's intermediate value becomes decodable at equation
+\NUM{replication8b-eq-v2}, but its queried value becomes decodable at equation
+\NUM{replication8b-eq-v1}, earlier than Llama-3.2-3B's equation \NUM{replication-eq-v1}.
+The larger model can therefore expose that value before writing its final evaluation.
+Full heatmaps appear in Appendix~\ref{app:figs}.
+
+\begin{table*}[t]
+\centering\small
+\tabinput{behavior_excluded}
+\caption{The level-3 model below the preregistered 90\% mean neutral-CoT accuracy floor,
+excluded from the main behavioral table. Columns and claim markers follow Table~\ref{tab:behavior}.}
+\label{tab:excluded}
+\end{table*}
+
+\section{Equivalence checks}
+\label{app:equivalence}
+Following preregistration Amendment~3, equivalence requires a 90\% cluster-bootstrap
+interval wholly inside the $\pm\NUM{eq-delta}$-point margin (two one-sided 5\% tests).
+We resample matched sets with their demonstration-seed replicates together, using 4,000
+bootstrap draws. Other behavioral intervals remain at 95\%.
+For CoT accuracy, \NUM{eq-acc-equivalent} of \NUM{eq-acc-cells} facilitation and interference
+contrasts meet the same equivalence bound. Of the \NUM{cot-acc-cells} reliable accuracy
+contrasts, \NUM{eq-acc-claimable-equivalent} are also equivalent within the margin and
+\NUM{eq-acc-claimable-outside} are not; a detectable effect can still be small.
+The written-value control uses the same matched pairs for its excess estimate and interval;
+the exception model's estimate pools all three demonstration sets and clusters on matched set.
+\begin{table}[h]
+\centering\small
+\tabinput{equivalence}
+\caption{Equivalence within the two-point margin uses 90\% intervals; reliability uses
+95\% intervals excluding zero and the same sign across all three demonstration sets.
+Each accuracy cell is one facilitation or interference contrast.}
+\end{table}
+\IfFileExists{tables/exception_patching.tex}{%
+\begin{table*}[t]
+\centering\small
+\resizebox{\textwidth}{!}{\tabinput{exception_patching}}
+\caption{OLMo-2-1B-Instruct, CoT, \NUM{exc-controls-n} matched pairs per target, patching name tokens at all
+layers. Removed: percentage of baseline lure predictions removed by the neutral-twin patch.
+Word damage: percentage of correct neutral predictions damaged by the word control.
+Alt. removed: baseline lure predictions removed by the alternative-lure patch. Alt. followed:
+percentage following that source's lure. Rates are percentages;
+-- means undefined. These readouts force the gold chain, so their baseline errors differ
+from errors in the model's own generated chains.}
+\end{table*}
+}{}
+\section{Tokenizer checks}
+\label{app:tok}
+We test candidate names in five tokenizer contexts and retain words that form one token
+without merging with a neighbor. For Llama~3, all ten number words and 95 of 112 neutral
+candidates pass. Gemma and OLMo use the same lists; runtime checks confirm equal token lengths
+and positions within matched groups. Spaces around binary operators prevent merges such as
+\texttt{1-two}. No instance in the reported runs is excluded by the layout check.
+
+\section{Additional naming and written-value controls}
+\label{app:controls}
+
+\paragraph{Written values.} We split generated chains by whether they state the target's true
+value. An observation enters the excess estimate only when its neutral twin falls in the same
+split. The estimate and its 95\% interval use those same paired observations. Pooled over
+eligible cells, lure excess is \NUM{vw-excess-wrote} points in \NUM{vw-cells-wrote} cells where
+the value is stated and \NUM{vw-excess-not} in \NUM{vw-cells-not} where it is not. The exception
+persists in the stated-value split (main text), so this split does not explain its effect.
+
+\paragraph{Identifier-style names.} At level~3, \NUM{ident-models} models receive names such as
+\texttt{q4} instead of \texttt{four}, under three demonstration sets. Without CoT, queried-variable
+lure excess ranges from \NUM{ident-direct-lure-lo} to \NUM{ident-direct-lure-hi} points;
+\NUM{ident-direct-lure-claim} of \NUM{ident-direct-cells} cells are reliable. For number words
+on the same models, the range is \NUM{word-direct-lure-lo} to \NUM{word-direct-lure-hi}, with
+\NUM{word-direct-lure-claim} of \NUM{word-direct-cells} reliable. The numeric lure effect is
+therefore stronger for number words in this comparison; congruent identifier names can still
+improve accuracy.
+
+\paragraph{Word-class effects.} With CoT at level~4, a number word on the queried variable costs
+Llama-3.2-3B \NUM{wordclass-cost-L4} accuracy points whether the name agrees with the value or
+not. Those errors restate the wrong equation. This is distinct from answering the digit the
+name denotes, which is why the lure result cannot be read as removal of every naming effect.
+
+\paragraph{Unused variables.} A number word on the level~4 distractor changes accuracy by at
+most \NUM{irr-acc-delta-max} points. Its no-CoT lure excess ranges from \NUM{irr-direct-lo} to
+\NUM{irr-direct-hi}; \NUM{irr-direct-claimable} of \NUM{irr-direct-cells} cells are reliable.
+With CoT, the range is \NUM{irr-cot-lo} to \NUM{irr-cot-hi}, with
+\NUM{irr-cot-claimable} of \NUM{irr-cot-cells} reliable. At the answer position, probe lure mass
+is \NUM{bound-mass} for a computed variable and \NUM{unbound-mass} for the distractor; the
+latter's true value has probe accuracy \NUM{distractor-acc}.
+
+\section{Full sweeps and selectivity}
+\label{app:sweeps}
+
+\begin{figure*}[h]
+\centering
+\IfFileExists{figures/fig2_tokens_llama32-3b_L3_cot_v2.pdf}{\includegraphics[width=\textwidth]{figures/fig2_tokens_llama32-3b_L3_cot_v2.pdf}}{\fbox{\parbox{0.95\textwidth}{\centering\small\textcolor{red}{[Figure 2, generated by scripts/58\_token\_figure.py]}}}}
+\caption{In the layout of \citeauthor{kudo2026faithful}'s Figure~2. Per-token probes for the
+incongruent condition,
+Llama-3.2-3B, level~3, CoT. Top: how often the best-layer probe reads the true value (green) or
+the lure (red). Bottom: true-value accuracy by layer. The displayed tokens are from one example;
+the rates pool problems with different values and names. Dashed line: start of the supplied
+correct chain; dotted line: position before the target value; arrow: the supplied value token.
+Shading marks the name's tokens.}
+\label{fig:heat}
+\end{figure*}
+
+\paragraph{Mixed-effects check.} We compare the paired bootstrap with a mixed logit model,
+\texttt{answered\_lure \textasciitilde{} incongruent + C(seed)}, with a random intercept for
+matched set. Each twin's outcome refers to the same lure digit. Both procedures use the same
+fixed subsample of \NUM{mix-cap} sets per cell. Of \NUM{mix-cells} fitted cells,
+\NUM{mix-agree} agree on whether the interval excludes zero; \NUM{mix-unfitted} additional
+cells have no outcome variation. The mixed fit supports an effect in \NUM{mix-gained} cells
+where the bootstrap does not and withdraws support in \NUM{mix-lost} cells where it does
+(\NUM{mix-lost-cells}). Subsampling also removes support from \NUM{mix-sub-lost-n} starred
+Table~\ref{tab:behavior} cell under both procedures (\NUM{mix-sub-lost-cells}). The mixed
+model uses variational Bayes, so its interval is an approximate posterior interval. We retain
+the full-data bootstrap as the primary estimate on the reported percentage-point scale.
+
+\paragraph{Instance-level association.} Within each model, level, regime, variable and
+position, we regress lure errors on the probe margin, $\log p_{\mathrm{true}}-\log p_{\mathrm{lure}}$,
+with standard errors clustered on matched set. The layer is selected by neutral accuracy.
+Of \NUM{link-fits} fits, \NUM{link-sig} have $p<.05$: \NUM{link-neg} coefficients are negative
+and \NUM{link-pos} positive. The direction is not consistent, and \NUM{link-pos-topmodel-n}
+positive results come from the model supplying most fits. This leaves the instance-level
+association unresolved. The model-level pattern is also sensitive to panel composition
+(Appendix~\ref{app:round5-competence}).
+
+\paragraph{Lure index.} For comparison with shape--texture studies \cite{geirhos2019texture},
+we also compute lure answers divided by lure plus true answers, excluding congruent trials.
+Across \NUM{lureindex-direct-n} level~3 model--variable pairs, the index ranges from
+\NUM{lureindex-direct-lo} to \NUM{lureindex-direct-hi} without CoT and from
+\NUM{lureindex-cot-lo} to \NUM{lureindex-cot-hi} with CoT. The main text uses paired excess
+because the index does not subtract how often the neutral model answers that digit.
+
+\paragraph{Positional-copy control.} Across \NUM{copy-n-err} generated CoT lure errors over
+models, levels and demonstration sets, the number immediately preceding the answer is the
+lure in \NUM{copy-lure-frac} of cases and the target's true value in \NUM{copy-true-frac}.
+A trailing lure is therefore absent from many errors. This check constrains the positional-copy
+explanation of \citet{liu2026readout}, but does not identify what was copied in each case.
+
+Probes report true-value accuracy, lure rate, lure mass and margin, with name-identity
+control accuracy and selectivity \cite{hewitt2019control}. P1 is the name token, P2 the end of
+its defining equation, P3 the query, P4 the position before its value is written, and P5 the
+position before the final answer. P1 is a reference, not evidence for a computed value.
+At P3 the control is near~1, so a lure readout there may reflect name identity.
+Figure~\ref{fig:heat} shows the CoT token sweep; Appendix~\ref{app:figs} contains the other
+conditions and direct regime. Letter-trained replication uses the metrics in
+Appendix~\ref{app:task}.
+
+\begin{figure}[h]
+\centering
+\IfFileExists{figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i0.pdf}{\includegraphics[width=\columnwidth]{figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i0.pdf}}{\fbox{\parbox{0.95\columnwidth}{\centering\small\textcolor{red}{[Figure 4, generated by scripts/64\_kudo\_fig3.py]}}}}
+\caption{In the layout of \citeauthor{kudo2026faithful}'s Figure~3, for problems this model
+answers with the lure. Each cell is the probe's top-1 prediction at that layer and token: green
+the variable's true value, red the value the model answered, amber the value its name denotes,
+grey anything else. The first panel is the probe's most common prediction on neutral problems,
+which is what it emits where it reads nothing; cells carry information only where they differ
+from it.}
+\label{fig:kudo3}
+\end{figure}
+
+\begin{figure*}[h]
+\centering
+\IfFileExists{figures/fig_own_chain_llama32-3b_L3_cot_v1.pdf}{\includegraphics[width=\textwidth]{figures/fig_own_chain_llama32-3b_L3_cot_v1.pdf}}{\fbox{\parbox{0.95\textwidth}{\centering\small\textcolor{red}{[own-chain figure, generated by scripts/67\_own\_chain\_figure.py]}}}}
+\caption{Probes trained at the value step, applied to the model's own generated chain rather
+than to a force-decoded gold chain, for the \NUM{ownchain-n} level-3 incongruent problems that Llama-3.2-3B
+answered wrongly under CoT (the first \NUM{ownchain-n} of \NUM{ownchain-total} wrong answers
+in \NUM{n-test-sets} instances). Probes are
+trained on neutral problems at the step that writes the variable's value and applied at every
+generated token and every second layer; colours as in Figure~\ref{fig:kudo3}, boxed columns the
+name's own tokens. This small sample contains no lure answers and is illustrative rather than an estimate of their rate.
+The fixed-sample transfer analysis and separate lure-error augmentation appear in
+Appendix~\ref{app:round5-generated}.}
+\label{fig:ownchain}
+\end{figure*}
+
+\section{How the models were tuned}
+\label{app:kind}
+
+We compare six checkpoints on the Llama-3.1-8B architecture: pretrained, instruction-tuned,
+single-task LoRA, multi-task LoRA, TIES-merged adapters and reasoning-tuned. Adapters are folded
+into the weights before evaluation. Shared tokenizers and identical matched problems permit
+paired comparisons (Table~\ref{tab:kind}). A pretrained/instruct Gemma pair supplies a second
+family comparison.
+
+\begin{table}[h]
+\centering\small
+\resizebox{\columnwidth}{!}{\tabinput{modelkind}}
+\caption{Level 3, no CoT, lure answers above the matched twin's rate, mean over three
+demonstration sets. \emph{Acc.} is neutral accuracy. $^{*}$ as in Table~\ref{tab:behavior}.
+The bottom block repeats the pretrained-to-instruct step in a second family, Gemma-3-4B.}
+\label{tab:kind}
+\end{table}
+
+The pretrained and reasoning-tuned Llama checkpoints have reliable positive queried-variable
+lure excess without CoT (\NUM{kind-base-v1} and \NUM{kind-reas-v1} points). The three task-tuned
+variants differ from the instruction-tuned checkpoint by at most \NUM{kind-maxgap} points
+across \NUM{kind-tuned-cells} comparisons. These are observed differences, not tests of
+checkpoint-to-checkpoint equivalence. Every checkpoint's CoT lure excess is at most
+\NUM{kind-cot-max} points in magnitude.
+
+Task accuracy complicates interpretation. The multi-task model's reliable negative excess
+(\NUM{kind-ftm-v1}) accompanies lower neutral accuracy (\NUM{kind-ftm-acc}\%, versus
+\NUM{kind-it-acc}\%). The reasoning-tuned checkpoint has the lowest accuracy
+(\NUM{kind-reas-acc}\%). It also requires a system instruction to enable long-form reasoning;
+our raw-completion prompts leave that mode off. The result concerns the checkpoint under this
+prompt, not reasoning mode in deployment.
+
+Only the instruct Gemma effect passes the claim rule (\NUM{kind-gi-v1}, versus
+\NUM{kind-gb-v1} pretrained). The difference is untested and both estimates lie within the
+margin, so the pair cannot establish where in training name interference arises.
+
+\section{Probe recipe and patching scope}
+\label{app:recipe}
+
+We check two implementation choices inherited from \citet{kudo2026faithful}: the probe optimizer and the name occurrences included in a patch.
+
+\paragraph{Recipe.} We refit the level-3 probes for Llama-3.2-3B with L-BFGS, and with SGD on
+standardized inputs, against the reported recipe.
+
+\begin{table}[h]
+\centering\small
+\resizebox{\columnwidth}{!}{\tabinput{recipe}}
+\caption{Best-layer accuracy for the true value, neutral instances, under three probe recipes.}
+\label{tab:recipe}
+\end{table}
+
+All three recipes give the same qualitative result: the value is decodable where the chain writes it
+(\NUM{e17-value-lo}--\NUM{e17-value-hi}) and not at the end of its defining equation
+(\NUM{e17-end-lo}--\NUM{e17-end-hi}). The query position moves, from \NUM{e17-sgd-query-v2}
+under the reported recipe to \NUM{e17-std-query-v2} under standardization, within a range of
+\NUM{e17-query-lo}--\NUM{e17-query-hi} over recipes and variables. We already report that
+position as the presence of the name rather than a decoded value, because its control task
+scores \NUM{p3-ctl}, so this variation does not change the interpretation of that position.
+
+\paragraph{Scope.} Patching every occurrence of the name includes the copy the model writes in
+its own output. In the direct regime, restricting the patch to the name's occurrences in the prompt leaves the
+intermediate variable essentially unchanged, since its name never appears in the answer: removal is
+\NUM{e18-v2-all-removed}\% at layers~\NUM{e18-v2-all-best} under both scopes. For the queried
+variable the best windows remove similar shares (\NUM{e18-v1-prompt-removed}\% at
+layers~\NUM{e18-v1-prompt-best} prompt-only, against \NUM{e18-v1-all-removed}\% at
+layers~\NUM{e18-v1-all-best}), the prompt-only patch removes less in the later windows, and the
+two disagree most in the first window, where the prompt-only patch removes
+\NUM{e18-v1-prompt-w03}\% and damages \NUM{e18-v1-prompt-w03damage}\% of correct answers. That
+is mechanical: the queried variable's name also sits at the position we read, so patching its
+prompt copies alone leaves the model reading a name whose early representation no longer
+matches. The localization we report does not depend on the choice.
+
+\section{A chain that writes values without equations}
+\label{app:simple}
+
+Our chain restates each equation before substituting into it, as
+\citeauthor{kudo2026faithful}'s does. Their Tables~5--6 also report a format that writes only the
+sub-results, \texttt{cup=5, pen=6}. That format is the arithmetic counterpart of a code trace,
+which writes a variable's value and never the expression that produced it, so we ran it on the
+panel at level 3 with three demonstration sets, with two predictions registered in advance for both Llama models: that
+the written-lure excess at the intermediate's value step would exceed the \NUM{eq-delta}-point
+margin, and that the value would still be decodable there (probe accuracy at least 0.85), making
+any failure one of readout.
+
+Both predictions fail as registered. Llama-3.1-8B writes the lure at the intermediate's value
+step \NUM{simple-l8b-v2} points above its twin, inside the margin. Llama-3.2-3B is at
+\NUM{simple-l3b-v2}, which passes our claim rule, but across the three demonstration sets that
+is \NUM{simple-l3b-v2-seeds}, so one set carries most of it. More informative is what the probes say. At
+the step that writes the value, the true value is decodable at \NUM{simpleprobe-l8b-simple-v1}
+and \NUM{simpleprobe-l8b-simple-v2} for Llama-3.1-8B and at
+\NUM{simpleprobe-l3b-simple-v1} and \NUM{simpleprobe-l3b-simple-v2} for Llama-3.2-3B, against
+\NUM{simpleprobe-l8b-cot-v1} and \NUM{simpleprobe-l8b-cot-v2} for the same model under the full
+chain. Neutral accuracy falls with it, to \NUM{simple-l8b-acc}\% and \NUM{simple-l3b-acc}\%.
+
+Removing the equations lowers both accuracy and true-value probe readouts. It therefore fails to isolate a readout error while preserving those measures. This result does not support a shared explanation for value-only arithmetic chains and code traces.
+
+\section{Additional levels, models and demonstration sets}
+Table~\ref{tab:levels-appendix} repeats Table~\ref{tab:behavior} for the other four levels.
+The pretrained Gemma-3-4B, the base half of the Gemma pair, is reported in
+Table~\ref{tab:kind} rather than in Table~\ref{tab:behavior}.
+
+\paragraph{Data, compute and software.} Each level has \NUM{n-test-sets} matched sets, each
+rendered in every condition, and \NUM{n-probe-train} separately generated problems for
+training probes; every SGD probe is trained with \NUM{probe-seeds} seeds. Every run here is
+inference and the probes are linear; the three adapter checkpoints of Appendix~\ref{app:kind}
+were trained in a separate project, and that compute is not counted below. The recorded allocation time totals at most \NUM{compute-gpuh} GPU-hours on NVIDIA A30, H100 and H200 cards, including idle time and shared workers that also ran companion-code experiments.
+The models are from the Llama~3 \citep{grattafiori2024llama3}, Gemma~3 \citep{gemmateam2025gemma3}
+and OLMo~2 \citep{olmo2024olmo2} families, with the reasoning-tuned checkpoint from
+\citet{bercovich2025nemotron}, each used under its release licence for research. Models run in
+PyTorch \citep{paszke2019pytorch} with Transformers \citep{wolf2020transformers}, and the probes are
+trained in PyTorch; the L-BFGS refit of Appendix~\ref{app:recipe} uses scikit-learn
+\citep{pedregosa2011sklearn}, and the mixed-effects check uses statsmodels
+\citep{seabold2010statsmodels}.
+
+\begin{table}[h]
+\centering\small
+\resizebox{\columnwidth}{!}{\tabinput{behavior_levels}}
+\caption{As Table~\ref{tab:behavior}, for levels 1, 2, 4 and 5 (Llama-3.2-3B and Llama-3.1-8B). Level~1 is the no-computation
+control: the intermediate variable's value is stated rather than computed.}
+\label{tab:levels-appendix}
+\end{table}
+
+Per-set values, the pooled estimate and the claim rule are released with the code, together
+with the level-4 irrelevant-lure
+control, the lure-distance analysis, the teacher-forced lure rates, and the error taxonomy
+behind the word-class effect.
+
+% Round-four probe extensions
+\section{Additional value readouts}
+\label{app:probe-extensions}
+
+We extend the value-step comparison to Llama-3.2-3B-Instruct, Llama-3.1-8B-Instruct and
+Gemma-3-12B-Instruct. Each probe trains on 10,000 separate neutral problems with three probe
+seeds, using demonstration set 7. Table~\ref{tab:probe-extensions} reports the added pairs;
+the main comparison includes them. We select layers by neutral selectivity, as in the original
+analysis. The misleading-name accuracy uses the same selected layer. This extension tests
+the aggregate association; it does not resolve the within-problem link.
+
+\begin{table*}[t]
+\centering\small
+\tabinput{probe_extensions}
+\caption{Additional probes at each variable's value-writing position. Neutral and misleading
+columns are true-digit accuracy; control is neutral name-identity accuracy. Rates are percentages,
+averaged over three probe seeds. The layer maximizes neutral accuracy minus control accuracy.}
+\label{tab:probe-extensions}
+\end{table*}
+
+We also probe every token for Gemma-3-4B-Instruct (Figures~\ref{fig:gemma-query}
+and~\ref{fig:gemma-intermediate}), using 4,000 independent neutral training problems and
+1,000 test problems per condition. The tokens shown come from one example; the curves and
+heatmaps pool problems with different names and values. Maximum-over-layers curves describe
+where a digit can be read; they do not identify the representation used to answer.
+On neutral problems, the best pre-chain accuracy is \NUM{gemma-token-pre-v1}\% for the
+queried digit and \NUM{gemma-token-pre-v2}\% for the intermediate digit. The queried readout
+\NUM{gemma-token-timing-v1}; the intermediate readout \NUM{gemma-token-timing-v2}.
+Token zero is the first token of the chain; negative positions are in the prompt.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig2_tokens_gemma3-4b-it_L3_cot_v1.pdf}
+\caption{Gemma-3-4B-Instruct, queried variable, misleading-name problems under the correct
+chain. Top: maximum-over-layers true-value accuracy and lure rate; bottom: true-value accuracy
+by layer. Shading marks the variable's name; the dotted line marks the position before its
+value; the arrow marks the supplied digit itself.}
+\label{fig:gemma-query}
+\end{figure*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig2_tokens_gemma3-4b-it_L3_cot_v2.pdf}
+\caption{The same Gemma token sweep for the intermediate variable. Both figures use
+neutral-trained probes; no misleading-name problems enter training.}
+\label{fig:gemma-intermediate}
+\end{figure*}
+
+\input{tables/figure_dump}
+
+\input{tables/round5_followups}
+\input{tables/round6_followups}
+
+\end{document}

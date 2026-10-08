@@ -1,0 +1,35 @@
+--- main.before.tex
++++ paper/main.tex
+@@ -38,19 +38,19 @@
+ \begin{abstract}
+ Renaming a variable should not change an arithmetic answer. Yet a model may answer 4
+ because a variable is named \texttt{four}, even when its equations give 6. We extend
+-\citeauthor{kudo2026faithful}'s arithmetic study by introducing names that conflict with
+-the computation. Across \NUM{n-models} models and three sets of worked examples, we compare
+-answer-only prompting, which requests just the final digit, with chain-of-thought (CoT)
+-prompting, which requests the equations and their evaluation before the answer. Under
+-answer-only prompting, renaming changes accuracy or name-suggested answers in
+-\NUM{n-value-models} models. Under CoT, the increase in name-suggested answers over ordinary
+-names lies within $\pm\NUM{eq-delta}$ percentage points in \NUM{eq-cot-equivalent} of
+-\NUM{eq-cot-cells} comparisons. To investigate why, we train linear probes: small predictors
+-that try to recover the correct digit from a model's internal activations before it writes
+-that value. The relationship between probe accuracy and naming errors reverses when one
+-low-accuracy model is omitted. Probes also struggle with that model's own generated
+-calculations. CoT usually reduces answers based on misleading names, but these internal
+-measurements do not establish the cause.
++\citeauthor{kudo2026faithful}'s arithmetic study to test whether writing the calculation
++keeps answers aligned with the equations. Across \NUM{n-models} models and three sets of
++worked examples, we compare answer-only prompting, which requests just the final digit,
++with chain-of-thought (CoT) prompting, which requests the equations and their evaluation
++first. Renaming changes accuracy or answers matching the misleading word in
++\NUM{n-value-models} models under answer-only prompting. Under CoT, these incorrect answers
++occur at similar rates with misleading and ordinary names: within $\pm\NUM{eq-delta}$ percentage points in
++\NUM{eq-cot-equivalent} of \NUM{eq-cot-cells} comparisons. We also train linear probes to
++predict the correct digit from internal activations as the model receives the correct
++calculation. In \NUM{vs-decodable} of \NUM{vs-cells} model-variable pairs, the correct digit
++is highly recoverable on ordinary-name problems, and renaming changes the frequency of
++answers matching the misleading word by at most \NUM{vs-decodable-maxexcess} points.
++Evaluating the equations usually reduces incorrect answers suggested by the names.
+ \end{abstract}
+ 
+ \section{Introduction}

@@ -1,0 +1,34 @@
+--- before
++++ after
+@@ -36,17 +36,20 @@
+ \maketitle
+ 
+ \begin{abstract}
+-A variable named \texttt{four} can have value 6. We ask whether a chain of thought prevents
+-\emph{name errors}: answering the digit suggested by a misleading name. Matched problems differ in one name, across
+-\NUM{n-models} models and three sets of worked examples. Without a chain,
+-\NUM{n-value-models} models show a naming effect on accuracy or name errors. With a chain,
+-\NUM{eq-cot-equivalent} of \NUM{eq-cot-cells} name-error contrasts fall within the preregistered
+-$\pm\NUM{eq-delta}$-point margin. The exception, OLMo-2-1B-Instruct, also has low task accuracy.
+-Value probes cover \NUM{competence-pairs} model--variable pairs, but their association with
+-excess name errors depends on including that model. Even probes trained on generated neutral chains
+-calibrate poorly for the exception but well for Llama-3.2-3B. Patching localizes the no-chain naming effect in
+-Llama-3.2-3B to early layers at the defining equation. Chains reduce name errors;
+-these measurements do not establish why.
++Renaming a variable should not change an arithmetic answer. Yet a model may answer 4
++because a variable is named \texttt{four}, even when its equations give 6. We ask whether
++writing the calculation before answering reduces such errors. We extend
++\citeauthor{kudo2026faithful}'s study of how language models compute intermediate values
++during chain-of-thought reasoning. Our problems add misleading variable names while keeping
++the equations and correct answers fixed. Across \NUM{n-models} models and three sets of worked
++examples, we compare direct answers with reasoning chains that restate and evaluate each equation.
++Without written steps, renaming changes accuracy or the frequency of name-suggested answers
++in \NUM{n-value-models} models. With steps, the increase in name-suggested answers over ordinary
++names falls within $\pm\NUM{eq-delta}$ percentage points in \NUM{eq-cot-equivalent} of
++\NUM{eq-cot-cells} comparisons. Classifiers trained to recover values from model states do
++not establish why: their association with errors depends on one low-accuracy model, and
++they perform poorly on its generated steps even after training on such steps. The experiments
++support a behavioral reduction while leaving its internal cause unresolved.
+ \end{abstract}
+ 
+ \section{Introduction}

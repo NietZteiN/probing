@@ -1,0 +1,174 @@
+{
+ "congruent@v1": {
+  "n": 2000,
+  "accuracy": [
+   0.3995,
+   0.379,
+   0.422
+  ],
+  "lure_rate": null,
+  "lure_index": null,
+  "n_two_cue_trials": 799
+ },
+ "congruent@v2": {
+  "n": 2000,
+  "accuracy": [
+   0.361,
+   0.341,
+   0.3825
+  ],
+  "lure_rate": null,
+  "lure_index": null,
+  "n_two_cue_trials": 722
+ },
+ "incongruent@v1": {
+  "n": 2000,
+  "accuracy": [
+   0.231,
+   0.21248750000000002,
+   0.251
+  ],
+  "lure_rate": [
+   0.1515,
+   0.136,
+   0.167
+  ],
+  "lure_index": [
+   0.396078431372549,
+   0.36470588235294116,
+   0.43137254901960786
+  ],
+  "n_two_cue_trials": 765
+ },
+ "incongruent@v2": {
+  "n": 2000,
+  "accuracy": [
+   0.2235,
+   0.2055,
+   0.24151249999999994
+  ],
+  "lure_rate": [
+   0.074,
+   0.063,
+   0.085
+  ],
+  "lure_index": [
+   0.24873949579831933,
+   0.21680672268907564,
+   0.28239495798319303
+  ],
+  "n_two_cue_trials": 595
+ },
+ "incongruent_alt@v1": {
+  "n": 2000,
+  "accuracy": [
+   0.2375,
+   0.22,
+   0.2565
+  ],
+  "lure_rate": [
+   0.129,
+   0.1145,
+   0.143
+  ],
+  "lure_index": [
+   0.3519781718963165,
+   0.31783765347885407,
+   0.3874488403819918
+  ],
+  "n_two_cue_trials": 733
+ },
+ "incongruent_alt@v2": {
+  "n": 2000,
+  "accuracy": [
+   0.2475,
+   0.22848750000000004,
+   0.2675
+  ],
+  "lure_rate": [
+   0.0625,
+   0.0525,
+   0.0735
+  ],
+  "lure_index": [
+   0.20161290322580644,
+   0.17096774193548386,
+   0.23387096774193547
+  ],
+  "n_two_cue_trials": 620
+ },
+ "letter": {
+  "n": 2000,
+  "accuracy": [
+   0.293,
+   0.27348750000000005,
+   0.3135
+  ],
+  "lure_rate": null,
+  "lure_index": null,
+  "n_two_cue_trials": 586
+ },
+ "neutral": {
+  "n": 2000,
+  "accuracy": [
+   0.3175,
+   0.298,
+   0.33801249999999994
+  ],
+  "lure_rate": null,
+  "lure_index": null,
+  "n_two_cue_trials": 635
+ },
+ "neutral_alt@v1": {
+  "n": 2000,
+  "accuracy": [
+   0.331,
+   0.3095,
+   0.3520124999999999
+  ],
+  "lure_rate": null,
+  "lure_index": null,
+  "n_two_cue_trials": 662
+ },
+ "neutral_alt@v2": {
+  "n": 2000,
+  "accuracy": [
+   0.335,
+   0.3145,
+   0.356
+  ],
+  "lure_rate": null,
+  "lure_index": null,
+  "n_two_cue_trials": 670
+ },
+ "interference@v1": [
+  0.0865,
+  0.0655,
+  0.108
+ ],
+ "facilitation@v1": [
+  0.082,
+  0.061,
+  0.10301249999999992
+ ],
+ "interference@v2": [
+  0.094,
+  0.072,
+  0.1165
+ ],
+ "facilitation@v2": [
+  0.0435,
+  0.019,
+  0.0665
+ ],
+ "pseudo_lure_rate@v1": [
+  0.03,
+  0.023,
+  0.038
+ ],
+ "pseudo_lure_rate@v2": [
+  0.037,
+  0.0295,
+  0.045
+ ]
+}

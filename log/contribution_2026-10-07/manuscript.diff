@@ -1,0 +1,39 @@
+--- main.before.tex
++++ paper/main.tex
+@@ -36,21 +36,21 @@
+ \maketitle
+ 
+ \begin{abstract}
+-Renaming a variable should not change an arithmetic answer. Yet a model may answer 4
+-because a variable is named \texttt{four}, even when its equations give 6. We extend
+-\citeauthor{kudo2026faithful}'s arithmetic study to test whether writing the calculation
+-keeps answers aligned with the equations. Across \NUM{n-models} models and three sets of
+-worked examples, we compare answer-only prompting, which requests just the final digit,
+-with chain-of-thought (CoT) prompting, which requests the equations and their evaluation
+-first. Renaming changes accuracy or answers matching the misleading word in
+-\NUM{n-value-models} models under answer-only prompting. Under CoT, these incorrect answers
+-occur at similar rates with misleading and ordinary names: within $\pm\NUM{eq-delta}$ percentage points in
+-\NUM{eq-cot-equivalent} of \NUM{eq-cot-cells} comparisons. We also train linear probes to
+-predict the correct digit from internal activations as the model receives the correct
+-calculation. In \NUM{vs-decodable} of \NUM{vs-cells} model-variable pairs, the correct digit
+-is highly recoverable on ordinary-name problems, and renaming changes the frequency of
+-answers matching the misleading word by at most \NUM{vs-decodable-maxexcess} points.
+-Evaluating the equations usually reduces incorrect answers suggested by the names.
++A model may answer 4 because a variable is named \texttt{four}, even when its equations
++give 6. We ask whether writing the calculation helps it resist this misleading word.
++Building on \citeauthor{kudo2026faithful}'s arithmetic study, we introduce matched problems
++that preserve the equations while a variable's name suggests an incorrect digit.
++This separates answers following the name from other arithmetic mistakes. Across
++\NUM{n-models} models and three sets of worked examples, we compare prompting for just
++the final digit with chain-of-thought (CoT) prompting, which requests the equations and
++their evaluation first. Without CoT, renaming can change accuracy and draw answers toward
++the misleading word. With CoT, the rate of these answers differs by at most
++\NUM{eq-delta} percentage points between misleading and ordinary names in
++\NUM{eq-cot-equivalent} of \NUM{eq-cot-cells} comparisons. Linear probes predict the
++correct digit from internal activations in most model-variable pairs on ordinary-name
++problems with supplied correct calculations. The matched comparison shows that CoT
++usually improves resistance to misleading labels, making robustness to irrelevant words
++a measurable benefit of writing out the calculation.
+ \end{abstract}
+ 
+ \section{Introduction}

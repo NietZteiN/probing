@@ -1,0 +1,16 @@
+{
+  "started_utc": "2026-10-03T23:57:59.298981+00:00",
+  "status": "needs_attention",
+  "analyses": {
+    "R6-A1": true,
+    "R6-A2": false,
+    "R6-A3": true
+  },
+  "errors": [
+    {
+      "analysis": "R6-A2",
+      "error": "fresh-program disjointness or fixed sample changed"
+    }
+  ],
+  "finished_utc": "2026-10-03T23:58:00.397696+00:00"
+}

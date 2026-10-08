@@ -48,13 +48,14 @@ def main() -> int:
     ap.add_argument("--model", default="llama32-3b"); ap.add_argument("--level", type=int, default=3)
     ap.add_argument("--regime", default="cot"); ap.add_argument("--role", default="v2")
     ap.add_argument("--train", default="train_neutral")
+    ap.add_argument("--cache-suffix", default="", help="isolated all-token cache tag")
     a = ap.parse_args()
     plt.rcParams.update(rcparams())
 
-    pj = OUT_DIR / "probes" / a.model / f"L{a.level}" / a.regime / f"{a.train}__alltok" / f"{a.role}.json"
+    pj = OUT_DIR / "probes" / a.model / f"L{a.level}" / a.regime / f"{a.train}__alltok{a.cache_suffix}" / f"{a.role}.json"
     d = json.loads(pj.read_text())
     cond = f"incongruent@{a.role}"
-    mte = json.loads((OUT_DIR / "runs" / a.model / f"L{a.level}" / a.regime / f"{cond}__alltok" / "meta.json").read_text())
+    mte = json.loads((OUT_DIR / "runs" / a.model / f"L{a.level}" / a.regime / f"{cond}__alltok{a.cache_suffix}" / "meta.json").read_text())
     layers = sorted({r["layer"] for r in d["results"]})
     toks = mte["token_strings"]; n_pos = len(mte["pos_labels"])
     t0 = mte["instance_start_token"]
@@ -64,7 +65,7 @@ def main() -> int:
     name_tok = [t - t0 for t in ex["name_tokens"][a.role] if t >= t0]
 
     A = grid(d, cond, "accuracy", n_pos, layers)     # probe's top-1 == true value
-    L = grid(d, cond, "lure_rate", n_pos, layers)    # probe's top-1 == lure value
+    L = grid(d, cond, "lure_rate", n_pos, layers)    # probe's top-1 == name-suggested value
     acc_curve, lure_curve = np.nanmax(A, axis=0), np.nanmax(L, axis=0)
 
     fig = plt.figure(figsize=(13.5, 5.6))
@@ -75,15 +76,18 @@ def main() -> int:
         for t in name_tok:
             ax.axvspan(t - 0.5, t + 0.5, color="#B5321F", alpha=0.10, lw=0)
         ax.axvline(cot0 - 0.5, color="0.35", lw=1.2, ls="--")
+        value_pre = mte["positions"].get(f"cotpre@{a.role}")
+        if value_pre is not None:
+            ax.axvline(value_pre - t0, color="#157A55", lw=1.0, ls=":")
         ax.set_xlim(-0.5, n_pos - 0.5)
 
-    ax0.plot(acc_curve, "-o", ms=3.2, lw=1.5, color="#157A55", label=f"reads the TRUE value ({true_v})")
-    ax0.plot(lure_curve, "-o", ms=3.2, lw=1.5, color="#B5321F", label=f"reads the LURE value ({lure_v})")
+    ax0.plot(acc_curve, "-o", ms=3.2, lw=1.5, color="#157A55", label="true-value accuracy")
+    ax0.plot(lure_curve, "-o", ms=3.2, lw=1.5, color="#B5321F", label="name-suggested prediction")
     ax0.set_ylim(-0.03, 1.05); ax0.set_ylabel("share of problems\n(best layer)")
     ax0.legend(loc="upper left", framealpha=0.95)
     ax0.set_xticks([])
-    ax0.text(cot0 / 2, 1.14, "the problem the model reads", ha="center", va="bottom", fontsize=10, color="0.25")
-    ax0.text(cot0 + (n_pos - cot0) / 2, 1.14, "the chain of thought the model writes",
+    ax0.text(cot0 / 2, 1.14, "the input problem", ha="center", va="bottom", fontsize=10, color="0.25")
+    ax0.text(cot0 + (n_pos - cot0) / 2, 1.14, "the supplied correct chain",
              ha="center", va="bottom", fontsize=10, color="0.25")
     ax0.annotate("", xy=(0, 1.11), xytext=(cot0 - 1, 1.11), arrowprops=dict(arrowstyle="<->", color="0.55", lw=0.9))
     ax0.annotate("", xy=(cot0, 1.11), xytext=(n_pos - 1, 1.11), arrowprops=dict(arrowstyle="<->", color="0.55", lw=0.9))
@@ -94,7 +98,7 @@ def main() -> int:
         if lab.startswith("cot:") and lab.endswith(f":value:{a.role}"):
             write_t = max(toks_) - t0
     if write_t is not None and 0 <= write_t < n_pos:
-        ax0.annotate(f"here the chain writes “{name}={true_v}”",
+        ax0.annotate("supplied value token",
                      xy=(write_t, acc_curve[write_t]), xytext=(write_t + 1.5, 0.42),
                      fontsize=10, color="#0F5C40",
                      arrowprops=dict(arrowstyle="->", color="#157A55", lw=1.3))
@@ -109,8 +113,9 @@ def main() -> int:
     cb = fig.colorbar(im, ax=[ax0, ax1], fraction=0.022, pad=0.012)
     cb.set_label("probe reads the true value (share of problems)")
 
-    fig.suptitle(f"{MODEL.get(a.model, a.model)}, {REGIME.get(a.regime, a.regime)}.   "
-                 f"Probe question: what value does the model hold for “{name}”?", fontsize=12, y=0.985)
+    role_label = "queried" if a.role == "v1" else "intermediate"
+    fig.suptitle(f"{MODEL.get(a.model, a.model)}, {REGIME.get(a.regime, a.regime)}: "
+                 f"{role_label}-value probe readouts", fontsize=12, y=0.985)
     FIG.mkdir(parents=True, exist_ok=True)
     stem = FIG / f"fig2_tokens_{a.model}_L{a.level}_{a.regime}_{a.role}"
     fig.savefig(stem.with_suffix(".pdf"), bbox_inches="tight")

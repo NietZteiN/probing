@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 """Every generated figure at full size, one per page, in an appendix that does not count against
-the page limit. Wide figures are rotated a quarter turn so they fill the page height instead of
-being squeezed into a column.
+the page limit. Full-width figure floats preserve the ACL two-column portrait layout.
 
     python scripts/66_figure_dump.py
 
@@ -11,8 +10,6 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
-
-from pypdf import PdfReader
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from cueconf.config import PROJECT_ROOT  # noqa: E402
@@ -29,9 +26,9 @@ CAPTIONS = {
     "fig4_errors_llama32-3b_L3_cot_v1": "Probing accuracy split by whether the model answers the problem "
         "correctly on its own, with the layer sweep for each half.",
     "fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i0": "Top-1 probe prediction at every layer and token, on a problem "
-        "answered with the lure. Layout after \\citeauthor{kudo2026faithful}'s Figure~3.",
-    "fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i1": "A second problem answered with the lure.",
-    "fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i2": "A third problem answered with the lure.",
+        "answered with the name-suggested value. Layout after \\citeauthor{kudo2026faithful}'s Figure~3.",
+    "fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i1": "A second problem answered with the name-suggested value.",
+    "fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i2": "A third problem answered with the name-suggested value.",
     "fig5_kudo3_llama32-3b_L3_cot_v1_err_i0": "As above, on a problem answered wrongly for another reason.",
     "fig5_kudo3_llama32-3b_L3_cot_v1_err_i1": "A second such problem.",
     "fig5_kudo3_llama32-3b_L3_cot_v2_err_i0": "As above, for the intermediate variable. Red is the model's final answer, "
@@ -40,19 +37,19 @@ CAPTIONS = {
     "kudo_fig2_llama32-3b_L3_cot_v2": "Accuracy heatmaps by token and layer for the neutral, congruent and "
         "incongruent conditions, in the layout of \\citeauthor{kudo2026faithful}'s Figure~2.",
     "kudo_fig2_llama32-3b_L3_direct_v2": "The same heatmaps in the direct regime.",
-    "kudo_fig5_llama32-3b_L3_cot_v2": "Span-by-layer-window patching grids, three sources (the lure-removal panel is "
-        "empty: with CoT there are too few lure errors to draw), "
+    "kudo_fig5_llama32-3b_L3_cot_v2": "Span-by-layer-window patching grids, three sources (the error-removal panel is "
+        "empty: with CoT there are too few name errors to draw), "
         "after \\citeauthor{kudo2026faithful}'s Figures~5--6.",
     "kudo_fig5_llama32-3b_L3_direct_v2": "The same grids in the direct regime.",
-    "fig3_patching_llama32-3b_L3_v2": "Lure errors removed by patching, by layer, with both controls.",
+    "fig3_patching_llama32-3b_L3_v2": "Name errors removed by patching, by layer, with both controls.",
     "kudo_fig2_llama32-3b_L3_cot_v1": "Accuracy heatmaps as above, chain-of-thought regime, queried variable.",
     "kudo_fig2_llama32-3b_L3_direct_v1": "The same heatmaps in the direct regime, queried variable.",
     "kudo_fig5_llama32-3b_L3_cot_v1": "Span-by-layer-window patching grids, chain-of-thought regime, queried variable; "
-        "the lure-removal panel is empty for the same reason.",
+        "the error-removal panel is empty for the same reason.",
     "kudo_fig5_llama32-3b_L3_direct_v1": "The same grids in the direct regime, queried variable.",
-    "fig3_patching_llama32-3b_L3_v1": "Lure errors removed by patching, by layer, with both controls, queried variable.",
+    "fig3_patching_llama32-3b_L3_v1": "Name errors removed by patching, by layer, with both controls, queried variable.",
     "fig_own_chain_llama32-3b_L3_cot_v1": "The own-chain probe figure at full size.",
-    "fig3_patching_llama31-8b_L3_v2": "Llama-3.1-8B, lure errors removed by patching, by layer, with both controls, "
+    "fig3_patching_llama31-8b_L3_v2": "Llama-3.1-8B, name errors removed by patching, by layer, with both controls, "
         "direct regime, intermediate variable.",
     "kudo_fig2_llama31-8b_L3_cot_v1": "Llama-3.1-8B, chain-of-thought regime, queried variable: the accuracy "
         "heatmaps of the Llama-3.2-3B figures. The value is decodable from the equation that restates the "
@@ -60,14 +57,15 @@ CAPTIONS = {
     "kudo_fig2_llama31-8b_L3_cot_v2": "Llama-3.1-8B, chain-of-thought regime, intermediate variable.",
     "kudo_fig2_llama31-8b_L3_direct_v2": "Llama-3.1-8B, direct regime, intermediate variable.",
     "kudo_fig5_llama31-8b_L3_cot_v2": "Llama-3.1-8B, span-by-layer-window patching grids, chain-of-thought "
-        "regime. The lure-removal panel is empty: none of the 500 patched problems is answered with the lure.",
+        "regime. The error-removal panel is empty: none of the 500 patched problems is answered with the name-suggested value.",
     "kudo_fig5_llama31-8b_L3_direct_v2": "Llama-3.1-8B, the same grids in the direct regime.",
     "kudo_fig2_llama31-8b_L3_direct_v1": "Llama-3.1-8B, direct regime, queried variable.",
     "kudo_fig5_llama31-8b_L3_cot_v1": "Llama-3.1-8B, patching grids, chain-of-thought regime, queried variable; "
-        "the lure-removal panel is empty for the same reason.",
+        "the error-removal panel is empty for the same reason.",
     "kudo_fig5_llama31-8b_L3_direct_v1": "Llama-3.1-8B, patching grids, direct regime, queried variable.",
 }
-SKIP = ("fig2_margin", "kudo_fig3_")          # superseded by fig4/fig5
+# Gemma token figures already appear in the dedicated probe-extension appendix.
+SKIP = ("fig2_margin", "kudo_fig3_", "fig2_tokens_gemma3-4b-it", "kudo_fig2_gemma3-4b-it")
 
 
 def main() -> int:
@@ -75,28 +73,16 @@ def main() -> int:
     figs = [f for f in figs if not any(f.startswith(s) for s in SKIP)]
     ordered = [f for f in CAPTIONS if f in figs] + [f for f in figs if f not in CAPTIONS]
     out = ["% generated by scripts/66_figure_dump.py",
-           "\\clearpage", "\\onecolumn", "\\section{Every figure at full size}", "\\label{app:figs}",
-           "Each figure below is reproduced on its own page. Wide figures are placed on landscape pages, "
-           "which a PDF viewer displays upright, so nothing has to be read sideways.", ""]
+           "\\clearpage", "\\section{Every figure at full size}", "\\label{app:figs}",
+           "Each figure below is reproduced as a full-width figure on a portrait page, "
+           "within the ACL margins.", ""]
     for stem in ordered:
-        w, h = (float(v) / 72 for v in (lambda b: (b.width, b.height))(
-            PdfReader(str(PAPER / "figures" / f"{stem}.pdf")).pages[0].mediabox))
         cap = CAPTIONS.get(stem, f"\\texttt{{{stem.replace('_', chr(92) + '_')}}}.")
-        # a wide figure goes on a LANDSCAPE PAGE (pdflscape sets the page's /Rotate, so a viewer
-        # shows it upright); the figure itself is never rotated. Inside `landscape`, \linewidth is
-        # the long side of the page.
-        wide = w / h > 1.15
-        box = "width=\\linewidth,height=0.88\\textheight,keepaspectratio"
-        if wide:
-            out += ["\\begin{landscape}", "\\begin{figure}[p]\\centering",
-                    f"\\includegraphics[{box}]{{figures/{stem}.pdf}}",
-                    f"\\caption{{{cap}}}\\label{{fig:dump-{stem.replace('_', '-')}}}",
-                    "\\end{figure}", "\\end{landscape}", ""]
-        else:
-            out += ["\\begin{figure}[p]\\centering",
-                    f"\\includegraphics[{box}]{{figures/{stem}.pdf}}",
-                    f"\\caption{{{cap}}}\\label{{fig:dump-{stem.replace('_', '-')}}}",
-                    "\\end{figure}", "\\clearpage", ""]
+        box = "width=\\textwidth,height=0.85\\textheight,keepaspectratio"
+        out += ["\\begin{figure*}[p]\\centering",
+                f"\\includegraphics[{box}]{{figures/{stem}.pdf}}",
+                f"\\caption{{{cap}}}\\label{{fig:dump-{stem.replace('_', '-')}}}",
+                "\\end{figure*}", "\\clearpage", ""]
     (PAPER / "tables" / "figure_dump.tex").write_text("\n".join(out))
     print(f"wrote figure_dump.tex with {len(ordered)} figures "
           f"({sum(1 for f in ordered if f in CAPTIONS)} captioned)")

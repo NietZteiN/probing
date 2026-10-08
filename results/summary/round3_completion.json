@@ -1,0 +1,262 @@
+{
+  "requested_date": "2026-10-02",
+  "status": "complete",
+  "gpu_job": "438941",
+  "C1": {
+    "complete": true,
+    "confidence": 0.9,
+    "summary": {
+      "cot_cells": 44,
+      "cot_equivalent": 43,
+      "cot_with_effect": 1,
+      "direct_cells": 44,
+      "direct_with_effect": 13,
+      "max_abs_cot_mean": 0.03166666666666667,
+      "cot_accuracy_cells": 88,
+      "cot_accuracy_equivalent": 61,
+      "cot_accuracy_claimable": 15,
+      "cot_accuracy_claimable_not_equivalent": 10
+    }
+  },
+  "C2": {
+    "complete": true,
+    "accuracy_cells": 88,
+    "equivalent": 61
+  },
+  "C3": {
+    "complete": true,
+    "exception_pooled": {
+      "model": "olmo2-1b-it",
+      "level": 3,
+      "regime": "cot_pooled",
+      "target": "v2",
+      "frac_wrote": 0.5271666666666667,
+      "estimator": "mean within matched pairs under the same split",
+      "n_wrote": 3163,
+      "n_matched_wrote": 2739,
+      "raw_lure_wrote": 0.05090104331331015,
+      "lure_wrote": 0.05147864184008762,
+      "pseudo_wrote": 0.01533406352683461,
+      "excess_wrote": 0.03614457831325301,
+      "excess_wrote_ci": [
+        0.02586481261754284,
+        0.04692180859524706
+      ],
+      "n_not": 2837,
+      "n_matched_not": 1078,
+      "raw_lure_not": 0.07296439901304194,
+      "lure_not": 0.06215213358070501,
+      "pseudo_not": 0.05658627087198516,
+      "excess_not": 0.0055658627087198514,
+      "excess_not_ci": [
+        -0.011878231561745958,
+        0.024489995805948458
+      ],
+      "seeds": [
+        7,
+        11,
+        13
+      ]
+    }
+  },
+  "C4": {
+    "complete": true,
+    "models": [
+      "llama31-8b-it-ft",
+      "llama31-8b-it-ftmulti",
+      "llama31-8b-it-merged",
+      "nemotron-nano-8b",
+      "gemma3-4b"
+    ],
+    "regimes": [
+      "cot",
+      "cot_s11",
+      "cot_s13"
+    ]
+  },
+  "G1": {
+    "complete": true,
+    "all_layers": {
+      "main@v1": {
+        "anspre": {
+          "n": 500,
+          "lure_injected": null,
+          "lure_removed": null,
+          "matches_source": 0.986,
+          "normalized_ld_mean": 1.404859247050762,
+          "normalized_ld_median": 1.0915381623274898,
+          "base_acc": 0.988,
+          "patched_acc": 0.984,
+          "n_lure_err": 0,
+          "recovery": null,
+          "damage": 0.01417004048582996,
+          "follows_src_lure": null
+        },
+        "cotpre@v1": {
+          "n": 500,
+          "lure_injected": null,
+          "lure_removed": null,
+          "matches_source": 0.986,
+          "normalized_ld_mean": 1.404859247050762,
+          "normalized_ld_median": 1.0915381623274898,
+          "base_acc": 0.988,
+          "patched_acc": 0.984,
+          "n_lure_err": 0,
+          "recovery": null,
+          "damage": 0.01417004048582996,
+          "follows_src_lure": null
+        }
+      },
+      "main@v2": {
+        "anspre": {
+          "n": 500,
+          "lure_injected": null,
+          "lure_removed": 1.0,
+          "matches_source": 0.986,
+          "normalized_ld_mean": 0.8722600992375924,
+          "normalized_ld_median": 1.015842838753604,
+          "base_acc": 0.976,
+          "patched_acc": 0.98,
+          "n_lure_err": 3,
+          "recovery": 1.0,
+          "damage": 0.012295081967213115,
+          "follows_src_lure": null
+        },
+        "cotpre@v2": {
+          "n": 500,
+          "lure_injected": null,
+          "lure_removed": 0.9285714285714286,
+          "matches_source": 0.922,
+          "normalized_ld_mean": 1.3316469208003439,
+          "normalized_ld_median": 1.0016275873245508,
+          "base_acc": 0.77,
+          "patched_acc": 0.9,
+          "n_lure_err": 28,
+          "recovery": 0.75,
+          "damage": 0.07532467532467532,
+          "follows_src_lure": null
+        }
+      },
+      "ctl_lure@v1": {
+        "anspre": {
+          "n": 500,
+          "lure_injected": 0.0,
+          "lure_removed": null,
+          "matches_source": 0.996,
+          "normalized_ld_mean": 0.9973799538253459,
+          "normalized_ld_median": 0.9976414063259877,
+          "base_acc": 0.988,
+          "patched_acc": 0.988,
+          "n_lure_err": 0,
+          "recovery": null,
+          "damage": 0.006072874493927126,
+          "follows_src_lure": 0.0
+        },
+        "cotpre@v1": {
+          "n": 500,
+          "lure_injected": 0.0,
+          "lure_removed": null,
+          "matches_source": 0.996,
+          "normalized_ld_mean": 0.9973799538253459,
+          "normalized_ld_median": 0.9976414063259877,
+          "base_acc": 0.988,
+          "patched_acc": 0.988,
+          "n_lure_err": 0,
+          "recovery": null,
+          "damage": 0.006072874493927126,
+          "follows_src_lure": 0.0
+        }
+      },
+      "ctl_lure@v2": {
+        "anspre": {
+          "n": 500,
+          "lure_injected": 0.0020491803278688526,
+          "lure_removed": 1.0,
+          "matches_source": 0.998,
+          "normalized_ld_mean": 0.8336630162268228,
+          "normalized_ld_median": 0.9556852500494346,
+          "base_acc": 0.976,
+          "patched_acc": 0.97,
+          "n_lure_err": 3,
+          "recovery": 0.3333333333333333,
+          "damage": 0.018442622950819672,
+          "follows_src_lure": 0.006
+        },
+        "cotpre@v2": {
+          "n": 500,
+          "lure_injected": 0.012987012987012988,
+          "lure_removed": 0.8214285714285714,
+          "matches_source": 0.964,
+          "normalized_ld_mean": 1.2098844703698277,
+          "normalized_ld_median": 1.0002252365930777,
+          "base_acc": 0.77,
+          "patched_acc": 0.786,
+          "n_lure_err": 28,
+          "recovery": 0.42857142857142855,
+          "damage": 0.10909090909090909,
+          "follows_src_lure": 0.04
+        }
+      }
+    },
+    "readout": "teacher-forced gold chain; not the model's own generated chain"
+  },
+  "C5": {
+    "complete": true,
+    "stages": [
+      {
+        "argv": [
+          "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+          "scripts/50_analysis.py",
+          "--models",
+          "olmo2-1b-it",
+          "--level",
+          "3"
+        ],
+        "exit_code": 0,
+        "log": "log/round3_final_1.out"
+      },
+      {
+        "argv": [
+          "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+          "scripts/51_tables.py"
+        ],
+        "exit_code": 0,
+        "log": "log/round3_final_2.out"
+      },
+      {
+        "argv": [
+          "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+          "scripts/60_master_figure.py"
+        ],
+        "exit_code": 0,
+        "log": "log/round3_final_3.out"
+      },
+      {
+        "argv": [
+          "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+          "scripts/66_figure_dump.py"
+        ],
+        "exit_code": 0,
+        "log": "log/round3_final_4.out"
+      },
+      {
+        "argv": [
+          "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+          "scripts/99_selfcheck.py"
+        ],
+        "exit_code": 0,
+        "log": "log/round3_final_5.out"
+      },
+      {
+        "argv": [
+          "make",
+          "paper"
+        ],
+        "exit_code": 0,
+        "log": "log/round3_final_6.out"
+      }
+    ]
+  },
+  "collection_job": "439019",
+  "collected_utc": "2026-10-03T01:37:31.692450+00:00"
+}

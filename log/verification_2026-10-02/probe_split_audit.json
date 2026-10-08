@@ -1,0 +1,286 @@
+{
+  "n_probe_files": 56,
+  "failures": [],
+  "checks": [
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L2/cot/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L2/cot/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L2/direct/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L2/direct/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L4/direct/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L4/direct/train_neutral/v3.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L4/direct/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L4/cot/train_neutral/v3.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L4/cot/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L4/cot/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/cot/train_neutral__std/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/cot/train_neutral__std/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/cot/train_neutral__alltok/v1.json",
+      "n_train_sets": 4000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/cot/train_neutral__alltok/v2.json",
+      "n_train_sets": 4000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/cot/train_neutral__lbfgs/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/cot/train_neutral__lbfgs/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/cot/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/cot/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/cot_s11/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/cot_s11/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/direct/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/direct/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/direct/train_neutral__alltok/v2.json",
+      "n_train_sets": 4000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/direct/train_neutral__alltok/v1.json",
+      "n_train_sets": 4000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/simple/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/simple/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/direct_s11/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama32-3b/L3/direct_s11/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/gemma3-4b-it/L3/direct/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/gemma3-4b-it/L3/direct/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/gemma3-4b-it/L3/cot/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/gemma3-4b-it/L3/cot/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama31-8b/L3/simple/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama31-8b/L3/simple/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama31-8b/L3/direct/train_neutral__alltok/v2.json",
+      "n_train_sets": 4000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama31-8b/L3/direct/train_neutral__alltok/v1.json",
+      "n_train_sets": 4000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama31-8b/L3/direct/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama31-8b/L3/direct/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama31-8b/L3/cot/train_neutral__alltok/v2.json",
+      "n_train_sets": 4000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama31-8b/L3/cot/train_neutral__alltok/v1.json",
+      "n_train_sets": 4000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama31-8b/L3/cot/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/llama31-8b/L3/cot/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/olmo2-1b-it/L3/cot/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/olmo2-1b-it/L3/cot/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/olmo2-1b-it/L3/direct/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/olmo2-1b-it/L3/direct/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/olmo2-1b-it/L3/simple/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/olmo2-1b-it/L3/simple/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/olmo2-7b-it/L3/direct/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/olmo2-7b-it/L3/direct/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/olmo2-7b-it/L3/cot/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/olmo2-7b-it/L3/cot/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/gemma3-4b/L3/cot/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/gemma3-4b/L3/cot/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/gemma3-4b/L3/direct/train_neutral/v1.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    },
+    {
+      "probe": "/scratch/juno/jvl210002/probing/probes/gemma3-4b/L3/direct/train_neutral/v2.json",
+      "n_train_sets": 10000,
+      "overlap": {}
+    }
+  ]
+}

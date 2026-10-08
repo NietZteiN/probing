@@ -1,0 +1,86 @@
+{
+ "train_neutral/v1/incongruent@v1": {
+  "order": [
+   "def@v1",
+   "end@v1",
+   "query",
+   "cotpre@v1",
+   "anspre"
+  ],
+  "max_margin": {
+   "cotpre@v1": 2340218.543890625,
+   "cotpre@v2": 761515.81625
+  },
+  "crossover": "def@v1"
+ },
+ "train_neutral/v2/incongruent@v2": {
+  "order": [
+   "def@v2",
+   "end@v2",
+   "query",
+   "cotpre@v2",
+   "anspre"
+  ],
+  "max_margin": {
+   "cotpre@v1": 2790687.376197917,
+   "cotpre@v2": 2784495.8801015625
+  },
+  "crossover": "def@v2"
+ },
+ "train_neutral__r4/v1/incongruent@v1": {
+  "order": [
+   "def@v1",
+   "end@v1",
+   "query",
+   "cotpre@v1",
+   "anspre"
+  ],
+  "max_margin": {
+   "cotpre@v1": 462775.6987044271,
+   "cotpre@v2": 49065.46963020833
+  },
+  "crossover": "def@v1"
+ },
+ "train_neutral__r4/v2/incongruent@v2": {
+  "order": [
+   "def@v2",
+   "end@v2",
+   "query",
+   "cotpre@v2",
+   "anspre"
+  ],
+  "max_margin": {
+   "cotpre@v1": 330095.0978359375,
+   "cotpre@v2": 272750.90395052085
+  },
+  "crossover": "def@v2"
+ },
+ "train_neutral__r5_fp32/v1/incongruent@v1": {
+  "order": [
+   "def@v1",
+   "end@v1",
+   "query",
+   "cotpre@v1",
+   "anspre"
+  ],
+  "max_margin": {
+   "cotpre@v1": 2340218.543890625,
+   "cotpre@v2": 761515.81625
+  },
+  "crossover": "def@v1"
+ },
+ "train_neutral__r5_fp32/v2/incongruent@v2": {
+  "order": [
+   "def@v2",
+   "end@v2",
+   "query",
+   "cotpre@v2",
+   "anspre"
+  ],
+  "max_margin": {
+   "cotpre@v1": 2790687.376197917,
+   "cotpre@v2": 2784495.8801015625
+  },
+  "crossover": "def@v2"
+ }
+}

@@ -32,9 +32,14 @@ status:
 	@$(PY) scripts/00_status.py
 
 paper:
-	@mkdir -p log && TECTONIC_CACHE_DIR=/work/jvl210002/migration/cache/tectonic TMPDIR=/work/jvl210002/migration/tmp \
-	  $(TECTONIC) -X compile $(CURDIR)/paper/main.tex 2>&1 | grep -v 'lineno.sty:296' || true
-	@$(PY) scripts/92_page_budget.py
+	@$(MAKE) -C paper TECTONIC="$(TECTONIC)" PY="$(PY)" paper
+
+.PHONY: paper-check paper-submission
+paper-check:
+	@$(MAKE) -C paper PY="$(PY)" check
+
+paper-submission:
+	@$(MAKE) -C paper TECTONIC="$(TECTONIC)" PY="$(PY)" submission
 
 ## list every number still unfilled in the draft
 numbers:

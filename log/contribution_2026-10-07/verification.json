@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-07",
+  "change": "Abstract contribution, connected evidence and implication",
+  "abstract_words": 174,
+  "text_through_limitations_pages": 4,
+  "strict_arr_checks_passed": true,
+  "main_figure_table_pages": {
+    "Figure 1:": 2,
+    "Figure 2:": 3,
+    "Table 1:": 2,
+    "Table 2:": 3
+  },
+  "unchanged_numerical_inputs_and_figures_checked": 390,
+  "only_abstract_changed_in_latex": true,
+  "body_and_limitations_caveats_preserved": true,
+  "git_diff_check_passed": true,
+  "no_overfull_or_latex_errors": true,
+  "visual_review_pages": [
+    1,
+    4
+  ],
+  "main_tex_sha256": "113f202ec5d1fa2f4130326aeb97ab61d092f185a7cf4f0860fbfb783ca93d57",
+  "main_pdf_sha256": "8447bfc890cf448468091eda9783abf6057de5c1a6fb847cf6c897f7521ad8f0"
+}

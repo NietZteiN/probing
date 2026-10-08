@@ -17,7 +17,7 @@ from pathlib import Path
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from cueconf.config import DATA_DIR, OUT_DIR, RESULTS_DIR, load_config  # noqa: E402
+from cueconf.config import DATA_DIR, OUT_DIR, PROJECT_ROOT, RESULTS_DIR, load_config  # noqa: E402
 from cueconf.generator import instance_arithmetic, read_jsonl  # noqa: E402
 
 FAIL, WARN = [], []
@@ -214,9 +214,15 @@ def check_sweeps(level: int) -> None:
     in_sweep = {k.split("/")[0] for k in sw}
     panel = {m for m, e in load_config("models.yaml")["models"].items()
              if e.get("kind") not in ("tuned", "reasoning")}
-    tbl = RESULTS_DIR.parent.parent / "paper" / "tables" / "behavior.tex"
+    tbl = PROJECT_ROOT / "paper" / "tables" / "behavior.tex"
     if tbl.exists():
         body = tbl.read_text()
+        if level == 3:
+            from cueconf.display import MODEL
+            below_floor = [m for m in panel
+                           if sw.get(f"{m}/cot", {}).get("groups", {}).get("neutral", {}).get("acc_mean", 0) < .90
+                           and MODEL.get(m, m) in body]
+            check(not below_floor, f"Table 1 includes models below the preregistered 90% CoT accuracy floor: {below_floor}")
         strays = [m for m in (have_runs - panel) if m in body]
         check(not strays, f"Table 1 shows ladder models {strays}; they belong in the appendix ladder table")
     if tbl.exists():

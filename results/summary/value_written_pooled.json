@@ -1,0 +1,1364 @@
+[
+ {
+  "model": "gemma3-12b-it",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 6000,
+  "n_matched_wrote": 6000,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "n_matched_not": 0,
+  "raw_lure_not": null,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "gemma3-12b-it",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 6000,
+  "n_matched_wrote": 6000,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "n_matched_not": 0,
+  "raw_lure_not": null,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "gemma3-4b",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.9996666666666667,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5998,
+  "n_matched_wrote": 5998,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 2,
+  "n_matched_not": 1,
+  "raw_lure_not": 0.0,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "gemma3-4b",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 6000,
+  "n_matched_wrote": 6000,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "n_matched_not": 0,
+  "raw_lure_not": null,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "gemma3-4b-it",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.9953333333333333,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5972,
+  "n_matched_wrote": 5971,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 28,
+  "n_matched_not": 0,
+  "raw_lure_not": 0.0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "gemma3-4b-it",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.9983333333333333,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5990,
+  "n_matched_wrote": 5989,
+  "raw_lure_wrote": 0.0001669449081803005,
+  "lure_wrote": 0.0001669727834362999,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0001669727834362999,
+  "excess_wrote_ci": [
+   0.0,
+   0.0005012531328320802
+  ],
+  "n_not": 10,
+  "n_matched_not": 0,
+  "raw_lure_not": 0.0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 1,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.9996666666666667,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5998,
+  "n_matched_wrote": 5990,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 2,
+  "n_matched_not": 0,
+  "raw_lure_not": 0.0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 1,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 6000,
+  "n_matched_wrote": 6000,
+  "raw_lure_wrote": 0.00016666666666666666,
+  "lure_wrote": 0.00016666666666666666,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.00016666666666666666,
+  "excess_wrote_ci": [
+   0.0,
+   0.0005
+  ],
+  "n_not": 0,
+  "n_matched_not": 0,
+  "raw_lure_not": null,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 2,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.9996666666666667,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5998,
+  "n_matched_wrote": 5996,
+  "raw_lure_wrote": 0.00016672224074691563,
+  "lure_wrote": 0.0001667778519012675,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0001667778519012675,
+  "excess_wrote_ci": [
+   0.0,
+   0.0005005005005005005
+  ],
+  "n_not": 2,
+  "n_matched_not": 0,
+  "raw_lure_not": 0.0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 2,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.9998333333333334,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5999,
+  "n_matched_wrote": 5999,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 1,
+  "n_matched_not": 0,
+  "raw_lure_not": 0.0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.986,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5916,
+  "n_matched_wrote": 5855,
+  "raw_lure_wrote": 0.0005070993914807302,
+  "lure_wrote": 0.0005123825789923143,
+  "pseudo_wrote": 0.0006831767719897524,
+  "excess_wrote": -0.0001707941929974381,
+  "excess_wrote_ci": [
+   -0.0008515022634693132,
+   0.0003423499760660821
+  ],
+  "n_not": 84,
+  "n_matched_not": 51,
+  "raw_lure_not": 0.11904761904761904,
+  "lure_not": 0.17647058823529413,
+  "pseudo_not": 0.1568627450980392,
+  "excess_not": 0.0196078431372549,
+  "excess_not_ci": [
+   0.0,
+   0.058823529411764705
+  ],
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.9651666666666666,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5791,
+  "n_matched_wrote": 5705,
+  "raw_lure_wrote": 0.0003453634950785702,
+  "lure_wrote": 0.00035056967572304995,
+  "pseudo_wrote": 0.00017528483786152498,
+  "excess_wrote": 0.00017528483786152498,
+  "excess_wrote_ci": [
+   0.0,
+   0.0005279854280008929
+  ],
+  "n_not": 209,
+  "n_matched_not": 131,
+  "raw_lure_not": 0.07655502392344497,
+  "lure_not": 0.06870229007633588,
+  "pseudo_not": 0.06870229007633588,
+  "excess_not": 0.0,
+  "excess_not_ci": [
+   -0.022900763358778626,
+   0.022900763358778626
+  ],
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 4,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.9178333333333333,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5507,
+  "n_matched_wrote": 5345,
+  "raw_lure_wrote": 0.0018158707100054477,
+  "lure_wrote": 0.0018709073900841909,
+  "pseudo_wrote": 0.0018709073900841909,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   -0.0005602267055496087,
+   0.0005620082427875609
+  ],
+  "n_not": 493,
+  "n_matched_not": 455,
+  "raw_lure_not": 0.06490872210953347,
+  "lure_not": 0.06373626373626373,
+  "pseudo_not": 0.05714285714285714,
+  "excess_not": 0.006593406593406593,
+  "excess_not_ci": [
+   -0.002197802197802198,
+   0.017582417582417582
+  ],
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 4,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.8858333333333334,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5315,
+  "n_matched_wrote": 5227,
+  "raw_lure_wrote": 0.00018814675446848542,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 685,
+  "n_matched_not": 475,
+  "raw_lure_not": 0.07153284671532846,
+  "lure_not": 0.07157894736842105,
+  "pseudo_not": 0.07157894736842105,
+  "excess_not": 0.0,
+  "excess_not_ci": [
+   -0.00631578947368421,
+   0.00631578947368421
+  ],
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 5,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.7263333333333334,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 4358,
+  "n_matched_wrote": 4099,
+  "raw_lure_wrote": 0.0036714089031665903,
+  "lure_wrote": 0.003903391070992925,
+  "pseudo_wrote": 0.005123200780678214,
+  "excess_wrote": -0.0012198097096852891,
+  "excess_wrote_ci": [
+   -0.0026436111765847704,
+   0.0
+  ],
+  "n_not": 1642,
+  "n_matched_not": 1466,
+  "raw_lure_not": 0.08343483556638245,
+  "lure_not": 0.08185538881309687,
+  "pseudo_not": 0.08458390177353342,
+  "excess_not": -0.002728512960436562,
+  "excess_not_ci": [
+   -0.00948557779875151,
+   0.004056795131845842
+  ],
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 5,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.7395,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 4437,
+  "n_matched_wrote": 4109,
+  "raw_lure_wrote": 0.00878972278566599,
+  "lure_wrote": 0.008517887563884156,
+  "pseudo_wrote": 0.007301046483329277,
+  "excess_wrote": 0.0012168410805548796,
+  "excess_wrote_ci": [
+   -0.0010016744506368535,
+   0.0034390218894852355
+  ],
+  "n_not": 1563,
+  "n_matched_not": 1371,
+  "raw_lure_not": 0.08253358925143954,
+  "lure_not": 0.08460977388767323,
+  "pseudo_not": 0.08679795769511306,
+  "excess_not": -0.002188183807439825,
+  "excess_not_ci": [
+   -0.010295258058910416,
+   0.005904168052020254
+  ],
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b",
+  "level": 5,
+  "regime": "cot_pooled",
+  "target": "v3",
+  "frac_wrote": 0.643,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 3858,
+  "n_matched_wrote": 3533,
+  "raw_lure_wrote": 0.002592016588906169,
+  "lure_wrote": 0.002547410133031418,
+  "pseudo_wrote": 0.0022643645626945937,
+  "excess_wrote": 0.0002830455703368242,
+  "excess_wrote_ci": [
+   -0.0014318544691750313,
+   0.0022402688322598714
+  ],
+  "n_not": 2142,
+  "n_matched_not": 1675,
+  "raw_lure_not": 0.08403361344537816,
+  "lure_not": 0.08238805970149254,
+  "pseudo_not": 0.08656716417910448,
+  "excess_not": -0.00417910447761194,
+  "excess_not_ci": [
+   -0.010107165770332336,
+   0.0017700161709832893
+  ],
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b-it",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 6000,
+  "n_matched_wrote": 5999,
+  "raw_lure_wrote": 0.00016666666666666666,
+  "lure_wrote": 0.0001666944490748458,
+  "pseudo_wrote": 0.0001666944490748458,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   -0.0005,
+   0.0005000833472245374
+  ],
+  "n_not": 0,
+  "n_matched_not": 0,
+  "raw_lure_not": null,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b-it",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.9966666666666667,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5980,
+  "n_matched_wrote": 5933,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 20,
+  "n_matched_not": 16,
+  "raw_lure_not": 0.05,
+  "lure_not": 0.0625,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0625,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b-it-ft",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 6000,
+  "n_matched_wrote": 5999,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "n_matched_not": 0,
+  "raw_lure_not": null,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b-it-ft",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.9993333333333333,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5996,
+  "n_matched_wrote": 5987,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 4,
+  "n_matched_not": 3,
+  "raw_lure_not": 0.0,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b-it-ftmulti",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 6000,
+  "n_matched_wrote": 6000,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 0,
+  "n_matched_not": 0,
+  "raw_lure_not": null,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b-it-ftmulti",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.9988333333333334,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5993,
+  "n_matched_wrote": 5979,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 7,
+  "n_matched_not": 5,
+  "raw_lure_not": 0.0,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b-it-merged",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 1.0,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 6000,
+  "n_matched_wrote": 5999,
+  "raw_lure_wrote": 0.00016666666666666666,
+  "lure_wrote": 0.0001666944490748458,
+  "pseudo_wrote": 0.0001666944490748458,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   -0.0005,
+   0.0005000833472245374
+  ],
+  "n_not": 0,
+  "n_matched_not": 0,
+  "raw_lure_not": null,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama31-8b-it-merged",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.9986666666666667,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5992,
+  "n_matched_wrote": 5949,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 8,
+  "n_matched_not": 6,
+  "raw_lure_not": 0.0,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 1,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.9888333333333333,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5933,
+  "n_matched_wrote": 5858,
+  "raw_lure_wrote": 0.0003370975897522333,
+  "lure_wrote": 0.0003414134516899966,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0003414134516899966,
+  "excess_wrote_ci": [
+   0.0,
+   0.000855431993156544
+  ],
+  "n_not": 67,
+  "n_matched_not": 17,
+  "raw_lure_not": 0.11940298507462686,
+  "lure_not": 0.058823529411764705,
+  "pseudo_not": 0.058823529411764705,
+  "excess_not": 0.0,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 1,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 1.0,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 6000,
+  "n_matched_wrote": 6000,
+  "raw_lure_wrote": 0.0045,
+  "lure_wrote": 0.0045,
+  "pseudo_wrote": 0.0015,
+  "excess_wrote": 0.003,
+  "excess_wrote_ci": [
+   0.0011666666666666668,
+   0.005
+  ],
+  "n_not": 0,
+  "n_matched_not": 0,
+  "raw_lure_not": null,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 2,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.974,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5844,
+  "n_matched_wrote": 5774,
+  "raw_lure_wrote": 0.00701574264202601,
+  "lure_wrote": 0.007100796674748874,
+  "pseudo_wrote": 0.0022514721163837893,
+  "excess_wrote": 0.0048493245583650845,
+  "excess_wrote_ci": [
+   0.0029380757674262277,
+   0.006928896575554462
+  ],
+  "n_not": 156,
+  "n_matched_not": 21,
+  "raw_lure_not": 0.03205128205128205,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 2,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.9925,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5955,
+  "n_matched_wrote": 5909,
+  "raw_lure_wrote": 0.0010075566750629723,
+  "lure_wrote": 0.001015400236926722,
+  "pseudo_wrote": 0.0008461668641056016,
+  "excess_wrote": 0.00016923337282112033,
+  "excess_wrote_ci": [
+   -0.00033886961591666315,
+   0.000679004749266456
+  ],
+  "n_not": 45,
+  "n_matched_not": 8,
+  "raw_lure_not": 0.022222222222222223,
+  "lure_not": 0.0,
+  "pseudo_not": 0.125,
+  "excess_not": -0.125,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.9778333333333333,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5867,
+  "n_matched_wrote": 5834,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 133,
+  "n_matched_not": 37,
+  "raw_lure_not": 0.10526315789473684,
+  "lure_not": 0.10810810810810811,
+  "pseudo_not": 0.10810810810810811,
+  "excess_not": 0.0,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.9988333333333334,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5993,
+  "n_matched_wrote": 5951,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0006721559401781214,
+  "excess_wrote": -0.0006721559401781214,
+  "excess_wrote_ci": [
+   -0.001514393044933261,
+   0.0
+  ],
+  "n_not": 7,
+  "n_matched_not": 2,
+  "raw_lure_not": 0.0,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 4,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.6073333333333333,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 3644,
+  "n_matched_wrote": 3465,
+  "raw_lure_wrote": 0.0060373216245883645,
+  "lure_wrote": 0.006349206349206349,
+  "pseudo_wrote": 0.002308802308802309,
+  "excess_wrote": 0.00404040404040404,
+  "excess_wrote_ci": [
+   0.0014555829001884197,
+   0.0068731479674219685
+  ],
+  "n_not": 2356,
+  "n_matched_not": 1679,
+  "raw_lure_not": 0.05432937181663837,
+  "lure_not": 0.048838594401429423,
+  "pseudo_not": 0.057772483621203095,
+  "excess_not": -0.008933889219773675,
+  "excess_not_ci": [
+   -0.018803072966321527,
+   0.0005949194707270602
+  ],
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 4,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.654,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 3924,
+  "n_matched_wrote": 3647,
+  "raw_lure_wrote": 0.006625891946992864,
+  "lure_wrote": 0.006032355360570332,
+  "pseudo_wrote": 0.003290375651220181,
+  "excess_wrote": 0.002741979709350151,
+  "excess_wrote_ci": [
+   0.0,
+   0.005520860809817539
+  ],
+  "n_not": 2076,
+  "n_matched_not": 1436,
+  "raw_lure_not": 0.04527938342967245,
+  "lure_not": 0.04805013927576602,
+  "pseudo_not": 0.04456824512534819,
+  "excess_not": 0.003481894150417827,
+  "excess_not_ci": [
+   -0.007730555857986993,
+   0.015331813403928128
+  ],
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 5,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.7791666666666667,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 4675,
+  "n_matched_wrote": 4499,
+  "raw_lure_wrote": 0.008770053475935829,
+  "lure_wrote": 0.009113136252500556,
+  "pseudo_wrote": 0.008001778172927318,
+  "excess_wrote": 0.0011113580795732384,
+  "excess_wrote_ci": [
+   -0.0006716029557254996,
+   0.0030918727915194345
+  ],
+  "n_not": 1325,
+  "n_matched_not": 1114,
+  "raw_lure_not": 0.06943396226415094,
+  "lure_not": 0.06642728904847396,
+  "pseudo_not": 0.0718132854578097,
+  "excess_not": -0.005385996409335727,
+  "excess_not_ci": [
+   -0.012647079002435594,
+   0.0017921548772843433
+  ],
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 5,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.7983333333333333,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 4790,
+  "n_matched_wrote": 4588,
+  "raw_lure_wrote": 0.009394572025052192,
+  "lure_wrote": 0.00980819529206626,
+  "pseudo_wrote": 0.010897994768962511,
+  "excess_wrote": -0.001089799476896251,
+  "excess_wrote_ci": [
+   -0.003285888754604107,
+   0.0010936192795961762
+  ],
+  "n_not": 1210,
+  "n_matched_not": 968,
+  "raw_lure_not": 0.07107438016528926,
+  "lure_not": 0.06714876033057851,
+  "pseudo_not": 0.06921487603305786,
+  "excess_not": -0.002066115702479339,
+  "excess_not_ci": [
+   -0.012182741116751269,
+   0.008368419899669213
+  ],
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama32-3b",
+  "level": 5,
+  "regime": "cot_pooled",
+  "target": "v3",
+  "frac_wrote": 0.8221666666666667,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 4933,
+  "n_matched_wrote": 4713,
+  "raw_lure_wrote": 0.01236570038516116,
+  "lure_wrote": 0.012306386590282199,
+  "pseudo_wrote": 0.012306386590282199,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   -0.0033927236716774735,
+   0.0031562181926590538
+  ],
+  "n_not": 1067,
+  "n_matched_not": 810,
+  "raw_lure_not": 0.07966260543580131,
+  "lure_not": 0.08271604938271605,
+  "pseudo_not": 0.08395061728395062,
+  "excess_not": -0.0012345679012345679,
+  "excess_not_ci": [
+   -0.017305850640688295,
+   0.01485148514851485
+  ],
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama32-3b-it",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.9998333333333334,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5999,
+  "n_matched_wrote": 5998,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 1,
+  "n_matched_not": 0,
+  "raw_lure_not": 0.0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "llama32-3b-it",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.9998333333333334,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5999,
+  "n_matched_wrote": 5998,
+  "raw_lure_wrote": 0.0,
+  "lure_wrote": 0.0,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0,
+  "excess_wrote_ci": [
+   0.0,
+   0.0
+  ],
+  "n_not": 1,
+  "n_matched_not": 0,
+  "raw_lure_not": 0.0,
+  "lure_not": null,
+  "pseudo_not": null,
+  "excess_not": null,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "nemotron-nano-8b",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.9893333333333333,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5936,
+  "n_matched_wrote": 5909,
+  "raw_lure_wrote": 0.0008423180592991914,
+  "lure_wrote": 0.0008461668641056016,
+  "pseudo_wrote": 0.00016923337282112033,
+  "excess_wrote": 0.0006769334912844813,
+  "excess_wrote_ci": [
+   0.00016883336147222692,
+   0.0013624908175895072
+  ],
+  "n_not": 64,
+  "n_matched_not": 15,
+  "raw_lure_not": 0.015625,
+  "lure_not": 0.06666666666666667,
+  "pseudo_not": 0.0,
+  "excess_not": 0.06666666666666667,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "nemotron-nano-8b",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.9463333333333334,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5678,
+  "n_matched_wrote": 5632,
+  "raw_lure_wrote": 0.00017611835153222966,
+  "lure_wrote": 0.0001775568181818182,
+  "pseudo_wrote": 0.0,
+  "excess_wrote": 0.0001775568181818182,
+  "excess_wrote_ci": [
+   0.0,
+   0.0005344735435595938
+  ],
+  "n_not": 322,
+  "n_matched_not": 21,
+  "raw_lure_not": 0.037267080745341616,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "olmo2-1b-it",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.6295,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 3777,
+  "n_matched_wrote": 3039,
+  "raw_lure_wrote": 0.016415144294413556,
+  "lure_wrote": 0.01809805857189865,
+  "pseudo_wrote": 0.012833168805528134,
+  "excess_wrote": 0.0052648897663705166,
+  "excess_wrote_ci": [
+   -0.00033235292457625454,
+   0.011363826391000304
+  ],
+  "n_not": 2223,
+  "n_matched_not": 1397,
+  "raw_lure_not": 0.06432748538011696,
+  "lure_not": 0.06657122405153901,
+  "pseudo_not": 0.06227630637079456,
+  "excess_not": 0.004294917680744453,
+  "excess_not_ci": [
+   -0.009979868149912079,
+   0.019651653062603254
+  ],
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "olmo2-1b-it",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.5271666666666667,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 3163,
+  "n_matched_wrote": 2739,
+  "raw_lure_wrote": 0.05090104331331015,
+  "lure_wrote": 0.05147864184008762,
+  "pseudo_wrote": 0.01533406352683461,
+  "excess_wrote": 0.03614457831325301,
+  "excess_wrote_ci": [
+   0.02586481261754284,
+   0.04692180859524706
+  ],
+  "n_not": 2837,
+  "n_matched_not": 1078,
+  "raw_lure_not": 0.07296439901304194,
+  "lure_not": 0.06215213358070501,
+  "pseudo_not": 0.05658627087198516,
+  "excess_not": 0.0055658627087198514,
+  "excess_not_ci": [
+   -0.011878231561745958,
+   0.024489995805948458
+  ],
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "olmo2-7b-it",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v1",
+  "frac_wrote": 0.989,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5934,
+  "n_matched_wrote": 5898,
+  "raw_lure_wrote": 0.0015166835187057635,
+  "lure_wrote": 0.001525940996948118,
+  "pseudo_wrote": 0.002204136995591726,
+  "excess_wrote": -0.0006781959986436081,
+  "excess_wrote_ci": [
+   -0.0016943480795833157,
+   0.00016989755369012252
+  ],
+  "n_not": 66,
+  "n_matched_not": 31,
+  "raw_lure_not": 0.015151515151515152,
+  "lure_not": 0.0,
+  "pseudo_not": 0.0,
+  "excess_not": 0.0,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ },
+ {
+  "model": "olmo2-7b-it",
+  "level": 3,
+  "regime": "cot_pooled",
+  "target": "v2",
+  "frac_wrote": 0.983,
+  "estimator": "mean within matched pairs under the same split",
+  "n_wrote": 5898,
+  "n_matched_wrote": 5773,
+  "raw_lure_wrote": 0.00169548999660902,
+  "lure_wrote": 0.0017322016282695306,
+  "pseudo_wrote": 0.00017322016282695306,
+  "excess_wrote": 0.0015589814654425776,
+  "excess_wrote_ci": [
+   0.0005191187098497063,
+   0.002776355867565577
+  ],
+  "n_not": 102,
+  "n_matched_not": 49,
+  "raw_lure_not": 0.11764705882352941,
+  "lure_not": 0.20408163265306123,
+  "pseudo_not": 0.22448979591836735,
+  "excess_not": -0.02040816326530612,
+  "excess_not_ci": null,
+  "seeds": [
+   7,
+   11,
+   13
+  ]
+ }
+]

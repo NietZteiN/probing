@@ -1,0 +1,62 @@
+{
+  "started_utc": "2026-10-03T09:07:25.169398+00:00",
+  "status": "complete",
+  "analyses": {
+    "R5-A4": true,
+    "R5-A5": true,
+    "R5-A1": true,
+    "R5-A2": true,
+    "R5-A3": true
+  },
+  "stages": [
+    {
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/51_numbers.py"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round5_2026-10-03/publish_stage1.out"
+    },
+    {
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/51_tables.py"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round5_2026-10-03/publish_stage2.out"
+    },
+    {
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/99_selfcheck.py"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round5_2026-10-03/publish_stage3.out"
+    },
+    {
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/99_selfcheck.py"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round5_2026-10-03/publish_stage4.out"
+    },
+    {
+      "argv": [
+        "make",
+        "paper-submission"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round5_2026-10-03/publish_stage5.out"
+    },
+    {
+      "argv": [
+        "make",
+        "paper-submission"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round5_2026-10-03/publish_stage6.out"
+    }
+  ],
+  "errors": []
+}

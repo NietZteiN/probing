@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-02",
+  "scope": "Manuscript verification after prose rewrite; checks against saved results, raw observations, preregistration, references, generated assets and review PDF",
+  "fresh_gpu_runs": false,
+  "formatting": {
+    "strict_build": "passed",
+    "body_pages": 4,
+    "page_limit": 4,
+    "unfilled_numbers": 0,
+    "unresolved_references": false,
+    "missing_assets": false,
+    "unembedded_fonts": 0,
+    "out_of_page_glyphs": 0
+  },
+  "initial_logs": "status.json and before_generated.json describe the initial pre-correction checks",
+  "paper": "Chain of Thought Limits Lure Answers in Arithmetic",
+  "status": "passed with existing warnings and stated scientific limitations",
+  "cpu_tests": {
+    "passed": 61,
+    "skipped": 4
+  },
+  "selfcheck": {
+    "failures": 0,
+    "warnings": 80
+  },
+  "probe_split_audit": {
+    "neutral_trained_result_files": 56,
+    "shared_set_id_failures": 0,
+    "details": "probe_split_audit.json"
+  },
+  "corrections": [
+    "Apply the registered 90% mean neutral-CoT floor in the main table; retain excluded model in appendix",
+    "Align queried-variable patching figure with quoted statistics; show all-layer patch",
+    "Distinguish queried/intermediate and neutral/incongruent readouts",
+    "Clarify pooled token rates versus illustrative token sequence",
+    "Include alternative-source removal in exception controls",
+    "Qualify cross-model probe/behavior association and add companion citation"
+  ],
+  "total_pdf_pages": 44,
+  "abstract_words": 149
+}

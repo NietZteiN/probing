@@ -1,0 +1,191 @@
+equivalence bound delta = 2 points; 90% CI must lie inside it
+
+L1 llama32-3b/cot         facilitation@v1   +1.1 [ +0.7, +1.5]  EQUIVALENT
+L1 llama32-3b/cot         facilitation@v2   -2.4 [ -2.9, -1.8]  inconclusive
+L1 llama32-3b/cot         interference@v1   -0.8 [ -1.2, -0.4]  EQUIVALENT
+L1 llama32-3b/cot         interference@v2   +1.7 [ +1.2, +2.2]  inconclusive
+L1 llama32-3b/cot         lure_excess@v1    +0.1 [ +0.0, +0.2]  EQUIVALENT
+L1 llama32-3b/cot         lure_excess@v2    +0.3 [ +0.1, +0.5]  EQUIVALENT
+L1 llama32-3b/direct      lure_excess@v1    +5.9 [ +5.2, +6.5]  effect
+L1 llama32-3b/direct      lure_excess@v2    +2.6 [ +2.2, +3.0]  effect
+L1 llama31-8b/cot         facilitation@v1   +0.0 [ -0.1, +0.2]  EQUIVALENT
+L1 llama31-8b/cot         facilitation@v2   +0.3 [ +0.1, +0.5]  EQUIVALENT
+L1 llama31-8b/cot         interference@v1   +0.1 [ -0.1, +0.3]  EQUIVALENT
+L1 llama31-8b/cot         interference@v2   -0.0 [ -0.2, +0.2]  EQUIVALENT
+L1 llama31-8b/cot         lure_excess@v1    +0.0 [ +0.0, +0.0]  EQUIVALENT
+L1 llama31-8b/cot         lure_excess@v2    +0.0 [ +0.0, +0.1]  EQUIVALENT
+L1 llama31-8b/direct      lure_excess@v1   +11.2 [+10.5,+11.9]  effect
+L1 llama31-8b/direct      lure_excess@v2    +1.3 [ +1.0, +1.7]  EQUIVALENT
+L2 llama32-3b/cot         facilitation@v1   +3.7 [ +3.1, +4.4]  inconclusive
+L2 llama32-3b/cot         facilitation@v2   +1.0 [ +0.6, +1.4]  EQUIVALENT
+L2 llama32-3b/cot         interference@v1   +1.2 [ +0.7, +1.7]  EQUIVALENT
+L2 llama32-3b/cot         interference@v2   -1.1 [ -1.6, -0.7]  EQUIVALENT
+L2 llama32-3b/cot         lure_excess@v1    +0.5 [ +0.4, +0.7]  EQUIVALENT
+L2 llama32-3b/cot         lure_excess@v2    -0.1 [ -0.1, +0.0]  EQUIVALENT
+L2 llama32-3b/direct      lure_excess@v1    +2.5 [ +1.9, +3.0]  effect
+L2 llama32-3b/direct      lure_excess@v2    +2.2 [ +1.7, +2.7]  inconclusive
+L2 llama31-8b/cot         facilitation@v1   -0.1 [ -0.1, +0.0]  EQUIVALENT
+L2 llama31-8b/cot         facilitation@v2   -0.0 [ -0.1, +0.0]  EQUIVALENT
+L2 llama31-8b/cot         interference@v1   +0.1 [ +0.0, +0.1]  EQUIVALENT
+L2 llama31-8b/cot         interference@v2   +0.0 [ +0.0, +0.1]  EQUIVALENT
+L2 llama31-8b/cot         lure_excess@v1    +0.0 [ +0.0, +0.1]  EQUIVALENT
+L2 llama31-8b/cot         lure_excess@v2    +0.0 [ +0.0, +0.0]  EQUIVALENT
+L2 llama31-8b/direct      lure_excess@v1    +0.7 [ +0.3, +1.2]  EQUIVALENT
+L2 llama31-8b/direct      lure_excess@v2    +2.2 [ +1.7, +2.6]  inconclusive
+L3 llama32-3b/cot         facilitation@v1   -1.2 [ -1.6, -0.8]  EQUIVALENT
+L3 llama32-3b/cot         facilitation@v2   +0.9 [ +0.5, +1.2]  EQUIVALENT
+L3 llama32-3b/cot         interference@v1   +1.1 [ +0.7, +1.5]  EQUIVALENT
+L3 llama32-3b/cot         interference@v2   -1.1 [ -1.4, -0.8]  EQUIVALENT
+L3 llama32-3b/cot         lure_excess@v1    +0.1 [ +0.0, +0.2]  EQUIVALENT
+L3 llama32-3b/cot         lure_excess@v2    -0.2 [ -0.3, -0.1]  EQUIVALENT
+L3 llama32-3b/direct      lure_excess@v1    +2.8 [ +2.2, +3.3]  effect
+L3 llama32-3b/direct      lure_excess@v2    +1.8 [ +1.4, +2.2]  inconclusive
+L3 llama32-3b-it/cot      facilitation@v1   -0.0 [ -0.1, +0.0]  EQUIVALENT
+L3 llama32-3b-it/cot      facilitation@v2   -0.2 [ -0.2, -0.1]  EQUIVALENT
+L3 llama32-3b-it/cot      interference@v1   +0.0 [ +0.0, +0.1]  EQUIVALENT
+L3 llama32-3b-it/cot      interference@v2   +0.1 [ +0.0, +0.2]  EQUIVALENT
+L3 llama32-3b-it/cot      lure_excess@v1    +0.0 [ +0.0, +0.0]  EQUIVALENT
+L3 llama32-3b-it/cot      lure_excess@v2    +0.0 [ +0.0, +0.0]  EQUIVALENT
+L3 llama32-3b-it/direct   lure_excess@v1    +0.2 [ -0.2, +0.5]  EQUIVALENT
+L3 llama32-3b-it/direct   lure_excess@v2    +0.5 [ -0.0, +1.0]  EQUIVALENT
+L3 llama31-8b/cot         facilitation@v1   -1.3 [ -1.7, -0.9]  EQUIVALENT
+L3 llama31-8b/cot         facilitation@v2   +3.8 [ +3.3, +4.2]  inconclusive
+L3 llama31-8b/cot         interference@v1   +0.7 [ +0.4, +1.1]  EQUIVALENT
+L3 llama31-8b/cot         interference@v2   +0.7 [ +0.3, +1.1]  EQUIVALENT
+L3 llama31-8b/cot         lure_excess@v1    -0.1 [ -0.2, -0.0]  EQUIVALENT
+L3 llama31-8b/cot         lure_excess@v2    -0.0 [ -0.1, +0.1]  EQUIVALENT
+L3 llama31-8b/direct      lure_excess@v1    +1.2 [ +0.8, +1.6]  EQUIVALENT
+L3 llama31-8b/direct      lure_excess@v2    -0.0 [ -0.4, +0.4]  EQUIVALENT
+L3 llama31-8b-it/cot      facilitation@v1   +0.2 [ +0.1, +0.4]  EQUIVALENT
+L3 llama31-8b-it/cot      facilitation@v2   +0.3 [ +0.2, +0.5]  EQUIVALENT
+L3 llama31-8b-it/cot      interference@v1   -0.2 [ -0.4, -0.1]  EQUIVALENT
+L3 llama31-8b-it/cot      interference@v2   -0.3 [ -0.5, -0.2]  EQUIVALENT
+L3 llama31-8b-it/cot      lure_excess@v1    +0.0 [ -0.0, +0.0]  EQUIVALENT
+L3 llama31-8b-it/cot      lure_excess@v2    +0.0 [ +0.0, +0.1]  EQUIVALENT
+L3 llama31-8b-it/direct   lure_excess@v1    +0.1 [ -0.2, +0.5]  EQUIVALENT
+L3 llama31-8b-it/direct   lure_excess@v2    +0.2 [ -0.2, +0.6]  EQUIVALENT
+L3 gemma3-4b-it/cot       facilitation@v1   -0.0 [ -0.1, +0.0]  EQUIVALENT
+L3 gemma3-4b-it/cot       facilitation@v2   -0.0 [ -0.1, +0.0]  EQUIVALENT
+L3 gemma3-4b-it/cot       interference@v1   +0.4 [ +0.3, +0.6]  EQUIVALENT
+L3 gemma3-4b-it/cot       interference@v2   +0.2 [ +0.1, +0.3]  EQUIVALENT
+L3 gemma3-4b-it/cot       lure_excess@v1    +0.0 [ +0.0, +0.0]  EQUIVALENT
+L3 gemma3-4b-it/cot       lure_excess@v2    +0.0 [ +0.0, +0.1]  EQUIVALENT
+L3 gemma3-4b-it/direct    lure_excess@v1    +0.9 [ +0.5, +1.3]  EQUIVALENT
+L3 gemma3-4b-it/direct    lure_excess@v2    +0.3 [ -0.1, +0.7]  EQUIVALENT
+L3 gemma3-12b-it/cot      facilitation@v1   +0.0 [ +0.0, +0.0]  EQUIVALENT
+L3 gemma3-12b-it/cot      facilitation@v2   +0.0 [ +0.0, +0.0]  EQUIVALENT
+L3 gemma3-12b-it/cot      interference@v1   +0.0 [ +0.0, +0.0]  EQUIVALENT
+L3 gemma3-12b-it/cot      interference@v2   +0.0 [ +0.0, +0.0]  EQUIVALENT
+L3 gemma3-12b-it/cot      lure_excess@v1    +0.0 [ +0.0, +0.0]  EQUIVALENT
+L3 gemma3-12b-it/cot      lure_excess@v2    +0.0 [ +0.0, +0.0]  EQUIVALENT
+L3 gemma3-12b-it/direct   lure_excess@v1    -0.2 [ -0.5, +0.0]  EQUIVALENT
+L3 gemma3-12b-it/direct   lure_excess@v2    +0.4 [ +0.1, +0.8]  EQUIVALENT
+L3 olmo2-1b-it/cot        facilitation@v1   -5.7 [ -7.0, -4.3]  effect
+L3 olmo2-1b-it/cot        facilitation@v2   +7.0 [ +5.5, +8.6]  effect
+L3 olmo2-1b-it/cot        interference@v1   +0.9 [ -0.5, +2.2]  inconclusive
+L3 olmo2-1b-it/cot        interference@v2  +12.9 [+11.3,+14.4]  effect
+L3 olmo2-1b-it/cot        lure_excess@v1    +0.4 [ -0.1, +0.9]  EQUIVALENT
+L3 olmo2-1b-it/cot        lure_excess@v2    +3.2 [ +2.5, +3.9]  effect
+L3 olmo2-1b-it/direct     lure_excess@v1    +2.7 [ +2.1, +3.4]  effect
+L3 olmo2-1b-it/direct     lure_excess@v2    -0.2 [ -0.8, +0.4]  EQUIVALENT
+L3 olmo2-7b-it/cot        facilitation@v1   +0.7 [ +0.3, +1.1]  EQUIVALENT
+L3 olmo2-7b-it/cot        facilitation@v2   -2.7 [ -3.4, -2.1]  inconclusive
+L3 olmo2-7b-it/cot        interference@v1   -0.5 [ -0.9, -0.1]  EQUIVALENT
+L3 olmo2-7b-it/cot        interference@v2   +0.5 [ -0.1, +1.1]  EQUIVALENT
+L3 olmo2-7b-it/cot        lure_excess@v1    -0.1 [ -0.2, +0.0]  EQUIVALENT
+L3 olmo2-7b-it/cot        lure_excess@v2    -0.0 [ -0.2, +0.1]  EQUIVALENT
+L3 olmo2-7b-it/direct     lure_excess@v1    -0.2 [ -0.6, +0.1]  EQUIVALENT
+L3 olmo2-7b-it/direct     lure_excess@v2    -0.4 [ -0.8, -0.0]  EQUIVALENT
+L3 llama31-8b-it-ft/cot   facilitation@v1   +0.1 [ +0.0, +0.2]  EQUIVALENT
+L3 llama31-8b-it-ft/cot   facilitation@v2   +0.2 [ +0.1, +0.3]  EQUIVALENT
+L3 llama31-8b-it-ft/cot   interference@v1   -0.1 [ -0.2, -0.1]  EQUIVALENT
+L3 llama31-8b-it-ft/cot   interference@v2   -0.1 [ -0.2, -0.1]  EQUIVALENT
+L3 llama31-8b-it-ft/cot   lure_excess@v1    +0.0 [ +0.0, +0.0]  EQUIVALENT
+L3 llama31-8b-it-ft/cot   lure_excess@v2    -0.0 [ -0.1, +0.0]  EQUIVALENT
+L3 llama31-8b-it-ft/direct lure_excess@v1    +0.1 [ -0.3, +0.4]  EQUIVALENT
+L3 llama31-8b-it-ft/direct lure_excess@v2    +0.2 [ -0.2, +0.7]  EQUIVALENT
+L3 llama31-8b-it-ftmulti/cot facilitation@v1   +0.2 [ +0.1, +0.2]  EQUIVALENT
+L3 llama31-8b-it-ftmulti/cot facilitation@v2   +0.2 [ +0.1, +0.4]  EQUIVALENT
+L3 llama31-8b-it-ftmulti/cot interference@v1   -0.1 [ -0.2, -0.1]  EQUIVALENT
+L3 llama31-8b-it-ftmulti/cot interference@v2   -0.2 [ -0.4, -0.1]  EQUIVALENT
+L3 llama31-8b-it-ftmulti/cot lure_excess@v1    +0.0 [ +0.0, +0.0]  EQUIVALENT
+L3 llama31-8b-it-ftmulti/cot lure_excess@v2    +0.0 [ +0.0, +0.0]  EQUIVALENT
+L3 llama31-8b-it-ftmulti/direct lure_excess@v1    -0.6 [ -0.9, -0.3]  EQUIVALENT
+L3 llama31-8b-it-ftmulti/direct lure_excess@v2    -0.1 [ -0.5, +0.3]  EQUIVALENT
+L3 llama31-8b-it-merged/cot facilitation@v1   +0.2 [ +0.1, +0.3]  EQUIVALENT
+L3 llama31-8b-it-merged/cot facilitation@v2   +0.3 [ +0.2, +0.4]  EQUIVALENT
+L3 llama31-8b-it-merged/cot interference@v1   -0.2 [ -0.3, -0.1]  EQUIVALENT
+L3 llama31-8b-it-merged/cot interference@v2   -0.3 [ -0.5, -0.2]  EQUIVALENT
+L3 llama31-8b-it-merged/cot lure_excess@v1    +0.0 [ -0.0, +0.0]  EQUIVALENT
+L3 llama31-8b-it-merged/cot lure_excess@v2    +0.0 [ +0.0, +0.0]  EQUIVALENT
+L3 llama31-8b-it-merged/direct lure_excess@v1    -0.1 [ -0.4, +0.2]  EQUIVALENT
+L3 llama31-8b-it-merged/direct lure_excess@v2    +0.1 [ -0.3, +0.5]  EQUIVALENT
+L3 nemotron-nano-8b/cot   facilitation@v1   -1.3 [ -1.7, -0.9]  EQUIVALENT
+L3 nemotron-nano-8b/cot   facilitation@v2   -3.8 [ -4.3, -3.2]  inconclusive
+L3 nemotron-nano-8b/cot   interference@v1   +2.6 [ +2.2, +3.1]  inconclusive
+L3 nemotron-nano-8b/cot   interference@v2   +3.9 [ +3.4, +4.4]  inconclusive
+L3 nemotron-nano-8b/cot   lure_excess@v1    +0.1 [ +0.0, +0.1]  EQUIVALENT
+L3 nemotron-nano-8b/cot   lure_excess@v2    +0.2 [ +0.1, +0.3]  EQUIVALENT
+L3 nemotron-nano-8b/direct lure_excess@v1    +1.4 [ +0.9, +1.8]  EQUIVALENT
+L3 nemotron-nano-8b/direct lure_excess@v2    +0.3 [ -0.1, +0.8]  EQUIVALENT
+L3 gemma3-4b/cot          facilitation@v1   +0.0 [ +0.0, +0.1]  EQUIVALENT
+L3 gemma3-4b/cot          facilitation@v2   +0.0 [ +0.0, +0.1]  EQUIVALENT
+L3 gemma3-4b/cot          interference@v1   +0.0 [ +0.0, +0.1]  EQUIVALENT
+L3 gemma3-4b/cot          interference@v2   -0.0 [ -0.1, +0.0]  EQUIVALENT
+L3 gemma3-4b/cot          lure_excess@v1    +0.0 [ +0.0, +0.0]  EQUIVALENT
+L3 gemma3-4b/cot          lure_excess@v2    +0.0 [ +0.0, +0.0]  EQUIVALENT
+L3 gemma3-4b/direct       lure_excess@v1    +0.1 [ -0.3, +0.4]  EQUIVALENT
+L3 gemma3-4b/direct       lure_excess@v2    +0.0 [ -0.4, +0.4]  EQUIVALENT
+L4 llama32-3b/cot         facilitation@v1  -10.2 [-11.2, -9.3]  effect
+L4 llama32-3b/cot         facilitation@v2   -2.6 [ -3.6, -1.6]  effect
+L4 llama32-3b/cot         interference@v1   +9.7 [ +8.8,+10.6]  effect
+L4 llama32-3b/cot         interference@v2   +3.3 [ +2.2, +4.3]  effect
+L4 llama32-3b/cot         lure_excess@v1    +0.7 [ +0.4, +1.0]  EQUIVALENT
+L4 llama32-3b/cot         lure_excess@v2    +0.4 [ +0.0, +0.7]  EQUIVALENT
+L4 llama32-3b/direct      lure_excess@v1    +1.9 [ +1.6, +2.3]  inconclusive
+L4 llama32-3b/direct      lure_excess@v2    +1.2 [ +0.9, +1.5]  EQUIVALENT
+L4 llama31-8b/cot         facilitation@v1   +1.0 [ +0.6, +1.5]  EQUIVALENT
+L4 llama31-8b/cot         facilitation@v2   -2.3 [ -2.8, -1.8]  inconclusive
+L4 llama31-8b/cot         interference@v1   -1.8 [ -2.3, -1.4]  inconclusive
+L4 llama31-8b/cot         interference@v2   +1.9 [ +1.4, +2.4]  effect
+L4 llama31-8b/cot         lure_excess@v1    -0.0 [ -0.1, +0.1]  EQUIVALENT
+L4 llama31-8b/cot         lure_excess@v2    +0.2 [ +0.1, +0.3]  EQUIVALENT
+L4 llama31-8b/direct      lure_excess@v1    +5.8 [ +5.2, +6.4]  inconclusive
+L4 llama31-8b/direct      lure_excess@v2    +0.2 [ -0.1, +0.5]  EQUIVALENT
+L5 llama32-3b/cot         facilitation@v1   -1.4 [ -2.1, -0.8]  inconclusive
+L5 llama32-3b/cot         facilitation@v2   -2.5 [ -3.3, -1.8]  inconclusive
+L5 llama32-3b/cot         facilitation@v3   +7.3 [ +6.5, +8.2]  effect
+L5 llama32-3b/cot         interference@v1   +1.3 [ +0.7, +1.9]  EQUIVALENT
+L5 llama32-3b/cot         interference@v2   -1.0 [ -1.7, -0.3]  EQUIVALENT
+L5 llama32-3b/cot         interference@v3   -3.5 [ -4.3, -2.7]  effect
+L5 llama32-3b/cot         lure_excess@v1    +0.1 [ -0.2, +0.3]  EQUIVALENT
+L5 llama32-3b/cot         lure_excess@v2    -0.1 [ -0.3, +0.2]  EQUIVALENT
+L5 llama32-3b/cot         lure_excess@v3    -0.1 [ -0.4, +0.3]  EQUIVALENT
+L5 llama32-3b/direct      lure_excess@v1    +3.5 [ +2.9, +4.0]  effect
+L5 llama32-3b/direct      lure_excess@v2    +0.5 [ +0.1, +0.9]  EQUIVALENT
+L5 llama32-3b/direct      lure_excess@v3    -0.4 [ -0.8, +0.1]  EQUIVALENT
+L5 llama31-8b/cot         facilitation@v1   +1.2 [ +0.5, +1.8]  EQUIVALENT
+L5 llama31-8b/cot         facilitation@v2   +0.1 [ -0.6, +0.7]  EQUIVALENT
+L5 llama31-8b/cot         facilitation@v3   +2.5 [ +1.7, +3.4]  inconclusive
+L5 llama31-8b/cot         interference@v1   -1.4 [ -2.0, -0.8]  inconclusive
+L5 llama31-8b/cot         interference@v2   -2.0 [ -2.7, -1.3]  inconclusive
+L5 llama31-8b/cot         interference@v3   +1.4 [ +0.6, +2.2]  inconclusive
+L5 llama31-8b/cot         lure_excess@v1    -0.3 [ -0.5, -0.1]  EQUIVALENT
+L5 llama31-8b/cot         lure_excess@v2    -0.1 [ -0.4, +0.1]  EQUIVALENT
+L5 llama31-8b/cot         lure_excess@v3    +0.1 [ -0.2, +0.4]  EQUIVALENT
+L5 llama31-8b/direct      lure_excess@v1   +20.5 [+19.7,+21.4]  effect
+L5 llama31-8b/direct      lure_excess@v2    +0.4 [ -0.0, +0.9]  EQUIVALENT
+L5 llama31-8b/direct      lure_excess@v3    +0.3 [ -0.1, +0.8]  EQUIVALENT
+
+{
+ "cot_cells": 44,
+ "cot_equivalent": 43,
+ "cot_with_effect": 1,
+ "direct_cells": 44,
+ "direct_with_effect": 13,
+ "max_abs_cot_mean": 0.03166666666666667,
+ "cot_accuracy_cells": 88,
+ "cot_accuracy_equivalent": 61,
+ "cot_accuracy_claimable": 15,
+ "cot_accuracy_claimable_not_equivalent": 10
+}

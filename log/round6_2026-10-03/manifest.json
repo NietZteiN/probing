@@ -1,0 +1,272 @@
+{
+  "created_utc": "2026-10-03T21:08:18.855472+00:00",
+  "authorization": "User: sure, one or two gpus reserve and run",
+  "status": "complete",
+  "max_gpu_workers": 2,
+  "walltime": "24:00:00",
+  "layer_check": {
+    "models": [
+      "olmo2-7b-it",
+      "llama32-3b-it",
+      "llama31-8b-it"
+    ],
+    "demo_seeds": [
+      7,
+      11,
+      13
+    ],
+    "method": "Five-fold cross-fitting grouped by canonical computation, SHA256(round6:program_key) mod 5. Select layers only on neutral programs in the other four folds, averaging three probe seeds; evaluate every condition only in the held-out fold. Existing probes train on disjoint programs.",
+    "selection": "neutral accuracy, deterministic lowest-layer tie break",
+    "intervals": "95% canonical-program cluster bootstrap; fold selectors treated as fixed descriptive sensitivity"
+  },
+  "identifier_replication": {
+    "panel": [
+      "gemma3-4b-it",
+      "codegemma-7b-it",
+      "llama31-8b-it",
+      "olmo2-1b-it",
+      "olmo2-7b-it",
+      "codellama-7b-it",
+      "llama32-3b-it"
+    ],
+    "candidates": [
+      "sum_of_values",
+      "sum_of_items",
+      "sum_of_elements",
+      "sum_of_xs",
+      "sum_of_list",
+      "list_sum",
+      "input_sum",
+      "items_sum",
+      "elements_sum",
+      "sum_values",
+      "sum_result",
+      "sum_total",
+      "total_sum",
+      "xs_sum",
+      "sum_xs",
+      "summation"
+    ],
+    "gate": "Original canonical candidate-continuation scoring, sum argmax in >=80% of the SAME seven-model panel. Two additional function-name contexts and neutral identifiers are diagnostic only.",
+    "selection": "First three qualifying candidates in the fixed list; retain every gate score; never use trace outcomes. Empty gate means unavailable and no behavioral replication.",
+    "behavior_models": [
+      "olmo2-7b-it",
+      "llama32-3b-it",
+      "llama31-8b-it",
+      "codegemma-7b-it"
+    ],
+    "control_model": "codegemma-7b-it",
+    "demo_seeds": [
+      7,
+      11,
+      13
+    ],
+    "formats": [
+      "trace",
+      "trace_expr"
+    ],
+    "n_fresh_programs": 200,
+    "fresh_seed": 61003,
+    "exclusions": "No canonical computation from old L5 training/test corpus or demonstration programs; no repeated computation; exactly one name changes; executable len and sum values obey original lure exclusion rules. Each selected identifier crosses all fresh programs.",
+    "inference": "95% canonical-program bootstrap, including identifier/demo repeats; paired excess and expression-minus-trace difference, per-name and seed results; fixed sample, no outcome stopping"
+  },
+  "generated_probes": {
+    "models": [
+      "olmo2-1b-it",
+      "llama32-3b"
+    ],
+    "roles": [
+      "v1",
+      "v2"
+    ],
+    "demo_seeds": [
+      7,
+      11,
+      13
+    ],
+    "train_n": 2000,
+    "validation_n": 400,
+    "training": "Neutral source problems partitioned by canonical equations; generated freely with demo7. All usable pre-value boundaries retained regardless of correctness, true executed labels. No training/validation/test computation overlap.",
+    "layer_selection": "Validation neutral accuracy only; three seeds0/1/2; stride2 plus final layer; controls reported separately.",
+    "recipe": "full batch SGD .001, 10000 epochs, float32 states and finite guards",
+    "test": "Exactly the earlier round5 primary 200 sets plus separately reported error-selected augmentation, all three demo sets; known gold-transfer predictions compared on same rows.",
+    "calibration": "Held-out primary neutral generated chains; >=90% required for strong readout interpretation; no outcome-based retry"
+  },
+  "publication": "All three validated round-six analyses integrated into both current ACL ARR drafts; original selection-rule deviation and calibration limitations retained.",
+  "queue_tasks": [
+    "/work/jvl210002/migration/probing/queue/pending/20261003T_round6_00_screen_0_gemma3-4b-it@r6.sh",
+    "/work/jvl210002/migration/probing/queue/pending/20261003T_round6_00_screen_1_codegemma-7b-it@r6.sh",
+    "/work/jvl210002/migration/probing/queue/pending/20261003T_round6_00_screen_2_llama31-8b-it@r6.sh",
+    "/work/jvl210002/migration/probing/queue/pending/20261003T_round6_00_screen_3_olmo2-1b-it@r6.sh",
+    "/work/jvl210002/migration/probing/queue/pending/20261003T_round6_00_screen_4_olmo2-7b-it@r6.sh",
+    "/work/jvl210002/migration/probing/queue/pending/20261003T_round6_00_screen_5_codellama-7b-it@r6.sh",
+    "/work/jvl210002/migration/probing/queue/pending/20261003T_round6_00_screen_6_llama32-3b-it@r6.sh",
+    "/work/jvl210002/migration/probing/queue/pending/20261003T_round6_01_freeze@r6.sh",
+    "/work/jvl210002/migration/probing/queue/pending/20261003T_round6_02_replicate_olmo2-7b-it@r6.sh",
+    "/work/jvl210002/migration/probing/queue/pending/20261003T_round6_02_replicate_llama32-3b-it@r6.sh",
+    "/work/jvl210002/migration/probing/queue/pending/20261003T_round6_02_replicate_llama31-8b-it@r6.sh",
+    "/work/jvl210002/migration/probing/queue/pending/20261003T_round6_02_replicate_codegemma-7b-it@r6.sh",
+    "/work/jvl210002/migration/probing/queue/pending/20261003T_round6_03_generated_olmo2-1b-it@r6.sh",
+    "/work/jvl210002/migration/probing/queue/pending/20261003T_round6_03_generated_llama32-3b@r6.sh"
+  ],
+  "workers": [
+    "440673",
+    "440674"
+  ],
+  "preflight_cpu_job": "440672",
+  "cpu_jobs": {
+    "initial_code_preflight_failed": "440672",
+    "code_preflight_passed": "440676",
+    "arithmetic_preflight_passed": "440680",
+    "precision_preflight_passed": "440684",
+    "collector": "440686"
+  },
+  "initial_preflight_repair": "Set the code tests subprocess PYTHONPATH to codecue/src; initial failure was test-import configuration, preserved in failed_initial logs.",
+  "verification": {
+    "code_tests": "47 passed in full suite; 3 updated round-six tests passed again",
+    "arithmetic_tests": "4 focused tests passed, then both heavy precision guards passed (6 unique tests)",
+    "cohorts": "2000 training rows across 630 computations; 400 validation rows across 155 computations; zero overlap with each other, tests or demonstrations",
+    "fresh_programs": "200 fixed fresh len-to-sum computations prepared; no old training/test/demo computation reused",
+    "crossfit": "validated all nine model/demo cells; pooled lure-write accuracy 96.4%,95.5%,99.7%; conditional canonical-program bootstrap recorded",
+    "gpu_smoke": "queued before each full generated-chain probe task",
+    "diff_check": "both repositories pass",
+    "compile": "all new scripts compile"
+  },
+  "worker_status": "440673 completed successfully after 50m34s; GPU released. 440674 cancelled while pending and never allocated.",
+  "source_sha256": {
+    "codecue/src/codecue/round6.py": "58eda7d56904c5b6ee3684d09cda0be88824acfc8826f5f54f809f68c1360efa",
+    "codecue/scripts/78_crossfit_probes.py": "795fee5fb38106200088aa4dcc3a5d929550c416338639a56e30842eacd195ac",
+    "codecue/scripts/79_screened_replication.py": "100a47b683a01744dbb13be2417b19f90eaf0bfb4f32b748598d8ccb9819323e",
+    "codecue/tests/test_round6.py": "e54309a6eb82374b8997132f7a45dc1fed6d88895755dd9ab84c84651828dfe0",
+    "probing/src/cueconf/round6.py": "b49294ab6a4e6518bc306092dbf3cfe96e956e9743d452233a7dccb89e66e943",
+    "probing/scripts/80_generated_trained_probes.py": "610eeb297442c321cc1ff103f798354af3292c9bfcbe37b2fe3a6cfa773140d9",
+    "probing/scripts/81_round6_completion.py": "5c94e2f8b1e2a82da5356a01a9772c225bd76e75a014eb287fddf341646bb823",
+    "probing/tests/test_round6.py": "921dc16e9db5a994929a2734a7fc8fa1d6300eaca28e673e41ca00ecb8be98d5"
+  },
+  "updated_utc": "2026-10-04T01:38:06.560713+00:00",
+  "unused_worker_release": {
+    "job": "440674",
+    "action": "cancelled while pending",
+    "reason": "No pending round-six tasks remain; the sole remaining task is already running on 440673. No second GPU was allocated.",
+    "utc": "2026-10-03T23:47:55.970230+00:00"
+  },
+  "latest_status_check": {
+    "utc": "2026-10-04T01:08:50.752711+00:00",
+    "done_tasks": 14,
+    "failed_tasks": 0,
+    "running_tasks": 0,
+    "pending_tasks": 0,
+    "validation": "all three analyses passed; round6_completion.json complete with no errors",
+    "gpu_released": true
+  },
+  "collection": {
+    "started_utc": "2026-10-04T01:06:58.433367+00:00",
+    "status": "complete",
+    "analyses": {
+      "R6-A1": true,
+      "R6-A2": true,
+      "R6-A3": true
+    },
+    "errors": [],
+    "finished_utc": "2026-10-04T01:07:23.286805+00:00"
+  },
+  "collection_repair": {
+    "initial_job": "440686",
+    "initial_failure": "fresh-program comparison used tuple-valued statement arguments in memory against lists loaded from JSON",
+    "diagnosis": "All 200 programs match exactly after JSON normalization; 200 distinct computation keys, zero overlap with old training/test/demonstrations.",
+    "fix": "Return the fresh sample in its persisted JSON representation; dataset and behavioral outputs unchanged.",
+    "tests": "4 focused tests passed, including round-trip, disjointness and matched-twin regression.",
+    "pending_cpu_retry_cancelled": "440950; cluster CPU resources unavailable, so lightweight test/collection ran locally instead",
+    "local_retry": "log/round6_2026-10-03/repair_collection.py",
+    "status": "passed",
+    "logs": [
+      "collection_initial_failure.json",
+      "collection_regression_tests.out",
+      "collection_retry.out"
+    ],
+    "repair_source_sha256": {
+      "codecue/scripts/79_screened_replication.py": "3fb85dccdbf545a76a548dc47f5d549fbf520df795e9907ce5742586b78ab8b4",
+      "codecue/tests/test_round6.py": "b0ecf07200a0325668c01373d7a16c5e347d51545c94bf96d3b4661a909e57a5"
+    }
+  },
+  "manuscript_integration": {
+    "status": "complete",
+    "verified_utc": "2026-10-04T01:38:06.560713+00:00",
+    "verification": "probing/log/paper_update_round6_2026-10-03/verification.json",
+    "repositories": {
+      "probing": {
+        "strict_build": "passed",
+        "body_pages": 4,
+        "total_pages": 49,
+        "abstract_words": 134,
+        "selfcheck_failures": 0,
+        "existing_selfcheck_warnings": 80,
+        "round6_table_rows": [
+          4,
+          12,
+          12,
+          12
+        ],
+        "visually_inspected_pages": [
+          1,
+          2,
+          3,
+          4,
+          46,
+          47,
+          48,
+          49
+        ],
+        "layout_findings": "No clipping or overlap in body or new evidence pages; readable tables."
+      },
+      "codecue": {
+        "strict_build": "passed",
+        "body_pages": 4,
+        "total_pages": 12,
+        "abstract_words": 146,
+        "selfcheck_failures": 0,
+        "existing_selfcheck_warnings": 49,
+        "round6_table_rows": [
+          9,
+          16,
+          4,
+          12
+        ],
+        "visually_inspected_pages": [
+          1,
+          2,
+          3,
+          4,
+          9,
+          10,
+          11,
+          12
+        ],
+        "layout_findings": "No clipping or overlap in body or new evidence pages; readable tables."
+      }
+    },
+    "sha256": {
+      "probing/results/summary/round6_generated.json": "8c88957d900284d97bb6a5375731ac4d4b75f7500f16599bd6270d87213899a2",
+      "probing/results/summary/round6_completion.json": "932f6e75aea45102194613964e9b763c70e647a83808b17ac0b6d98027109f72",
+      "codecue/results/summary/round6_crossfit_probes.json": "f9cdafece5e4c534d697915039fab83972f207d7dc7b9a8bb5d0fc0ac36a5473",
+      "codecue/results/summary/round6_identifier_replication.json": "6efe6b8c020003c7aa05b0d19a142d654cbef2f6a79d3dece80d997b90b545d7",
+      "probing/paper/main.tex": "47618023b2373225ef2188a9a57133e18a663bd31e7f79456b8b0693cd6c7dba",
+      "probing/paper/main.pdf": "76e74d00cb67b979501f7a3cec5c82b69482a4736ef3cebfdfe899fd80ca583f",
+      "probing/paper/numbers.tex": "9784be7770f35b599dc3ba7e5c343b9fc05fea6eaa2ce624ef0ed4a017b4cbe9",
+      "probing/paper/tables/round6_followups.tex": "db7594eaa1014bd53b655a18498f2acde936712f844a82be600cb7bc0cd96df9",
+      "probing/paper/ARGUMENT.md": "ea559b94312e1d1f7ee6b80371d2562f5ba7cbb09e94fb6c351a00b4a6a90b7d",
+      "codecue/paper/main.tex": "9614ae4e7073f34434e71d97abcdb921ea65f022ab331b4b55d59937189af623",
+      "codecue/paper/main.pdf": "8f90d187f9b37b7299abbad1951c90e08bdb7f0ece4f674ed3d55f5a90dfb0a2",
+      "codecue/paper/numbers.tex": "66e3a7c02b1967e53d7bba2309e29a955bc72537a6b9d242ca7824ebee190fb8",
+      "codecue/paper/tables/round6_followups.tex": "09c6d6d8e41d0080d68f8181d117e4b674819f1c7f87792c44d9be6918985c34",
+      "codecue/paper/ARGUMENT.md": "f18736d96a935d19f79ab0b7a14b1903edc77ea4f413e8c08115c030081769c4",
+      "probing/scripts/51_tables.py": "d9218bdb6a0479458abb0329d15dc33d9df972f0f060853ed9d85589fa88105b",
+      "probing/scripts/79_round5_tables.py": "ae71f9260d3e376f14db0a7474635f4039541fdb2c55ffc0323ea3a13eb1d405",
+      "probing/scripts/81_round6_completion.py": "f6e31a0879430559d6b63a5408a797da9d659790310eb678dc7e7c5de97ccdb4",
+      "probing/scripts/82_round6_tables.py": "d88303f39dce5ca605b28aaa46185b7dbf0dd59363238f3fb5a8646bfa19bdd1",
+      "codecue/scripts/51_numbers.py": "fb8c66d66a812696a963c01283dc52aa264a0cbd8f1bd490d6cdb48f449ab7c5",
+      "codecue/scripts/77_followup_tables.py": "88270553375f0945c75aac0cbde0e832db4b9cf2e55b8a22945a03efa112b6c5",
+      "codecue/scripts/80_round6_tables.py": "02e0207291f002660d5fdc542f3b085db3e5ba8e8d9946420d53d0bbd948eeef"
+    }
+  }
+}

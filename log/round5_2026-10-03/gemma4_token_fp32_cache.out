@@ -1,0 +1,5 @@
+Loading weights:   0%|          | 0/883 [00:00<?, ?it/s]Loading weights:   2%|▏         | 16/883 [00:00<00:05, 153.47it/s]Loading weights:   9%|▉         | 80/883 [00:00<00:01, 424.03it/s]Loading weights:  17%|█▋        | 146/883 [00:00<00:01, 522.84it/s]Loading weights:  24%|██▍       | 211/883 [00:00<00:01, 565.85it/s]Loading weights:  31%|███▏      | 276/883 [00:00<00:01, 590.20it/s]Loading weights:  39%|███▊      | 341/883 [00:00<00:00, 605.51it/s]Loading weights:  46%|████▌     | 406/883 [00:00<00:00, 615.71it/s]Loading weights:  72%|███████▏  | 632/883 [00:00<00:00, 1129.00it/s]Loading weights: 100%|██████████| 883/883 [00:00<00:00, 1005.16it/s]
+gemma3-4b-it L3 cot train_neutral: n=4000 acc=None lure=None excluded=0 142.8s
+gemma3-4b-it L3 cot neutral: n=1000 acc=None lure=None excluded=0 37.4s
+gemma3-4b-it L3 cot incongruent@v1: n=1000 acc=None lure=None excluded=0 35.3s
+gemma3-4b-it L3 cot incongruent@v2: n=1000 acc=None lure=None excluded=0 35.5s

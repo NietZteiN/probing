@@ -1,0 +1,125 @@
+{
+  "created_utc": "2026-10-03T04:54:01.392547+00:00",
+  "checks": [
+    {
+      "project": "codecue",
+      "model": "olmo2-7b-it",
+      "regime": "trace",
+      "n": 160,
+      "passed": true
+    },
+    {
+      "project": "codecue",
+      "model": "olmo2-7b-it",
+      "regime": "trace_s11",
+      "n": 160,
+      "passed": true
+    },
+    {
+      "project": "codecue",
+      "model": "olmo2-7b-it",
+      "regime": "trace_s13",
+      "n": 160,
+      "passed": true
+    },
+    {
+      "project": "codecue",
+      "model": "llama32-3b-it",
+      "regime": "trace",
+      "n": 160,
+      "passed": true
+    },
+    {
+      "project": "codecue",
+      "model": "llama32-3b-it",
+      "regime": "trace_s11",
+      "n": 160,
+      "passed": true
+    },
+    {
+      "project": "codecue",
+      "model": "llama32-3b-it",
+      "regime": "trace_s13",
+      "n": 160,
+      "passed": true
+    },
+    {
+      "project": "codecue",
+      "model": "llama31-8b-it",
+      "regime": "trace",
+      "n": 160,
+      "passed": true
+    },
+    {
+      "project": "codecue",
+      "model": "llama31-8b-it",
+      "regime": "trace_s11",
+      "n": 160,
+      "passed": true
+    },
+    {
+      "project": "codecue",
+      "model": "llama31-8b-it",
+      "regime": "trace_s13",
+      "n": 160,
+      "passed": true
+    },
+    {
+      "project": "probing",
+      "model": "llama32-3b-it",
+      "regime": "cot",
+      "n": 128,
+      "passed": true
+    },
+    {
+      "project": "probing",
+      "model": "llama32-3b-it",
+      "regime": "direct",
+      "n": 128,
+      "passed": true
+    },
+    {
+      "project": "probing",
+      "model": "llama31-8b-it",
+      "regime": "cot",
+      "n": 128,
+      "passed": true
+    },
+    {
+      "project": "probing",
+      "model": "llama31-8b-it",
+      "regime": "direct",
+      "n": 128,
+      "passed": true
+    },
+    {
+      "project": "probing",
+      "model": "gemma3-4b-it",
+      "regime": "cot",
+      "n": 128,
+      "passed": true
+    },
+    {
+      "project": "probing",
+      "model": "gemma3-4b-it",
+      "regime": "direct",
+      "n": 128,
+      "passed": true
+    },
+    {
+      "project": "probing",
+      "model": "gemma3-12b-it",
+      "regime": "cot",
+      "n": 128,
+      "passed": true
+    },
+    {
+      "project": "probing",
+      "model": "gemma3-12b-it",
+      "regime": "direct",
+      "n": 128,
+      "passed": true
+    }
+  ],
+  "status": "passed"
+}

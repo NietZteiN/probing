@@ -1,0 +1,316 @@
+{
+  "collected_utc": "2026-10-03T12:50:00.995674+00:00",
+  "workers": [
+    "439652",
+    "439653"
+  ],
+  "status": "complete",
+  "stages": [
+    {
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/72_disjoint_completion.py"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round4_2026-10-02/collect_stage1.out"
+    },
+    {
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/50_analysis.py",
+        "--models",
+        "llama32-3b-it",
+        "llama31-8b-it",
+        "gemma3-12b-it",
+        "--level",
+        "3"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round4_2026-10-02/collect_stage2.out"
+    },
+    {
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/53_kudo_figs.py",
+        "--model",
+        "gemma3-4b-it",
+        "--level",
+        "3",
+        "--regime",
+        "cot",
+        "--role",
+        "v1",
+        "--cache-suffix",
+        "__r5_fp32"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round4_2026-10-02/collect_stage3.out"
+    },
+    {
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/58_token_figure.py",
+        "--model",
+        "gemma3-4b-it",
+        "--level",
+        "3",
+        "--regime",
+        "cot",
+        "--role",
+        "v1",
+        "--cache-suffix",
+        "__r5_fp32"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round4_2026-10-02/collect_stage4.out"
+    },
+    {
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/53_kudo_figs.py",
+        "--model",
+        "gemma3-4b-it",
+        "--level",
+        "3",
+        "--regime",
+        "cot",
+        "--role",
+        "v2",
+        "--cache-suffix",
+        "__r5_fp32"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round4_2026-10-02/collect_stage5.out"
+    },
+    {
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/58_token_figure.py",
+        "--model",
+        "gemma3-4b-it",
+        "--level",
+        "3",
+        "--regime",
+        "cot",
+        "--role",
+        "v2",
+        "--cache-suffix",
+        "__r5_fp32"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round4_2026-10-02/collect_stage6.out"
+    },
+    {
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/70_compute_budget.py"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round4_2026-10-02/collect_stage7.out"
+    },
+    {
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/51_tables.py"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round4_2026-10-02/collect_stage8.out"
+    },
+    {
+      "argv": [
+        "/work/jvl210002/migration/envs/probe-cu129/bin/python",
+        "scripts/99_selfcheck.py"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round4_2026-10-02/collect_stage9.out"
+    },
+    {
+      "argv": [
+        "make",
+        "paper-submission"
+      ],
+      "exit_code": 0,
+      "log": "/work/jvl210002/migration/probing/log/round4_2026-10-02/collect_stage10.out"
+    }
+  ],
+  "errors": [],
+  "G2": {
+    "complete": true,
+    "cells": [
+      {
+        "model": "llama32-3b-it",
+        "role": "v1",
+        "layer": 18,
+        "neutral_accuracy": 0.9985,
+        "neutral_control": 0.26333333333333336,
+        "misleading_accuracy": 1.0
+      },
+      {
+        "model": "llama32-3b-it",
+        "role": "v2",
+        "layer": 19,
+        "neutral_accuracy": 0.9993333333333333,
+        "neutral_control": 0.29466666666666663,
+        "misleading_accuracy": 0.9993333333333334
+      },
+      {
+        "model": "llama31-8b-it",
+        "role": "v1",
+        "layer": 20,
+        "neutral_accuracy": 1.0,
+        "neutral_control": 0.21033333333333332,
+        "misleading_accuracy": 1.0
+      },
+      {
+        "model": "llama31-8b-it",
+        "role": "v2",
+        "layer": 20,
+        "neutral_accuracy": 1.0,
+        "neutral_control": 0.25683333333333336,
+        "misleading_accuracy": 1.0
+      },
+      {
+        "model": "gemma3-12b-it",
+        "role": "v1",
+        "layer": 40,
+        "neutral_accuracy": 1.0,
+        "neutral_control": 0.13083333333333333,
+        "misleading_accuracy": 1.0
+      },
+      {
+        "model": "gemma3-12b-it",
+        "role": "v2",
+        "layer": 42,
+        "neutral_accuracy": 1.0,
+        "neutral_control": 0.11866666666666667,
+        "misleading_accuracy": 1.0
+      }
+    ]
+  },
+  "G3": {
+    "complete": true,
+    "roles": {
+      "v1": {
+        "source": "/scratch/juno/jvl210002/probing/probes/gemma3-4b-it/L3/cot/train_neutral__alltok__r5_fp32/v1.json",
+        "n_train": 4000,
+        "n_positions": 49,
+        "n_neutral_test": 1000
+      },
+      "v2": {
+        "source": "/scratch/juno/jvl210002/probing/probes/gemma3-4b-it/L3/cot/train_neutral__alltok__r5_fp32/v2.json",
+        "n_train": 4000,
+        "n_positions": 49,
+        "n_neutral_test": 1000
+      }
+    }
+  },
+  "V1": {
+    "complete": true
+  },
+  "V2": {
+    "complete": true
+  },
+  "value_step_association": {
+    "cells": [
+      {
+        "model": "gemma3-4b",
+        "role": "v1",
+        "neutral_accuracy": 1.0,
+        "lure_excess": 0.0
+      },
+      {
+        "model": "gemma3-4b",
+        "role": "v2",
+        "neutral_accuracy": 0.9979999999999999,
+        "lure_excess": 0.0
+      },
+      {
+        "model": "gemma3-4b-it",
+        "role": "v1",
+        "neutral_accuracy": 1.0,
+        "lure_excess": 0.0
+      },
+      {
+        "model": "gemma3-4b-it",
+        "role": "v2",
+        "neutral_accuracy": 0.9983333333333334,
+        "lure_excess": 0.00016666666666666666
+      },
+      {
+        "model": "llama31-8b-it",
+        "role": "v1",
+        "neutral_accuracy": 1.0,
+        "lure_excess": 0.0
+      },
+      {
+        "model": "llama31-8b-it",
+        "role": "v2",
+        "neutral_accuracy": 1.0,
+        "lure_excess": 0.00016666666666666666
+      },
+      {
+        "model": "olmo2-1b-it",
+        "role": "v1",
+        "neutral_accuracy": 0.9968333333333333,
+        "lure_excess": 0.0045
+      },
+      {
+        "model": "olmo2-1b-it",
+        "role": "v2",
+        "neutral_accuracy": 0.2175,
+        "lure_excess": 0.03166666666666667
+      },
+      {
+        "model": "gemma3-12b-it",
+        "role": "v1",
+        "neutral_accuracy": 1.0,
+        "lure_excess": 0.0
+      },
+      {
+        "model": "gemma3-12b-it",
+        "role": "v2",
+        "neutral_accuracy": 1.0,
+        "lure_excess": 0.0
+      },
+      {
+        "model": "llama32-3b-it",
+        "role": "v1",
+        "neutral_accuracy": 0.9985,
+        "lure_excess": 0.0
+      },
+      {
+        "model": "llama32-3b-it",
+        "role": "v2",
+        "neutral_accuracy": 0.9993333333333334,
+        "lure_excess": 0.0
+      },
+      {
+        "model": "llama31-8b",
+        "role": "v1",
+        "neutral_accuracy": 0.9994999999999999,
+        "lure_excess": -0.0013333333333333333
+      },
+      {
+        "model": "llama31-8b",
+        "role": "v2",
+        "neutral_accuracy": 0.9935,
+        "lure_excess": -0.00016666666666666666
+      },
+      {
+        "model": "llama32-3b",
+        "role": "v1",
+        "neutral_accuracy": 0.9985,
+        "lure_excess": 0.0013333333333333333
+      },
+      {
+        "model": "llama32-3b",
+        "role": "v2",
+        "neutral_accuracy": 0.9761666666666667,
+        "lure_excess": -0.0016666666666666668
+      }
+    ],
+    "n_high": 15,
+    "n_low": 1,
+    "all_high_within_two_points": true
+  }
+}
