@@ -1,6 +1,6 @@
 # Chain of Thought Reduces Errors from Misleading Names in Arithmetic
 
-Updated 2026-10-07 to match the results and revised manuscript. This replaces the earlier,
+Updated 2026-10-08 to match the results and revised manuscript. This replaces the earlier,
 prospective outline; the preregistration and its amendments remain the record of the design.
 
 Prior work follows arithmetic values during CoT. We add a competing digit in a variable's
@@ -22,6 +22,9 @@ These readouts do not establish why chains reduce name errors.
 
 Introduce linear probes through their purpose: predicting the correct digit from internal
 activations. A probe recovering 6 and a language model answering 6 are separate observations.
+End the introduction with the demonstrated reduction in answers matching misleading names
+and the contribution of the paired renaming test. Report correlation sensitivity and
+causal limits in Results and Limitations rather than making them the introduction's ending.
 
 ## Order of the evidence
 

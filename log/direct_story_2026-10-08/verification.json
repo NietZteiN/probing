@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-08",
+  "change": "Direct introduction endings and one connected code abstract",
+  "abstract_words": 174,
+  "text_through_limitations_pages": 4,
+  "strict_arr_checks_passed": true,
+  "main_figure_table_pages": {
+    "Figure 1:": 2,
+    "Figure 2:": 3,
+    "Table 1:": 2,
+    "Table 2:": 3
+  },
+  "unchanged_numerical_inputs_and_figures_checked": 390,
+  "latex_changes_confined_to_abstract_and_introduction": true,
+  "methods_results_conclusion_limitations_references_appendix_unchanged": true,
+  "git_diff_check_passed": true,
+  "no_overfull_or_latex_errors": true,
+  "visual_review_pages": [
+    1,
+    4
+  ],
+  "main_tex_sha256": "acb9d8a181bcd3fc56d068c96730e13a1824350816bdf3c4661c56ffac64f052",
+  "main_pdf_sha256": "d8c1d2db989d050f3d2ac570006c7d664d5203ec7f58e79241083bfa86d45d9c",
+  "abstract_changed": false
+}

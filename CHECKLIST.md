@@ -4,7 +4,16 @@ One line per experiment the paper needs. Status is the truth on disk, not a plan
 ticked only when its numbers are in `results/summary/` and reach the paper through
 `scripts/51_tables.py`. Details and numbers: `docs/EXPERIMENTS.md`, `results/NOTES.md`.
 
-*Last updated 2026-10-07. ARR deadline 2026-10-12 (AoE).*
+*Last updated 2026-10-08. ARR deadline 2026-10-12 (AoE).*
+
+## Direct introduction endings and code abstract (2026-10-08)
+
+- [x] End both introductions with what the experiments show. Rewrite the code abstract
+  around one example: define a trace, establish the length-versus-sum conflict, explain
+  the separate predictor's correct digit before wrong writes, and connect that observation
+  to changing worked examples. Describe the demonstration intervention without introducing
+  another numeric example. Scientific caveats remain in Results and Limitations.
+  Verification: `log/direct_story_2026-10-08/verification.json` in each repository.
 
 ## Contribution and implication (2026-10-07)
 

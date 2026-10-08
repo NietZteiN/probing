@@ -82,12 +82,12 @@ during CoT. We add a name that suggests a different answer while preserving the 
 This conflict, like those in Stroop and shape--texture studies
 \cite{stroop1935,geirhos2019texture}, separates the name's suggestion from the computed value.
 
-To measure which values are readable inside the model, we train a \emph{linear probe}:
-a small predictor of a variable's true digit from internal activations, trained on
-separate problems. A probe predicting 6 and the model answering 6 are separate observations.
-We show that asking the model to write the calculation reduces answers matching the
-misleading name in almost every tested contrast. The paired renaming comparison makes
-resistance to a competing word a measurable benefit of CoT while holding the equations fixed.
+Our first result is behavioral: CoT usually reduces name errors, although other accuracy
+effects remain. We then ask whether the correct value becomes easier to recover inside
+the model. A \emph{linear probe} is a small predictor trained on separate problems to
+predict a variable's true digit from the model's internal activations. Recovering 6 with a
+probe is a different observation from the language model answering 6. The probe--error
+relationship depends on one low-accuracy model, so it does not explain the reduction.
 
 \begin{figure*}[t]
 \centering

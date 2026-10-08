@@ -1093,3 +1093,11 @@ descriptive, scoped to ordinary-name problems with supplied correct calculations
 The argument guide reflects this emphasis. LaTeX edits are confined to the abstract;
 the full evidence and caveats remain in the unchanged body. Numerical inputs and figures
 are unchanged. Evidence: `../log/contribution_2026-10-07/`.
+
+### Direct introduction ending (2026-10-08)
+
+The introduction now ends with the observed reduction in answers matching misleading
+names and the paired comparison's contribution to testing CoT robustness. It retains the
+linear-probe definition and distinguishes a probe's prediction from the model's answer.
+Correlation sensitivity and causal caveats remain in the unchanged Results and Limitations.
+The abstract is unchanged. Evidence: `../log/direct_story_2026-10-08/`.
