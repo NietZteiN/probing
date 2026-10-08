@@ -437,10 +437,13 @@ def main() -> int:
             numbers["vs-cells"] = str(len(vs))
             numbers["vs-decodable"] = str(len(hi))
             numbers["vs-decodable-min"] = f"{min(r[2] for r in hi):.2f}" if hi else "--"
+            numbers["vs-decodable-min-pct"] = f"{100*min(r[2] for r in hi):.1f}" if hi else "--"
+            numbers["vs-decodable-max-pct"] = f"{100*max(r[2] for r in hi):.1f}" if hi else "--"
             numbers["vs-decodable-maxexcess"] = f"{100*max(abs(r[3]) for r in hi):.1f}" if hi else "--"
             if lo:
                 r = max(lo, key=lambda r: abs(r[3]))
                 numbers["vs-undecodable-acc"] = f"{r[2]:.2f}"
+                numbers["vs-undecodable-acc-pct"] = f"{100*r[2]:.1f}"
                 numbers["vs-undecodable-n"] = str(len(lo))
 # identifier-name scheme (E38): a digit inside an identifier (q4) instead of a number word
         idf = RESULTS_DIR / "summary" / "seed_sweep_L3_ident.json"
@@ -490,13 +493,17 @@ def main() -> int:
             b2, b3, b4 = best("end@v2"), best("query"), best("cotpre@v2")
             if b2:
                 numbers["p2-acc"] = f"{b2['neutral']['accuracy'][0]:.2f}"
+                numbers["p2-acc-pct"] = f"{100*b2['neutral']['accuracy'][0]:.1f}"
                 numbers["p2-sel"] = f"{b2['neutral']['accuracy'][0] - b2['neutral']['control_acc']:.2f}"
+                numbers["p2-sel-points"] = f"{100*(b2['neutral']['accuracy'][0] - b2['neutral']['control_acc']):.1f}"
                 numbers["p2-lure"] = f"{b2['incongruent@v2']['lure_rate'][0]:.2f}"
             if b3:
                 numbers["p3-lure"] = f"{100*b3['incongruent@v2']['lure_rate'][0]:.0f}\\%"
                 numbers["p3-ctl"] = f"{b3['neutral']['control_acc']:.2f}"
+                numbers["p3-ctl-pct"] = f"{100*b3['neutral']['control_acc']:.1f}"
             if b4:
                 numbers["p4-acc"] = f"{b4['neutral']['accuracy'][0]:.2f}"
+                numbers["p4-acc-pct"] = f"{100*b4['neutral']['accuracy'][0]:.1f}"
                 numbers.setdefault("bound-mass", f"{b4['incongruent@v2']['lure_mass'][0]:.3f}")  # L4 anspre value set above wins
         g4 = RESULTS_DIR / "summary" / "llama32-3b" / "L4" / "cot" / "probes_grid.json"
         if g4.exists():

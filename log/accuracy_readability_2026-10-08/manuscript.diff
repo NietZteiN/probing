@@ -1,0 +1,174 @@
+diff --git a/paper/main.tex b/paper/main.tex
+index 3ab9636..373aba1 100644
+--- a/paper/main.tex
++++ b/paper/main.tex
+@@ -43,8 +43,8 @@ a variable has an ordinary name; in the other, its name is a word for an incorre
+ When asked only for the final answer, models more often return the digit suggested by
+ the misleading name. Asking them to write the calculation before answering, known as
+ chain-of-thought prompting, reduces this tendency. In \NUM{eq-cot-equivalent} of
+-\NUM{eq-cot-cells} comparisons, the added error rate meets our
+-\NUM{eq-delta}-percentage-point threshold for a small effect. Writing the calculation
++\NUM{eq-cot-cells} comparisons, the confidence interval for the added error rate lies
++within \NUM{eq-delta} percentage points of zero. Writing the calculation
+ therefore makes answers more robust to misleading wording while the underlying math
+ remains unchanged.
+ \end{abstract}
+@@ -98,7 +98,8 @@ under the correct chain. Shading: name positions; dotted line: position before t
+ \section{Study design}
+ 
+ We use \citeauthor{kudo2026faithful}'s single-digit addition/subtraction task. The main level
+-requires two operations, defining the queried variable before its dependency; two models cover
++requires two operations and presents the queried variable's equation first, before the
++equation needed to evaluate it. Two models cover
+ all five levels (Appendix~\ref{app:task}). Matched versions change one name
+ (Table~\ref{tab:conditions}): congruent names denote the true value; incongruent names denote
+ another digit, absent from all inputs and variable values. We rename queried and intermediate
+@@ -124,8 +125,8 @@ Both prompting conditions use three fixed sets of three worked examples. We eval
+ The main table applies the preregistered 90\% mean neutral-CoT accuracy floor; excluded
+ results appear in Table~\ref{tab:excluded}.
+ 
+-\emph{Excess name errors} subtracts the neutral twin's rate of answering the name-suggested
+-digit from the misleading-name rate. This controls arbitrary digit answers when accuracy is low.
++\emph{Excess name errors} subtracts how often the ordinary-name version answers the suggested
++digit from how often the misleading-name version does. This controls guesses when accuracy is low.
+ \emph{Facilitation} is congruent-minus-neutral accuracy; \emph{interference} is
+ neutral-minus-incongruent accuracy. Reliable effects have consistent signs across all three
+ demonstration sets and 95\% intervals excluding zero. Equivalence requires a 90\% interval
+@@ -135,7 +136,8 @@ demonstration repeats (Appendix~\ref{app:equivalence}).
+ Probes train on separate neutral problems with three seeds. Random digits assigned to names
+ control for learning name identity \cite{hewitt2019control}. Patching replaces name activations
+ with a matched twin's \cite{zhang2024patching}; neutral-word and alternative-name controls
+-test disruption and name specificity. Most measurements supply the correct chain.
++test disruption and name specificity. Most CoT measurements supply the correct calculation
++token by token.
+ Generated-chain probes select layers on computation-disjoint validation problems before
+ held-out testing (Appendix~\ref{app:round6-generated}).
+ 
+@@ -146,16 +148,15 @@ held-out testing (Appendix~\ref{app:round6-generated}).
+ \resizebox{\textwidth}{!}{\tabinput{behavior}}
+ \caption{Level~3 effects in percentage points: means across three demonstration sets [ranges].
+ \emph{Helps}: congruent-name accuracy gain; \emph{Errors}: excess name errors.
+-$^{*}$: consistent signs and 95\% intervals excluding zero. CoT effects meet the $\pm2$-point
++$^{*}$: consistent signs and 95\% intervals excluding zero. CoT name-error contrasts meet the $\pm2$-point
+ equivalence bound.}
+ \label{tab:behavior}
+ \end{table*}
+ 
+ \subsection{Writing calculations limits misleading answers}
+ 
+-Table~\ref{tab:behavior} separates overall accuracy changes from answers matching the
+-misleading digit. The latter tests attraction to a specific wrong answer while preserving
+-the equations. Without CoT, a congruent
++Table~\ref{tab:behavior} separates accuracy changes from answers matching the misleading
++digit. Without CoT, a congruent
+ name raises Llama-3.1-8B's accuracy by \NUM{facilitationllama318bdirectv1} points, and a
+ misleading name produces \NUM{lure_excessllama318bdirectv1} points of excess name errors on the queried
+ variable. Across levels, the largest effects occur where direct-answer accuracy is near chance; the matched baseline prevents those arbitrary digit answers from being attributed to
+@@ -175,42 +176,44 @@ CoT limits answers matching the misleading digit. Overall accuracy still depends
+ \centering
+ \IfFileExists{figures/fig3_patching_llama32-3b_L3_v1.pdf}{\includegraphics[width=\columnwidth]{figures/fig3_patching_llama32-3b_L3_v1.pdf}}{\fbox{\textcolor{red}{[Patching figure not generated]}}}
+ \caption{Llama-3.2-3B, answer-only: queried-variable name errors removed by layer, with
+-neutral-word damage and alternative-name controls.}
++neutral-word damage and alternative-name controls. Removal counts changes away from the
++name-suggested digit.}
+ \label{fig:patch}
+ \end{figure}
+ 
+-\subsection{Value readouts and task competence}
+-
+-The probe analysis investigates information accompanying the behavioral change.
+-A name's digit can be readable without representing the computed value. For Llama-3.2-3B,
+-the intermediate value is partly decodable after its defining equation (neutral accuracy
+-\NUM{p2-acc}; selectivity \NUM{p2-sel}). At the query, the name-identity control scores
+-\NUM{p3-ctl}. By the value-writing step, true-value accuracy reaches \NUM{p4-acc} or more
+-and name-suggested predictions fall to zero. A Gemma token sweep also finds different readout timing
+-for queried and intermediate values (Appendix~\ref{app:probe-extensions}).
+-
+-Across \NUM{competence-models} models and \NUM{vs-cells} variable pairs, the \NUM{vs-decodable}
+-pairs with neutral probe accuracy of at least \NUM{vs-decodable-min} have excess name errors within
+-\NUM{vs-decodable-maxexcess} points of zero. The exception's intermediate readout is
+-\NUM{vs-undecodable-acc}. Yet the descriptive correlation between model-mean misleading-name
+-probe accuracy and excess name errors reverses from $r=\NUM{competence-probe-lure-r}$ to
++\subsection{What the probes recover}
++
++These probes read internal states while the correct calculation is supplied. Just after
++the intermediate equation, Llama-3.2-3B's correct-digit accuracy is \NUM{p2-acc-pct}\%,
++\NUM{p2-sel-points} points above the name-identity control. At the query, the control reaches
++\NUM{p3-ctl-pct}\%, showing that the probe can identify the name. Before the value is
++written, correct-digit accuracy reaches \NUM{p4-acc-pct}\% and predictions of the
++name-suggested digit fall to zero. Gemma's two variables show different readout timing
++(Appendix~\ref{app:probe-extensions}).
++
++Across \NUM{competence-models} models, \NUM{vs-decodable} of \NUM{vs-cells} variable readouts
++have neutral accuracy of \NUM{vs-decodable-min-pct}--\NUM{vs-decodable-max-pct}\% and excess
++name errors within \NUM{vs-decodable-maxexcess} points of zero. OLMo-2-1B's intermediate
++readout scores \NUM{vs-undecodable-acc-pct}\%. But the correlation between each model's mean
++misleading-name probe accuracy and excess name errors reverses from
++$r=\NUM{competence-probe-lure-r}$ to
+ $\NUM{competence-probe-lure-without-olmo-r}$ when OLMo-2-1B is omitted
+ (Appendix~\ref{app:round5-competence}). Overall task competence remains a competing account.
+ Within-problem fits also disagree on the association's sign (Appendix~\ref{app:sweeps}).
+ 
+-Gold-trained probes score \NUM{generated-olmo1-cal-lo}--\NUM{generated-olmo1-cal-hi}\% on
++Probes trained on correct calculations score \NUM{generated-olmo1-cal-lo}--\NUM{generated-olmo1-cal-hi}\% on
+ OLMo-2-1B's neutral generated chains. Training on generated neutral chains raises this to
+ \NUM{r6-generated-olmo1-cal-min}--\NUM{r6-generated-olmo1-cal-max}\%, still below the 90\%
+-calibration threshold in every cell. Llama-3.2-3B reaches
++minimum for interpreting these probes in every cell. Llama-3.2-3B reaches
+ \NUM{r6-generated-llama3-cal-min}--\NUM{r6-generated-llama3-cal-max}\% with the same design,
+-but its name-error cases remain rare. The exception's generated-chain readouts therefore
++but its name-error cases remain rare. OLMo's generated-chain readouts therefore
+ remain descriptive (Appendix~\ref{app:round6-generated}).
+ 
+-Merely stating the correct value does not explain the pattern. We split the model's generated
+-chains by whether they state that value and compare only twins falling in the same split.
+-The exception still has \NUM{vw-olmo-excess} points of excess name errors
++A generated calculation can state the correct value and still end with the suggested
++digit. Among matched versions that both state the correct value, OLMo-2-1B still has
++\NUM{vw-olmo-excess} points of excess name errors
+ [\NUM{vw-olmo-lo}, \NUM{vw-olmo-hi}] across \NUM{vw-olmo-n} matched observations from
+-\NUM{vw-olmo-seeds} demonstration sets, despite stating the correct value. The full control is
++\NUM{vw-olmo-seeds} demonstration sets. The full control is
+ in Appendix~\ref{app:controls}.
+ 
+ \subsection{Patching localizes the answer-only effect}
+@@ -232,8 +235,8 @@ changes \NUM{exc-ctlword} at the same layer. These interventions test only the s
+ \section{Related work}
+ 
+ \citet{kudo2026faithful} locate intermediate-value readouts during arithmetic CoT; our competing
+-names distinguish a computed value from a lexical cue. Earlier Stroop studies test a single next
+-token \cite{wang2026stroop,hu2026conflict}. Faithfulness studies perturb prompts, chains or
++names distinguish a computed value from a lexical cue. Recent language-model Stroop studies
++test lexical responses \cite{wang2026stroop,hu2026conflict}. Faithfulness studies perturb prompts, chains or
+ parameters \cite{turpin2023unfaithful,lanham2023measuring,chen2025reasoning,tutek2025unlearning};
+ we combine a known conflicting cue with internal readouts. Positional copying and output priors
+ can also explain arithmetic errors \cite{liu2026readout,prabhakar2024deciphering}; our copy
+@@ -465,12 +468,13 @@ Appendix~\ref{app:task}.
+ \begin{figure}[h]
+ \centering
+ \IfFileExists{figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i0.pdf}{\includegraphics[width=\columnwidth]{figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i0.pdf}}{\fbox{\parbox{0.95\columnwidth}{\centering\small\textcolor{red}{[Figure 4, generated by scripts/64\_kudo\_fig3.py]}}}}
+-\caption{In the layout of \citeauthor{kudo2026faithful}'s Figure~3, for problems this model
+-answers with the name-suggested value. Each cell is the probe's top-1 prediction at that layer and token: green
++\caption{Adapted from \citeauthor{kudo2026faithful}'s Figure~3. Probes read a supplied correct
++calculation for a problem the model answers with the name-suggested digit. Bottom: majority
++prediction over three probe seeds at each layer and token; green
+ the variable's true value, red the value the model answered, amber the value its name denotes,
+-grey anything else. The first panel is the probe's most common prediction on neutral problems,
+-which is what it emits where it reads nothing; cells carry information only where they differ
+-from it.}
++grey anything else. Top: the most common prediction on neutral problems from the first
++probe seed, for reference. Boxes mark name tokens; the dashed line marks the calculation's start.
++Matching the neutral reference alone does not establish a cell's information content.}
+ \label{fig:kudo3}
+ \end{figure}
+ 
+@@ -536,7 +540,8 @@ standardized inputs, against the reported recipe.
+ \begin{table}[h]
+ \centering\small
+ \resizebox{\columnwidth}{!}{\tabinput{recipe}}
+-\caption{Best-layer accuracy for the true value, neutral instances, under three probe recipes.}
++\caption{Best-layer true-value accuracy on neutral problems under three probe recipes
++(proportions from 0 to 1).}
+ \label{tab:recipe}
+ \end{table}
+ 

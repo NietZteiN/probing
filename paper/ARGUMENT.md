@@ -69,6 +69,12 @@ additional naming controls, full probe sweeps, tuning comparisons and alternativ
 
 ## Writing conventions
 
+Report main-text probe accuracy as percentages and selectivity differences as percentage
+points. Distinguish states along a supplied correct calculation from states along the
+model's own generated output. A neutral modal prediction is a visual reference; matching
+it alone does not show that a state lacks information. Name-error equivalence concerns
+the specific misleading digit, while overall accuracy can still change.
+
 For readers outside this project, keep the abstract's result–evidence–implication order
 but explain the task and comparison in ordinary words. Define the requested calculation
 or reported variable values before using technical labels. Avoid unexplained equivalence,

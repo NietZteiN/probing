@@ -1,0 +1,70 @@
+Model Regime Neutral number word on the number word on the
+accuracy queried variable intermediate variable
+(%) helps errors helps errors
+Gemma-3-12B-it CoT 100 [100,100] +0.0 +0.0 +0.0 +0.0
+Gemma-3-12B-it direct 78 [76,81] -3.2∗ -0.2 -3.7 ∗ +0.4
+Gemma-3-4B-it CoT 100 [100,100] -0.0 +0.0 -0.0 +0.0
+Gemma-3-4B-it direct 55 [48,59] +0.2 +0.9∗ +0.6 +0.3
+Llama-3.1-8B-Instruct CoT 100 [99,100] +0.2 +0.0 +0.3 +0.0
+Llama-3.1-8B-Instruct direct 52 [45,65] +1.7 +0.1 +5.2 ∗ +0.2
+Llama-3.1-8B CoT 95 [86,100] -1.3 -0.1 +3.8 -0.0
+Llama-3.1-8B direct 53 [41,62] +4.8∗ +1.2∗ +3.8∗ -0.0
+Llama-3.2-3B-Instruct CoT 100 [100,100] -0.0 +0.0 -0.2 +0.0
+Llama-3.2-3B-Instruct direct 44 [40,50] -1.8∗ +0.2 +0.5 +0.5
+Llama-3.2-3B CoT 98 [97,100] -1.2 +0.1 +0.9 -0.2∗
+Llama-3.2-3B direct 22 [13,31] +5.4∗ +2.8∗ +1.1 +1.8
+OLMo-2-7B-Instruct CoT 95 [93,97] +0.7∗ -0.1 -2.7 -0.0
+OLMo-2-7B-Instruct direct 54 [50,58] +0.6 -0.2 +3.8 ∗ -0.4
+Table 2: Level 3 effects in percentage points: means across three demonstration sets [ranges]. Helps: congruent-
+name accuracy gain; Errors: excess name errors. ∗: consistent signs and 95% intervals excluding zero. CoT
+name-error contrasts meet the ±2-point equivalence bound.
++1.2 points of excess name errors on the queried113
+variable. Across levels, the largest effects occur114
+where direct-answer accuracy is near chance; the115
+matched baseline prevents those arbitrary digit an-116
+swers from being attributed to the name.117
+With CoT, 43 of 44 name-error contrasts meet118
+the equivalence bound. The exception is OLMo-119
+2-1B-Instruct: its intermediate-variable excess is120
++3.2 points [+2.5, +3.9]. Its neutral CoT accuracy121
+is 47%, compared with 77% under letter names.122
+CoT limits answers matching the misleading digit.123
+Overall accuracy still depends on names: 15 accu-124
+racy contrasts remain reliable (Appendix B).125
+3.2 What the probes recover126
+These probes read internal states while the cor-127
+rect calculation is supplied. Just after the in-128
+termediate equation, Llama-3.2-3B’s correct-digit129
+accuracy is 49.0%, 31.8 points above the name-130
+identity control. At the query, the control reaches131
+96.9%, showing that the probe can identify the132
+name. Before the value is written, correct-digit ac-133
+curacy reaches 97.9% and predictions of the name-134
+suggested digit fall to zero. Gemma’s two vari-135
+ables show different readout timing (Appendix J).136
+Across 9 models, 17 of 18 variable read-137
+0 5 10 15 20 25 ALL
+layer patched
+0.0
+0.2
+0.4
+0.6
+0.8
+1.0proportion / normalized change
+Llama-3.2-3B, direct answer
+neutral: removes error
+normalized logit diff.
+word: damage
+alternative name: removes error
+alternative value: followed
+Figure 2: Llama-3.2-3B, answer-only: queried-
+variable name errors removed by layer, with neutral-
+word damage and alternative-name controls. Removal
+counts changes away from the name-suggested digit.
+outs have neutral accuracy of 97.6–100.0% and 138
+excess name errors within 0.4 points of zero. 139
+OLMo-2-1B’s intermediate readout scores 21.8%. 140
+But the correlation between each model’s mean 141
+misleading-name probe accuracy and excess name 142
+errors reverses from r = −0.997 to +0.776 when 143
+3

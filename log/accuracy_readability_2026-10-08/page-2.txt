@@ -1,0 +1,72 @@
+−5 0 5
+percentage points
+Llama-3.2-3B
+Llama-3.2-3B Inst.
+Llama-3.1-8B
+Llama-3.1-8B Inst.
+Gemma-3-4B Inst.
+Gemma-3-12B Inst.
+OLMo-2-1B Inst.
+OLMo-2-7B Inst.
+(a) Accuracy gained
+from a congruent name
+−2 0 2
+percentage points
+(b) Excess errors from
+misleading names
+0 10 20 30 40
+token position in the problem and gold chain
+0.00
+0.25
+0.50
+0.75
+1.00proportion
+chain starts
+before value write
+(c) Probe readouts during the gold chain (Llama-3.2-3B)
+true-value accuracy name-suggested prediction name tokens
+direct answer chain of thought two-point margin
+Figure 1: Level 3 queried-variable effects: (a) congruent-name accuracy gains; (b) excess name errors. Means
+and 95% intervals across three demonstration sets; grey: ±2 points. (c) Best-layer true-value accuracy and name-
+suggested predictions under the correct chain. Shading: name positions; dotted line: position before the queried
+value.
+Name Problem (answer: 6)
+Neutral pen=1 + cup, cup=2 + 3; pen=?
+Congruent six=1 + cup, cup=2 + 3; six=?
+Incongruent four=1 + cup, cup=2 + 3; four=?
+Table 1: Matched names preserve the arithmetic. The
+misleading digit, 4, occurs nowhere else.
+dices A, F). The main table applies the preregis-080
+tered 90% mean neutral-CoT accuracy ﬂoor; ex-081
+cluded results appear in Table 4.082
+Excess name errors subtracts how often the083
+ordinary-name version answers the suggested digit084
+from how often the misleading-name version does.085
+This controls guesses when accuracy is low. Fa-086
+cilitation is congruent-minus-neutral accuracy; in-087
+terference is neutral-minus-incongruent accuracy.088
+Reliable effects have consistent signs across all089
+three demonstration sets and 95% intervals ex-090
+cluding zero. Equivalence requires a 90% inter-091
+val inside ±2 points. Cluster bootstraps resam-092
+ple matched problems with their demonstration re- 093
+peats (Appendix B). 094
+Probes train on separate neutral problems with 095
+three seeds. Random digits assigned to names 096
+control for learning name identity ( Hewitt and 097
+Liang, 2019). Patching replaces name activations 098
+with a matched twin’s ( Zhang and Nanda , 2024); 099
+neutral-word and alternative-name controls test 100
+disruption and name speciﬁcity. Most CoT mea- 101
+surements supply the correct calculation token by 102
+token. Generated-chain probes select layers on 103
+computation-disjoint validation problems before 104
+held-out testing (Appendix N). 105
+3 Results 106
+3.1 Writing calculations limits misleading 107
+answers 108
+Table 2 separates accuracy changes from answers 109
+matching the misleading digit. Without CoT, a 110
+congruent name raises Llama-3.1-8B’s accuracy 111
+by +4.8 points, and a misleading name produces 112
+2

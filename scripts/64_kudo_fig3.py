@@ -93,9 +93,8 @@ def main() -> int:
     for fig_i, iid_only in enumerate(pick):
       fig, axes = plt.subplots(2, 1, figsize=(8.6, 5.9), squeeze=False)
       fig.subplots_adjust(hspace=0.42, top=0.88, bottom=0.14)
-    # --- baseline panel: the probe's modal prediction over NEUTRAL problems. Where the probe has
-    # nothing to read it still emits a class (at layer 0 it says "5" for every instance), so a cell
-    # only carries information where it differs from this.
+    # Neutral modal prediction from the first probe seed, for visual reference.
+    # Agreement with this baseline alone cannot determine information content.
       axb = axes[0, 0]
       B = np.zeros((len(layers), n_pos), dtype=int)
       for li, L in enumerate(layers):
@@ -110,8 +109,7 @@ def main() -> int:
       axb.set_yticks(range(0, len(layers), max(1, len(layers) // 8)))
       axb.set_yticklabels([layers[i] for i in range(0, len(layers), max(1, len(layers) // 8))], fontsize=7)
       axb.set_ylabel("layer"); axb.set_xticks([]); 
-      axb.set_title("BASELINE: the probe's most common prediction on neutral problems (its default where it "
-                    "reads nothing) — a coloured cell below means something only where it differs from this",
+      axb.set_title("Neutral reference: most common prediction at each layer and token (first probe seed)",
                     loc="left", fontsize=8.5)
 
       for ax, iid in zip(axes[1:, 0], [iid_only]):
@@ -156,9 +154,8 @@ def main() -> int:
            ((GREEN, "true value"), (RED, "the model's answer (when wrong)"),
             (AMBER, "what the name denotes"), (GREY, "other"))]
       fig.legend(handles=h, loc="upper left", bbox_to_anchor=(0.01, 0.985), ncol=4, frameon=False, fontsize=8)
-      fig.suptitle(f"Top-1 probe prediction at every layer and token "
-                   f"({MODEL.get(a.model, a.model)}, L{a.level}, {REGIME.get(a.regime, a.regime)}; "
-                   f"boxed = the name's tokens, dashed = start of the chain)",
+      context = "supplied correct calculation" if a.regime == "cot" else REGIME.get(a.regime, a.regime)
+      fig.suptitle(f"{MODEL.get(a.model, a.model)}, level {a.level}: {context}",
                    x=0.01, y=0.998, ha="left", fontsize=9)
       FIG.mkdir(parents=True, exist_ok=True)
       tag = "lureerr" if a.lure_errors else ("err" if a.errors else "ok")

@@ -1,0 +1,82 @@
+Chain of Thought Reduces Errors from Misleading Names in Arithmetic
+Anonymous ACL submission
+Abstract001
+Asking language models to write out arith-002
+metic calculations reduces answers that follow003
+a misleading variable name. Building on Kudo004
+et al. ’s arithmetic study, we test thirteen mod-005
+els on pairs of problems with the same equa-006
+tions. In one version, a variable has an ordi-007
+nary name; in the other, its name is a word for008
+an incorrect digit. When asked only for the ﬁ-009
+nal answer, models more often return the digit010
+suggested by the misleading name. Asking011
+them to write the calculation before answering,012
+known as chain-of-thought prompting, reduces013
+this tendency. In 43 of 44 comparisons, the014
+conﬁdence interval for the added error rate lies015
+within 2 percentage points of zero. Writing the016
+calculation therefore makes answers more ro-017
+bust to misleading wording while the underly-018
+ing math remains unchanged.019
+1 Introduction020
+Consider the problem021
+pen=1 + cup, cup=2 + 3; pen=?022
+pen has value 6. Renaming it four leaves the an-023
+swer unchanged:024
+four=1 + cup, cup=2 + 3; four=?025
+Only the label changes: cup is still 5 and the026
+queried variable is still 6. Answering 4 instead027
+follows the name. We call 4 the name-suggested028
+value and that answer a name error. Because 4 oc-029
+curs nowhere in the equations and differs from ev-030
+ery variable’s value, this error can be distinguished031
+from copying a digit.032
+Can asking the model to calculate before an-033
+swering reduce this error? In our answer-only con-034
+dition, the model is prompted to return just the ﬁ-035
+nal digit. In our chain-of-thought (CoT) condition,036
+it is prompted to restate and evaluate the equations037
+before giving that digit. Here the calculation in-038
+cludes cup=2+3=5 and four=1+5=6. The compari-039
+son concerns what the model generates; an answer-040
+only response can still involve internal computa- 041
+tion. 042
+Misleading names already reduce accuracy on 043
+code tasks ( Le et al. , 2025; Lam et al. , 2025; Le 044
+et al., 2026). We use arithmetic to make the com- 045
+peting answers explicit, building on Kudo et al. 046
+(2026)’s study of computation during CoT. We add 047
+a name that suggests a different answer while pre- 048
+serving the equations. This conﬂict, like those in 049
+Stroop and shape–texture studies ( Stroop, 1935; 050
+Geirhos et al., 2019), separates the name’s sugges- 051
+tion from the computed value. 052
+A separate analysis asks which values are read- 053
+able inside the model. We train a linear probe, a 054
+small predictor of a variable’s true digit from in- 055
+ternal activations, on separate problems. A probe 056
+predicting 6 and the model answering 6 are sepa- 057
+rate observations. We show that asking the model 058
+to write the calculation reduces answers matching 059
+the misleading name in almost every tested con- 060
+trast. The paired renaming comparison makes re- 061
+sistance to a competing word a measurable beneﬁt 062
+of CoT while holding the equations ﬁxed. 063
+2 Study design 064
+We use Kudo et al. ’s single-digit addi- 065
+tion/subtraction task. The main level requires 066
+two operations and presents the queried variable’s 067
+equation ﬁrst, before the equation needed to 068
+evaluate it. Two models cover all ﬁve levels (Ap- 069
+pendix A). Matched versions change one name 070
+(Table 1): congruent names denote the true value; 071
+incongruent names denote another digit, absent 072
+from all inputs and variable values. We rename 073
+queried and intermediate variables separately. All 074
+names occupy one token, preserving matched 075
+token positions. 076
+Both prompting conditions use three ﬁxed sets 077
+of three worked examples. We evaluate thirteen 078
+Llama, Gemma and OLMo checkpoints (Appen- 079
+1

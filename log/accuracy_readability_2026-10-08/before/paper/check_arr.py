@@ -136,11 +136,7 @@ def main() -> int:
     else:
         errors.append("could not locate abstract in PDF")
     unfinished = sorted(set(re.findall(r"⟨⟨([^⟩]+)⟩⟩", "\n".join(pages))))
-    pdf_text = "\n".join(pages)
-    tex_log = (PAPER / "main.log").read_text(errors="replace") if (PAPER / "main.log").exists() else ""
-    missing_refs = ("[?]" in pdf_text or "??" in pdf_text
-                    or "undefined references" in tex_log
-                    or bool(re.search(r"(?:Reference|Citation) [^\n]*undefined", tex_log)))
+    missing_refs = "[?]" in "\n".join(pages)
     missing_assets = "not generated yet" in "\n".join(pages)
     if args.strict and (unfinished or missing_refs or missing_assets):
         errors.append("unfinished content or unresolved references remain in the PDF")

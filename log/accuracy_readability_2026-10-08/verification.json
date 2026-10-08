@@ -1,0 +1,27 @@
+{
+  "old_number_keys": 2060,
+  "old_number_values_changed": {},
+  "added_display_keys": {
+    "p2-acc-pct": "49.0",
+    "p2-sel-points": "31.8",
+    "p3-ctl-pct": "96.9",
+    "p4-acc-pct": "97.9",
+    "vs-decodable-max-pct": "100.0",
+    "vs-decodable-min-pct": "97.6",
+    "vs-undecodable-acc-pct": "21.8"
+  },
+  "existing_summary_files": 342,
+  "changed_existing_summaries": [],
+  "undefined_source_labels": [],
+  "selfcheck_failures": 0,
+  "selfcheck_warnings": 80,
+  "all_existing_summary_blobs_match_HEAD": true,
+  "body_and_limitations_pages": 4,
+  "references_start_page": 5,
+  "total_pages": 49,
+  "strict_build": "passed",
+  "unresolved_references": false,
+  "overfull_boxes": false,
+  "reference_guard_catches_original_broken_code_pdf": null,
+  "pdf_sha256": "97855e5b72a759a32292ca8e0079935189e787782a65cbbcb7a0739df7e99a8d"
+}

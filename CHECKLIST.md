@@ -319,6 +319,12 @@ Per-stage logs are in `log/round3_*.out`; machine-readable status is
 
 ## NAACL review follow-up — 2026-10-08
 
+- [x] Accuracy pass for both papers: regenerate numerical inputs, check saved results and
+  figure denominators, correct the code appendix reference and the arithmetic equivalence
+  caption, and strengthen the reference checker.
+- [x] Readability pass for both papers: explain measurements and controls directly, use
+  percentages in the main probe results, and shorten probe-figure headings.
+
 - [x] Center the arithmetic narrative on resistance to a misleading word with the equations
   held fixed; distinguish overall accuracy from answers matching the misleading digit.
 - [x] Present probes as a separate investigation; preserve the unresolved internal explanation.
@@ -327,7 +333,7 @@ Per-stage logs are in `log/round3_*.out`; machine-readable status is
   alongside the independent screened-name replication with separate cohorts labeled.
 - [x] Implement and test the prospective code prompt-end versus pre-write comparison.
 - [x] Queue two GPU allocations: 449113 (a30) and 449114 (h100).
-- [ ] Complete GPU runs: 449113 is running; 449114 is queued. Release job 449115
+- [ ] Complete GPU runs: 449113 completed (exit 0); 449114 is queued. Release job 449115
   waits for both to succeed. See
   `../codecue/docs/PROMPT_PROBE_COMPARISON.md` and `../codecue/docs/EXPERIMENTS.md`.
 - [ ] Integrate the validated comparison into the code manuscript and rebuild/push.

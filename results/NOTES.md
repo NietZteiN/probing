@@ -1130,3 +1130,30 @@ The shared checklist records the code paper's new main evidence table and queued
 prompt-end comparison (449113 running, 449114 queued, dependent release 449115). The comparison
 is pending; no experimental result is claimed. Verification of this editorial revision:
 `log/naacl_revisions_2026-10-08/verification.json`.
+
+### 2026-10-08 — Accuracy pass, then readability pass
+
+Regenerated numerical inputs and checked all 342 saved summaries against HEAD. Existing
+number values and scientific results are unchanged. Seven new display keys convert probe
+accuracies and selectivity differences to percentages and points from their underlying
+values. The main comparison now reports its actual 97.6–100.0% accuracy range instead of
+using the rounded 0.98 minimum as a threshold.
+
+Corrected the main table caption: CoT name-error contrasts meet the equivalence bound;
+that claim does not apply to every overall-accuracy effect. The abstract now states that
+the confidence interval, rather than just the point estimate, lies within the margin.
+Clarified supplied correct calculations versus generated outputs and defined patch removal
+as moving away from the name-suggested digit. Related-work wording now describes lexical
+responses rather than assuming all cited conflict studies predict one token.
+
+Removed the unsupported claim that a figure cell contains information only when it differs
+from the modal neutral prediction. The seven illustrative probe figures now identify the
+first-seed neutral reference, three-seed majority panel and supplied correct calculation.
+They retain the same examples and every displayed prediction digit; only descriptive
+text changed. CPU figure jobs 449202 and 449218 completed successfully. The shorter
+headings also avoid shrinking the matrices to fit an oversized title.
+
+The readability pass explains equation order, probe controls, generated-chain calibration
+and the written-value comparison directly. Both body and Limitations fit on four pages.
+Data self-check: zero failures (80 historical warnings). Strict build and stronger reference
+checks pass. Evidence: `log/accuracy_readability_2026-10-08/`.

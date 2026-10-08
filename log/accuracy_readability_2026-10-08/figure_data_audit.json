@@ -1,0 +1,30 @@
+{
+  "paper/figures/fig5_kudo3_llama32-3b_L3_cot_v1_err_i0.pdf": {
+    "same_displayed_digits": true,
+    "n_integer_labels": 41
+  },
+  "paper/figures/fig5_kudo3_llama32-3b_L3_cot_v1_err_i1.pdf": {
+    "same_displayed_digits": true,
+    "n_integer_labels": 41
+  },
+  "paper/figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i0.pdf": {
+    "same_displayed_digits": true,
+    "n_integer_labels": 41
+  },
+  "paper/figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i1.pdf": {
+    "same_displayed_digits": true,
+    "n_integer_labels": 41
+  },
+  "paper/figures/fig5_kudo3_llama32-3b_L3_cot_v1_lureerr_i2.pdf": {
+    "same_displayed_digits": true,
+    "n_integer_labels": 41
+  },
+  "paper/figures/fig5_kudo3_llama32-3b_L3_cot_v2_err_i0.pdf": {
+    "same_displayed_digits": true,
+    "n_integer_labels": 41
+  },
+  "paper/figures/fig5_kudo3_llama32-3b_L3_cot_v2_err_i1.pdf": {
+    "same_displayed_digits": true,
+    "n_integer_labels": 41
+  }
+}
