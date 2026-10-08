@@ -1,0 +1,35 @@
+--- main.before.tex
++++ paper/main.tex
+@@ -36,21 +36,17 @@
+ \maketitle
+ 
+ \begin{abstract}
+-A model may answer 4 because a variable is named \texttt{four}, even when its equations
+-give 6. We ask whether writing the calculation helps it resist this misleading word.
+-Building on \citeauthor{kudo2026faithful}'s arithmetic study, we introduce matched problems
+-that preserve the equations while a variable's name suggests an incorrect digit.
+-This separates answers following the name from other arithmetic mistakes. Across
+-\NUM{n-models} models and three sets of worked examples, we compare prompting for just
+-the final digit with chain-of-thought (CoT) prompting, which requests the equations and
+-their evaluation first. Without CoT, renaming can change accuracy and draw answers toward
+-the misleading word. With CoT, the rate of these answers differs by at most
+-\NUM{eq-delta} percentage points between misleading and ordinary names in
+-\NUM{eq-cot-equivalent} of \NUM{eq-cot-cells} comparisons. Linear probes predict the
+-correct digit from internal activations in most model-variable pairs on ordinary-name
+-problems with supplied correct calculations. The matched comparison shows that CoT
+-usually improves resistance to misleading labels, making robustness to irrelevant words
+-a measurable benefit of writing out the calculation.
++Chain-of-thought (CoT) prompting reduces arithmetic answers that follow misleading
++variable names rather than the equations. Building on \citeauthor{kudo2026faithful}'s
++arithmetic study, we construct matched problems in which a variable's name denotes an
++incorrect digit while the equations remain unchanged. Across \NUM{n-models} models and
++three sets of worked examples, we compare final-answer-only prompts with CoT prompts
++that request the calculation before the answer. Under final-answer-only prompting,
++misleading names increase answers matching the named digit. Under CoT, the difference
++from ordinary names meets a $\pm\NUM{eq-delta}$-percentage-point equivalence bound in
++\NUM{eq-cot-equivalent} of \NUM{eq-cot-cells} comparisons. The matched design isolates
++resistance to irrelevant words as a measurable benefit of written arithmetic reasoning:
++asking for the calculation reduces the influence of a competing answer suggested by the name.
+ \end{abstract}
+ 
+ \section{Introduction}

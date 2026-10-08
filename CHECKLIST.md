@@ -6,6 +6,15 @@ ticked only when its numbers are in `results/summary/` and reach the paper throu
 
 *Last updated 2026-10-08. ARR deadline 2026-10-12 (AoE).*
 
+## Direct scientific abstracts (2026-10-08)
+
+- [x] Lead both abstracts with the main finding, summarize the design and central
+  evidence, and end with the scientific implication. Move illustrative examples and
+  secondary results to the introduction and body. Arithmetic centers the matched test
+  of resistance to misleading names; code distinguishes recoverable values from written
+  values and connects this result to operation-bearing demonstrations.
+  Verification: `log/result_first_abstracts_2026-10-08/verification.json` in each repository.
+
 ## Direct introduction endings and code abstract (2026-10-08)
 
 - [x] End both introductions with what the experiments show. Rewrite the code abstract

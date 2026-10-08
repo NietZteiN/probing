@@ -1101,3 +1101,10 @@ names and the paired comparison's contribution to testing CoT robustness. It ret
 linear-probe definition and distinguishes a probe's prediction from the model's answer.
 Correlation sensitivity and causal caveats remain in the unchanged Results and Limitations.
 The abstract is unchanged. Evidence: `../log/direct_story_2026-10-08/`.
+
+### 2026-10-08 — Direct scientific abstract
+
+Rewrote the abstract to lead with the main result, summarize its experimental evidence,
+and state the implication directly. Illustrative examples remain in the introduction;
+secondary results remain in the body. No scientific results or numerical inputs changed.
+Build and layout verification: `log/result_first_abstracts_2026-10-08/verification.json`.

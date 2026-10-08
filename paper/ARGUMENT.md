@@ -65,6 +65,11 @@ additional naming controls, full probe sweeps, tuning comparisons and alternativ
 
 ## Writing conventions
 
+The abstract states the behavioral result first, summarizes the matched-name comparison
+and equivalence result, then explains the implication for robustness in arithmetic
+reasoning. Keep the running example in the introduction and secondary probe findings
+in the body.
+
 Start with the problem and follow it through the results. Use headings that state findings,
 short paragraphs and concrete verbs. Avoid contribution lists, claim ladders and repeated
 statements of scope. Keep measured quantities in generated `\NUM{}` macros, report interval

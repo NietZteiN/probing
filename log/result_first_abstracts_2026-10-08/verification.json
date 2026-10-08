@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-08",
+  "change": "Direct scientific abstracts: main result, evidence, implication",
+  "abstract_words": 123,
+  "strict_arr_checks_passed": true,
+  "text_through_limitations_pages": 4,
+  "only_abstract_changed_in_manuscript": true,
+  "unchanged_numerical_inputs_and_figures_checked": 390,
+  "no_overfull_or_latex_errors": true,
+  "main_tex_sha256": "1853ee17984b3683099ca7c8104f35c764dd9a5b6b9a07dfcd38a57b8fffb39a",
+  "main_pdf_sha256": "ddc1cb7a0cfad130bfb3c1b7ade95af61f208443cae0a7e05b0ed9b5298d7848",
+  "visual_review_pages": [
+    1,
+    4
+  ],
+  "visual_review_passed": true
+}
