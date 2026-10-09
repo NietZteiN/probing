@@ -346,8 +346,8 @@ Per-stage logs are in `log/round3_*.out`; machine-readable status is
   alongside the independent screened-name replication with separate cohorts labeled.
 - [x] Implement and test the prospective code prompt-end versus pre-write comparison.
 - [x] Queue two GPU allocations: 449113 (a30) and 449114 (h100).
-- [ ] Complete GPU runs: 449113 completed (exit 0); 449114 is queued. Release job 449115
-  waits for both to succeed. See
+- [x] Complete GPU runs and validated release: 449113, 449114 and 449115 all completed
+  with exit 0. The code repository contains `round7_prompt_comparison.json`. See
   `../codecue/docs/PROMPT_PROBE_COMPARISON.md` and `../codecue/docs/EXPERIMENTS.md`.
 - [ ] Integrate the validated comparison into the code manuscript and rebuild/push.
 
