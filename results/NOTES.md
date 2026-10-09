@@ -1239,3 +1239,16 @@ The PDF has 15 pages (previously 50), including nine appendix pages. Main text t
 Limitations remains four pages. Strict submission checks, value/provenance checks and
 visual inspection pass. The minimal 24-file source archive compiles independently to the
 same PDF text. Verification: `log/submission_appendix_2026-10-09/verification.json`.
+
+
+### 2026-10-09 — Understandable limitations
+
+Rewrote Limitations around three concrete questions: which tasks and models were tested,
+what predicting a digit from internal states establishes, and what the interventions can
+explain about writing calculations. Replaced decodability/calibration shorthand with plain
+descriptions of correct-digit recovery, ordinary-name checks on generated calculations,
+and the reversal from fewer to more name errors when OLMo is excluded. Preserved the
+scope, two-model validation limit, competence alternative, shared-model dependence and
+intervention caveats. Main text and Limitations still fit on four pages; numerical inputs
+and figure assets are unchanged. Updated the PDF and minimal source bundle. Verification:
+`log/limitations_readability_2026-10-09/verification.json`.

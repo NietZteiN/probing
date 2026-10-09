@@ -274,22 +274,18 @@ the written-value and probe controls guide further tests of how it arises.
 \section*{Limitations}
 
 \begin{itemize}
-\item \textbf{Task and models.} We test short arithmetic problems, English number-word names and
-models up to 12B parameters. Names such as \texttt{q4} were tested at only one level. Real code,
-larger models, chat prompts and longer reasoning are untested. Worked examples affect
-accuracy; we require agreement across three sets.
-\item \textbf{What internal predictions mean.} Recovering a correct digit from internal
-states does not show that the model uses it to answer. Most tests supply correct
-calculations. On models' own calculations, predictors recover digits reliably on
-ordinary-name problems for Llama-3.2-3B but not OLMo-2-1B, even after retraining;
-only two models are checked (Appendix~\ref{app:round6-generated}). Across nine models,
-better probe accuracy goes with fewer name errors. Removing OLMo reverses that pattern.
-Differences in arithmetic ability could explain the relationship. Two variables from
-one model do not count as independent models.
-\item \textbf{Why writing calculations helps.} Replacing internal states changes more than
-name information and can spoil correct answers. Calculations also repeat names and
-equations. Writing values alone lowers accuracy (Appendix~\ref{app:simple}), so it
-cannot isolate why writing equations helps.
+\item \textbf{Scope.} Short synthetic arithmetic with English number words does not establish
+real-code effects. Identifier-style names cover one level. Models are at most 12B, with raw
+completion prompts; chat templates and long-form reasoning are untested. Accuracy varies
+with demonstrations, so behavioral claims require agreement across three sets.
+\item \textbf{Internal measurements.} Probes establish decodability, not use. Most measurements
+supply correct chains. Generated-chain calibration passes for Llama-3.2-3B but fails for
+OLMo-2-1B, even after retraining (Appendix~\ref{app:round6-generated}); only two models are tested.
+The nine-model correlation is descriptive, reverses without OLMo, and confounds value
+availability with competence; variable roles are not independent models.
+\item \textbf{Interventions.} Patches replace mixed representations and damage correct answers.
+CoT also repeats names and equations; the value-only format changes performance and is not
+an equivalent intervention (Appendix~\ref{app:simple}).
 \end{itemize}
 
 \bibliography{refs}

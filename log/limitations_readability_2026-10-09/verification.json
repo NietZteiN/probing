@@ -1,0 +1,11 @@
+{
+  "strict_submission_check": true,
+  "limitations_end_page": 4,
+  "references_start_page": 5,
+  "total_pages": 15,
+  "only_limitations_manuscript_text_changed": true,
+  "unchanged_numeric_inputs_and_figure_assets": 393,
+  "source_bundle_matches_current_compiled_source": true,
+  "source_bundle_files": 24,
+  "visual_review_page": 4
+}

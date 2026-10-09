@@ -8,6 +8,9 @@ ticked only when its numbers are in `results/summary/` and reach the paper throu
 
 ## Submission appendix (2026-10-09)
 
+- [x] Rewrite Limitations in plain language: task coverage, what internal predictions
+  establish, and why the interventions cannot isolate the benefit of writing calculations.
+  Preserve the four-page layout and synchronize the PDF and LaTeX bundle.
 - [x] Curate the appendix around reproducibility and evidence for the reported claims;
   remove the full figure gallery, individual examples and redundant derived tables.
   Keep failed controls, below-floor results, correlation sensitivity and probe calibration.

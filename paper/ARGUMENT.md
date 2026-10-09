@@ -86,6 +86,13 @@ experiments; it does not infer a shared arithmetic/code mechanism.
 
 ## Writing conventions
 
+In Limitations, explain what each caveat means for the reader. Recovering a digit from
+internal states does not demonstrate its use in answering. Describe generated-calculation
+checks as tests on ordinary-name problems, and express correlation sensitivity as the
+change from fewer to more name errors when OLMo is excluded. Explain that replacing
+internal states also changes other information and can damage correct answers. Keep
+these points in ordinary language rather than shorthand such as decodability or calibration.
+
 Report main-text probe accuracy as percentages and selectivity differences as percentage
 points. Distinguish states along a supplied correct calculation from states along the
 model's own generated output. A neutral modal prediction is a visual reference; matching
