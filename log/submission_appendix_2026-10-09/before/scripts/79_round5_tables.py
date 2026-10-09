@@ -46,14 +46,17 @@ def main():
   lines.extend([r'\section{Task competence and value readouts}',r'\label{app:round5-competence}',
    f'Table~\\ref{{tab:round5-competence}} compares both variables for {x["n_models"]} models. Layers are selected by neutral selectivity, averaging three probe seeds. Task accuracy and paired excess name errors pool demonstration sets 7, 11 and 13; probes use set 7. The within-model difference holds overall task accuracy fixed but does not isolate a causal effect of the readout.',
    'We average the two variable readouts within each model before computing descriptive correlations. Table~\\ref{tab:round5-correlation} repeats them after omitting each model. Roles are not independent observations. With this small, heterogeneous panel, correlations cannot distinguish overall competence from the role of decodable information.'])
-  rows=[[LABEL.get(r['model'],r['model']),r['role'],str(r['layer'])]+[f'{100*r[k]:.1f}' for k in ('task_accuracy','neutral_accuracy','neutral_control','misleading_accuracy','lure_excess')] for r in x['cells']]
-  table(lines,'llrrrrrr','Model & Role & Layer & Task & Neutral & Name ID & Misleading & Excess',rows,
-   'Task and true-digit probe accuracies (\\%), name-identity control accuracy (\\%), and excess name errors (points). Roles v1/v2 are queried/intermediate. Selectivity is neutral minus name-ID accuracy. Below-floor models remain descriptive.','tab:round5-competence')
+  rows=[[LABEL.get(r['model'],r['model']),r['role'],str(r['layer'])]+[f'{100*r[k]:.1f}' for k in ('task_accuracy','neutral_accuracy','misleading_accuracy','lure_excess')] for r in x['cells']]
+  table(lines,'llrrrrr','Model & Role & Layer & Task & Neutral probe & Misleading probe & Excess',rows,
+   'Level-3 arithmetic task and probe accuracies (\\%) and paired excess name errors (points). Neutral task accuracy is shared by the two roles. All available complete model pairs are shown; below-floor models remain descriptive.','tab:round5-competence')
   columns=list(x['correlations'])
   rows=[['All models']+[number(x['correlations'][k]['pearson']) for k in columns]]
   rows += [[LABEL.get(m,m)]+[number(d[k]['pearson']) for k in columns] for m,d in x['leave_one_model_out'].items()]
   table(lines,'lrrr','Omitted model & Task--excess & Probe--excess & Task--probe',rows,
    'Descriptive Pearson correlations of model means; Spearman values and within-model variable differences are in the saved summary. No significance or causal claim is based on these coefficients.','tab:round5-correlation')
+  rows=[[LABEL.get(r['model'],r['model'])]+[f'{100*r[k]:+.1f}' for k in ('neutral_accuracy','misleading_accuracy','lure_excess')] for r in x['within_model_v2_minus_v1']]
+  table(lines,'lrrr','Model & Neutral probe & Misleading probe & Excess',rows,
+   'Intermediate minus queried variable, in percentage points. Overall neutral task accuracy is identical within each model. These differences are descriptive comparisons between variable positions.','tab:round5-within')
  x=load('generated')
  if x:
   lines.extend([r'\section{Gold-trained transfer to generated chains}',r'\label{app:round5-generated}',
@@ -68,8 +71,8 @@ def main():
   lines.append('Name-error cases in the competent model are few; error-conditioned readouts cannot establish a general mechanism from that subset. Failed neutral calibration prevents a strong generated-chain interpretation for the exception model.')
   rows=[]
   for r in x['cells']:
-   rows.append([LABEL[r['model']],str(r['demo_seed']),r['role'],f"{r['n_primary_neutral_valid']}/{r['n_primary_neutral']}",ci(r['neutral_calibration_ci95']),str(r['n_primary_lure_valid']),str(r['n_augmented_lure_valid'])])
-  table(lines,'lrrllrr','Model & Set & Role & Neutral coverage & Calibration (\\%) & Sample errors & Extra errors',rows,
-   'Gold-trained probe accuracy on neutral generated chains [95\\% interval], and eligible name-error counts. Extra cases exclude the fixed sample. Roles v1/v2 are queried/intermediate. Calibration is required before interpreting error readouts.','tab:round5-generated')
+   rows.append([LABEL[r['model']],str(r['demo_seed']),r['role'],f"{r['n_primary_neutral_valid']}/{r['n_primary_neutral']}",ci(r['neutral_calibration_ci95']),ci(r['primary_lure_probe_ci95']),str(r['n_augmented_lure_valid']),ci(r['augmented_lure_probe_ci95'])])
+  table(lines,'lrrlllll','Model & Set & Role & Neutral coverage & Calibration & Sample error probe & Extra errors $n$ & Extra error probe',rows,
+   'Generated-chain true-digit accuracy (\\%) [95\\% interval]. Sample error probe conditions on name errors in the fixed sample; extra name-error cases exclude that sample. Dashes indicate no eligible cases. Saved summaries record all missing or excluded boundaries and calibration decisions.','tab:round5-generated')
  (ROOT/'paper/tables/round5_followups.tex').write_text('\n'.join(lines)+'\n')
 if __name__=='__main__':main()

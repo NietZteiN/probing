@@ -6,6 +6,21 @@ ticked only when its numbers are in `results/summary/` and reach the paper throu
 
 *Last updated 2026-10-09. ARR deadline 2026-10-12 (AoE).*
 
+## Submission appendix (2026-10-09)
+
+- [x] Curate the appendix around reproducibility and evidence for the reported claims;
+  remove the full figure gallery, individual examples and redundant derived tables.
+  Keep failed controls, below-floor results, correlation sensitivity and probe calibration.
+- [x] Move a concise patching-control plot into the main text; retain the token sweep and
+  span grid as the two essential appendix figures. Report control rates and denominators
+  in appendix tables.
+- [x] Consolidate the nine-model probe table with its name-identity controls. Preserve
+  generated-chain calibration, boundary coverage and separate primary/extra error counts.
+- [x] Verify retained values and plotted data, inspect the submission PDF, and keep all
+  main text through Limitations within four pages.
+- [x] Build a minimal source archive containing only the 24 required files, and verify
+  that it compiles independently to the same PDF text.
+
 ## Main-text analysis and implications (2026-10-09)
 
 - [x] Bring the positional-copy and values-only response controls into the main results,

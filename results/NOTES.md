@@ -1211,3 +1211,31 @@ calculation. These are future proposals, not new results or submission blockers.
 No numerical inputs, result summaries or figure assets changed. Strict checks pass;
 all text through Limitations fits on four pages. Evidence:
 `log/main_analysis_2026-10-09/verification.json`.
+
+
+### 2026-10-09 — Submission appendix and main patching figure
+
+Replaced the automatic figure gallery with a submission appendix in `paper/appendix.tex`.
+Retained task/data details and replication differences, full behavioral and equivalence
+results, naming controls, alternative-format failures, probe/patching methods, correlation
+sensitivity, and generated-chain validation with boundary coverage and error counts.
+Removed repeated full-size plots, selected-example visualizations, redundant probe-extension
+rows and tables of differences already represented by the retained absolute estimates.
+Historical figures and all saved numerical summaries remain in the repository.
+
+Promoted the Llama-3.2-3B patching plot to the main text, simplifying it to ordinary-name
+and alternative-name error removal plus damage to correct answers. The caption defines
+these distinct denominators and identifies demonstration set 7. Added an appendix table
+with both Llama models' all-layer control rates and denominators. The nine-model readout
+table now includes the saved name-identity controls. The generated-chain reliability plot
+is omitted in favor of its complete calibration table. Two supporting technical figures
+remain: the intermediate-value token sweep and queried-variable span-patching grid.
+
+Widened the checkpoint and probe-recipe tables to preserve readable type. The appendix
+also discloses that OLMo's reported injection is the selected maximum across layers and
+variables, with its damage to correct answers alongside the word control.
+
+The PDF has 15 pages (previously 50), including nine appendix pages. Main text through
+Limitations remains four pages. Strict submission checks, value/provenance checks and
+visual inspection pass. The minimal 24-file source archive compiles independently to the
+same PDF text. Verification: `log/submission_appendix_2026-10-09/verification.json`.

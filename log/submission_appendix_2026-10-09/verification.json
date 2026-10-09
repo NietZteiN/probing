@@ -1,0 +1,104 @@
+{
+  "strict_submission_check": true,
+  "main_pages_including_limitations": 4,
+  "total_pages_before": 50,
+  "total_pages_after": 15,
+  "appendix_start_page": 7,
+  "appendix_pages": 9,
+  "main_figures": [
+    1,
+    2
+  ],
+  "appendix_figures": [
+    3,
+    4
+  ],
+  "abstract_unchanged": true,
+  "unchanged_numeric_inputs_and_summaries": 343,
+  "retained_generated_neutral_table_rows_unchanged": {
+    "tab:round6-selection": 4,
+    "tab:round6-calibration": 12,
+    "tab:round6-errors": 12
+  },
+  "competence_rows_unchanged_with_saved_name_controls_added": 18,
+  "gold_transfer_calibration_and_error_counts_verified": 12,
+  "patching_plot_verified_against_source": "results/summary/llama32-3b/L3/direct/patching.json",
+  "all_layer_control_rows_verified": [
+    [
+      "Llama-3.2-3B",
+      "queried",
+      "2000",
+      "172",
+      "272",
+      "51.7",
+      "34.9",
+      "22.4"
+    ],
+    [
+      "Llama-3.1-8B",
+      "intermediate",
+      "2000",
+      "72",
+      "838",
+      "30.6",
+      "30.6",
+      "8.5"
+    ]
+  ],
+  "table_generators_idempotent": true,
+  "source_bundle_files": [
+    "Makefile",
+    "acl.sty",
+    "acl_natbib.bst",
+    "appendix.tex",
+    "check_arr.py",
+    "figures/fig2_tokens_llama32-3b_L3_cot_v2.pdf",
+    "figures/kudo_fig5_llama32-3b_L3_direct_v1.pdf",
+    "figures/story_behavior.pdf",
+    "figures/story_patching.pdf",
+    "main.tex",
+    "numbers.tex",
+    "page_limit.txt",
+    "refs.bib",
+    "tables/behavior.tex",
+    "tables/behavior_excluded.tex",
+    "tables/behavior_levels.tex",
+    "tables/equivalence.tex",
+    "tables/exception_patching.tex",
+    "tables/figure_dump.tex",
+    "tables/modelkind.tex",
+    "tables/patching_controls.tex",
+    "tables/recipe.tex",
+    "tables/round5_followups.tex",
+    "tables/round6_followups.tex"
+  ],
+  "standalone_source_bundle_compiles": true,
+  "standalone_pdf_text_identical": true,
+  "visual_review_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "selected_injection_maximum_verified": {
+    "source": "results/summary/olmo2-1b-it/L3/cot/patching.json",
+    "role": "inject@v2",
+    "layer": "L5",
+    "injection": 0.026804123711340205,
+    "damage": 0.07010309278350516,
+    "word_control_damage": 0.004123711340206186,
+    "selection_disclosed_in_appendix": true
+  },
+  "checkpoint_and_recipe_tables_widened_for_readability": true
+}

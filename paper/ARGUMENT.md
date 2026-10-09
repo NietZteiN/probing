@@ -46,7 +46,9 @@ causal limits in Results and Limitations rather than making them the introductio
    leave-one-model-out sensitivity, gold-trained transfer and generated-neutral training
    with computation-disjoint validation and testing.
 5. **Ask what patching localizes.** Present the early-layer sensitivity in Llama-3.2-3B,
-   with disruption and alternative-name controls. Other models do not establish a common
+   with disruption and alternative-name controls. The concise layer plot is Figure 2
+   in the main text; appendix tables report both Llama models' rates and denominators.
+   Other models do not establish a common
    name-specific mechanism.
 6. **State implications and discriminating next tests.** Paired renaming measures resistance
    to a conflicting word in addition to aggregate accuracy. Propose response-format
@@ -55,10 +57,14 @@ causal limits in Results and Limitations rather than making them the introductio
    not completed results or evidence for a specific mechanism.
 
 The main text keeps these results, the running example and the methods needed to interpret
-them. The appendix holds task levels, replication, equivalence details, tokenization,
-additional naming controls, full probe sweeps, tuning comparisons and full alternative-format
-results. The main text summarizes the values-only format's accuracy cost to motivate the
-next experiments; it does not infer a shared arithmetic/code mechanism.
+them. The submission appendix (`paper/appendix.tex`) keeps task/data details, replication
+agreement and differences, full behavioral results, equivalence and naming controls,
+probe/patching methods, calibration and error counts. It includes two technical plots that
+support the main readout and span-localization claims. Exclude the full figure gallery,
+individual-example plots, repeated extension tables and derived-difference tables; their
+underlying results remain in the repository. Keep failed controls and calibration outcomes.
+The main text summarizes the values-only format's accuracy cost to motivate the next
+experiments; it does not infer a shared arithmetic/code mechanism.
 
 ## Limits that affect the argument
 
@@ -109,8 +115,10 @@ rate of writing the same digit. Probe predictions of that value are a separate r
 Keep figures in the style of a research paper: plots, model labels, response-format legends
 and short captions. Figure 1 compares excess name errors on the queried variable in
 two-operation problems. The broader 43/44 equivalence result belongs in the abstract and
-results. The probe-reliability figure belongs in the generated-calculation appendix:
-it plots six calibration estimates per model with the planned 90% minimum. Captions identify denominators, interval conventions
+results. Figure 2 shows layer-wise name-error removal and damage to correct answers,
+with ordinary-name and alternative misleading-name patches. Generated-calculation
+reliability stays in an appendix table, with all six estimates, controls and boundary
+coverage per model; do not duplicate it as a plot. Captions identify denominators, interval conventions
 and supplied versus generated calculations. Avoid tutorial paragraphs, large takeaway
 boxes or repeated prose inside plots. Detailed layer sweeps and patching plots remain in
 the appendix with concise captions.

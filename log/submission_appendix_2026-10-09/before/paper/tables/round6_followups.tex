@@ -2,10 +2,11 @@
 \newsavebox{\roundsixbox}
 \section{Training probes on generated neutral chains}
 \label{app:round6-generated}
+\input{figures/readout_check}
 Gold-trained probe transfer (Appendix~\ref{app:round5-generated}) may fail because the states along generated chains differ from those along the supplied correct chain. We therefore train on freely generated neutral chains from \NUM{r6-source-train_n} source problems and select layers on \NUM{r6-source-validation_n} separate validation problems. Canonical equations partition the source pool, keeping renamed versions of a computation together. The training and validation pools contain \NUM{r6-source-train_keys} and \NUM{r6-source-validation_keys} computations; both exclude all test and demonstration computations. These counts distinguish independent computations from repeated name renderings.
 Generation is greedy with demonstration set 7 and a 128-token limit. The probe sees the hidden state before the target variable's first numeric assignment, with every token boundary checked to exclude the value digit. Missing or unsafe boundaries are excluded and counted. We retain all usable neutral chains regardless of whether the model writes the correct value, using the executed true value as the training label. Three probe seeds use the original full-batch SGD recipe (learning rate 0.001, 10,000 epochs). States are stored in float32 and nonfinite states or fitted weights are rejected. Layers are searched at stride two, including the final layer, and chosen only by mean validation accuracy with the lowest-layer tie break. The name-identity control is trained separately and does not select layers.
 Table~\ref{tab:round6-selection} reports the usable source counts and selected layers. Evaluation uses exactly the earlier fixed 200-set sample and separately reported additional name-error cases under demonstration sets 7, 11 and 13. Table~\ref{tab:round6-calibration} gives held-out neutral calibration and boundary coverage. Intervals use 4,000 canonical-computation bootstrap draws, keeping repeated names together. The 90\% calibration threshold applies to the point estimate, not the lower interval endpoint.
-Llama passes all six calibration cells; OLMo passes none. Table~\ref{tab:round6-errors} retains error readouts with their denominators. OLMo's readouts remain descriptive. Llama has only one name-error case in the primary sample and thirteen additional observed writes; these rare, selected cases cannot establish a general mechanism.
+Llama passes all six calibration cells; OLMo passes none. Retraining on generated chains therefore does not validate a strong readout account of OLMo's own errors. Table~\ref{tab:round6-errors} retains its error readouts descriptively. Llama has only one name-error case in the primary sample and thirteen additional observed writes; these rare, selected cases cannot establish a general mechanism. Paired changes from gold-trained transfer are shown in Table~\ref{tab:round6-changes}; they compare the same eligible prefixes, not independent model samples.
 \begin{table*}[t]
 \centering\small
 \sbox{\roundsixbox}{\begin{tabular}{@{}llrrrrr@{}}
@@ -19,7 +20,7 @@ Llama-3.2-3B & v2 & 2000 & 400 & 20 & 99.2 & 28.6 \\
 \bottomrule
 \end{tabular}}
 \ifdim\wd\roundsixbox>\textwidth\resizebox{\textwidth}{!}{\usebox{\roundsixbox}}\else\usebox{\roundsixbox}\fi
-\caption{Usable generated-boundary counts and validation-selected layers. Roles v1/v2 are queried/intermediate. Source cohorts are computation-disjoint; validation scores are not test estimates.}
+\caption{Probe source rows with usable generated boundaries, selected layers and validation scores. Source cohorts are computation-disjoint; usable counts vary by model and variable. Validation scores select layers and are not test estimates.}
 \label{tab:round6-selection}
 \end{table*}
 \begin{table*}[t]
@@ -69,4 +70,28 @@ Llama-3.2-3B & v2 & 13 & 0 & -- & 0 & -- \\
 \ifdim\wd\roundsixbox>\textwidth\resizebox{\textwidth}{!}{\usebox{\roundsixbox}}\else\usebox{\roundsixbox}\fi
 \caption{True-digit accuracy (\%) [95\% interval] on actual name errors, with the fixed sample and additional error-selected cases separated. Extra cases exclude the primary sample. Dashes denote empty strata. OLMo fails neutral calibration, so its readouts are descriptive.}
 \label{tab:round6-errors}
+\end{table*}
+\begin{table*}[t]
+\centering\small
+\sbox{\roundsixbox}{\begin{tabular}{@{}llrlll@{}}
+\toprule
+Model & Role & Set & Neutral change & Sample error change & Extra error change \\
+\midrule
+OLMo-2-1B-I & v1 & 7 & -0.9 [-4.9, 3.4] & 4.2 [0.0, 12.5] & 1.4 [-1.0, 5.3] \\
+OLMo-2-1B-I & v1 & 11 & -2.5 [-7.7, 2.7] & 19.0 [0.0, 38.1] & 5.1 [-0.6, 12.1] \\
+OLMo-2-1B-I & v1 & 13 & -2.4 [-7.2, 2.2] & -5.9 [-19.6, 5.9] & 2.9 [-0.8, 6.7] \\
+OLMo-2-1B-I & v2 & 7 & 58.6 [49.5, 67.5] & -21.2 [-57.6, 12.2] & -47.2 [-63.3, -30.1] \\
+OLMo-2-1B-I & v2 & 11 & 58.4 [47.9, 67.9] & -100.0 [-100.0, -100.0] & -49.2 [-71.4, -20.8] \\
+OLMo-2-1B-I & v2 & 13 & 47.6 [37.7, 57.1] & -100.0 [-100.0, -100.0] & -34.4 [-55.6, -13.3] \\
+Llama-3.2-3B & v1 & 7 & 0.5 [0.0, 1.6] & 0.0 [0.0, 0.0] & 0.0 [0.0, 0.0] \\
+Llama-3.2-3B & v1 & 11 & 0.0 [0.0, 0.0] & -- & -- \\
+Llama-3.2-3B & v1 & 13 & -2.3 [-5.1, -0.3] & -- & 0.0 [0.0, 0.0] \\
+Llama-3.2-3B & v2 & 7 & -0.8 [-2.9, 0.9] & -- & -- \\
+Llama-3.2-3B & v2 & 11 & 0.0 [0.0, 0.0] & -- & -- \\
+Llama-3.2-3B & v2 & 13 & -1.8 [-3.7, -0.5] & -- & -- \\
+\bottomrule
+\end{tabular}}
+\ifdim\wd\roundsixbox>\textwidth\resizebox{\textwidth}{!}{\usebox{\roundsixbox}}\else\usebox{\roundsixbox}\fi
+\caption{Paired accuracy changes in percentage points [95\% interval] from gold-trained transfer to generated-neutral training on the same valid prefixes. Error-selection and failed neutral calibration limit the interpretation.}
+\label{tab:round6-changes}
 \end{table*}
