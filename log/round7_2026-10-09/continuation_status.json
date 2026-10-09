@@ -1,0 +1,22 @@
+{
+  "checked_utc": "2026-10-09T21:46:46.636875+00:00",
+  "queue": "             JOBID        PARTITION                   NAME      STATE       TIME   TIME_LIMIT NODELIST(REASON)\n            450333    a30,h100,h200         probe_r7_small    PENDING       0:00      4:00:00 (Priority)\n            450341              dev       probe_r7_collect    PENDING       0:00      1:00:00 (Dependency)\n            450334        h100,h200            probe_r7_8b    PENDING       0:00      4:00:00 (Priority)\n",
+  "start_estimates": "             JOBID PARTITION     NAME     USER ST          START_TIME  NODES SCHEDNODES           NODELIST(REASON)\n            450333 a30,h100, probe_r7 jvl21000 PD 2026-10-10T14:08:50      1 g-03-01              (Priority)\n            450334 h100,h200 probe_r7 jvl21000 PD                 N/A      1 (null)               (Priority)\n",
+  "gpu_results_available": false,
+  "completed_worker_files": {
+    "llama32-3b": false,
+    "llama31-8b": false,
+    "olmo2-1b-it": false
+  },
+  "pending_renderer_wrote_no_manuscript_files": true,
+  "verification": {
+    "cpu_tests_passed": 79,
+    "cpu_tests_skipped": 6,
+    "followup_tests_passed": 13,
+    "strict_arr_passed": true,
+    "limitations_end_on_page4": true,
+    "references_start_page5": true,
+    "paper_and_generated_numbers_unchanged": true,
+    "protocol_unchanged": true
+  }
+}

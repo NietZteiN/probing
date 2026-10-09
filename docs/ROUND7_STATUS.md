@@ -8,12 +8,17 @@ Updated 2026-10-09. Protocol: [ROUND7_PROTOCOL.md](ROUND7_PROTOCOL.md).
   19 intervals are below zero. Answer-only already meets equivalence in 31 cells;
   CoT meets it in 43. Source: `results/summary/round7_paired_prompting.json`.
 - [x] CPU checks for calculation eligibility, parsing, paired subtraction and competence
-  gates: nine new tests passed; the full suite has 75 passes and six tokenizer skips.
+  gates, including rejection of duplicate pairs, changed arithmetic clusters and wrong
+  decoding budgets. Reporting checks retain parse failures and failed competence checks.
+  Full suite: 79 passed, six tokenizer-dependent tests skipped; 13 follow-up tests passed.
 - [x] Update the paper with the completed paired evidence and the distinction between
   reliable reductions and small effects; retain future-work labels for pending GPU tests.
 - [x] Tokenizer preflight on a compute node: job 450293 completed successfully.
   All four full prompts have equal token lengths across formats and matched names,
   for every selected problem, model, demonstration seed and candidate example count.
+- [x] Prepare automatic validated CSV summaries and optional appendix tables. The collector
+  records source hashes, event counts, accuracy, parse coverage and cohort sizes by seed.
+  Pending runs produce no manuscript tables; paper inclusion awaits interpretation.
 - [ ] R7-B: format factorial and independent neutral competence checks.
 - [ ] R7-C: fixed correct generated calculations, crossed final-query and output formats.
 - [ ] Independently validate the GPU outputs and collect response-control results.
@@ -41,6 +46,11 @@ Collector job: **450341** (CPU only, after successful completion of both current
 The current routing allows 450333 on a30/h100/h200 and 450334 on h100/h200, with the
 slow MIG node g-06-01 excluded. This lets SLURM use the earliest eligible allocation;
 each worker still requests just one GPU. Results remain pending.
+
+Queue checked again October 9 at 16:46 Central: both GPU workers remain pending for
+priority, with no calibration or experiment outputs. The scheduler estimates October 10
+at 14:08 for 450333 and gives no estimate for 450334; estimates can change. The collector
+is waiting for successful completion of both. Latest audit: `continuation_status.json`.
 
 The final-query cohort is conditional on completely correct original generations. Both
 Llama models supply 200 unique computations per seed/target. OLMo supplies 144/108/116 for

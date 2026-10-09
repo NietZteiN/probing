@@ -22,8 +22,11 @@
   ],
   "execution_sources_sha256": {
     "scripts/86_response_controls.py": "f62a3bfcdc2a054883c8d8ddc7e2f5edc277e00f7d67d937bde7f72ce628010b",
-    "scripts/87_collect_response_controls.py": "b8b607299fb5204b3977be239586507486c7475a8b481af6167fe45ae677b5ca",
+    "scripts/87_collect_response_controls.py": "4aca7d627a807e95bee1ace2c1894b6389ab983afde3081c38e831d91a702fd8",
+    "scripts/89_response_control_tables.py": "ae52670a9e0864659f294936f36ab23fc076064bc1037ca6f447b1844622c0b7",
     "src/cueconf/round7.py": "05b065b6970ae5f1c2cc78b42628b5c91be604a861c556e5dc2d4f04d4fa32a5",
     "docs/ROUND7_PROTOCOL.md": "3c5403dd342351ea4296f129d1e82c2ff290591a27e14c14e90ece4ba0def2d5"
-  }
+  },
+  "collector_reporting_updated_utc": "2026-10-09T21:46:46.623039+00:00",
+  "collector_update": "Stricter independent pairing, arithmetic-cluster, calibration and decoding validation; preserve event counts and render optional tables only after all outputs validate. Worker design and frozen protocol unchanged."
 }

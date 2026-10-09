@@ -773,6 +773,7 @@ def main() -> int:
     runpy.run_path(str(Path(__file__).with_name("79_round5_tables.py")), run_name="__main__")
     runpy.run_path(str(Path(__file__).with_name("82_round6_tables.py")), run_name="__main__")
     runpy.run_path(str(Path(__file__).with_name("88_round7_tables.py")), run_name="__main__")
+    runpy.run_path(str(Path(__file__).with_name("89_response_control_tables.py")), run_name="__main__")
     return 0
 
 

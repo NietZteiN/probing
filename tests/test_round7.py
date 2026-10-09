@@ -70,3 +70,60 @@ def test_control_contrasts_reject_changed_cohorts_and_gate_on_accuracy():
     assert comparison['competence_matched'] is False
     with pytest.raises(ValueError,match='eligible pairs'):
         collector.contrast(changed[:-1],base)
+
+
+def test_control_contrasts_reject_duplicated_rows_and_changed_computation_clusters():
+    collector = load_analysis_script('87_collect_response_controls.py')
+    rows = [{'seed':7,'set_id':'one','program_key':'original','excess':0,'neutral_correct':1}]
+    with pytest.raises(ValueError,match='eligible pairs'):
+        collector.contrast(rows+rows,rows)
+    with pytest.raises(ValueError,match='arithmetic clusters'):
+        collector.contrast([{**rows[0],'program_key':'different'}],rows)
+
+
+def test_control_pairing_rejects_missing_and_duplicate_twins():
+    collector = load_analysis_script('87_collect_response_controls.py')
+    neutral = {'seed':7,'set_id':'one','program_key':'p','answer':3,'condition':'neutral',
+               'target':None,'prediction':3,'correct':True,'parsed':True}
+    misleading = {**neutral,'condition':'incongruent','target':'v1','lure':8}
+    with pytest.raises(ValueError,match='cohorts differ'):
+        collector.paired_observations([misleading],'v1')
+    with pytest.raises(ValueError,match='duplicate'):
+        collector.paired_observations([neutral,neutral,misleading],'v1')
+
+
+def test_control_validation_rejects_wrong_budget_and_tables_require_validated_sources(tmp_path):
+    import json
+    collector = load_analysis_script('87_collect_response_controls.py')
+    renderer = load_analysis_script('89_response_control_tables.py')
+    path = tmp_path/'unvalidated.json'
+    path.write_text(json.dumps({'validated':False}))
+    with pytest.raises(ValueError,match='independent validation'):
+        renderer.load(path)
+    path.write_text(json.dumps({'complete':True,'experiment':'formats','greedy':True,
+                                'max_new_tokens':16,'records':[]}))
+    with pytest.raises(ValueError,match='decoding'):
+        collector.read_output(path,parse_factorial,'formats',128)
+    assert renderer.load(tmp_path/'pending.json') is None
+
+
+def test_reports_keep_parse_failures_in_denominators_and_failed_competence_comparisons():
+    collector = load_analysis_script('87_collect_response_controls.py')
+    renderer = load_analysis_script('89_response_control_tables.py')
+    observations = [
+        {'seed':7,'set_id':str(i),'program_key':str(i),'excess':int(i==0),
+         'neutral_suggested':0,'misleading_suggested':int(i==0),
+         'neutral_correct':int(i!=2),'misleading_correct':int(i==1),
+         'neutral_parsed':int(i!=2),'misleading_parsed':int(i!=2)} for i in range(3)]
+    cell = collector.summary(observations)
+    comparison = collector.contrast(observations,observations)
+    panel = {'cells':{'names_equations':cell,'names_values':cell},
+             'comparisons':{'names_equations minus names_values':comparison}}
+    data = {'models':{'llama32-3b':{'formats':{'v1':panel}}}}
+    cells, contrasts, _, contrast_tex = renderer.render(data,'formats')
+    assert cells[0]['pairs'] == 3
+    assert cells[0]['neutral_correct'] == 2
+    assert cells[0]['neutral_correct_mean'] == pytest.approx(2/3)
+    assert cells[0]['excess_mean'] == pytest.approx(1/3)
+    assert len(contrasts) == 1 and contrasts[0]['competence_matched'] is False
+    assert 'No' in contrast_tex
