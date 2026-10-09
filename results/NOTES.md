@@ -1184,3 +1184,12 @@ and captions carry the scope and interval convention. Appendix figure captions n
 repeat reading instructions for every image. Scientific claims and numerical results are
 unchanged. Strict checks and four-page layout pass; evidence:
 `log/concise_figures_2026-10-09/`.
+
+
+### 2026-10-09 — Probe reliability figure in the appendix
+
+Moved the neutral generated-calculation calibration plot from the main results to the
+generated-neutral probe appendix. Kept the calibration results and a brief appendix-figure
+reference in the main text. The generator preserves the appendix placement. No estimates,
+figure assets or scientific claims changed. Strict build, reference and page checks pass;
+verification: `log/appendix_calibration_2026-10-09/verification.json`.

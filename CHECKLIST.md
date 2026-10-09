@@ -8,6 +8,9 @@ ticked only when its numbers are in `results/summary/` and reach the paper throu
 
 ## Concise figures and concrete code explanations (2026-10-09)
 
+- [x] Move the probe-reliability figure to the generated-calculation appendix and retain
+  its reference beside the main-text calibration results.
+
 - [x] Reduce arithmetic figures to plots, legends and short captions; remove explanatory
   paragraphs and takeaway boxes. Preserve the plotted estimates and intervals.
 - [x] State the code abstract's practical implication and use concrete trace descriptions.

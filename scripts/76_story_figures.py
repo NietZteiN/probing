@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Self-contained main figures: fixed arithmetic, response format, and readout calibration.
+"""Main behavioral figure and appendix probe-calibration figure.
 
 CPU only: python scripts/76_story_figures.py
 Uses saved summaries, never models/tokenizers. Existing detailed figures remain in the appendix.

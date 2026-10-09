@@ -98,8 +98,8 @@ rate of writing the same digit. Probe predictions of that value are a separate r
 Keep figures in the style of a research paper: plots, model labels, response-format legends
 and short captions. Figure 1 compares excess name errors on the queried variable in
 two-operation problems. The broader 43/44 equivalence result belongs in the abstract and
-results. Figure 2 plots the six neutral generated-calculation calibration estimates per
-model with the planned 90% minimum. Captions identify denominators, interval conventions
+results. The probe-reliability figure belongs in the generated-calculation appendix:
+it plots six calibration estimates per model with the planned 90% minimum. Captions identify denominators, interval conventions
 and supplied versus generated calculations. Avoid tutorial paragraphs, large takeaway
 boxes or repeated prose inside plots. Detailed layer sweeps and patching plots remain in
 the appendix with concise captions.
