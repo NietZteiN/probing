@@ -95,14 +95,11 @@ A name error writes that digit; excess name errors subtract the matched neutral 
 rate of writing the same digit. Probe predictions of that value are a separate readout.
 
 
-The main figures must tell the story without the body text. Figure 1 shows the fixed
-arithmetic problem, explains the competing answer, compares final-answer-only and
-calculation-first responses, and states the 43/44 equivalence result with its actual
-confidence level. The plotted two-operation queried-variable scope is distinct from the
-broader 44 contrasts. OLMo-2-1B is marked as below the planned accuracy floor.
-Figure 2 explains the separate internal predictor and tests it on the model's own generated
-calculations. It shows all six calibration estimates and intervals per model and the
-planned 90% minimum. These are correct-digit readouts on ordinary-name problems, not
-behavioral accuracies or accuracy on name-error cases. Layer sweeps and patching plots stay
-in the appendix. Each full-size appendix caption explains the plot's axes, cells, colours,
-denominators and supplied-versus-generated calculations.
+Keep figures in the style of a research paper: plots, model labels, response-format legends
+and short captions. Figure 1 compares excess name errors on the queried variable in
+two-operation problems. The broader 43/44 equivalence result belongs in the abstract and
+results. Figure 2 plots the six neutral generated-calculation calibration estimates per
+model with the planned 90% minimum. Captions identify denominators, interval conventions
+and supplied versus generated calculations. Avoid tutorial paragraphs, large takeaway
+boxes or repeated prose inside plots. Detailed layer sweeps and patching plots remain in
+the appendix with concise captions.

@@ -6,6 +6,16 @@ ticked only when its numbers are in `results/summary/` and reach the paper throu
 
 *Last updated 2026-10-08. ARR deadline 2026-10-12 (AoE).*
 
+## Concise figures and concrete code explanations (2026-10-09)
+
+- [x] Reduce arithmetic figures to plots, legends and short captions; remove explanatory
+  paragraphs and takeaway boxes. Preserve the plotted estimates and intervals.
+- [x] State the code abstract's practical implication and use concrete trace descriptions.
+  Table 1 reports internal predictions on wrong writes; Table 2 gives literal output-format
+  examples. Figure 2b compares `v = 2` with `v = len(xs) = 2`.
+- [x] Integrate the validated prompt-position comparison, verify numerical inputs, inspect
+  PDFs, and keep both manuscripts within four pages through Limitations.
+
 ## Figures that explain the paper (2026-10-08)
 
 - [x] Rebuild both papers' main figures to show the task, changed condition, measured
@@ -349,7 +359,7 @@ Per-stage logs are in `log/round3_*.out`; machine-readable status is
 - [x] Complete GPU runs and validated release: 449113, 449114 and 449115 all completed
   with exit 0. The code repository contains `round7_prompt_comparison.json`. See
   `../codecue/docs/PROMPT_PROBE_COMPARISON.md` and `../codecue/docs/EXPERIMENTS.md`.
-- [ ] Integrate the validated comparison into the code manuscript and rebuild/push.
+- [x] Integrate the validated comparison into the code manuscript and rebuild/push.
 
 ## Not planned for this paper
 

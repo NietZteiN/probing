@@ -18,14 +18,9 @@ PAPER = PROJECT_ROOT / "paper"
 
 # name -> caption. Anything on disk but not listed is dumped last with a generic caption.
 CAPTIONS = {
-    "fig1_master_L3": "Two-operation arithmetic tasks, queried variable. Left: the accuracy "
-        "gain from a name denoting the correct digit. Middle: added answers matching a misleading digit "
-        "relative to the ordinary-name twin. Red circles request only an answer; blue squares request "
-        "calculations first. Points average three demonstration sets; bars are 95\\% intervals. "
-        "Grey bands mark two points, not a 90\\% equivalence test. Right: a separate predictor reads "
-        "the correct digit (green) or name-suggested digit (red) as the correct calculation is supplied "
-        "to Llama-3.2-3B. These are best-layer readouts, not generated outputs. OLMo-2-1B is below "
-        "the planned neutral-calculation accuracy floor.",
+    "fig1_master_L3": "Queried-variable effects at level 3: congruent-name accuracy gains, "
+        "excess name errors, and best-layer correct-calculation readouts. Bars: 95\\% intervals; "
+        "grey: a two-point reference band. OLMo-2-1B is below the planned accuracy floor.",
     "fig2_tokens_llama32-3b_L3_cot_v2": "Per-token probes, written-calculation regime, "
         "intermediate variable.",
     "fig2_tokens_llama32-3b_L3_cot_v1": "Per-token probes, chain-of-thought regime, queried variable.",
@@ -76,35 +71,6 @@ SKIP = ("story_", "fig2_margin", "kudo_fig3_", "fig2_tokens_gemma3-4b-it", "kudo
 
 
 
-def reading_guide(stem: str) -> str:
-    if stem.startswith("fig5_kudo3_"):
-        return (" Each column is a token of the displayed problem or supplied correct calculation; "
-                "each row is a model layer, from early (bottom) to late (top). Each digit is the "
-                "predictor's most common output over three training seeds. Green matches the variable's "
-                "correct value; red matches the model's wrong final answer; amber matches the name's "
-                "suggestion; grey is another digit. The top strip is the neutral condition's most "
-                "common prediction from one seed. It is a reference, not an information test. "
-                "These predictions read supplied correct calculations, not the model's generated mistake.")
-    if stem.startswith("fig_own_chain_"):
-        return (" Here the columns are tokens the model actually generated. Rows are model layers "
-                "and cell digits are separate predictor outputs. Green matches the correct variable "
-                "value, red the wrong final answer, amber the name's suggestion, and grey another digit. "
-                "Boxes mark name tokens. Each panel is one problem; these examples do not estimate an error rate.")
-    if stem.startswith(("fig2_tokens_", "kudo_fig2_", "fig4_errors_")):
-        return (" Read left to right as tokens are processed, and bottom to top for later model layers. "
-                "A heatmap cell gives the fraction of problems on which a separate predictor returns "
-                "the correct variable digit; the colour scale runs from zero to one. Token labels "
-                "illustrate one problem, while rates pool many problems. Written-calculation panels "
-                "supply the correct calculation. Predictor accuracy is separate from generated-answer accuracy.")
-    if stem.startswith(("fig3_patching_", "kudo_fig5_")):
-        return (" Patching replaces internal activity at the indicated position and layer with activity "
-                "from a matched source problem. Removal is the fraction of baseline misleading-digit "
-                "answers changed to any other digit, which can still be wrong. Damage is the fraction "
-                "of baseline correct answers made wrong. These have different denominators; controls "
-                "measure disruption or a different source name.")
-    return ""
-
-
 def main() -> int:
     figs = sorted(p.stem for p in (PAPER / "figures").glob("*.pdf"))
     figs = [f for f in figs if not any(f.startswith(s) for s in SKIP)]
@@ -114,7 +80,7 @@ def main() -> int:
            "Each figure below is reproduced as a full-width figure on a portrait page, "
            "within the ACL margins.", ""]
     for stem in ordered:
-        cap = CAPTIONS.get(stem, f"\\texttt{{{stem.replace('_', chr(92) + '_')}}}.") + reading_guide(stem)
+        cap = CAPTIONS.get(stem, f"\\texttt{{{stem.replace('_', chr(92) + '_')}}}.")
         box = "width=\\textwidth,height=0.85\\textheight,keepaspectratio"
         out += ["\\begin{figure*}[p]\\centering",
                 f"\\includegraphics[{box}]{{figures/{stem}.pdf}}",

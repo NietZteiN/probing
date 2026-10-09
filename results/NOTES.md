@@ -1173,3 +1173,14 @@ captions now explain how to read each plot type. Numerical summaries and abstrac
 unchanged. Companion figure JSON files record the displayed data. Four-page text through
 Limitations and strict submission checks were verified; artifacts:
 `log/figure_understandability_2026-10-08/`.
+
+
+### 2026-10-09 — Concise research figures
+
+Removed tutorial paragraphs, task diagrams and large takeaway boxes from the main figures.
+The behavioral figure retains every model estimate and interval; the generated-calculation
+figure retains all six calibration estimates per model and the 90% threshold. Short legends
+and captions carry the scope and interval convention. Appendix figure captions no longer
+repeat reading instructions for every image. Scientific claims and numerical results are
+unchanged. Strict checks and four-page layout pass; evidence:
+`log/concise_figures_2026-10-09/`.
