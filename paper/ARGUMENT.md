@@ -45,7 +45,7 @@ causal limits in Results and Limitations rather than making them the introductio
    at the writing step. Report the unresolved instance-level regression. Include within-model role differences,
    leave-one-model-out sensitivity, gold-trained transfer and generated-neutral training
    with computation-disjoint validation and testing.
-5. **Ask what patching localizes.** Present the early-layer sensitivity in Llama-3.2-3B,
+5. **Show how replacing name representations changes answers.** Present the early-layer sensitivity in Llama-3.2-3B,
    with disruption and alternative-name controls. The concise layer plot is Figure 2
    in the main text; appendix tables report both Llama models' rates and denominators.
    Other models do not establish a common

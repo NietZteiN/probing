@@ -1,0 +1,12 @@
+{
+  "new_heading": "Replacing name representations changes answers",
+  "heading_page": 3,
+  "strict_submission_check": true,
+  "limitations_end_page": 4,
+  "references_start_page": 5,
+  "total_pages": 15,
+  "numeric_macros_unchanged": true,
+  "results_tables_and_figure_assets_unchanged": true,
+  "source_bundle_matches_current_source": true,
+  "source_bundle_files": 24
+}

@@ -217,14 +217,14 @@ changed to any other digit. Damage: correct answers changed. All: every layer re
 \label{fig:patch}
 \end{figure}
 
-\subsection{Replacing name representations changes answers}
+\subsection{Patching localizes the answer-only effect}
 
-For Llama-3.2-3B without CoT, replacing internal states at misleading names with those
-from the ordinary-name problem changes \NUM{lure-removed-3b} of name-error answers
-to another digit (all layers; Figure~\ref{fig:patch}).
-Removal peaks at \NUM{grid-top-removed} at the defining equation, layers
-\NUM{grid-layers} (Appendix~\ref{app:figs}). The neutral-word control also turns \NUM{control-damage} of correct
-answers into errors.
+For Llama-3.2-3B without CoT, replacing name activations with the neutral twin's removes
+\NUM{lure-removed-3b} of name errors when all layers are patched (Figure~\ref{fig:patch}).
+A span sweep is strongest at the defining equation in layers
+\NUM{grid-layers}, with \NUM{grid-top-removed} removal
+(Appendix~\ref{app:figs}). The neutral-word control also damages \NUM{control-damage} of correct
+answers. This localizes sensitivity to the name, with substantial disruption.
 
 Llama-3.1-8B's neutral and alternative-name patches remove errors similarly.
 Under supplied correct calculations, injecting the misleading name into the exception
