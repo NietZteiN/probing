@@ -1,0 +1,76 @@
+{
+  "cohort_sha256": "3419cdf3833f7f2f7e71f596492ed87690f94450f60e664980df66b672615908",
+  "models": {
+    "llama32-3b": {
+      "source_sha256": {
+        "/scratch/juno/jvl210002/probing/runs/llama32-3b/L3/cot/neutral/behavior.jsonl": "3752dac0184d15fd3b9c6477dca01c3073c6c1f22e1440a32a9a6a14c73e06ae",
+        "/scratch/juno/jvl210002/probing/runs/llama32-3b/L3/cot/incongruent@v1/behavior.jsonl": "e8016cdb3837e89968c600c925106b525dfaa0ed9bf53fc33cff00aec790a75e",
+        "/scratch/juno/jvl210002/probing/runs/llama32-3b/L3/cot/incongruent@v2/behavior.jsonl": "5821ea8405e3b85ac3f4e89aa7a10cdba3caf43188402b2a359f4e9b75e4c2ac",
+        "/scratch/juno/jvl210002/probing/runs/llama32-3b/L3/cot_s11/neutral/behavior.jsonl": "c4cece7e88b0bbab6d329bd12e29777674c3ff0635b25cadbbe3aba36a0ad880",
+        "/scratch/juno/jvl210002/probing/runs/llama32-3b/L3/cot_s11/incongruent@v1/behavior.jsonl": "27bc247110518bda966e74dd7f4d0516214d55e58497b01cc6b165a78e4ceeb6",
+        "/scratch/juno/jvl210002/probing/runs/llama32-3b/L3/cot_s11/incongruent@v2/behavior.jsonl": "e9d8af382c0e0e86bb0f3ee6127796c38f91ac1ee9047ee80349f80e7efaafb4",
+        "/scratch/juno/jvl210002/probing/runs/llama32-3b/L3/cot_s13/neutral/behavior.jsonl": "6bb67ecede2713aac5687a5ecb0523080238910cd9a4432e86f71d7ff5d13ee1",
+        "/scratch/juno/jvl210002/probing/runs/llama32-3b/L3/cot_s13/incongruent@v1/behavior.jsonl": "3fec997e14429aa0f421c6fee30c23d510f36d4f59dfc8135003b4cde9687525",
+        "/scratch/juno/jvl210002/probing/runs/llama32-3b/L3/cot_s13/incongruent@v2/behavior.jsonl": "d1c99fd32497de1bbb5cb3ddc3271bd2ca67279d4451bc28602b72e8bad9bc2c"
+      },
+      "frozen_eligibility_sha256": "92d9ada76d28936e25a0d1d47e82737dfef2ca100463dde28675d6fa0f18f28a",
+      "eligible_counts": {
+        "s7/v1": 200,
+        "s7/v2": 200,
+        "s11/v1": 200,
+        "s11/v2": 200,
+        "s13/v1": 200,
+        "s13/v2": 200
+      }
+    },
+    "llama31-8b": {
+      "source_sha256": {
+        "/scratch/juno/jvl210002/probing/runs/llama31-8b/L3/cot/neutral/behavior.jsonl": "8879f7a53a168e6441a4e070821231d4f809ca704e6b4bed18caf91f82cd79bc",
+        "/scratch/juno/jvl210002/probing/runs/llama31-8b/L3/cot/incongruent@v1/behavior.jsonl": "aa72b0262946424286a28bd18dda80e08532c97c1d292de106f379378dc75483",
+        "/scratch/juno/jvl210002/probing/runs/llama31-8b/L3/cot/incongruent@v2/behavior.jsonl": "a5c0f7ed6de7a33ec8b0c5ac2958c73d821cc1b35344efa82fd0761bd9988638",
+        "/scratch/juno/jvl210002/probing/runs/llama31-8b/L3/cot_s11/neutral/behavior.jsonl": "c3487ca5aeb17d5e118d082c97a1a98eb2a9b335de99531a294d3615301ac6b5",
+        "/scratch/juno/jvl210002/probing/runs/llama31-8b/L3/cot_s11/incongruent@v1/behavior.jsonl": "8985df3b742ac5ed4e41635e2c226987a6ad085e7088a7c555fc2e9e614742b6",
+        "/scratch/juno/jvl210002/probing/runs/llama31-8b/L3/cot_s11/incongruent@v2/behavior.jsonl": "aa636e85401b5e4ccbfaa546fccc3102e783c81e13c1798e2d85d581608f78b2",
+        "/scratch/juno/jvl210002/probing/runs/llama31-8b/L3/cot_s13/neutral/behavior.jsonl": "c020e74359292a90e87d61f5dbc00d5363d5ad95e5b58e6a13b83bda8907f4d3",
+        "/scratch/juno/jvl210002/probing/runs/llama31-8b/L3/cot_s13/incongruent@v1/behavior.jsonl": "d8b6834c8917fd02356bed3c87a9568d1787646a2c276aa02e9578db26cc09ea",
+        "/scratch/juno/jvl210002/probing/runs/llama31-8b/L3/cot_s13/incongruent@v2/behavior.jsonl": "a3f0108862acb2b95dede831e680bfd49ff49a62be018c663c6475e36aea46a5"
+      },
+      "frozen_eligibility_sha256": "50a787cf6e4e0ce2f77a1495470bef9674441033aafebe6234f8a8f0d88fca66",
+      "eligible_counts": {
+        "s7/v1": 200,
+        "s7/v2": 200,
+        "s11/v1": 200,
+        "s11/v2": 200,
+        "s13/v1": 200,
+        "s13/v2": 200
+      }
+    },
+    "olmo2-1b-it": {
+      "source_sha256": {
+        "/scratch/juno/jvl210002/probing/runs/olmo2-1b-it/L3/cot/neutral/behavior.jsonl": "58321b8f08a120ee647d4e9eb612fd906d7e855119a98e2c372ee609d9a15e9b",
+        "/scratch/juno/jvl210002/probing/runs/olmo2-1b-it/L3/cot/incongruent@v1/behavior.jsonl": "9ebc599bfe9415defde60f25cd42ad0f475d889325ae63040f05c2a771baf557",
+        "/scratch/juno/jvl210002/probing/runs/olmo2-1b-it/L3/cot/incongruent@v2/behavior.jsonl": "6812a4eb04907583bd725b9de5fe398af6ff369d25ba0c28e73101691097069c",
+        "/scratch/juno/jvl210002/probing/runs/olmo2-1b-it/L3/cot_s11/neutral/behavior.jsonl": "9ec421f38c98793bd641d999e554bee9830b9a972b925a4f989c30ed28b0e350",
+        "/scratch/juno/jvl210002/probing/runs/olmo2-1b-it/L3/cot_s11/incongruent@v1/behavior.jsonl": "70bd4707c7e3821fb0ad8d56e89a44e4a83d3901aa9dd184b2b083de24e1a06f",
+        "/scratch/juno/jvl210002/probing/runs/olmo2-1b-it/L3/cot_s11/incongruent@v2/behavior.jsonl": "416277753cb42e2cfe9ba137787b4aaae299a2cf0e5259f1f781ebb6f7270d5a",
+        "/scratch/juno/jvl210002/probing/runs/olmo2-1b-it/L3/cot_s13/neutral/behavior.jsonl": "d9472b2edaecf5b943927ae09de34b61f35979a9399a743e0e7d6fefe297a2b7",
+        "/scratch/juno/jvl210002/probing/runs/olmo2-1b-it/L3/cot_s13/incongruent@v1/behavior.jsonl": "81765303869464a5b8e5d56dd9ae8a032a825b3c604c6f8af954492b72d629d2",
+        "/scratch/juno/jvl210002/probing/runs/olmo2-1b-it/L3/cot_s13/incongruent@v2/behavior.jsonl": "26d21750743597ef868c7528d5a83bce620e2344029e8a39e58a5abd5d0ed3e3"
+      },
+      "frozen_eligibility_sha256": "1f88a1b8dcf8a96d856f338ff8c1c1e6c8aadd4e5298c222857cc411ca45f85c",
+      "eligible_counts": {
+        "s7/v1": 144,
+        "s7/v2": 44,
+        "s11/v1": 108,
+        "s11/v2": 8,
+        "s13/v1": 116,
+        "s13/v2": 25
+      }
+    }
+  },
+  "preflight_job": 450293,
+  "initial_gpu_jobs": [
+    450291,
+    450292
+  ]
+}

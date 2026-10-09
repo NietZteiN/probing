@@ -24,7 +24,7 @@ from cueconf.config import load_config  # noqa: E402
 TEMPLATE = """#!/bin/bash
 #SBATCH --job-name={name}
 #SBATCH --partition={partition}
-{gres}#SBATCH --cpus-per-task={cpus}
+{qos}{gres}#SBATCH --cpus-per-task={cpus}
 #SBATCH --mem={mem}
 #SBATCH --time={time}
 {exclude}{dependency}#SBATCH --output={log_dir}/%j_{name}.out
@@ -46,7 +46,7 @@ echo "# {argv}"
 
 
 def submit(name: str, partition: str, argv: list[str], dependency: str | None = None, time: str | None = None,
-           mem: str | None = None, dry_run: bool = False) -> str | None:
+           mem: str | None = None, dry_run: bool = False, qos: str | None = None) -> str | None:
     cfg = load_config("compute.yaml")["slurm"]
     p = cfg["partitions"][partition]
     log_dir = ROOT / cfg["log_dir_rel"]
@@ -56,7 +56,8 @@ def submit(name: str, partition: str, argv: list[str], dependency: str | None = 
     manifest_src = log_dir / f"submit_{stamp}_{name}.json"
     argv_s = " ".join(shlex.quote(x) for x in argv)
     script = TEMPLATE.format(
-        name=name, partition=partition, gres=(f"#SBATCH --gres={p['gres']}\n" if p.get("gres") else ""),
+        name=name, partition=partition, qos=(f"#SBATCH --qos={qos}\n" if qos else ""),
+        gres=(f"#SBATCH --gres={p['gres']}\n" if p.get("gres") else ""),
         cpus=p["cpus"], mem=mem or p["mem"], time=time or p["time"],
         exclude=(f"#SBATCH --exclude={p['exclude']}\n" if p.get("exclude") else ""),
         dependency=(f"#SBATCH --dependency={dependency}\n" if dependency else ""),
@@ -64,7 +65,8 @@ def submit(name: str, partition: str, argv: list[str], dependency: str | None = 
     if dry_run:
         print(f"--- would submit {name} on {partition} (dep={dependency}):\n    {argv_s}")
         return None
-    manifest_src.write_text(json.dumps({"name": name, "partition": partition, "argv": argv, "git": sha,
+    manifest_src.write_text(json.dumps({"name": name, "partition": partition, "qos": qos,
+                                        "time_limit": time or p['time'], "argv": argv, "git": sha,
                                         "submitted_utc": datetime.now(timezone.utc).isoformat()}, indent=1))
     sfile = log_dir / f"submit_{stamp}_{name}.sbatch"
     sfile.write_text(script)
@@ -83,11 +85,12 @@ def main() -> int:
     ap.add_argument("--dependency")
     ap.add_argument("--time")
     ap.add_argument("--mem")
+    ap.add_argument("--qos", help="explicit job QoS; leave unset for the partition/account default")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("argv", nargs=argparse.REMAINDER)
     a = ap.parse_args()
     argv = a.argv[1:] if a.argv and a.argv[0] == "--" else a.argv
-    submit(a.name, a.partition, argv, a.dependency, a.time, a.mem, a.dry_run)
+    submit(a.name, a.partition, argv, a.dependency, a.time, a.mem, a.dry_run, a.qos)
     return 0
 
 

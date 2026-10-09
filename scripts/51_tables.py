@@ -757,6 +757,8 @@ def main() -> int:
     numbers.update(followup["narrative_numbers"]())
     independent = runpy.run_path(str(Path(__file__).with_name("82_round6_tables.py")))
     numbers.update(independent["narrative_numbers"]())
+    paired = runpy.run_path(str(Path(__file__).with_name("88_round7_tables.py")))
+    numbers.update(paired["narrative_numbers"]())
     n_main = build([3], PAPER / "tables" / "behavior.tex", "3")
     build([3], PAPER / "tables" / "behavior_excluded.tex", "3", excluded=True)
     n_app = build([1, 2, 4, 5], PAPER / "tables" / "behavior_levels.tex", "1, 2, 4 and 5")
@@ -770,6 +772,7 @@ def main() -> int:
     import runpy
     runpy.run_path(str(Path(__file__).with_name("79_round5_tables.py")), run_name="__main__")
     runpy.run_path(str(Path(__file__).with_name("82_round6_tables.py")), run_name="__main__")
+    runpy.run_path(str(Path(__file__).with_name("88_round7_tables.py")), run_name="__main__")
     return 0
 
 
