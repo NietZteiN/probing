@@ -36,6 +36,9 @@ causal limits in Results and Limitations rather than making them the introductio
    implied by the name. Changing the name preserves the arithmetic.
 2. **Establish the behavioral contrast.** Direct answers show naming effects. Most chain
    contrasts meet the name-error equivalence bound, although accuracy effects can remain.
+   Distinguish that count from actual prompting improvements: 10 of 44 paired reductions
+   pass the sign-consistency and interval rule, while 31 answer-only contrasts already
+   meet equivalence. The full paired changes and accuracy gains are in Appendix G.
 3. **Test what written values ensure.** Keep the paired written-value control separate
    from probes. Promote the positional-copy and values-only response analyses: name
    errors can follow a correctly stated target value, most do not repeat the trailing

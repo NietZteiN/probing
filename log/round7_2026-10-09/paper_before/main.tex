@@ -41,10 +41,10 @@ a misleading variable name. Building on \citeauthor{kudo2026faithful}'s arithmet
 we test \NUM{n-models} models on pairs of problems with the same equations. In one version,
 a variable has an ordinary name; in the other, its name is a word for an incorrect digit.
 When asked only for the final answer, models more often return the digit suggested by
-the misleading name. Chain-of-thought prompting asks them to write calculations before
-answering and reduces this tendency. The reduction is reliable in
-\NUM{r7-paired-reliable-reductions} comparisons; with calculations, \NUM{eq-cot-equivalent} of
-\NUM{eq-cot-cells} added-error intervals lie within \NUM{eq-delta} percentage points of zero. Writing the calculation
+the misleading name. Asking them to write the calculation before answering, known as
+chain-of-thought prompting, reduces this tendency. In \NUM{eq-cot-equivalent} of
+\NUM{eq-cot-cells} comparisons, the confidence interval for the added error rate lies
+within \NUM{eq-delta} percentage points of zero. Writing the calculation
 therefore makes answers more robust to misleading wording while the underlying math
 remains unchanged.
 \end{abstract}
@@ -81,8 +81,8 @@ This conflict, like those in Stroop and shape--texture studies
 A separate analysis asks which values are readable inside the model. We train a
 \emph{linear probe}, a small predictor of a variable's true digit from internal activations,
 on separate problems. A probe predicting 6 and the model answering 6 are separate observations.
-We show reliable reductions in name-suggested answers and small remaining effects in
-almost every tested contrast. The paired renaming comparison makes
+We show that asking the model to write the calculation reduces answers matching the
+misleading name in almost every tested contrast. The paired renaming comparison makes
 resistance to a competing word a measurable benefit of CoT while holding the equations fixed.
 
 \begin{figure*}[t]
@@ -149,9 +149,7 @@ variable. Across levels, the largest effects occur where direct-answer accuracy 
 the name.
 
 With CoT, \NUM{eq-cot-equivalent} of \NUM{eq-cot-cells} name-error contrasts meet the equivalence
-bound. Paired reductions meet our reliability rule in \NUM{r7-paired-reliable-reductions} contrasts;
-\NUM{r7-paired-direct-equivalent} answer-only contrasts already meet the bound
-(Appendix~\ref{app:round7-paired}). The exception is \NUM{eq-exc-model}: its intermediate-variable excess is
+bound. The exception is \NUM{eq-exc-model}: its intermediate-variable excess is
 \NUM{eq-exc-mean} points [\NUM{eq-exc-lo}, \NUM{eq-exc-hi}]. Its neutral CoT accuracy is
 \NUM{eq-exc-neutral-acc}\%, compared with \NUM{eq-exc-letter-acc}\% under letter names.
 CoT limits answers matching the misleading digit. Overall accuracy still depends on names:
@@ -245,11 +243,15 @@ the implied digit. The remaining accuracy differences show why both outcomes mat
 The written-value control also distinguishes a correct value in the calculation from
 a correct final answer: seeing that value alone can miss the effect of a misleading name.
 
-To distinguish calculation from repeated wording, vary whether responses repeat names and
-include equations, matching length and ordinary-name accuracy. Next, hold a correct
-generated calculation fixed and vary the final query's name and digit-only versus named
-output. The values-only result motivates the accuracy control; the written-value result
-motivates the final-query test. These comparisons are future work.
+Two experiments would help explain the reduction. First, vary whether the response
+repeats variable names and whether it includes equations, using formats matched for
+length and ordinary-name accuracy. The values-only result motivates this matching:
+otherwise a change in name errors may accompany a loss of arithmetic competence.
+Second, hold a correct generated calculation fixed, vary whether the final query repeats
+the misleading name, and request either a digit alone or a named assignment. This would
+test whether the misleading cue can redirect the answer after the correct value has
+been written. Both are proposed
+tests; the present comparisons do not identify which part of CoT produces the benefit.
 
 \section{Related work}
 

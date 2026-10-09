@@ -1,0 +1,7 @@
+{
+  "jobs": [
+    "450292 PENDING probe_r7_8b",
+    "450291 PENDING probe_r7_small"
+  ],
+  "reason": "Resubmit the two still-pending follow-ups with explicit supported juno-pri QoS and source commit after changing their routing. Only these two pending jobs were cancelled; no running or unrelated job was changed."
+}

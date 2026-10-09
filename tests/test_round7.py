@@ -1,4 +1,5 @@
-from dataclasses import replace
+import importlib.util
+from pathlib import Path
 
 import pytest
 
@@ -33,3 +34,39 @@ def test_final_parser_rejects_nonanswer_prefixes(text):
 def test_final_parser_keeps_multidigit_errors_and_factorial_stops_before_new_problem():
     assert parse_final(' 15\n') == 15
     assert parse_factorial('2, 3; Answer: 3\n\nAnswer: 8') == 3
+
+
+def load_analysis_script(name):
+    path = Path(__file__).resolve().parents[1] / 'scripts' / name
+    spec = importlib.util.spec_from_file_location(name, path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def test_paired_prompting_subtracts_neutral_digit_changes_in_both_conditions():
+    import pandas as pd
+    analysis = load_analysis_script('85_paired_prompting.py')
+    direct = pd.DataFrame([
+        {'set_id':'one','group':'neutral','pred':2,'lure':None,'correct':True},
+        {'set_id':'one','group':'incongruent@v1','pred':8,'lure':8,'correct':False}])
+    cot = direct.copy()
+    cot.loc[cot.group=='neutral','pred'] = 8
+    cot.loc[cot.group=='neutral','correct'] = False
+    d,c = analysis.matched_effects(direct,cot,'v1')
+    assert d.excess.iloc[0] == 1
+    assert c.excess.iloc[0] == 0
+    assert (c-d).excess.iloc[0] == -1
+    assert (c-d).misleading_accuracy.iloc[0] == 0
+
+
+def test_control_contrasts_reject_changed_cohorts_and_gate_on_accuracy():
+    collector = load_analysis_script('87_collect_response_controls.py')
+    base = [{'seed':7,'set_id':str(i),'program_key':str(i),'excess':1,
+             'neutral_correct':1} for i in range(3)]
+    changed = [{**r,'excess':0,'neutral_correct':0} for r in base]
+    comparison = collector.contrast(changed,base)
+    assert comparison['change_ci95'] == [-1,-1,-1]
+    assert comparison['competence_matched'] is False
+    with pytest.raises(ValueError,match='eligible pairs'):
+        collector.contrast(changed[:-1],base)

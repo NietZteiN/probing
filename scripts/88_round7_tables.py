@@ -7,7 +7,11 @@ ROOT=Path(__file__).resolve().parents[1]
 LABEL={'llama32-3b':'Llama-3.2-3B','llama31-8b':'Llama-3.1-8B',
        'llama32-3b-it':'Llama-3.2-3B-I','llama31-8b-it':'Llama-3.1-8B-I',
        'gemma3-4b-it':'Gemma-3-4B-I','gemma3-12b-it':'Gemma-3-12B-I',
-       'olmo2-1b-it':'OLMo-2-1B-I','olmo2-7b-it':'OLMo-2-7B-I'}
+       'olmo2-1b-it':'OLMo-2-1B-I','olmo2-7b-it':'OLMo-2-7B-I',
+       'llama31-8b-it-ft':'Llama-8B single-task',
+       'llama31-8b-it-ftmulti':'Llama-8B multi-task',
+       'llama31-8b-it-merged':'Llama-8B merged',
+       'nemotron-nano-8b':'Nemotron-Nano-8B','gemma3-4b':'Gemma-3-4B'}
 
 
 def load():
@@ -52,7 +56,7 @@ def main():
                          f"{100*cell['cot_excess']:+.2f}",change,f'{100*gain:+.1f}'])+r' \\')
         lines += [r'\bottomrule',r'\end{tabular}}',
                   r'\ifdim\wd\roundsevenbox>\textwidth\resizebox{\textwidth}{!}{\usebox{\roundsevenbox}}\else\usebox{\roundsevenbox}\fi',
-                  r'\caption{Excess name errors and paired CoT-minus-answer-only changes (percentage points). Accuracy gain is the ordinary-name accuracy change. Roles v1/v2 are queried/intermediate at level 3; the queried role is v2 at level 2. $^{*}$Reliable reduction across all demonstration sets.}',
+                  r'\caption{Excess name errors and paired CoT-minus-answer-only changes (percentage points). Accuracy gain is the ordinary-name accuracy change. Roles v1/v2/v3 are the first/second/third variables in the problem; the queried role is v2 at level 2 and v1 otherwise. $^{*}$Reliable reduction across all demonstration sets.}',
                   r'\label{tab:round7-paired-'+str(part//22+1)+'}',r'\end{table*}']
     (ROOT/'paper/tables/round7_paired.tex').write_text('\n'.join(lines)+'\n')
 

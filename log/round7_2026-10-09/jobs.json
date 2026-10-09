@@ -1,0 +1,29 @@
+{
+  "active_gpu_jobs": [
+    450333,
+    450334
+  ],
+  "collector_job": 450341,
+  "preflight_job": 450293,
+  "max_gpu_workers": 2,
+  "jobs": [
+    {
+      "id": 450333,
+      "scontrol": "JobId=450333 JobName=probe_r7_small\n   UserId=jvl210002(736106) GroupId=sn(215) MCS_label=N/A\n   Priority=17885 Nice=0 Account=tnguyen QOS=juno-pri\n   JobState=PENDING Reason=Priority Dependency=(null)\n   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=04:00:00 TimeMin=N/A\n   SubmitTime=2026-10-09T15:20:30 EligibleTime=2026-10-09T15:20:30\n   AccrueTime=2026-10-09T15:20:30\n   StartTime=2026-10-10T10:54:08 EndTime=2026-10-10T14:54:08 Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-09T15:29:08 Scheduler=Main\n   Partition=a30,h100,h200 AllocNode:Sid=c-01-06:1218996\n   ReqNodeList=(null) ExcNodeList=g-06-01\n   NodeList= SchedNodeList=g-01-01\n   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)\n   Command=/work/jvl210002/migration/probing/log/slurm/submit_20261009T202030Z_probe_r7_small.sbatch\n   SubmitLine=sbatch --parsable /work/jvl210002/migration/probing/log/slurm/submit_20261009T202030Z_probe_r7_small.sbatch\n   WorkDir=/work/jvl210002/migration/probing\n   StdErr=/work/jvl210002/migration/probing/log/slurm/450333_probe_r7_small.out\n   StdIn=/dev/null\n   StdOut=/work/jvl210002/migration/probing/log/slurm/450333_probe_r7_small.out\n   TresPerNode=gres/gpu:1\n   TresPerTask=cpu=8\n\n"
+    },
+    {
+      "id": 450334,
+      "scontrol": "JobId=450334 JobName=probe_r7_8b\n   UserId=jvl210002(736106) GroupId=sn(215) MCS_label=N/A\n   Priority=17885 Nice=0 Account=tnguyen QOS=juno-pri\n   JobState=PENDING Reason=Priority Dependency=(null)\n   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=04:00:00 TimeMin=N/A\n   SubmitTime=2026-10-09T15:20:31 EligibleTime=2026-10-09T15:20:31\n   AccrueTime=2026-10-09T15:20:31\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-09T15:29:08 Scheduler=Main\n   Partition=h100,h200 AllocNode:Sid=c-01-06:1218996\n   ReqNodeList=(null) ExcNodeList=g-06-01\n   NodeList=\n   NumNodes=1 NumCPUs=8 NumTasks=1 CPUs/Task=8 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=8,mem=64G,node=1,billing=8,gres/gpu=1\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=8 MinMemoryNode=64G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)\n   Command=/work/jvl210002/migration/probing/log/slurm/submit_20261009T202031Z_probe_r7_8b.sbatch\n   SubmitLine=sbatch --parsable /work/jvl210002/migration/probing/log/slurm/submit_20261009T202031Z_probe_r7_8b.sbatch\n   WorkDir=/work/jvl210002/migration/probing\n   StdErr=/work/jvl210002/migration/probing/log/slurm/450334_probe_r7_8b.out\n   StdIn=/dev/null\n   StdOut=/work/jvl210002/migration/probing/log/slurm/450334_probe_r7_8b.out\n   TresPerNode=gres/gpu:1\n   TresPerTask=cpu=8\n\n"
+    },
+    {
+      "id": 450341,
+      "scontrol": "JobId=450341 JobName=probe_r7_collect\n   UserId=jvl210002(736106) GroupId=sn(215) MCS_label=N/A\n   Priority=17884 Nice=0 Account=tnguyen QOS=normal\n   JobState=PENDING Reason=Dependency Dependency=afterok:450333(unfulfilled),afterok:450334(unfulfilled)\n   Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0\n   RunTime=00:00:00 TimeLimit=01:00:00 TimeMin=N/A\n   SubmitTime=2026-10-09T15:21:33 EligibleTime=Unknown\n   AccrueTime=Unknown\n   StartTime=Unknown EndTime=Unknown Deadline=N/A\n   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-09T15:21:33 Scheduler=Main\n   Partition=dev AllocNode:Sid=c-01-06:1220819\n   ReqNodeList=(null) ExcNodeList=(null)\n   NodeList=\n   NumNodes=1 NumCPUs=4 NumTasks=1 CPUs/Task=4 ReqB:S:C:T=0:0:*:*\n   ReqTRES=cpu=4,mem=32G,node=1,billing=4\n   AllocTRES=(null)\n   Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=*\n   MinCPUsNode=4 MinMemoryNode=32G MinTmpDiskNode=0\n   Features=(null) DelayBoot=00:00:00\n   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)\n   Command=/work/jvl210002/migration/probing/log/slurm/submit_20261009T202133Z_probe_r7_collect.sbatch\n   SubmitLine=sbatch --parsable /work/jvl210002/migration/probing/log/slurm/submit_20261009T202133Z_probe_r7_collect.sbatch\n   WorkDir=/work/jvl210002/migration/probing\n   StdErr=/work/jvl210002/migration/probing/log/slurm/450341_probe_r7_collect.out\n   StdIn=/dev/null\n   StdOut=/work/jvl210002/migration/probing/log/slurm/450341_probe_r7_collect.out\n   TresPerTask=cpu=4\n\n"
+    }
+  ],
+  "execution_sources_sha256": {
+    "scripts/86_response_controls.py": "f62a3bfcdc2a054883c8d8ddc7e2f5edc277e00f7d67d937bde7f72ce628010b",
+    "scripts/87_collect_response_controls.py": "b8b607299fb5204b3977be239586507486c7475a8b481af6167fe45ae677b5ca",
+    "src/cueconf/round7.py": "05b065b6970ae5f1c2cc78b42628b5c91be604a861c556e5dc2d4f04d4fa32a5",
+    "docs/ROUND7_PROTOCOL.md": "3c5403dd342351ea4296f129d1e82c2ff290591a27e14c14e90ece4ba0def2d5"
+  }
+}

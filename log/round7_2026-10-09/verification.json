@@ -1,0 +1,35 @@
+{
+  "strict_submission_check": true,
+  "limitations_end_page": 4,
+  "references_start_page": 5,
+  "total_pages": 16,
+  "abstract_words": 126,
+  "existing_numeric_macros_unchanged": 2067,
+  "new_paired_macros": 12,
+  "all_paired_source_hashes_verified": true,
+  "counts": {
+    "cells": 44,
+    "reliable_reductions": 10,
+    "negative_change_intervals": 19,
+    "direct_equivalent": 31,
+    "cot_equivalent": 43,
+    "canonical_reliable_reductions": 10
+  },
+  "source_bundle_files": 25,
+  "source_bundle_matches_current_source": true,
+  "preflight_passed": true,
+  "cpu_tests_passed": 75,
+  "cpu_tests_skipped": 6,
+  "gpu_jobs": [
+    450333,
+    450334
+  ],
+  "collector_job": 450341,
+  "gpu_results_available": false,
+  "visual_review_pages": [
+    1,
+    2,
+    4,
+    16
+  ]
+}

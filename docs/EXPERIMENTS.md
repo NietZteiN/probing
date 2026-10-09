@@ -132,3 +132,15 @@ both regimes. The question is whether the lure is still decodable at the value s
 answer position, where every other model has erased it. Behaviour is already known (47% neutral
 accuracy with word names, 77% with letters).
 | E40 | Model-kind axis (Amendment 5): base / instruct / single-task LoRA / multi-task LoRA / TIES merge / reasoning-tuned, all on the Llama-3.1-8B spine; lure excess per kind | ~6 GPU-h | **done 2026-09-21** — no tuned rung differs from instruct beyond δ=2 in either regime; base is the only claimable positive (+1.20 direct, queried); chain removes it for all six. `68_model_kind.py`, `results/summary/model_kind_L3.json`, results/NOTES.md 2026-09-21 |
+
+## J. Paired prompting changes and response controls (2026-10-09)
+
+Protocol: [ROUND7_PROTOCOL.md](ROUND7_PROTOCOL.md). Current checklist:
+[ROUND7_STATUS.md](ROUND7_STATUS.md). These are exploratory reviewer follow-ups.
+
+| ID | Comparison | Status |
+|---|---|---|
+| R7-A | Paired CoT-minus-answer-only excess errors, with accuracy changes, on the exact 44 equivalence cells | **Done.** Ten reductions meet the three-seed sign rule and 95% interval criterion; the arithmetic-computation clustering sensitivity retains ten. Full results: `results/summary/round7_paired_prompting.json`. |
+| R7-B | Name repetition × numeric equations in demonstrated responses; token-matched prompts and independent neutral competence checks | **Queued**, GPU worker jobs 450333/450334; tokenizer preflight 450293 passed. |
+| R7-C | Four final-query/output continuations after paired, completely correct generated calculations | **Queued**, in the same two workers. Conditional cohorts frozen before continuation outputs. |
+| R7-validation | Independent parsing, executable labels, cohorts, fixed calculation hashes and clustered summaries | CPU job **450341**, dependent on successful completion of both GPU workers. |
