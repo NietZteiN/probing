@@ -160,29 +160,6 @@ CoT limits answers matching the misleading digit. Overall accuracy still depends
 
 
 
-\subsection{Correct written values can precede name errors}
-\label{sec:written-controls}
-
-A generated calculation can state the correct value and still end with the suggested
-digit. Among matched versions that both state the intermediate variable's correct value,
-OLMo-2-1B still has \NUM{vw-olmo-excess} points of excess name errors
-[\NUM{vw-olmo-lo}, \NUM{vw-olmo-hi}] across \NUM{vw-olmo-n} matched observations from
-\NUM{vw-olmo-seeds} demonstration sets (Appendix~\ref{app:controls}). This conditional
-comparison shows that stating the value does not guarantee a correct answer; it does
-not estimate the causal effect of stating it.
-
-Nor do name errors always repeat the preceding digit. Across \NUM{copy-n-err} generated
-CoT name errors, pooled over models, levels and demonstration sets, only
-\NUM{copy-lure-frac} have the name-suggested digit at the end of the calculation segment
-before the final answer (Appendix~\ref{app:sweeps}). A name error need not copy a trailing
-instance of that digit.
-
-We also test writing values alone, such as \texttt{cup=5, four=6}, instead of restating
-and evaluating equations. On two-operation problems, ordinary-name accuracy falls to
-\NUM{simple-l8b-acc}\% for Llama-3.1-8B and \NUM{simple-l3b-acc}\% for Llama-3.2-3B
-(Appendix~\ref{app:simple}). This format changes both arithmetic performance and the
-written context. It cannot isolate an effect of name repetition while preserving computation.
-
 \subsection{What the probes recover}
 
 These probes read internal states while the correct calculation is supplied. Just after
@@ -211,6 +188,13 @@ minimum for interpreting these probes in every cell (Appendix Figure~\ref{fig:re
 but its name-error cases remain rare. OLMo's generated-chain readouts therefore
 remain descriptive (Appendix~\ref{app:round6-generated}).
 
+A generated calculation can state the correct value and still end with the suggested
+digit. Among matched versions that both state the correct value, OLMo-2-1B still has
+\NUM{vw-olmo-excess} points of excess name errors
+[\NUM{vw-olmo-lo}, \NUM{vw-olmo-hi}] across \NUM{vw-olmo-n} matched observations from
+\NUM{vw-olmo-seeds} demonstration sets. The full control is
+in Appendix~\ref{app:controls}.
+
 \subsection{Patching localizes the answer-only effect}
 
 For Llama-3.2-3B without CoT, replacing name activations with the neutral twin's removes
@@ -227,25 +211,6 @@ changes \NUM{exc-ctlword} at the same layer. These interventions test only the s
 
 
 
-\section{Implications and next experiments}
-
-Writing calculations improves resistance to a word that suggests the wrong answer while
-the mathematical problem stays fixed. This gives reasoning evaluations a concrete test
-beyond aggregate accuracy: rename a variable and measure whether answers move toward
-the implied digit. The remaining accuracy differences show why both outcomes matter.
-The written-value control also distinguishes a correct value in the calculation from
-a correct final answer: seeing that value alone can miss the effect of a misleading name.
-
-Two experiments would help explain the reduction. First, vary whether the response
-repeats variable names and whether it includes equations, using formats matched for
-length and ordinary-name accuracy. The values-only result motivates this matching:
-otherwise a change in name errors may accompany a loss of arithmetic competence.
-Second, hold a correct generated calculation fixed, vary whether the final query repeats
-the misleading name, and request either a digit alone or a named assignment. This would
-test whether the misleading cue can redirect the answer after the correct value has
-been written. Both are proposed
-tests; the present comparisons do not identify which part of CoT produces the benefit.
-
 \section{Related work}
 
 \citet{kudo2026faithful} locate intermediate-value readouts during arithmetic CoT; our competing
@@ -253,17 +218,19 @@ names distinguish a computed value from a lexical cue. Recent language-model Str
 test lexical responses \cite{wang2026stroop,hu2026conflict}. Faithfulness studies perturb prompts, chains or
 parameters \cite{turpin2023unfaithful,lanham2023measuring,chen2025reasoning,tutek2025unlearning};
 we combine a known conflicting cue with internal readouts. Positional copying and output priors
-can also explain arithmetic errors \cite{liu2026readout,prabhakar2024deciphering};
-Section~\ref{sec:written-controls} checks repetition of the digit preceding the answer.
+can also explain arithmetic errors \cite{liu2026readout,prabhakar2024deciphering}; our copy
+control is reported in Appendix~\ref{app:sweeps}.
 A companion code study \citep{anon2026code} tests readouts before actual wrong value writes
 in Python traces and changes the demonstration format. Here the main finding is a reduction
 in arithmetic answers matching a misleading name while the equations remain unchanged.
 
 \section{Conclusion}
 
-Writing and evaluating equations limits answers suggested by misleading names in almost
-every tested arithmetic contrast. Paired renaming measures this benefit directly;
-the written-value and probe controls guide further tests of how it arises.
+Writing calculations limits answers suggested by misleading names in almost every tested
+arithmetic contrast. The paired renaming test measures resistance to a competing word while
+holding the equations fixed. The internal explanation remains unresolved: the probe
+association depends on one model, whose generated-chain readouts fail calibration even
+after retraining.
 
 \section*{Limitations}
 

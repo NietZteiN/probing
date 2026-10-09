@@ -1,6 +1,6 @@
 # Chain of Thought Reduces Errors from Misleading Names in Arithmetic
 
-Updated 2026-10-08 to match the results and revised manuscript. This replaces the earlier,
+Updated 2026-10-09 to match the results and revised manuscript. This replaces the earlier,
 prospective outline; the preregistration and its amendments remain the record of the design.
 
 Prior work follows arithmetic values during CoT. We add a competing digit in a variable's
@@ -36,18 +36,29 @@ causal limits in Results and Limitations rather than making them the introductio
    implied by the name. Changing the name preserves the arithmetic.
 2. **Establish the behavioral contrast.** Direct answers show naming effects. Most chain
    contrasts meet the name-error equivalence bound, although accuracy effects can remain.
-3. **Compare readouts and competence.** Compare the true-value and readout of the name-suggested values
-   at the writing step. Report the unresolved instance-level regression and the matched
-   written-value control alongside this comparison. Include within-model role differences,
+3. **Test what written values ensure.** Keep the paired written-value control separate
+   from probes. Promote the positional-copy and values-only response analyses: name
+   errors can follow a correctly stated target value, most do not repeat the trailing
+   name-suggested digit, and removing equations also reduces ordinary-name accuracy.
+   The conditional written-value estimate is not a causal effect of writing that value.
+4. **Compare readouts and competence.** Compare the true-value and readout of the name-suggested values
+   at the writing step. Report the unresolved instance-level regression. Include within-model role differences,
    leave-one-model-out sensitivity, gold-trained transfer and generated-neutral training
    with computation-disjoint validation and testing.
-4. **Ask what patching localizes.** Present the early-layer sensitivity in Llama-3.2-3B,
+5. **Ask what patching localizes.** Present the early-layer sensitivity in Llama-3.2-3B,
    with disruption and alternative-name controls. Other models do not establish a common
    name-specific mechanism.
+6. **State implications and discriminating next tests.** Paired renaming measures resistance
+   to a conflicting word in addition to aggregate accuracy. Propose response-format
+   comparisons matched for length and ordinary-name accuracy, and final-query/output
+   interventions after a fixed correct calculation. Label these as future experiments,
+   not completed results or evidence for a specific mechanism.
 
 The main text keeps these results, the running example and the methods needed to interpret
 them. The appendix holds task levels, replication, equivalence details, tokenization,
-additional naming controls, full probe sweeps, tuning comparisons and alternative chains.
+additional naming controls, full probe sweeps, tuning comparisons and full alternative-format
+results. The main text summarizes the values-only format's accuracy cost to motivate the
+next experiments; it does not infer a shared arithmetic/code mechanism.
 
 ## Limits that affect the argument
 

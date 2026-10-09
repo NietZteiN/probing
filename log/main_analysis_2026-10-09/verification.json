@@ -1,0 +1,30 @@
+{
+  "strict_submission_check": true,
+  "four_pages_including_limitations": true,
+  "references_start_page": 4,
+  "total_pages": 50,
+  "abstract_unchanged": true,
+  "numerical_inputs_summaries_and_figures_unchanged": true,
+  "unchanged_files_checked": 392,
+  "promoted_macros_verified_from_saved_summaries": {
+    "copy-n-err": "4110",
+    "copy-lure-frac": "13\\%",
+    "vw-olmo-excess": "+3.6",
+    "vw-olmo-lo": "+2.6",
+    "vw-olmo-hi": "+4.7",
+    "vw-olmo-n": "2739",
+    "vw-olmo-seeds": "3",
+    "simple-l8b-acc": "54",
+    "simple-l3b-acc": "31"
+  },
+  "positional_copy_sources": 63,
+  "positional_copy_exact_name_matches": 540.0,
+  "probe_reliability_figure_page": 49,
+  "main_pages_visually_reviewed": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "new_experiments": "proposed only; not launched"
+}

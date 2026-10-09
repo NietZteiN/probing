@@ -1193,3 +1193,21 @@ generated-neutral probe appendix. Kept the calibration results and a brief appen
 reference in the main text. The generator preserves the appendix placement. No estimates,
 figure assets or scientific claims changed. Strict build, reference and page checks pass;
 verification: `log/appendix_calibration_2026-10-09/verification.json`.
+
+
+### 2026-10-09 — Main-text controls and implications
+
+Used the space freed by the reliability figure to bring two appendix analyses into the
+main results: the positional-copy control (13% of 4,110 generated name errors have the
+name-suggested digit in the preceding calculation segment) and the values-only format
+(ordinary-name accuracy falls to 54% and 31% for the two Llama models). The matched
+written-value analysis now precedes the probe results and explicitly distinguishes
+its conditional estimate from a causal effect of writing the correct value.
+
+Added implications for evaluating robustness under paired renaming and two proposed
+experiments: response formats varying equations and repeated names with length and
+ordinary-name accuracy matched, and final-query/output changes after a fixed correct
+calculation. These are future proposals, not new results or submission blockers.
+No numerical inputs, result summaries or figure assets changed. Strict checks pass;
+all text through Limitations fits on four pages. Evidence:
+`log/main_analysis_2026-10-09/verification.json`.

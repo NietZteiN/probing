@@ -4,7 +4,25 @@ One line per experiment the paper needs. Status is the truth on disk, not a plan
 ticked only when its numbers are in `results/summary/` and reach the paper through
 `scripts/51_tables.py`. Details and numbers: `docs/EXPERIMENTS.md`, `results/NOTES.md`.
 
-*Last updated 2026-10-08. ARR deadline 2026-10-12 (AoE).*
+*Last updated 2026-10-09. ARR deadline 2026-10-12 (AoE).*
+
+## Main-text analysis and implications (2026-10-09)
+
+- [x] Bring the positional-copy and values-only response controls into the main results,
+  alongside the matched written-value analysis. Keep probe reliability in the appendix.
+- [x] Explain the implications for robustness evaluation and the distinction between a
+  correct written value and a correct final answer. Add two concrete future experiments.
+- [x] Verify promoted estimates against saved summaries, build the submission PDF,
+  and inspect all four pages through Limitations.
+
+Proposed future work, separate from completed experiments and submission blockers:
+
+- [ ] Compare response formats that independently vary repeated variable names and
+  displayed equations, matched for length and ordinary-name accuracy before testing
+  misleading-name effects.
+- [ ] Hold a correct generated calculation fixed; vary whether the final query repeats
+  the misleading name and whether the response is a digit or a named assignment.
+  Test whether these changes redirect the final answer.
 
 ## Concise figures and concrete code explanations (2026-10-09)
 
