@@ -75,14 +75,19 @@ and positions within matched groups. Spaces around binary operators prevent merg
 rendered in every condition, and \NUM{n-probe-train} separately generated problems for
 training probes; every SGD probe is trained with \NUM{probe-seeds} seeds. Every run here is
 inference and the probes are linear; the three adapter checkpoints of Appendix~\ref{app:kind}
-were trained in a separate project, and that compute is not counted below. The recorded allocation time totals at most \NUM{compute-gpuh} GPU-hours on NVIDIA A30, H100 and H200 cards, including idle time and shared workers that also ran companion-code experiments.
+were trained in a separate project, and that compute is not counted below. Combined allocation time across this study and its code companion totals \NUM{compute-shared-gpuh} GPU-hours on NVIDIA A30, H100 and H200 cards, an upper bound including idle and shared workers.
 The models are from the Llama~3 \citep{grattafiori2024llama3}, Gemma~3 \citep{gemmateam2025gemma3}
-and OLMo~2 \citep{olmo2024olmo2} families, with the reasoning-tuned checkpoint from
+and OLMo~2 \citep{olmo2024olmo2,walsh2025olmo2} families, with the reasoning-tuned checkpoint from
 \citet{bercovich2025nemotron}, each used under its release licence for research. Models run in
 PyTorch \citep{paszke2019pytorch} with Transformers \citep{wolf2020transformers}, and the probes are
 trained in PyTorch; the L-BFGS refit of Appendix~\ref{app:recipe} uses scikit-learn
 \citep{pedregosa2011sklearn}, and the mixed-effects check uses statsmodels
 \citep{seabold2010statsmodels}.
+Llama checkpoints use the Llama~3.1 or 3.2 Community License, Gemma uses the Gemma Terms
+of Use, OLMo uses Apache~2.0, and Nemotron uses the NVIDIA Open Model License.
+We use released weights for research inference and do not redistribute them.
+Versions are PyTorch~2.11.0 (CUDA~12.9), Transformers~5.14.1, NumPy~2.3.5,
+scikit-learn~1.9.1 and SciPy~1.18.0.
 
 \section{Full behavioral results and controls}
 \begin{table*}[t]
@@ -327,3 +332,4 @@ Roles v1/v2: queried/intermediate; --: undefined.}
 \input{tables/round5_followups}
 \input{tables/round6_followups}
 \input{tables/round7_paired}
+\input{tables/round7_controls}

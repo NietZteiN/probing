@@ -1,0 +1,606 @@
+{
+  "gpu_hours": 222.5,
+  "scope": "Combined allocations of the arithmetic and CodeCue studies, deduplicated by job id; upper bound including shared and idle workers. Derived-model pretraining and adapter training outside these studies are excluded.",
+  "by_partition": {
+    "h200": 132.4511111111111,
+    "h100": 65.21444444444447,
+    "a30": 24.82472222222222
+  },
+  "jobs": [
+    {
+      "job_id": 391545,
+      "partition": "h200",
+      "gpu_hours": 0.024444444444444446
+    },
+    {
+      "job_id": 391546,
+      "partition": "h200",
+      "gpu_hours": 0.26222222222222225
+    },
+    {
+      "job_id": 391547,
+      "partition": "h200",
+      "gpu_hours": 2.944722222222222
+    },
+    {
+      "job_id": 391548,
+      "partition": "h200",
+      "gpu_hours": 2.9497222222222224
+    },
+    {
+      "job_id": 391549,
+      "partition": "h200",
+      "gpu_hours": 0.45222222222222225
+    },
+    {
+      "job_id": 391550,
+      "partition": "h200",
+      "gpu_hours": 1.958888888888889
+    },
+    {
+      "job_id": 391551,
+      "partition": "h200",
+      "gpu_hours": 1.0686111111111112
+    },
+    {
+      "job_id": 391552,
+      "partition": "h200",
+      "gpu_hours": 0.4002777777777778
+    },
+    {
+      "job_id": 391571,
+      "partition": "h200",
+      "gpu_hours": 0.4538888888888889
+    },
+    {
+      "job_id": 391916,
+      "partition": "h200",
+      "gpu_hours": 2.0
+    },
+    {
+      "job_id": 391917,
+      "partition": "h200",
+      "gpu_hours": 2.0
+    },
+    {
+      "job_id": 391918,
+      "partition": "h200",
+      "gpu_hours": 1.6297222222222223
+    },
+    {
+      "job_id": 391919,
+      "partition": "h200",
+      "gpu_hours": 1.6330555555555555
+    },
+    {
+      "job_id": 391920,
+      "partition": "h200",
+      "gpu_hours": 2.1527777777777777
+    },
+    {
+      "job_id": 391921,
+      "partition": "h200",
+      "gpu_hours": 1.7766666666666666
+    },
+    {
+      "job_id": 391922,
+      "partition": "h200",
+      "gpu_hours": 0.8836111111111111
+    },
+    {
+      "job_id": 391923,
+      "partition": "h200",
+      "gpu_hours": 0.7813888888888889
+    },
+    {
+      "job_id": 391951,
+      "partition": "h200",
+      "gpu_hours": 0.11416666666666667
+    },
+    {
+      "job_id": 391952,
+      "partition": "h200",
+      "gpu_hours": 1.4655555555555555
+    },
+    {
+      "job_id": 391953,
+      "partition": "h200",
+      "gpu_hours": 1.4666666666666666
+    },
+    {
+      "job_id": 391954,
+      "partition": "h200",
+      "gpu_hours": 0.5561111111111111
+    },
+    {
+      "job_id": 391955,
+      "partition": "h200",
+      "gpu_hours": 0.5536111111111112
+    },
+    {
+      "job_id": 391964,
+      "partition": "h200",
+      "gpu_hours": 0.0975
+    },
+    {
+      "job_id": 391965,
+      "partition": "h200",
+      "gpu_hours": 0.20444444444444446
+    },
+    {
+      "job_id": 392248,
+      "partition": "h200",
+      "gpu_hours": 1.2605555555555557
+    },
+    {
+      "job_id": 392249,
+      "partition": "h200",
+      "gpu_hours": 1.2475
+    },
+    {
+      "job_id": 392266,
+      "partition": "h200",
+      "gpu_hours": 0.17166666666666666
+    },
+    {
+      "job_id": 392267,
+      "partition": "h200",
+      "gpu_hours": 0.38916666666666666
+    },
+    {
+      "job_id": 392451,
+      "partition": "h200",
+      "gpu_hours": 0.2627777777777778
+    },
+    {
+      "job_id": 392452,
+      "partition": "h200",
+      "gpu_hours": 0.34555555555555556
+    },
+    {
+      "job_id": 392453,
+      "partition": "h200",
+      "gpu_hours": 0.46555555555555556
+    },
+    {
+      "job_id": 392454,
+      "partition": "h200",
+      "gpu_hours": 0.45361111111111113
+    },
+    {
+      "job_id": 392455,
+      "partition": "h200",
+      "gpu_hours": 0.5338888888888889
+    },
+    {
+      "job_id": 392456,
+      "partition": "h200",
+      "gpu_hours": 0.8452777777777778
+    },
+    {
+      "job_id": 392673,
+      "partition": "h200",
+      "gpu_hours": 1.6494444444444445
+    },
+    {
+      "job_id": 392674,
+      "partition": "h200",
+      "gpu_hours": 1.083611111111111
+    },
+    {
+      "job_id": 392675,
+      "partition": "h200",
+      "gpu_hours": 2.912777777777778
+    },
+    {
+      "job_id": 392676,
+      "partition": "h200",
+      "gpu_hours": 2.0355555555555553
+    },
+    {
+      "job_id": 392678,
+      "partition": "h200",
+      "gpu_hours": 0.035277777777777776
+    },
+    {
+      "job_id": 392679,
+      "partition": "h200",
+      "gpu_hours": 0.045
+    },
+    {
+      "job_id": 393084,
+      "partition": "h200",
+      "gpu_hours": 0.14916666666666667
+    },
+    {
+      "job_id": 393085,
+      "partition": "h200",
+      "gpu_hours": 0.28055555555555556
+    },
+    {
+      "job_id": 393094,
+      "partition": "h200",
+      "gpu_hours": 0.10777777777777778
+    },
+    {
+      "job_id": 393095,
+      "partition": "h200",
+      "gpu_hours": 0.09777777777777778
+    },
+    {
+      "job_id": 393096,
+      "partition": "h200",
+      "gpu_hours": 0.09555555555555556
+    },
+    {
+      "job_id": 393097,
+      "partition": "h200",
+      "gpu_hours": 0.11861111111111111
+    },
+    {
+      "job_id": 393098,
+      "partition": "h200",
+      "gpu_hours": 0.13833333333333334
+    },
+    {
+      "job_id": 393099,
+      "partition": "h200",
+      "gpu_hours": 0.21694444444444444
+    },
+    {
+      "job_id": 393100,
+      "partition": "h200",
+      "gpu_hours": 0.19805555555555557
+    },
+    {
+      "job_id": 393101,
+      "partition": "h200",
+      "gpu_hours": 0.21138888888888888
+    },
+    {
+      "job_id": 393102,
+      "partition": "h200",
+      "gpu_hours": 0.21222222222222223
+    },
+    {
+      "job_id": 393103,
+      "partition": "h200",
+      "gpu_hours": 0.215
+    },
+    {
+      "job_id": 393104,
+      "partition": "h200",
+      "gpu_hours": 0.245
+    },
+    {
+      "job_id": 393105,
+      "partition": "h200",
+      "gpu_hours": 0.24194444444444443
+    },
+    {
+      "job_id": 393106,
+      "partition": "h200",
+      "gpu_hours": 0.4738888888888889
+    },
+    {
+      "job_id": 393107,
+      "partition": "h200",
+      "gpu_hours": 0.44972222222222225
+    },
+    {
+      "job_id": 393284,
+      "partition": "h200",
+      "gpu_hours": 0.06027777777777778
+    },
+    {
+      "job_id": 393285,
+      "partition": "h200",
+      "gpu_hours": 1.6211111111111112
+    },
+    {
+      "job_id": 393286,
+      "partition": "h200",
+      "gpu_hours": 1.083611111111111
+    },
+    {
+      "job_id": 394212,
+      "partition": "h200",
+      "gpu_hours": 0.10888888888888888
+    },
+    {
+      "job_id": 394213,
+      "partition": "h200",
+      "gpu_hours": 0.09
+    },
+    {
+      "job_id": 394214,
+      "partition": "h200",
+      "gpu_hours": 0.09861111111111111
+    },
+    {
+      "job_id": 394216,
+      "partition": "h200",
+      "gpu_hours": 0.17666666666666667
+    },
+    {
+      "job_id": 394217,
+      "partition": "h200",
+      "gpu_hours": 0.17277777777777778
+    },
+    {
+      "job_id": 394218,
+      "partition": "h200",
+      "gpu_hours": 0.1786111111111111
+    },
+    {
+      "job_id": 394219,
+      "partition": "h200",
+      "gpu_hours": 0.3061111111111111
+    },
+    {
+      "job_id": 394221,
+      "partition": "h200",
+      "gpu_hours": 0.30777777777777776
+    },
+    {
+      "job_id": 394222,
+      "partition": "h200",
+      "gpu_hours": 0.7488888888888889
+    },
+    {
+      "job_id": 394224,
+      "partition": "h200",
+      "gpu_hours": 0.7555555555555555
+    },
+    {
+      "job_id": 394303,
+      "partition": "h200",
+      "gpu_hours": 12.006944444444445
+    },
+    {
+      "job_id": 394304,
+      "partition": "h200",
+      "gpu_hours": 12.008055555555556
+    },
+    {
+      "job_id": 397743,
+      "partition": "h200",
+      "gpu_hours": 11.843333333333334
+    },
+    {
+      "job_id": 397744,
+      "partition": "h200",
+      "gpu_hours": 11.8425
+    },
+    {
+      "job_id": 401403,
+      "partition": "h200",
+      "gpu_hours": 12.001388888888888
+    },
+    {
+      "job_id": 403571,
+      "partition": "h100",
+      "gpu_hours": 0.04138888888888889
+    },
+    {
+      "job_id": 404855,
+      "partition": "h100",
+      "gpu_hours": 12.0
+    },
+    {
+      "job_id": 408480,
+      "partition": "h100",
+      "gpu_hours": 7.091388888888889
+    },
+    {
+      "job_id": 409808,
+      "partition": "h200",
+      "gpu_hours": 4.720555555555555
+    },
+    {
+      "job_id": 411535,
+      "partition": "a30",
+      "gpu_hours": 0.4722222222222222
+    },
+    {
+      "job_id": 411536,
+      "partition": "a30",
+      "gpu_hours": 0.2222222222222222
+    },
+    {
+      "job_id": 411537,
+      "partition": "a30",
+      "gpu_hours": 0.2777777777777778
+    },
+    {
+      "job_id": 411538,
+      "partition": "h100",
+      "gpu_hours": 0.205
+    },
+    {
+      "job_id": 411539,
+      "partition": "h100",
+      "gpu_hours": 0.14222222222222222
+    },
+    {
+      "job_id": 411540,
+      "partition": "h100",
+      "gpu_hours": 0.20055555555555554
+    },
+    {
+      "job_id": 411541,
+      "partition": "a30",
+      "gpu_hours": 8.001944444444444
+    },
+    {
+      "job_id": 411542,
+      "partition": "h100",
+      "gpu_hours": 2.8880555555555554
+    },
+    {
+      "job_id": 411543,
+      "partition": "a30",
+      "gpu_hours": 3.5302777777777776
+    },
+    {
+      "job_id": 411544,
+      "partition": "h200",
+      "gpu_hours": 0.08861111111111111
+    },
+    {
+      "job_id": 411545,
+      "partition": "h200",
+      "gpu_hours": 0.0625
+    },
+    {
+      "job_id": 411546,
+      "partition": "h200",
+      "gpu_hours": 0.20916666666666667
+    },
+    {
+      "job_id": 411547,
+      "partition": "h200",
+      "gpu_hours": 0.1938888888888889
+    },
+    {
+      "job_id": 411548,
+      "partition": "h200",
+      "gpu_hours": 0.4747222222222222
+    },
+    {
+      "job_id": 411549,
+      "partition": "h200",
+      "gpu_hours": 0.655
+    },
+    {
+      "job_id": 413159,
+      "partition": "h100",
+      "gpu_hours": 1.9236111111111112
+    },
+    {
+      "job_id": 413592,
+      "partition": "h100",
+      "gpu_hours": 0.004722222222222222
+    },
+    {
+      "job_id": 413593,
+      "partition": "h100",
+      "gpu_hours": 0.003611111111111111
+    },
+    {
+      "job_id": 413594,
+      "partition": "h100",
+      "gpu_hours": 2.229722222222222
+    },
+    {
+      "job_id": 413825,
+      "partition": "h100",
+      "gpu_hours": 11.000833333333333
+    },
+    {
+      "job_id": 413826,
+      "partition": "h100",
+      "gpu_hours": 1.2605555555555557
+    },
+    {
+      "job_id": 413866,
+      "partition": "h100",
+      "gpu_hours": 0.6455555555555555
+    },
+    {
+      "job_id": 413867,
+      "partition": "h100",
+      "gpu_hours": 0.6808333333333333
+    },
+    {
+      "job_id": 413868,
+      "partition": "h100",
+      "gpu_hours": 0.7358333333333333
+    },
+    {
+      "job_id": 414918,
+      "partition": "h100",
+      "gpu_hours": 0.08083333333333333
+    },
+    {
+      "job_id": 414919,
+      "partition": "h100",
+      "gpu_hours": 7.892222222222222
+    },
+    {
+      "job_id": 415122,
+      "partition": "h100",
+      "gpu_hours": 1.5472222222222223
+    },
+    {
+      "job_id": 420833,
+      "partition": "h200",
+      "gpu_hours": 3.296388888888889
+    },
+    {
+      "job_id": 421482,
+      "partition": "h200",
+      "gpu_hours": 12.006388888888889
+    },
+    {
+      "job_id": 421483,
+      "partition": "a30",
+      "gpu_hours": 12.00361111111111
+    },
+    {
+      "job_id": 422443,
+      "partition": "h100",
+      "gpu_hours": 3.598611111111111
+    },
+    {
+      "job_id": 424658,
+      "partition": "h100",
+      "gpu_hours": 2.6875
+    },
+    {
+      "job_id": 425301,
+      "partition": "h100",
+      "gpu_hours": 0.7538888888888889
+    },
+    {
+      "job_id": 438941,
+      "partition": "h100",
+      "gpu_hours": 0.15055555555555555
+    },
+    {
+      "job_id": 439652,
+      "partition": "h100",
+      "gpu_hours": 2.6080555555555556
+    },
+    {
+      "job_id": 439653,
+      "partition": "h100",
+      "gpu_hours": 3.881388888888889
+    },
+    {
+      "job_id": 440673,
+      "partition": "h100",
+      "gpu_hours": 0.8427777777777777
+    },
+    {
+      "job_id": 449113,
+      "partition": "a30",
+      "gpu_hours": 0.31666666666666665
+    },
+    {
+      "job_id": 449114,
+      "partition": "h100",
+      "gpu_hours": 0.1175
+    },
+    {
+      "job_id": 450333,
+      "partition": "h200",
+      "gpu_hours": 0.16111111111111112
+    },
+    {
+      "job_id": 450334,
+      "partition": "h200",
+      "gpu_hours": 0.15222222222222223
+    }
+  ]
+}

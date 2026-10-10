@@ -759,6 +759,10 @@ def main() -> int:
     numbers.update(independent["narrative_numbers"]())
     paired = runpy.run_path(str(Path(__file__).with_name("88_round7_tables.py")))
     numbers.update(paired["narrative_numbers"]())
+    controls = runpy.run_path(str(Path(__file__).with_name("89_response_control_tables.py")))
+    numbers.update(controls["narrative_numbers"]())
+    shared_compute = json.loads((RESULTS_DIR / "summary" / "compute_shared.json").read_text())
+    numbers["compute-shared-gpuh"] = f"{shared_compute['gpu_hours']:.1f}"
     n_main = build([3], PAPER / "tables" / "behavior.tex", "3")
     build([3], PAPER / "tables" / "behavior_excluded.tex", "3", excluded=True)
     n_app = build([1, 2, 4, 5], PAPER / "tables" / "behavior_levels.tex", "1, 2, 4 and 5")

@@ -29,9 +29,11 @@ def source_text(path: Path, seen: set[Path] | None = None) -> str:
         return ""
     seen.add(path)
     text = re.sub(r"(?m)(?<!\\)%.*$", "", path.read_text())
-    for name in re.findall(r"\\input\{([^{}]+)\}", text):
+    for kind, name in re.findall(r"\\(input|tabinput)\{([^{}]+)\}", text):
         if "#" in name:
             continue
+        if kind == "tabinput":
+            name = "tables/" + name
         child = PAPER / name
         if not child.suffix:
             child = child.with_suffix(".tex")
@@ -73,7 +75,7 @@ def main() -> int:
     errors = []
     for name, digest in STYLE_HASHES.items():
         if hashlib.sha256((PAPER / name).read_bytes()).hexdigest() != digest:
-            errors.append(f"{name} differs from the official ACL style checked on 2026-10-02")
+            errors.append(f"{name} differs from the checked official ACL style")
     main_tex = (PAPER / "main.tex").read_text()
     source = source_text(PAPER / "main.tex")
     if not re.search(r"\\documentclass\[11pt\]\{article\}", source):
@@ -103,15 +105,19 @@ def main() -> int:
     reader = PdfReader(pdf)
     pages = [page.extract_text() or "" for page in reader.pages]
     body_end = None
+    limitations_seen = False
     for i, text in enumerate(pages):
-        match = re.search(r"(?m)^\s*Limitations\s*\d*\s*$", text)
+        limitations_seen |= bool(re.search(r"(?m)^\s*Limitations\s*\d*\s*$", text))
+        match = re.search(r"(?m)^\s*References\s*\d*\s*$", text)
         if match:
             body_end = i + bool(text[:match.start()].strip())
             break
-    if body_end is None:
+    if not limitations_seen:
         errors.append("Limitations heading missing from the PDF")
+    if body_end is None:
+        errors.append("References heading missing from the PDF")
     elif body_end > limit:
-        errors.append(f"body reaches page {body_end}, above the {limit}-page limit")
+        errors.append(f"content including Limitations reaches page {body_end}, above the author's {limit}-page limit")
     for i, page in enumerate(reader.pages, 1):
         box = page.mediabox
         if abs(float(box.width) - 595.276) > 1 or abs(float(box.height) - 841.89) > 1:

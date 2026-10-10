@@ -1,0 +1,95 @@
+{
+  "old_numeric_keys": 2079,
+  "changed_old_numeric_keys": {
+    "compute-gpuh": [
+      "185",
+      "186"
+    ]
+  },
+  "added_numeric_keys": [
+    "compute-shared-gpuh",
+    "r7-final-olmo-named-hi",
+    "r7-final-olmo-named-lo",
+    "r7-final-olmo-named-mean",
+    "r7-final-olmo-unnamed-hi",
+    "r7-final-olmo-unnamed-lo",
+    "r7-final-olmo-unnamed-mean"
+  ],
+  "unresolved_numeric_keys": [],
+  "cited_keys": [
+    "anon2026code",
+    "bercovich2025nemotron",
+    "chen2025reasoning",
+    "geirhos2019texture",
+    "gemmateam2025gemma3",
+    "grattafiori2024llama3",
+    "hewitt2019control",
+    "hu2026conflict",
+    "kudo2026faithful",
+    "lam2025codecrash",
+    "lanham2023measuring",
+    "le2025names",
+    "le2026obfuscated",
+    "liu2026readout",
+    "olmo2024olmo2",
+    "paszke2019pytorch",
+    "pedregosa2011sklearn",
+    "prabhakar2024deciphering",
+    "seabold2010statsmodels",
+    "stroop1935",
+    "turpin2023unfaithful",
+    "tutek2025unlearning",
+    "walsh2025olmo2",
+    "wang2026stroop",
+    "wolf2020transformers",
+    "zhang2024patching"
+  ],
+  "uncited_bibliography_entries": [],
+  "changed_existing_summaries": [
+    "results/summary/compute.json"
+  ],
+  "referenced_source_files": [
+    "Makefile",
+    "acl.sty",
+    "acl_natbib.bst",
+    "appendix.tex",
+    "check_arr.py",
+    "figures/fig2_tokens_llama32-3b_L3_cot_v2.pdf",
+    "figures/kudo_fig5_llama32-3b_L3_direct_v1.pdf",
+    "figures/story_behavior.pdf",
+    "figures/story_patching.pdf",
+    "main.tex",
+    "numbers.tex",
+    "page_limit.txt",
+    "refs.bib",
+    "tables/behavior.tex",
+    "tables/behavior_excluded.tex",
+    "tables/behavior_levels.tex",
+    "tables/equivalence.tex",
+    "tables/exception_patching.tex",
+    "tables/figure_dump.tex",
+    "tables/modelkind.tex",
+    "tables/patching_controls.tex",
+    "tables/recipe.tex",
+    "tables/round5_followups.tex",
+    "tables/round6_followups.tex",
+    "tables/round7_controls.tex",
+    "tables/round7_paired.tex"
+  ],
+  "figures_unchanged": true,
+  "response_control_source_hashes_verified": 144,
+  "paired_analysis_source_hashes_verified": 126,
+  "kudo_table3_primary_check": {
+    "url": "https://aclanthology.org/2026.findings-eacl.59.pdf",
+    "sha256": "0919e66565184c920b72cd253e938477bc9280d4670bd37758351790fea422b4",
+    "pdf_page": 6,
+    "Llama3.2-3B_pre_chain_accuracy": [
+      17.8,
+      33.2
+    ],
+    "value_writing_equation_positions": [
+      5,
+      2
+    ]
+  }
+}

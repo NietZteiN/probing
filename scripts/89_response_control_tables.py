@@ -25,6 +25,18 @@ def load(path):
     return data
 
 
+def narrative_numbers():
+    data = load(ROOT/'results/summary/round7_response_controls.json')
+    if data is None:
+        return {}
+    panel = data['models']['olmo2-1b-it']['final_query']['v1']['cells']
+    out = {}
+    for style, tag in (('repeat0_named0','unnamed'),('repeat1_named0','named')):
+        for suffix, value in zip(('mean','lo','hi'),panel[style]['excess_ci95']):
+            out[f'r7-final-olmo-{tag}-{suffix}'] = f'{100*value:.1f}'
+    return out
+
+
 def rows(data, experiment):
     cells, contrasts = [], []
     for model, result in data['models'].items():
@@ -102,6 +114,63 @@ def render(data, experiment):
     return cells, contrasts, cell_tex, contrast_tex
 
 
+def submission_section(data):
+    lines = [r'\section{Response formats and fixed correct calculations}',
+             r'\label{app:round7-controls}',
+             'These exploratory controls use Llama-3.2-3B, Llama-3.1-8B and OLMo-2-1B-Instruct, level 3 and demonstration seeds 7, 11 and 13. The protocol and cohorts were frozen before collecting outputs. Intervals use 4,000 bootstrap draws over arithmetic computations, keeping repeated names and demonstrations together. Intervals are pointwise, without multiplicity correction; zero-event bootstrap intervals do not establish zero population rates.',
+             r'\paragraph{Equations and repeated names.}',
+             'We cross numeric equations with name repetition in demonstrated outputs. For example, named equations write \\texttt{cup=2+3=5, pen=1+5=6}; unnamed equations write \\texttt{2+3=5, 1+5=6}; values-only formats write \\texttt{cup=5, pen=6} or \\texttt{5, 6}. All end with the same \\texttt{Answer: 6}. Only examples provide correct calculations; test outputs are freely generated. Repeated ordinary-word notes before each example output match full prompt token counts across formats and matched names. Generated lengths are measured rather than forced to match.',
+             'We select 200 independent test computations, each rendered with ordinary names and with a misleading name on either variable, yielding 600 paired observations per target across demonstrations. Calibration uses 100 independent ordinary-name computations, disjoint from tests and demonstrations. We try 3, 8 and 16 examples, seeking at least 90\\% accuracy in every format and a range within two points. No model passes; all use 16 examples. A held-out comparison matches competence only if both ordinary-name accuracies reach 90\\% and their paired 90\\% difference interval fits within $\\pm2$ points. Only the named-versus-unnamed equation comparisons in the two Llama models pass (four target comparisons). None of the equation-versus-values comparisons passes.',
+             r'\begin{table*}[t]',r'\centering\small\setlength{\tabcolsep}{4pt}',
+             r'\begin{tabular}{@{}llrrrll@{}}',r'\toprule',
+             r' & & \multicolumn{3}{c}{Correct answers (\%)} & \multicolumn{2}{c}{Added name errors [95\% interval]} \\',
+             r'Model & Example output & Ordinary & Queried & Intermediate & Queried & Intermediate \\',r'\midrule']
+    for model, result in data['models'].items():
+        for style, label in FORMAT.items():
+            query = result['formats']['v1']['cells'][style]
+            other = result['formats']['v2']['cells'][style]
+            ci = lambda cell: f"{100*cell['excess_ci95'][0]:+.1f} [{100*cell['excess_ci95'][1]:+.1f}, {100*cell['excess_ci95'][2]:+.1f}]"
+            lines.append(' & '.join([LABEL[model],label,f"{100*query['neutral_correct_ci95'][0]:.1f}",
+                         f"{100*query['misleading_correct_ci95'][0]:.1f}",f"{100*other['misleading_correct_ci95'][0]:.1f}",
+                         ci(query),ci(other)])+r' \\')
+    lines += [r'\bottomrule',r'\end{tabular}',
+              r'\caption{Numeric-equation and name-repetition controls. Queried/intermediate columns rename that variable. Added errors subtract the ordinary twin\textquotesingle s suggested-digit rate (percentage points). Parse failures remain in denominators; coverage is 99.2--100\% (rounded).}',
+              r'\label{tab:round7-formats}',r'\end{table*}',
+              r'\paragraph{Answering after a correct calculation.}',
+              'We resume after actual original generations for which every restatement, substitution and value matches the executable gold calculation. Both naming twins must qualify. Within each naming condition, the input and complete generated calculation are fixed. We cross a final query repeating the queried name with \\texttt{the original requested value=?}, and an output starting with \\texttt{Answer:} with one starting with \\texttt{Answer: pen=}. The instruction always requests the original problem\\textquotesingle s value. These continuations are conditional on successful original calculations; they do not estimate an effect of making a calculation correct. Tail lengths and output markers differ by design.',
+              'Each Llama model supplies 200 pairs per demonstration set and target. OLMo supplies 144/108/116 queried-target pairs and 44/8/25 intermediate-target pairs. Across demonstration sets, the queried-target cohorts contain 210/234/205 distinct computations for Llama-3B/Llama-8B/OLMo; intermediate-target cohorts contain 218/233/53. Generation budgets are 128 tokens for format tests and 16 for final continuations, with greedy full-vocabulary decoding. Unparsed outputs count as incorrect.',
+              r'\begin{table*}[t]',r'\centering\small\setlength{\tabcolsep}{4pt}',
+              r'\begin{tabular}{@{}lllrrrl@{}}',r'\toprule',
+              r'Model & Query name & Answer format & Pairs & Ordinary correct & Misleading correct & Added errors [95\%] \\',r'\midrule']
+    for model, result in data['models'].items():
+        for style, cell in result['final_query']['v1']['cells'].items():
+            repeated, named = style.split('_')
+            values = cell['excess_ci95']
+            effect = f'{100*values[0]:+.1f} [{100*values[1]:+.1f}, {100*values[2]:+.1f}]'
+            lines.append(' & '.join([LABEL[model],'Repeated' if repeated=='repeat1' else 'Omitted',
+                         'Assignment' if named=='named1' else 'Digit',str(cell['n_pairs']),
+                         f"{100*cell['neutral_correct_ci95'][0]:.1f}",f"{100*cell['misleading_correct_ci95'][0]:.1f}",effect])+r' \\')
+    lines += [r'\bottomrule',r'\end{tabular}',
+              r'\caption{Final answers after fixed, completely correct calculations, with the misleading name on the queried variable. Correct answers are percentages; added errors are percentage points. All continuations parse. Assignment outputs include the queried name before the generated digit.}',
+              r'\label{tab:round7-final}',r'\end{table*}',
+              '']
+    # Empirical prose values are rendered from the validated summary, not typed estimates.
+    olmo = data['models']['olmo2-1b-it']['final_query']['v1']
+    effect = olmo['comparisons']['repeat1_named0 minus repeat0_named0']['change_ci95']
+    ordinary0 = olmo['cells']['repeat0_named0']['neutral_correct_ci95'][0]
+    ordinary1 = olmo['cells']['repeat1_named0']['neutral_correct_ci95'][0]
+    lines[-1] = (f'For OLMo, repeating the queried name lowers added errors by {-100*effect[0]:.1f} points '
+                 f'[{ -100*effect[2]:.1f}, {-100*effect[1]:.1f}] in digit outputs, but ordinary-name accuracy '
+                 f'rises from {100*ordinary0:.1f}\\% to {100*ordinary1:.1f}\\%. An assignment output also changes '
+                 'accuracy. No OLMo final-format comparison meets the competence criterion. With the misleading '
+                 'name on the intermediate variable, all added-error estimates are zero; OLMo has one '
+                 'suggested-digit answer in each naming condition in the repeated-query/digit format. The query '
+                 'repeats an ordinary name in this control. Neither Llama produces a suggested-digit answer in '
+                 'any final format. These observations distinguish correct calculations from reliable final '
+                 'answering, without identifying a single responsible feature.')
+    return '\n'.join(lines)+'\n'
+
+
 def main():
     data = load(ROOT/'results/summary/round7_response_controls.json')
     if data is None:
@@ -112,11 +181,12 @@ def main():
         for kind, records in (('cells',cells),('contrasts',contrasts)):
             path = ROOT/'results/summary'/f'round7_{experiment}_{kind}.csv'
             with path.open('w',newline='') as output:
-                writer = csv.DictWriter(output,fieldnames=list(records[0]))
+                writer = csv.DictWriter(output,fieldnames=list(records[0]),lineterminator='\n')
                 writer.writeheader()
                 writer.writerows(records)
         for kind, content in (('cells',cell_tex),('contrasts',contrast_tex)):
             (ROOT/'paper/tables'/f'round7_{experiment}_{kind}.tex').write_text(content)
+    (ROOT/'paper/tables/round7_controls.tex').write_text(submission_section(data))
     print('Wrote response-control CSV summaries and optional appendix tables.')
 
 

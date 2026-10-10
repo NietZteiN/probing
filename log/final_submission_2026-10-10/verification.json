@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-10",
+  "strict_arr_check": "ARR: body 4/4 pages; total 17; abstract 126 words; A4 portrait; 0 unembedded fonts\nDraft: 0 unfilled numbers; unresolved references: False; missing assets: False",
+  "total_pdf_pages": 17,
+  "standalone_compilation": "passed; all page text matches current PDF",
+  "source_files": 26,
+  "source_archive": "all members byte-match current and standalone dependencies",
+  "anonymous_file_checks": "no private paths, account identifiers, identifying metadata or links; anonymous author block",
+  "pdf_metadata": {
+    "/Creator": "LaTeX with hyperref",
+    "/Producer": "xdvipdfmx (0.1)",
+    "/CreationDate": "D:20261010164346-00'00'"
+  },
+  "pdf_link_urls": [
+    "https://doi.org/10.18653/v1/2020.emnlp-demos.6",
+    "https://doi.org/10.18653/v1/2024.findings-emnlp.212",
+    "https://doi.org/10.18653/v1/2025.emnlp-main.504",
+    "https://doi.org/10.18653/v1/2026.findings-eacl.59",
+    "https://doi.org/10.18653/v1/D19-1275",
+    "https://doi.org/10.25080/Majora-92bf1922-011",
+    "https://doi.org/10.52202/085713-4029",
+    "https://openreview.net/forum?id=2ezugTT9kU"
+  ],
+  "package_manifest": "all file hashes verified; companion PDF matches other manuscript",
+  "paper_sha256": "856cf076016cafa6bc27d02d9249152026de96e7a1fc0499df643546a19513ed",
+  "source_sha256": "7eada872897d960e066b40fda40181bea9639c2bda5547483560e8bf35b41dd2",
+  "unit_tests": {
+    "passed": 79,
+    "skipped": 6
+  },
+  "selfcheck_failures": 0,
+  "selfcheck_parse_warnings": 80,
+  "parse_warning_treatment": "unparsed outputs retained in analysis denominators",
+  "numerical_factual_audit": "factual_audit.json",
+  "figure_data": "unchanged from previously verified committed figures",
+  "official_requirements_sources": [
+    "https://aclrollingreview.org/authorchecklist",
+    "https://aclrollingreview.org/cfp",
+    "https://acl-org.github.io/ACLPUB/formatting.html",
+    "https://aclrollingreview.org/responsibleNLPresearch/",
+    "https://aclrollingreview.org/submissionform"
+  ],
+  "openreview_submission": "not performed; author and account declarations remain in docs/SUBMISSION_READY.md"
+}

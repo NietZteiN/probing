@@ -103,6 +103,7 @@ all five levels (Appendix~\ref{app:task}). Matched versions change one name
 (Table~\ref{tab:conditions}): congruent names denote the true value; incongruent names denote
 another digit, absent from all inputs and variable values. We rename queried and intermediate
 variables separately. All names occupy one token, preserving matched token positions.
+Unparsed answers remain in denominators.
 
 
 
@@ -145,8 +146,7 @@ Figure~\ref{fig:master} shows added misleading-digit answers; Table~\ref{tab:beh
 also reports changes in overall accuracy. Without CoT, a congruent
 name raises Llama-3.1-8B's accuracy by \NUM{facilitationllama318bdirectv1} points, and a
 misleading name produces \NUM{lure_excessllama318bdirectv1} points of excess name errors on the queried
-variable. Across levels, the largest effects occur where direct-answer accuracy is near chance; the matched baseline prevents those arbitrary digit answers from being attributed to
-the name.
+variable. The matched baseline discounts arbitrary digit guesses when answer-only accuracy is low.
 
 With CoT, \NUM{eq-cot-equivalent} of \NUM{eq-cot-cells} name-error contrasts meet the equivalence
 bound. Paired reductions meet our reliability rule in \NUM{r7-paired-reliable-reductions} contrasts;
@@ -236,20 +236,20 @@ establish a common causal mechanism.
 
 
 
-\section{Implications and next experiments}
+\section{Implications}
 
-Writing calculations improves resistance to a word that suggests the wrong answer while
-the mathematical problem stays fixed. This gives reasoning evaluations a concrete test
-beyond aggregate accuracy: rename a variable and measure whether answers move toward
-the implied digit. The remaining accuracy differences show why both outcomes matter.
-The written-value control also distinguishes a correct value in the calculation from
-a correct final answer: seeing that value alone can miss the effect of a misleading name.
+Paired renaming tests resistance to a word suggesting the wrong value without changing
+the math. Reporting name errors alongside accuracy separates this resistance from overall
+performance. A correct written value alone does not guarantee a correct final answer.
 
-To distinguish calculation from repeated wording, vary whether responses repeat names and
-include equations, matching length and ordinary-name accuracy. Next, hold a correct
-generated calculation fixed and vary the final query's name and digit-only versus named
-output. The values-only result motivates the accuracy control; the written-value result
-motivates the final-query test. These comparisons are future work.
+Further controls separate equations from repeated names (Appendix~\ref{app:round7-controls}).
+Both Llama models retain high accuracy with unnamed numeric equations; values-only formats
+fail the competence check. After a fixed, completely correct generated calculation,
+neither Llama produces name-suggested answers. OLMo does: an unnamed final query with
+digit-only output gives \NUM{r7-final-olmo-unnamed-mean} added-error points
+[\NUM{r7-final-olmo-unnamed-lo}, \NUM{r7-final-olmo-unnamed-hi}]. Repeating the queried name lowers this
+to \NUM{r7-final-olmo-named-mean}, but also improves ordinary-name accuracy. Final-answer format
+matters even after correct calculation; these comparisons do not isolate its effect from competence.
 
 \section{Related work}
 
@@ -280,9 +280,8 @@ accuracy; we require agreement across three sets.
 states does not show that the model uses it to answer. Most tests supply correct
 calculations. On models' own calculations, predictors recover digits reliably on
 ordinary-name problems for Llama-3.2-3B but not OLMo-2-1B, even after retraining;
-only two models are checked (Appendix~\ref{app:round6-generated}). Across nine models,
-better probe accuracy goes with fewer name errors. Removing OLMo reverses that pattern.
-Differences in arithmetic ability could explain the relationship. Two variables from
+only two models are checked (Appendix~\ref{app:round6-generated}). Arithmetic ability could
+explain the probe--error association; its sign reverses without OLMo. Two variables from
 one model do not count as independent models.
 \item \textbf{Why writing calculations helps.} Replacing internal states changes more than
 name information and can spoil correct answers. Calculations also repeat names and
