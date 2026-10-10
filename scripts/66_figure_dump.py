@@ -8,13 +8,11 @@ from pathlib import Path
 PAPER = Path(__file__).resolve().parents[1] / "paper"
 FIGURES = [
     ("fig2_tokens_llama32-3b_L3_cot_v2", "fig:heat", True,
-     "Llama-3.2-3B, intermediate variable under supplied correct calculations. "
-     "Top: best-layer correct-digit accuracy and name-suggested predictions; bottom: "
-     "correct-digit accuracy by layer. Rates pool problems; tokens illustrate one example."),
+     "Llama-3.2-3B intermediate-value readouts under supplied correct calculations. "
+     "Rates pool problems; tokens illustrate one example."),
     ("kudo_fig5_llama32-3b_L3_direct_v1", "fig:grid", True,
-     "Llama-3.2-3B, queried variable, answer-only. Equation spans are replaced in "
-     "four-layer windows. Sources: a different problem, the ordinary-name twin, or an "
-     "alternative misleading-name twin. Bottom: maximum over layer windows."),
+     "Llama-3.2-3B answer-only patches in four-layer windows. "
+     "Bottom: maximum over windows."),
 ]
 
 

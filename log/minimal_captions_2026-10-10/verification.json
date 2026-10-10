@@ -1,0 +1,53 @@
+{
+  "before": [
+    {
+      "label": "fig:master",
+      "words": 27,
+      "caption": "Added answers matching the misleading name, relative to ordinary-name twins.\nBars: 95\\% intervals over three demonstration sets. *Below the planned 90\\% ordinary-name\naccuracy floor with written calculations."
+    },
+    {
+      "label": "fig:patch",
+      "words": 22,
+      "caption": "Llama-3.2-3B, queried variable, demonstration set 7. Removal: name-error answers\nchanged to any other digit. Damage: correct answers changed. All: every layer replaced."
+    },
+    {
+      "label": "fig:heat",
+      "words": 26,
+      "caption": "Llama-3.2-3B, intermediate variable under supplied correct calculations. Top: best-layer correct-digit accuracy and name-suggested predictions; bottom: correct-digit accuracy by layer. Rates pool problems; tokens illustrate one example."
+    },
+    {
+      "label": "fig:grid",
+      "words": 28,
+      "caption": "Llama-3.2-3B, queried variable, answer-only. Equation spans are replaced in four-layer windows. Sources: a different problem, the ordinary-name twin, or an alternative misleading-name twin. Bottom: maximum over layer windows."
+    }
+  ],
+  "after": [
+    {
+      "label": "fig:master",
+      "words": 13,
+      "caption": "Added misleading-name errors (95\\% intervals). *Below the 90\\% ordinary-name\naccuracy floor with calculations."
+    },
+    {
+      "label": "fig:patch",
+      "words": 16,
+      "caption": "Llama-3.2-3B name-site patches, queried variable, set 7.\nRemoval includes any other digit; All replaces every layer."
+    },
+    {
+      "label": "fig:heat",
+      "words": 14,
+      "caption": "Llama-3.2-3B intermediate-value readouts under supplied correct calculations. Rates pool problems; tokens illustrate one example."
+    },
+    {
+      "label": "fig:grid",
+      "words": 10,
+      "caption": "Llama-3.2-3B answer-only patches in four-layer windows. Bottom: maximum over windows."
+    }
+  ],
+  "scope": "Figure captions only; numerical results and figure assets unchanged",
+  "body_including_limitations_pages": 4,
+  "total_pdf_pages": 17,
+  "numerical_results_unchanged": true,
+  "figure_assets_unchanged": true,
+  "strict_arr_check": "passed",
+  "standalone_build": "passed"
+}
