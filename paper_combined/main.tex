@@ -30,17 +30,21 @@
 \maketitle
 
 \begin{abstract}
-Misleading variable names produce wrong written calculations even when the
-correct value is recoverable from a model's internal activity. Building on
-\citet{kudo2026faithful}, we study this gap in arithmetic problems and Python
-programs by changing variable names while preserving the computation. In code, misleading names frequently lead to wrong intermediate writes when
-worked examples in the prompt list values alone. On these wrong writes, a separately trained predictor recovers the
-correct digit with \NUM{c-crossfit-min}--\NUM{c-crossfit-max}\% accuracy immediately
-before the model writes the wrong digit. Changing the worked examples to show
-the operation alongside its result sharply reduces errors and increases correct
-intermediate and final outputs. These findings reveal a gap between recoverable
-values and written reasoning, and show that examples displaying the computation
-improve the reliability of reported values.
+We investigate whether correct values remain recoverable from a language
+model's internal activity when misleading names lead it to report wrong
+calculations. Building on \citet{kudo2026faithful}, we change variable names in
+arithmetic problems and Python programs while keeping their computations fixed.
+In code, a name suggesting summation can make a model report the sum of a list
+where the program computes its length. On these incorrect intermediate outputs
+in three tested code models, a separately trained predictor recovers the correct
+digit with \NUM{c-crossfit-min}--\NUM{c-crossfit-max}\% accuracy immediately before
+the model reports the wrong digit. Showing the operation alongside its result
+in worked examples improves both intermediate and final correctness. On the same
+misleading-name programs, OLMo-2-7B's final-answer accuracy rises from
+\NUM{j-format-olmo7-values-misleading-final-mean}\% to
+\NUM{j-format-olmo7-expression-misleading-final-mean}\%.
+Examples that explicitly connect each value to its computation offer a practical
+way to improve written reasoning.
 \end{abstract}
 
 \section{Introduction}
@@ -98,8 +102,18 @@ one needed to evaluate it. For \texttt{pen=1+cup, cup=2+3; pen=?}, the answer is
 Code problems contain a short Python function and its input list
 (Figure~\ref{fig:example}). Assignments compute length, sum, maximum or minimum,
 then integer arithmetic. The main level has three dependent assignments; all
-correct assignment values and return values are single digits. Complete task
-levels and model panels are in Appendices~\ref{a-app:task} and \ref{c-app:levels}.
+correct assignment values and return values are single digits.
+
+The arithmetic evaluation covers \NUM{a-n-models} checkpoints, principally at
+level 3, with \NUM{a-n-test-sets} matched problems per tested level. The code
+evaluation covers \NUM{c-n-models} instruction-tuned checkpoints at levels 3 and
+5, with 1,000 matched problems per target and level, plus a CodeLlama-34B check.
+The central recovery analysis examines OLMo-2-7B, Llama-3.2-3B and Llama-3.1-8B,
+three instruction-tuned models with substantial length-to-sum errors, on the
+\NUM{c-probe-n-test}-program level-5 subset. Arithmetic and code use different
+checkpoint and prompt panels; their results are reported separately. Complete
+model lists and task levels remain in Appendices~\ref{a-app:task} and
+\ref{c-app:levels}.
 
 Three worked examples precede each test problem. In arithmetic, the model either
 writes only the answer or evaluates the equations before answering. In code, it
@@ -222,7 +236,7 @@ Section~\ref{sec:scope} and Appendix~\ref{a-app:round7-controls}.
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/shared_readouts.pdf}
-\caption{Correct-digit recovery on name-suggested wrong writes; counts are unique programs (95\% intervals). I: instruction-tuned.}
+\caption{Correct-digit recovery at both positions on the same eventual name-suggested error cases (95\% intervals). Counts are unique programs. I: instruction-tuned.}
 \label{fig:readouts}
 \end{figure*}
 
@@ -265,14 +279,21 @@ output sensitivity rather than the decoded digit alone
 The strongest practical comparison keeps the program, input, model and
 demonstration identities fixed. Replacing \texttt{v=2} examples with
 \texttt{v=len(xs)=2} connects the reported value to the source operation.
-Added sum writes fall to \NUM{c-cell-olmo7-traceexpr-excess},
+Both first-assignment and final-answer accuracy improve
+(Table~\ref{tab:format-accuracy}). On the same misleading-name programs,
+final-answer accuracy rises from
+\NUM{j-format-olmo7-values-misleading-final-mean}\% to
+\NUM{j-format-olmo7-expression-misleading-final-mean}\% in OLMo-2-7B and from
+\NUM{j-format-llama3-values-misleading-final-mean}\% to
+\NUM{j-format-llama3-expression-misleading-final-mean}\% in Llama-3.2-3B.
+
+Excess name errors identify the specific naming effect. Added sum writes fall
+to \NUM{c-cell-olmo7-traceexpr-excess},
 \NUM{c-cell-llama3-traceexpr-excess} and \NUM{c-cell-llama8-traceexpr-excess}
 points in OLMo-2-7B, Llama-3.2-3B and Llama-3.1-8B, respectively.
 Figure~\ref{fig:operation-controls} compares the source expressions with
 additional text and numeric elaboration on the same programs.
 
-The improvement includes more correct first writes and final answers, beyond
-avoiding the suggested sum (Table~\ref{tab:format-accuracy}).
 Ordinary-name correctness remains high;
 Appendix~\ref{app:format-correctness} gives both naming conditions and paired
 format changes. Each comparison uses 855 paired observations across 285 programs.
@@ -342,29 +363,35 @@ The reported direct-answer contrasts rename the returned variable, whereas
 the central trace comparison renames the first assignment.
 Those contrasts do not isolate an effect of requesting a trace.
 
-\paragraph{Arithmetic readouts.} Under supplied correct calculations, arithmetic
-probes reproduce the progression of readable values studied by Kudo et al.
-Freely generated calculations present a harder transfer test. OLMo's probes
-fail the 90\% ordinary-name calibration criterion, and Llama's error cases are
-rare. Arithmetic therefore does not establish the same strong error-conditioned
-readout result as code. Calibration and correlation details are in
+\paragraph{Arithmetic readouts.} Recovery on actual arithmetic errors is harder
+to assess. Predictors trained on supplied correct calculations do not reliably
+recover values from OLMo's freely generated calculations, while the Llama models
+make too few errors for the same strong test as code. Under supplied correct
+calculations, the probes reproduce the progression of recoverable values studied
+by Kudo et al. Calibration criteria and detailed comparisons are in
 Appendices~\ref{a-app:round6-generated} and \ref{a-app:round5-competence}.
 
-\paragraph{Arithmetic demonstration content.} Repeated names are unnecessary in
-the tested competent Llama equation formats. Named and unnamed equations both
-reach 99--100\% ordinary-name accuracy and near-zero excess; four role
-comparisons pass the held-out competence check. Values-only formats and OLMo's
-unnamed equations change competence, preventing an equation-content comparison
-at matched accuracy (Appendix~\ref{a-app:round7-controls}).
+\paragraph{Arithmetic demonstration content.} Some format changes also change
+accuracy on ordinary-name arithmetic problems. Those comparisons cannot cleanly
+attribute a reduction in name errors to the presence of equations, because
+general task accuracy changes too. In the tested Llama models, equations with
+and without variable names both reach 99--100\% ordinary-name accuracy and
+near-zero excess name errors. Repeating names is therefore unnecessary in those
+formats. The accuracy changes, comparison criteria and qualifying counts are in
+Appendix~\ref{a-app:round7-controls}.
 
-\paragraph{Scale and natural code.} CodeLlama-34B's maximum-to-sum excess is
-\NUM{c-cell34-max-excess} points [\NUM{c-cell34-max-lo}, \NUM{c-cell34-max-hi}];
-its interval crosses the two-point small-effect margin. In the
-\NUM{c-crux-n}-function CRUXEval check \citep{gu2024cruxeval}, accuracy
-contrasts cover zero on the \NUM{c-crux-used} functions that use the renamed
-variable downstream. Those conditions request direct answers or prose;
-they do not test the synthetic trace or establish equivalence
-(Appendix~\ref{c-app:boundaries}).
+\paragraph{Natural code and scale.} The CRUXEval check
+\citep{gu2024cruxeval} did not establish a clear accuracy difference between
+ordinary and misleading names under its tested formats. It covers
+\NUM{c-crux-n} functions, of which \NUM{c-crux-used} use the renamed variable
+downstream; accuracy-difference intervals include zero. This check requests
+direct answers or prose explanations, rather than the assignment-by-assignment
+trace used in the synthetic experiments. It therefore tests a different output
+setting and does not directly test the central trace finding. Separately,
+CodeLlama-34B's maximum-to-sum excess is \NUM{c-cell34-max-excess} points
+[\NUM{c-cell34-max-lo}, \NUM{c-cell34-max-hi}]. Its interval extends beyond
+two points, so this estimate does not establish an effect within the small-effect
+margin (Appendix~\ref{c-app:boundaries}).
 
 \section{Related work}
 
@@ -408,15 +435,19 @@ implications.
 \paragraph{Interpreting internal measurements.} Successful decoding establishes
 recoverable information, but neither guarantees that the model will write it
 nor proves that generation causally uses it. The code error cohorts demonstrate
-this distinction directly. More selective interventions are needed to test the
-decoded value's role in generation.
+this distinction directly. For a length-computing program, the predictor may
+recover list size or related input features; recovery does not identify the
+internal computation that produced that information. More selective
+interventions are needed to test the decoded value's role in generation.
 
-\paragraph{Evaluating written reasoning.} Score intermediate values alongside
-final answers. Preserve the computation and introduce a name suggesting a
-particular competing answer, then report its excess over the ordinary-name
-twin together with overall correctness. Repeat across demonstration sets and
-formats. This separates a specific misleading-name error from general task
-competence and avoids treating a small excess as proof of success.
+\paragraph{Evaluating written reasoning.} Internal recoverability, intermediate
+correctness and final-answer correctness are distinct properties. In code, the
+correct intermediate value is recoverable immediately before an incorrect one
+is written. In arithmetic, even a correct written calculation can be followed
+by a name-suggested wrong final answer. A final-answer score alone leaves the
+intermediate values unmeasured, while a successful probe cannot certify either
+written steps or final answers. Each measurement answers a different question
+about reasoning reliability.
 
 \paragraph{Designing demonstrations.} What each written step contains matters.
 Source-operation examples improve the tested code traces, including on fresh

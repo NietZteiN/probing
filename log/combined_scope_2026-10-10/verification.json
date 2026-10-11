@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-10",
+  "revision": "Restore experimental orientation and revise the abstract, accuracy prose, recovery labels, scope and interpretation.",
+  "changes": [
+    "Section 2 identifies thirteen arithmetic checkpoints, seven instruction-tuned code checkpoints plus CodeLlama-34B, task levels and sample sizes, and the three-model 285-program recovery cohort; panels remain separate.",
+    "Abstract introduces controlled renaming and specifies 95.5\u201399.7% recovery on incorrect outputs in three code models, with OLMo final accuracy 37.1% to 92.6%.",
+    "Section 5.1 reports final accuracy 37.1% to 92.6% and 51.0% to 99.4%, alongside excess name errors.",
+    "Figure 2 labels all six exact recovery percentages and identifies the same eventual error cases at both positions.",
+    "Section 6 leads with arithmetic accuracy confounds and the CRUXEval observation, with qualification criteria left in the appendix.",
+    "Discussion distinguishes recoverability, intermediate correctness and final correctness and allows recovery of list size or related features without identifying an internal computation."
+  ],
+  "main_pages_including_limitations": 7,
+  "main_page_limit": 8,
+  "pdf_total_pages": 30,
+  "abstract_words_pdf": 139,
+  "quantities": 284,
+  "primary_references": 30,
+  "source_files": 48,
+  "recovery_labels": {
+    "olmo2-7b-it": {
+      "before_trace_pct": 38.4,
+      "before_wrong_pct": 96.4,
+      "unique_programs": 193
+    },
+    "llama32-3b-it": {
+      "before_trace_pct": 26.4,
+      "before_wrong_pct": 95.5,
+      "unique_programs": 169
+    },
+    "llama31-8b-it": {
+      "before_trace_pct": 56.0,
+      "before_wrong_pct": 99.7,
+      "unique_programs": 45
+    }
+  },
+  "evidence_checks": "All 284 numerical definitions match verified sources; all 39 saved correctness-source hashes match. Recovery labels match the validated timing summary. Experimental summaries are unchanged.",
+  "format_checks": "Working and standalone strict ARR checks pass; A4, official review style, embedded fonts, no missing assets, unresolved references or overfull boxes.",
+  "standalone_build": "All 48 archive members match working sources; all 30 PDF page texts match.",
+  "visual_checks": "Checked rendered abstract, scope overview, accuracy prose and table, exact readout labels and caption, Section 6, discussion and complete Limitations.",
+  "new_experiments": "None. Manuscript and figure presentation changes only.",
+  "original_short_papers": "Unchanged.",
+  "pdf_sha256": "4ed0fe9c14fa49138dea9b753a9e583021ab0654e4aa7ad64d61324fe3543414",
+  "source_sha256": "5c8bcde2a55f0897fef0fa07e72eda2f5fe1395709bf6b45fe044ce14ce87e1b",
+  "abstract_sha256": "e7b3af88e215986fe8754db45b2d145e9e4e1962d9e83dd5ee84d60cd7f14626"
+}

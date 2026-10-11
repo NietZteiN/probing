@@ -23,17 +23,22 @@ The main paper follows eight sections:
 7. Related work
 8. Discussion and conclusion
 
-The abstract presents the failure, error-conditioned recovery and demonstration change.
+The abstract presents the controlled naming manipulation, recovery on incorrect
+outputs in three code models, and the final-answer improvement from 37.1% to 92.6%
+in OLMo-2-7B.
 A verified full-program example shows actual wrong and correct outputs under the two
 demonstration formats, and marks the pre-value reading position without claiming a
 per-example probe prediction. Four main figures cover that example, readout timing with
-unique error-producing program counts, plainly labeled format controls, and fresh-name
+exact recovery percentages and unique error-producing program counts, plainly labeled format controls, and fresh-name
 replication with CodeGemma. Table 1 defines scoring; Table 2 reports correct first values
 and final answers on the same misleading-name programs. The duplicated opening summary
 table is removed, and the arithmetic/code behavior plot is now supporting material.
 
-The methods introduce inputs, requested outputs, matched names, grading and measurement
-before uncertainty. Appendix A supplies prompt assembly, complete code demonstration
+The methods introduce inputs, requested outputs, the broader model panels and sample
+sizes, matched names, grading and measurement before uncertainty. Section 6 explains
+accuracy confounds and the natural-code check in plain language; the discussion
+distinguishes internal recoverability, intermediate correctness and final correctness.
+Appendix A supplies prompt assembly, complete code demonstration
 set 7, parsing and fitting details. Arithmetic is a compact comparison, with transfer
 analyses and competence checks in the appendix. Related work distinguishes the result
 from Orgad et al.'s answer-level findings, and Limitations explicitly allows probes to
