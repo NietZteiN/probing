@@ -30,7 +30,7 @@ def main():
     lines += [r'\bottomrule',r'\end{tabular}',
               r'\caption{Complete code demonstration set 7; prepend \texttt{Trace:} to each trace.}',
               r'\label{tab:code-demonstrations}',r'\end{table*}']
-    (ROOT/'paper_combined/tables/shared_demonstrations.tex').write_text('\n'.join(lines)+'\n')
+    (ROOT/'paper/combined/tables/shared_demonstrations.tex').write_text('\n'.join(lines)+'\n')
     print('Typeset three verified code demonstration blocks.')
 
 

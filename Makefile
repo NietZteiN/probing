@@ -41,6 +41,16 @@ paper-check:
 paper-submission:
 	@$(MAKE) -C paper TECTONIC="$(TECTONIC)" PY="$(PY)" submission
 
+.PHONY: paper-combined paper-combined-check paper-combined-submission
+paper-combined:
+	@$(MAKE) -C paper/combined TECTONIC="$(TECTONIC)" PY="$(PY)" paper
+
+paper-combined-check:
+	@$(MAKE) -C paper/combined PY="$(PY)" check
+
+paper-combined-submission:
+	@$(MAKE) -C paper/combined TECTONIC="$(TECTONIC)" PY="$(PY)" submission
+
 ## list every number still unfilled in the draft
 numbers:
 	@sed 's/%.*//' paper/main.tex | grep -o '\\NUM{[^}]*}' | sort | uniq -c | sort -rn

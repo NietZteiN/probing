@@ -86,7 +86,7 @@ def main():
             [b[field] - a[field] for a, b in zip(records['trace'], records['trace_expr'])],
             [r['set_id'] for r in records['trace']], n_boot=4000)) for field in fields}
         result['models'][model] = summary
-    destination = ROOT / 'paper_combined/format_correctness.json'
+    destination = ROOT / 'paper/combined/format_correctness.json'
     destination.write_text(json.dumps(result, indent=2) + '\n')
     for model, data in result['models'].items():
         print(model, {regime: data[regime]['correct_counts'] for regime in ('trace', 'trace_expr')})

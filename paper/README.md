@@ -1,5 +1,9 @@
 # ACL ARR LaTeX folder
 
+The combined long paper and all its manuscript assets are in [combined/](combined/README.md),
+including its [PDF](combined/main.pdf), [LaTeX source](combined/main.tex) and
+[standalone source archive](combined/submission_source.zip).
+
 **Chain of Thought Reduces Errors from Misleading Names in Arithmetic** — an ARR **short paper**, with a **4-page main-content limit**.
 
 `main.tex` uses the standard 11pt article class and `\usepackage[review]{acl}`:

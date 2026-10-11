@@ -1,5 +1,8 @@
 # Combined long-paper draft
 
+This directory, `paper/combined/`, contains the manuscript, figures, tables,
+appendices, bibliography, compiled PDF and standalone source archive.
+
 **Correct Values Can Be Recovered Before Wrong Reasoning Steps**
 
 This is the consolidated alternative to the two short papers, within the eight-page
@@ -49,7 +52,8 @@ of zero. Captions retain essential information.
 LaTeX sources, tables and figures, with no dependency on the neighboring repositories.
 `abstract.txt` contains the plain-text abstract. No OpenReview submission has been made.
 
-To build from this directory, run `make submission` with Tectonic and a Python environment
+To build from the repository root, run `make paper-combined-submission`.
+From this directory, run `make submission` with Tectonic and a Python environment
 containing pypdf. To refresh imported evidence in the research workspace, run
 `python scripts/91_combined_paper.py` from the probing repository, rebuild, then run the
 same script with `--bundle`. The source script checks numerical keys and references;

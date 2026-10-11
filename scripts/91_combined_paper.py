@@ -13,7 +13,7 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE = ROOT.parent
-PAPER = ROOT / 'paper_combined'
+PAPER = ROOT / 'paper/combined'
 SOURCES = {'a': ROOT / 'paper', 'c': WORKSPACE / 'codecue/paper'}
 CODE_MODELS = [('olmo2-7b-it', 'OLMo-2-7B-I', 'olmo7'),
                ('llama32-3b-it', 'Llama-3.2-3B-I', 'llama3'),
@@ -366,8 +366,11 @@ def main():
         bundle();return
     for name in ['figures','tables','appendix']:
         (PAPER/name).mkdir(parents=True,exist_ok=True)
-    for name in ['acl.sty','acl_natbib.bst','Makefile']:
+    for name in ['acl.sty','acl_natbib.bst']:
         shutil.copyfile(SOURCES['a']/name,PAPER/name)
+    makefile = (SOURCES['a']/'Makefile').read_text()
+    makefile = makefile.replace('../../envs/', '../../../envs/').replace('../../cache/', '../../../cache/')
+    (PAPER/'Makefile').write_text(makefile)
     checker=(SOURCES['a']/'check_arr.py').read_text()
     checker=checker.replace('source.find(r"\\section{Conclusion}")','source.find(r"\\section{Discussion and conclusion}")')
     (PAPER/'check_arr.py').write_text(checker)

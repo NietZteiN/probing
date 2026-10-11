@@ -13,7 +13,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE = ROOT.parent
-OUT = ROOT / 'paper_combined/figure_candidates'
+OUT = ROOT / 'paper/combined/figure_candidates'
 MODELS = [('olmo2-7b-it', 'OLMo-2-7B-Instruct'),
           ('llama32-3b-it', 'Llama-3.2-3B-Instruct'),
           ('llama31-8b-it', 'Llama-3.1-8B-Instruct')]

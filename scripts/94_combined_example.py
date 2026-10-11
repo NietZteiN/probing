@@ -8,7 +8,7 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE = ROOT.parent
-PAPER = ROOT / 'paper_combined'
+PAPER = ROOT / 'paper/combined'
 IDENTIFIER = 'L5-3-v1-00001-incongruent'
 BLUE, RED, GREEN, GRAY = '#2B4A9E', '#B5321F', '#157A55', '#65717C'
 

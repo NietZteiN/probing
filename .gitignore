@@ -13,11 +13,11 @@ paper/*.bbl
 paper/*.blg
 paper/*.out
 paper/*.synctex.gz
-paper_combined/*.aux
-paper_combined/*.bbl
-paper_combined/*.blg
-paper_combined/*.out
-paper_combined/*.synctex.gz
+paper/combined/*.aux
+paper/combined/*.bbl
+paper/combined/*.blg
+paper/combined/*.out
+paper/combined/*.synctex.gz
 # small committed exceptions
 !data/words/
 !results/summary/

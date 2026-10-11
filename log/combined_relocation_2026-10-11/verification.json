@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-11",
+  "relocated_from": "paper_combined/",
+  "relocated_to": "paper/combined/",
+  "tracked_files_preserved": 73,
+  "updated_noncontent_files": [
+    "Makefile",
+    "README.md",
+    "SHA256SUMS.txt",
+    "main.pdf",
+    "submission_source.zip"
+  ],
+  "manuscript_and_result_content": "All source text, results and figure assets are byte-identical; all 31 PDF page texts match the previous commit. Only build paths, README, archive and checksums updated.",
+  "numeric_definitions_verified": 284,
+  "build": "Root paper-combined-submission target and independent extracted source build pass strict checks. Local default Tectonic/cache paths verified.",
+  "source_archive_files": 48,
+  "main_pages_including_limitations": 7,
+  "total_pages": 31,
+  "links": "Updated probing documentation and codecue companion links.",
+  "scripts": "Updated all five combined-paper generators; refresh preserves correct build depth.",
+  "artifact_sha256": {
+    "main.pdf": "56671671f66d586bb71ea7f9379cd6b52cc0d6863c14b74cf3583f4339880c43",
+    "submission_source.zip": "061f69c0456af871bcf3bb8c77d3036e675d6b61a94796c7f189f41fa1c41c71",
+    "abstract.txt": "e7b3af88e215986fe8754db45b2d145e9e4e1962d9e83dd5ee84d60cd7f14626"
+  },
+  "original_short_paper_check": "Existing arithmetic short paper still passes its 4-page check."
+}
