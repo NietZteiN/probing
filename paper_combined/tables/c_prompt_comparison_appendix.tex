@@ -1,0 +1,24 @@
+\section{Prompt-end versus pre-write readouts}
+\label{c-app:prompt-comparison}
+We fit separate probes at the final token of the complete prompt ending in \texttt{Trace:}, before generating any trace token. Tokenization of this prefix is checked against the original continuation. Training computations, demonstration sets, SGD recipe and seeds match the pre-write probes. Each position selects its layer independently using the same five canonical-computation folds and other folds' neutral labels. Outcome strata and generated-prefix eligibility are frozen from the previous audit. Intervals use 4,000 paired canonical-computation bootstrap draws and condition on the fixed selectors.
+\begin{table*}[t]
+\centering\small
+\sbox{\centralbox}{\begin{tabular}{@{}llrrrrr@{}}
+\toprule
+Model & Write & Rows / computations & Prompt & Before write & Change & Name ID \\
+\midrule
+OLMo-2-7B & sum write & 503 / 193 & 38.4 [32.9, 43.9] & 96.4 [94.9, 97.9] & +58.1 [+52.6, +63.4] & 12.7 [9.8, 15.9] \\
+OLMo-2-7B & correct write & 320 / 135 & 35.2 [27.7, 43.1] & 96.7 [94.4, 98.4] & +61.5 [+53.3, +69.3] & 20.8 [15.5, 26.3] \\
+OLMo-2-7B & other error & 32 / 24 & 76.0 [58.1, 90.2] & 77.1 [61.6, 90.6] & +1.0 [-19.6, +22.6] & 26.0 [12.6, 41.1] \\
+Llama-3.2-3B & sum write & 372 / 169 & 26.4 [22.4, 30.8] & 95.5 [93.6, 97.3] & +69.1 [+64.5, +73.4] & 0.7 [0.1, 1.6] \\
+Llama-3.2-3B & correct write & 440 / 204 & 37.9 [32.1, 43.7] & 98.0 [96.6, 99.1] & +60.1 [+54.4, +65.8] & 3.6 [1.8, 5.7] \\
+Llama-3.2-3B & other error & 43 / 29 & 20.9 [11.7, 31.7] & 82.2 [71.1, 91.7] & +61.2 [+46.8, +73.8] & 2.3 [0.0, 6.1] \\
+Llama-3.1-8B & sum write & 106 / 45 & 56.0 [47.4, 64.2] & 99.7 [99.0, 100.0] & +43.7 [+35.4, +52.4] & 0.0 [0.0, 0.0] \\
+Llama-3.1-8B & correct write & 749 / 261 & 49.9 [45.7, 54.1] & 100.0 [99.9, 100.0] & +50.1 [+45.8, +54.3] & 0.0 [0.0, 0.0] \\
+Llama-3.1-8B & other error & 0 / 0 & -- & -- & -- & -- \\
+\bottomrule
+\end{tabular}}
+\ifdim\wd\centralbox>\textwidth\resizebox{\textwidth}{!}{\usebox{\centralbox}}\else\usebox{\centralbox}\fi
+\caption{Paired true-digit accuracies and prompt-position name-identity controls (\%) [95\% interval]. Change is pre-write minus prompt accuracy in points.}
+\label{c-tab:prompt-comparison}
+\end{table*}

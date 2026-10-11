@@ -1,0 +1,11 @@
+{
+  "kind": "illustrative matched renaming",
+  "arithmetic": {
+    "correct": 6,
+    "suggested": 4
+  },
+  "code": {
+    "correct": 2,
+    "suggested": 8
+  }
+}

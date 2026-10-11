@@ -1,0 +1,9 @@
+{
+  "probing/seed_sweep_L3": "92c67f44d8bedb360b83166d31765ee0abd4be10321c539becf8d45e4f3994d7",
+  "probing/round7_response_controls": "2f09e1a55aed7850e5ae80c89d1dddf8c659bc293398dd2275144b5b90282d9b",
+  "probing/round7_paired_prompting": "7281202e3f3acf44068fa898a3dc42f4b5d6c56d150f4a10e9daffb8465c0cec",
+  "codecue/cell_inference": "dc1f088b1685dd29b72faa2f7462f996f1699d0df7f717e3304dcab83f74ba64",
+  "codecue/round6_crossfit_probes": "f9cdafece5e4c534d697915039fab83972f207d7dc7b9a8bb5d0fc0ac36a5473",
+  "codecue/round7_prompt_comparison": "5c9b15e2db9a84e8a6ab4fe7de3354c3b3dcc2dd7db35ecf57a44e09e3818db2",
+  "codecue/round6_identifier_replication": "6efe6b8c020003c7aa05b0d19a142d654cbef2f6a79d3dece80d997b90b545d7"
+}

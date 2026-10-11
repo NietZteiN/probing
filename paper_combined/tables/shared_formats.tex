@@ -1,0 +1,12 @@
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+Example format & Shown value & OLMo-2-7B-I & Llama-3.2-3B-I & Llama-3.1-8B-I \\
+\midrule
+Values only & \texttt{v = 2} & +58.4 & +43.4 & +12.4 \\
+Matched descriptive text & \texttt{v = 2 [notes]} & +56.6 & +49.6 & -- \\
+Numeric elaboration & \texttt{v = 2 + 0 = 2} & +41.3 & +14.9 & -- \\
+Interactive Python & \texttt{>>> v}\quad\texttt{2} & +9.5 & +12.6 & +0.2 \\
+Code comments & \texttt{v = len(xs) \# 2} & +0.0 & +6.8 & +0.1 \\
+Expression and value & \texttt{v = len(xs) = 2} & +3.4 & +0.4 & +0.0 \\
+\bottomrule
+\end{tabular}

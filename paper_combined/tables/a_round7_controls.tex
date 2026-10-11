@@ -1,0 +1,57 @@
+\section{Response formats and fixed correct calculations}
+\label{a-app:round7-controls}
+These exploratory controls use Llama-3.2-3B, Llama-3.1-8B and OLMo-2-1B-Instruct, level 3 and demonstration seeds 7, 11 and 13. The protocol and cohorts were frozen before collecting outputs. Intervals use 4,000 bootstrap draws over arithmetic computations, keeping repeated names and demonstrations together. Intervals are pointwise, without multiplicity correction; zero-event bootstrap intervals do not establish zero population rates.
+\paragraph{Equations and repeated names.}
+We cross numeric equations with name repetition in demonstrated outputs. For example, named equations write \texttt{cup=2+3=5, pen=1+5=6}; unnamed equations write \texttt{2+3=5, 1+5=6}; values-only formats write \texttt{cup=5, pen=6} or \texttt{5, 6}. All end with the same \texttt{Answer: 6}. Only examples provide correct calculations; test outputs are freely generated. Repeated ordinary-word notes before each example output match full prompt token counts across formats and matched names. Generated lengths are measured rather than forced to match.
+We select 200 independent test computations, each rendered with ordinary names and with a misleading name on either variable, yielding 600 paired observations per target across demonstrations. Calibration uses 100 independent ordinary-name computations, disjoint from tests and demonstrations. We try 3, 8 and 16 examples, seeking at least 90\% accuracy in every format and a range within two points. No model passes; all use 16 examples. A held-out comparison matches competence only if both ordinary-name accuracies reach 90\% and their paired 90\% difference interval fits within $\pm2$ points. Only the named-versus-unnamed equation comparisons in the two Llama models pass (four target comparisons). None of the equation-versus-values comparisons passes.
+\begin{table*}[t]
+\centering\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}llrrrll@{}}
+\toprule
+ & & \multicolumn{3}{c}{Correct answers (\%)} & \multicolumn{2}{c}{Added name errors [95\% interval]} \\
+Model & Example output & Ordinary & Queried & Intermediate & Queried & Intermediate \\
+\midrule
+Llama-3.2-3B & Equations + names & 100.0 & 100.0 & 100.0 & +0.0 [+0.0, +0.0] & +0.0 [+0.0, +0.0] \\
+Llama-3.2-3B & Equations only & 99.0 & 99.0 & 99.5 & +0.0 [+0.0, +0.0] & -0.2 [-0.5, +0.0] \\
+Llama-3.2-3B & Values + names & 66.3 & 67.0 & 68.5 & +0.0 [-1.3, +1.3] & +0.5 [-1.0, +2.0] \\
+Llama-3.2-3B & Values only & 22.3 & 20.8 & 21.5 & +0.8 [-1.2, +2.8] & +1.2 [-0.8, +3.2] \\
+Llama-3.1-8B & Equations + names & 100.0 & 100.0 & 100.0 & +0.0 [+0.0, +0.0] & +0.0 [+0.0, +0.0] \\
+Llama-3.1-8B & Equations only & 100.0 & 100.0 & 100.0 & +0.0 [+0.0, +0.0] & +0.0 [+0.0, +0.0] \\
+Llama-3.1-8B & Values + names & 84.5 & 82.5 & 86.8 & -0.3 [-1.3, +0.5] & -0.8 [-2.0, +0.0] \\
+Llama-3.1-8B & Values only & 38.0 & 36.5 & 36.0 & -0.5 [-2.2, +1.0] & +0.2 [-1.2, +1.5] \\
+OLMo-2-1B-I & Equations + names & 99.7 & 94.7 & 93.5 & +0.2 [+0.0, +0.5] & +0.3 [+0.0, +0.8] \\
+OLMo-2-1B-I & Equations only & 67.3 & 44.3 & 53.5 & +0.2 [-0.8, +1.2] & +0.0 [-1.2, +1.2] \\
+OLMo-2-1B-I & Values + names & 24.7 & 25.7 & 25.2 & -0.2 [-2.8, +2.5] & -1.3 [-3.8, +1.2] \\
+OLMo-2-1B-I & Values only & 18.8 & 19.8 & 18.3 & -2.7 [-5.0, -0.5] & -1.7 [-4.0, +0.7] \\
+\bottomrule
+\end{tabular}
+\caption{Numeric-equation and name-repetition controls. Queried/intermediate columns rename that variable. Added errors subtract the ordinary twin\textquotesingle s suggested-digit rate (percentage points). Parse failures remain in denominators; coverage is 99.2--100\% (rounded).}
+\label{a-tab:round7-formats}
+\end{table*}
+\paragraph{Answering after a correct calculation.}
+We resume after actual original generations for which every restatement, substitution and value matches the executable gold calculation. Both naming twins must qualify. Within each naming condition, the input and complete generated calculation are fixed. We cross a final query repeating the queried name with \texttt{the original requested value=?}, and an output starting with \texttt{Answer:} with one starting with \texttt{Answer: pen=}. The instruction always requests the original problem\textquotesingle s value. These continuations are conditional on successful original calculations; they do not estimate an effect of making a calculation correct. Tail lengths and output markers differ by design.
+Each Llama model supplies 200 pairs per demonstration set and target. OLMo supplies 144/108/116 queried-target pairs and 44/8/25 intermediate-target pairs. Across demonstration sets, the queried-target cohorts contain 210/234/205 distinct computations for Llama-3B/Llama-8B/OLMo; intermediate-target cohorts contain 218/233/53. Generation budgets are 128 tokens for format tests and 16 for final continuations, with greedy full-vocabulary decoding. Unparsed outputs count as incorrect.
+\begin{table*}[t]
+\centering\small\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lllrrrl@{}}
+\toprule
+Model & Query name & Answer format & Pairs & Ordinary correct & Misleading correct & Added errors [95\%] \\
+\midrule
+Llama-3.2-3B & Omitted & Digit & 600 & 99.7 & 99.8 & +0.0 [+0.0, +0.0] \\
+Llama-3.2-3B & Omitted & Assignment & 600 & 100.0 & 100.0 & +0.0 [+0.0, +0.0] \\
+Llama-3.2-3B & Repeated & Digit & 600 & 100.0 & 100.0 & +0.0 [+0.0, +0.0] \\
+Llama-3.2-3B & Repeated & Assignment & 600 & 100.0 & 100.0 & +0.0 [+0.0, +0.0] \\
+Llama-3.1-8B & Omitted & Digit & 600 & 100.0 & 100.0 & +0.0 [+0.0, +0.0] \\
+Llama-3.1-8B & Omitted & Assignment & 600 & 100.0 & 100.0 & +0.0 [+0.0, +0.0] \\
+Llama-3.1-8B & Repeated & Digit & 600 & 100.0 & 100.0 & +0.0 [+0.0, +0.0] \\
+Llama-3.1-8B & Repeated & Assignment & 600 & 100.0 & 100.0 & +0.0 [+0.0, +0.0] \\
+OLMo-2-1B-I & Omitted & Digit & 368 & 78.0 & 69.0 & +12.8 [+9.1, +16.6] \\
+OLMo-2-1B-I & Omitted & Assignment & 368 & 94.0 & 94.3 & +0.0 [+0.0, +0.0] \\
+OLMo-2-1B-I & Repeated & Digit & 368 & 96.2 & 94.3 & +0.5 [+0.0, +1.4] \\
+OLMo-2-1B-I & Repeated & Assignment & 368 & 96.2 & 96.5 & +0.0 [+0.0, +0.0] \\
+\bottomrule
+\end{tabular}
+\caption{Final answers after fixed, completely correct calculations, with the misleading name on the queried variable. Correct answers are percentages; added errors are percentage points. All continuations parse. Assignment outputs include the queried name before the generated digit.}
+\label{a-tab:round7-final}
+\end{table*}
+For OLMo, repeating the queried name lowers added errors by 12.2 points [8.4, 16.1] in digit outputs, but ordinary-name accuracy rises from 78.0\% to 96.2\%. An assignment output also changes accuracy. No OLMo final-format comparison meets the competence criterion. With the misleading name on the intermediate variable, all added-error estimates are zero; OLMo has one suggested-digit answer in each naming condition in the repeated-query/digit format. The query repeats an ordinary name in this control. Neither Llama produces a suggested-digit answer in any final format. These observations distinguish correct calculations from reliable final answering, without identifying a single responsible feature.

@@ -1,0 +1,99 @@
+% Generated from validated round-six summaries.
+\section{Independent probe layer selection}
+\label{c-app:round6-probes}
+The main-text error readouts use five-fold cross-fitting. A fixed SHA256 hash assigns canonical program computations to folds, keeping renamed versions and demonstration repeats together. For each held-out fold, we select the layer with the highest neutral accuracy on the other four folds, averaging three probe seeds and breaking ties toward the lowest layer. Neither the held-out neutral labels nor its misleading writes enter that choice. Probe training remains disjoint from every evaluation computation.
+Each program is scored only with its held-out fold's layer. The generated-prefix audit from Appendix~\ref{c-app:round5-errors} still applies. Table~\ref{c-tab:round6-probes} reports the conditional write strata and paired changes from the earlier full-neutral selection. Intervals use 4,000 canonical-program bootstrap draws, keeping demonstration repeats together. They condition on the fixed fold selectors and do not refit layer selection inside each bootstrap. Name controls and the full layer curves remain descriptive measurements in Appendix~\ref{c-app:probes}.
+\begin{table*}[t]
+\centering\small
+\sbox{\roundsixbox}{\begin{tabular}{@{}llrrll@{}}
+\toprule
+Model & Write & Rows & Computations & Accuracy (\%) & Change (points) \\
+\midrule
+OLMo-2-7B & name error & 503 & 193 & 96.4 [94.9, 97.9] & 0.0 [0.0, 0.0] \\
+OLMo-2-7B & correct write & 320 & 135 & 96.7 [94.4, 98.4] & 0.0 [0.0, 0.0] \\
+OLMo-2-7B & other error & 32 & 24 & 77.1 [61.6, 90.6] & 0.0 [0.0, 0.0] \\
+Llama-3.2-3B & name error & 372 & 169 & 95.5 [93.6, 97.3] & -0.2 [-0.9, 0.4] \\
+Llama-3.2-3B & correct write & 440 & 204 & 98.0 [96.6, 99.1] & -0.3 [-0.8, 0.0] \\
+Llama-3.2-3B & other error & 43 & 29 & 82.2 [71.1, 91.7] & 0.0 [0.0, 0.0] \\
+Llama-3.1-8B & name error & 106 & 45 & 99.7 [99.0, 100.0] & 0.0 [0.0, 0.0] \\
+Llama-3.1-8B & correct write & 749 & 261 & 100.0 [99.9, 100.0] & -0.0 [-0.1, 0.0] \\
+Llama-3.1-8B & other error & 0 & 0 & -- & -- \\
+\bottomrule
+\end{tabular}}
+\ifdim\wd\roundsixbox>\textwidth\resizebox{\textwidth}{!}{\usebox{\roundsixbox}}\else\usebox{\roundsixbox}\fi
+\caption{True-digit readouts with independent layer selection. Changes compare the same observed writes with the earlier full-neutral layer choice. A dash denotes an empty stratum. These readouts establish decodability, not causal use.}
+\label{c-tab:round6-probes}
+\end{table*}
+\section{Independent replication with screened names}
+\label{c-app:round6-identifiers}
+We fix \NUM{c-r6-screen-n} fresh sum-family candidates before scoring them with the original candidate-continuation meaning check (Appendix~\ref{c-app:gate}). The panel is the same seven models used for that gate. A name qualifies when sum is the highest-scoring continuation in at least 80\% of the panel; ties follow the original scoring order. Two additional function-name contexts and neutral names are diagnostic and do not affect selection. Of the candidates, \NUM{c-r6-screen-passed} qualify. We freeze the first \NUM{c-r6-name-n} qualifying names in the fixed order: \NUM{c-r6-name-list}. No trace outcomes enter selection.
+The replication uses \NUM{c-r6-program-n} new length-computed programs. Their canonical computations are unique and absent from the original level-5 training and test corpus and all three demonstration sets. True and name-suggested values are checked by execution and retain the original value-exclusion rules. Every selected name is crossed with every program; its neutral twin differs only in the target identifier. The three affected models and the prespecified CodeGemma-7B control use the same programs and demonstration sets 7, 11 and 13 under trace and expression demonstrations.
+Table~\ref{c-tab:round6-replication} pools names and demonstration sets, clustering all repeats of each computation in 4,000 bootstrap draws. Table~\ref{c-tab:round6-replication-names} reports each identifier. The format contrast replicates on independently selected names, but names and programs differ from the original experiment, so differences in effect magnitude across the two samples are descriptive. This exploratory replication does not retroactively repair the original selection-rule deviation. Probes and patches concern the original identifiers, not these new names.
+\begin{table*}[t]
+\centering\small
+\sbox{\roundsixbox}{\begin{tabular}{@{}lccc@{}}
+\toprule
+Candidate & Sum agreement & Qualifies & Selected \\
+\midrule
+\texttt{sum\_of\_values} & 6/7 & yes & yes \\
+\texttt{sum\_of\_items} & 7/7 & yes & yes \\
+\texttt{sum\_of\_elements} & 7/7 & yes & yes \\
+\texttt{sum\_of\_xs} & 7/7 & yes & no \\
+\texttt{sum\_of\_list} & 6/7 & yes & no \\
+\texttt{list\_sum} & 6/7 & yes & no \\
+\texttt{input\_sum} & 6/7 & yes & no \\
+\texttt{items\_sum} & 6/7 & yes & no \\
+\texttt{elements\_sum} & 5/7 & no & no \\
+\texttt{sum\_values} & 5/7 & no & no \\
+\texttt{sum\_result} & 6/7 & yes & no \\
+\texttt{sum\_total} & 6/7 & yes & no \\
+\texttt{total\_sum} & 6/7 & yes & no \\
+\texttt{xs\_sum} & 7/7 & yes & no \\
+\texttt{sum\_xs} & 7/7 & yes & no \\
+\texttt{summation} & 6/7 & yes & no \\
+\bottomrule
+\end{tabular}}
+\ifdim\wd\roundsixbox>\textwidth\resizebox{\textwidth}{!}{\usebox{\roundsixbox}}\else\usebox{\roundsixbox}\fi
+\caption{The entire fixed candidate list, in selection order. Qualification uses the original canonical meaning prompt. Selection retains the first three qualifying candidates without consulting behavior.}
+\label{c-tab:round6-screen}
+\end{table*}
+\begin{table*}[t]
+\centering\small
+\sbox{\roundsixbox}{\begin{tabular}{@{}llll@{}}
+\toprule
+Model & Trace excess & Expression excess & Expression minus trace \\
+\midrule
+OLMo-2-7B & 91.1 [88.4, 93.6] & 0.8 [0.3, 1.3] & -90.3 [-92.9, -87.6] \\
+Llama-3.2-3B & 61.5 [56.1, 66.9] & 0.0 [0.0, 0.0] & -61.5 [-66.9, -56.1] \\
+Llama-3.1-8B & 16.7 [12.8, 20.8] & 0.0 [0.0, 0.0] & -16.7 [-20.8, -12.8] \\
+CodeGemma-7B & 0.0 [0.0, 0.0] & 0.0 [0.0, 0.0] & 0.0 [0.0, 0.0] \\
+\bottomrule
+\end{tabular}}
+\ifdim\wd\roundsixbox>\textwidth\resizebox{\textwidth}{!}{\usebox{\roundsixbox}}\else\usebox{\roundsixbox}\fi
+\caption{Independent screened-name replication: excess name errors and paired format changes in percentage points [95\% interval]. All selected identifiers and three demonstration sets are pooled over 200 fresh computations. A zero bootstrap interval records no observed paired name errors; it is not a population-level absence or equivalence claim.}
+\label{c-tab:round6-replication}
+\end{table*}
+\begin{table*}[t]
+\centering\small
+\sbox{\roundsixbox}{\begin{tabular}{@{}llll@{}}
+\toprule
+Model & Identifier & Trace excess & Expression excess \\
+\midrule
+OLMo-2-7B & \texttt{sum\_of\_values} & 91.7 [88.8, 94.3] & 0.2 [0.0, 0.5] \\
+OLMo-2-7B & \texttt{sum\_of\_items} & 89.2 [86.0, 92.0] & 2.0 [0.8, 3.3] \\
+OLMo-2-7B & \texttt{sum\_of\_elements} & 92.5 [89.8, 94.8] & 0.2 [0.0, 0.5] \\
+Llama-3.2-3B & \texttt{sum\_of\_values} & 61.7 [56.0, 67.3] & 0.0 [0.0, 0.0] \\
+Llama-3.2-3B & \texttt{sum\_of\_items} & 55.5 [50.0, 61.3] & 0.0 [0.0, 0.0] \\
+Llama-3.2-3B & \texttt{sum\_of\_elements} & 67.3 [61.7, 73.0] & 0.0 [0.0, 0.0] \\
+Llama-3.1-8B & \texttt{sum\_of\_values} & 12.8 [9.3, 16.7] & 0.0 [0.0, 0.0] \\
+Llama-3.1-8B & \texttt{sum\_of\_items} & 22.8 [18.0, 27.7] & 0.0 [0.0, 0.0] \\
+Llama-3.1-8B & \texttt{sum\_of\_elements} & 14.5 [10.5, 18.7] & 0.0 [0.0, 0.0] \\
+CodeGemma-7B & \texttt{sum\_of\_values} & 0.0 [0.0, 0.0] & 0.0 [0.0, 0.0] \\
+CodeGemma-7B & \texttt{sum\_of\_items} & 0.0 [0.0, 0.0] & 0.0 [0.0, 0.0] \\
+CodeGemma-7B & \texttt{sum\_of\_elements} & 0.0 [0.0, 0.0] & 0.0 [0.0, 0.0] \\
+\bottomrule
+\end{tabular}}
+\ifdim\wd\roundsixbox>\textwidth\resizebox{\textwidth}{!}{\usebox{\roundsixbox}}\else\usebox{\roundsixbox}\fi
+\caption{Per-identifier replication, pooling the same three demonstration sets. Effects are percentage points [95\% canonical-program bootstrap interval]. All affected-model trace means are positive in every demonstration set; per-set estimates are retained in the saved summary.}
+\label{c-tab:round6-replication-names}
+\end{table*}

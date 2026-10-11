@@ -1,0 +1,347 @@
+% Submission appendix: methods and evidence for the reported claims.
+\section{Arithmetic task and reproducibility}
+\label{a-app:task}
+
+\begin{table}[t]
+\centering\small
+\resizebox{\columnwidth}{!}{\begin{tabular}{@{}ll@{}}
+\toprule
+Name & Problem (answer: 6) \\
+\midrule
+Neutral & \texttt{pen=1 + cup, cup=2 + 3; pen=?} \\
+Congruent & \texttt{\textcolor{con}{six}=1 + cup, cup=2 + 3; six=?} \\
+Incongruent & \texttt{\textcolor{inc}{four}=1 + cup, cup=2 + 3; four=?} \\
+\bottomrule
+\end{tabular}}
+\caption{Matched names preserve the arithmetic. The misleading digit, 4, occurs nowhere else.}
+\label{a-tab:conditions}
+\end{table}
+A problem contains single-digit variables, addition or subtraction, and a query. The five
+levels vary dependency order, depth and the presence of an unused equation
+(Table~\ref{a-tab:levels}). Three same-level worked examples precede each test problem.
+The evaluated models are \NUM{a-model-list}, plus \NUM{a-n-ladder} derived checkpoints
+(Appendix~\ref{a-app:kind}). Demonstrations use ordinary names for every word-name
+condition, with a reserved word pool disjoint from test names. Generation is greedy;
+only the test variable name changes between matched conditions.
+
+\begin{table}[t]
+\centering\small\setlength{\tabcolsep}{4pt}
+\resizebox{\columnwidth}{!}{\begin{tabular}{@{}clccc@{}}
+\toprule
+Level & Problem (neutral names) & Steps & Held & Distr. \\
+\midrule
+1 & \texttt{pen=1 + cup, cup=2; pen=?} & 1 & 1 & 0 \\
+2 & \texttt{pen=2 + 3, cup=1 + pen; cup=?} & 2 & 0 & 0 \\
+3 & \texttt{pen=1 + cup, cup=2 + 3; pen=?} & 2 & 1 & 0 \\
+4 & \texttt{pen=1 + cup, cup=2 + 3,} & 2 & 1 & 1 \\
+  & \texttt{\ \ box=4 + 5; pen=?} & & & \\
+5 & \texttt{pen=1 + cup, cup=2 + box,} & 3 & 2 & 0 \\
+  & \texttt{\ \ box=1 + 2; pen=?} & & & \\
+\bottomrule
+\end{tabular}}
+\caption{The five levels of \citet{kudo2026faithful}: additions or subtractions needed
+(\emph{Steps}), variables unresolved when first read (\emph{Held}), and unused equations
+(\emph{Distr.}). At level~1 the intermediate value is stated rather than computed.}
+\label{a-tab:levels}
+\end{table}
+
+We reimplement \citet{kudo2026faithful}'s task and probe recipe rather than using their code.
+The shared choices are single-digit outputs, same-level demonstrations, a 10-way linear
+residual-stream classifier, full-batch SGD at $10^{-3}$ for 10,000 epochs, and their
+span-by-layer-window patching design. For replication we train on letter names.
+The Llama-3.2-3B value-writing positions agree with their Table~3: equation
+\NUM{a-replication-eq-v1} for the queried variable and \NUM{a-replication-eq-v2} for the intermediate.
+Our additions are the conflicting names, matched baselines, demonstration-set claim rule and
+equivalence bound.
+
+Pre-chain probe maxima are \NUM{a-replication-pre-v1} and \NUM{a-replication-pre-v2},
+compared with 17.8 and 33.2 in \citet{kudo2026faithful}. The value-writing positions
+agree, while the accuracy difference may reflect training details.
+
+
+
+\subsection{Tokenizer checks}
+
+\label{a-app:tok}
+We test candidate names in five tokenizer contexts and retain words that form one token
+without merging with a neighbor. For Llama~3, all ten number words and 95 of 112 neutral
+candidates pass. Gemma and OLMo use the same lists; runtime checks confirm equal token lengths
+and positions within matched groups. Spaces around binary operators prevent merges such as
+\texttt{1-two}. No instance in the reported runs is excluded by the layout check.
+
+\paragraph{Data, compute and software.} Each level has \NUM{a-n-test-sets} matched sets, each
+rendered in every condition, and \NUM{a-n-probe-train} separately generated problems for
+training probes; every SGD probe is trained with \NUM{a-probe-seeds} seeds. Every run here is
+inference and the probes are linear; the three adapter checkpoints of Appendix~\ref{a-app:kind}
+were trained in a separate project, and that compute is not counted below. Combined allocation time across the arithmetic and code experiments totals \NUM{a-compute-shared-gpuh} GPU-hours on NVIDIA A30, H100 and H200 cards, an upper bound including idle and shared workers.
+The models are from the Llama~3 \citep{grattafiori2024llama3}, Gemma~3 \citep{gemmateam2025gemma3}
+and OLMo~2 \citep{olmo2024olmo2,walsh2025olmo2} families, with the reasoning-tuned checkpoint from
+\citet{bercovich2025nemotron}, each used under its release licence for research. Models run in
+PyTorch \citep{paszke2019pytorch} with Transformers \citep{wolf2020transformers}, and the probes are
+trained in PyTorch; the L-BFGS refit of Appendix~\ref{a-app:recipe} uses scikit-learn
+\citep{pedregosa2011sklearn}, and the mixed-effects check uses statsmodels
+\citep{seabold2010statsmodels}.
+Llama checkpoints use the Llama~3.1 or 3.2 Community License, Gemma uses the Gemma Terms
+of Use, OLMo uses Apache~2.0, and Nemotron uses the NVIDIA Open Model License.
+We use released weights for research inference and do not redistribute them.
+Versions are PyTorch~2.11.0 (CUDA~12.9), Transformers~5.14.1, NumPy~2.3.5,
+scikit-learn~1.9.1 and SciPy~1.18.0.
+
+\section{Full arithmetic results and controls}
+\begin{table*}[t]
+\centering\small
+\resizebox{\textwidth}{!}{\input{tables/a_behavior}}
+\caption{Arithmetic level 3. Accuracy (\%); name effects (points). *Reliable across demonstration sets.}
+\label{a-tab:behavior}
+\end{table*}
+
+\begin{table*}[t]
+\centering\small
+\input{tables/a_behavior_excluded}
+\caption{The level-3 model below the preregistered 90\% mean neutral-CoT accuracy floor,
+excluded from the accuracy-filtered behavioral table. Columns and claim markers follow Table~\ref{a-tab:behavior}.}
+\label{a-tab:excluded}
+\end{table*}
+
+\subsection{Equivalence and accuracy floor}
+
+\label{a-app:equivalence}
+Following preregistration Amendment~3, equivalence requires a 90\% cluster-bootstrap
+interval wholly inside the $\pm\NUM{a-eq-delta}$-point margin (two one-sided 5\% tests).
+We resample matched sets with their demonstration-seed replicates together, using 4,000
+bootstrap draws. Other behavioral intervals remain at 95\%.
+For CoT accuracy, \NUM{a-eq-acc-equivalent} of \NUM{a-eq-acc-cells} facilitation and interference
+contrasts meet the same equivalence bound. Of the \NUM{a-cot-acc-cells} reliable accuracy
+contrasts, \NUM{a-eq-acc-claimable-equivalent} are also equivalent within the margin and
+\NUM{a-eq-acc-claimable-outside} are not; a detectable effect can still be small.
+The written-value control uses the same matched pairs for its excess estimate and interval;
+the exception model's estimate pools all three demonstration sets and clusters on matched set.
+\begin{table}[h]
+\centering\small
+\input{tables/a_equivalence}
+\caption{Equivalence within the two-point margin uses 90\% intervals; reliability uses
+95\% intervals excluding zero and the same sign across all three demonstration sets.
+Each accuracy cell is one facilitation or interference contrast.}
+\end{table}
+\begin{table*}[t]
+\centering\small
+\resizebox{\textwidth}{!}{\input{tables/a_behavior_levels}}
+\caption{Additional task levels for the two Llama models. Columns and claim markers
+follow Table~\ref{a-tab:behavior}; level~1 states the intermediate value directly.}
+\label{a-tab:levels-appendix}
+\end{table*}
+\subsection{Naming and written-value controls}
+
+\label{a-app:controls}
+
+\paragraph{Written values.} We split generated chains by whether they state the target's true
+value. An observation enters the excess estimate only when its neutral twin falls in the same
+split. The estimate and its 95\% interval use those same paired observations. Pooled over
+eligible cells, the excess is \NUM{a-vw-excess-wrote} points in \NUM{a-vw-cells-wrote} cells where
+the value is stated and \NUM{a-vw-excess-not} in \NUM{a-vw-cells-not} where it is not. The exception
+persists in the stated-value split (main text), so this split does not explain its effect.
+
+\paragraph{Identifier-style names.} At level~3, \NUM{a-ident-models} models receive names such as
+\texttt{q4} instead of \texttt{four}, under three demonstration sets. Without CoT, queried-variable
+excess name errors range from \NUM{a-ident-direct-lure-lo} to \NUM{a-ident-direct-lure-hi} points;
+\NUM{a-ident-direct-lure-claim} of \NUM{a-ident-direct-cells} cells are reliable. For number words
+on the same models, the range is \NUM{a-word-direct-lure-lo} to \NUM{a-word-direct-lure-hi}, with
+\NUM{a-word-direct-lure-claim} of \NUM{a-word-direct-cells} reliable. The numeric name-error effect is
+therefore stronger for number words in this comparison; congruent identifier names can still
+improve accuracy.
+
+\paragraph{Word-class effects.} With CoT at level~4, a number word on the queried variable costs
+Llama-3.2-3B \NUM{a-wordclass-cost-L4} accuracy points whether the name agrees with the value or
+not. Those errors restate the wrong equation. This is distinct from answering the digit the
+name denotes, which is why the name-suggested value result cannot be read as removal of every naming effect.
+
+\paragraph{Unused variables.} A number word on the level~4 distractor changes accuracy by at
+most \NUM{a-irr-acc-delta-max} points. Its no-CoT excess name errors range from \NUM{a-irr-direct-lo} to
+\NUM{a-irr-direct-hi}; \NUM{a-irr-direct-claimable} of \NUM{a-irr-direct-cells} cells are reliable.
+With CoT, the range is \NUM{a-irr-cot-lo} to \NUM{a-irr-cot-hi}, with
+\NUM{a-irr-cot-claimable} of \NUM{a-irr-cot-cells} reliable.
+
+\paragraph{Mixed-effects check.} We compare the paired bootstrap with a mixed logit model,
+\texttt{name\_error \textasciitilde{} incongruent + C(seed)}, with a random intercept for
+matched set. Each twin's outcome refers to the same name-suggested digit. Both procedures use the same
+fixed subsample of \NUM{a-mix-cap} sets per cell. Of \NUM{a-mix-cells} fitted cells,
+\NUM{a-mix-agree} agree on whether the interval excludes zero; \NUM{a-mix-unfitted} additional
+cells have no outcome variation. The mixed fit supports an effect in \NUM{a-mix-gained} cells
+where the bootstrap does not and withdraws support in \NUM{a-mix-lost} cells where it does
+(\NUM{a-mix-lost-cells}). Subsampling also removes support from \NUM{a-mix-sub-lost-n} starred
+Table~\ref{a-tab:behavior} cell under both procedures (\NUM{a-mix-sub-lost-cells}). The mixed
+model uses variational Bayes, so its interval is an approximate posterior interval. We retain
+the full-data bootstrap as the primary estimate on the reported percentage-point scale.
+
+\paragraph{Positional-copy control.} Across \NUM{a-copy-n-err} generated CoT name errors over
+models, levels and demonstration sets, the final number in the comma-delimited segment before the answer is the
+name-suggested value in \NUM{a-copy-lure-frac} of cases and the target's true value in \NUM{a-copy-true-frac}.
+A trailing name-suggested value is therefore absent from many errors. This check constrains the positional-copy
+explanation of \citet{liu2026readout}, but does not identify what was copied in each case.
+
+\subsection{Derived checkpoints}
+
+\label{a-app:kind}
+
+We compare six checkpoints on the Llama-3.1-8B architecture: pretrained, instruction-tuned,
+single-task LoRA, multi-task LoRA, TIES-merged adapters and reasoning-tuned. Adapters are folded
+into the weights before evaluation. Shared tokenizers and identical matched problems permit
+paired comparisons (Table~\ref{a-tab:kind}). A pretrained/instruct Gemma pair supplies a second
+family comparison.
+
+\begin{table*}[t]
+\centering\small
+\sbox{\appendixtablebox}{\input{tables/a_modelkind}}
+\ifdim\wd\appendixtablebox>\textwidth
+\resizebox{\textwidth}{!}{\usebox{\appendixtablebox}}
+\else\usebox{\appendixtablebox}\fi
+\caption{Level 3, no CoT, name errors above the matched twin's rate, mean over three
+demonstration sets. \emph{Acc.} is neutral accuracy. $^{*}$ as in Table~\ref{a-tab:behavior}.
+The bottom block repeats the pretrained-to-instruct step in a second family, Gemma-3-4B.}
+\label{a-tab:kind}
+\end{table*}
+
+Task accuracy complicates interpretation. The multi-task model's reliable negative excess
+(\NUM{a-kind-ftm-v1}) accompanies lower neutral accuracy (\NUM{a-kind-ftm-acc}\%, versus
+\NUM{a-kind-it-acc}\%). The reasoning-tuned checkpoint has the lowest accuracy
+(\NUM{a-kind-reas-acc}\%). It also requires a system instruction to enable long-form reasoning;
+our raw-completion prompts leave that mode off. The result concerns the checkpoint under this
+prompt, not reasoning mode in deployment.
+Across these checkpoints, CoT excess name errors are at most \NUM{a-kind-cot-max} points
+in magnitude.
+
+\subsection{Values without equations}
+
+\label{a-app:simple}
+
+Our chain restates each equation before substituting into it, as
+\citeauthor{kudo2026faithful}'s does. Their Tables~5--6 also report a format that writes only the
+sub-results, \texttt{cup=5, pen=6}. We test this format
+at level 3 with three demonstration sets. Two predictions were registered for both Llama models: that
+the excess name errors at the intermediate's value step would exceed the \NUM{a-eq-delta}-point
+margin, and that the value would still be decodable there (probe accuracy at least 0.85), making
+any failure one of readout.
+
+Both predictions fail as registered. Llama-3.1-8B writes the name-suggested value at the intermediate's value
+step \NUM{a-simple-l8b-v2} points above its twin, inside the margin. Llama-3.2-3B is at
+\NUM{a-simple-l3b-v2}, which passes our claim rule, but across the three demonstration sets that
+is \NUM{a-simple-l3b-v2-seeds}, so one set carries most of it. More informative is what the probes say. At
+the step that writes the value, the true value is decodable at \NUM{a-simpleprobe-l8b-simple-v1}
+and \NUM{a-simpleprobe-l8b-simple-v2} for Llama-3.1-8B and at
+\NUM{a-simpleprobe-l3b-simple-v1} and \NUM{a-simpleprobe-l3b-simple-v2} for Llama-3.2-3B, against
+\NUM{a-simpleprobe-l8b-cot-v1} and \NUM{a-simpleprobe-l8b-cot-v2} for the same model under the full
+chain. Neutral accuracy falls with it, to \NUM{a-simple-l8b-acc}\% and \NUM{a-simple-l3b-acc}\%.
+
+Removing the equations lowers both accuracy and true-value probe readouts. It therefore fails to isolate a readout error while preserving those measures.
+
+\section{Probe and patching controls}
+\label{a-app:sweeps}
+\label{a-app:figs}
+
+\input{tables/a_figure_dump}
+
+Probes predict the true digit, the name-suggested digit and their probability margin.
+The name-identity control assigns a fixed random digit to each name; selectivity subtracts
+its accuracy from true-value accuracy. Layers in the supplied-calculation analysis are
+selected by neutral selectivity, averaged over three probe seeds.
+P1 is the name token, P2 the end of its defining equation, P3 the query,
+P4 the position before its value is written, and P5 the position before the final answer.
+P1 is a reference, and P3 can reveal name identity rather than a computed value.
+Figure~\ref{a-fig:heat} gives the token and layer sweep supporting the main readout analysis.
+
+Patches replace residual-stream activations at matched name-token positions, at individual
+layers or across all layers. The neutral-twin source tests removal of the name error;
+a different ordinary name tests damage to correct answers; an alternative misleading
+name tests specificity. The span sweep instead replaces an equation, the query or the
+value-writing segment in four-layer windows. Figure~\ref{a-fig:grid} supports the early-layer
+localization. Table~\ref{a-tab:patching-controls} gives the answer-only control rates
+and denominators for both Llama models.
+OLMo's supplied-calculation controls are reported in Table~\ref{a-tab:exception-patching}.
+We also reverse the main contrast, transplanting misleading-name states into the
+ordinary-name twin. OLMo's largest injection rate across layers and both variables is
+\NUM{a-exc-inject} at layer \NUM{a-exc-inject-layer}; word-control damage there is
+\NUM{a-exc-ctlword}. The injection itself damages \NUM{a-exc-inject-damage} of correct
+answers. This selected maximum is descriptive.
+
+\begin{table*}[t]
+\centering\small
+\resizebox{\textwidth}{!}{\input{tables/a_patching_controls}}
+\caption{All-layer answer-only patches, demonstration set 7. Neutral and alternative:
+percentage of baseline name errors removed. Word damage: percentage of correct
+ordinary-name answers changed; \emph{Correct} gives that denominator.}
+\label{a-tab:patching-controls}
+\end{table*}
+
+\paragraph{Instance-level association.} Within each model, level, regime, variable and
+position, we regress name errors on the probe margin, $\log p_{\mathrm{true}}-\log p_{\mathrm{name}}$,
+where $p_{\mathrm{name}}$ is the probe probability of the name-suggested value,
+with standard errors clustered on matched set. The layer is selected by neutral accuracy.
+Of \NUM{a-link-fits} fits, \NUM{a-link-sig} have $p<.05$: \NUM{a-link-neg} coefficients are negative
+and \NUM{a-link-pos} positive. The direction is not consistent, and \NUM{a-link-pos-topmodel-n}
+positive results come from the model supplying most fits. This leaves the instance-level
+association unresolved. The model-level pattern is also sensitive to panel composition
+(Appendix~\ref{a-app:round5-competence}).
+
+\subsection{Probe recipe and patching scope}
+
+\label{a-app:recipe}
+
+We check two implementation choices inherited from \citet{kudo2026faithful}: the probe optimizer and the name occurrences included in a patch.
+
+\paragraph{Recipe.} We refit the level-3 probes for Llama-3.2-3B with L-BFGS, and with SGD on
+standardized inputs, against the reported recipe.
+
+\begin{table*}[t]
+\centering\small
+\sbox{\appendixtablebox}{\input{tables/a_recipe}}
+\ifdim\wd\appendixtablebox>\textwidth
+\resizebox{\textwidth}{!}{\usebox{\appendixtablebox}}
+\else\usebox{\appendixtablebox}\fi
+\caption{Best-layer true-value accuracy on neutral problems under three probe recipes
+(proportions from 0 to 1).}
+\label{a-tab:recipe}
+\end{table*}
+
+All three recipes give the same qualitative result: the value is decodable where the chain writes it
+(\NUM{a-e17-value-lo}--\NUM{a-e17-value-hi}) and not at the end of its defining equation
+(\NUM{a-e17-end-lo}--\NUM{a-e17-end-hi}). The query position moves, from \NUM{a-e17-sgd-query-v2}
+under the reported recipe to \NUM{a-e17-std-query-v2} under standardization, within a range of
+\NUM{a-e17-query-lo}--\NUM{a-e17-query-hi} over recipes and variables. We already report that
+position as the presence of the name rather than a decoded value, because its control task
+scores \NUM{a-p3-ctl}, so this variation does not change the interpretation of that position.
+
+\paragraph{Scope.} Patching every occurrence of the name includes the copy the model writes in
+its own output. In the direct regime, restricting the patch to the name's occurrences in the prompt leaves the
+intermediate variable essentially unchanged, since its name never appears in the answer: removal is
+\NUM{a-e18-v2-all-removed}\% at layers~\NUM{a-e18-v2-all-best} under both scopes. For the queried
+variable the best windows remove similar shares (\NUM{a-e18-v1-prompt-removed}\% at
+layers~\NUM{a-e18-v1-prompt-best} prompt-only, against \NUM{a-e18-v1-all-removed}\% at
+layers~\NUM{a-e18-v1-all-best}), the prompt-only patch removes less in the later windows, and the
+two disagree most in the first window, where the prompt-only patch removes
+\NUM{a-e18-v1-prompt-w03}\% and damages \NUM{a-e18-v1-prompt-w03damage}\% of correct answers. That
+is mechanical: the queried variable's name also sits at the position we read, so patching its
+prompt copies alone leaves the model reading a name whose early representation no longer
+matches. The localization we report does not depend on the choice.
+
+\IfFileExists{tables/a_exception_patching.tex}{%
+\begin{table*}[t]
+\centering\small
+\resizebox{\textwidth}{!}{\input{tables/a_exception_patching}}
+\caption{OLMo-2-1B-Instruct, supplied correct calculations, \NUM{a-exc-controls-n} matched
+pairs per target. All-layer rates (\%): neutral/alternative name-error removal, word-control
+damage to correct predictions, and predictions following the alternative digit.
+Roles v1/v2: queried/intermediate; --: undefined.}
+\label{a-tab:exception-patching}
+\end{table*}
+}{}
+\input{tables/a_round5_followups}
+\input{tables/a_round6_followups}
+\input{tables/a_round7_paired}
+\input{tables/a_round7_controls}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/a_story_patching.pdf}
+\caption{Arithmetic name-site patches, Llama-3.2-3B, queried variable, set 7. All replaces every layer.}
+\label{a-fig:patch}
+\end{figure}
