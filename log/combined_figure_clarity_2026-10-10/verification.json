@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-10",
+  "revision": "Simplify main-figure vocabulary and explain each figure in the surrounding text.",
+  "main_pages_including_limitations": 7,
+  "main_page_limit": 8,
+  "pdf_total_pages": 31,
+  "abstract_words_pdf": 139,
+  "changes": [
+    "Figure 1 uses Examples show values only/calculation and removes the probe arrow and technical footer; introductory text explains what changes in the prompt.",
+    "Figure 2 uses Before writing starts/Just before wrong value and identifies predictor accuracy from internal activity on its axis; results explain gray and green positions and the shared eventual errors.",
+    "Figure 3 uses Added text, Extra arithmetic and Calculation shown; the text defines extra sum errors and the zero point, with short captions defining the baseline and bars.",
+    "Figure 4 shares that error measure and example labels; text explains rows, model panels, colors and the affected-model contrast, retaining CodeGemma control.",
+    "Main figures and accuracy table omit the I abbreviation; checkpoint tuning and complete identities remain in methods and appendix. Accuracy table labels the transition as Values only to calculation shown."
+  ],
+  "numerical_evidence": "All 284 definitions match saved evidence. Plotted data, intervals, counts, example generations, provenance, correctness summary and abstract unchanged.",
+  "source_files": 48,
+  "standalone_build": "All 48 archive members match working and extracted sources; all 31 PDF page texts match.",
+  "format_checks": "Working and independent strict ARR checks pass; A4, official review style, embedded fonts, no missing references/assets or overfull boxes.",
+  "visual_checks": "All four figures inspected as standalone images and in rendered pages, including captions, table and nearby explanations; complete Limitations checked.",
+  "new_experiments": "None. Presentation changes only.",
+  "original_short_papers": "Unchanged.",
+  "pdf_sha256": "9c634607bc508ffc50a9255a726d7ef6bd8df7a97817cea2961b52d5e187cad2",
+  "source_sha256": "c042d7f9e7b9079045f7956c59ff051f12f74cfda6d871b26469be97cccf1bca",
+  "abstract_sha256": "e7b3af88e215986fe8754db45b2d145e9e4e1962d9e83dd5ee84d60cd7f14626"
+}

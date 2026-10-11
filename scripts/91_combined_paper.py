@@ -199,11 +199,11 @@ def story_tables():
     lines += [r'\bottomrule', r'\end{tabular}']
     (PAPER/'tables/shared_story.tex').write_text('\n'.join(lines)+'\n')
     lines = [r'\begin{tabular}{@{}lrr@{}}',r'\toprule',
-             r'Model & \shortstack{Correct first value (\%)\\Values $\to$ expressions} & \shortstack{Correct final answer (\%)\\Values $\to$ expressions} \\',r'\midrule']
+             r'Model & \shortstack{Correct first value (\%)\\Values only $\to$ calculation shown} & \shortstack{Correct final answer (\%)\\Values only $\to$ calculation shown} \\',r'\midrule']
     for _, label, tag in CODE_MODELS:
         rates = [num(f'j-format-{tag}-values-misleading-{metric}-mean')+r' $\to$ '+
                  num(f'j-format-{tag}-expression-misleading-{metric}-mean') for metric in ['first','final']]
-        lines.append(' & '.join([label,*rates])+r' \\')
+        lines.append(' & '.join([label.removesuffix('-I'),*rates])+r' \\')
     lines += [r'\bottomrule',r'\end{tabular}']
     (PAPER/'tables/shared_accuracy.tex').write_text('\n'.join(lines)+'\n')
     interval = lambda prefix: num(prefix+'-mean')+' ['+num(prefix+'-lo')+', '+num(prefix+'-hi')+']'
@@ -280,18 +280,18 @@ def figures():
     fig,ax=plt.subplots(figsize=(7.2,2.3))
     for y,(key,label,_) in enumerate(CODE_MODELS):
         row=data['models'][key]['pooled']['lure_write']
-        for field,offset,color,marker,label in [('prompt_accuracy_ci95',-.11,gray,'s','Before trace'),('prewrite_accuracy_ci95',.11,green,'o','Before wrong value')]:
+        for field,offset,color,marker,label in [('prompt_accuracy_ci95',-.11,gray,'s','Before writing starts'),('prewrite_accuracy_ci95',.11,green,'o','Just before wrong value')]:
             mean,lo,hi=[100*v for v in row[field]]
             ax.errorbar(mean,y+offset,xerr=[[max(0,mean-lo)],[max(0,hi-mean)]],fmt=marker,color=color,ms=5,capsize=3,label=label if y==0 else None)
             ax.annotate(f'{mean:.1f}%', (mean,y+offset),
                         xytext=(0,7 if offset<0 else -12),
                         textcoords='offset points',ha='center',color=color,
                         fontsize=8.5)
-    labels = [f"{label}  ({data['models'][key]['pooled']['lure_write']['n_programs']} programs)"
+    labels = [f"{label.removesuffix('-I')}  ({data['models'][key]['pooled']['lure_write']['n_programs']} programs)"
               for key,label,_ in CODE_MODELS]
     ax.set_yticks(range(3),labels,fontsize=8.5);ax.set_ylim(2.7,-.5)
     ax.set_xlim(0,106);ax.set_xticks([0,25,50,75,100]);ax.grid(axis='x',alpha=.15)
-    ax.tick_params(axis='y',length=0);ax.set_xlabel('Correct digit recovered (%)')
+    ax.tick_params(axis='y',length=0);ax.set_xlabel('Correct value predicted from internal activity (%)')
     ax.legend(loc='lower left',bbox_to_anchor=(0,1.02),ncol=2,frameon=False,fontsize=9)
     fig.tight_layout()
     save(fig,'shared_readouts',data['models'])

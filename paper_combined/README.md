@@ -27,8 +27,7 @@ The abstract presents the controlled naming manipulation, recovery on incorrect
 outputs in three code models, and the final-answer improvement from 37.1% to 92.6%
 in OLMo-2-7B.
 A verified full-program example shows actual wrong and correct outputs under the two
-demonstration formats, and marks the pre-value reading position without claiming a
-per-example probe prediction. Four main figures cover that example, readout timing with
+example formats. Four main figures cover that example, readout timing with
 exact recovery percentages and unique error-producing program counts, plainly labeled format controls, and fresh-name
 replication with CodeGemma. Table 1 defines scoring; Table 2 reports correct first values
 and final answers on the same misleading-name programs. The duplicated opening summary
@@ -42,7 +41,9 @@ Appendix A supplies prompt assembly, complete code demonstration
 set 7, parsing and fitting details. Arithmetic is a compact comparison, with transfer
 analyses and competence checks in the appendix. Related work distinguishes the result
 from Orgad et al.'s answer-level findings, and Limitations explicitly allows probes to
-recover input cardinality or related features. Captions retain essential information.
+recover input cardinality or related features. Figure labels use plain language;
+the nearby prose explains the plotted positions, colors, error measure and meaning
+of zero. Captions retain essential information.
 
 `main.pdf` is the anonymous ACL review draft. `submission_source.zip` contains its required
 LaTeX sources, tables and figures, with no dependency on the neighboring repositories.

@@ -59,8 +59,8 @@ def save(fig, name):
 def operation_controls():
     inference = load('codecue', 'cell_inference')
     controls = load('codecue', 'round5_formats')
-    labels = ['Values only', 'Matched descriptive text', 'Numeric elaboration', 'Source expression + value']
-    examples = ['v = 2', 'v = 2 [notes]', 'v = 2 + 0 = 2', 'v = len(xs) = 2']
+    labels = ['Values only', 'Added text', 'Extra arithmetic', 'Calculation shown']
+    examples = ['v = 2', 'v = 2 [text]', 'v = 2 + 0 = 2', 'v = len(xs) = 2']
     fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.55), sharey=True)
     fig.subplots_adjust(left=.47, right=.985, top=.80, bottom=.26, wspace=.30)
     for ax, (model, title) in zip(axes, MODELS[:2]):
@@ -77,14 +77,14 @@ def operation_controls():
             ax.annotate(f'{mean:.1f}', (mean, y), xytext=(0, 9),
                         textcoords='offset points', ha='center', fontsize=8, color=color)
         clean_axis(ax, [0, 20, 40, 60], (-3, 68))
-        ax.set_title(title.replace('-Instruct', '-I'), fontsize=9, pad=12)
+        ax.set_title(title.removesuffix('-Instruct'), fontsize=9, pad=12)
         ax.set_yticks(range(4), [])
         ax.set_ylim(3.6, -.6)
     for y, label, example in zip(range(4), labels, examples):
         yp = axes[0].transData.transform((0,y))[1] / fig.bbox.height
         fig.text(.005,yp,label,fontsize=8,va='center')
         fig.text(.27,yp,example,fontsize=7.5,family='DejaVu Sans Mono',va='center')
-    fig.supxlabel('Added sum writes (percentage points)',
+    fig.supxlabel('Extra sum errors (percentage points)',
                   fontsize=9, y=.07)
     save(fig, 'operation_controls')
 
@@ -104,16 +104,16 @@ def fresh_names():
             POINTS['fresh_names'][model][name] = {'values': trace, 'expression': expression}
             ax.plot([100*trace[0], 100*expression[0]], [y-.09, y+.09], color='#c7c7c7', lw=1)
             interval(ax, trace, y-.09, RED, 'o', 'Values only' if y == 0 else None)
-            interval(ax, expression, y+.09, GREEN, 's', 'Expression + value' if y == 0 else None)
+            interval(ax, expression, y+.09, GREEN, 's', 'Calculation shown' if y == 0 else None)
         clean_axis(ax, [0, 50, 100], (-6, 106))
         family, size = title.removesuffix('-Instruct').rsplit('-', 1)
-        ax.set_title(f'{family}\n{size}-I', fontsize=9, pad=6)
+        ax.set_title(f'{family}\n{size}', fontsize=9, pad=6)
         ax.set_yticks(range(3), names, fontfamily='DejaVu Sans Mono', fontsize=8)
         ax.set_ylim(2.45, -.45)
     handles, labels = axes.flat[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(.60, 1.015),
                ncol=2, frameon=False, fontsize=9)
-    fig.supxlabel('Added sum writes (percentage points)',
+    fig.supxlabel('Extra sum errors (percentage points)',
                   fontsize=9, y=.07)
     save(fig, 'fresh_names')
 

@@ -56,9 +56,8 @@ def main():
         code_line(axes[0],line,.85-j*.105)
     axes[0].text(0,.17,'Correct first value  2',fontsize=8.5,color=GREEN)
     axes[0].text(0,.055,'Correct final answer  9',fontsize=8.5,color=GREEN)
-    marker = None
-    for ax,title,row,color in [(axes[1],'Values-only\ndemonstrations',wrong,RED),
-                               (axes[2],'Expression-and-value\ndemonstrations',correct,GREEN)]:
+    for ax,title,row,color in [(axes[1],'Examples show\nvalues only',wrong,RED),
+                               (axes[2],'Examples show\ncalculation',correct,GREEN)]:
         ax.text(0,1,title,weight='bold',fontsize=9,va='top',linespacing=1.12)
         ax.text(0,.75,'Actual OLMo-2-7B output',fontsize=7.7,color=GRAY,va='top')
         assignments = row['generation'].splitlines()[0].strip().split(', ')
@@ -71,17 +70,11 @@ def main():
             x = len(prefix+' = ') * advance
             ax.text(x,.58-j*.15,value,transform=ax.transAxes,family='DejaVu Sans Mono',
                     fontsize=8.1,va='top',color=color)
-            if ax is axes[1] and j == 0:
-                marker = (x-.5*advance,.615)
         ax.text(0,.055,f"Answer: {row['pred']}  ({'correct' if row['correct'] else 'wrong'})",
                 fontsize=9,weight='bold',color=color)
-    axes[1].annotate('Probe reads state',xy=marker,xycoords='axes fraction',
-                     xytext=(.14,.66),textcoords='axes fraction',fontsize=7.5,
-                     arrowprops={'arrowstyle':'->','lw':.8,'color':GRAY},color=GRAY)
     fig.text(.015,.09,'Misleading name',color=BLUE,fontsize=8)
     fig.text(.22,.09,'Incorrect value',color=RED,fontsize=8)
     fig.text(.425,.09,'Correct value',color=GREEN,fontsize=8)
-    fig.text(.015,.015,"Probe reads at '=' before the first value; individual prediction not shown.",fontsize=7.7,color=GRAY)
     payload = {'id':IDENTIFIER,'model':'olmo2-7b-it','demonstration_seed':7,
                'program':p['program'],'correct_values':p['values'],'correct_answer':9,
                'name_suggested_value':8,'values_only_generation':wrong['generation'],
