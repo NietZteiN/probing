@@ -372,23 +372,21 @@ the two tasks.
 
 \subsection{Change the demonstrations, then inspect the same programs}
 
-The strongest practical comparison keeps the code, input, model and demonstration
-identities fixed. Only the format of the worked examples changes, from
-\texttt{v=2} to \texttt{v=len(xs)=2}. Excess sum writes fall from
-\NUM{c-cell-olmo7-excess} to \NUM{c-cell-olmo7-traceexpr-excess} points in OLMo-2-7B,
-from \NUM{c-cell-llama3-excess} to \NUM{c-cell-llama3-traceexpr-excess} in Llama-3.2-3B,
-and from \NUM{c-cell-llama8-excess} to \NUM{c-cell-llama8-traceexpr-excess} in
-Llama-3.1-8B. The examples connect the reported digit to the operation in the
-source code. Table~\ref{tab:formats} compares this change with alternative ways
-to provide written steps.
+The strongest practical comparison keeps the program, input, model and
+demonstration identities fixed. Replacing \texttt{v=2} examples with
+\texttt{v=len(xs)=2} connects the reported value to the source operation.
+Added sum writes fall to \NUM{c-cell-olmo7-traceexpr-excess},
+\NUM{c-cell-llama3-traceexpr-excess} and \NUM{c-cell-llama8-traceexpr-excess}
+points in OLMo-2-7B, Llama-3.2-3B and Llama-3.1-8B, respectively.
+Figure~\ref{fig:operation-controls} compares the source expressions with
+additional text and numeric elaboration on the same programs.
 
-\begin{table*}[t]
-\centering\small
-\input{tables/shared_formats}
-\caption{Added sum writes when code computes length (points). Dashes: untested. Intervals: Tables~\ref{c-tab:formats-ci}, \ref{c-tab:round5-formats}.}
-\label{tab:formats}
-\label{c-tab:formats}
-\end{table*}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/operation_controls.pdf}
+\caption{Length-computing code: format controls (95\% intervals). [notes]: neutral text.}
+\label{fig:operation-controls}
+\end{figure*}
 
 Could the additional text alone explain the improvement? Descriptive annotations
 matched to the expression examples' token counts leave
@@ -406,11 +404,9 @@ These controls favor a role for the content of the operation shown in the exampl
 while changing several aspects of the written context. They do not identify a
 single responsible representation.
 
-Other formats also help. An interactive Python transcript writes a variable and
-then its value, without restating the expression, yet its effects are several times
-smaller than those of the values-only trace. Adding values as comments to the code
-also reduces errors. Source expressions are therefore an effective demonstration
-format in these tasks, rather than the only format that can improve reliability.
+Interactive Python transcripts and values written as code comments also reduce
+errors (Appendix Table~\ref{tab:formats}). Source expressions are one effective
+demonstration format for these tasks.
 
 \subsection{The format contrast replicates with fresh names}
 
@@ -423,16 +419,24 @@ highest-scoring operation continuation before testing traces. Of these,
 from the original training and test data and every demonstration set.
 
 With values-only examples, added sum writes are
-\NUM{c-r6-olmo7-trace-mean} [\NUM{c-r6-olmo7-trace-lo}, \NUM{c-r6-olmo7-trace-hi}],
-\NUM{c-r6-llama3-trace-mean} [\NUM{c-r6-llama3-trace-lo}, \NUM{c-r6-llama3-trace-hi}],
-and \NUM{c-r6-llama8-trace-mean} [\NUM{c-r6-llama8-trace-lo}, \NUM{c-r6-llama8-trace-hi}]
+\NUM{c-r6-olmo7-trace-mean}, \NUM{c-r6-llama3-trace-mean}
+and \NUM{c-r6-llama8-trace-mean}
 points in OLMo-2-7B and the two Llama models. Expression-and-value examples reduce
 these to \NUM{c-r6-olmo7-expression-mean} points in OLMo and zero observed excess
 in both Llamas. The prespecified CodeGemma-7B control has zero observed excess
-in both formats. Intervals cluster all names and demonstrations of a computation.
+in both formats. Figure~\ref{fig:fresh-names} shows that the contrast holds across
+all three selected names. Intervals cluster repeated demonstrations of each computation;
+pooled intervals also cluster names (Appendix~\ref{c-app:round6-identifiers}).
 The replication supports the format contrast on independently selected names;
 its changed names and programs make magnitude differences from the original cohort
 descriptive. Probes and patches still concern the original identifiers.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fresh_names.pdf}
+\caption{Fresh names on 200 new length computations (95\% intervals). I: instruction-tuned.}
+\label{fig:fresh-names}
+\end{figure*}
 
 \subsection{Arithmetic controls separate equations from repeated names}
 

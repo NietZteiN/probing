@@ -21,9 +21,10 @@ The main paper follows seven sections:
 6. Related work
 7. Discussion and conclusion
 
-The abstract uses the supplied wording as its starting point. Three shared figures cover
-the naming conflict, behavioral effects and readout timing; one table compares output
-formats. Captions retain only essential information.
+The abstract uses the supplied wording as its starting point. Five main figures cover
+the naming conflict, behavioral effects, readout timing, operation controls and fresh-name
+replication. The two new plots are on page 7; the full format table is in the appendix.
+Captions retain only essential information.
 
 `main.pdf` is the anonymous ACL review draft. `submission_source.zip` contains its required
 LaTeX sources, tables and figures, with no dependency on the neighboring repositories.

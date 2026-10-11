@@ -129,6 +129,12 @@ def refresh_imports():
     # The four baseline formats form a subset of the main six-format comparison.
     code = code.replace(r'Table~\ref{c-tab:formats} with 95\% bootstrap intervals',
                         r'Baseline formats with 95\% bootstrap intervals')
+    formats = ('\n'+r'\begin{table*}[t]'+'\n'+r'\centering\small'+'\n'+
+               r'\input{tables/shared_formats}'+'\n'+
+               r'\caption{Code format comparison: added sum writes (points). Dashes: untested.}'+'\n'+
+               r'\label{tab:formats}\label{c-tab:formats}'+'\n'+r'\end{table*}'+'\n')
+    code = code.replace(r'\section{Demonstration formats}',
+                        r'\section{Demonstration formats}'+formats)
     for name in ['code.tex']:
         (PAPER/'appendix'/name).write_text(code)
     for path in (PAPER/'tables').glob('c_*.tex'):
@@ -239,7 +245,12 @@ def figures():
     ax.legend(loc='lower left',bbox_to_anchor=(0,1.02),ncol=2,frameon=False,fontsize=9)
     fig.tight_layout()
     save(fig,'shared_readouts',data['models'])
-    for repo,names in [('probing',['seed_sweep_L3','round7_response_controls','round7_paired_prompting']),('codecue',['cell_inference','round6_crossfit_probes','round7_prompt_comparison','round6_identifier_replication'])]:
+    runpy.run_path(str(ROOT/'scripts/92_figure_candidates.py'))['main']()
+    for name in ['operation_controls','fresh_names']:
+        for suffix in ['pdf','png']:
+            shutil.copyfile(PAPER/'figure_candidates'/f'{name}.{suffix}',
+                            PAPER/'figures'/f'{name}.{suffix}')
+    for repo,names in [('probing',['seed_sweep_L3','round7_response_controls','round7_paired_prompting']),('codecue',['cell_inference','round5_formats','round6_crossfit_probes','round7_prompt_comparison','round6_identifier_replication'])]:
         for name in names:
             p=WORKSPACE/repo/'results/summary'/f'{name}.json'
             provenance[f'{repo}/{name}']=sha(p)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Plot three optional combined-paper figures from saved summaries, CPU only."""
+"""Plot combined-paper figures and one optional figure from saved summaries."""
 from __future__ import annotations
 
 import hashlib
@@ -59,11 +59,9 @@ def save(fig, name):
 def operation_controls():
     inference = load('codecue', 'cell_inference')
     controls = load('codecue', 'round5_formats')
-    labels = ['Values only\nv = 2', 'Values + neutral text\nv = 2 [notes]',
-              'Numeric elaboration\nv = 2 + 0 = 2', 'Source operation + value\nv = len(xs) = 2']
-    fig, axes = plt.subplots(1, 2, figsize=(7.05, 2.9), sharey=True)
-    fig.subplots_adjust(left=.30, right=.98, top=.79, bottom=.22, wspace=.23)
-    fig.suptitle('Code task: compute list length with v = len(xs)', y=.99, fontsize=10)
+    labels = ['v = 2', 'v = 2 [notes]', 'v = 2 + 0 = 2', 'v = len(xs) = 2']
+    fig, axes = plt.subplots(1, 2, figsize=(7.05, 2.12), sharey=True)
+    fig.subplots_adjust(left=.23, right=.98, top=.80, bottom=.28, wspace=.20)
     for ax, (model, title) in zip(axes, MODELS[:2]):
         rows = []
         for regime in ('trace', 'trace_expr'):
@@ -73,15 +71,15 @@ def operation_controls():
         values = [rows[0], controls['models'][model]['neutral_annotation']['excess_ci95'],
                   controls['models'][model]['numeric_elaboration']['excess_ci95'], rows[1]]
         POINTS.setdefault('operation_controls', {})[model] = values
-        for y, vals, color in zip(range(4), values, [RED, GRAY, BLUE, GREEN]):
+        for y, vals, color in zip(range(4), values, [RED, GRAY, GRAY, GREEN]):
             mean = interval(ax, vals, y, color)
             ax.annotate(f'{mean:.1f}', (mean, y), xytext=(0, 9),
                         textcoords='offset points', ha='center', fontsize=8, color=color)
         clean_axis(ax, [0, 20, 40, 60], (-3, 68))
-        ax.set_title(title, fontsize=9, pad=15)
-        ax.set_yticks(range(4), labels)
+        ax.set_title(title.replace('-Instruct', '-I'), fontsize=9, pad=12)
+        ax.set_yticks(range(4), labels, fontfamily='DejaVu Sans Mono', fontsize=9)
         ax.set_ylim(3.5, -.6)
-    fig.supxlabel('Name-suggested wrong writes, misleading − ordinary (points)',
+    fig.supxlabel('Added sum writes (percentage points)',
                   fontsize=9, y=.07)
     save(fig, 'operation_controls')
 
@@ -90,9 +88,8 @@ def fresh_names():
     data = load('codecue', 'round6_identifier_replication')
     names = data['selected_names']
     assert names == ['sum_of_values', 'sum_of_items', 'sum_of_elements']
-    fig, axes = plt.subplots(2, 2, figsize=(7.05, 3.65), sharex=True, sharey=True)
-    fig.subplots_adjust(left=.24, right=.99, top=.82, bottom=.20, wspace=.19, hspace=.63)
-    fig.suptitle('List-length task · fresh names on 200 new computations', y=.995, fontsize=10)
+    fig, axes = plt.subplots(1, 4, figsize=(7.05, 2.12), sharex=True, sharey=True)
+    fig.subplots_adjust(left=.22, right=.99, top=.66, bottom=.28, wspace=.20)
     for ax, (model, title) in zip(axes.flat, MODELS + [('codegemma-7b-it', 'CodeGemma-7B-Instruct')]):
         row = data['models'][model]
         assert row['n_programs'] == 200 and row['n_names'] == 3
@@ -100,17 +97,18 @@ def fresh_names():
         for y, name in enumerate(names):
             trace, expression = [row[regime]['by_name'][name] for regime in ('trace', 'trace_expr')]
             POINTS['fresh_names'][model][name] = {'values': trace, 'expression': expression}
-            ax.plot([100*trace[0], 100*expression[0]], [y, y], color='#c7c7c7', lw=1)
+            ax.plot([100*trace[0], 100*expression[0]], [y-.09, y+.09], color='#c7c7c7', lw=1)
             interval(ax, trace, y-.09, RED, 'o', 'Values only' if y == 0 else None)
-            interval(ax, expression, y+.09, GREEN, 's', 'Source operation + value' if y == 0 else None)
-        clean_axis(ax, [0, 25, 50, 75, 100], (-4, 104))
-        ax.set_title(title, fontsize=9, pad=8)
+            interval(ax, expression, y+.09, GREEN, 's', 'Expression + value' if y == 0 else None)
+        clean_axis(ax, [0, 50, 100], (-6, 106))
+        family, size = title.removesuffix('-Instruct').rsplit('-', 1)
+        ax.set_title(f'{family}\n{size}-I', fontsize=9, pad=6)
         ax.set_yticks(range(3), names, fontfamily='DejaVu Sans Mono', fontsize=8)
         ax.set_ylim(2.45, -.45)
     handles, labels = axes.flat[0].get_legend_handles_labels()
-    fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(.60, .945),
+    fig.legend(handles, labels, loc='upper center', bbox_to_anchor=(.60, 1.015),
                ncol=2, frameon=False, fontsize=9)
-    fig.supxlabel('Name-suggested wrong writes, misleading − ordinary (points)',
+    fig.supxlabel('Added sum writes (percentage points)',
                   fontsize=9, y=.07)
     save(fig, 'fresh_names')
 
