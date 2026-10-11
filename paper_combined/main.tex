@@ -49,9 +49,9 @@ Written calculations let readers check how a language model reaches an answer.
 But the values in those calculations can follow a misleading variable name
 instead of the operation in the problem. Consider a Python program that stores
 \texttt{len([5, 3])} in a variable named \texttt{sum\_all}. The correct value is 2,
-but the name suggests 8 (Figure~\ref{fig:example}). A model that writes
-\texttt{sum\_all = 8} has reproduced the name's suggestion in its intermediate
-work. We investigate whether the correct value is still recoverable immediately
+but the name suggests 8. In Figure~\ref{fig:example}, OLMo-2-7B writes
+\texttt{sum\_all = 8} and ultimately answers 15 instead of 9.
+We investigate whether the correct value is still recoverable immediately
 before such a wrong write, and whether changing the worked examples in the prompt improves
 what the model writes.
 
@@ -71,7 +71,7 @@ value. Yet a separately trained predictor recovers the correct digit from model
 activity with \NUM{c-crossfit-min}--\NUM{c-crossfit-max}\% accuracy immediately
 before those errors. Showing the source operation alongside its result in the
 worked examples sharply reduces wrong writes and increases correct intermediate
-and final outputs (Table~\ref{tab:story}). The improvement also holds with fresh
+and final outputs (Table~\ref{tab:format-accuracy}). The improvement also holds with fresh
 names and new programs.
 
 The results connect a failure in written reasoning to a practical way to improve
@@ -83,112 +83,94 @@ value is computed offer a concrete way to improve their reliability.
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/shared_example.pdf}
-\caption{Matched renaming, a schematic wrong write, and alternative demonstration formats.}
+\caption{Actual OLMo-2-7B outputs for the same program under two demonstration formats.}
 \label{fig:example}
 \end{figure*}
-
-\begin{table*}[t]
-\centering\small
-\input{tables/shared_story}
-\caption{Code errors, correct-value recovery on those errors, and the format improvement. I: instruction-tuned.}
-\label{tab:story}
-\end{table*}
 
 \section{Experimental design}
 \label{sec:design}
 
-\subsection{A shared conflict with two different tasks}
+\subsection{Inputs and requested outputs}
 
-Both tasks pair an ordinary-name problem with a misleading-name version of the same
-computation. The inputs, operators, dependencies and requested value remain fixed. We
-call an output that matches the name's incorrect suggestion a \emph{name error}.
-\emph{Excess name errors} measures how much renaming increases that output. It subtracts
-the ordinary-name twin's rate for the same suggested value from the misleading-name rate.
-The subtraction matters because a model can guess that digit without any misleading word.
-For example, a model that answers 4 equally often in both versions has zero excess, even
-if its overall accuracy is low.
+Arithmetic problems contain single-digit addition and subtraction, following
+\citet{kudo2026faithful}. In the main level, the queried equation precedes the
+one needed to evaluate it. For \texttt{pen=1+cup, cup=2+3; pen=?}, the answer is 6.
+Code problems contain a short Python function and its input list
+(Figure~\ref{fig:example}). Assignments compute length, sum, maximum or minimum,
+then integer arithmetic. The main level has three dependent assignments; all
+correct assignment values and return values are single digits. Complete task
+levels and model panels are in Appendices~\ref{a-app:task} and \ref{c-app:levels}.
 
-\paragraph{Arithmetic.} We reimplement \citeauthor{kudo2026faithful}'s task of single-digit
-addition and subtraction. The main level requires two operations and presents the queried
-variable's equation before the equation needed to evaluate it. In
-\texttt{pen=1+cup, cup=2+3; pen=?}, the queried value is 6. Replacing \texttt{pen} with
-\texttt{four} changes only the name. The misleading digit is absent from every input and
-variable value, so answering 4 cannot be attributed to copying an existing digit. We also
-test names that denote the correct digit and rename intermediate variables separately.
-All names occupy one token, preserving token positions within matched pairs.
+Three worked examples precede each test problem. In arithmetic, the model either
+writes only the answer or evaluates the equations before answering. In code, it
+writes each assignment's value and then the function's return value. We compare
+examples showing values alone, such as \texttt{v=2}, with examples showing the
+source expression and value, such as \texttt{v=len(xs)=2}. The test program and
+\texttt{Trace:} prefix are identical across these formats. Generation is greedy;
+three fixed demonstration sets test sensitivity to the examples. Complete prompt
+formats are in Appendix~\ref{app:prompts-scoring}.
 
-The arithmetic panel contains \NUM{a-n-models} checkpoints, including pretrained,
-instruction-tuned and derived models. Two pretrained Llama models cover all five task
-levels. Each level has \NUM{a-n-test-sets} matched problems; demonstrations use ordinary
-names disjoint from test names. Appendix Table~\ref{a-tab:behavior} applies the planned 90\%
-ordinary-name accuracy floor under written calculations. Results below that floor remain
-visible in the supporting tables. Appendix~\ref{a-app:task} gives the levels, model list
-and tokenizer checks.
+\subsection{Matched names and output scoring}
 
-\paragraph{Code.} Each task is a short Python function over distinct input digits. Its
-assignments compute length, sum, maximum or minimum, then apply integer arithmetic.
-All variable and return values are single digits. The main level has three dependent
-assignments. For a length assignment, a sum-like name suggests the sum of the list while
-the executable value remains its length. The suggested value differs from every input
-element and from the correct values. We evaluate \NUM{c-n-models} instruction-tuned
-models at levels 3 and 5, with 1,000 matched problems per target, and add CodeLlama-34B
-as a scale check. The arithmetic and code panels overlap in model families but differ in
-checkpoints and prompts; they are separate experiments rather than a pooled model sample.
-The length-to-sum comparison contains \NUM{c-probe-n-test} matched programs per
-demonstration set within the larger task pool.
+Each problem has an ordinary-name twin and a misleading-name version. Inputs,
+operations and correct values stay fixed. In arithmetic, renaming \texttt{pen}
+to \texttt{four} suggests 4 instead of 6. In code, \texttt{sum\_all} suggests the
+sum of a list where the program computes its length. The suggested digit differs
+from the correct value and the input digits. This supplies a specific competing
+wrong answer whose rate can be compared between the twins.
 
-The original code design planned to retain identifiers that evoke their intended
-operation in at least 80\% of models, but the runs retained the full identifier
-table. The main readouts concern this original cohort. We separately screen fresh
-names before inspecting traces and test them on \NUM{c-r6-program-n} new programs
-to assess the format contrast (Section~\ref{sec:replication}).
+Table~\ref{tab:scoring} defines the output measurements. The main code error
+measurement concerns the first assignment; arithmetic name errors concern the
+final answer. We report accuracy alongside these errors to measure whether
+outputs become correct. Parse failures remain in all behavioral denominators and
+count as incorrect for accuracy. Appendix~\ref{app:prompts-scoring} gives the
+parsing rules; Appendix~\ref{app:format-correctness} gives the matched code
+correctness cohort.
 
-\subsection{What the model is asked to write}
+\begin{table*}[t]
+\centering\small
+\begin{tabular}{@{}p{.27\textwidth}p{.68\textwidth}@{}}
+\toprule
+Measurement & What counts \\
+\midrule
+Intermediate correctness & The written value matches the executed assignment value. \\
+Final correctness & The reported answer matches the correct result. \\
+Name-suggested error & The target output equals the specific wrong digit suggested by the name. \\
+Excess name errors & Misleading-name rate minus ordinary-name rate for that same wrong digit. \\
+\bottomrule
+\end{tabular}
+\caption{Output measurements. Intermediate correctness is reported for the first code assignment.}
+\label{tab:scoring}
+\end{table*}
 
-In arithmetic, \emph{answer-only} prompting requests the final digit. The
-\emph{calculation} condition asks the model to restate and evaluate the equations before
-answering, for example \texttt{cup=2+3=5, four=1+5=6; Answer: 6}. This is the written
-chain of thought. An answer-only response can still involve internal computation; the
-comparison concerns the output the prompt requests.
+\subsection{Measuring internal activity}
 
-In code, a \emph{values-only trace} writes each assignment's value, such as
-\texttt{sum\_all=2}, before the return value. An \emph{expression-and-value trace} shows
-the source operation as well, such as \texttt{sum\_all=len(xs)=2}. Worked examples
-demonstrate these formats while the test program and \texttt{Trace:} prefix remain fixed.
-Other conditions use an interactive Python transcript, code comments with values, or free
-prose. These formats make different information explicit; we do not treat all written
-steps as the same intervention.
+A \emph{linear probe} is a separately trained predictor of the correct digit
+from one hidden state. In the central code analysis, it reads the state at the
+\texttt{=} immediately before an actual wrong value. We also read the end of the
+prompt, before the trace starts, on those same error cases. Probe training uses
+ordinary-name programs whose computations are disjoint from evaluation.
+Layer selection excludes the held-out computation, and the cached prefix must
+match the generated prefix through the measurement position. The answer token
+is excluded.
 
-Main behavior uses three fixed sets of three worked examples, with demonstration seeds
-7, 11 and 13. Decoding is greedy over the full vocabulary. Parse failures remain in
-denominators. We report ordinary-name accuracy beside name errors because avoiding a
-particular wrong value does not establish successful computation.
+A probe measures recoverable information; it does not establish that generation
+causally uses that information. The language model generates without the probe.
+\emph{Activation patching} instead replaces activity with the ordinary-name twin's
+activity and measures the resulting output change. Arithmetic readouts mainly
+use supplied correct calculations, with freely generated calculations tested
+separately. Probe and patching details are in Appendices~\ref{a-app:recipe},
+\ref{c-app:probes} and \ref{c-app:prompt-comparison}.
 
-\subsection{Outputs, readouts and interventions}
+\subsection{Uncertainty and controls}
 
-Behavioral measurements score what the model generates. A \emph{linear probe} is a
-separately trained predictor of the correct digit from one internal hidden state. It
-measures which information can be recovered at a position and layer. The language model
-does not use this predictor to generate its answer. \emph{Activation patching} replaces
-one problem's internal activity with activity from its ordinary-name twin and measures
-the resulting output change. These three measurements answer different questions.
-
-Probes train on separate ordinary-name computations with three initialization seeds.
-Controls assign a random digit to each name to measure name identity
-\citep{hewitt2019control}. The central code analysis uses five-fold layer selection that
-excludes the held-out computation. It reads the \texttt{=} immediately before the model's
-actual wrong value; the generated and cached token prefixes must agree through that
-position. No answer digit is included. Arithmetic measurements mainly supply a correct
-calculation token by token. We separately test freely generated calculations and report
-whether the probe generalizes to their ordinary-name states.
-
-For reliable behavioral effects, the sign must agree across all three demonstration sets
-and a 95\% cluster-bootstrap interval must exclude zero. Small-effect claims require a
-90\% interval entirely inside $\pm\NUM{a-eq-delta}$ percentage points. Bootstrap clusters
-keep matched names and demonstration repeats together. Controls involving repeated
-computations cluster on the underlying arithmetic or program rather than the spelling
-of its variables. Intervals are pointwise. They describe the tested cells, not a
-multiplicity-corrected result over independent model replications.
+Intervals resample computations, keeping both naming conditions and repeated
+demonstrations together. A reliable effect requires the same sign across the
+three demonstration sets and a 95\% interval excluding zero. A small-effect
+claim requires a 90\% interval inside $\pm\NUM{a-eq-delta}$ percentage points.
+Intervals are pointwise and condition on fitted layer selectors. Models and
+formats remain separate comparisons. Appendix~\ref{c-app:stats} and
+Appendix~\ref{app:prompts-scoring} give the sampling and inference details.
 
 \section{Misleading names can change written steps}
 \label{sec:behavior}
@@ -197,7 +179,7 @@ multiplicity-corrected result over independent model replications.
 \subsection{Code traces can follow the name's suggested operation}
 
 Misleading names produce substantial wrong intermediate writes when worked
-examples list values alone (Figure~\ref{fig:behavior}b). In length-computing
+examples list values alone. In length-computing
 programs, they add \NUM{c-cell-olmo7-excess}, \NUM{c-cell-llama3-excess} and
 \NUM{c-cell-llama8-excess} percentage points of sum writes in OLMo-2-7B,
 Llama-3.2-3B and Llama-3.1-8B, respectively. All three checkpoints are
@@ -210,53 +192,29 @@ ordinary-name writes; maximum values and off-by-one lengths are more common.
 On the misleading-name programs, correct first writes fall to
 \NUM{j-format-olmo7-values-misleading-first-mean}\%,
 \NUM{j-format-llama3-values-misleading-first-mean}\% and
-\NUM{j-format-llama8-values-misleading-first-mean}\% (Table~\ref{tab:story}).
+\NUM{j-format-llama8-values-misleading-first-mean}\% (Table~\ref{tab:format-accuracy}).
 The matched comparison thus identifies a specific competing calculation that
 enters the written trace.
 
-\subsection{Arithmetic name effects are small with written calculations}
-
-Without calculations, a misleading name increases answers matching the digit it suggests
-in several arithmetic conditions (Figure~\ref{fig:behavior}a). For pretrained
-Llama-3.1-8B at the main level, a correct number-word name improves accuracy by
-\NUM{a-facilitationllama318bdirectv1} points, while a misleading name adds
-\NUM{a-lure_excessllama318bdirectv1} points of name errors on the queried variable.
-The matched baseline discounts digit guesses when answer-only accuracy is low.
+\subsection{Arithmetic provides a comparison with fewer name errors}
 
 Misleading-name effects are generally small when arithmetic calculations are
 written. In \NUM{a-eq-cot-equivalent} of \NUM{a-eq-cot-cells} comparisons,
-the added-error interval fits within two points of zero. Only
-\NUM{a-r7-paired-reliable-reductions} comparisons establish a reliable reduction,
-because \NUM{a-r7-paired-direct-equivalent} effects already meet that bound
-without calculations. Clustering repeated computations retains those ten
-reductions (Appendix~\ref{a-app:round7-paired}).
+the added-error interval fits within two points of zero. Ten comparisons show a
+reliable reduction relative to answer-only output; many answer-only effects are
+already small (Appendix~\ref{a-app:round7-paired}). The full behavioral panel and
+selected contrasts are in Appendix Table~\ref{a-tab:behavior} and
+Figure~\ref{fig:behavior}.
 
-OLMo-2-1B-Instruct is an exception when the intermediate variable is renamed,
-with \NUM{a-eq-exc-mean} added-error points and below-90\% ordinary-name
-calculation accuracy. Overall accuracy also changes in other conditions with
-small name errors. Resistance to the suggested digit and general competence
-therefore require separate measurements (Appendix~\ref{a-app:equivalence}).
-
-\begin{figure*}[t]
-\centering
-\includegraphics[width=\textwidth]{figures/shared_behavior.pdf}
-\caption{Selected arithmetic and code name-error contrasts (95\% intervals); scales differ.}
-\label{fig:behavior}
-\label{a-fig:master}
-\end{figure*}
-
-\subsection{A correct written value does not guarantee a correct answer}
-
-Correct arithmetic calculations can still precede wrong final answers. Holding
-an entire completely correct generated calculation fixed, OLMo-2-1B produces
-\NUM{a-r7-final-olmo-unnamed-mean} added-error points
-[\NUM{a-r7-final-olmo-unnamed-lo}, \NUM{a-r7-final-olmo-unnamed-hi}] with
-an unnamed final query and digit-only output. Repeating the queried name reduces the estimate to
-\NUM{a-r7-final-olmo-named-mean} points, but also raises ordinary-name accuracy from
-\NUM{j-final-unnamed-accuracy}\% to \NUM{j-final-named-accuracy}\%.
-Neither tested Llama model produces a name-suggested digit in these continuations.
-This conditional cohort shows a failure after correct calculation; changing the
-final format also changes competence (Appendix~\ref{a-app:round7-controls}).
+Some output failures remain possible after correct calculations. With an entire
+correct generated calculation held fixed, OLMo-2-1B has
+\NUM{a-r7-final-olmo-unnamed-mean} added-error points when the final query omits
+the variable name. Repeating the name reduces the estimate to
+\NUM{a-r7-final-olmo-named-mean} points, while changing ordinary-name accuracy.
+These arithmetic comparisons motivate checking outputs even after correct
+intermediate work. They provide fewer errors than code for the central readout
+test; calibration and competence differences are consolidated in
+Section~\ref{sec:scope} and Appendix~\ref{a-app:round7-controls}.
 
 \section{Correct values are recoverable before wrong steps}
 \label{sec:readouts}
@@ -264,48 +222,30 @@ final format also changes competence (Appendix~\ref{a-app:round7-controls}).
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/shared_readouts.pdf}
-\caption{Correct digits are recoverable immediately before actual wrong writes (95\% intervals).}
+\caption{Correct-digit recovery on name-suggested wrong writes; counts are unique programs (95\% intervals). I: instruction-tuned.}
 \label{fig:readouts}
 \end{figure*}
 
 \subsection{Read the state immediately before the observed failure}
 
-Does a wrong written value mean the correct value is unavailable inside the model?
-The code error cases provide a direct test. On actual sum writes where the code
-requires length, independently selected probes recover the correct digit with
+On actual sum writes where the code requires length, independently selected
+probes recover the correct digit with
 \NUM{c-crossfit-min}--\NUM{c-crossfit-max}\% accuracy immediately before the wrong
-value is generated (Figure~\ref{fig:readouts}). The observed error cohorts contain
-\NUM{j-olmo7-error-writes} writes from \NUM{j-olmo7-error-computations} computations
-for OLMo-2-7B, \NUM{j-llama3-error-writes} from \NUM{j-llama3-error-computations}
-for Llama-3.2-3B, and \NUM{j-llama8-error-writes} from
-\NUM{j-llama8-error-computations} for Llama-3.1-8B. Repeated demonstrations remain clustered; the
-write counts are not counts of independent programs.
+value is generated (Figure~\ref{fig:readouts}). The figure reports the number of
+unique error-producing programs for each model. Multiple demonstration sets
+can produce errors on the same program; those repeats remain clustered.
 
-The readout becomes more accurate during the trace. Before any trace token is
-generated, correct-digit accuracy on those same future error cases is
-\NUM{j-olmo7-prompt-mean}\%, \NUM{j-llama3-prompt-mean}\% and
-\NUM{j-llama8-prompt-mean}\%, respectively. Immediately before the wrong value,
-it is \NUM{j-olmo7-before-write-mean}\%, \NUM{j-llama3-before-write-mean}\% and
-\NUM{j-llama8-before-write-mean}\%. Both positions use independent layer
-selection on the same computations. The correct digit becomes more readily
-recoverable as the trace develops, yet the next written digit is wrong.
+Correct digits are much more readily recovered just before the wrong value than
+before the trace starts. Both positions use independent layer selection on the
+same error-producing computations. The next written digit is therefore wrong
+at a point where the predictor reliably recovers the correct digit.
 Appendix~\ref{c-app:prompt-comparison} reports the paired changes and intervals.
 
-The training and measurement controls are central to interpreting this result.
-The predictors train on \NUM{c-probe-n-train} separate ordinary-name programs.
-Renamed versions of one computation cannot cross training or evaluation splits.
-Five-fold selection chooses a layer using ordinary-name labels from other folds;
-the held-out computation and its misleading writes do not determine the choice.
-The cached prefix matches the actual generation through the \texttt{=} in all
-\NUM{c-errorprobe-prefix-n} audited generations. The next digit has not yet been
-written, so a predictor cannot obtain it from that future token. Intervals condition
-on the fixed layer selectors and keep demonstrations of one computation together.
-
-The readout is a measurement, not a second answer produced by the language model.
-It shows that the correct value can be recovered while the model is about to write
-another value. It does not show which feature the model uses to select that output,
-or establish that the readout alone could correct it. This distinction is precisely
-why correct internal information cannot certify a written explanation.
+The predictors train on \NUM{c-probe-n-train} separate ordinary-name programs,
+and select layers without using the held-out computation. The prefix audit
+matches the cached state to the actual generation through the \texttt{=} in all
+\NUM{c-errorprobe-prefix-n} checked generations. These checks exclude computation
+overlap, layer selection on the tested error, and access to the future digit.
 
 \paragraph{Intervention evidence.} Replacing name-token activity with the
 ordinary-name twin's activity removes \NUM{c-patch-olmo7-name-best}\% and
@@ -313,9 +253,8 @@ ordinary-name twin's activity removes \NUM{c-patch-olmo7-name-best}\% and
 aligned name sites. All-layer pre-value patches remove
 \NUM{c-patch-olmo7-pre-all}--\NUM{c-patch-llama8-pre-all}\%; the ordinary-word
 control changes at most \NUM{c-patch-llama3-wordctl}\% of correct outputs.
-These interventions establish sensitivity to replaced activity. They replace
-mixed representations and can produce another wrong value, so they do not
-isolate the causal role of the decoded correct digit
+Error removal can yield another wrong value; these whole-state patches test
+output sensitivity rather than the decoded digit alone
 (Appendices~\ref{c-app:probes} and \ref{a-app:sweeps}).
 
 \section{Showing the operation reduces written errors}
@@ -348,30 +287,24 @@ format changes. Each comparison uses 855 paired observations across 285 programs
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figures/operation_controls.pdf}
-\caption{Length-computing code: format controls (95\% intervals). [notes]: neutral text.}
+\caption{Demonstration-format controls (95\% intervals). [notes]: matched descriptive text. I: instruction-tuned.}
 \label{fig:operation-controls}
 \end{figure*}
 
-Could the additional text alone explain the improvement? Descriptive annotations
-matched to the expression examples' token counts leave
-\NUM{c-format-olmo7-annotation-mean} and \NUM{c-format-llama3-annotation-mean} points
-of excess in OLMo-2-7B and Llama-3.2-3B. Those effects remain much larger than
-under source-expression examples. The matching is in the demonstrated outputs;
-the test program and trace prefix are unchanged.
-
-Valid numeric elaboration, such as \texttt{v=2+0=2}, tests whether any added
-arithmetic produces the benefit. It helps partly, leaving
-\NUM{c-format-olmo7-numeric-mean} and \NUM{c-format-llama3-numeric-mean} points
-of excess in the same two models. Both exceed the corresponding source-expression
-effects. The paired changes and intervals are in Appendix~\ref{c-app:round5-formats}.
-These controls favor a role for the content of the operation shown in the examples,
-while changing several aspects of the written context. They do not identify a
-single responsible representation.
+Matched descriptive text leaves large name effects, while valid numeric
+elaboration, such as \texttt{v=2+0=2}, helps partly. Source expressions give the
+largest reduction among these controls. Token counts are matched in the
+demonstrated outputs, with the test program and trace prefix unchanged. The
+benefit therefore depends on what the added text contains. Paired changes and
+intervals are in Appendix~\ref{c-app:round5-formats}.
 
 \subsection{The format contrast replicates with fresh names}
 \label{sec:replication}
 
-We screen \NUM{c-r6-screen-n} fresh sum-family candidates by their
+The original code design planned to retain names that evoke their intended
+operation in at least 80\% of models, but the runs retained the full name table.
+To test the format contrast with independently selected names, we screen
+\NUM{c-r6-screen-n} fresh sum-family candidates by their
 highest-scoring operation continuation before testing traces. Of these,
 \NUM{c-r6-screen-passed} pass the 80\% panel criterion. We freeze the first
 \NUM{c-r6-name-n} qualifying names and cross them with
@@ -387,9 +320,8 @@ in both Llamas. The prespecified CodeGemma-7B control has zero observed excess
 in both formats. Figure~\ref{fig:fresh-names} shows that the contrast holds across
 all three selected names. Intervals cluster repeated demonstrations of each computation;
 pooled intervals also cluster names (Appendix~\ref{c-app:round6-identifiers}).
-The replication supports the format contrast on independently selected names;
-its changed names and programs make magnitude differences from the original cohort
-descriptive. Probes and patches still concern the original identifiers.
+This replication tests the format contrast on new names and programs. The
+internal readouts and patches concern the original cohort.
 
 \begin{figure*}[t]
 \centering
@@ -456,12 +388,14 @@ does not establish a shared human and model mechanism.
 \paragraph{Written reasoning and internal information.} Faithfulness studies
 show that explanations can omit influences on outputs or react differently to
 perturbations \citep{turpin2023unfaithful,lanham2023measuring,chen2025reasoning}.
-Our central discrepancy is narrower and directly measured. A correct digit is
-recoverable immediately before the model writes a conflicting digit in a code
-trace. Probe controls distinguish decodability from name identity, while patching
-tests an intervention separately \citep{hewitt2019control,zhang2024patching}.
-Changing the demonstrated trace then connects this discrepancy to an output
-format that can reduce the error.
+\citet{orgad2025know} show that internal representations can identify correct
+answers among generated candidates even when the model tends to answer
+incorrectly. Our contribution measures recovery before an incorrect
+\emph{intermediate} write, with the answer token excluded and a controlled name
+suggesting a particular competing value. We also test a demonstration-format
+change that improves intermediate and final correctness on the same programs.
+Probe controls and activation interventions assess recoverability and output
+sensitivity separately \citep{hewitt2019control,zhang2024patching}.
 
 \section{Discussion and conclusion}
 
@@ -503,8 +437,10 @@ the synthetic trace. Its intervals cover zero and do not establish equivalence
 within the two-point margin. Models reach 34B, but the arithmetic and code panels
 differ in checkpoints and do not cover all model families.
 \item \textbf{Readouts and interventions.} The central code probes cover three models.
-They establish recoverable values, not causal use. Arithmetic generated-calculation
-probes are unreliable for OLMo and have rare Llama errors. Patches replace mixed
+For length-computing programs, a probe may recover the number of list items or
+related input features; it does not identify how that value was computed inside
+the model. Arithmetic probes are unreliable on OLMo's freely written calculations,
+and the Llama models make too few errors for the same strong test. Patches replace mixed
 representations and may produce another wrong answer. Neither the probes nor the
 patches identify one mechanism shared across the tasks.
 \item \textbf{Selection and competence.} The original code identifiers depart from the
@@ -517,6 +453,7 @@ demonstrations; related checkpoints and repeated roles are not independent model
 
 \bibliography{refs}
 \appendix
+\input{appendix/measurement}
 \input{appendix/arithmetic}
 \input{appendix/code}
 \end{document}

@@ -1,7 +1,7 @@
 # Candidate figures for the combined paper
 
 Three plots of existing verified results. The operation controls and fresh-name
-replication are now Figures 4 and 5 in the eight-page manuscript. The arithmetic
+replication are now Figures 3 and 4 in the combined manuscript. The arithmetic
 final-answer plot remains an optional candidate. Each has PDF and PNG
 versions; error bars are saved pointwise 95% computation-cluster bootstrap
 intervals. No new experiments or significance tests were run.
@@ -19,12 +19,12 @@ formats. Examples illustrate the output formats; `[notes]` stands for neutral
 text. The plot measures the excess rate of writing the sum instead of the
 computed length, subtracting each ordinary-name twin's rate.
 
-Figure 4 replaces the main six-format table, which is retained
+Figure 3 replaces the main six-format table, which is retained
 in the appendix. Its purpose is to show what the length and numeric controls
 add to the basic format comparison. The controls do not isolate a single
 responsible feature or establish a general solution for arbitrary code.
 
-Paper caption: **Length-computing code: format controls (95% intervals). [notes]: neutral text.**
+Paper caption: **Demonstration-format controls (95% intervals). [notes]: matched descriptive text. I: instruction-tuned.**
 
 ## 2. The format contrast replicates across independently selected names
 
@@ -39,7 +39,7 @@ is crossed with three selected names and three demonstration sets, giving
 scale makes the model differences visible. The two formats share the cohort
 within each panel. Original and replication cohorts are not paired.
 
-Figure 5 accompanies the replication result. It directly addresses dependence on the original
+Figure 4 accompanies the replication result. It directly addresses dependence on the original
 names and program sample. Zero estimates and zero-width bootstrap intervals
 record this sample, rather than establish zero population rates.
 
@@ -73,5 +73,5 @@ Run `scripts/92_figure_candidates.py` with a Python environment containing
 Matplotlib and NumPy. It reads only saved summaries in the sibling probing and
 codecue repositories. `provenance.json` records SHA256 source hashes and every
 plotted interval in its original proportional units. PDF fonts are embedded.
-`scripts/91_combined_paper.py` also regenerates these plots and copies Figures 4
-and 5 into the manuscript's `figures` directory before preparing the source bundle.
+`scripts/91_combined_paper.py` also regenerates these plots and copies Figures 3
+and 4 into the manuscript's `figures` directory before preparing the source bundle.

@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-10",
+  "revision": "Apply six presentation priorities from pasted feedback to the combined manuscript.",
+  "main_pages_including_limitations": 7,
+  "main_page_limit": 8,
+  "pdf_total_pages": 30,
+  "abstract_words_pdf": 130,
+  "quantities": 284,
+  "primary_references": 30,
+  "source_files": 48,
+  "changes": [
+    "Retained direct abstract; introduction uses actual code failure and arithmetic foundation from Kudo.",
+    "Replaced schematic with full verified function, call, wrong and correct intermediate writes, final answers and a pre-value probe marker. No individual probe prediction claimed.",
+    "Removed duplicate opening summary table; moved combined arithmetic/code behavior plot to appendix. Four main figures have distinct jobs.",
+    "Recovery figure retains before-trace and pre-wrong-value comparison with 193, 169 and 45 unique error-producing programs.",
+    "Format controls have plain labels and example snippets. Fresh-name plot retains CodeGemma; matched correctness table retained.",
+    "Methods now introduce inputs, requested outputs, renaming and scoring before readouts and uncertainty. Scoring table and explicit parse-failure denominators added.",
+    "Added prompt assembly, complete actual code demonstration set 7, parsing rules and fitting/statistical details in appendix.",
+    "Shortened arithmetic discussion and consolidated readout interpretation; selection deviation is followed directly by independently selected replication.",
+    "Added explicit comparison with Orgad et al. and an understandable limitation allowing recovery of list length or related input features."
+  ],
+  "new_experiments": "None. CPU-only audit of existing generations rerun; saved correctness results unchanged.",
+  "evidence_checks": "All 284 remaining numerical definitions match verified sources; all 39 correctness-source hashes and three raw example-source hashes match; displayed generations and gold values match saved records; recovery counts verified against timing summary.",
+  "novelty_source": {
+    "citation": "Orgad et al., ICLR 2025",
+    "primary_url": "https://arxiv.org/abs/2410.02707",
+    "detail_url": "https://arxiv.org/html/2410.02707v3#S6",
+    "venue_url": "https://openreview.net/forum?id=KRnsX5Em3W"
+  },
+  "format_checks": "Working and standalone strict ARR checks pass; A4, official review style, embedded fonts, no missing assets, unresolved references or overfull boxes.",
+  "standalone_build": "All 48 archive members match working and extracted sources; all 30 PDF page texts match.",
+  "visual_checks": "Opening, full code example, scoring table, readout plot, correctness table, format controls, fresh-name replication, Limitations and demonstration appendix checked in rendered pages.",
+  "anonymity": "Anonymous author block; no private account paths in packaged LaTeX or bibliography.",
+  "pdf_sha256": "7c9a755eb5209165991880f81ae9b06a18355807efd976b21edcf3c1cdfdfa9b",
+  "source_sha256": "9f4100795aff2959ad8555e726747656c72ad599fa4bb475cf873e071155bb5c",
+  "abstract_sha256": "579c60452367ec9951e7e73a9fb4cc0dad5cd7d0cb0ce028f29bee8fef119ed6",
+  "original_short_papers": "Unchanged."
+}

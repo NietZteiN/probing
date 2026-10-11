@@ -59,9 +59,10 @@ def save(fig, name):
 def operation_controls():
     inference = load('codecue', 'cell_inference')
     controls = load('codecue', 'round5_formats')
-    labels = ['v = 2', 'v = 2 [notes]', 'v = 2 + 0 = 2', 'v = len(xs) = 2']
-    fig, axes = plt.subplots(1, 2, figsize=(7.05, 2.12), sharey=True)
-    fig.subplots_adjust(left=.23, right=.98, top=.80, bottom=.28, wspace=.20)
+    labels = ['Values only', 'Matched descriptive text', 'Numeric elaboration', 'Source expression + value']
+    examples = ['v = 2', 'v = 2 [notes]', 'v = 2 + 0 = 2', 'v = len(xs) = 2']
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 2.55), sharey=True)
+    fig.subplots_adjust(left=.47, right=.985, top=.80, bottom=.26, wspace=.30)
     for ax, (model, title) in zip(axes, MODELS[:2]):
         rows = []
         for regime in ('trace', 'trace_expr'):
@@ -77,8 +78,12 @@ def operation_controls():
                         textcoords='offset points', ha='center', fontsize=8, color=color)
         clean_axis(ax, [0, 20, 40, 60], (-3, 68))
         ax.set_title(title.replace('-Instruct', '-I'), fontsize=9, pad=12)
-        ax.set_yticks(range(4), labels, fontfamily='DejaVu Sans Mono', fontsize=9)
-        ax.set_ylim(3.5, -.6)
+        ax.set_yticks(range(4), [])
+        ax.set_ylim(3.6, -.6)
+    for y, label, example in zip(range(4), labels, examples):
+        yp = axes[0].transData.transform((0,y))[1] / fig.bbox.height
+        fig.text(.005,yp,label,fontsize=8,va='center')
+        fig.text(.27,yp,example,fontsize=7.5,family='DejaVu Sans Mono',va='center')
     fig.supxlabel('Added sum writes (percentage points)',
                   fontsize=9, y=.07)
     save(fig, 'operation_controls')

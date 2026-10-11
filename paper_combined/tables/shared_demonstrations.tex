@@ -1,0 +1,17 @@
+\begin{table*}[t]
+\centering\small
+\begin{tabular}{@{}p{.32\textwidth}p{.25\textwidth}p{.37\textwidth}@{}}
+\toprule
+Program and input & Values-only trace & Expression-and-value trace \\
+\midrule
+\texttt{def f(xs):}\newline \hspace*{1em}\texttt{u = min(xs)}\newline \hspace*{1em}\texttt{t = u + 1}\newline \hspace*{1em}\texttt{k = t * 2}\newline \hspace*{1em}\texttt{return k}\newline \texttt{f([0,\allowbreak{} 6,\allowbreak{} 5])} & \texttt{u = 0,\allowbreak{} t = 1,\allowbreak{} k = 2}\newline \texttt{Answer: 2} & \texttt{u = min(xs) = 0,\allowbreak{} t = u + 1 = 1,\allowbreak{} k = t * 2 = 2}\newline \texttt{Answer: 2} \\
+\addlinespace
+\texttt{def f(xs):}\newline \hspace*{1em}\texttt{z = len(xs)}\newline \hspace*{1em}\texttt{r = z * 2}\newline \hspace*{1em}\texttt{k = r - 1}\newline \hspace*{1em}\texttt{return k}\newline \texttt{f([2,\allowbreak{} 4,\allowbreak{} 1])} & \texttt{z = 3,\allowbreak{} r = 6,\allowbreak{} k = 5}\newline \texttt{Answer: 5} & \texttt{z = len(xs) = 3,\allowbreak{} r = z * 2 = 6,\allowbreak{} k = r - 1 = 5}\newline \texttt{Answer: 5} \\
+\addlinespace
+\texttt{def f(xs):}\newline \hspace*{1em}\texttt{p = len(xs)}\newline \hspace*{1em}\texttt{ww = p + 2}\newline \hspace*{1em}\texttt{u = ww // 2}\newline \hspace*{1em}\texttt{return u}\newline \texttt{f([3,\allowbreak{} 6,\allowbreak{} 0])} & \texttt{p = 3,\allowbreak{} ww = 5,\allowbreak{} u = 2}\newline \texttt{Answer: 2} & \texttt{p = len(xs) = 3,\allowbreak{} ww = p + 2 = 5,\allowbreak{} u = ww // 2 = 2}\newline \texttt{Answer: 2} \\
+\addlinespace
+\bottomrule
+\end{tabular}
+\caption{Complete code demonstration set 7; prepend \texttt{Trace:} to each trace.}
+\label{tab:code-demonstrations}
+\end{table*}

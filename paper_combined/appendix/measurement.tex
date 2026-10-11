@@ -1,0 +1,76 @@
+\section{Prompts and output scoring}
+\label{app:prompts-scoring}
+
+\paragraph{Arithmetic prompts.} The main few-shot prompt concatenates three
+same-level ordinary-name demonstration blocks, separated by blank lines, followed
+by the test equations and query. Each demonstration contains its equations and
+query on one line and its answer or calculation on the next. Answer-only output
+has the form \texttt{pen=6}. Calculation output restates equations, substitutes
+resolved values and reports each evaluated value in dependency order, ending
+with the queried variable. The test prompt ends immediately after its input line
+and a newline. Demonstrations reserve a name pool disjoint from test names;
+letter-name replication uses letter-name demonstrations. Task levels and
+name conditions are in Appendix~\ref{a-app:task}; additional equation and final-query
+formats are in Appendix~\ref{a-app:round7-controls}.
+
+\paragraph{Code prompts.} Both main code formats concatenate three ordinary-name
+worked examples, separated by blank lines, followed by the test function, its
+call and \texttt{Trace:}. There is no additional instruction or interpreter
+execution. Each example contains the program and input call, a \texttt{Trace:}
+line and an \texttt{Answer:} line. Table~\ref{tab:code-demonstrations} gives the
+complete level-5 demonstration set used for Figure~\ref{fig:example}. Assemble
+one format by choosing its trace for each example. Both formats then append the
+same test program from that figure and the same \texttt{Trace:} prefix. Traces
+wrap here for typesetting; each is one line in the prompt. The additional formats
+are specified in Appendix~\ref{c-app:formats}.
+
+\input{tables/shared_demonstrations}
+
+\paragraph{Parsing and denominators.} For code few-shot output, parsing stops at
+the first blank line, so an invented subsequent problem cannot supply the answer.
+The final answer is the last \texttt{Answer: <integer>} in that block; answer-only
+continuations may instead start with the integer directly. A trace value is the
+last integer immediately following an equals sign in the target variable's
+first assignment clause, before \texttt{Answer:}. This retains the evaluated
+value in an expression-and-value trace rather than an operand. A comma followed
+by another assignment ends that clause. Interactive transcripts read the integer
+following the queried variable; comments read its end-of-line value. Free prose
+uses the final \texttt{Answer:} occurrence, or the last integer on the final
+nonempty line when that marker is absent.
+
+For arithmetic few-shot output, the answer is the last standalone
+\texttt{<queried-name>=<integer>} clause before the first blank line. Free-text
+arithmetic uses a queried-name assignment or a final integer fallback. The
+reported main arithmetic name-error rate grades this final answer. Code
+intermediate correctness grades the first assignment against the program's
+executed value; final correctness grades the return value. Parse failures count
+as incorrect for accuracy and do not match a name-suggested digit. They remain
+in every behavioral denominator. Error-conditioned probes separately use the
+observed wrong-write cohort with verified generated prefixes.
+
+\paragraph{Sampling and uncertainty.} Main behavior uses demonstration seeds
+7, 11 and 13, with three examples per set and greedy full-vocabulary decoding.
+The arithmetic panel contains \NUM{a-n-models} checkpoints and
+\NUM{a-n-test-sets} matched sets per task level. The code panel contains
+\NUM{c-n-models} instruction-tuned checkpoints, with an additional 34B check,
+and 1,000 matched problems per target at levels 3 and 5. The central code cohort
+has \NUM{c-probe-n-test} unique length-to-sum computations per set. Checkpoints
+and prompts differ between tasks; their results are not pooled.
+
+Resampling retains both names and all demonstration repeats of a computation.
+Behavioral reliability requires a consistent sign in all three sets and a 95\%
+interval excluding zero. The small-effect criterion uses a 90\% interval within
+the prespecified two-point margin. Code timing and matched correctness intervals
+use 4,000 draws; the code equivalence audit uses 2,000. Intervals are pointwise,
+and probe intervals condition on the fixed independent layer selectors. These
+procedures are detailed in Appendices~\ref{c-app:stats},
+\ref{c-app:prompt-comparison} and \ref{app:format-correctness}; arithmetic repeated-
+computation checks are in Appendix~\ref{a-app:round7-paired}.
+
+\paragraph{Probe fitting and records.} Predictors use three initialization seeds,
+0, 1 and 2, and full-batch SGD at learning rate $10^{-3}$ for 10,000 epochs.
+Training and evaluation are disjoint in computation, ignoring identifier
+spelling. Five-fold layer selection excludes the held-out computation. Cached
+prefix checks exclude the future answer token. Optimizer checks, controls,
+software versions and data records are in Appendices~\ref{a-app:recipe},
+\ref{c-app:round6-probes} and \ref{c-app:reproducibility}.

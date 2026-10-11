@@ -125,6 +125,10 @@ def refresh_imports():
     arithmetic = arithmetic.replace('across this study and its code companion', 'across the arithmetic and code experiments')
     arithmetic = arithmetic.replace('excluded from the main behavioral table',
                                      'excluded from the accuracy-filtered behavioral table')
+    arithmetic += ('\n'+r'\begin{figure*}[t]'+ '\n'+r'\centering'+ '\n'+
+                   r'\includegraphics[width=\textwidth]{figures/shared_behavior.pdf}'+ '\n'+
+                   r'\caption{Selected name-error contrasts (95\% intervals); scales differ.}'+ '\n'+
+                   r'\label{fig:behavior}\label{a-fig:master}'+ '\n'+r'\end{figure*}'+ '\n')
     (PAPER/'appendix/arithmetic.tex').write_text(arithmetic)
 
     source = (SOURCES['c']/'main.tex').read_text()
@@ -236,25 +240,7 @@ def figures():
         (PAPER/'figures'/f'{name}_data.json').write_text(json.dumps(payload,indent=2)+'\n')
         plt.close(fig)
 
-    fig, axes = plt.subplots(1,3,figsize=(7.2,1.85))
-    for ax in axes:
-        ax.set_axis_off()
-    axes[0].text(0,1,'(a) Arithmetic',weight='bold',va='top')
-    axes[0].text(0,.73,'pen = 1 + cup\ncup = 2 + 3\npen = ?',family='monospace',va='top')
-    axes[0].text(0,.26,'pen → four',color=red)
-    axes[0].text(0,.05,'Correct 6; suggested 4',fontsize=8)
-    axes[1].text(0,1,'(b) Python code',weight='bold',va='top')
-    axes[1].text(0,.73,'xs = [5, 3]\nv = len(xs)',family='monospace',va='top')
-    axes[1].text(0,.43,'v → sum_all',color=red)
-    axes[1].text(0,.26,'Wrong write: sum_all = 8',color=red,fontsize=8)
-    axes[1].text(0,.05,'Correct 2; suggested 8',fontsize=8)
-    axes[2].text(0,1,'(c) Worked examples',weight='bold',va='top')
-    axes[2].text(0,.73,'Values only',va='top',fontsize=8)
-    axes[2].text(0,.58,'v = 2',family='monospace',va='top')
-    axes[2].text(0,.32,'Expression + value',va='top',fontsize=8)
-    axes[2].text(0,.15,'v = len(xs) = 2',family='monospace',va='top',color=green)
-    fig.subplots_adjust(left=.015,right=.995,top=.96,bottom=.06,wspace=.25)
-    save(fig,'shared_example',{'kind':'schematic, not a sampled generation','arithmetic':{'correct':6,'suggested':4},'code':{'correct':2,'suggested':8},'formats':['v = 2','v = len(xs) = 2']})
+    runpy.run_path(str(ROOT/'scripts/94_combined_example.py'))['main']()
 
     arithmetic = load('probing','seed_sweep_L3')
     code = load('codecue','cell_inference')['cells']
@@ -297,7 +283,9 @@ def figures():
         for field,offset,color,marker,label in [('prompt_accuracy_ci95',-.11,gray,'s','Before trace'),('prewrite_accuracy_ci95',.11,green,'o','Before wrong value')]:
             mean,lo,hi=[100*v for v in row[field]]
             ax.errorbar(mean,y+offset,xerr=[[max(0,mean-lo)],[max(0,hi-mean)]],fmt=marker,color=color,ms=5,capsize=3,label=label if y==0 else None)
-    ax.set_yticks(range(3),[label for _,label,_ in CODE_MODELS]);ax.invert_yaxis()
+    labels = [f"{label}  ({data['models'][key]['pooled']['lure_write']['n_programs']} programs)"
+              for key,label,_ in CODE_MODELS]
+    ax.set_yticks(range(3),labels,fontsize=8.5);ax.invert_yaxis()
     ax.set_xlim(0,104);ax.set_xticks([0,25,50,75,100]);ax.grid(axis='x',alpha=.15)
     ax.tick_params(axis='y',length=0);ax.set_xlabel('Correct digit recovered (%)')
     ax.legend(loc='lower left',bbox_to_anchor=(0,1.02),ncol=2,frameon=False,fontsize=9)
@@ -330,8 +318,9 @@ def final_sources(numbers):
     for group in re.findall(r'\\cite\w*\*?(?:\[[^\]]*\])*\{([^}]+)\}',text):
         cited.update(key.strip() for key in group.split(','))
     bib={}
-    for source in SOURCES.values():
-        for entry in re.split(r'(?m)(?=^@)',(source/'refs.bib').read_text()):
+    bib_sources = [source/'refs.bib' for source in SOURCES.values()] + [PAPER/'refs_extra.bib']
+    for source in bib_sources:
+        for entry in re.split(r'(?m)(?=^@)',source.read_text()):
             match=re.match(r'@\w+\{([^,]+),',entry)
             if match:
                 bib.setdefault(match[1],entry.strip())
@@ -384,6 +373,7 @@ def main():
     formats_table(numbers)
     story_tables()
     figures()
+    runpy.run_path(str(ROOT/'scripts/95_combined_demonstrations.py'))['main']()
     final_sources(numbers)
 
 

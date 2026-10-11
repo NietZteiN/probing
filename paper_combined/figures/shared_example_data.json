@@ -1,15 +1,22 @@
 {
-  "kind": "schematic, not a sampled generation",
-  "arithmetic": {
-    "correct": 6,
-    "suggested": 4
+  "id": "L5-3-v1-00001-incongruent",
+  "model": "olmo2-7b-it",
+  "demonstration_seed": 7,
+  "program": "def f(xs):\n    sum_all = len(xs)\n    ww = sum_all + 3\n    qq = ww + 4\n    return qq\nf([5, 3])",
+  "correct_values": {
+    "v1": 2,
+    "v2": 5,
+    "v3": 9
   },
-  "code": {
-    "correct": 2,
-    "suggested": 8
-  },
-  "formats": [
-    "v = 2",
-    "v = len(xs) = 2"
-  ]
+  "correct_answer": 9,
+  "name_suggested_value": 8,
+  "values_only_generation": " sum_all = 8, ww = 11, qq = 15\nAnswer: 15\n\n",
+  "expression_and_value_generation": " sum_all = len(xs) = 2, ww = sum_all + 3 = 5, qq = ww + 4 = 9\nAnswer: 9\n\n",
+  "probe_prediction_shown": false,
+  "display_changes": "Assignment line breaks only; comma separators retained.",
+  "source_sha256": {
+    "codecue/data/L5/test_sets.jsonl": "320c0b4e3aaa7f7621b634a7b1036c02b1925e5f933950026bd55cc224e8cf39",
+    "codecue_outputs/runs/olmo2-7b-it/L5/trace/incongruent@v1/behavior.jsonl": "896bfa1adfe845bf8d6f1e6f1122396668320ad8f4594b1481fa3ce04672179a",
+    "codecue_outputs/runs/olmo2-7b-it/L5/trace_expr/incongruent@v1/behavior.jsonl": "5a41ba0d15e3d4d4de6fc69e11fa4ec1a9ed99e4420db37941abe248a044f7a2"
+  }
 }

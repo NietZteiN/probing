@@ -2,8 +2,8 @@
 
 **Correct Values Can Be Recovered Before Wrong Reasoning Steps**
 
-This is the consolidated alternative to the two short papers, with eight pages
-including Limitations. References and supporting appendices follow in the same PDF.
+This is the consolidated alternative to the two short papers, within the eight-page
+limit. The current main text and Limitations occupy seven pages. References and supporting appendices follow in the same PDF.
 
 The story starts with the gap between recovering a correct value and writing it.
 Building on Kudo et al.'s controlled arithmetic task and methods, we introduce names
@@ -24,11 +24,20 @@ The main paper follows eight sections:
 8. Discussion and conclusion
 
 The abstract presents the failure, error-conditioned recovery and demonstration change.
-An opening table places those three results together. A second table reports correct
-first writes and final answers on the same misleading-name programs. Five main figures
-cover the naming conflict, behavioral effects, readout timing, operation controls and
-fresh-name replication. The full format and correctness tables are in the appendix.
-Captions retain only essential information.
+A verified full-program example shows actual wrong and correct outputs under the two
+demonstration formats, and marks the pre-value reading position without claiming a
+per-example probe prediction. Four main figures cover that example, readout timing with
+unique error-producing program counts, plainly labeled format controls, and fresh-name
+replication with CodeGemma. Table 1 defines scoring; Table 2 reports correct first values
+and final answers on the same misleading-name programs. The duplicated opening summary
+table is removed, and the arithmetic/code behavior plot is now supporting material.
+
+The methods introduce inputs, requested outputs, matched names, grading and measurement
+before uncertainty. Appendix A supplies prompt assembly, complete code demonstration
+set 7, parsing and fitting details. Arithmetic is a compact comparison, with transfer
+analyses and competence checks in the appendix. Related work distinguishes the result
+from Orgad et al.'s answer-level findings, and Limitations explicitly allows probes to
+recover input cardinality or related features. Captions retain essential information.
 
 `main.pdf` is the anonymous ACL review draft. `submission_source.zip` contains its required
 LaTeX sources, tables and figures, with no dependency on the neighboring repositories.
@@ -41,7 +50,10 @@ same script with `--bundle`. The source script checks numerical keys and referen
 `evidence_provenance.json` records the source summary hashes. The refresh also runs
 `scripts/93_combined_correctness.py`, a CPU-only audit of saved generations for the same
 285-program format cohort. `format_correctness.json` retains counts, intervals and
-portable source-file hashes. This analysis loads no models or tokenizers.
+portable source-file hashes. This analysis loads no models or tokenizers. `scripts/94_combined_example.py` verifies
+the displayed generations against three original source files, and
+`scripts/95_combined_demonstrations.py` typesets the actual example prompts.
+`refs_extra.bib` preserves references added for the combined manuscript on refresh.
 
 The arithmetic and code cohorts remain distinct. The draft does not pool their rates or
 count overlapping checkpoints as independent model replications. The original code
