@@ -1,0 +1,697 @@
+{
+  "indexed": {
+    "date-parts": [
+      [
+        2026,
+        10,
+        8
+      ]
+    ],
+    "date-time": "2026-10-08T11:35:07Z",
+    "timestamp": 1791459307395,
+    "version": "4.3.4"
+  },
+  "reference-count": 76,
+  "publisher": "IEEE",
+  "license": [
+    {
+      "start": {
+        "date-parts": [
+          [
+            2023,
+            5,
+            1
+          ]
+        ],
+        "date-time": "2023-05-01T00:00:00Z",
+        "timestamp": 1682899200000
+      },
+      "content-version": "stm-asf",
+      "delay-in-days": 0,
+      "URL": "https://doi.org/10.15223/policy-029"
+    },
+    {
+      "start": {
+        "date-parts": [
+          [
+            2023,
+            5,
+            1
+          ]
+        ],
+        "date-time": "2023-05-01T00:00:00Z",
+        "timestamp": 1682899200000
+      },
+      "content-version": "stm-asf",
+      "delay-in-days": 0,
+      "URL": "https://doi.org/10.15223/policy-037"
+    }
+  ],
+  "content-domain": {
+    "domain": [],
+    "crossmark-restriction": false
+  },
+  "published-print": {
+    "date-parts": [
+      [
+        2023,
+        5
+      ]
+    ]
+  },
+  "DOI": "10.1109/icse48619.2023.00164",
+  "type": "proceedings-article",
+  "created": {
+    "date-parts": [
+      [
+        2023,
+        7,
+        14
+      ]
+    ],
+    "date-time": "2023-07-14T13:18:05Z",
+    "timestamp": 1689340685000
+  },
+  "page": "1933-1945",
+  "source": "Crossref",
+  "is-referenced-by-count": 21,
+  "title": [
+    "Two Sides of the Same Coin: Exploiting the Impact of Identifiers in Neural Code Comprehension"
+  ],
+  "prefix": "10.1109",
+  "author": [
+    {
+      "given": "Shuzheng",
+      "family": "Gao",
+      "sequence": "first",
+      "affiliation": [
+        {
+          "name": "School of Computer Science and Technology, Harbin Institute of Technology,Shenzhen,China"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Cuiyun",
+      "family": "Gao",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "School of Computer Science and Technology, Harbin Institute of Technology,Shenzhen,China"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Chaozheng",
+      "family": "Wang",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "School of Computer Science and Technology, Harbin Institute of Technology,Shenzhen,China"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Jun",
+      "family": "Sun",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Singapore Management University,Singapore"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "David",
+      "family": "Lo",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "Singapore Management University,Singapore"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    },
+    {
+      "given": "Yue",
+      "family": "Yu",
+      "sequence": "additional",
+      "affiliation": [
+        {
+          "name": "National University of Defense Technology"
+        }
+      ],
+      "role": [
+        {
+          "vocabulary": "crossref",
+          "role": "author"
+        }
+      ]
+    }
+  ],
+  "member": "263",
+  "reference": [
+    {
+      "key": "ref13",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3468264.3468597"
+    },
+    {
+      "key": "ref57",
+      "first-page": "63: 1",
+      "article-title": "Generalizing from a few examples: A survey on few-shot learning",
+      "volume": "53",
+      "author": "wang",
+      "year": "2020",
+      "journal-title": "ACM Comput Surv"
+    },
+    {
+      "key": "ref12",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3429444"
+    },
+    {
+      "key": "ref56",
+      "article-title": "Deep learning based vulnerability detection: Are we there yet",
+      "author": "chakraborty",
+      "year": "2021",
+      "journal-title": "IEEE Transactions on Software Engineering"
+    },
+    {
+      "key": "ref15",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.infsof.2021.106552"
+    },
+    {
+      "key": "ref59",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/2523813"
+    },
+    {
+      "key": "ref14",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ICSE-Companion55297.2022.9793807"
+    },
+    {
+      "key": "ref58",
+      "article-title": "Un-derstanding deep learning requires rethinking generalization",
+      "author": "zhang",
+      "year": "2017",
+      "journal-title": "5th International Conference on Learning Representations ICLR 2017"
+    },
+    {
+      "key": "ref53",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3404835.3462840"
+    },
+    {
+      "key": "ref52",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.18653/v1/2021.emnlp-main.685"
+    },
+    {
+      "key": "ref11",
+      "first-page": "10 197",
+      "article-title": "Devign: Effective vulner-ability identification by learning comprehensive program semantics via graph neural networks",
+      "author": "zhou",
+      "year": "2019",
+      "journal-title": "Advances in Neural Information Processing Systems 32 Annual Conference on Neural Information Processing Systems 2019 NeurIPS 2019"
+    },
+    {
+      "key": "ref55",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3533767.3534390"
+    },
+    {
+      "key": "ref10",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ICSE43902.2021.00060"
+    },
+    {
+      "key": "ref54",
+      "article-title": "Challenging machine learning-based clone detectors via semantic-preserving code transformations",
+      "volume": "abs 2111 10793",
+      "author": "zhang",
+      "year": "2021",
+      "journal-title": "CoRR"
+    },
+    {
+      "key": "ref17",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3428230"
+    },
+    {
+      "key": "ref16",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1609/aaai.v34i01.5469"
+    },
+    {
+      "key": "ref19",
+      "article-title": "Semantic robustness of models of source code",
+      "volume": "abs 2002 3043",
+      "author": "ramakrishnan",
+      "year": "2020",
+      "journal-title": "CoR R"
+    },
+    {
+      "key": "ref18",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3511887"
+    },
+    {
+      "key": "ref51",
+      "article-title": "Codesearchnet challenge: Evaluating the state of semantic code search",
+      "volume": "abs 1909 9436",
+      "author": "husain",
+      "year": "2019",
+      "journal-title": "CoRR"
+    },
+    {
+      "key": "ref50",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ICMLA.2018.00120"
+    },
+    {
+      "key": "ref46",
+      "article-title": "Codexglue: A machine learning benchmark dataset for code understanding and generation",
+      "volume": "abs 2102 4664",
+      "author": "lu",
+      "year": "2021",
+      "journal-title": "CoRR"
+    },
+    {
+      "key": "ref45",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.18653/v1/2020.findings-emnlp.139"
+    },
+    {
+      "key": "ref48",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.18653/v1/N16-1174"
+    },
+    {
+      "key": "ref47",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.3115/v1/D14-1181"
+    },
+    {
+      "key": "ref42",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3510003.3510154"
+    },
+    {
+      "key": "ref41",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3377811.3380926"
+    },
+    {
+      "key": "ref44",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1609/aaai.v30i1.10139"
+    },
+    {
+      "key": "ref43",
+      "volume": "4",
+      "author": "bishop",
+      "year": "2006",
+      "journal-title": "Pattern Recognition and Machine Learning"
+    },
+    {
+      "key": "ref49",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.14722/ndss.2018.23158"
+    },
+    {
+      "key": "ref8",
+      "article-title": "code2seq: Generating sequences from structured representations of code",
+      "author": "alon",
+      "year": "2019",
+      "journal-title": "7th International Conference on Learning Representations ICLR 2019"
+    },
+    {
+      "key": "ref7",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3196321.3196334"
+    },
+    {
+      "key": "ref9",
+      "article-title": "Language-agnostic representation learning of source code from structure and context",
+      "author": "z\u00fcgner",
+      "year": "2021",
+      "journal-title": "9th International Conference on Learning Rep-resentations ICLR 2021"
+    },
+    {
+      "key": "ref4",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1016/j.neunet.2021.04.019"
+    },
+    {
+      "key": "ref3",
+      "doi-asserted-by": "crossref",
+      "first-page": "349",
+      "DOI": "10.1145/3324884.3416578",
+      "article-title": "Retrieve and Refine: Exemplar-based Neural Comment Generation",
+      "author": "wei",
+      "year": "2020",
+      "journal-title": "IEEE/ACM Int Conference on Automated Software Engineering (ASE)"
+    },
+    {
+      "key": "ref6",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.18653/v1/P16-1195"
+    },
+    {
+      "key": "ref5",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3387904.3389269"
+    },
+    {
+      "key": "ref40",
+      "first-page": "1565",
+      "article-title": "Learning imbal-anced datasets with label-distribution-aware margin loss",
+      "author": "cao",
+      "year": "2019",
+      "journal-title": "Advances in Neural Information Processing Systems 32 Annual Conference on Neural Information Processing Systems 2019 NeurIPS 2019"
+    },
+    {
+      "key": "ref35",
+      "article-title": "Distilling the knowledge in a neural network",
+      "volume": "abs 1503 2531",
+      "author": "hinton",
+      "year": "2015",
+      "journal-title": "CoRR"
+    },
+    {
+      "key": "ref34",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1097/EDE.0b013e318281a64e"
+    },
+    {
+      "key": "ref37",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1162/neco.1997.9.8.1735"
+    },
+    {
+      "key": "ref36",
+      "article-title": "Long-tail learning via logit adjustment",
+      "author": "menon",
+      "year": "2021",
+      "journal-title": "9th International Conference on Learning Representations ICLR 2021"
+    },
+    {
+      "key": "ref31",
+      "author": "pearl",
+      "year": "2018",
+      "journal-title": "The Book of Why The New Science of Cause and Effect"
+    },
+    {
+      "key": "ref75",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3404835.3462823"
+    },
+    {
+      "key": "ref30",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3447548.3467289"
+    },
+    {
+      "key": "ref74",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3404835.3462875"
+    },
+    {
+      "key": "ref33",
+      "author": "glymour",
+      "year": "2016",
+      "journal-title": "Causal Inference in Statistics A Primer"
+    },
+    {
+      "key": "ref32",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1177/0049124198027002004"
+    },
+    {
+      "key": "ref76",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.18653/v1/2021.acl-long.26"
+    },
+    {
+      "key": "ref2",
+      "doi-asserted-by": "crossref",
+      "first-page": "473",
+      "DOI": "10.1145/3324884.3416591",
+      "article-title": "Multi-task Learning based Pre-trained Language Model for Code Completion",
+      "author": "liu",
+      "year": "2020",
+      "journal-title": "IEEE/ACM Int Conference on Automated Software Engineering (ASE)"
+    },
+    {
+      "key": "ref1",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ICSE.2019.00086"
+    },
+    {
+      "key": "ref39",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3404835.3462962"
+    },
+    {
+      "key": "ref38",
+      "first-page": "5998",
+      "article-title": "Attention is all you need",
+      "author": "vaswani",
+      "year": "2017",
+      "journal-title": "Advances in Neural Information Processing Systems 30 Annual Conference on Neural Information Processing Systems 2017"
+    },
+    {
+      "key": "ref71",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ICCV48922.2021.00308"
+    },
+    {
+      "key": "ref70",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3510003.3510096"
+    },
+    {
+      "key": "ref73",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.18653/v1/2021.acl-long.422"
+    },
+    {
+      "key": "ref72",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1609/aaai.v35i16.17651"
+    },
+    {
+      "key": "ref24",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3381831"
+    },
+    {
+      "key": "ref68",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1609/aaai.v35i1.16074"
+    },
+    {
+      "key": "ref23",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1038/538020a"
+    },
+    {
+      "key": "ref67",
+      "article-title": "Integrating tree path in transformer for code representation",
+      "volume": "34",
+      "author": "peng",
+      "year": "2021",
+      "journal-title": "Advances in neural information processing systems"
+    },
+    {
+      "key": "ref26",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1017/CBO9780511803161"
+    },
+    {
+      "key": "ref25",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1007/978-3-031-01548-9"
+    },
+    {
+      "key": "ref69",
+      "article-title": "Graphcodebert: Pre-training code representations with data flow",
+      "author": "guo",
+      "year": "2021",
+      "journal-title": "9th International Conference on Learning Representations ICLR 2021"
+    },
+    {
+      "key": "ref20",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.18653/v1/2020.acl-main.449"
+    },
+    {
+      "key": "ref64",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/CVPR42600.2020.00040"
+    },
+    {
+      "key": "ref63",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3510003.3510181"
+    },
+    {
+      "key": "ref22",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/ICSE43902.2021.00041"
+    },
+    {
+      "key": "ref66",
+      "first-page": "2091",
+      "article-title": "A convolutional attention network for extreme summarization of source code",
+      "volume": "48",
+      "author": "allamanis",
+      "year": "2016",
+      "journal-title": "Proceedings of the 33nd International Conference on Machine Learning ICML 2016 ser JMLR Workshop and Conference Proceedings"
+    },
+    {
+      "key": "ref21",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3468264.3468611"
+    },
+    {
+      "key": "ref65",
+      "article-title": "Code structure guided transformer for source code summarization",
+      "author": "gao",
+      "year": "2022",
+      "journal-title": "ACM Trans Softw Eng Methodol"
+    },
+    {
+      "key": "ref28",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1093/pan/mpv007"
+    },
+    {
+      "key": "ref27",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1146/annurev.psych.58.110405.085542"
+    },
+    {
+      "key": "ref29",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/CVPR46437.2021.01251"
+    },
+    {
+      "key": "ref60",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1109/TKDE.2018.2876857"
+    },
+    {
+      "key": "ref62",
+      "article-title": "Unveiling project-specific bias in neural code models",
+      "volume": "abs 2201 7381",
+      "author": "li",
+      "year": "2022",
+      "journal-title": "CoRR"
+    },
+    {
+      "key": "ref61",
+      "doi-asserted-by": "publisher",
+      "DOI": "10.1145/3510003.3510146"
+    }
+  ],
+  "event": {
+    "name": "2023 IEEE/ACM 45th International Conference on Software Engineering (ICSE)",
+    "location": "Melbourne, Australia",
+    "start": {
+      "date-parts": [
+        [
+          2023,
+          5,
+          14
+        ]
+      ]
+    },
+    "end": {
+      "date-parts": [
+        [
+          2023,
+          5,
+          20
+        ]
+      ]
+    }
+  },
+  "container-title": [
+    "2023 IEEE/ACM 45th International Conference on Software Engineering (ICSE)"
+  ],
+  "link": [
+    {
+      "URL": "http://xplorestaging.ieee.org/ielx7/10172484/10172342/10172869.pdf?arnumber=10172869",
+      "content-type": "unspecified",
+      "content-version": "vor",
+      "intended-application": "similarity-checking"
+    }
+  ],
+  "deposited": {
+    "date-parts": [
+      [
+        2023,
+        8,
+        1
+      ]
+    ],
+    "date-time": "2023-08-01T13:55:27Z",
+    "timestamp": 1690898127000
+  },
+  "score": 68.675,
+  "resource": {
+    "primary": {
+      "URL": "https://ieeexplore.ieee.org/document/10172869/"
+    }
+  },
+  "issued": {
+    "date-parts": [
+      [
+        2023,
+        5
+      ]
+    ]
+  },
+  "references-count": 76,
+  "URL": "https://doi.org/10.1109/icse48619.2023.00164",
+  "published": {
+    "date-parts": [
+      [
+        2023,
+        5
+      ]
+    ]
+  }
+}

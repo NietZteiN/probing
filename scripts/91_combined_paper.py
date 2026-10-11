@@ -322,7 +322,8 @@ def final_sources(numbers):
     for group in re.findall(r'\\cite\w*\*?(?:\[[^\]]*\])*\{([^}]+)\}',text):
         cited.update(key.strip() for key in group.split(','))
     bib={}
-    bib_sources = [source/'refs.bib' for source in SOURCES.values()] + [PAPER/'refs_extra.bib']
+    # Combined-paper corrections take precedence over the imported releases.
+    bib_sources = [PAPER/'refs_extra.bib'] + [source/'refs.bib' for source in SOURCES.values()]
     for source in bib_sources:
         for entry in re.split(r'(?m)(?=^@)',source.read_text()):
             match=re.match(r'@\w+\{([^,]+),',entry)

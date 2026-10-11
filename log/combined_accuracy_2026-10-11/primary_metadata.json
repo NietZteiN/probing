@@ -1,0 +1,2104 @@
+{
+  "geirhos2019texture": {
+    "primary_url": "https://arxiv.org/abs/1811.12231",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "ImageNet-trained CNNs are biased towards texture; increasing shape bias improves accuracy and robustness"
+      ],
+      "citation_author": [
+        "Geirhos, Robert",
+        "Rubisch, Patricia",
+        "Michaelis, Claudio",
+        "Bethge, Matthias",
+        "Wichmann, Felix A.",
+        "Brendel, Wieland"
+      ],
+      "citation_date": [
+        "2018/11/29"
+      ],
+      "citation_online_date": [
+        "2022/11/09"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/1811.12231"
+      ],
+      "citation_arxiv_id": [
+        "1811.12231"
+      ],
+      "citation_abstract": [
+        "Convolutional Neural Networks (CNNs) are commonly thought to recognise objects by learning increasingly complex representations of object shapes. Some recent studies suggest a more important role of image textures. We here put these conflicting hypotheses to a quantitative test by evaluating CNNs and human observers on images with a texture-shape cue conflict. We show that ImageNet-trained CNNs are strongly biased towards recognising textures rather than shapes, which is in stark contrast to human behavioural evidence and reveals fundamentally different classification strategies. We then demonstrate that the same standard architecture (ResNet-50) that learns a texture-based representation on ImageNet is able to learn a shape-based representation instead when trained on \"Stylized-ImageNet\", a stylized version of ImageNet. This provides a much better fit for human behavioural performance in our well-controlled psychophysical lab setting (nine experiments totalling 48,560 psychophysical trials across 97 observers) and comes with a number of unexpected emergent benefits such as improved object detection performance and previously unseen robustness towards a wide range of image distortions, highlighting advantages of a shape-based representation."
+      ]
+    },
+    "verification_note": "2018 preprint explicitly marked accepted at ICLR 2019; manuscript cites the conference year."
+  },
+  "gu2024cruxeval": {
+    "primary_url": "https://proceedings.mlr.press/v235/gu24c.html",
+    "http_status": 200,
+    "metadata": {
+      "citation_publisher": [
+        "PMLR"
+      ],
+      "citation_title": [
+        "CRUXEval: A Benchmark for Code Reasoning, Understanding and Execution"
+      ],
+      "citation_language": [
+        "en"
+      ],
+      "citation_abstract_html_url": [
+        "https://proceedings.mlr.press/v235/gu24c.html"
+      ],
+      "citation_pdf_url": [
+        "https://raw.githubusercontent.com/mlresearch/v235/main/assets/gu24c/gu24c.pdf"
+      ],
+      "citation_firstpage": [
+        "16568"
+      ],
+      "citation_lastpage": [
+        "16621"
+      ],
+      "citation_author": [
+        "Alex Gu",
+        "Baptiste Roziere",
+        "Hugh James Leather",
+        "Armando Solar-Lezama",
+        "Gabriel Synnaeve",
+        "Sida Wang"
+      ],
+      "citation_publication_date": [
+        "2024/07/08"
+      ],
+      "citation_inbook_title": [
+        "International Conference on Machine Learning"
+      ],
+      "citation_conference_title": [
+        "International Conference on Machine Learning"
+      ],
+      "citation_issn": [
+        "2640-3498"
+      ]
+    }
+  },
+  "hewitt2019control": {
+    "primary_url": "https://aclanthology.org/D19-1275/",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Designing and Interpreting Probes with Control Tasks"
+      ],
+      "citation_author": [
+        "John Hewitt",
+        "Percy Liang"
+      ],
+      "citation_conference_title": [
+        "Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)"
+      ],
+      "citation_publication_date": [
+        "2019/11"
+      ],
+      "citation_pdf_url": [
+        "https://aclanthology.org/D19-1275.pdf"
+      ],
+      "citation_firstpage": [
+        "2733"
+      ],
+      "citation_lastpage": [
+        "2743"
+      ],
+      "citation_doi": [
+        "10.18653/v1/D19-1275"
+      ]
+    }
+  },
+  "kudo2026faithful": {
+    "primary_url": "https://aclanthology.org/2026.findings-eacl.59/",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "LLMs Faithfully and Iteratively Compute Answers During CoT: A Systematic Analysis With Multi-step Arithmetics"
+      ],
+      "citation_author": [
+        "Keito Kudo",
+        "Yoichi Aoki",
+        "Tatsuki Kuribayashi",
+        "Shusaku Sone",
+        "Masaya Taniguchi",
+        "Ana Brassard",
+        "Keisuke Sakaguchi",
+        "Kentaro Inui"
+      ],
+      "citation_conference_title": [
+        "Findings of the Association for Computational Linguistics: EACL 2026"
+      ],
+      "citation_publication_date": [
+        "2026/3"
+      ],
+      "citation_pdf_url": [
+        "https://aclanthology.org/2026.findings-eacl.59.pdf"
+      ],
+      "citation_firstpage": [
+        "1114"
+      ],
+      "citation_lastpage": [
+        "1153"
+      ],
+      "citation_doi": [
+        "10.18653/v1/2026.findings-eacl.59"
+      ]
+    }
+  },
+  "lam2025codecrash": {
+    "primary_url": "https://papers.nips.cc/paper_files/paper/2025/hash/aec5e2847c5ae90f939ab786774856cc-Abstract-Conference.html",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "CodeCrash: Exposing LLM Fragility to Misleading Natural Language in Code Reasoning"
+      ],
+      "citation_author": [
+        "Lam, Man Ho",
+        "Wang, Chaozheng",
+        "Huang, Jen-Tse",
+        "Lyu, Michael R"
+      ],
+      "citation_journal_title": [
+        "Advances in Neural Information Processing Systems"
+      ],
+      "citation_volume": [
+        "38"
+      ],
+      "citation_doi": [
+        "10.52202/085713-4029"
+      ],
+      "citation_firstpage": [
+        "120782"
+      ],
+      "citation_lastpage": [
+        "120828"
+      ],
+      "citation_pdf_url": [
+        "https://proceedings.neurips.cc/paper_files/paper/2025/file/aec5e2847c5ae90f939ab786774856cc-Paper-Conference.pdf"
+      ],
+      "citation_publication_date": [
+        "2026-04-23"
+      ]
+    },
+    "verification_note": "Conference year 2025 retained; publication/upload timestamp does not change venue year. Pages corrected from publisher BibTeX."
+  },
+  "orgad2025know": {
+    "primary_url": "https://arxiv.org/abs/2410.02707",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "LLMs Know More Than They Show: On the Intrinsic Representation of LLM Hallucinations"
+      ],
+      "citation_author": [
+        "Orgad, Hadas",
+        "Toker, Michael",
+        "Gekhman, Zorik",
+        "Reichart, Roi",
+        "Szpektor, Idan",
+        "Kotek, Hadas",
+        "Belinkov, Yonatan"
+      ],
+      "citation_date": [
+        "2024/10/03"
+      ],
+      "citation_online_date": [
+        "2025/05/18"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2410.02707"
+      ],
+      "citation_arxiv_id": [
+        "2410.02707"
+      ],
+      "citation_abstract": [
+        "Large language models (LLMs) often produce errors, including factual inaccuracies, biases, and reasoning failures, collectively referred to as \"hallucinations\". Recent studies have demonstrated that LLMs' internal states encode information regarding the truthfulness of their outputs, and that this information can be utilized to detect errors. In this work, we show that the internal representations of LLMs encode much more information about truthfulness than previously recognized. We first discover that the truthfulness information is concentrated in specific tokens, and leveraging this property significantly enhances error detection performance. Yet, we show that such error detectors fail to generalize across datasets, implying that -- contrary to prior claims -- truthfulness encoding is not universal but rather multifaceted. Next, we show that internal representations can also be used for predicting the types of errors the model is likely to make, facilitating the development of tailored mitigation strategies. Lastly, we reveal a discrepancy between LLMs' internal encoding and external behavior: they may encode the correct answer, yet consistently generate an incorrect one. Taken together, these insights deepen our understanding of LLM errors from the model's internal perspective, which can guide future research on enhancing error analysis and mitigation."
+      ]
+    }
+  },
+  "paszke2019pytorch": {
+    "primary_url": "https://proceedings.neurips.cc/paper/2019/hash/bdbca288fee7f92f2bfa9f7012727740-Abstract.html",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "PyTorch: An Imperative Style, High-Performance Deep Learning Library"
+      ],
+      "citation_author": [
+        "Paszke, Adam",
+        "Gross, Sam",
+        "Massa, Francisco",
+        "Lerer, Adam",
+        "Bradbury, James",
+        "Chanan, Gregory",
+        "Killeen, Trevor",
+        "Lin, Zeming",
+        "Gimelshein, Natalia",
+        "Antiga, Luca",
+        "Desmaison, Alban",
+        "Kopf, Andreas",
+        "Yang, Edward",
+        "DeVito, Zachary",
+        "Raison, Martin",
+        "Tejani, Alykhan",
+        "Chilamkurthy, Sasank",
+        "Steiner, Benoit",
+        "Fang, Lu",
+        "Bai, Junjie",
+        "Chintala, Soumith"
+      ],
+      "citation_journal_title": [
+        "Advances in Neural Information Processing Systems"
+      ],
+      "citation_volume": [
+        "32"
+      ],
+      "citation_pdf_url": [
+        "https://proceedings.neurips.cc/paper_files/paper/2019/file/bdbca288fee7f92f2bfa9f7012727740-Paper.pdf"
+      ],
+      "citation_publication_date": [
+        "2019"
+      ]
+    }
+  },
+  "pedregosa2011sklearn": {
+    "primary_url": "https://www.jmlr.org/papers/v12/pedregosa11a.html",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Scikit-learn: Machine Learning in Python"
+      ],
+      "citation_author": [
+        "Fabian Pedregosa",
+        "Gaël Varoquaux",
+        "Alexandre Gramfort",
+        "Vincent Michel",
+        "Bertrand Thirion",
+        "Olivier Grisel",
+        "Mathieu Blondel",
+        "Peter Prettenhofer",
+        "Ron Weiss",
+        "Vincent Dubourg",
+        "Jake Vanderplas",
+        "Alexandre Passos",
+        "David Cournapeau",
+        "Matthieu Brucher",
+        "Matthieu Perrot",
+        "Édouard Duchesnay"
+      ],
+      "citation_journal_title": [
+        "Journal of Machine Learning Research"
+      ],
+      "citation_volume": [
+        "12"
+      ],
+      "citation_issue": [
+        "85"
+      ],
+      "citation_firstpage": [
+        "2825"
+      ],
+      "citation_lastpage": [
+        "2830"
+      ],
+      "citation_pdf_url": [
+        "http://jmlr.org/papers/volume12/pedregosa11a/pedregosa11a.pdf"
+      ],
+      "citation_publication_date": [
+        "2011"
+      ],
+      "citation_public_url": [
+        "http://jmlr.org/papers/v12/pedregosa11a.html"
+      ],
+      "citation_abstract_html_url": [
+        "http://jmlr.org/papers/v12/pedregosa11a.html"
+      ],
+      "citation_issn": [
+        "1533-7928"
+      ]
+    }
+  },
+  "prabhakar2024deciphering": {
+    "primary_url": "https://aclanthology.org/2024.findings-emnlp.212/",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Deciphering the Factors Influencing the Efficacy of Chain-of-Thought: Probability, Memorization, and Noisy Reasoning"
+      ],
+      "citation_author": [
+        "Akshara Prabhakar",
+        "Thomas L. Griffiths",
+        "R. Thomas McCoy"
+      ],
+      "citation_conference_title": [
+        "Findings of the Association for Computational Linguistics: EMNLP 2024"
+      ],
+      "citation_publication_date": [
+        "2024/11"
+      ],
+      "citation_pdf_url": [
+        "https://aclanthology.org/2024.findings-emnlp.212.pdf"
+      ],
+      "citation_firstpage": [
+        "3710"
+      ],
+      "citation_lastpage": [
+        "3724"
+      ],
+      "citation_doi": [
+        "10.18653/v1/2024.findings-emnlp.212"
+      ]
+    }
+  },
+  "seabold2010statsmodels": {
+    "primary_url": "https://www.statsmodels.org/stable/index.html",
+    "http_status": 200,
+    "metadata": {},
+    "page_title": "statsmodels documentation#",
+    "verification_note": "Official documentation preferred citation names Seabold and Perktold (2010), statsmodels: Econometric and statistical modeling with python, 9th Python in Science Conference."
+  },
+  "stroop1935": {
+    "primary_url": "https://api.crossref.org/works/10.1037/h0054651",
+    "http_status": 200,
+    "metadata": {},
+    "publisher_deposited_metadata": {
+      "indexed": {
+        "date-parts": [
+          [
+            2026,
+            10,
+            10
+          ]
+        ],
+        "date-time": "2026-10-10T20:56:43Z",
+        "timestamp": 1791665803243,
+        "version": "4.3.4"
+      },
+      "reference-count": 0,
+      "publisher": "American Psychological Association (APA)",
+      "issue": "6",
+      "content-domain": {
+        "domain": [],
+        "crossmark-restriction": false
+      },
+      "short-container-title": [
+        "Journal of Experimental Psychology"
+      ],
+      "DOI": "10.1037/h0054651",
+      "type": "journal-article",
+      "created": {
+        "date-parts": [
+          [
+            2006,
+            6,
+            8
+          ]
+        ],
+        "date-time": "2006-06-08T07:22:35Z",
+        "timestamp": 1149751355000
+      },
+      "page": "643-662",
+      "source": "Crossref",
+      "is-referenced-by-count": 13820,
+      "title": [
+        "Studies of interference in serial verbal reactions."
+      ],
+      "prefix": "10.1037",
+      "volume": "18",
+      "author": [
+        {
+          "given": "J. R.",
+          "family": "Stroop",
+          "sequence": "first",
+          "affiliation": [],
+          "role": [
+            {
+              "vocabulary": "crossref",
+              "role": "author"
+            }
+          ]
+        }
+      ],
+      "member": "15",
+      "published-online": {
+        "date-parts": [
+          [
+            1935,
+            12
+          ]
+        ]
+      },
+      "container-title": [
+        "Journal of Experimental Psychology"
+      ],
+      "original-title": [],
+      "language": "en",
+      "link": [
+        {
+          "URL": "http://psycnet.apa.org/journals/xge/18/6/643.pdf",
+          "content-type": "unspecified",
+          "content-version": "vor",
+          "intended-application": "similarity-checking"
+        }
+      ],
+      "deposited": {
+        "date-parts": [
+          [
+            2024,
+            2,
+            6
+          ]
+        ],
+        "date-time": "2024-02-06T17:28:38Z",
+        "timestamp": 1707240518000
+      },
+      "score": 1,
+      "resource": {
+        "primary": {
+          "URL": "https://doi.apa.org/doi/10.1037/h0054651"
+        }
+      },
+      "subtitle": [],
+      "short-title": [],
+      "issued": {
+        "date-parts": [
+          [
+            1935,
+            12
+          ]
+        ]
+      },
+      "references-count": 0,
+      "journal-issue": {
+        "issue": "6",
+        "published-online": {
+          "date-parts": [
+            [
+              1935,
+              12
+            ]
+          ]
+        }
+      },
+      "alternative-id": [
+        "1936-01863-001"
+      ],
+      "URL": "https://doi.org/10.1037/h0054651",
+      "relation": {},
+      "ISSN": [
+        "0022-1015"
+      ],
+      "issn-type": [
+        {
+          "value": "0022-1015",
+          "type": "print"
+        }
+      ],
+      "subject": [],
+      "published": {
+        "date-parts": [
+          [
+            1935,
+            12
+          ]
+        ]
+      }
+    }
+  },
+  "turpin2023unfaithful": {
+    "primary_url": "https://papers.nips.cc/paper/2023/hash/ed3fea9033a80fea1376299fa7863f4a-Abstract-Conference.html",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting"
+      ],
+      "citation_author": [
+        "Turpin, Miles",
+        "Michael, Julian",
+        "Perez, Ethan",
+        "Bowman, Samuel"
+      ],
+      "citation_journal_title": [
+        "Advances in Neural Information Processing Systems"
+      ],
+      "citation_volume": [
+        "36"
+      ],
+      "citation_doi": [
+        "10.52202/075280-3275"
+      ],
+      "citation_firstpage": [
+        "74952"
+      ],
+      "citation_lastpage": [
+        "74965"
+      ],
+      "citation_pdf_url": [
+        "https://proceedings.neurips.cc/paper_files/paper/2023/file/ed3fea9033a80fea1376299fa7863f4a-Paper-Conference.pdf"
+      ],
+      "citation_publication_date": [
+        "2023-12-15"
+      ]
+    }
+  },
+  "walsh2025olmo2": {
+    "primary_url": "https://api2.openreview.net/notes?id=2ezugTT9kU",
+    "error": "403 Client Error: Forbidden for url: https://api2.openreview.net/notes?id=2ezugTT9kU",
+    "verification_note": "OpenReview API blocked direct retrieval. Title, author list and COLM 2025 venue checked against search-indexed primary OpenReview PDF and the OLMo 2 arXiv record; no secondary bibliographies used.",
+    "verified_primary_pdf": "https://openreview.net/pdf/ee2c137da42a7d7cd97b58127c3b38b1bd47107d.pdf"
+  },
+  "wolf2020transformers": {
+    "primary_url": "https://aclanthology.org/2020.emnlp-demos.6/",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Transformers: State-of-the-Art Natural Language Processing"
+      ],
+      "citation_author": [
+        "Thomas Wolf",
+        "Lysandre Debut",
+        "Victor Sanh",
+        "Julien Chaumond",
+        "Clément Delangue",
+        "Anthony Moi",
+        "Pierric Cistac",
+        "Tim Rault",
+        "Remi Louf",
+        "Morgan Funtowicz",
+        "Joe Davison",
+        "Sam Shleifer",
+        "Patrick von Platen",
+        "Clara Ma",
+        "Yacine Jernite",
+        "Julien Plu",
+        "Canwen Xu",
+        "Teven Le Scao",
+        "Sylvain Gugger",
+        "Mariama Drame",
+        "Quentin Lhoest",
+        "Alexander M. Rush"
+      ],
+      "citation_conference_title": [
+        "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing: System Demonstrations"
+      ],
+      "citation_publication_date": [
+        "2020/10"
+      ],
+      "citation_pdf_url": [
+        "https://aclanthology.org/2020.emnlp-demos.6.pdf"
+      ],
+      "citation_firstpage": [
+        "38"
+      ],
+      "citation_lastpage": [
+        "45"
+      ],
+      "citation_doi": [
+        "10.18653/v1/2020.emnlp-demos.6"
+      ]
+    }
+  },
+  "zhang2024patching": {
+    "primary_url": "https://proceedings.iclr.cc/paper_files/paper/2024/hash/06a52a54c8ee03cd86771136bc91eb1f-Abstract-Conference.html",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Towards Best Practices of Activation Patching in Language Models: Metrics and Methods"
+      ],
+      "citation_author": [
+        "Zhang, Fred",
+        "Nanda, Neel"
+      ],
+      "citation_journal_title": [
+        "International Conference on Learning Representations"
+      ],
+      "citation_volume": [
+        "2024"
+      ],
+      "citation_firstpage": [
+        "1651"
+      ],
+      "citation_lastpage": [
+        "1678"
+      ],
+      "citation_pdf_url": [
+        "https://proceedings.iclr.cc/paper_files/paper/2024/file/06a52a54c8ee03cd86771136bc91eb1f-Paper-Conference.pdf"
+      ],
+      "citation_publication_date": [
+        "2024-05-31"
+      ]
+    }
+  },
+  "bercovich2025nemotron": {
+    "primary_url": "https://arxiv.org/abs/2505.00949",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Llama-Nemotron: Efficient Reasoning Models"
+      ],
+      "citation_author": [
+        "Bercovich, Akhiad",
+        "Levy, Itay",
+        "Golan, Izik",
+        "Dabbah, Mohammad",
+        "El-Yaniv, Ran",
+        "Puny, Omri",
+        "Galil, Ido",
+        "Moshe, Zach",
+        "Ronen, Tomer",
+        "Nabwani, Najeeb",
+        "Shahaf, Ido",
+        "Tropp, Oren",
+        "Karpas, Ehud",
+        "Zilberstein, Ran",
+        "Zeng, Jiaqi",
+        "Singhal, Soumye",
+        "Bukharin, Alexander",
+        "Zhang, Yian",
+        "Konuk, Tugrul",
+        "Shen, Gerald",
+        "Mahabaleshwarkar, Ameya Sunil",
+        "Kartal, Bilal",
+        "Suhara, Yoshi",
+        "Delalleau, Olivier",
+        "Chen, Zijia",
+        "Wang, Zhilin",
+        "Mosallanezhad, David",
+        "Renduchintala, Adi",
+        "Qian, Haifeng",
+        "Rekesh, Dima",
+        "Jia, Fei",
+        "Majumdar, Somshubra",
+        "Noroozi, Vahid",
+        "Ahmad, Wasi Uddin",
+        "Narenthiran, Sean",
+        "Ficek, Aleksander",
+        "Samadi, Mehrzad",
+        "Huang, Jocelyn",
+        "Jain, Siddhartha",
+        "Gitman, Igor",
+        "Moshkov, Ivan",
+        "Du, Wei",
+        "Toshniwal, Shubham",
+        "Armstrong, George",
+        "Kisacanin, Branislav",
+        "Novikov, Matvei",
+        "Gitman, Daria",
+        "Bakhturina, Evelina",
+        "Varshney, Prasoon",
+        "Narsimhan, Makesh",
+        "Scowcroft, Jane Polak",
+        "Kamalu, John",
+        "Su, Dan",
+        "Kong, Kezhi",
+        "Kliegl, Markus",
+        "Mahabadi, Rabeeh Karimi",
+        "Lin, Ying",
+        "Satheesh, Sanjeev",
+        "Parmar, Jupinder",
+        "Gundecha, Pritam",
+        "Norick, Brandon",
+        "Jennings, Joseph",
+        "Prabhumoye, Shrimai",
+        "Akter, Syeda Nahida",
+        "Patwary, Mostofa",
+        "Khattar, Abhinav",
+        "Narayanan, Deepak",
+        "Waleffe, Roger",
+        "Zhang, Jimmy",
+        "Su, Bor-Yiing",
+        "Huang, Guyue",
+        "Kong, Terry",
+        "Chadha, Parth",
+        "Jain, Sahil",
+        "Harvey, Christine",
+        "Segal, Elad",
+        "Huang, Jining",
+        "Kashirsky, Sergey",
+        "McQueen, Robert",
+        "Putterman, Izzy",
+        "Lam, George",
+        "Venkatesan, Arun",
+        "Wu, Sherry",
+        "Nguyen, Vinh",
+        "Kilaru, Manoj",
+        "Wang, Andrew",
+        "Warno, Anna",
+        "Somasamudramath, Abhilash",
+        "Bhaskar, Sandip",
+        "Dong, Maka",
+        "Assaf, Nave",
+        "Mor, Shahar",
+        "Argov, Omer Ullman",
+        "Junkin, Scot",
+        "Romanenko, Oleksandr",
+        "Larroy, Pedro",
+        "Katariya, Monika",
+        "Rovinelli, Marco",
+        "Balas, Viji",
+        "Edelman, Nicholas",
+        "Bhiwandiwalla, Anahita",
+        "Subramaniam, Muthu",
+        "Ithape, Smita",
+        "Ramamoorthy, Karthik",
+        "Wu, Yuting",
+        "Velury, Suguna Varshini",
+        "Almog, Omri",
+        "Daw, Joyjit",
+        "Fridman, Denys",
+        "Galinkin, Erick",
+        "Evans, Michael",
+        "Ghosh, Shaona",
+        "Luna, Katherine",
+        "Derczynski, Leon",
+        "Pope, Nikki",
+        "Long, Eileen",
+        "Schneider, Seth",
+        "Siman, Guillermo",
+        "Grzegorzek, Tomasz",
+        "Ribalta, Pablo",
+        "Katariya, Monika",
+        "Alexiuk, Chris",
+        "Conway, Joey",
+        "Saar, Trisha",
+        "Guan, Ann",
+        "Pawelec, Krzysztof",
+        "Prayaga, Shyamala",
+        "Kuchaiev, Oleksii",
+        "Ginsburg, Boris",
+        "Olabiyi, Oluwatobi",
+        "Briski, Kari",
+        "Cohen, Jonathan",
+        "Catanzaro, Bryan",
+        "Alben, Jonah",
+        "Geifman, Yonatan",
+        "Chung, Eric"
+      ],
+      "citation_date": [
+        "2025/05/02"
+      ],
+      "citation_online_date": [
+        "2025/09/09"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2505.00949"
+      ],
+      "citation_arxiv_id": [
+        "2505.00949"
+      ],
+      "citation_abstract": [
+        "We introduce the Llama-Nemotron series of models, an open family of heterogeneous reasoning models that deliver exceptional reasoning capabilities, inference efficiency, and an open license for enterprise use. The family comes in three sizes -- Nano (8B), Super (49B), and Ultra (253B) -- and performs competitively with state-of-the-art reasoning models such as DeepSeek-R1 while offering superior inference throughput and memory efficiency. In this report, we discuss the training procedure for these models, which entails using neural architecture search from Llama 3 models for accelerated inference, knowledge distillation, and continued pretraining, followed by a reasoning-focused post-training stage consisting of two main parts: supervised fine-tuning and large scale reinforcement learning. Llama-Nemotron models are the first open-source models to support a dynamic reasoning toggle, allowing users to switch between standard chat and reasoning modes during inference. To further support open research and facilitate model development, we provide the following resources: 1. We release the Llama-Nemotron reasoning models -- LN-Nano, LN-Super, and LN-Ultra -- under the commercially permissive NVIDIA Open Model License Agreement. 2. We release the complete post-training dataset: Llama-Nemotron-Post-Training-Dataset. 3. We also release our training codebases: NeMo, NeMo-Aligner, and Megatron-LM."
+      ]
+    }
+  },
+  "chen2025reasoning": {
+    "primary_url": "https://arxiv.org/abs/2505.05410",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Reasoning Models Don't Always Say What They Think"
+      ],
+      "citation_author": [
+        "Chen, Yanda",
+        "Benton, Joe",
+        "Radhakrishnan, Ansh",
+        "Uesato, Jonathan",
+        "Denison, Carson",
+        "Schulman, John",
+        "Somani, Arushi",
+        "Hase, Peter",
+        "Wagner, Misha",
+        "Roger, Fabien",
+        "Mikulik, Vlad",
+        "Bowman, Samuel R.",
+        "Leike, Jan",
+        "Kaplan, Jared",
+        "Perez, Ethan"
+      ],
+      "citation_date": [
+        "2025/05/08"
+      ],
+      "citation_online_date": [
+        "2025/05/08"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2505.05410"
+      ],
+      "citation_arxiv_id": [
+        "2505.05410"
+      ],
+      "citation_abstract": [
+        "Chain-of-thought (CoT) offers a potential boon for AI safety as it allows monitoring a model's CoT to try to understand its intentions and reasoning processes. However, the effectiveness of such monitoring hinges on CoTs faithfully representing models' actual reasoning processes. We evaluate CoT faithfulness of state-of-the-art reasoning models across 6 reasoning hints presented in the prompts and find: (1) for most settings and models tested, CoTs reveal their usage of hints in at least 1% of examples where they use the hint, but the reveal rate is often below 20%, (2) outcome-based reinforcement learning initially improves faithfulness but plateaus without saturating, and (3) when reinforcement learning increases how frequently hints are used (reward hacking), the propensity to verbalize them does not increase, even without training against a CoT monitor. These results suggest that CoT monitoring is a promising way of noticing undesired behaviors during training and evaluations, but that it is not sufficient to rule them out. They also suggest that in settings like ours where CoT reasoning is not necessary, test-time monitoring of CoTs is unlikely to reliably catch rare and catastrophic unexpected behaviors."
+      ]
+    }
+  },
+  "codegemmateam2024codegemma": {
+    "primary_url": "https://arxiv.org/abs/2406.11409",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "CodeGemma: Open Code Models Based on Gemma"
+      ],
+      "citation_author": [
+        "CodeGemma Team",
+        "Zhao, Heri",
+        "Hui, Jeffrey",
+        "Howland, Joshua",
+        "Nguyen, Nam",
+        "Zuo, Siqi",
+        "Hu, Andrea",
+        "Choquette-Choo, Christopher A.",
+        "Shen, Jingyue",
+        "Kelley, Joe",
+        "Bansal, Kshitij",
+        "Vilnis, Luke",
+        "Wirth, Mateo",
+        "Michel, Paul",
+        "Choy, Peter",
+        "Joshi, Pratik",
+        "Kumar, Ravin",
+        "Hashmi, Sarmad",
+        "Agrawal, Shubham",
+        "Gong, Zhitao",
+        "Fine, Jane",
+        "Warkentin, Tris",
+        "Hartman, Ale Jakse",
+        "Ni, Bin",
+        "Korevec, Kathy",
+        "Schaefer, Kelly",
+        "Huffman, Scott"
+      ],
+      "citation_date": [
+        "2024/06/17"
+      ],
+      "citation_online_date": [
+        "2024/06/19"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2406.11409"
+      ],
+      "citation_arxiv_id": [
+        "2406.11409"
+      ],
+      "citation_abstract": [
+        "This paper introduces CodeGemma, a collection of specialized open code models built on top of Gemma, capable of a variety of code and natural language generation tasks. We release three model variants. CodeGemma 7B pretrained (PT) and instruction-tuned (IT) variants have remarkably resilient natural language understanding, excel in mathematical reasoning, and match code capabilities of other open models. CodeGemma 2B is a state-of-the-art code completion model designed for fast code infilling and open-ended generation in latency-sensitive settings."
+      ]
+    }
+  },
+  "gao2023cream": {
+    "primary_url": "https://arxiv.org/abs/2207.11104",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Two Sides of the Same Coin: Exploiting the Impact of Identifiers in Neural Code Comprehension"
+      ],
+      "citation_author": [
+        "Gao, Shuzheng",
+        "Gao, Cuiyun",
+        "Wang, Chaozheng",
+        "Sun, Jun",
+        "Lo, David",
+        "Yu, Yue"
+      ],
+      "citation_date": [
+        "2022/07/22"
+      ],
+      "citation_online_date": [
+        "2023/02/07"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2207.11104"
+      ],
+      "citation_arxiv_id": [
+        "2207.11104"
+      ],
+      "citation_abstract": [
+        "Previous studies have demonstrated that neural code comprehension models are vulnerable to identifier naming. By renaming as few as one identifier in the source code, the models would output completely irrelevant results, indicating that identifiers can be misleading for model prediction. However, identifiers are not completely detrimental to code comprehension, since the semantics of identifier names can be related to the program semantics. Well exploiting the two opposite impacts of identifiers is essential for enhancing the robustness and accuracy of neural code comprehension, and still remains under-explored. In this work, we propose to model the impact of identifiers from a novel causal perspective, and propose a counterfactual reasoning-based framework named CREAM. CREAM explicitly captures the misleading information of identifiers through multi-task learning in the training stage, and reduces the misleading impact by counterfactual inference in the inference stage. We evaluate CREAM on three popular neural code comprehension tasks, including function naming, defect detection and code classification. Experiment results show that CREAM not only significantly outperforms baselines in terms of robustness (e.g., +37.9% on the function naming task at F1 score), but also achieve improved results on the original datasets (e.g., +0.5% on the function naming task at F1 score)."
+      ]
+    }
+  },
+  "gemmateam2025gemma3": {
+    "primary_url": "https://arxiv.org/abs/2503.19786",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Gemma 3 Technical Report"
+      ],
+      "citation_author": [
+        "Gemma Team",
+        "Kamath, Aishwarya",
+        "Ferret, Johan",
+        "Pathak, Shreya",
+        "Vieillard, Nino",
+        "Merhej, Ramona",
+        "Perrin, Sarah",
+        "Matejovicova, Tatiana",
+        "Ramé, Alexandre",
+        "Rivière, Morgane",
+        "Rouillard, Louis",
+        "Mesnard, Thomas",
+        "Cideron, Geoffrey",
+        "Grill, Jean-bastien",
+        "Ramos, Sabela",
+        "Yvinec, Edouard",
+        "Casbon, Michelle",
+        "Pot, Etienne",
+        "Penchev, Ivo",
+        "Liu, Gaël",
+        "Visin, Francesco",
+        "Kenealy, Kathleen",
+        "Beyer, Lucas",
+        "Zhai, Xiaohai",
+        "Tsitsulin, Anton",
+        "Busa-Fekete, Robert",
+        "Feng, Alex",
+        "Sachdeva, Noveen",
+        "Coleman, Benjamin",
+        "Gao, Yi",
+        "Mustafa, Basil",
+        "Barr, Iain",
+        "Parisotto, Emilio",
+        "Tian, David",
+        "Eyal, Matan",
+        "Cherry, Colin",
+        "Peter, Jan-Thorsten",
+        "Sinopalnikov, Danila",
+        "Bhupatiraju, Surya",
+        "Agarwal, Rishabh",
+        "Kazemi, Mehran",
+        "Malkin, Dan",
+        "Kumar, Ravin",
+        "Vilar, David",
+        "Brusilovsky, Idan",
+        "Luo, Jiaming",
+        "Steiner, Andreas",
+        "Friesen, Abe",
+        "Sharma, Abhanshu",
+        "Sharma, Abheesht",
+        "Gilady, Adi Mayrav",
+        "Goedeckemeyer, Adrian",
+        "Saade, Alaa",
+        "Feng, Alex",
+        "Kolesnikov, Alexander",
+        "Bendebury, Alexei",
+        "Abdagic, Alvin",
+        "Vadi, Amit",
+        "György, András",
+        "Pinto, André Susano",
+        "Das, Anil",
+        "Bapna, Ankur",
+        "Miech, Antoine",
+        "Yang, Antoine",
+        "Paterson, Antonia",
+        "Shenoy, Ashish",
+        "Chakrabarti, Ayan",
+        "Piot, Bilal",
+        "Wu, Bo",
+        "Shahriari, Bobak",
+        "Petrini, Bryce",
+        "Chen, Charlie",
+        "Lan, Charline Le",
+        "Choquette-Choo, Christopher A.",
+        "Carey, CJ",
+        "Brick, Cormac",
+        "Deutsch, Daniel",
+        "Eisenbud, Danielle",
+        "Cattle, Dee",
+        "Cheng, Derek",
+        "Paparas, Dimitris",
+        "Sreepathihalli, Divyashree Shivakumar",
+        "Reid, Doug",
+        "Tran, Dustin",
+        "Zelle, Dustin",
+        "Noland, Eric",
+        "Huizenga, Erwin",
+        "Kharitonov, Eugene",
+        "Liu, Frederick",
+        "Amirkhanyan, Gagik",
+        "Cameron, Glenn",
+        "Hashemi, Hadi",
+        "Klimczak-Plucińska, Hanna",
+        "Singh, Harman",
+        "Mehta, Harsh",
+        "Lehri, Harshal Tushar",
+        "Hazimeh, Hussein",
+        "Ballantyne, Ian",
+        "Szpektor, Idan",
+        "Nardini, Ivan",
+        "Pouget-Abadie, Jean",
+        "Chan, Jetha",
+        "Stanton, Joe",
+        "Wieting, John",
+        "Lai, Jonathan",
+        "Orbay, Jordi",
+        "Fernandez, Joseph",
+        "Newlan, Josh",
+        "Ji, Ju-yeong",
+        "Singh, Jyotinder",
+        "Black, Kat",
+        "Yu, Kathy",
+        "Hui, Kevin",
+        "Vodrahalli, Kiran",
+        "Greff, Klaus",
+        "Qiu, Linhai",
+        "Valentine, Marcella",
+        "Coelho, Marina",
+        "Ritter, Marvin",
+        "Hoffman, Matt",
+        "Watson, Matthew",
+        "Chaturvedi, Mayank",
+        "Moynihan, Michael",
+        "Ma, Min",
+        "Babar, Nabila",
+        "Noy, Natasha",
+        "Byrd, Nathan",
+        "Roy, Nick",
+        "Momchev, Nikola",
+        "Chauhan, Nilay",
+        "Sachdeva, Noveen",
+        "Bunyan, Oskar",
+        "Botarda, Pankil",
+        "Caron, Paul",
+        "Rubenstein, Paul Kishan",
+        "Culliton, Phil",
+        "Schmid, Philipp",
+        "Sessa, Pier Giuseppe",
+        "Xu, Pingmei",
+        "Stanczyk, Piotr",
+        "Tafti, Pouya",
+        "Shivanna, Rakesh",
+        "Wu, Renjie",
+        "Pan, Renke",
+        "Rokni, Reza",
+        "Willoughby, Rob",
+        "Vallu, Rohith",
+        "Mullins, Ryan",
+        "Jerome, Sammy",
+        "Smoot, Sara",
+        "Girgin, Sertan",
+        "Iqbal, Shariq",
+        "Reddy, Shashir",
+        "Sheth, Shruti",
+        "Põder, Siim",
+        "Bhatnagar, Sijal",
+        "Panyam, Sindhu Raghuram",
+        "Eiger, Sivan",
+        "Zhang, Susan",
+        "Liu, Tianqi",
+        "Yacovone, Trevor",
+        "Liechty, Tyler",
+        "Kalra, Uday",
+        "Evci, Utku",
+        "Misra, Vedant",
+        "Roseberry, Vincent",
+        "Feinberg, Vlad",
+        "Kolesnikov, Vlad",
+        "Han, Woohyun",
+        "Kwon, Woosuk",
+        "Chen, Xi",
+        "Chow, Yinlam",
+        "Zhu, Yuvein",
+        "Wei, Zichuan",
+        "Egyed, Zoltan",
+        "Cotruta, Victor",
+        "Giang, Minh",
+        "Kirk, Phoebe",
+        "Rao, Anand",
+        "Black, Kat",
+        "Babar, Nabila",
+        "Lo, Jessica",
+        "Moreira, Erica",
+        "Martins, Luiz Gustavo",
+        "Sanseviero, Omar",
+        "Gonzalez, Lucas",
+        "Gleicher, Zach",
+        "Warkentin, Tris",
+        "Mirrokni, Vahab",
+        "Senter, Evan",
+        "Collins, Eli",
+        "Barral, Joelle",
+        "Ghahramani, Zoubin",
+        "Hadsell, Raia",
+        "Matias, Yossi",
+        "Sculley, D.",
+        "Petrov, Slav",
+        "Fiedel, Noah",
+        "Shazeer, Noam",
+        "Vinyals, Oriol",
+        "Dean, Jeff",
+        "Hassabis, Demis",
+        "Kavukcuoglu, Koray",
+        "Farabet, Clement",
+        "Buchatskaya, Elena",
+        "Alayrac, Jean-Baptiste",
+        "Anil, Rohan",
+        "Dmitry",
+        "Lepikhin",
+        "Borgeaud, Sebastian",
+        "Bachem, Olivier",
+        "Joulin, Armand",
+        "Andreev, Alek",
+        "Hardin, Cassidy",
+        "Dadashi, Robert",
+        "Hussenot, Léonard"
+      ],
+      "citation_date": [
+        "2025/03/25"
+      ],
+      "citation_online_date": [
+        "2025/03/25"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2503.19786"
+      ],
+      "citation_arxiv_id": [
+        "2503.19786"
+      ],
+      "citation_abstract": [
+        "We introduce Gemma 3, a multimodal addition to the Gemma family of lightweight open models, ranging in scale from 1 to 27 billion parameters. This version introduces vision understanding abilities, a wider coverage of languages and longer context - at least 128K tokens. We also change the architecture of the model to reduce the KV-cache memory that tends to explode with long context. This is achieved by increasing the ratio of local to global attention layers, and keeping the span on local attention short. The Gemma 3 models are trained with distillation and achieve superior performance to Gemma 2 for both pre-trained and instruction finetuned versions. In particular, our novel post-training recipe significantly improves the math, chat, instruction-following and multilingual abilities, making Gemma3-4B-IT competitive with Gemma2-27B-IT and Gemma3-27B-IT comparable to Gemini-1.5-Pro across benchmarks. We release all our models to the community."
+      ]
+    }
+  },
+  "grattafiori2024llama3": {
+    "primary_url": "https://arxiv.org/abs/2407.21783",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "The Llama 3 Herd of Models"
+      ],
+      "citation_author": [
+        "Grattafiori, Aaron",
+        "Dubey, Abhimanyu",
+        "Jauhri, Abhinav",
+        "Pandey, Abhinav",
+        "Kadian, Abhishek",
+        "Al-Dahle, Ahmad",
+        "Letman, Aiesha",
+        "Mathur, Akhil",
+        "Schelten, Alan",
+        "Vaughan, Alex",
+        "Yang, Amy",
+        "Fan, Angela",
+        "Goyal, Anirudh",
+        "Hartshorn, Anthony",
+        "Yang, Aobo",
+        "Mitra, Archi",
+        "Sravankumar, Archie",
+        "Korenev, Artem",
+        "Hinsvark, Arthur",
+        "Rao, Arun",
+        "Zhang, Aston",
+        "Rodriguez, Aurelien",
+        "Gregerson, Austen",
+        "Spataru, Ava",
+        "Roziere, Baptiste",
+        "Biron, Bethany",
+        "Tang, Binh",
+        "Chern, Bobbie",
+        "Caucheteux, Charlotte",
+        "Nayak, Chaya",
+        "Bi, Chloe",
+        "Marra, Chris",
+        "McConnell, Chris",
+        "Keller, Christian",
+        "Touret, Christophe",
+        "Wu, Chunyang",
+        "Wong, Corinne",
+        "Ferrer, Cristian Canton",
+        "Nikolaidis, Cyrus",
+        "Allonsius, Damien",
+        "Song, Daniel",
+        "Pintz, Danielle",
+        "Livshits, Danny",
+        "Wyatt, Danny",
+        "Esiobu, David",
+        "Choudhary, Dhruv",
+        "Mahajan, Dhruv",
+        "Garcia-Olano, Diego",
+        "Perino, Diego",
+        "Hupkes, Dieuwke",
+        "Lakomkin, Egor",
+        "AlBadawy, Ehab",
+        "Lobanova, Elina",
+        "Dinan, Emily",
+        "Smith, Eric Michael",
+        "Radenovic, Filip",
+        "Guzmán, Francisco",
+        "Zhang, Frank",
+        "Synnaeve, Gabriel",
+        "Lee, Gabrielle",
+        "Anderson, Georgia Lewis",
+        "Thattai, Govind",
+        "Nail, Graeme",
+        "Mialon, Gregoire",
+        "Pang, Guan",
+        "Cucurell, Guillem",
+        "Nguyen, Hailey",
+        "Korevaar, Hannah",
+        "Xu, Hu",
+        "Touvron, Hugo",
+        "Zarov, Iliyan",
+        "Ibarra, Imanol Arrieta",
+        "Kloumann, Isabel",
+        "Misra, Ishan",
+        "Evtimov, Ivan",
+        "Zhang, Jack",
+        "Copet, Jade",
+        "Lee, Jaewon",
+        "Geffert, Jan",
+        "Vranes, Jana",
+        "Park, Jason",
+        "Mahadeokar, Jay",
+        "Shah, Jeet",
+        "van der Linde, Jelmer",
+        "Billock, Jennifer",
+        "Hong, Jenny",
+        "Lee, Jenya",
+        "Fu, Jeremy",
+        "Chi, Jianfeng",
+        "Huang, Jianyu",
+        "Liu, Jiawen",
+        "Wang, Jie",
+        "Yu, Jiecao",
+        "Bitton, Joanna",
+        "Spisak, Joe",
+        "Park, Jongsoo",
+        "Rocca, Joseph",
+        "Johnstun, Joshua",
+        "Saxe, Joshua",
+        "Jia, Junteng",
+        "Alwala, Kalyan Vasuden",
+        "Prasad, Karthik",
+        "Upasani, Kartikeya",
+        "Plawiak, Kate",
+        "Li, Ke",
+        "Heafield, Kenneth",
+        "Stone, Kevin",
+        "El-Arini, Khalid",
+        "Iyer, Krithika",
+        "Malik, Kshitiz",
+        "Chiu, Kuenley",
+        "Bhalla, Kunal",
+        "Lakhotia, Kushal",
+        "Rantala-Yeary, Lauren",
+        "van der Maaten, Laurens",
+        "Chen, Lawrence",
+        "Tan, Liang",
+        "Jenkins, Liz",
+        "Martin, Louis",
+        "Madaan, Lovish",
+        "Malo, Lubo",
+        "Blecher, Lukas",
+        "Landzaat, Lukas",
+        "de Oliveira, Luke",
+        "Muzzi, Madeline",
+        "Pasupuleti, Mahesh",
+        "Singh, Mannat",
+        "Paluri, Manohar",
+        "Kardas, Marcin",
+        "Tsimpoukelli, Maria",
+        "Oldham, Mathew",
+        "Rita, Mathieu",
+        "Pavlova, Maya",
+        "Kambadur, Melanie",
+        "Lewis, Mike",
+        "Si, Min",
+        "Singh, Mitesh Kumar",
+        "Hassan, Mona",
+        "Goyal, Naman",
+        "Torabi, Narjes",
+        "Bashlykov, Nikolay",
+        "Bogoychev, Nikolay",
+        "Chatterji, Niladri",
+        "Zhang, Ning",
+        "Duchenne, Olivier",
+        "Çelebi, Onur",
+        "Alrassy, Patrick",
+        "Zhang, Pengchuan",
+        "Li, Pengwei",
+        "Vasic, Petar",
+        "Weng, Peter",
+        "Bhargava, Prajjwal",
+        "Dubal, Pratik",
+        "Krishnan, Praveen",
+        "Koura, Punit Singh",
+        "Xu, Puxin",
+        "He, Qing",
+        "Dong, Qingxiao",
+        "Srinivasan, Ragavan",
+        "Ganapathy, Raj",
+        "Calderer, Ramon",
+        "Cabral, Ricardo Silveira",
+        "Stojnic, Robert",
+        "Raileanu, Roberta",
+        "Maheswari, Rohan",
+        "Girdhar, Rohit",
+        "Patel, Rohit",
+        "Sauvestre, Romain",
+        "Polidoro, Ronnie",
+        "Sumbaly, Roshan",
+        "Taylor, Ross",
+        "Silva, Ruan",
+        "Hou, Rui",
+        "Wang, Rui",
+        "Hosseini, Saghar",
+        "Chennabasappa, Sahana",
+        "Singh, Sanjay",
+        "Bell, Sean",
+        "Kim, Seohyun Sonia",
+        "Edunov, Sergey",
+        "Nie, Shaoliang",
+        "Narang, Sharan",
+        "Raparthy, Sharath",
+        "Shen, Sheng",
+        "Wan, Shengye",
+        "Bhosale, Shruti",
+        "Zhang, Shun",
+        "Vandenhende, Simon",
+        "Batra, Soumya",
+        "Whitman, Spencer",
+        "Sootla, Sten",
+        "Collot, Stephane",
+        "Gururangan, Suchin",
+        "Borodinsky, Sydney",
+        "Herman, Tamar",
+        "Fowler, Tara",
+        "Sheasha, Tarek",
+        "Georgiou, Thomas",
+        "Scialom, Thomas",
+        "Speckbacher, Tobias",
+        "Mihaylov, Todor",
+        "Xiao, Tong",
+        "Karn, Ujjwal",
+        "Goswami, Vedanuj",
+        "Gupta, Vibhor",
+        "Ramanathan, Vignesh",
+        "Kerkez, Viktor",
+        "Gonguet, Vincent",
+        "Do, Virginie",
+        "Vogeti, Vish",
+        "Albiero, Vítor",
+        "Petrovic, Vladan",
+        "Chu, Weiwei",
+        "Xiong, Wenhan",
+        "Fu, Wenyin",
+        "Meers, Whitney",
+        "Martinet, Xavier",
+        "Wang, Xiaodong",
+        "Wang, Xiaofang",
+        "Tan, Xiaoqing Ellen",
+        "Xia, Xide",
+        "Xie, Xinfeng",
+        "Jia, Xuchao",
+        "Wang, Xuewei",
+        "Goldschlag, Yaelle",
+        "Gaur, Yashesh",
+        "Babaei, Yasmine",
+        "Wen, Yi",
+        "Song, Yiwen",
+        "Zhang, Yuchen",
+        "Li, Yue",
+        "Mao, Yuning",
+        "Coudert, Zacharie Delpierre",
+        "Yan, Zheng",
+        "Chen, Zhengxing",
+        "Papakipos, Zoe",
+        "Singh, Aaditya",
+        "Srivastava, Aayushi",
+        "Jain, Abha",
+        "Kelsey, Adam",
+        "Shajnfeld, Adam",
+        "Gangidi, Adithya",
+        "Victoria, Adolfo",
+        "Goldstand, Ahuva",
+        "Menon, Ajay",
+        "Sharma, Ajay",
+        "Boesenberg, Alex",
+        "Baevski, Alexei",
+        "Feinstein, Allie",
+        "Kallet, Amanda",
+        "Sangani, Amit",
+        "Teo, Amos",
+        "Yunus, Anam",
+        "Lupu, Andrei",
+        "Alvarado, Andres",
+        "Caples, Andrew",
+        "Gu, Andrew",
+        "Ho, Andrew",
+        "Poulton, Andrew",
+        "Ryan, Andrew",
+        "Ramchandani, Ankit",
+        "Dong, Annie",
+        "Franco, Annie",
+        "Goyal, Anuj",
+        "Saraf, Aparajita",
+        "Chowdhury, Arkabandhu",
+        "Gabriel, Ashley",
+        "Bharambe, Ashwin",
+        "Eisenman, Assaf",
+        "Yazdan, Azadeh",
+        "James, Beau",
+        "Maurer, Ben",
+        "Leonhardi, Benjamin",
+        "Huang, Bernie",
+        "Loyd, Beth",
+        "De Paola, Beto",
+        "Paranjape, Bhargavi",
+        "Liu, Bing",
+        "Wu, Bo",
+        "Ni, Boyu",
+        "Hancock, Braden",
+        "Wasti, Bram",
+        "Spence, Brandon",
+        "Stojkovic, Brani",
+        "Gamido, Brian",
+        "Montalvo, Britt",
+        "Parker, Carl",
+        "Burton, Carly",
+        "Mejia, Catalina",
+        "Liu, Ce",
+        "Wang, Changhan",
+        "Kim, Changkyu",
+        "Zhou, Chao",
+        "Hu, Chester",
+        "Chu, Ching-Hsiang",
+        "Cai, Chris",
+        "Tindal, Chris",
+        "Feichtenhofer, Christoph",
+        "Gao, Cynthia",
+        "Civin, Damon",
+        "Beaty, Dana",
+        "Kreymer, Daniel",
+        "Li, Daniel",
+        "Adkins, David",
+        "Xu, David",
+        "Testuggine, Davide",
+        "David, Delia",
+        "Parikh, Devi",
+        "Liskovich, Diana",
+        "Foss, Didem",
+        "Wang, Dingkang",
+        "Le, Duc",
+        "Holland, Dustin",
+        "Dowling, Edward",
+        "Jamil, Eissa",
+        "Montgomery, Elaine",
+        "Presani, Eleonora",
+        "Hahn, Emily",
+        "Wood, Emily",
+        "Le, Eric-Tuan",
+        "Brinkman, Erik",
+        "Arcaute, Esteban",
+        "Dunbar, Evan",
+        "Smothers, Evan",
+        "Sun, Fei",
+        "Kreuk, Felix",
+        "Tian, Feng",
+        "Kokkinos, Filippos",
+        "Ozgenel, Firat",
+        "Caggioni, Francesco",
+        "Kanayet, Frank",
+        "Seide, Frank",
+        "Florez, Gabriela Medina",
+        "Schwarz, Gabriella",
+        "Badeer, Gada",
+        "Swee, Georgia",
+        "Halpern, Gil",
+        "Herman, Grant",
+        "Sizov, Grigory",
+        "Guangyi",
+        "Zhang",
+        "Lakshminarayanan, Guna",
+        "Inan, Hakan",
+        "Shojanazeri, Hamid",
+        "Zou, Han",
+        "Wang, Hannah",
+        "Zha, Hanwen",
+        "Habeeb, Haroun",
+        "Rudolph, Harrison",
+        "Suk, Helen",
+        "Aspegren, Henry",
+        "Goldman, Hunter",
+        "Zhan, Hongyuan",
+        "Damlaj, Ibrahim",
+        "Molybog, Igor",
+        "Tufanov, Igor",
+        "Leontiadis, Ilias",
+        "Veliche, Irina-Elena",
+        "Gat, Itai",
+        "Weissman, Jake",
+        "Geboski, James",
+        "Kohli, James",
+        "Lam, Janice",
+        "Asher, Japhet",
+        "Gaya, Jean-Baptiste",
+        "Marcus, Jeff",
+        "Tang, Jeff",
+        "Chan, Jennifer",
+        "Zhen, Jenny",
+        "Reizenstein, Jeremy",
+        "Teboul, Jeremy",
+        "Zhong, Jessica",
+        "Jin, Jian",
+        "Yang, Jingyi",
+        "Cummings, Joe",
+        "Carvill, Jon",
+        "Shepard, Jon",
+        "McPhie, Jonathan",
+        "Torres, Jonathan",
+        "Ginsburg, Josh",
+        "Wang, Junjie",
+        "Wu, Kai",
+        "U, Kam Hou",
+        "Saxena, Karan",
+        "Khandelwal, Kartikay",
+        "Zand, Katayoun",
+        "Matosich, Kathy",
+        "Veeraraghavan, Kaushik",
+        "Michelena, Kelly",
+        "Li, Keqian",
+        "Jagadeesh, Kiran",
+        "Huang, Kun",
+        "Chawla, Kunal",
+        "Huang, Kyle",
+        "Chen, Lailin",
+        "Garg, Lakshya",
+        "A, Lavender",
+        "Silva, Leandro",
+        "Bell, Lee",
+        "Zhang, Lei",
+        "Guo, Liangpeng",
+        "Yu, Licheng",
+        "Moshkovich, Liron",
+        "Wehrstedt, Luca",
+        "Khabsa, Madian",
+        "Avalani, Manav",
+        "Bhatt, Manish",
+        "Mankus, Martynas",
+        "Hasson, Matan",
+        "Lennie, Matthew",
+        "Reso, Matthias",
+        "Groshev, Maxim",
+        "Naumov, Maxim",
+        "Lathi, Maya",
+        "Keneally, Meghan",
+        "Liu, Miao",
+        "Seltzer, Michael L.",
+        "Valko, Michal",
+        "Restrepo, Michelle",
+        "Patel, Mihir",
+        "Vyatskov, Mik",
+        "Samvelyan, Mikayel",
+        "Clark, Mike",
+        "Macey, Mike",
+        "Wang, Mike",
+        "Hermoso, Miquel Jubert",
+        "Metanat, Mo",
+        "Rastegari, Mohammad",
+        "Bansal, Munish",
+        "Santhanam, Nandhini",
+        "Parks, Natascha",
+        "White, Natasha",
+        "Bawa, Navyata",
+        "Singhal, Nayan",
+        "Egebo, Nick",
+        "Usunier, Nicolas",
+        "Mehta, Nikhil",
+        "Laptev, Nikolay Pavlovich",
+        "Dong, Ning",
+        "Cheng, Norman",
+        "Chernoguz, Oleg",
+        "Hart, Olivia",
+        "Salpekar, Omkar",
+        "Kalinli, Ozlem",
+        "Kent, Parkin",
+        "Parekh, Parth",
+        "Saab, Paul",
+        "Balaji, Pavan",
+        "Rittner, Pedro",
+        "Bontrager, Philip",
+        "Roux, Pierre",
+        "Dollar, Piotr",
+        "Zvyagina, Polina",
+        "Ratanchandani, Prashant",
+        "Yuvraj, Pritish",
+        "Liang, Qian",
+        "Alao, Rachad",
+        "Rodriguez, Rachel",
+        "Ayub, Rafi",
+        "Murthy, Raghotham",
+        "Nayani, Raghu",
+        "Mitra, Rahul",
+        "Parthasarathy, Rangaprabhu",
+        "Li, Raymond",
+        "Hogan, Rebekkah",
+        "Battey, Robin",
+        "Wang, Rocky",
+        "Howes, Russ",
+        "Rinott, Ruty",
+        "Mehta, Sachin",
+        "Siby, Sachin",
+        "Bondu, Sai Jayesh",
+        "Datta, Samyak",
+        "Chugh, Sara",
+        "Hunt, Sara",
+        "Dhillon, Sargun",
+        "Sidorov, Sasha",
+        "Pan, Satadru",
+        "Mahajan, Saurabh",
+        "Verma, Saurabh",
+        "Yamamoto, Seiji",
+        "Ramaswamy, Sharadh",
+        "Lindsay, Shaun",
+        "Lindsay, Shaun",
+        "Feng, Sheng",
+        "Lin, Shenghao",
+        "Zha, Shengxin Cindy",
+        "Patil, Shishir",
+        "Shankar, Shiva",
+        "Zhang, Shuqiang",
+        "Zhang, Shuqiang",
+        "Wang, Sinong",
+        "Agarwal, Sneha",
+        "Sajuyigbe, Soji",
+        "Chintala, Soumith",
+        "Max, Stephanie",
+        "Chen, Stephen",
+        "Kehoe, Steve",
+        "Satterfield, Steve",
+        "Govindaprasad, Sudarshan",
+        "Gupta, Sumit",
+        "Deng, Summer",
+        "Cho, Sungmin",
+        "Virk, Sunny",
+        "Subramanian, Suraj",
+        "Choudhury, Sy",
+        "Goldman, Sydney",
+        "Remez, Tal",
+        "Glaser, Tamar",
+        "Best, Tamara",
+        "Koehler, Thilo",
+        "Robinson, Thomas",
+        "Li, Tianhe",
+        "Zhang, Tianjun",
+        "Matthews, Tim",
+        "Chou, Timothy",
+        "Shaked, Tzook",
+        "Vontimitta, Varun",
+        "Ajayi, Victoria",
+        "Montanez, Victoria",
+        "Mohan, Vijai",
+        "Kumar, Vinay Satish",
+        "Mangla, Vishal",
+        "Ionescu, Vlad",
+        "Poenaru, Vlad",
+        "Mihailescu, Vlad Tiberiu",
+        "Ivanov, Vladimir",
+        "Li, Wei",
+        "Wang, Wenchen",
+        "Jiang, Wenwen",
+        "Bouaziz, Wes",
+        "Constable, Will",
+        "Tang, Xiaocheng",
+        "Wu, Xiaojian",
+        "Wang, Xiaolan",
+        "Wu, Xilun",
+        "Gao, Xinbo",
+        "Kleinman, Yaniv",
+        "Chen, Yanjun",
+        "Hu, Ye",
+        "Jia, Ye",
+        "Qi, Ye",
+        "Li, Yenda",
+        "Zhang, Yilin",
+        "Zhang, Ying",
+        "Adi, Yossi",
+        "Nam, Youngjin",
+        "Yu",
+        "Wang",
+        "Zhao, Yu",
+        "Hao, Yuchen",
+        "Qian, Yundi",
+        "Li, Yunlu",
+        "He, Yuzi",
+        "Rait, Zach",
+        "DeVito, Zachary",
+        "Rosnbrick, Zef",
+        "Wen, Zhaoduo",
+        "Yang, Zhenyu",
+        "Zhao, Zhiwei",
+        "Ma, Zhiyu"
+      ],
+      "citation_date": [
+        "2024/07/31"
+      ],
+      "citation_online_date": [
+        "2024/11/23"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2407.21783"
+      ],
+      "citation_arxiv_id": [
+        "2407.21783"
+      ],
+      "citation_abstract": [
+        "Modern artificial intelligence (AI) systems are powered by foundation models. This paper presents a new set of foundation models, called Llama 3. It is a herd of language models that natively support multilinguality, coding, reasoning, and tool usage. Our largest model is a dense Transformer with 405B parameters and a context window of up to 128K tokens. This paper presents an extensive empirical evaluation of Llama 3. We find that Llama 3 delivers comparable quality to leading language models such as GPT-4 on a plethora of tasks. We publicly release Llama 3, including pre-trained and post-trained versions of the 405B parameter language model and our Llama Guard 3 model for input and output safety. The paper also presents the results of experiments in which we integrate image, video, and speech capabilities into Llama 3 via a compositional approach. We observe this approach performs competitively with the state-of-the-art on image, video, and speech recognition tasks. The resulting models are not yet being broadly released as they are still under development."
+      ]
+    }
+  },
+  "hu2026conflict": {
+    "primary_url": "https://arxiv.org/abs/2608.11510",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Conflict and Congruency Effects in Large Language Models: In-Weight and In-Context Competition in a Verbal Conflict Task"
+      ],
+      "citation_author": [
+        "Hu, Xiaoyang",
+        "Angstadt, Mike",
+        "Storks, Shane",
+        "Huang, Zan",
+        "Taxali, Aman",
+        "Weigard, Alex",
+        "Lewis, Richard L.",
+        "Sripada, Chandra"
+      ],
+      "citation_date": [
+        "2026/08/11"
+      ],
+      "citation_online_date": [
+        "2026/08/11"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2608.11510"
+      ],
+      "citation_arxiv_id": [
+        "2608.11510"
+      ],
+      "citation_abstract": [
+        "Congruency effects, observed in conflict tasks such as Stroop and flanker tasks, have been investigated for nearly a century in psychology and neuroscience, but their mechanistic basis is not fully understood. We introduce a verbal-only LLM conflict task in which a prompt stem elicits a default same-color completion and an explicit rule either agrees with (congruent condition) or conflicts with (incongruent condition) the completion. Gemma-2-2B and six Pythia models ranging from 410M to 12B parameters showed strong default same-color tendencies, and six of seven models showed strong congruency effects. Using causal attribution analysis, attention analysis, and attention ablations, we identified distinct processing pathways in these LLMs: a pathway involving short-range attention to a superficial color cue that is preferentially activated in the congruent condition, and a pathway involving long-range attention to the rule prefix that is preferentially activated in the incongruent condition. Fine-tuning that strengthened the default same-color tendency had divergent effects on task conditions, reducing incongruent performance while increasing congruent performance. In contrast, increasing rule set size selectively impaired incongruent performance. These converging findings support an account in which congruency effects in this task arise from competition between an in-weight default mapping and an in-context rule-based mapping. More broadly, our findings illustrate how LLMs can serve as model systems for mechanistic analysis of competition between default and rule-governed response tendencies within a single learned network."
+      ]
+    }
+  },
+  "lanham2023measuring": {
+    "primary_url": "https://arxiv.org/abs/2307.13702",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Measuring Faithfulness in Chain-of-Thought Reasoning"
+      ],
+      "citation_author": [
+        "Lanham, Tamera",
+        "Chen, Anna",
+        "Radhakrishnan, Ansh",
+        "Steiner, Benoit",
+        "Denison, Carson",
+        "Hernandez, Danny",
+        "Li, Dustin",
+        "Durmus, Esin",
+        "Hubinger, Evan",
+        "Kernion, Jackson",
+        "Lukošiūtė, Kamilė",
+        "Nguyen, Karina",
+        "Cheng, Newton",
+        "Joseph, Nicholas",
+        "Schiefer, Nicholas",
+        "Rausch, Oliver",
+        "Larson, Robin",
+        "McCandlish, Sam",
+        "Kundu, Sandipan",
+        "Kadavath, Saurav",
+        "Yang, Shannon",
+        "Henighan, Thomas",
+        "Maxwell, Timothy",
+        "Telleen-Lawton, Timothy",
+        "Hume, Tristan",
+        "Hatfield-Dodds, Zac",
+        "Kaplan, Jared",
+        "Brauner, Jan",
+        "Bowman, Samuel R.",
+        "Perez, Ethan"
+      ],
+      "citation_date": [
+        "2023/07/17"
+      ],
+      "citation_online_date": [
+        "2023/07/17"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2307.13702"
+      ],
+      "citation_arxiv_id": [
+        "2307.13702"
+      ],
+      "citation_abstract": [
+        "Large language models (LLMs) perform better when they produce step-by-step, \"Chain-of-Thought\" (CoT) reasoning before answering a question, but it is unclear if the stated reasoning is a faithful explanation of the model's actual reasoning (i.e., its process for answering the question). We investigate hypotheses for how CoT reasoning may be unfaithful, by examining how the model predictions change when we intervene on the CoT (e.g., by adding mistakes or paraphrasing it). Models show large variation across tasks in how strongly they condition on the CoT when predicting their answer, sometimes relying heavily on the CoT and other times primarily ignoring it. CoT's performance boost does not seem to come from CoT's added test-time compute alone or from information encoded via the particular phrasing of the CoT. As models become larger and more capable, they produce less faithful reasoning on most tasks we study. Overall, our results suggest that CoT can be faithful if the circumstances such as the model size and task are carefully chosen."
+      ]
+    }
+  },
+  "le2025names": {
+    "primary_url": "https://arxiv.org/abs/2510.03178",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "When Names Disappear: Revealing What LLMs Actually Understand About Code"
+      ],
+      "citation_author": [
+        "Le, Cuong Chi",
+        "Pham, Minh V. T.",
+        "Van, Cuong Duc",
+        "Phan, Hoang N.",
+        "Phan, Huy N.",
+        "Nguyen, Tien N."
+      ],
+      "citation_date": [
+        "2025/10/03"
+      ],
+      "citation_online_date": [
+        "2025/10/03"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2510.03178"
+      ],
+      "citation_arxiv_id": [
+        "2510.03178"
+      ],
+      "citation_abstract": [
+        "Large Language Models (LLMs) achieve strong results on code tasks, but how they derive program meaning remains unclear. We argue that code communicates through two channels: structural semantics, which define formal behavior, and human-interpretable naming, which conveys intent. Removing the naming channel severely degrades intent-level tasks such as summarization, where models regress to line-by-line descriptions. Surprisingly, we also observe consistent reductions on execution tasks that should depend only on structure, revealing that current benchmarks reward memorization of naming patterns rather than genuine semantic reasoning. To disentangle these effects, we introduce a suite of semantics-preserving obfuscations and show that they expose identifier leakage across both summarization and execution. Building on these insights, we release ClassEval-Obf, an obfuscation-enhanced benchmark that systematically suppresses naming cues while preserving behavior. Our results demonstrate that ClassEval-Obf reduces inflated performance gaps, weakens memorization shortcuts, and provides a more reliable basis for assessing LLMs' code understanding and generalization."
+      ]
+    }
+  },
+  "le2026obfuscated": {
+    "primary_url": "https://arxiv.org/abs/2606.31725",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Do Machines Struggle Where Humans Do? LLM and Human Comprehension of Obfuscated Code"
+      ],
+      "citation_author": [
+        "Le, Jack",
+        "Nguyen, Anh H. N.",
+        "Nguyen, Tien N."
+      ],
+      "citation_date": [
+        "2026/06/30"
+      ],
+      "citation_online_date": [
+        "2026/06/30"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2606.31725"
+      ],
+      "citation_arxiv_id": [
+        "2606.31725"
+      ],
+      "citation_abstract": [
+        "While code obfuscation impairs human code comprehension, it remains unclear if large language models share these failure modes. Building directly on a recent human study of program comprehension under code obfuscation, we evaluate whether large language models share the failure modes that obfuscation induces in human programmers. Evaluating several LLMs with five obfuscation tiers using the Block Model, we localize comprehension failures at the atom, block, relational, and macro levels. We find that reasoning-tuned models demonstrate significant alignment with human difficulty patterns across experience levels, whereas instruction and coder-tuned models show near-zero correlation. Chain-of-Thought trace length tracks task difficulty across tasks. Results indicate that performance under control-flow flattening degrades in proportion to state-space complexity, while adversarial identifier renaming disrupts comprehension through the interaction of semantic displacement and identifier-level interference. These findings suggest that reasoning-tuned LLMs approximate human sensitivity to code complexity more effectively than instruction-tuned variants."
+      ]
+    }
+  },
+  "liu2026readout": {
+    "primary_url": "https://arxiv.org/abs/2605.22870",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "The Readout Shortcut: Positional Number Copying Dominates Arithmetic CoT Readout in Small Language Models"
+      ],
+      "citation_author": [
+        "Liu, Ming"
+      ],
+      "citation_date": [
+        "2026/05/20"
+      ],
+      "citation_online_date": [
+        "2026/05/20"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2605.22870"
+      ],
+      "citation_arxiv_id": [
+        "2605.22870"
+      ],
+      "citation_abstract": [
+        "Chain-of-thought (CoT) prompting is necessary for arithmetic in small language models, yet shuffling its steps preserves most performance. What does CoT contribute if not logical sequencing? In three 1-3B instruction-tuned LMs on GSM8K, we isolate the answer-readout stage via prefix completion and identify a positional shortcut: the model copies whichever number occupies the trailing position before the answer delimiter, regardless of intermediate reasoning. Gold-answer presence accounts for 54-92 pp of accuracy (89-92% of each model's teacher-forcing ceiling); even on incorrect items, the final answer matches the last CoT number 95-96% of the time. The copy channel takes precedence over retained-context completion: replacing the trailing number with a wrong value collapses accuracy to near-zero despite correct intermediates, yet removing it recovers 5-32 pp above that floor--even single-step arithmetic the model can otherwise perform is suppressed when a copyable number is present. Qwen and Llama copy novel distractors 87-95% of the time; Gemma gates selectively. Head-level ablation implicates architecture-specific head sets; the effect replicates on GSM-Symbolic. On non-arithmetic BBH tasks, shuffle retention drops sharply; at 7-8B, content-selective gating emerges. Step-level faithfulness evaluations risk conflating positional answer transport with genuine computation--a failure mode for CoT-based oversight."
+      ]
+    }
+  },
+  "olmo2024olmo2": {
+    "primary_url": "https://arxiv.org/abs/2501.00656",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "2 OLMo 2 Furious"
+      ],
+      "citation_author": [
+        "OLMo, Team",
+        "Walsh, Pete",
+        "Soldaini, Luca",
+        "Groeneveld, Dirk",
+        "Lo, Kyle",
+        "Arora, Shane",
+        "Bhagia, Akshita",
+        "Gu, Yuling",
+        "Huang, Shengyi",
+        "Jordan, Matt",
+        "Lambert, Nathan",
+        "Schwenk, Dustin",
+        "Tafjord, Oyvind",
+        "Anderson, Taira",
+        "Atkinson, David",
+        "Brahman, Faeze",
+        "Clark, Christopher",
+        "Dasigi, Pradeep",
+        "Dziri, Nouha",
+        "Ettinger, Allyson",
+        "Guerquin, Michal",
+        "Heineman, David",
+        "Ivison, Hamish",
+        "Koh, Pang Wei",
+        "Liu, Jiacheng",
+        "Malik, Saumya",
+        "Merrill, William",
+        "Miranda, Lester James V.",
+        "Morrison, Jacob",
+        "Murray, Tyler",
+        "Nam, Crystal",
+        "Poznanski, Jake",
+        "Pyatkin, Valentina",
+        "Rangapur, Aman",
+        "Schmitz, Michael",
+        "Skjonsberg, Sam",
+        "Wadden, David",
+        "Wilhelm, Christopher",
+        "Wilson, Michael",
+        "Zettlemoyer, Luke",
+        "Farhadi, Ali",
+        "Smith, Noah A.",
+        "Hajishirzi, Hannaneh"
+      ],
+      "citation_date": [
+        "2024/12/31"
+      ],
+      "citation_online_date": [
+        "2025/10/08"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2501.00656"
+      ],
+      "citation_arxiv_id": [
+        "2501.00656"
+      ],
+      "citation_abstract": [
+        "We present OLMo 2, the next generation of our fully open language models. OLMo 2 includes a family of dense autoregressive language models at 7B, 13B and 32B scales with fully released artifacts -- model weights, full training data, training code and recipes, training logs and thousands of intermediate checkpoints. In this work, we describe our modified model architecture and training recipe, focusing on techniques for achieving better training stability and improved per-token efficiency. Our updated pretraining data mixture introduces a new, specialized data mix called Dolmino Mix 1124, which significantly improves model capabilities across many downstream task benchmarks when introduced via late-stage curriculum training (i.e. specialized data during the annealing phase of pretraining). Finally, we incorporate best practices from T\\\"ulu 3 to develop OLMo 2-Instruct, focusing on permissive data and extending our final-stage reinforcement learning with verifiable rewards (RLVR). Our OLMo 2 base models sit at the Pareto frontier of performance to training compute, often matching or outperforming open-weight only models like Llama 3.1, Qwen 2.5, and Gemma 2 while using fewer FLOPs and with fully transparent training data, code, and recipe. Our fully open OLMo 2-Instruct models are competitive with open-weight only models of comparable size and even some proprietary models like GPT-3.5 Turbo and GPT 4o Mini."
+      ]
+    },
+    "verification_note": "First arXiv submission 31 December 2024, despite 2501 identifier; 2024 date retained."
+  },
+  "orvalho2025mutations": {
+    "primary_url": "https://arxiv.org/abs/2505.10443",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Are Large Language Models Robust in Understanding Code Against Semantics-Preserving Mutations?"
+      ],
+      "citation_author": [
+        "Orvalho, Pedro",
+        "Kwiatkowska, Marta"
+      ],
+      "citation_date": [
+        "2025/05/15"
+      ],
+      "citation_online_date": [
+        "2026/05/07"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2505.10443"
+      ],
+      "citation_arxiv_id": [
+        "2505.10443"
+      ],
+      "citation_abstract": [
+        "With the widespread adoption of vibe coding, understanding the reasoning and robustness of Large Language Models (LLMs) is critical for their reliable use in programming tasks. While recent studies assess LLMs' ability to predict program outputs, most focus on accuracy alone, without evaluating the underlying reasoning. Moreover, it has been observed on mathematical reasoning tasks that LLMs can arrive at correct answers through flawed logic, raising concerns about similar issues in code understanding. In this paper we assess whether state-of-the-art LLMs can reason about Python programs or are simply guessing. We apply five semantics-preserving code mutations: renaming variables, mirroring comparison expressions, swapping if-else branches, converting for loops to while, and loop unrolling. These mutations maintain program semantics while altering its syntax. We evaluated nine LLMs, including both open-source and closed-access models, and performed a human expert analysis using LiveCodeBench to assess whether correct predictions are based on sound reasoning. We also evaluated prediction stability across different code mutations on LiveCodeBench and CruxEval. While proprietary models achieve the strongest predictive accuracy and reasoning quality in the expert evaluation, our robustness analysis reveals substantial fragility under semantics-preserving transformations. Our findings show that LLMs trained for code produce correct predictions based on flawed reasoning in between 10% and 50% of cases. Furthermore, LLMs often change predictions in response to our code mutations, with performance drops reaching up to 70%, indicating that they do not yet exhibit stable, semantically grounded reasoning, even when initial accuracy is high."
+      ]
+    }
+  },
+  "roziere2023codellama": {
+    "primary_url": "https://arxiv.org/abs/2308.12950",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Code Llama: Open Foundation Models for Code"
+      ],
+      "citation_author": [
+        "Rozière, Baptiste",
+        "Gehring, Jonas",
+        "Gloeckle, Fabian",
+        "Sootla, Sten",
+        "Gat, Itai",
+        "Tan, Xiaoqing Ellen",
+        "Adi, Yossi",
+        "Liu, Jingyu",
+        "Sauvestre, Romain",
+        "Remez, Tal",
+        "Rapin, Jérémy",
+        "Kozhevnikov, Artyom",
+        "Evtimov, Ivan",
+        "Bitton, Joanna",
+        "Bhatt, Manish",
+        "Ferrer, Cristian Canton",
+        "Grattafiori, Aaron",
+        "Xiong, Wenhan",
+        "Défossez, Alexandre",
+        "Copet, Jade",
+        "Azhar, Faisal",
+        "Touvron, Hugo",
+        "Martin, Louis",
+        "Usunier, Nicolas",
+        "Scialom, Thomas",
+        "Synnaeve, Gabriel"
+      ],
+      "citation_date": [
+        "2023/08/24"
+      ],
+      "citation_online_date": [
+        "2024/01/31"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2308.12950"
+      ],
+      "citation_arxiv_id": [
+        "2308.12950"
+      ],
+      "citation_abstract": [
+        "We release Code Llama, a family of large language models for code based on Llama 2 providing state-of-the-art performance among open models, infilling capabilities, support for large input contexts, and zero-shot instruction following ability for programming tasks. We provide multiple flavors to cover a wide range of applications: foundation models (Code Llama), Python specializations (Code Llama - Python), and instruction-following models (Code Llama - Instruct) with 7B, 13B, 34B and 70B parameters each. All models are trained on sequences of 16k tokens and show improvements on inputs with up to 100k tokens. 7B, 13B and 70B Code Llama and Code Llama - Instruct variants support infilling based on surrounding content. Code Llama reaches state-of-the-art performance among open models on several code benchmarks, with scores of up to 67% and 65% on HumanEval and MBPP, respectively. Notably, Code Llama - Python 7B outperforms Llama 2 70B on HumanEval and MBPP, and all our models outperform every other publicly available model on MultiPL-E. We release Code Llama under a permissive license that allows for both research and commercial use."
+      ]
+    }
+  },
+  "wang2026stroop": {
+    "primary_url": "https://arxiv.org/abs/2606.07555",
+    "http_status": 200,
+    "metadata": {
+      "citation_title": [
+        "Persistent Priors, Preserved Targets: A Stroop-Style Paradigm for Lexical Override"
+      ],
+      "citation_author": [
+        "Wang, Han-yu"
+      ],
+      "citation_date": [
+        "2026/05/25"
+      ],
+      "citation_online_date": [
+        "2026/08/08"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2606.07555"
+      ],
+      "citation_arxiv_id": [
+        "2606.07555"
+      ],
+      "citation_abstract": [
+        "Local definitions can assign a familiar word a temporary meaning while its usual associations remain useful elsewhere. We measure interference from those associations with a matched Stroop-style paradigm. A conflict prompt defines doctor as forest and compares forest with the familiar associate hospital. A neutral control replaces doctor with a semantically weak word in both the definition and query while keeping forest and hospital fixed. All 11 model-level means are positive. Aggregate means are also positive for all four conflict families and prompt formats. When no redefinition is present, a stronger preference for the familiar distractor predicts more interference in arbitrary-semantic, polysemy/entity, and domain-definition remappings, while the antonym slope is null. Separately, we patch neutral-control activations into antonym prompts in five 1B-2B models. Patching the defined word, the target word in the definition, and the later query word together restores almost all of the target-minus-distractor margin lost in conflict (normalized recovery R in [0.92,1.06]). Replacing only that target-word activation with a donor from another item reduces recovery in every tested case. Those donor patches also lower the distractor logit, while the contextual target falls much more than under the same-item patch that restores the margin."
+      ]
+    }
+  }
+}

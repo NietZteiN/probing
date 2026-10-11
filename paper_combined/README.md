@@ -59,7 +59,8 @@ same script with `--bundle`. The source script checks numerical keys and referen
 portable source-file hashes. This analysis loads no models or tokenizers. `scripts/94_combined_example.py` verifies
 the displayed generations against three original source files, and
 `scripts/95_combined_demonstrations.py` typesets the actual example prompts.
-`refs_extra.bib` preserves references added for the combined manuscript on refresh.
+`refs_extra.bib` preserves added references and verified bibliography corrections,
+which take precedence over imported entries on refresh.
 
 The arithmetic and code cohorts remain distinct. The draft does not pool their rates or
 count overlapping checkpoints as independent model replications. The original code

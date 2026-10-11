@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-11",
+  "scope": "Final accuracy and primary-reference audit of the combined manuscript.",
+  "corrections": [
+    "Clarified that only the added-text control is explicitly token-matched to calculation examples; extra arithmetic is a separate control.",
+    "Corrected Baptiste Rozière spelling/accent, canonical CRUXEval coauthor names, and added official PMLR publication metadata.",
+    "Corrected CodeCrash page range to 120782–120828 from official publisher BibTeX.",
+    "Made combined-only verified bibliography overrides take precedence on evidence refresh."
+  ],
+  "bibliography": {
+    "cited_entries": 30,
+    "unique_entries": 30,
+    "primary_metadata_record": "primary_metadata.json",
+    "verification": "Titles, authors and available venue/year/pagination checked against primary publication records or publisher-deposited metadata. Conference/preprint year differences checked explicitly. OpenReview API access restriction and indexed-primary-PDF fallback documented in the metadata record. This is not a claim that every cited full paper was reread."
+  },
+  "numerical_definitions": {
+    "checked": 284,
+    "mismatches": 0
+  },
+  "raw_correctness_reanalysis": {
+    "script": "scripts/93_combined_correctness.py",
+    "cohort": "285 programs, 3 demonstrations, 855 paired observations per model",
+    "summary_byte_identical_to_previous_commit": true,
+    "bootstrap_replicates": 4000,
+    "log": "correctness_reanalysis.txt"
+  },
+  "arithmetic_pipeline": {
+    "script": "scripts/99_selfcheck.py --levels 3",
+    "failures": 0,
+    "warnings": 62,
+    "warning_scope": "Existing parse-failure rates above 5 percent; parsing failures remain incorrect in full denominators, consistent with manuscript grading. No data consistency failures.",
+    "log": "arithmetic_selfcheck.txt"
+  },
+  "provenance": {
+    "evidence_summary_hashes_verified": 9,
+    "displayed_example_source_hashes_verified": 3,
+    "Kudo_primary_pdf_sha256": "0919e66565184c920b72cd253e938477bc9280d4670bd37758351790fea422b4",
+    "Kudo_recipe_and_comparison_verified": "Primary PDF pages 6 (Table 3) and 14 (Table 8)."
+  },
+  "software_versions_verified": {
+    "torch": "2.11.0+cu129",
+    "transformers": "5.14.1",
+    "numpy": "2.3.5",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.18.0"
+  },
+  "format": {
+    "main_pages_including_limitations": 7,
+    "main_page_limit": 8,
+    "total_pages": 31,
+    "abstract_words": 139,
+    "strict_checks": "Working and standalone builds pass, A4 portrait, all fonts embedded, no unresolved citations/references, missing assets or overfull boxes."
+  },
+  "source_archive": {
+    "files": 48,
+    "every_archive_member_matches_working_source": true,
+    "independent_build": "All 31 extracted PDF page texts match the working PDF."
+  },
+  "new_model_experiments": "None. Cached-output verification only.",
+  "original_short_papers": "Unchanged.",
+  "artifact_sha256": {
+    "main.pdf": "1628b7885f382978c7abb25f082ee1e8e701fc8dd9cbaf4531e24f607e9f44d3",
+    "submission_source.zip": "544543a4903d3e81efeceb991c9819f66059623bebc839439c728580e1cdd048",
+    "abstract.txt": "e7b3af88e215986fe8754db45b2d145e9e4e1962d9e83dd5ee84d60cd7f14626"
+  },
+  "visual_checks": "Rendered page 4 and bibliography pages 7–9 inspected. Corrected token-control wording, names, pagination and citation layout are readable; no clipping."
+}
