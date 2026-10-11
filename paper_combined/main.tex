@@ -30,62 +30,55 @@
 \maketitle
 
 \begin{abstract}
-Written reasoning makes intermediate calculations visible, but a model can write a
-wrong value even when the correct value is recoverable from its internal activity.
-We study this gap by changing variable names in arithmetic problems and Python
-programs without changing their computations. Each misleading name suggests a
-specific wrong value. Building on \citet{kudo2026faithful}, we find that writing
-arithmetic calculations reduces errors in several conditions, yet a correct
-calculation can still precede a wrong final answer. In code, misleading names
-produce frequent wrong intermediate writes when the worked examples list values
-alone. On those actual errors, a separately trained predictor
-recovers the correct digit with \NUM{c-crossfit-min}--\NUM{c-crossfit-max}\% accuracy
-immediately before the wrong digit is written. Examples showing the source
-operation alongside its result sharply reduce errors and increase correct writes.
-Length-matched text in the examples leaves large errors, and numeric elaboration helps partly.
-Correct-value recovery therefore does not certify a correct written step, and
-the content of demonstrated steps matters for reliability.
+Misleading variable names produce wrong written calculations even when the
+correct value is recoverable from a model's internal activity. Building on
+\citet{kudo2026faithful}, we study this gap in arithmetic problems and Python
+programs by changing variable names while preserving the computation. In code, misleading names frequently lead to wrong intermediate writes when
+worked examples in the prompt list values alone. On these wrong writes, a separately trained predictor recovers the
+correct digit with \NUM{c-crossfit-min}--\NUM{c-crossfit-max}\% accuracy immediately
+before the model writes the wrong digit. Changing the worked examples to show
+the operation alongside its result sharply reduces errors and increases correct
+intermediate and final outputs. These findings reveal a gap between recoverable
+values and written reasoning, and show that examples displaying the computation
+improve the reliability of reported values.
 \end{abstract}
 
 \section{Introduction}
 
-Written intermediate steps expose calculations that a reader can inspect. Their
-usefulness depends on whether the reported values follow the computation.
-Misleading wording can influence the steps themselves. When a model writes a
-wrong value, is the correct value unavailable, or can it still be recovered from
-the internal state immediately before that error? We ask what determines whether
-written reasoning follows the computation when a variable name suggests a
-conflicting answer.
+Written calculations let readers check how a language model reaches an answer.
+But the values in those calculations can follow a misleading variable name
+instead of the operation in the problem. Consider a Python program that stores
+\texttt{len([5, 3])} in a variable named \texttt{sum\_all}. The correct value is 2,
+but the name suggests 8 (Figure~\ref{fig:example}). A model that writes
+\texttt{sum\_all = 8} has reproduced the name's suggestion in its intermediate
+work. We investigate whether the correct value is still recoverable immediately
+before such a wrong write, and whether changing the worked examples in the prompt improves
+what the model writes.
 
-\citet{kudo2026faithful} provide a foundation for investigating this question.
-They track intermediate arithmetic values during generated calculations using
-internal readouts and activation interventions. We build on their controlled task
-and methods, then introduce a variable name that suggests a different answer.
-Arithmetic supplies the connection to prior work and a comparison where name
-effects are generally small with written calculations. Short Python programs supply the strongest combination
-of written failures, accurate internal readouts on those failures, and a
-demonstration change that reduces them.
+\citet{kudo2026faithful} track intermediate arithmetic values in model activity
+during generated calculations. We build on their controlled arithmetic task
+and methods to study a conflict between a variable's name and its computed value,
+then extend the investigation to short Python programs. Each problem has two
+versions with identical computations and different names. This comparison
+measures whether a misleading name increases the specific wrong answer it
+suggests. Written arithmetic calculations show small name effects in most tested
+conditions; code provides frequent intermediate errors on which to examine the
+gap between internal activity and written output.
 
-Our matched renaming design specifies both the correct value and a particular
-competing wrong value. A variable whose value is 6 can be renamed \texttt{four}.
-In code, \texttt{sum\_all} can store the length of \texttt{[5, 3]}, which is 2,
-while the name suggests 8 (Figure~\ref{fig:example}). Renaming leaves the
-computation unchanged. Comparing each problem with its ordinary-name twin
-measures the increase in that specific wrong answer, beyond its baseline rate.
-This reveals which competing value gains influence, rather than attributing
-every accuracy loss to misleading wording.
+In code, that gap is pronounced. When worked examples list intermediate values
+alone, misleading names frequently lead the model to write the suggested wrong
+value. Yet a separately trained predictor recovers the correct digit from model
+activity with \NUM{c-crossfit-min}--\NUM{c-crossfit-max}\% accuracy immediately
+before those errors. Showing the source operation alongside its result in the
+worked examples sharply reduces wrong writes and increases correct intermediate
+and final outputs (Table~\ref{tab:story}). The improvement also holds with fresh
+names and new programs.
 
-The results answer the question in three parts (Table~\ref{tab:story}). First,
-misleading names can pull written code values toward the suggested operation.
-Second, on those actual wrong writes, a separately trained predictor recovers the
-correct digit with \NUM{c-crossfit-min}--\NUM{c-crossfit-max}\% accuracy immediately
-before generation. Third, examples that show the source operation beside its
-result sharply reduce errors and increase correct outputs. Length-matched text
-does not reproduce the benefit, while numeric elaboration reproduces part of it.
-The format contrast also holds on independently selected names and new programs.
-Together, these findings show that recovering a correct value does not certify a
-correct written step. Evaluating written reasoning requires checking its values,
-and its reliability depends on what the demonstrated steps contain.
+The results connect a failure in written reasoning to a practical way to improve
+it. Correct-value recovery and correct written steps are distinct measurements,
+and the content of worked examples affects the latter. Evaluations should check
+both intermediate values and final answers, while examples that show how each
+value is computed offer a concrete way to improve their reliability.
 
 \begin{figure*}[t]
 \centering

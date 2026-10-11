@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-10",
+  "revision": "Direct result and implication in the abstract; concrete task example, Kudo foundation, main finding and practical implication in the introduction. Removed abstract control-study qualifications and enumerated introduction results.",
+  "main_pages_including_limitations": 8,
+  "pdf_total_pages": 30,
+  "abstract_words_pdf": 130,
+  "source_files": 47,
+  "quantities": 306,
+  "evidence_check": "All numerical definitions, reference entries, correctness analysis and evidence provenance byte-match the previously verified manuscript. Abstract recovery range matches the existing error-conditioned result; format improvement covers correct intermediate and final outputs.",
+  "previous_evidence_audit": "log/combined_story_2026-10-10/verification.json",
+  "format_checks": "Working and standalone strict ARR checks pass; no overfull boxes, unresolved references or missing assets; all fonts embedded; eight pages including complete Limitations.",
+  "standalone_build": "All 47 archive members match working and extracted sources; all 30 PDF page texts match.",
+  "visual_checks": "Rendered opening, summary figure/table, and end of Limitations checked.",
+  "abstract_constraints": "No limitations or control-study details; no colon or em dash.",
+  "pdf_sha256": "b3dc86e76476113396bfa47680d5d078c96e14dcc3869673b0786fbda12c6204",
+  "source_sha256": "56a367f303e13589d7bebc8a9a76df251b475fb2aaf2af8fbc7353313b42e1bf",
+  "abstract_sha256": "579c60452367ec9951e7e73a9fb4cc0dad5cd7d0cb0ce028f29bee8fef119ed6",
+  "original_short_papers": "Unchanged."
+}
