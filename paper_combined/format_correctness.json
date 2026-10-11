@@ -1,0 +1,300 @@
+{
+  "validated": true,
+  "source_files_sha256": {
+    "codecue/data/L5/test_sets.jsonl": "320c0b4e3aaa7f7621b634a7b1036c02b1925e5f933950026bd55cc224e8cf39",
+    "codecue/results/summary/cell_inference.json": "dc1f088b1685dd29b72faa2f7462f996f1699d0df7f717e3304dcab83f74ba64",
+    "codecue/results/summary/round7_prompt_comparison.json": "5c9b15e2db9a84e8a6ab4fe7de3354c3b3dcc2dd7db35ecf57a44e09e3818db2",
+    "codecue_outputs/runs/olmo2-7b-it/L5/trace/neutral/behavior.jsonl": "6ce01b61c955c1e9353edeb77f86c06e4019651a60602261588aa16f322a091a",
+    "codecue_outputs/runs/olmo2-7b-it/L5/trace/incongruent@v1/behavior.jsonl": "896bfa1adfe845bf8d6f1e6f1122396668320ad8f4594b1481fa3ce04672179a",
+    "codecue_outputs/runs/olmo2-7b-it/L5/trace_s11/neutral/behavior.jsonl": "9dcbea906a6abb409f52b06baf4314022d31d8a30c86cd4854b2aa247187ca19",
+    "codecue_outputs/runs/olmo2-7b-it/L5/trace_s11/incongruent@v1/behavior.jsonl": "ec52d953283a7871feb61c60b783a29ccbb8a3b4bcd8e47048350844209cb520",
+    "codecue_outputs/runs/olmo2-7b-it/L5/trace_s13/neutral/behavior.jsonl": "1262d4b3467b965aa5020d27b1c2ee14d86eaf15566de7d507376b41bb7d3971",
+    "codecue_outputs/runs/olmo2-7b-it/L5/trace_s13/incongruent@v1/behavior.jsonl": "79fdf61d52c9d442437b4cfcbb6eec8c5b9fbd8d90e26d1146f5d30720be77b4",
+    "codecue_outputs/runs/olmo2-7b-it/L5/trace_expr/neutral/behavior.jsonl": "0c4bdafab0439810310469bd4f0fdc4568be0b69fe5585d49b23814e6e7eeb48",
+    "codecue_outputs/runs/olmo2-7b-it/L5/trace_expr/incongruent@v1/behavior.jsonl": "5a41ba0d15e3d4d4de6fc69e11fa4ec1a9ed99e4420db37941abe248a044f7a2",
+    "codecue_outputs/runs/olmo2-7b-it/L5/trace_expr_s11/neutral/behavior.jsonl": "328d18eb4ec3b761477d462b7e01425e3e49b707ab6abe0571b800ef869e4ccf",
+    "codecue_outputs/runs/olmo2-7b-it/L5/trace_expr_s11/incongruent@v1/behavior.jsonl": "30d79c2ce125e611086835bd5a74d4821078861c66a012e6cfd972ccd4382519",
+    "codecue_outputs/runs/olmo2-7b-it/L5/trace_expr_s13/neutral/behavior.jsonl": "5333b0a43b87ac2909e0d4a09c61950969c2de5656f0599fa617278b42a98b8f",
+    "codecue_outputs/runs/olmo2-7b-it/L5/trace_expr_s13/incongruent@v1/behavior.jsonl": "808ba528d4f0d5aeb1cb6e9a5fa7ea03d053986aabdba69eb936bfc4370e4937",
+    "codecue_outputs/runs/llama32-3b-it/L5/trace/neutral/behavior.jsonl": "187aca9c2ed66a2d94b02f89a727bf611d603810f74212f6a2419985be6b133c",
+    "codecue_outputs/runs/llama32-3b-it/L5/trace/incongruent@v1/behavior.jsonl": "eb18b32516c45e7a09a987da4700605750a2176994a8ccb4be9623a83a06c878",
+    "codecue_outputs/runs/llama32-3b-it/L5/trace_s11/neutral/behavior.jsonl": "b852b439d5bf4ac55aea7317fcc34ff4cea4145bfb6fa60225429264e8d0639d",
+    "codecue_outputs/runs/llama32-3b-it/L5/trace_s11/incongruent@v1/behavior.jsonl": "0315804985fadc603401e5a81f5e010445bbcb6f2cd7cef2947cd20af53caafa",
+    "codecue_outputs/runs/llama32-3b-it/L5/trace_s13/neutral/behavior.jsonl": "261c88d01ef22c3d9cdcc09ba74572f11cbcec4c1ff2eecd8be459ab394694b2",
+    "codecue_outputs/runs/llama32-3b-it/L5/trace_s13/incongruent@v1/behavior.jsonl": "6bb33b870256bd87f8ccd65df9a62f8a1232237bb6ee3fe75ed400f062e1e8a6",
+    "codecue_outputs/runs/llama32-3b-it/L5/trace_expr/neutral/behavior.jsonl": "ba67d6bcafccaf816b6e6ceffbc85149b277422e8b01cd3f1b2e9df9f56f20c4",
+    "codecue_outputs/runs/llama32-3b-it/L5/trace_expr/incongruent@v1/behavior.jsonl": "48bfc38e998a20764876060c885a50173a8045ee757674e27cf036e30f9a6595",
+    "codecue_outputs/runs/llama32-3b-it/L5/trace_expr_s11/neutral/behavior.jsonl": "ba67d6bcafccaf816b6e6ceffbc85149b277422e8b01cd3f1b2e9df9f56f20c4",
+    "codecue_outputs/runs/llama32-3b-it/L5/trace_expr_s11/incongruent@v1/behavior.jsonl": "75754abd562dab1e259854620c7355d535d14108fe9c7205fbe414b78ac3f471",
+    "codecue_outputs/runs/llama32-3b-it/L5/trace_expr_s13/neutral/behavior.jsonl": "ba67d6bcafccaf816b6e6ceffbc85149b277422e8b01cd3f1b2e9df9f56f20c4",
+    "codecue_outputs/runs/llama32-3b-it/L5/trace_expr_s13/incongruent@v1/behavior.jsonl": "ef00852ca72d6f8b7b0f84541608d4795052bae92d33d4d7223f3a61c8b21c9a",
+    "codecue_outputs/runs/llama31-8b-it/L5/trace/neutral/behavior.jsonl": "c617376480673cb2d6fc6ec8e0b510b17462bc268d236fbb8a8a09651b7d854d",
+    "codecue_outputs/runs/llama31-8b-it/L5/trace/incongruent@v1/behavior.jsonl": "d6567c53845959dff7a81ab92d913ebdae104ffd4bdfd3cd4a52fb08eea04c7b",
+    "codecue_outputs/runs/llama31-8b-it/L5/trace_s11/neutral/behavior.jsonl": "6ea8111009b035759239978db76a81e6213c70786285593a1ae4e821abc94da8",
+    "codecue_outputs/runs/llama31-8b-it/L5/trace_s11/incongruent@v1/behavior.jsonl": "c8acbf16086d3564e682e90482977f292ac7368d9b921f91f001102af3d34eb4",
+    "codecue_outputs/runs/llama31-8b-it/L5/trace_s13/neutral/behavior.jsonl": "0c9fabcce4849cf78a615338143002a7409599c6dfb667d113997a0d5c36be65",
+    "codecue_outputs/runs/llama31-8b-it/L5/trace_s13/incongruent@v1/behavior.jsonl": "c5be2bbf81ecc81a135f739d03b040668e2fe78e710133857113101f9c6678a7",
+    "codecue_outputs/runs/llama31-8b-it/L5/trace_expr/neutral/behavior.jsonl": "37a3e0fa0e0bd8778d14aa173ef4fcee97a00c0b780c7cdc2bc7c6c87d9206df",
+    "codecue_outputs/runs/llama31-8b-it/L5/trace_expr/incongruent@v1/behavior.jsonl": "e9accfbca6e648f78a7a533ecf24afcc39da11baef05005f070ec3404e8d8612",
+    "codecue_outputs/runs/llama31-8b-it/L5/trace_expr_s11/neutral/behavior.jsonl": "d5b03c0db47d6c0a965c3a97cea5359b548cca5aced497ecc5dd7af4b2f8032b",
+    "codecue_outputs/runs/llama31-8b-it/L5/trace_expr_s11/incongruent@v1/behavior.jsonl": "505908fd0f2f9a246c8faaebc72ab24045c00cc33a6ecefa7b89d30513dc902e",
+    "codecue_outputs/runs/llama31-8b-it/L5/trace_expr_s13/neutral/behavior.jsonl": "4a4ea8f4c8db03b09ad2ea35e593685666894bb3284963b04cd8c5a570ea6d81",
+    "codecue_outputs/runs/llama31-8b-it/L5/trace_expr_s13/incongruent@v1/behavior.jsonl": "e9accfbca6e648f78a7a533ecf24afcc39da11baef05005f070ec3404e8d8612"
+  },
+  "cohort": "Original level-5 length-to-sum, first assignment, 285 matched programs x three demonstration sets.",
+  "bootstrap": "4000 draws over matched program IDs, keeping names and demonstrations together; pointwise 95% intervals.",
+  "models": {
+    "olmo2-7b-it": {
+      "trace": {
+        "n_pairs": 855,
+        "n_computations": 285,
+        "correct_counts": {
+          "neutral_step_correct": 812,
+          "misleading_step_correct": 320,
+          "neutral_final_correct": 796,
+          "misleading_final_correct": 317
+        },
+        "neutral_step_correct_ci95": [
+          0.9497076023391813,
+          0.9333333333333333,
+          0.9649415204678363
+        ],
+        "misleading_step_correct_ci95": [
+          0.3742690058479532,
+          0.3263157894736842,
+          0.4257309941520468
+        ],
+        "neutral_final_correct_ci95": [
+          0.9309941520467836,
+          0.9111111111111111,
+          0.9497076023391813
+        ],
+        "misleading_final_correct_ci95": [
+          0.3707602339181287,
+          0.3216374269005848,
+          0.4222222222222222
+        ]
+      },
+      "trace_expr": {
+        "n_pairs": 855,
+        "n_computations": 285,
+        "correct_counts": {
+          "neutral_step_correct": 825,
+          "misleading_step_correct": 787,
+          "neutral_final_correct": 826,
+          "misleading_final_correct": 792
+        },
+        "neutral_step_correct_ci95": [
+          0.9649122807017544,
+          0.9508771929824561,
+          0.9777777777777777
+        ],
+        "misleading_step_correct_ci95": [
+          0.92046783625731,
+          0.898216374269006,
+          0.9415204678362573
+        ],
+        "neutral_final_correct_ci95": [
+          0.9660818713450292,
+          0.9532163742690059,
+          0.9789473684210527
+        ],
+        "misleading_final_correct_ci95": [
+          0.9263157894736842,
+          0.9029239766081871,
+          0.9473684210526315
+        ]
+      },
+      "expression_minus_values": {
+        "neutral_step_correct_ci95": [
+          0.0152046783625731,
+          0.0023391812865497076,
+          0.028070175438596492
+        ],
+        "misleading_step_correct_ci95": [
+          0.5461988304093567,
+          0.495906432748538,
+          0.5941520467836258
+        ],
+        "neutral_final_correct_ci95": [
+          0.03508771929824561,
+          0.017543859649122806,
+          0.05380116959064327
+        ],
+        "misleading_final_correct_ci95": [
+          0.5555555555555556,
+          0.5029239766081871,
+          0.6046783625730994
+        ]
+      }
+    },
+    "llama32-3b-it": {
+      "trace": {
+        "n_pairs": 855,
+        "n_computations": 285,
+        "correct_counts": {
+          "neutral_step_correct": 846,
+          "misleading_step_correct": 440,
+          "neutral_final_correct": 817,
+          "misleading_final_correct": 436
+        },
+        "neutral_step_correct_ci95": [
+          0.9894736842105263,
+          0.9824561403508771,
+          0.9953216374269006
+        ],
+        "misleading_step_correct_ci95": [
+          0.5146198830409356,
+          0.46900584795321637,
+          0.5625730994152047
+        ],
+        "neutral_final_correct_ci95": [
+          0.9555555555555556,
+          0.9391520467836258,
+          0.9707602339181286
+        ],
+        "misleading_final_correct_ci95": [
+          0.5099415204678363,
+          0.4631578947368421,
+          0.5578947368421052
+        ]
+      },
+      "trace_expr": {
+        "n_pairs": 855,
+        "n_computations": 285,
+        "correct_counts": {
+          "neutral_step_correct": 855,
+          "misleading_step_correct": 849,
+          "neutral_final_correct": 855,
+          "misleading_final_correct": 850
+        },
+        "neutral_step_correct_ci95": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "misleading_step_correct_ci95": [
+          0.9929824561403509,
+          0.9859649122807017,
+          0.9988304093567252
+        ],
+        "neutral_final_correct_ci95": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "misleading_final_correct_ci95": [
+          0.9941520467836257,
+          0.9871345029239766,
+          0.9988304093567252
+        ]
+      },
+      "expression_minus_values": {
+        "neutral_step_correct_ci95": [
+          0.010526315789473684,
+          0.004678362573099415,
+          0.017543859649122806
+        ],
+        "misleading_step_correct_ci95": [
+          0.4783625730994152,
+          0.43157894736842106,
+          0.5239766081871345
+        ],
+        "neutral_final_correct_ci95": [
+          0.044444444444444446,
+          0.029239766081871343,
+          0.06084795321637437
+        ],
+        "misleading_final_correct_ci95": [
+          0.4842105263157895,
+          0.43625730994152045,
+          0.5309941520467836
+        ]
+      }
+    },
+    "llama31-8b-it": {
+      "trace": {
+        "n_pairs": 855,
+        "n_computations": 285,
+        "correct_counts": {
+          "neutral_step_correct": 855,
+          "misleading_step_correct": 749,
+          "neutral_final_correct": 852,
+          "misleading_final_correct": 750
+        },
+        "neutral_step_correct_ci95": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "misleading_step_correct_ci95": [
+          0.8760233918128655,
+          0.839766081871345,
+          0.9111111111111111
+        ],
+        "neutral_final_correct_ci95": [
+          0.9964912280701754,
+          0.9906432748538012,
+          1.0
+        ],
+        "misleading_final_correct_ci95": [
+          0.8771929824561403,
+          0.8409356725146199,
+          0.9122807017543859
+        ]
+      },
+      "trace_expr": {
+        "n_pairs": 855,
+        "n_computations": 285,
+        "correct_counts": {
+          "neutral_step_correct": 855,
+          "misleading_step_correct": 855,
+          "neutral_final_correct": 850,
+          "misleading_final_correct": 855
+        },
+        "neutral_step_correct_ci95": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "misleading_step_correct_ci95": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "neutral_final_correct_ci95": [
+          0.9941520467836257,
+          0.9847953216374269,
+          1.0
+        ],
+        "misleading_final_correct_ci95": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "expression_minus_values": {
+        "neutral_step_correct_ci95": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "misleading_step_correct_ci95": [
+          0.1239766081871345,
+          0.08888888888888889,
+          0.16023391812865498
+        ],
+        "neutral_final_correct_ci95": [
+          -0.0023391812865497076,
+          -0.012865497076023392,
+          0.007017543859649123
+        ],
+        "misleading_final_correct_ci95": [
+          0.12280701754385964,
+          0.08771929824561403,
+          0.15906432748538013
+        ]
+      }
+    }
+  }
+}

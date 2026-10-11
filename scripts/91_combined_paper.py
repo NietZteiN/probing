@@ -56,6 +56,16 @@ def source_numbers():
     cells = controls['models']['olmo2-1b-it']['final_query']['v1']['cells']
     for style, tag in [('repeat0_named0', 'unnamed'), ('repeat1_named0', 'named')]:
         out[f'j-final-{tag}-accuracy'] = f"{100*cells[style]['neutral_correct_ci95'][0]:.1f}"
+    correctness = json.loads((PAPER/'format_correctness.json').read_text())
+    assert correctness['validated']
+    for key, _, tag in CODE_MODELS:
+        for regime, style in [('trace', 'values'), ('trace_expr', 'expression'),
+                              ('expression_minus_values', 'change')]:
+            row = correctness['models'][key][regime]
+            for field, metric in [('neutral_step', 'ordinary-first'), ('misleading_step', 'misleading-first'),
+                                   ('neutral_final', 'ordinary-final'), ('misleading_final', 'misleading-final')]:
+                for suffix, value in zip(('mean', 'lo', 'hi'), row[field+'_correct_ci95']):
+                    out[f'j-format-{tag}-{style}-{metric}-{suffix}'] = f'{100*value:.1f}'
     return out
 
 
@@ -135,6 +145,13 @@ def refresh_imports():
                r'\label{tab:formats}\label{c-tab:formats}'+'\n'+r'\end{table*}'+'\n')
     code = code.replace(r'\section{Demonstration formats}',
                         r'\section{Demonstration formats}'+formats)
+    correctness = ('\n'+r'\section{Correctness on the matched code format cohort}'+'\n'+
+                   r'\label{app:format-correctness}'+'\n'+
+                   'We score the first written value and final answer on the same 285 original length-to-sum programs and their ordinary-name twins, under values-only and expression-and-value examples. Each format has 855 paired observations over three demonstration sets. Parse failures count as incorrect. Intervals use 4,000 bootstrap draws over matched program IDs, keeping all demonstration repeats and both names together. The format changes are paired on those same IDs. These are overall correctness rates within the specified cohort, rather than the larger task pool. Zero-width intervals record this sample, not certainty about population rates.\n'+
+                   r'\begin{table*}[t]\centering\small'+'\n'+r'\input{tables/shared_correctness}'+'\n'+
+                   r'\caption{Matched-code correctness and paired format changes (95\% intervals).}'+'\n'+
+                   r'\label{tab:format-correctness}'+'\n'+r'\end{table*}'+'\n')
+    code += correctness
     for name in ['code.tex']:
         (PAPER/'appendix'/name).write_text(code)
     for path in (PAPER/'tables').glob('c_*.tex'):
@@ -167,6 +184,43 @@ def formats_table(numbers):
     (PAPER/'tables/shared_formats.tex').write_text('\n'.join(lines)+'\n')
 
 
+def story_tables():
+    num = lambda key: r'\NUM{'+key+'}'
+    lines = [r'\begin{tabular}{@{}lrrr@{}}', r'\toprule',
+             r'Model & \shortstack{Added sum writes\\Values only (points)} & \shortstack{Correct-digit readout (\%)\\Values-only errors\\Before wrong value} & \shortstack{Added sum writes\\Expressions (points)} \\',
+             r'\midrule']
+    for _, label, tag in CODE_MODELS:
+        lines.append(' & '.join([label, num(f'c-cell-{tag}-excess'), num(f'j-{tag}-before-write-mean'),
+                                num(f'c-cell-{tag}-traceexpr-excess')])+r' \\')
+    lines += [r'\bottomrule', r'\end{tabular}']
+    (PAPER/'tables/shared_story.tex').write_text('\n'.join(lines)+'\n')
+    lines = [r'\begin{tabular}{@{}lrr@{}}',r'\toprule',
+             r'Model & \shortstack{Correct first value (\%)\\Values $\to$ expressions} & \shortstack{Correct final answer (\%)\\Values $\to$ expressions} \\',r'\midrule']
+    for _, label, tag in CODE_MODELS:
+        rates = [num(f'j-format-{tag}-values-misleading-{metric}-mean')+r' $\to$ '+
+                 num(f'j-format-{tag}-expression-misleading-{metric}-mean') for metric in ['first','final']]
+        lines.append(' & '.join([label,*rates])+r' \\')
+    lines += [r'\bottomrule',r'\end{tabular}']
+    (PAPER/'tables/shared_accuracy.tex').write_text('\n'.join(lines)+'\n')
+    interval = lambda prefix: num(prefix+'-mean')+' ['+num(prefix+'-lo')+', '+num(prefix+'-hi')+']'
+    lines = [r'\begin{tabular}{@{}lllrr@{}}', r'\toprule',
+             r'Model & Examples & Names & Correct first value (\%) & Correct final answer (\%) \\', r'\midrule']
+    for _, label, tag in CODE_MODELS:
+        for style, example in [('values','Values only'),('expression','Expression + value')]:
+            for condition, names in [('ordinary','Ordinary'),('misleading','Misleading')]:
+                lines.append(' & '.join([label,example,names,*[interval(f'j-format-{tag}-{style}-{condition}-{metric}')
+                                                              for metric in ['first','final']]])+r' \\')
+        lines.append(r'\addlinespace')
+    lines += [r'\midrule', r'\multicolumn{5}{l}{Expression minus values-only correctness (percentage points)} \\',
+              r'\midrule']
+    for _, label, tag in CODE_MODELS:
+        for condition, names in [('ordinary','Ordinary'),('misleading','Misleading')]:
+            lines.append(' & '.join([label,'Paired change',names,*[interval(f'j-format-{tag}-change-{condition}-{metric}')
+                                                                  for metric in ['first','final']]])+r' \\')
+    lines += [r'\bottomrule',r'\end{tabular}']
+    (PAPER/'tables/shared_correctness.tex').write_text('\n'.join(lines)+'\n')
+
+
 def figures():
     import matplotlib
     matplotlib.use('Agg')
@@ -182,21 +236,25 @@ def figures():
         (PAPER/'figures'/f'{name}_data.json').write_text(json.dumps(payload,indent=2)+'\n')
         plt.close(fig)
 
-    fig, axes = plt.subplots(1,2,figsize=(7.2,1.65))
+    fig, axes = plt.subplots(1,3,figsize=(7.2,1.85))
     for ax in axes:
         ax.set_axis_off()
     axes[0].text(0,1,'(a) Arithmetic',weight='bold',va='top')
     axes[0].text(0,.73,'pen = 1 + cup\ncup = 2 + 3\npen = ?',family='monospace',va='top')
-    axes[0].text(.64,.55,'pen → four',color=red,ha='center')
-    axes[0].text(0,.10,'Computed value 6',color=green)
-    axes[0].text(.58,.10,'Name suggests 4',color=red)
+    axes[0].text(0,.26,'pen → four',color=red)
+    axes[0].text(0,.05,'Correct 6; suggested 4',fontsize=8)
     axes[1].text(0,1,'(b) Python code',weight='bold',va='top')
     axes[1].text(0,.73,'xs = [5, 3]\nv = len(xs)',family='monospace',va='top')
-    axes[1].text(.64,.38,'v → sum_all',color=red,ha='center')
-    axes[1].text(0,.10,'Computed value 2',color=green)
-    axes[1].text(.58,.10,'Name suggests 8',color=red)
-    fig.subplots_adjust(wspace=.2)
-    save(fig,'shared_example',{'kind':'illustrative matched renaming','arithmetic':{'correct':6,'suggested':4},'code':{'correct':2,'suggested':8}})
+    axes[1].text(0,.43,'v → sum_all',color=red)
+    axes[1].text(0,.26,'Wrong write: sum_all = 8',color=red,fontsize=8)
+    axes[1].text(0,.05,'Correct 2; suggested 8',fontsize=8)
+    axes[2].text(0,1,'(c) Worked examples',weight='bold',va='top')
+    axes[2].text(0,.73,'Values only',va='top',fontsize=8)
+    axes[2].text(0,.58,'v = 2',family='monospace',va='top')
+    axes[2].text(0,.32,'Expression + value',va='top',fontsize=8)
+    axes[2].text(0,.15,'v = len(xs) = 2',family='monospace',va='top',color=green)
+    fig.subplots_adjust(left=.015,right=.995,top=.96,bottom=.06,wspace=.25)
+    save(fig,'shared_example',{'kind':'schematic, not a sampled generation','arithmetic':{'correct':6,'suggested':4},'code':{'correct':2,'suggested':8},'formats':['v = 2','v = len(xs) = 2']})
 
     arithmetic = load('probing','seed_sweep_L3')
     code = load('codecue','cell_inference')['cells']
@@ -254,6 +312,7 @@ def figures():
         for name in names:
             p=WORKSPACE/repo/'results/summary'/f'{name}.json'
             provenance[f'{repo}/{name}']=sha(p)
+    provenance['combined/format_correctness'] = sha(PAPER/'format_correctness.json')
     (PAPER/'evidence_provenance.json').write_text(json.dumps(provenance,indent=2)+'\n')
 
 
@@ -319,9 +378,11 @@ def main():
     checker=checker.replace('source.find(r"\\section{Conclusion}")','source.find(r"\\section{Discussion and conclusion}")')
     (PAPER/'check_arr.py').write_text(checker)
     (PAPER/'page_limit.txt').write_text('8\n')
+    runpy.run_path(str(ROOT/'scripts/93_combined_correctness.py'))['main']()
     numbers=source_numbers()
     refresh_imports()
     formats_table(numbers)
+    story_tables()
     figures()
     final_sources(numbers)
 

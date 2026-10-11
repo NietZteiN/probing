@@ -258,3 +258,12 @@ A small estimate or an interval covering zero does not by itself establish equiv
 \caption{Code behavior and error-conditioned readouts [95\% interval]. Counts distinguish writes from computations.}
 \label{c-tab:central}
 \end{table*}
+
+\section{Correctness on the matched code format cohort}
+\label{app:format-correctness}
+We score the first written value and final answer on the same 285 original length-to-sum programs and their ordinary-name twins, under values-only and expression-and-value examples. Each format has 855 paired observations over three demonstration sets. Parse failures count as incorrect. Intervals use 4,000 bootstrap draws over matched program IDs, keeping all demonstration repeats and both names together. The format changes are paired on those same IDs. These are overall correctness rates within the specified cohort, rather than the larger task pool. Zero-width intervals record this sample, not certainty about population rates.
+\begin{table*}[t]\centering\small
+\input{tables/shared_correctness}
+\caption{Matched-code correctness and paired format changes (95\% intervals).}
+\label{tab:format-correctness}
+\end{table*}

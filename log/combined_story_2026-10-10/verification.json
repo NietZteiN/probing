@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-10",
+  "title": "Correct Values Can Be Recovered Before Wrong Reasoning Steps",
+  "main_pages_including_limitations": 8,
+  "pdf_total_pages": 30,
+  "abstract_words_pdf": 164,
+  "source_files": 47,
+  "quantities": 306,
+  "main_figure_pages": {
+    "1": 2,
+    "2": 5,
+    "3": 5,
+    "4": 6,
+    "5": 7
+  },
+  "main_table_pages": {
+    "story": 2,
+    "format_correctness": 6
+  },
+  "revision": "Problem-first abstract and introduction; code failure, error-conditioned readout, then demonstration change; arithmetic foundation and comparison; scope section; three concrete implications.",
+  "new_analysis": "CPU-only correctness audit of existing code generations; first writes and final answers on the same 855 pairs / 285 unique computations per format and model.",
+  "correctness_sources": "All 39 portable source hashes match; cached flags match gold values and final answers; cohort and excess agree with original release; correct-write counts agree with the readout cohort.",
+  "numeric_checks": "All 108 new correctness quantities exactly match rounded saved means and intervals; paired gains in misleading-name first-write and final-answer accuracy have positive 95% intervals in all three models.",
+  "source_summary_hashes": {
+    "probing/seed_sweep_L3": "92c67f44d8bedb360b83166d31765ee0abd4be10321c539becf8d45e4f3994d7",
+    "probing/round7_response_controls": "2f09e1a55aed7850e5ae80c89d1dddf8c659bc293398dd2275144b5b90282d9b",
+    "probing/round7_paired_prompting": "7281202e3f3acf44068fa898a3dc42f4b5d6c56d150f4a10e9daffb8465c0cec",
+    "codecue/cell_inference": "dc1f088b1685dd29b72faa2f7462f996f1699d0df7f717e3304dcab83f74ba64",
+    "codecue/round5_formats": "0c5e398ade37aa2e992b74d14bc29953958533a8d1f58926968b04ce205912f7",
+    "codecue/round6_crossfit_probes": "f9cdafece5e4c534d697915039fab83972f207d7dc7b9a8bb5d0fc0ac36a5473",
+    "codecue/round7_prompt_comparison": "5c9b15e2db9a84e8a6ab4fe7de3354c3b3dcc2dd7db35ecf57a44e09e3818db2",
+    "codecue/round6_identifier_replication": "6efe6b8c020003c7aa05b0d19a142d654cbef2f6a79d3dece80d997b90b545d7",
+    "combined/format_correctness": "da3753d69c8abd6934437d5c4b90dcc932d9004b2d1f9d84f57c9b5f01142c3d"
+  },
+  "format_checks": "Strict ARR passed: official review style, A4, embedded fonts, resolved references, no unfinished numbers or overfull boxes.",
+  "standalone_build": "Passed strict check; all 30 PDF page texts match working manuscript; all 47 archive members byte-match working and extracted sources.",
+  "visual_checks": "Title, abstract, summary figure/table, correctness table, compact result figures, complete Limitations and supporting correctness table checked in rendered pages.",
+  "anonymity": "Anonymous author block; no private paths or account identifiers in submission source.",
+  "pdf_sha256": "431c10cc28ab913c204dd780fb8b927fe744bdcc727812a3f5c04a346caa6f7e",
+  "source_sha256": "d2938bd15c203102d27789bf22771c77f7431fb69d4f158efeb6c984b2a33a22",
+  "original_short_papers": "Unchanged."
+}

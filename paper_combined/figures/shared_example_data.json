@@ -1,5 +1,5 @@
 {
-  "kind": "illustrative matched renaming",
+  "kind": "schematic, not a sampled generation",
   "arithmetic": {
     "correct": 6,
     "suggested": 4
@@ -7,5 +7,9 @@
   "code": {
     "correct": 2,
     "suggested": 8
-  }
+  },
+  "formats": [
+    "v = 2",
+    "v = len(xs) = 2"
+  ]
 }
